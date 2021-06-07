@@ -572,6 +572,19 @@
 <span id="497">497</span>
 <span id="498">498</span>
 <span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -626,7 +639,8 @@
 <span class="doccomment">/// ### Passing a strong reference</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
-<span class="doccomment">/// # use glib_macros::clone;</span>
+<span class="doccomment">/// use glib;</span>
+<span class="doccomment">/// use glib_macros::clone;</span>
 <span class="doccomment">/// use std::rc::Rc;</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let v = Rc::new(1);</span>
@@ -640,7 +654,8 @@
 <span class="doccomment">/// ### Passing a weak reference</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
-<span class="doccomment">/// # use glib_macros::clone;</span>
+<span class="doccomment">/// use glib;</span>
+<span class="doccomment">/// use glib_macros::clone;</span>
 <span class="doccomment">/// use std::rc::Rc;</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// let u = Rc::new(2);</span>
@@ -657,8 +672,10 @@
 <span class="doccomment">/// your closure called. In this case, you need to use `@weak-allow-none`:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
-<span class="doccomment">/// # use glib_macros::clone;</span>
+<span class="doccomment">/// use glib;</span>
+<span class="doccomment">/// use glib_macros::clone;</span>
 <span class="doccomment">/// use std::rc::Rc;</span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// let closure = {</span>
 <span class="doccomment">///     // This `Rc` won&#39;t be available in the closure because it&#39;s dropped at the end of the</span>
 <span class="doccomment">///     // current block</span>
@@ -676,6 +693,7 @@
 <span class="doccomment">/// ### Renaming variables</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib;</span>
 <span class="doccomment">/// use glib_macros::clone;</span>
 <span class="doccomment">/// use std::rc::Rc;</span>
 <span class="doccomment">///</span>
@@ -695,6 +713,7 @@
 <span class="doccomment">/// Either by providing the value yourself using `@default-return`:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib;</span>
 <span class="doccomment">/// use glib_macros::clone;</span>
 <span class="doccomment">/// use std::rc::Rc;</span>
 <span class="doccomment">///</span>
@@ -713,8 +732,10 @@
 <span class="doccomment">/// Or by using `@default-panic` (if the value fails to get upgraded, it&#39;ll panic):</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```should_panic</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// # let v = Rc::new(1);</span>
 <span class="doccomment">/// let closure = clone!(@weak v =&gt; @default-panic, move |x| {</span>
 <span class="doccomment">///     println!(&quot;v: {}, x: {}&quot;, v, x);</span>
@@ -731,6 +752,7 @@
 <span class="doccomment">/// **Missing `@weak` or `@strong`**:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
 <span class="doccomment">/// let v = Rc::new(1);</span>
@@ -743,6 +765,7 @@
 <span class="doccomment">/// **Passing `self` as an argument**:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
 <span class="doccomment">/// #[derive(Debug)]</span>
@@ -761,6 +784,7 @@
 <span class="doccomment">/// If you want to use `self` directly, you&#39;ll need to rename it:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
 <span class="doccomment">/// #[derive(Debug)]</span>
@@ -779,6 +803,7 @@
 <span class="doccomment">/// **Passing fields directly**</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```compile_fail</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
 <span class="doccomment">/// #[derive(Debug)]</span>
@@ -799,6 +824,7 @@
 <span class="doccomment">/// You can do it by renaming it:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```</span>
+<span class="doccomment">/// # use glib;</span>
 <span class="doccomment">/// # use glib_macros::clone;</span>
 <span class="doccomment">/// # use std::rc::Rc;</span>
 <span class="doccomment">/// # struct Foo {</span>
