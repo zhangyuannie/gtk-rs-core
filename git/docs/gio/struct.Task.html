@@ -78,7 +78,7 @@
 <p>The most common usage of <a href="struct.Task.html" title="crate::Task"><code>Task</code></a> is as a <a href="struct.AsyncResult.html" title="crate::AsyncResult"><code>AsyncResult</code></a>, to
 manage data during an asynchronous operation. You call
 <a href="struct.Task.html#method.new" title="Self::new()"><code>new()</code></a> in the “start” method, followed by
-[<code>set_task_data()</code>][Self::set_task_data()] and the like if you need to keep some
+<code>g_task_set_task_data()</code> and the like if you need to keep some
 additional data associated with the task, and then pass the
 task object around through your asynchronous operation.
 Eventually, you will call a method such as
@@ -191,7 +191,7 @@ operations. <a href="struct.Task.html#method.cancellable" title="Self::cancellab
 and <a href="struct.Task.html#method.priority" title="Self::priority()"><code>priority()</code></a> allow you to get back the task’s
 <a href="struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a>, <a href="../glib/auto/main_context/struct.MainContext.html" title="crate::glib::MainContext"><code>glib::MainContext</code></a>, and [I/O priority][io-priority]
 when starting a new subtask, so you don’t have to keep track
-of them yourself. [<code>attach_source()</code>][Self::attach_source()] simplifies the case
+of them yourself. <code>g_task_attach_source()</code> simplifies the case
 of waiting for a source to fire (automatically using the correct
 <a href="../glib/auto/main_context/struct.MainContext.html" title="crate::glib::MainContext"><code>glib::MainContext</code></a> and priority).</p>
 <p>Here is an example for chained asynchronous operations:</p>
@@ -320,7 +320,7 @@ of waiting for a source to fire (automatically using the correct
     }
 </code></pre>
 <h2 id="asynchronous-operations-from-synchronous-ones" class="section-header"><a href="#asynchronous-operations-from-synchronous-ones">Asynchronous operations from synchronous ones</a></h2>
-<p>You can use [<code>run_in_thread()</code>][Self::run_in_thread()] to turn a synchronous
+<p>You can use <code>g_task_run_in_thread()</code> to turn a synchronous
 operation into an asynchronous one, by running it in a thread.
 When it completes, the result will be dispatched to the
 [thread-default main context][g-main-context-push-thread-default]
@@ -395,7 +395,7 @@ where the <a href="struct.Task.html" title="crate::Task"><code>Task</code></a> w
     }
 </code></pre>
 <h2 id="adding-cancellability-to-uncancellable-tasks" class="section-header"><a href="#adding-cancellability-to-uncancellable-tasks">Adding cancellability to uncancellable tasks</a></h2>
-<p>Finally, [<code>run_in_thread()</code>][Self::run_in_thread()] and [<code>run_in_thread_sync()</code>][Self::run_in_thread_sync()]
+<p>Finally, <code>g_task_run_in_thread()</code> and <code>g_task_run_in_thread_sync()</code>
 can be used to turn an uncancellable operation into a
 cancellable one. If you call <a href="struct.Task.html#method.set_return_on_cancel" title="Self::set_return_on_cancel()"><code>set_return_on_cancel()</code></a>,
 passing <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, then if the task’s <a href="struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a> is cancelled,
@@ -500,8 +500,8 @@ synchronous variants of blocking APIs.</p>
 <p><a href="struct.Task.html" title="crate::Task"><code>Task</code></a>’s API attempts to be simpler than <code>GSimpleAsyncResult</code>’s
 in several ways:</p>
 <ul>
-<li>You can save task-specific data with [<code>set_task_data()</code>][Self::set_task_data()], and
-retrieve it later with [<code>task_data()</code>][Self::task_data()]. This replaces the
+<li>You can save task-specific data with <code>g_task_set_task_data()</code>, and
+retrieve it later with <code>g_task_get_task_data()</code>. This replaces the
 abuse of <code>g_simple_async_result_set_op_res_gpointer()</code> for the same
 purpose with <code>GSimpleAsyncResult</code>.</li>
 <li>In addition to the task data, <a href="struct.Task.html" title="crate::Task"><code>Task</code></a> also keeps track of the
@@ -515,7 +515,7 @@ overrides any other <a href="struct.Task.html" title="crate::Task"><code>Task</c
 <code>GSimpleAsyncResult</code> does when
 <code>g_simple_async_result_set_check_cancellable()</code> is called.
 (You can use <a href="struct.Task.html#method.set_check_cancellable" title="Self::set_check_cancellable()"><code>set_check_cancellable()</code></a> to turn off that
-behavior.) On the other hand, [<code>run_in_thread()</code>][Self::run_in_thread()]
+behavior.) On the other hand, <code>g_task_run_in_thread()</code>
 guarantees that it will always run your
 <code>task_func</code>, even if the task’s <a href="struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a>
 is already cancelled before the task gets a chance to run;
@@ -547,7 +547,7 @@ appropriate <code>g_task_propagate_</code> function.
 Note that wrapper methods can now use
 <a href="prelude/trait.AsyncResultExt.html#tymethod.legacy_propagate_error" title="crate::prelude::AsyncResultExt::legacy_propagate_error()"><code>AsyncResultExt::legacy_propagate_error()</code></a> to do old-style
 <code>GSimpleAsyncResult</code> error-returning behavior, and
-[<code>AsyncResultExt::is_tagged()</code>][crate::prelude::AsyncResultExt::is_tagged()] to check if a result is tagged as
+<code>g_async_result_is_tagged()</code> to check if a result is tagged as
 having come from the <code>_async()</code> wrapper
 function (for “short-circuit” results, such as when passing
 0 to <a href="prelude/trait.InputStreamExtManual.html#tymethod.read_async" title="crate::prelude::InputStreamExtManual::read_async()"><code>InputStreamExtManual::read_async()</code></a>).</li>
@@ -611,8 +611,8 @@ other than the one it was constructed in.</p>
 <h2 id="name" class="section-header"><a href="#name"><code>name</code></a></h2>
 <p>a human readable name for the task, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> to unset it</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_return_on_cancel" class="method has-srclink"><code>pub fn <a href="#method.set_return_on_cancel" class="fnname">set_return_on_cancel</a>(&amp;self, return_on_cancel: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code><a href="#method.set_return_on_cancel" class="anchor"></a><a class="srclink" href="../src/gio/auto/task.rs.html#736-743" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets or clears <code>self</code>’s return-on-cancel flag. This is only
-meaningful for tasks run via [<code>run_in_thread()</code>][Self::run_in_thread()] or
-[<code>run_in_thread_sync()</code>][Self::run_in_thread_sync()].</p>
+meaningful for tasks run via <code>g_task_run_in_thread()</code> or
+<code>g_task_run_in_thread_sync()</code>.</p>
 <p>If <code>return_on_cancel</code> is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, then cancelling <code>self</code>’s
 <a href="struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a> will immediately cause it to return, as though the
 task’s <code>GTaskThreadFunc</code> had called
@@ -631,7 +631,7 @@ If the task’s <a href="struct.Cancellable.html" title="crate::Cancellable"><co
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>, then calling <a href="struct.Task.html#method.set_return_on_cancel" title="Self::set_return_on_cancel()"><code>set_return_on_cancel()</code></a> to set it <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>
 again will cause the task to be cancelled at that point.</p>
 <p>If the task’s <a href="struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a> is already cancelled before you call
-[<code>run_in_thread()</code>][Self::run_in_thread()]/[<code>run_in_thread_sync()</code>][Self::run_in_thread_sync()], then the
+<code>g_task_run_in_thread()</code>/<code>g_task_run_in_thread_sync()</code>, then the
 <code>GTaskThreadFunc</code> will still be run (for consistency), but the task
 will also be completed right away.</p>
 <h2 id="return_on_cancel" class="section-header"><a href="#return_on_cancel"><code>return_on_cancel</code></a></h2>
@@ -657,8 +657,8 @@ used to invoke <code>callback</code> in the current
 [thread-default main context][g-main-context-push-thread-default].</p>
 <p>Call this in the “start” method of your asynchronous method, and
 pass the <a href="struct.Task.html" title="crate::Task"><code>Task</code></a> around throughout the asynchronous operation. You
-can use [<code>set_task_data()</code>][Self::set_task_data()] to attach task-specific data to the
-object, which you can retrieve later via [<code>task_data()</code>][Self::task_data()].</p>
+can use <code>g_task_set_task_data()</code> to attach task-specific data to the
+object, which you can retrieve later via <code>g_task_get_task_data()</code>.</p>
 <p>By default, if <code>cancellable</code> is cancelled, then the return value of
 the task will always be <a href="enum.IOErrorEnum.html#variant.Cancelled" title="crate::IOErrorEnum::Cancelled"><code>IOErrorEnum::Cancelled</code></a>, even if the task had
 already completed before the cancellation. This allows for
@@ -685,7 +685,7 @@ task may be completed before returning from <a href="struct.Task.html#method.ret
 you cannot assume that <code>error</code> is still valid after calling this.
 Call <code>g_error_copy()</code> on the error if you need to keep a local copy
 as well.</p>
-<p>See also [<code>return_new_error()</code>][Self::return_new_error()].</p>
+<p>See also <code>g_task_return_new_error()</code>.</p>
 <h2 id="error" class="section-header"><a href="#error"><code>error</code></a></h2>
 <p>the <a href="../glib/error/struct.Error.html" title="crate::glib::Error"><code>glib::Error</code></a> result of a task function.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.priority" class="method has-srclink"><code>pub fn <a href="#method.priority" class="fnname">priority</a>(&amp;self) -&gt; <a class="struct" href="../glib/source/struct.Priority.html" title="struct glib::source::Priority">Priority</a></code><a href="#method.priority" class="anchor"></a><a class="srclink" href="../src/gio/task.rs.html#99-101" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets <code>self</code>’s priority</p>
@@ -694,7 +694,7 @@ as well.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_priority" class="method has-srclink"><code>pub fn <a href="#method.set_priority" class="fnname">set_priority</a>(&amp;self, priority: <a class="struct" href="../glib/source/struct.Priority.html" title="struct glib::source::Priority">Priority</a>)</code><a href="#method.set_priority" class="anchor"></a><a class="srclink" href="../src/gio/task.rs.html#113-117" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>self</code>’s priority. If you do not call this, it will default to
 <code>G_PRIORITY_DEFAULT</code>.</p>
 <p>This will affect the priority of <code>GSources</code> created with
-[<code>attach_source()</code>][Self::attach_source()] and the scheduling of tasks run in threads,
+<code>g_task_attach_source()</code> and the scheduling of tasks run in threads,
 and can also be explicitly retrieved later via
 <a href="struct.Task.html#method.priority" title="Self::priority()"><code>priority()</code></a>.</p>
 <h2 id="priority" class="section-header"><a href="#priority"><code>priority</code></a></h2>
@@ -778,8 +778,8 @@ runtime, while <code>downcast</code> and <code>upcast</code> will do many checks
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_owned" class="method trait-impl has-srclink"><code>pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned" class="fnname">to_owned</a>(&amp;self) -&gt; T</code><a href="#method.to_owned" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Creates owned data from borrowed data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_into" class="method trait-impl has-srclink"><code>pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into" class="fnname">clone_into</a>(&amp;self, target: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T)</code><a href="#method.clone_into" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#93" title="goto source code">[src]</a></div></summary><div class="item-info"><div class="stab unstable"><details><summary><span class="emoji">🔬</span> This is a nightly-only experimental API. (<code>toowned_clone_into</code>)</summary><p>recently added</p>
 </details></div></div><div class='docblock'><p>Uses borrowed data to replace owned data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into">Read more</a></p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-ToSendValue" class="impl has-srclink"><code class="in-band">impl&lt;T&gt; <a class="trait" href="../glib/value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../glib/value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></code><a href="#impl-ToSendValue" class="anchor"></a><a class="srclink" href="../src/glib/value.rs.html#800-804" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><code>pub fn <a href="../glib/value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(&amp;self) -&gt; <a class="struct" href="../glib/value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></code><a href="#method.to_send_value" class="anchor"></a><a class="srclink" href="../src/glib/value.rs.html#801" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-ToString" class="impl has-srclink"><code class="in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></code><a href="#impl-ToString" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2355-2369" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><code>pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code><a href="#method.to_string" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2361" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-ToSendValue" class="impl has-srclink"><code class="in-band">impl&lt;T&gt; <a class="trait" href="../glib/value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../glib/value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></code><a href="#impl-ToSendValue" class="anchor"></a><a class="srclink" href="../src/glib/value.rs.html#792-796" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><code>pub fn <a href="../glib/value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(&amp;self) -&gt; <a class="struct" href="../glib/value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></code><a href="#method.to_send_value" class="anchor"></a><a class="srclink" href="../src/glib/value.rs.html#793" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-ToString" class="impl has-srclink"><code class="in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></code><a href="#impl-ToString" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2372-2386" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><code>pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code><a href="#method.to_string" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2378" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-TryFrom%3CU%3E" class="impl has-srclink"><code class="in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,&nbsp;</span></code><a href="#impl-TryFrom%3CU%3E" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#581-590" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error" class="type trait-impl has-srclink"><code>type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="type">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></code><a href="#associatedtype.Error" class="anchor"></a></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><code>pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</code><a href="#method.try_from" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#587" title="goto source code">[src]</a></div></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle"><summary><div id="impl-TryInto%3CU%3E" class="impl has-srclink"><code class="in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></code><a href="#impl-TryInto%3CU%3E" class="anchor"></a><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#567-576" title="goto source code">[src]</a></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error-1" class="type trait-impl has-srclink"><code>type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="type">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></code><a href="#associatedtype.Error-1" class="anchor"></a></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>

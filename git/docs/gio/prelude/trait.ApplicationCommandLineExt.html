@@ -140,7 +140,7 @@ in the value of a single environment variable.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.options_dict" class="method has-srclink"><code>fn <a href="#tymethod.options_dict" class="fnname">options_dict</a>(&amp;self) -&gt; <a class="struct" href="../../glib/variant_dict/struct.VariantDict.html" title="struct glib::variant_dict::VariantDict">VariantDict</a></code><a class="srclink" href="../../src/gio/auto/application_command_line.rs.html#304" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the options there were passed to <code>g_application_command_line()</code>.</p>
 <p>If you did not override <code>local_command_line()</code> then these are the same
 options that were parsed according to the <code>GOptionEntrys</code> added to the
-application with [<code>ApplicationExt::add_main_option_entries()</code>][crate::prelude::ApplicationExt::add_main_option_entries()] and possibly
+application with <code>g_application_add_main_option_entries()</code> and possibly
 modified from your GApplication::handle-local-options handler.</p>
 <p>If no options were sent then an empty dictionary is returned so that
 you don’t need to check for <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>

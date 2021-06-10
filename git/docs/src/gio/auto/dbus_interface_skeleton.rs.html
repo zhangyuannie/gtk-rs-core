@@ -670,7 +670,7 @@
     <span class="doccomment">/// If [`false`] is returned then no further handlers are run and the</span>
     <span class="doccomment">/// signal handler must take a reference to `invocation` and finish</span>
     <span class="doccomment">/// handling the call (e.g. return an error via</span>
-    <span class="doccomment">/// [`DBusMethodInvocation::return_error()`][crate::DBusMethodInvocation::return_error()]).</span>
+    <span class="doccomment">/// `g_dbus_method_invocation_return_error()`).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Otherwise, if [`true`] is returned, signal emission continues. If no</span>
     <span class="doccomment">/// handlers return [`false`], then the method is dispatched. If</span>

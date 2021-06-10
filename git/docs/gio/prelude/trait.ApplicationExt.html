@@ -128,13 +128,13 @@ emitted in the primary instance.</p>
 <p>The application must be registered before calling this function.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.add_main_option" class="method has-srclink"><code>fn <a href="#tymethod.add_main_option" class="fnname">add_main_option</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;long_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;short_name: <a class="struct" href="../../glib/char/struct.Char.html" title="struct glib::char::Char">Char</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="../../glib/auto/flags/struct.OptionFlags.html" title="struct glib::auto::flags::OptionFlags">OptionFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;arg: <a class="enum" href="../../glib/auto/enums/enum.OptionArg.html" title="enum glib::auto::enums::OptionArg">OptionArg</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;description: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;arg_description: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>)</code><a class="srclink" href="../../src/gio/auto/application.rs.html#375-383" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Add an option to be handled by <code>self</code>.</p>
 <p>Calling this function is the equivalent of calling
-[<code>add_main_option_entries()</code>][Self::add_main_option_entries()] with a single <code>GOptionEntry</code>
+<code>g_application_add_main_option_entries()</code> with a single <code>GOptionEntry</code>
 that has its arg_data member set to <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
 <p>The parsed arguments will be packed into a <a href="../../glib/variant_dict/struct.VariantDict.html" title="crate::glib::VariantDict"><code>glib::VariantDict</code></a> which
 is passed to <code>signal::Application::handle-local-options</code>. If
 <a href="../struct.ApplicationFlags.html#associatedconstant.HANDLES_COMMAND_LINE" title="crate::ApplicationFlags::HANDLES_COMMAND_LINE"><code>ApplicationFlags::HANDLES_COMMAND_LINE</code></a> is set, then it will also
 be sent to the primary instance. See
-[<code>add_main_option_entries()</code>][Self::add_main_option_entries()] for more details.</p>
+<code>g_application_add_main_option_entries()</code> for more details.</p>
 <p>See <code>GOptionEntry</code> for more documentation of the arguments.</p>
 <h2 id="long_name" class="section-header"><a href="#long_name"><code>long_name</code></a></h2>
 <p>the long name of an option used to specify it in a commandline</p>
@@ -419,8 +419,8 @@ process. See <a href="trait.ApplicationCommandLineExt.html#tymethod.set_exit_sta
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_handle_local_options" class="method has-srclink"><code>fn <a href="#tymethod.connect_handle_local_options" class="fnname">connect_handle_local_options</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, &amp;<a class="struct" href="../../glib/variant_dict/struct.VariantDict.html" title="struct glib::variant_dict::VariantDict">VariantDict</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></code><a class="srclink" href="../../src/gio/auto/application.rs.html#904-907" title="goto source code">[src]</a></div></summary><div class="docblock"><p>The ::handle-local-options signal is emitted on the local instance
 after the parsing of the commandline options has occurred.</p>
 <p>You can add options to be recognised during commandline option
-parsing using [<code>add_main_option_entries()</code>][Self::add_main_option_entries()] and
-[<code>add_option_group()</code>][Self::add_option_group()].</p>
+parsing using <code>g_application_add_main_option_entries()</code> and
+<code>g_application_add_option_group()</code>.</p>
 <p>Signal handlers can inspect <code>options</code> (along with values pointed to
 from the <code>arg_data</code> of an installed <code>GOptionEntrys</code>) in order to
 decide to perform certain actions, including direct local handling

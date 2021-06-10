@@ -548,7 +548,7 @@
     <span class="doccomment">/// [`release_fd()`][Self::release_fd()] to free up resources allocated for</span>
     <span class="doccomment">/// the returned file descriptor.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See also [`make_pollfd()`][Self::make_pollfd()].</span>
+    <span class="doccomment">/// See also `g_cancellable_make_pollfd()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -587,7 +587,7 @@
     <span class="kw">fn</span> <span class="ident">push_current</span>(<span class="kw-2">&amp;</span><span class="self">self</span>);
 
     <span class="doccomment">/// Releases a resources previously allocated by [`fd()`][Self::fd()]</span>
-    <span class="doccomment">/// or [`make_pollfd()`][Self::make_pollfd()].</span>
+    <span class="doccomment">/// or `g_cancellable_make_pollfd()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For compatibility reasons with older releases, calling this function</span>
     <span class="doccomment">/// is not strictly required, the resources will be automatically freed</span>
@@ -626,7 +626,7 @@
     <span class="doccomment">/// the signal leaves a race condition where this is still happening.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// In order to make it safe and easy to connect handlers there</span>
-    <span class="doccomment">/// are two helper functions: [`connect()`][Self::connect()] and</span>
+    <span class="doccomment">/// are two helper functions: `g_cancellable_connect()` and</span>
     <span class="doccomment">/// [`disconnect()`][Self::disconnect()] which protect against problems</span>
     <span class="doccomment">/// like this.</span>
     <span class="doccomment">///</span>

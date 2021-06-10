@@ -90,7 +90,7 @@ was cancelled, the error <a href="../enum.IOErrorEnum.html#variant.Cancelled" ti
 <p>If <code>make_backup</code> is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, this function will attempt to
 make a backup of <code>self</code>.</p>
 <p>Note that no copy of <code>contents</code> will be made, so it must stay valid
-until <code>callback</code> is called. See [<code>FileExt::replace_contents_bytes_async()</code>][crate::prelude::FileExt::replace_contents_bytes_async()]
+until <code>callback</code> is called. See <code>g_file_replace_contents_bytes_async()</code>
 for a <a href="../../glib/bytes/struct.Bytes.html" title="crate::glib::Bytes"><code>glib::Bytes</code></a> version that will automatically hold a reference to the
 contents (without copying) for the duration of the call.</p>
 <h2 id="contents" class="section-header"><a href="#contents"><code>contents</code></a></h2>

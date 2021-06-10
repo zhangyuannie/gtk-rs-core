@@ -164,7 +164,7 @@ flag set.</p>
 <p>If <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> is returned then no further handlers are run and the
 signal handler must take a reference to <code>invocation</code> and finish
 handling the call (e.g. return an error via
-<a href="../struct.DBusMethodInvocation.html#method.return_error" title="crate::DBusMethodInvocation::return_error()"><code>DBusMethodInvocation::return_error()</code></a>).</p>
+<code>g_dbus_method_invocation_return_error()</code>).</p>
 <p>Otherwise, if <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> is returned, signal emission continues. If no
 handlers return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>, then the method is dispatched. If
 <code>interface</code> has an enclosing <code>GDBusObjectSkeleton</code>, then the

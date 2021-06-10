@@ -2026,14 +2026,14 @@
     <span class="doccomment">/// Add an option to be handled by `self`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Calling this function is the equivalent of calling</span>
-    <span class="doccomment">/// [`add_main_option_entries()`][Self::add_main_option_entries()] with a single `GOptionEntry`</span>
+    <span class="doccomment">/// `g_application_add_main_option_entries()` with a single `GOptionEntry`</span>
     <span class="doccomment">/// that has its arg_data member set to [`None`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The parsed arguments will be packed into a [`glib::VariantDict`][crate::glib::VariantDict] which</span>
     <span class="doccomment">/// is passed to `signal::Application::handle-local-options`. If</span>
     <span class="doccomment">/// [`ApplicationFlags::HANDLES_COMMAND_LINE`][crate::ApplicationFlags::HANDLES_COMMAND_LINE] is set, then it will also</span>
     <span class="doccomment">/// be sent to the primary instance. See</span>
-    <span class="doccomment">/// [`add_main_option_entries()`][Self::add_main_option_entries()] for more details.</span>
+    <span class="doccomment">/// `g_application_add_main_option_entries()` for more details.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See `GOptionEntry` for more documentation of the arguments.</span>
     <span class="doccomment">/// ## `long_name`</span>
@@ -2532,8 +2532,8 @@
     <span class="doccomment">/// after the parsing of the commandline options has occurred.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// You can add options to be recognised during commandline option</span>
-    <span class="doccomment">/// parsing using [`add_main_option_entries()`][Self::add_main_option_entries()] and</span>
-    <span class="doccomment">/// [`add_option_group()`][Self::add_option_group()].</span>
+    <span class="doccomment">/// parsing using `g_application_add_main_option_entries()` and</span>
+    <span class="doccomment">/// `g_application_add_option_group()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Signal handlers can inspect `options` (along with values pointed to</span>
     <span class="doccomment">/// from the `arg_data` of an installed `GOptionEntrys`) in order to</span>

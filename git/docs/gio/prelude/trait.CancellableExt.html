@@ -122,7 +122,7 @@ with <code>g_cancellable_reset()</code>.</p>
 <p>After a successful return from this function, you should use
 <a href="trait.CancellableExt.html#tymethod.release_fd" title="Self::release_fd()"><code>release_fd()</code></a> to free up resources allocated for
 the returned file descriptor.</p>
-<p>See also [<code>make_pollfd()</code>][Self::make_pollfd()].</p>
+<p>See also <code>g_cancellable_make_pollfd()</code>.</p>
 <h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
 <p>A valid file descriptor. <code>-1</code> if the file descriptor
 is not supported, or on errors.</p>
@@ -139,7 +139,7 @@ code that does not allow you to pass down the cancellable object.</p>
 <p>This is typically called automatically by e.g. <a href="../struct.File.html" title="crate::File"><code>File</code></a> operations,
 so you rarely have to call this yourself.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.release_fd" class="method has-srclink"><code>fn <a href="#tymethod.release_fd" class="fnname">release_fd</a>(&amp;self)</code><a class="srclink" href="../../src/gio/auto/cancellable.rs.html#180" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Releases a resources previously allocated by <a href="trait.CancellableExt.html#tymethod.fd" title="Self::fd()"><code>fd()</code></a>
-or [<code>make_pollfd()</code>][Self::make_pollfd()].</p>
+or <code>g_cancellable_make_pollfd()</code>.</p>
 <p>For compatibility reasons with older releases, calling this function
 is not strictly required, the resources will be automatically freed
 when the <code>self</code> is finalized. However, the <code>self</code> will
@@ -165,7 +165,7 @@ connecting to the signal. If this happens the signal will
 unexpectedly not be emitted, and checking before connecting to
 the signal leaves a race condition where this is still happening.</p>
 <p>In order to make it safe and easy to connect handlers there
-are two helper functions: [<code>connect()</code>][Self::connect()] and
+are two helper functions: <code>g_cancellable_connect()</code> and
 <a href="trait.CancellableExt.html#tymethod.disconnect" title="Self::disconnect()"><code>disconnect()</code></a> which protect against problems
 like this.</p>
 <p>An example of how to us this:</p>

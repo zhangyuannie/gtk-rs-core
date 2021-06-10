@@ -166,7 +166,7 @@ correct type).</p>
 mode, changes to <code>self</code> are not immediately propagated to the
 backend, but kept locally until <a href="trait.SettingsExt.html#tymethod.apply" title="Self::apply()"><code>apply()</code></a> is called.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.boolean" class="method has-srclink"><code>fn <a href="#tymethod.boolean" class="fnname">boolean</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#620" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for booleans.</p>
+<p>A convenience variant of <code>g_settings_get()</code> for booleans.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a boolean type in the schema for <code>self</code>.</p>
 <h2 id="key-2" class="section-header"><a href="#key-2"><code>key</code></a></h2>
@@ -203,7 +203,7 @@ schema for <code>self</code>.</p>
 <h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
 <p>the default value</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.double" class="method has-srclink"><code>fn <a href="#tymethod.double" class="fnname">double</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#683" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for doubles.</p>
+<p>A convenience variant of <code>g_settings_get()</code> for doubles.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a ‘double’ type in the schema for <code>self</code>.</p>
 <h2 id="key-4" class="section-header"><a href="#key-4"><code>key</code></a></h2>
@@ -241,7 +241,7 @@ changes. This can only be the case if it is in ‘delayed-apply’ mode.</p>
 <h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>self</code> has unapplied changes</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.int" class="method has-srclink"><code>fn <a href="#tymethod.int" class="fnname">int</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#753" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for 32-bit integers.</p>
+<p>A convenience variant of <code>g_settings_get()</code> for 32-bit integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a int32 type in the schema for <code>self</code>.</p>
 <h2 id="key-7" class="section-header"><a href="#key-7"><code>key</code></a></h2>
@@ -249,7 +249,7 @@ having a int32 type in the schema for <code>self</code>.</p>
 <h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
 <p>an integer</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.int64" class="method has-srclink"><code>fn <a href="#tymethod.int64" class="fnname">int64</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#771" title="goto source code">[src]</a></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_50</code></strong> only.</div></div><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for 64-bit integers.</p>
+<p>A convenience variant of <code>g_settings_get()</code> for 64-bit integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a int64 type in the schema for <code>self</code>.</p>
 <h2 id="key-8" class="section-header"><a href="#key-8"><code>key</code></a></h2>
@@ -257,14 +257,14 @@ having a int64 type in the schema for <code>self</code>.</p>
 <h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
 <p>a 64-bit integer</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.string" class="method has-srclink"><code>fn <a href="#tymethod.string" class="fnname">string</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#791" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for strings.</p>
+<p>A convenience variant of <code>g_settings_get()</code> for strings.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a string type in the schema for <code>self</code>.</p>
 <h2 id="key-9" class="section-header"><a href="#key-9"><code>key</code></a></h2>
 <p>the key to get the value for</p>
 <h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
 <p>a newly-allocated string</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.strv" class="method has-srclink"><code>fn <a href="#tymethod.strv" class="fnname">strv</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#807" title="goto source code">[src]</a></div></summary><div class="docblock"><p>A convenience variant of [<code>get()</code>][Self::get()] for string arrays.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.strv" class="method has-srclink"><code>fn <a href="#tymethod.strv" class="fnname">strv</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#807" title="goto source code">[src]</a></div></summary><div class="docblock"><p>A convenience variant of <code>g_settings_get()</code> for string arrays.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having an array of strings type in the schema for <code>self</code>.</p>
 <h2 id="key-10" class="section-header"><a href="#key-10"><code>key</code></a></h2>
@@ -274,7 +274,7 @@ having an array of strings type in the schema for <code>self</code>.</p>
 newly-allocated, <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated array of strings, the value that
 is stored at <code>key</code> in <code>self</code>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.uint" class="method has-srclink"><code>fn <a href="#tymethod.uint" class="fnname">uint</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#824" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for 32-bit unsigned
+<p>A convenience variant of <code>g_settings_get()</code> for 32-bit unsigned
 integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a uint32 type in the schema for <code>self</code>.</p>
@@ -283,7 +283,7 @@ having a uint32 type in the schema for <code>self</code>.</p>
 <h1 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h1>
 <p>an unsigned integer</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.uint64" class="method has-srclink"><code>fn <a href="#tymethod.uint64" class="fnname">uint64</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#843" title="goto source code">[src]</a></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_50</code></strong> only.</div></div><div class="docblock"><p>Gets the value that is stored at <code>key</code> in <code>self</code>.</p>
-<p>A convenience variant of [<code>get()</code>][Self::get()] for 64-bit unsigned
+<p>A convenience variant of <code>g_settings_get()</code> for 64-bit unsigned
 integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a uint64 type in the schema for <code>self</code>.</p>
@@ -343,7 +343,7 @@ does nothing unless <code>self</code> is in ‘delay-apply’ mode; see
 immediately.</p>
 <p>Change notifications will be emitted for affected keys.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_boolean" class="method has-srclink"><code>fn <a href="#tymethod.set_boolean" class="fnname">set_boolean</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#954" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for booleans.</p>
+<p>A convenience variant of <code>g_settings_set()</code> for booleans.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a boolean type in the schema for <code>self</code>.</p>
 <h2 id="key-16" class="section-header"><a href="#key-16"><code>key</code></a></h2>
@@ -354,7 +354,7 @@ having a boolean type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_double" class="method has-srclink"><code>fn <a href="#tymethod.set_double" class="fnname">set_double</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#972" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for doubles.</p>
+<p>A convenience variant of <code>g_settings_set()</code> for doubles.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a ‘double’ type in the schema for <code>self</code>.</p>
 <h2 id="key-17" class="section-header"><a href="#key-17"><code>key</code></a></h2>
@@ -394,7 +394,7 @@ bit in <code>value</code>.</p>
 <h1 id="returns-21" class="section-header"><a href="#returns-21">Returns</a></h1>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, if the set succeeds</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_int" class="method has-srclink"><code>fn <a href="#tymethod.set_int" class="fnname">set_int</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1033" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for 32-bit integers.</p>
+<p>A convenience variant of <code>g_settings_set()</code> for 32-bit integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a int32 type in the schema for <code>self</code>.</p>
 <h2 id="key-20" class="section-header"><a href="#key-20"><code>key</code></a></h2>
@@ -405,7 +405,7 @@ having a int32 type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_int64" class="method has-srclink"><code>fn <a href="#tymethod.set_int64" class="fnname">set_int64</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1053" title="goto source code">[src]</a></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_50</code></strong> only.</div></div><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for 64-bit integers.</p>
+<p>A convenience variant of <code>g_settings_set()</code> for 64-bit integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a int64 type in the schema for <code>self</code>.</p>
 <h2 id="key-21" class="section-header"><a href="#key-21"><code>key</code></a></h2>
@@ -416,7 +416,7 @@ having a int64 type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_string" class="method has-srclink"><code>fn <a href="#tymethod.set_string" class="fnname">set_string</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1071" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for strings.</p>
+<p>A convenience variant of <code>g_settings_set()</code> for strings.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a string type in the schema for <code>self</code>.</p>
 <h2 id="key-22" class="section-header"><a href="#key-22"><code>key</code></a></h2>
@@ -427,7 +427,7 @@ having a string type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_strv" class="method has-srclink"><code>fn <a href="#tymethod.set_strv" class="fnname">set_strv</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a>&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1090" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for string arrays. If
+<p>A convenience variant of <code>g_settings_set()</code> for string arrays. If
 <code>value</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, then <code>key</code> is set to be the empty array.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having an array of strings type in the schema for <code>self</code>.</p>
@@ -439,7 +439,7 @@ having an array of strings type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_uint" class="method has-srclink"><code>fn <a href="#tymethod.set_uint" class="fnname">set_uint</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1109" title="goto source code">[src]</a></div></summary><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for 32-bit unsigned
+<p>A convenience variant of <code>g_settings_set()</code> for 32-bit unsigned
 integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a uint32 type in the schema for <code>self</code>.</p>
@@ -451,7 +451,7 @@ having a uint32 type in the schema for <code>self</code>.</p>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if setting the key succeeded,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not writable</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_uint64" class="method has-srclink"><code>fn <a href="#tymethod.set_uint64" class="fnname">set_uint64</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="../../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1130" title="goto source code">[src]</a></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_50</code></strong> only.</div></div><div class="docblock"><p>Sets <code>key</code> in <code>self</code> to <code>value</code>.</p>
-<p>A convenience variant of [<code>set()</code>][Self::set()] for 64-bit unsigned
+<p>A convenience variant of <code>g_settings_set()</code> for 64-bit unsigned
 integers.</p>
 <p>It is a programmer error to give a <code>key</code> that isn’t specified as
 having a uint64 type in the schema for <code>self</code>.</p>
@@ -487,7 +487,7 @@ has only existed since version 2.32, however, and before then the
 ‘schema’ property was used to refer to the ID of the schema rather
 than the schema itself. Take care.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_changed" class="method has-srclink"><code>fn <a href="#tymethod.connect_changed" class="fnname">connect_changed</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;detail: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></code><a class="srclink" href="../../src/gio/auto/settings.rs.html#1193-1197" title="goto source code">[src]</a></div></summary><div class="docblock"><p>The “changed” signal is emitted when a key has potentially changed.
-You should call one of the [<code>get()</code>][Self::get()] calls to check the new
+You should call one of the <code>g_settings_get()</code> calls to check the new
 value.</p>
 <p>This signal supports detailed connections. You can connect to the
 detailed signal “changed::x” in order to only receive callbacks

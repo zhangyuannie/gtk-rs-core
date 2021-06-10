@@ -87,7 +87,7 @@ required. Note that on Windows, <code>argc</code> and <code>argv</code> are igno
 of Unicode commandline arguments).</p>
 <p><a href="../struct.Application.html" title="crate::Application"><code>Application</code></a> will attempt to parse the commandline arguments. You
 can add commandline flags to the list of recognised options by way of
-[<code>ApplicationExt::add_main_option_entries()</code>][crate::prelude::ApplicationExt::add_main_option_entries()]. After this, the
+<code>g_application_add_main_option_entries()</code>. After this, the
 <code>signal::Application::handle-local-options</code> signal is emitted, from which the
 application can inspect the values of its <code>GOptionEntrys</code>.</p>
 <p><code>signal::Application::handle-local-options</code> is a good place to handle options
