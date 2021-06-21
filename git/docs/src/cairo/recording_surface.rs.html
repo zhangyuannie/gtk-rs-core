@@ -139,9 +139,6 @@
 <span id="64">64</span>
 <span id="65">65</span>
 <span id="66">66</span>
-<span id="67">67</span>
-<span id="68">68</span>
-<span id="69">69</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -171,10 +168,7 @@
                 <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">::std::ptr::null</span>(),
             };
 
-            <span class="prelude-val">Ok</span>(<span class="self">Self</span><span class="ident">::from_raw_full</span>(<span class="ident">ffi::cairo_recording_surface_create</span>(
-                <span class="ident">content</span>.<span class="ident">into</span>(),
-                <span class="ident">extends</span>,
-            ))<span class="question-mark">?</span>)
+            <span class="self">Self</span><span class="ident">::from_raw_full</span>(<span class="ident">ffi::cairo_recording_surface_create</span>(<span class="ident">content</span>.<span class="ident">into</span>(), <span class="ident">extends</span>))
         }
     }
 

@@ -4960,9 +4960,9 @@
     <span class="kw">fn</span> <span class="ident">boolean</span>() {
         <span class="macro">assert_eq!</span>(<span class="bool-val">true</span>.<span class="ident">into_glib</span>(), <span class="ident">ffi::GTRUE</span>);
         <span class="macro">assert_eq!</span>(<span class="bool-val">false</span>.<span class="ident">into_glib</span>(), <span class="ident">ffi::GFALSE</span>);
-        <span class="macro">assert_eq!</span>(<span class="bool-val">true</span>, <span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="ident">ffi::GTRUE</span>) });
-        <span class="macro">assert_eq!</span>(<span class="bool-val">false</span>, <span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="ident">ffi::GFALSE</span>) });
-        <span class="macro">assert_eq!</span>(<span class="bool-val">true</span>, <span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="number">42</span>) });
+        <span class="macro">assert!</span>(<span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="ident">ffi::GTRUE</span>) });
+        <span class="macro">assert!</span>(<span class="op">!</span><span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="ident">ffi::GFALSE</span>) });
+        <span class="macro">assert!</span>(<span class="kw">unsafe</span> { <span class="ident">bool::from_glib</span>(<span class="number">42</span>) });
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>

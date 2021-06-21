@@ -353,7 +353,7 @@
     };
 
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>;
-    <span class="kw">let</span> <span class="ident">gtype_name</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">parse_type_name</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>, <span class="string">&quot;gshared_boxed&quot;</span>) {
+    <span class="kw">let</span> <span class="ident">gtype_name</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">parse_type_name</span>(<span class="ident">input</span>, <span class="string">&quot;gshared_boxed&quot;</span>) {
         <span class="prelude-val">Ok</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">v</span>,
         <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">abort_call_site!</span>(
             <span class="string">&quot;{}: derive(GSharedBoxed) requires #[gshared_boxed(type_name = \&quot;SharedTypeName\&quot;)]&quot;</span>,

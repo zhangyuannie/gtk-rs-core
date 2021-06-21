@@ -294,6 +294,34 @@
 <span id="219">219</span>
 <span id="220">220</span>
 <span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -407,6 +435,34 @@
 
     <span class="kw">fn</span> <span class="ident">set</span><span class="op">&lt;</span><span class="ident">U</span>: <span class="ident">ToVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">U</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
+    <span class="doccomment">/// Create a binding between the `key` in the `self` object</span>
+    <span class="doccomment">/// and the property `property` of `object`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The binding uses the default GIO mapping functions to map</span>
+    <span class="doccomment">/// between the settings and property values. These functions</span>
+    <span class="doccomment">/// handle booleans, numeric types and string types in a</span>
+    <span class="doccomment">/// straightforward way. Use [`bind_with_mapping()`][Self::bind_with_mapping()] if</span>
+    <span class="doccomment">/// you need a custom mapping, or map between types that are not</span>
+    <span class="doccomment">/// supported by the default mapping functions.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Unless the `flags` include [`SettingsBindFlags::NO_SENSITIVITY`][crate::SettingsBindFlags::NO_SENSITIVITY], this</span>
+    <span class="doccomment">/// function also establishes a binding between the writability of</span>
+    <span class="doccomment">/// `key` and the &quot;sensitive&quot; property of `object` (if `object` has</span>
+    <span class="doccomment">/// a boolean property by that name). See [`SettingsExt::bind_writable()`][crate::prelude::SettingsExt::bind_writable()]</span>
+    <span class="doccomment">/// for more details about writable bindings.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that the lifecycle of the binding is tied to `object`,</span>
+    <span class="doccomment">/// and that you can have only one binding per object property.</span>
+    <span class="doccomment">/// If you bind the same property twice on the same object, the second</span>
+    <span class="doccomment">/// binding overrides the first one.</span>
+    <span class="doccomment">/// ## `key`</span>
+    <span class="doccomment">/// the key to bind</span>
+    <span class="doccomment">/// ## `object`</span>
+    <span class="doccomment">/// a [`glib::Object`][crate::glib::Object]</span>
+    <span class="doccomment">/// ## `property`</span>
+    <span class="doccomment">/// the name of the property to bind</span>
+    <span class="doccomment">/// ## `flags`</span>
+    <span class="doccomment">/// flags for the binding</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_settings_bind&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_settings_bind_with_mapping&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">bind</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">P</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">&gt;</span>(

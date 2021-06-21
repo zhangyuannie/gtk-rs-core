@@ -349,7 +349,7 @@
         <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;type_name&#39;&quot;</span>),
     };
 
-    <span class="kw">match</span> <span class="ident">parse_enum_attribute</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>)<span class="question-mark">?</span> {
+    <span class="kw">match</span> <span class="ident">parse_enum_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span> {
         <span class="ident">EnumAttribute::TypeName</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
     }
 }
@@ -381,7 +381,7 @@
         <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;name&#39;&quot;</span>),
     };
 
-    <span class="kw">match</span> <span class="ident">parse_error_attribute</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>)<span class="question-mark">?</span> {
+    <span class="kw">match</span> <span class="ident">parse_error_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span> {
         <span class="ident">ErrorDomainAttribute::Name</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
     }
 }
@@ -411,7 +411,7 @@
         <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>
             .<span class="ident">nested</span>
             .<span class="ident">iter</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">parse_item_attribute</span>(<span class="kw-2">&amp;</span><span class="ident">m</span>))
+            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">parse_item_attribute</span>(<span class="ident">m</span>))
             .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()<span class="question-mark">?</span>,
         <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Vec::new</span>(),
     };
