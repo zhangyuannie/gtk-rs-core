@@ -231,6 +231,9 @@
 <span id="156">156</span>
 <span id="157">157</span>
 <span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -245,6 +248,9 @@
 <span class="kw">use</span> <span class="ident">std::num::NonZeroU64</span>;
 
 <span class="doccomment">/// The id of a signal that is returned by `connect`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This type does not implement `Clone` to prevent disconnecting</span>
+<span class="doccomment">/// the same signal handler multiple times.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```ignore</span>
 <span class="doccomment">/// use glib::SignalHandlerId;</span>

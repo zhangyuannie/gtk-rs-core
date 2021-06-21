@@ -1097,6 +1097,121 @@
 <span id="1022">1022</span>
 <span id="1023">1023</span>
 <span id="1024">1024</span>
+<span id="1025">1025</span>
+<span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
+<span id="1029">1029</span>
+<span id="1030">1030</span>
+<span id="1031">1031</span>
+<span id="1032">1032</span>
+<span id="1033">1033</span>
+<span id="1034">1034</span>
+<span id="1035">1035</span>
+<span id="1036">1036</span>
+<span id="1037">1037</span>
+<span id="1038">1038</span>
+<span id="1039">1039</span>
+<span id="1040">1040</span>
+<span id="1041">1041</span>
+<span id="1042">1042</span>
+<span id="1043">1043</span>
+<span id="1044">1044</span>
+<span id="1045">1045</span>
+<span id="1046">1046</span>
+<span id="1047">1047</span>
+<span id="1048">1048</span>
+<span id="1049">1049</span>
+<span id="1050">1050</span>
+<span id="1051">1051</span>
+<span id="1052">1052</span>
+<span id="1053">1053</span>
+<span id="1054">1054</span>
+<span id="1055">1055</span>
+<span id="1056">1056</span>
+<span id="1057">1057</span>
+<span id="1058">1058</span>
+<span id="1059">1059</span>
+<span id="1060">1060</span>
+<span id="1061">1061</span>
+<span id="1062">1062</span>
+<span id="1063">1063</span>
+<span id="1064">1064</span>
+<span id="1065">1065</span>
+<span id="1066">1066</span>
+<span id="1067">1067</span>
+<span id="1068">1068</span>
+<span id="1069">1069</span>
+<span id="1070">1070</span>
+<span id="1071">1071</span>
+<span id="1072">1072</span>
+<span id="1073">1073</span>
+<span id="1074">1074</span>
+<span id="1075">1075</span>
+<span id="1076">1076</span>
+<span id="1077">1077</span>
+<span id="1078">1078</span>
+<span id="1079">1079</span>
+<span id="1080">1080</span>
+<span id="1081">1081</span>
+<span id="1082">1082</span>
+<span id="1083">1083</span>
+<span id="1084">1084</span>
+<span id="1085">1085</span>
+<span id="1086">1086</span>
+<span id="1087">1087</span>
+<span id="1088">1088</span>
+<span id="1089">1089</span>
+<span id="1090">1090</span>
+<span id="1091">1091</span>
+<span id="1092">1092</span>
+<span id="1093">1093</span>
+<span id="1094">1094</span>
+<span id="1095">1095</span>
+<span id="1096">1096</span>
+<span id="1097">1097</span>
+<span id="1098">1098</span>
+<span id="1099">1099</span>
+<span id="1100">1100</span>
+<span id="1101">1101</span>
+<span id="1102">1102</span>
+<span id="1103">1103</span>
+<span id="1104">1104</span>
+<span id="1105">1105</span>
+<span id="1106">1106</span>
+<span id="1107">1107</span>
+<span id="1108">1108</span>
+<span id="1109">1109</span>
+<span id="1110">1110</span>
+<span id="1111">1111</span>
+<span id="1112">1112</span>
+<span id="1113">1113</span>
+<span id="1114">1114</span>
+<span id="1115">1115</span>
+<span id="1116">1116</span>
+<span id="1117">1117</span>
+<span id="1118">1118</span>
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+<span id="1123">1123</span>
+<span id="1124">1124</span>
+<span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
+<span id="1132">1132</span>
+<span id="1133">1133</span>
+<span id="1134">1134</span>
+<span id="1135">1135</span>
+<span id="1136">1136</span>
+<span id="1137">1137</span>
+<span id="1138">1138</span>
+<span id="1139">1139</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -1117,6 +1232,9 @@
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Source</span>;
 
 <span class="doccomment">/// The id of a source that is returned by `idle_add` and `timeout_add`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This type does not implement `Clone` to prevent calling [`source_remove()`]</span>
+<span class="doccomment">/// multiple times on the same source.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SourceId</span>(<span class="ident">NonZeroU32</span>);
 
@@ -1285,6 +1403,27 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
 <span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// Adds a function to be called whenever there are no higher priority</span>
+<span class="doccomment">/// events pending to the default main loop. The function is given the</span>
+<span class="doccomment">/// default idle priority, `G_PRIORITY_DEFAULT_IDLE`. If the function</span>
+<span class="doccomment">/// returns [`false`] it is automatically removed from the list of event</span>
+<span class="doccomment">/// sources and will not be called again.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// See [memory management of sources][mainloop-memory-management] for details</span>
+<span class="doccomment">/// on how to handle the return value and memory management of `data`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This internally creates a main loop source using `g_idle_source_new()`</span>
+<span class="doccomment">/// and attaches it to the global [`MainContext`][crate::MainContext] using `g_source_attach()`, so</span>
+<span class="doccomment">/// the callback will be invoked in whichever thread is running that main</span>
+<span class="doccomment">/// context. You can do these steps manually if you need greater control or to</span>
+<span class="doccomment">/// use a custom main context.</span>
+<span class="doccomment">/// ## `function`</span>
+<span class="doccomment">/// function to call</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the ID (greater than 0) of the event source.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_idle_add_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">idle_add</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceId</span>
 <span class="kw">where</span>
@@ -1634,6 +1773,18 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
 <span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// A convenience function for `g_unix_signal_source_new()`, which</span>
+<span class="doccomment">/// attaches to the default [`MainContext`][crate::MainContext]. You can remove the watch</span>
+<span class="doccomment">/// using `g_source_remove()`.</span>
+<span class="doccomment">/// ## `signum`</span>
+<span class="doccomment">/// Signal number</span>
+<span class="doccomment">/// ## `handler`</span>
+<span class="doccomment">/// Callback</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// An ID (greater than 0) for the event source</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_signal_add_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_add</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">signum</span>: <span class="ident">i32</span>, <span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceId</span>
 <span class="kw">where</span>
@@ -1738,6 +1889,30 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
 <span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// Sets a function to be called when the IO condition, as specified by</span>
+<span class="doccomment">/// `condition` becomes true for `fd`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// `function` will be called when the specified IO condition becomes</span>
+<span class="doccomment">/// [`true`]. The function is expected to clear whatever event caused the</span>
+<span class="doccomment">/// IO condition to become true and return [`true`] in order to be notified</span>
+<span class="doccomment">/// when it happens again. If `function` returns [`false`] then the watch</span>
+<span class="doccomment">/// will be cancelled.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value of this function can be passed to `g_source_remove()`</span>
+<span class="doccomment">/// to cancel the watch at any time that it exists.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The source will never close the fd -- you must do it yourself.</span>
+<span class="doccomment">/// ## `fd`</span>
+<span class="doccomment">/// a file descriptor</span>
+<span class="doccomment">/// ## `condition`</span>
+<span class="doccomment">/// IO conditions to watch for on `fd`</span>
+<span class="doccomment">/// ## `function`</span>
+<span class="doccomment">/// a `GUnixFDSourceFunc`</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the ID (greater than 0) of the event source</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_fd_add_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_fd_add</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">fd</span>: <span class="ident">RawFd</span>, <span class="ident">condition</span>: <span class="ident">IOCondition</span>, <span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceId</span>
 <span class="kw">where</span>
@@ -1863,6 +2038,18 @@
 <span class="doccomment">/// Adds a closure to be called by the main loop the return `Source` is attached to when it&#39;s idle.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// `func` will be called repeatedly until it returns `Continue(false)`.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// Creates a new idle source.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The source will not initially be associated with any [`MainContext`][crate::MainContext]</span>
+<span class="doccomment">/// and must be added to one with `g_source_attach()` before it will be</span>
+<span class="doccomment">/// executed. Note that the default priority for idle sources is</span>
+<span class="doccomment">/// `G_PRIORITY_DEFAULT_IDLE`, as compared to other sources which</span>
+<span class="doccomment">/// have a default priority of `G_PRIORITY_DEFAULT`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the newly-created idle source</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_idle_source_new&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">idle_source_new</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">priority</span>: <span class="ident">Priority</span>, <span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span>
 <span class="kw">where</span>
@@ -1997,6 +2184,36 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// `func` will be called repeatedly every time `signum` is raised until it</span>
 <span class="doccomment">/// returns `Continue(false)`.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// Create a [`Source`][crate::Source] that will be dispatched upon delivery of the UNIX</span>
+<span class="doccomment">/// signal `signum`. In GLib versions before 2.36, only `SIGHUP`, `SIGINT`,</span>
+<span class="doccomment">/// `SIGTERM` can be monitored. In GLib 2.36, `SIGUSR1` and `SIGUSR2`</span>
+<span class="doccomment">/// were added. In GLib 2.54, `SIGWINCH` was added.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that unlike the UNIX default, all sources which have created a</span>
+<span class="doccomment">/// watch will be dispatched, regardless of which underlying thread</span>
+<span class="doccomment">/// invoked `g_unix_signal_source_new()`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// For example, an effective use of this function is to handle `SIGTERM`</span>
+<span class="doccomment">/// cleanly; flushing any outstanding files, and then calling</span>
+<span class="doccomment">/// g_main_loop_quit (). It is not safe to do any of this a regular</span>
+<span class="doccomment">/// UNIX signal handler; your handler may be invoked while `malloc()` or</span>
+<span class="doccomment">/// another library function is running, causing reentrancy if you</span>
+<span class="doccomment">/// attempt to use it from the handler. None of the GLib/GObject API</span>
+<span class="doccomment">/// is safe against this kind of reentrancy.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The interaction of this source when combined with native UNIX</span>
+<span class="doccomment">/// functions like `sigprocmask()` is not defined.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The source will not initially be associated with any [`MainContext`][crate::MainContext]</span>
+<span class="doccomment">/// and must be added to one with `g_source_attach()` before it will be</span>
+<span class="doccomment">/// executed.</span>
+<span class="doccomment">/// ## `signum`</span>
+<span class="doccomment">/// A signal number</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A newly created [`Source`][crate::Source]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_signal_source_new&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_source_new</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
     <span class="ident">signum</span>: <span class="ident">i32</span>,
@@ -2032,6 +2249,19 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// `func` will be called repeatedly while the file descriptor matches the given IO condition</span>
 <span class="doccomment">/// until it returns `Continue(false)`.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// Creates a [`Source`][crate::Source] to watch for a particular IO condition on a file</span>
+<span class="doccomment">/// descriptor.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The source will never close the fd -- you must do it yourself.</span>
+<span class="doccomment">/// ## `fd`</span>
+<span class="doccomment">/// a file descriptor</span>
+<span class="doccomment">/// ## `condition`</span>
+<span class="doccomment">/// IO conditions to watch for on `fd`</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the newly created [`Source`][crate::Source]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_fd_source_new&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_fd_source_new</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
     <span class="ident">fd</span>: <span class="ident">RawFd</span>,
