@@ -365,6 +365,22 @@
 <span id="292">292</span>
 <span id="293">293</span>
 <span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -402,6 +418,22 @@
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_set_prgname</span>(<span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
+<span class="doccomment">/// Returns the value of an environment variable.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX, the name and value are byte strings which might or might not</span>
+<span class="doccomment">/// be in some consistent character set and encoding. On Windows, they are</span>
+<span class="doccomment">/// in UTF-8.</span>
+<span class="doccomment">/// On Windows, in case the environment variable&#39;s value contains</span>
+<span class="doccomment">/// references to other environment variables, they are expanded.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to get</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the value of the environment variable, or [`None`] if</span>
+<span class="doccomment">///  the environment variable is not found. The returned string</span>
+<span class="doccomment">///  may be overwritten by the next call to `g_getenv()`, `g_setenv()`</span>
+<span class="doccomment">///  or `g_unsetenv()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_getenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OsString</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
