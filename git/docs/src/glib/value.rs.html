@@ -1337,17 +1337,6 @@
 <span id="1264">1264</span>
 <span id="1265">1265</span>
 <span id="1266">1266</span>
-<span id="1267">1267</span>
-<span id="1268">1268</span>
-<span id="1269">1269</span>
-<span id="1270">1270</span>
-<span id="1271">1271</span>
-<span id="1272">1272</span>
-<span id="1273">1273</span>
-<span id="1274">1274</span>
-<span id="1275">1275</span>
-<span id="1276">1276</span>
-<span id="1277">1277</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -1730,17 +1719,6 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
-    <span class="doccomment">/// rror` values will exist.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Normally a `GFileError` value goes into a [`Error`][crate::Error] returned</span>
-    <span class="doccomment">/// from a function that manipulates files. So you would use</span>
-    <span class="doccomment">/// `g_file_error_from_errno()` when constructing a [`Error`][crate::Error].</span>
-    <span class="doccomment">/// ## `err_no`</span>
-    <span class="doccomment">/// an &quot;errno&quot; value</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// `GFileError` corresponding to the given `errno`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
