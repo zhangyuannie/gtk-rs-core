@@ -1470,7 +1470,7 @@
 <span class="doccomment">/// `func` will be called repeatedly until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_idle_add_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">idle_add</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">func</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceId</span>
 <span class="kw">where</span>
@@ -1491,7 +1491,7 @@
 <span class="doccomment">/// `func` will be called repeatedly until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// In comparison to `idle_add()`, this only requires `func` to be</span>
 <span class="doccomment">/// `FnOnce`, and will automatically return `Continue(false)`.</span>
@@ -1508,7 +1508,7 @@
 <span class="doccomment">/// `func` will be called repeatedly until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `idle_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1536,7 +1536,7 @@
 <span class="doccomment">/// `func` will be called repeatedly until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `idle_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1563,7 +1563,7 @@
 <span class="doccomment">/// precision is not necessary.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
 <span class="doccomment">/// Sets a function to be called at regular intervals, with the default</span>
 <span class="doccomment">/// priority, `G_PRIORITY_DEFAULT`. The function is called repeatedly</span>
@@ -1629,7 +1629,7 @@
 <span class="doccomment">/// precision is not necessary.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// In comparison to `timeout_add()`, this only requires `func` to be</span>
 <span class="doccomment">/// `FnOnce`, and will automatically return `Continue(false)`.</span>
@@ -1650,7 +1650,7 @@
 <span class="doccomment">/// precision is not necessary.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `timeout_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1683,7 +1683,7 @@
 <span class="doccomment">/// precision is not necessary.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `timeout_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1709,7 +1709,7 @@
 <span class="doccomment">/// be delayed by other events.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
 <span class="doccomment">/// Sets a function to be called at regular intervals with the default</span>
 <span class="doccomment">/// priority, `G_PRIORITY_DEFAULT`. The function is called repeatedly until</span>
@@ -1764,7 +1764,7 @@
 <span class="doccomment">/// be delayed by other events.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// In comparison to `timeout_add_seconds()`, this only requires `func` to be</span>
 <span class="doccomment">/// `FnOnce`, and will automatically return `Continue(false)`.</span>
@@ -1784,7 +1784,7 @@
 <span class="doccomment">/// be delayed by other events.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `timeout_add_seconds()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1816,7 +1816,7 @@
 <span class="doccomment">/// be delayed by other events.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `timeout_add_seconds()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1889,7 +1889,7 @@
 <span class="doccomment">/// returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
 <span class="doccomment">/// A convenience function for `g_unix_signal_source_new()`, which</span>
 <span class="doccomment">/// attaches to the default [`MainContext`][crate::MainContext]. You can remove the watch</span>
@@ -1926,7 +1926,7 @@
 <span class="doccomment">/// returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// In comparison to `unix_signal_add()`, this only requires `func` to be</span>
 <span class="doccomment">/// `FnOnce`, and will automatically return `Continue(false)`.</span>
@@ -1946,7 +1946,7 @@
 <span class="doccomment">/// returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `unix_signal_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -1978,7 +1978,7 @@
 <span class="doccomment">/// returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `unix_signal_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>
@@ -2005,7 +2005,7 @@
 <span class="doccomment">/// until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
 <span class="doccomment">/// Sets a function to be called when the IO condition, as specified by</span>
 <span class="doccomment">/// `condition` becomes true for `fd`.</span>
@@ -2056,7 +2056,7 @@
 <span class="doccomment">/// until it returns `Continue(false)`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The default main loop almost always is the main loop of the main thread.</span>
-<span class="doccomment">/// Thus the closure is called on the main thread.</span>
+<span class="doccomment">/// Thus, the closure is called on the main thread.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Different to `unix_fd_add()`, this does not require `func` to be</span>
 <span class="doccomment">/// `Send` but can only be called from the thread that owns the main context.</span>

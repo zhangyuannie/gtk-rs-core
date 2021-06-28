@@ -981,6 +981,44 @@
         }
 
         <span class="kw">impl</span> <span class="ident">ObjectImpl</span> <span class="kw">for</span> <span class="ident">SimpleObject</span> {
+            <span class="kw">fn</span> <span class="ident">properties</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">ParamSpec</span>] {
+                <span class="kw">use</span> <span class="ident">once_cell::sync::Lazy</span>;
+                <span class="kw">static</span> <span class="ident">PROPERTIES</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ParamSpec</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
+                    <span class="macro">vec!</span>[
+                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_string</span>(
+                            <span class="string">&quot;name&quot;</span>,
+                            <span class="string">&quot;Name&quot;</span>,
+                            <span class="string">&quot;Name of this object&quot;</span>,
+                            <span class="prelude-val">None</span>,
+                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span>,
+                        ),
+                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_string</span>(
+                            <span class="string">&quot;construct-name&quot;</span>,
+                            <span class="string">&quot;Construct Name&quot;</span>,
+                            <span class="string">&quot;Construct Name of this object&quot;</span>,
+                            <span class="prelude-val">None</span>,
+                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span> <span class="op">|</span> <span class="kw">crate</span><span class="ident">::ParamFlags::CONSTRUCT_ONLY</span>,
+                        ),
+                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_boolean</span>(
+                            <span class="string">&quot;constructed&quot;</span>,
+                            <span class="string">&quot;Constructed&quot;</span>,
+                            <span class="string">&quot;True if the constructed() virtual method was called&quot;</span>,
+                            <span class="bool-val">false</span>,
+                            <span class="kw">crate</span><span class="ident">::ParamFlags::READABLE</span>,
+                        ),
+                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_object</span>(
+                            <span class="string">&quot;child&quot;</span>,
+                            <span class="string">&quot;Child&quot;</span>,
+                            <span class="string">&quot;Child object&quot;</span>,
+                            <span class="kw">super</span><span class="ident">::ChildObject::static_type</span>(),
+                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span>,
+                        ),
+                    ]
+                });
+
+                <span class="ident">PROPERTIES</span>.<span class="ident">as_ref</span>()
+            }
+
             <span class="kw">fn</span> <span class="ident">signals</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="kw">super</span><span class="ident">::Signal</span>] {
                 <span class="kw">use</span> <span class="ident">once_cell::sync::Lazy</span>;
                 <span class="kw">static</span> <span class="ident">SIGNALS</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">super</span><span class="ident">::Signal</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
@@ -1027,44 +1065,6 @@
                 });
 
                 <span class="ident">SIGNALS</span>.<span class="ident">as_ref</span>()
-            }
-
-            <span class="kw">fn</span> <span class="ident">properties</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">ParamSpec</span>] {
-                <span class="kw">use</span> <span class="ident">once_cell::sync::Lazy</span>;
-                <span class="kw">static</span> <span class="ident">PROPERTIES</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ParamSpec</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
-                    <span class="macro">vec!</span>[
-                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_string</span>(
-                            <span class="string">&quot;name&quot;</span>,
-                            <span class="string">&quot;Name&quot;</span>,
-                            <span class="string">&quot;Name of this object&quot;</span>,
-                            <span class="prelude-val">None</span>,
-                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span>,
-                        ),
-                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_string</span>(
-                            <span class="string">&quot;construct-name&quot;</span>,
-                            <span class="string">&quot;Construct Name&quot;</span>,
-                            <span class="string">&quot;Construct Name of this object&quot;</span>,
-                            <span class="prelude-val">None</span>,
-                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span> <span class="op">|</span> <span class="kw">crate</span><span class="ident">::ParamFlags::CONSTRUCT_ONLY</span>,
-                        ),
-                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_boolean</span>(
-                            <span class="string">&quot;constructed&quot;</span>,
-                            <span class="string">&quot;Constructed&quot;</span>,
-                            <span class="string">&quot;True if the constructed() virtual method was called&quot;</span>,
-                            <span class="bool-val">false</span>,
-                            <span class="kw">crate</span><span class="ident">::ParamFlags::READABLE</span>,
-                        ),
-                        <span class="kw">crate</span><span class="ident">::ParamSpec::new_object</span>(
-                            <span class="string">&quot;child&quot;</span>,
-                            <span class="string">&quot;Child&quot;</span>,
-                            <span class="string">&quot;Child object&quot;</span>,
-                            <span class="kw">super</span><span class="ident">::ChildObject::static_type</span>(),
-                            <span class="kw">crate</span><span class="ident">::ParamFlags::READWRITE</span>,
-                        ),
-                    ]
-                });
-
-                <span class="ident">PROPERTIES</span>.<span class="ident">as_ref</span>()
             }
 
             <span class="kw">fn</span> <span class="ident">set_property</span>(

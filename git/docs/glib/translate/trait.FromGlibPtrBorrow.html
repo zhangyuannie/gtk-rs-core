@@ -84,7 +84,7 @@ Safe Rust code must never obtain a mutable Rust reference.</p>
 <p>The implementation of this trait as well as the returned type
 must satisfy the same constraints together.
 They must not take ownership of the underlying value, copy it,
-and should not change its rerefence count.
+and should not change its reference count.
 If it does, it must properly release obtained references.</p>
 <p>The returned value, when dropped,
 must leave the underlying value in the same state

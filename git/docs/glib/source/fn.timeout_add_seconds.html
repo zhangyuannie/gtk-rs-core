@@ -77,7 +77,7 @@ with second granularity.</p>
 returns <code>Continue(false)</code>. Precise timing is not guaranteed, the timeout may
 be delayed by other events.</p>
 <p>The default main loop almost always is the main loop of the main thread.
-Thus the closure is called on the main thread.
+Thus, the closure is called on the main thread.
 Sets a function to be called at regular intervals with the default
 priority, <code>G_PRIORITY_DEFAULT</code>. The function is called repeatedly until
 it returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>, at which point the timeout is automatically destroyed

@@ -75,7 +75,7 @@
 <p>This <code>UChar</code> type is a wrapper over an <code>libc::c_uchar</code>, so that we can pass it to Glib or C functions.
 The check for whether a Rust <code>char</code> (a Unicode scalar value) actually fits in a <code>libc::c_uchar</code> is
 done in the <code>new</code> function; see its documentation for details.</p>
-<p>The inner <code>libc::c_uchar</code> (which is equivalent to <code>u8</code> can be extracted with <code>.0</code>, or
+<p>The inner <code>libc::c_uchar</code> (which is equivalent to <code>u8</code>) can be extracted with <code>.0</code>, or
 by calling <code>my_char.into_glib()</code>.</p>
 <h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <div class="example-wrap"><pre class="rust rust-example-rendered">

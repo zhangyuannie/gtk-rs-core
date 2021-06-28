@@ -2221,14 +2221,10 @@
 <span id="2148">2148</span>
 <span id="2149">2149</span>
 <span id="2150">2150</span>
-<span id="2151">2151</span>
-<span id="2152">2152</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>::{<span class="self">self</span>, <span class="ident">Debug</span>};
-<span class="kw">use</span> <span class="ident">std::i32</span>;
-<span class="kw">use</span> <span class="ident">std::u32</span>;
 
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error::Error</span>;
 
@@ -4373,7 +4369,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">stride_works</span>() {
-        <span class="macro">assert!</span>(<span class="ident">Format::Rgb24</span>.<span class="ident">stride_for_width</span>(<span class="number">1</span>).<span class="ident">unwrap</span>() <span class="op">=</span><span class="op">=</span> <span class="number">4</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">Format::Rgb24</span>.<span class="ident">stride_for_width</span>(<span class="number">1</span>).<span class="ident">unwrap</span>(), <span class="number">4</span>);
     }
 }
 </pre></div>

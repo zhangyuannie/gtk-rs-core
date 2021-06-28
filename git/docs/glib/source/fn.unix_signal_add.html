@@ -75,7 +75,7 @@
 <p><code>func</code> will be called repeatedly every time <code>signum</code> is raised until it
 returns <code>Continue(false)</code>.</p>
 <p>The default main loop almost always is the main loop of the main thread.
-Thus the closure is called on the main thread.
+Thus, the closure is called on the main thread.
 A convenience function for <code>g_unix_signal_source_new()</code>, which
 attaches to the default <a href="../struct.MainContext.html" title="crate::MainContext"><code>MainContext</code></a>. You can remove the watch
 using <code>g_source_remove()</code>.</p>

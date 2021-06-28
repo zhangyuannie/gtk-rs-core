@@ -2865,7 +2865,7 @@
 <span class="doccomment">/// Overrides pointer constness.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Use when the C API need const pointer, but function with `IsA&lt;T&gt;` constraint,</span>
-<span class="doccomment">/// that usaly don&#39;t have const pointer conversion.</span>
+<span class="doccomment">/// that usually don&#39;t have const pointer conversion.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">const_override</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">T</span> {
     <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">T</span>
 }
@@ -4012,7 +4012,7 @@
 <span class="doccomment">/// The implementation of this trait as well as the returned type</span>
 <span class="doccomment">/// must satisfy the same constraints together.</span>
 <span class="doccomment">/// They must not take ownership of the underlying value, copy it,</span>
-<span class="doccomment">/// and should not change its rerefence count.</span>
+<span class="doccomment">/// and should not change its reference count.</span>
 <span class="doccomment">/// If it does, it must properly release obtained references.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The returned value, when dropped,</span>

@@ -385,7 +385,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ToGlibPtrMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_region_t</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Region</span> {
     <span class="kw">type</span> <span class="ident">Storage</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">Self</span>;
 
-    <span class="comment">// FIXME: This is unsafe: regions are reference counted so we could get multiple mutable</span>
+    <span class="comment">// FIXME: This is unsafe: regions are reference counted, so we could get multiple mutable</span>
     <span class="comment">// references here</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_none_mut</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">StashMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_region_t</span>, <span class="self">Self</span><span class="op">&gt;</span> {

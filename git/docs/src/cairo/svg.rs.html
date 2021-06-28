@@ -481,7 +481,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">assert_len_close_enough</span>(<span class="ident">len_a</span>: <span class="ident">usize</span>, <span class="ident">len_b</span>: <span class="ident">usize</span>) {
-        <span class="comment">// It seems cairo randomizies some element IDs which might make one svg slightly</span>
+        <span class="comment">// It seems cairo randomizes some element IDs which might make one svg slightly</span>
         <span class="comment">// larger than the other. Here we make sure the difference is within ~10%.</span>
         <span class="kw">let</span> <span class="ident">len_diff</span> <span class="op">=</span> (<span class="ident">len_a</span> <span class="kw">as</span> <span class="ident">isize</span> <span class="op">-</span> <span class="ident">len_b</span> <span class="kw">as</span> <span class="ident">isize</span>).<span class="ident">abs</span>() <span class="kw">as</span> <span class="ident">usize</span>;
         <span class="macro">assert!</span>(<span class="ident">len_diff</span> <span class="op">&lt;</span> <span class="ident">len_b</span> <span class="op">/</span> <span class="number">10</span>);

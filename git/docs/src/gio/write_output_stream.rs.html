@@ -489,6 +489,15 @@
             }
         }
 
+        <span class="kw">fn</span> <span class="ident">close</span>(
+            <span class="kw-2">&amp;</span><span class="self">self</span>,
+            <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>,
+            <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">crate</span><span class="ident">::Cancellable</span><span class="op">&gt;</span>,
+        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
+            <span class="prelude-val">Ok</span>(())
+        }
+
         <span class="kw">fn</span> <span class="ident">flush</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>,
@@ -512,15 +521,6 @@
                     <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>,
                 }
             }
-        }
-
-        <span class="kw">fn</span> <span class="ident">close</span>(
-            <span class="kw-2">&amp;</span><span class="self">self</span>,
-            <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="self">Self</span><span class="ident">::Type</span>,
-            <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">crate</span><span class="ident">::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
-            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
-            <span class="prelude-val">Ok</span>(())
         }
     }
 

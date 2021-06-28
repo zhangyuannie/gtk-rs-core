@@ -75,7 +75,7 @@
 <p><code>func</code> will be called repeatedly every time <code>signum</code> is raised until it
 returns <code>Continue(false)</code>.</p>
 <p>The default main loop almost always is the main loop of the main thread.
-Thus the closure is called on the main thread.</p>
+Thus, the closure is called on the main thread.</p>
 <p>Different to <code>unix_signal_add()</code>, this does not require <code>func</code> to be
 <code>Send</code> but can only be called from the thread that owns the main context.</p>
 <p>This function panics if called from a different thread than the one that

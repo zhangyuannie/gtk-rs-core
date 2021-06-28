@@ -1661,7 +1661,7 @@
             <span class="ident">sender</span>.<span class="ident">try_send</span>(<span class="number">1</span>).<span class="ident">unwrap</span>();
             <span class="ident">sender</span>.<span class="ident">try_send</span>(<span class="number">2</span>).<span class="ident">unwrap</span>();
 
-            <span class="comment">// This fills up the channel</span>
+            <span class="comment">// This fill up the channel</span>
             <span class="macro">assert!</span>(<span class="ident">sender</span>.<span class="ident">try_send</span>(<span class="number">3</span>).<span class="ident">is_err</span>());
             <span class="ident">wait_sender</span>.<span class="ident">send</span>(()).<span class="ident">unwrap</span>();
 

@@ -91,7 +91,7 @@ is present in <code>self</code>.</p>
 <code>None</code> then it will be matched against the type of any found value.</p>
 <p>This will return <code>None</code> if the <code>key</code> is not present in the dictionary
 or if it is present but the type of the value does not match a given
-<code>expected_type</code>.  Otherwise <code>Some(value)</code> will be returned where
+<code>expected_type</code>.  Otherwise, <code>Some(value)</code> will be returned where
 the <code>value</code> is an instance of <a href="variant/struct.Variant.html"><code>Variant</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.insert_value" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#90-98" title="goto source code">[src]</a></div><a href="#method.insert_value" class="anchor"></a><code>pub fn <a href="#method.insert_value" class="fnname">insert_value</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="struct" href="variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>)</code></div></summary><div class="docblock"><p>Insert a variant into the dictionary.</p>
 <p>The given <code>key</code>/<code>value</code> pair is inserted into <code>self</code>.  If a value
@@ -126,7 +126,7 @@ is too much for your performance critical codepaths</p>
 <p>This method converts <code>self</code> into an instance of <a href="variant/struct.Variant.html"><code>Variant</code></a>
 and then reinitialises itself in order to be safe for further use.</p>
 <p>If you are certain that nothing other than disposing of references will
-be done subsequent to ending the instance, you can call the
+be done after ending the instance, you can call the
 <a href="#method.end_unsafe"><code>end_unsafe()</code></a> method instead to avoid the unnecessary
 reinitialisation of the dictionary.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#10-29" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><code class="in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.VariantDict.html" title="struct glib::VariantDict">VariantDict</a></code></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#10-29" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><code>fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.VariantDict.html" title="struct glib::VariantDict">VariantDict</a></code></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

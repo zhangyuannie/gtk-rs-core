@@ -790,13 +790,13 @@
         <span class="ident">height</span>: <span class="ident">i32</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
-            <span class="prelude-val">Ok</span>(<span class="self">Self</span><span class="ident">::from_raw_full</span>(<span class="ident">ffi::cairo_xcb_surface_create</span>(
+            <span class="self">Self</span><span class="ident">::from_raw_full</span>(<span class="ident">ffi::cairo_xcb_surface_create</span>(
                 <span class="ident">connection</span>.<span class="ident">to_raw_none</span>(),
                 <span class="ident">drawable</span>.<span class="ident">to_raw_none</span>(),
                 <span class="ident">visual</span>.<span class="ident">to_raw_none</span>(),
                 <span class="ident">width</span>,
                 <span class="ident">height</span>,
-            ))<span class="question-mark">?</span>)
+            ))
         }
     }
 

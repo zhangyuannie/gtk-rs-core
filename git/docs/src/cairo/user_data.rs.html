@@ -236,7 +236,7 @@
 <span class="comment">// while the borrow still needs to be valid.</span>
 <span class="comment">// (Borrowing with `&amp;mut self` would not help as `Self` can be itself reference-counted.)</span>
 <span class="comment">//</span>
-<span class="comment">// Therefore the value must be reference-counted.</span>
+<span class="comment">// Therefore, the value must be reference-counted.</span>
 <span class="comment">//</span>
 <span class="comment">// We use `Rc` over `Arc` because the types implementing these methods are `!Send` and `!Sync`.</span>
 <span class="comment">// See &lt;https://github.com/gtk-rs/cairo/issues/256&gt;</span>
@@ -255,7 +255,7 @@
             }
             <span class="comment">// Safety:</span>
             <span class="comment">//</span>
-            <span class="comment">// The destructor’s cast and `from_raw` are symetric</span>
+            <span class="comment">// The destructor’s cast and `from_raw` are symmetric</span>
             <span class="comment">// with the `into_raw` and cast below.</span>
             <span class="comment">// They both transfer ownership of one strong reference:</span>
             <span class="comment">// neither of them touches the reference count.</span>
@@ -308,7 +308,7 @@
             <span class="comment">//   the key used then must live at that address until the end of the process.</span>
             <span class="comment">//   Because `UserDataKey&lt;T&gt;` has a non-zero size regardless of `T`,</span>
             <span class="comment">//   no other `UserDataKey&lt;U&gt;` value can have the same address.</span>
-            <span class="comment">//   Therefore the `T` type was the same then at it is now and `cast` is type-safe.</span>
+            <span class="comment">//   Therefore, the `T` type was the same then at it is now and `cast` is type-safe.</span>
             <span class="comment">//</span>
             <span class="comment">// * Or, it is technically possible that the `set` call was to the C function directly,</span>
             <span class="comment">//   with a `cairo_user_data_key_t` in heap-allocated memory that was then freed,</span>
@@ -323,7 +323,7 @@
             }
         }
 
-        <span class="doccomment">/// Unattach from `self` the user data associated with `key`, if any.</span>
+        <span class="doccomment">/// Unattached from `self` the user data associated with `key`, if any.</span>
         <span class="doccomment">/// If there is no other `Rc` strong reference, the data is destroyed.</span>
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">remove_user_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,

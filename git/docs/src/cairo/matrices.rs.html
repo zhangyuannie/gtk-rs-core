@@ -418,14 +418,14 @@
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">valid_matrix_try_invert</span>() {
         <span class="kw">let</span> <span class="ident">matrix</span> <span class="op">=</span> <span class="ident">Matrix::identity</span>();
-        <span class="macro">assert!</span>(<span class="ident">matrix</span>.<span class="ident">try_invert</span>().<span class="ident">unwrap</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">Matrix::identity</span>());
+        <span class="macro">assert_eq!</span>(<span class="ident">matrix</span>.<span class="ident">try_invert</span>().<span class="ident">unwrap</span>(), <span class="ident">Matrix::identity</span>());
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">valid_matrix_invert</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">matrix</span> <span class="op">=</span> <span class="ident">Matrix::identity</span>();
         <span class="ident">matrix</span>.<span class="ident">invert</span>();
-        <span class="macro">assert!</span>(<span class="ident">matrix</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Matrix::identity</span>());
+        <span class="macro">assert_eq!</span>(<span class="ident">matrix</span>, <span class="ident">Matrix::identity</span>());
     }
 }
 </pre></div>

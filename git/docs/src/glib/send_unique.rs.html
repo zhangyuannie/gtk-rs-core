@@ -228,7 +228,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Note that implementing this trait has to be done especially careful.</span>
 <span class="doccomment">/// It must only be implemented on types where the uniqueness of a reference</span>
-<span class="doccomment">/// can be determined, i.e. the reference count field is accessible and it</span>
+<span class="doccomment">/// can be determined, i.e. the reference count field is accessible, and it</span>
 <span class="doccomment">/// must only have references itself to other types that are `Send`.</span>
 <span class="doccomment">/// `SendUnique` is *not* enough for the other types unless uniqueness of</span>
 <span class="doccomment">/// all of them can be guaranteed, which is e.g. not the case if there&#39;s a</span>
@@ -324,7 +324,7 @@
         }
     }
 
-    <span class="doccomment">/// Try extracing the contained object</span>
+    <span class="doccomment">/// Try extracting the contained object</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Borrowing is possible as long as only a single reference</span>
     <span class="doccomment">/// to the object exists, or it is borrowed from the same</span>

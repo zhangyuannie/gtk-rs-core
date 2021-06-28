@@ -80,7 +80,7 @@
 <div class="item-spacer"></div>    fn <a href="#method.properties" class="fnname">properties</a>() -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'static [</a><a class="struct" href="../../struct.ParamSpec.html" title="struct glib::ParamSpec">ParamSpec</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a> { ... }
 <div class="item-spacer"></div>    fn <a href="#method.signals" class="fnname">signals</a>() -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'static [</a><a class="struct" href="../signal/struct.Signal.html" title="struct glib::subclass::signal::Signal">Signal</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a> { ... }
 }</pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The central trait for defining a <code>GObject</code> interface.</p>
-<p>Links together the type name and the interface struct for type registration and allows to hook
+<p>Links together the type name, and the interface struct for type registration and allows hooking
 into various steps of the type registration and initialization.</p>
 <p>This must only be implemented on <code>#[repr(C)]</code> structs and have <code>gobject_ffi::GTypeInterface</code> as
 the first field.</p>

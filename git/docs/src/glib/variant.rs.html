@@ -2675,7 +2675,7 @@
         <span class="kw">let</span> <span class="ident">v2</span> <span class="op">=</span> <span class="string">&quot;this is a test&quot;</span>.<span class="ident">to_variant</span>();
         <span class="kw">let</span> <span class="ident">v3</span> <span class="op">=</span> <span class="string">&quot;test&quot;</span>.<span class="ident">to_variant</span>();
         <span class="macro">assert_eq!</span>(<span class="ident">v1</span>, <span class="ident">v2</span>);
-        <span class="macro">assert!</span>(<span class="ident">v1</span> <span class="op">!</span><span class="op">=</span> <span class="ident">v3</span>);
+        <span class="macro">assert_ne!</span>(<span class="ident">v1</span>, <span class="ident">v3</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>

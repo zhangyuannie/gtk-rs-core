@@ -78,7 +78,7 @@ returns <code>Continue(false)</code>. Precise timing is not guaranteed, the time
 be delayed by other events. Prefer <code>timeout_add_seconds</code> when millisecond
 precision is not necessary.</p>
 <p>The default main loop almost always is the main loop of the main thread.
-Thus the closure is called on the main thread.</p>
+Thus, the closure is called on the main thread.</p>
 <p>Different to <code>timeout_add()</code>, this does not require <code>func</code> to be
 <code>Send</code> but can only be called from the thread that owns the main context.</p>
 <p>This function panics if called from a different thread than the one that

@@ -1173,7 +1173,7 @@
 
 <span class="doccomment">/// Type-specific data that is filled in during type creation.</span>
 <span class="comment">// FIXME: Once trait bounds other than `Sized` on const fn parameters are stable</span>
-<span class="comment">// the content of `TypeData` can be made private and we can add a `const fn new`</span>
+<span class="comment">// the content of `TypeData` can be made private, and we can add a `const fn new`</span>
 <span class="comment">// for initialization by the `object_subclass_internal!` macro.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TypeData</span> {
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -1319,7 +1319,7 @@
 
     <span class="doccomment">/// If this subclass is an abstract class or not.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// By default all subclasses are non-abstract types but setting this to `true` will create an</span>
+    <span class="doccomment">/// By default, all subclasses are non-abstract types but setting this to `true` will create an</span>
     <span class="doccomment">/// abstract class instead.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Abstract classes can&#39;t be instantiated and require a non-abstract subclass.</span>
@@ -1645,7 +1645,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`object_subclass!`]: ../../macro.object_subclass.html</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">register_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
-    <span class="comment">// GLib aligns the type private data to two gsizes so we can&#39;t safely store any type there that</span>
+    <span class="comment">// GLib aligns the type private data to two gsizes, so we can&#39;t safely store any type there that</span>
     <span class="comment">// requires a bigger alignment.</span>
     <span class="kw">if</span> <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">&gt;</span> <span class="number">2</span> <span class="op">*</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>() {
         <span class="macro">panic!</span>(

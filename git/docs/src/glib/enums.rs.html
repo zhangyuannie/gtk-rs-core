@@ -1213,7 +1213,7 @@
         }
     }
 
-    <span class="doccomment">/// Sets flags value corresponding to integer `f` in `value`, if part of that flags. If the</span>
+    <span class="doccomment">/// Set flags value corresponding to integer `f` in `value`, if part of that flags. If the</span>
     <span class="doccomment">/// flag is already set, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag set if successful, or `Err(value)` with the original</span>
@@ -1235,7 +1235,7 @@
         }
     }
 
-    <span class="doccomment">/// Sets flags value corresponding to string name `name` in `value`, if part of that flags.</span>
+    <span class="doccomment">/// Set flags value corresponding to string name `name` in `value`, if part of that flags.</span>
     <span class="doccomment">/// If the flag is already set, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag set if successful, or `Err(value)` with the original</span>
@@ -1256,7 +1256,7 @@
         }
     }
 
-    <span class="doccomment">/// Sets flags value corresponding to string nick `nick` in `value`, if part of that flags.</span>
+    <span class="doccomment">/// Set flags value corresponding to string nick `nick` in `value`, if part of that flags.</span>
     <span class="doccomment">/// If the flag is already set, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag set if successful, or `Err(value)` with the original</span>
@@ -1277,7 +1277,7 @@
         }
     }
 
-    <span class="doccomment">/// Unsets flags value corresponding to integer `f` in `value`, if part of that flags.</span>
+    <span class="doccomment">/// Unset flags value corresponding to integer `f` in `value`, if part of that flags.</span>
     <span class="doccomment">/// If the flag is already unset, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag unset if successful, or `Err(value)` with the original</span>
@@ -1298,7 +1298,7 @@
         }
     }
 
-    <span class="doccomment">/// Unsets flags value corresponding to string name `name` in `value`, if part of that flags.</span>
+    <span class="doccomment">/// Unset flags value corresponding to string name `name` in `value`, if part of that flags.</span>
     <span class="doccomment">/// If the flag is already unset, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag unset if successful, or `Err(value)` with the original</span>
@@ -1319,7 +1319,7 @@
         }
     }
 
-    <span class="doccomment">/// Unsets flags value corresponding to string nick `nick` in `value`, if part of that flags.</span>
+    <span class="doccomment">/// Unset flags value corresponding to string nick `nick` in `value`, if part of that flags.</span>
     <span class="doccomment">/// If the flag is already unset, it will succeed without doing any changes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok(value)` with the flag unset if successful, or `Err(value)` with the original</span>
@@ -1467,7 +1467,7 @@
         <span class="ident">FlagsBuilder</span>(<span class="ident">flags_class</span>, <span class="prelude-val">Some</span>(<span class="ident">value</span>))
     }
 
-    <span class="doccomment">/// Sets flags corresponding to integer value `f`.</span>
+    <span class="doccomment">/// Set flags corresponding to integer value `f`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">f</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">1</span>.<span class="ident">take</span>() {
             <span class="self">self</span>.<span class="number">1</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">set</span>(<span class="ident">value</span>, <span class="ident">f</span>).<span class="ident">ok</span>();
@@ -1476,7 +1476,7 @@
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Sets flags corresponding to string name `name`.</span>
+    <span class="doccomment">/// Set flags corresponding to string name `name`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_by_name</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">1</span>.<span class="ident">take</span>() {
             <span class="self">self</span>.<span class="number">1</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">set_by_name</span>(<span class="ident">value</span>, <span class="ident">name</span>).<span class="ident">ok</span>();
@@ -1485,7 +1485,7 @@
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Sets flags corresponding to string nick `nick`.</span>
+    <span class="doccomment">/// Set flags corresponding to string nick `nick`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_by_nick</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">1</span>.<span class="ident">take</span>() {
             <span class="self">self</span>.<span class="number">1</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">set_by_nick</span>(<span class="ident">value</span>, <span class="ident">nick</span>).<span class="ident">ok</span>();
@@ -1503,7 +1503,7 @@
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Unsets flags corresponding to string name `name`.</span>
+    <span class="doccomment">/// Unset flags corresponding to string name `name`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset_by_name</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">1</span>.<span class="ident">take</span>() {
             <span class="self">self</span>.<span class="number">1</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">unset_by_name</span>(<span class="ident">value</span>, <span class="ident">name</span>).<span class="ident">ok</span>();
@@ -1512,7 +1512,7 @@
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Unsets flags corresponding to string nick `nick`.</span>
+    <span class="doccomment">/// Unset flags corresponding to string nick `nick`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset_by_nick</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">1</span>.<span class="ident">take</span>() {
             <span class="self">self</span>.<span class="number">1</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">unset_by_nick</span>(<span class="ident">value</span>, <span class="ident">nick</span>).<span class="ident">ok</span>();

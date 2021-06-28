@@ -393,7 +393,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This will return `None` if the `key` is not present in the dictionary</span>
     <span class="doccomment">/// or if it is present but the type of the value does not match a given</span>
-    <span class="doccomment">/// `expected_type`.  Otherwise `Some(value)` will be returned where</span>
+    <span class="doccomment">/// `expected_type`.  Otherwise, `Some(value)` will be returned where</span>
     <span class="doccomment">/// the `value` is an instance of [`Variant`](variant/struct.Variant.html).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_dict_lookup_value&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lookup_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">expected_type</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VariantTy</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
@@ -488,7 +488,7 @@
     <span class="doccomment">/// and then reinitialises itself in order to be safe for further use.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If you are certain that nothing other than disposing of references will</span>
-    <span class="doccomment">/// be done subsequent to ending the instance, you can call the</span>
+    <span class="doccomment">/// be done after ending the instance, you can call the</span>
     <span class="doccomment">/// [`end_unsafe()`](#method.end_unsafe) method instead to avoid the unnecessary</span>
     <span class="doccomment">/// reinitialisation of the dictionary.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">end</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {

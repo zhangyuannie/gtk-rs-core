@@ -76,7 +76,7 @@ UNIX file descriptor reaches the given IO condition.</p>
 <p><code>func</code> will be called repeatedly while the file descriptor matches the given IO condition
 until it returns <code>Continue(false)</code>.</p>
 <p>The default main loop almost always is the main loop of the main thread.
-Thus the closure is called on the main thread.
+Thus, the closure is called on the main thread.
 Sets a function to be called when the IO condition, as specified by
 <code>condition</code> becomes true for <code>fd</code>.</p>
 <p><code>function</code> will be called when the specified IO condition becomes
