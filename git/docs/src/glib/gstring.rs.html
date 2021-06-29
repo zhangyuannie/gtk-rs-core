@@ -743,7 +743,6 @@
 <span id="670">670</span>
 <span id="671">671</span>
 <span id="672">672</span>
-<span id="673">673</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -1383,7 +1382,7 @@
     <span class="kw">fn</span> <span class="ident">test_from_glib_container</span>() {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">test_a</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="ident">FromGlibContainer::from_glib_container_num</span>(
-                <span class="ident">ffi::g_strdup</span>(<span class="string">&quot;hello_world&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">i8</span>),
+                <span class="ident">ffi::g_strdup</span>(<span class="string">&quot;hello_world&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>),
                 <span class="number">5</span>,
             );
             <span class="macro">assert_eq!</span>(<span class="string">&quot;hello&quot;</span>, <span class="ident">test_a</span>.<span class="ident">as_str</span>());
@@ -1391,16 +1390,15 @@
             <span class="kw">let</span> <span class="ident">test_b</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="ident">FromGlibContainer::from_glib_none_num</span>(<span class="string">&quot;hello_world&quot;</span>.<span class="ident">as_ptr</span>(), <span class="number">5</span>);
             <span class="macro">assert_eq!</span>(<span class="string">&quot;hello&quot;</span>, <span class="ident">test_b</span>.<span class="ident">as_str</span>());
 
-            <span class="kw">let</span> <span class="ident">test_c</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="ident">FromGlibContainer::from_glib_none_num</span>(<span class="ident">std::ptr::null</span>::<span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span>(), <span class="number">0</span>);
+            <span class="kw">let</span> <span class="ident">test_c</span>: <span class="ident">GString</span> <span class="op">=</span>
+                <span class="ident">FromGlibContainer::from_glib_none_num</span>(<span class="ident">std::ptr::null</span>::<span class="op">&lt;</span><span class="ident">std::os::raw::c_char</span><span class="op">&gt;</span>(), <span class="number">0</span>);
             <span class="macro">assert_eq!</span>(<span class="string">&quot;&quot;</span>, <span class="ident">test_c</span>.<span class="ident">as_str</span>());
 
             <span class="kw">let</span> <span class="ident">test_d</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="ident">FromGlibContainer::from_glib_none_num</span>(<span class="string">&quot;&quot;</span>.<span class="ident">as_ptr</span>(), <span class="number">0</span>);
             <span class="macro">assert_eq!</span>(<span class="string">&quot;&quot;</span>, <span class="ident">test_d</span>.<span class="ident">as_str</span>());
 
-            <span class="kw">let</span> <span class="ident">test_e</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="ident">FromGlibContainer::from_glib_container_num</span>(
-                <span class="ident">ffi::g_strdup</span>(<span class="ident">std::ptr::null</span>::<span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span>()),
-                <span class="number">0</span>,
-            );
+            <span class="kw">let</span> <span class="ident">test_e</span>: <span class="ident">GString</span> <span class="op">=</span>
+                <span class="ident">FromGlibContainer::from_glib_container_num</span>(<span class="ident">ffi::g_strdup</span>(<span class="ident">std::ptr::null</span>()), <span class="number">0</span>);
             <span class="macro">assert_eq!</span>(<span class="string">&quot;&quot;</span>, <span class="ident">test_e</span>.<span class="ident">as_str</span>());
         }
     }
