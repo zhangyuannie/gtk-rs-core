@@ -266,6 +266,14 @@
 <span id="193">193</span>
 <span id="194">194</span>
 <span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -430,9 +438,17 @@
         <span class="macro">quote!</span>(#<span class="ident">glib</span>)
     })
     .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-        <span class="macro">proc_macro_error::emit_call_site_warning!</span>(
-            <span class="string">&quot;Can&#39;t find glib crate. Please ensure you have a glib in scope&quot;</span>
-        );
+        <span class="comment">// We couldn&#39;t find the glib crate (renamed or not) so let&#39;s just hope it&#39;s in scope!</span>
+        <span class="comment">//</span>
+        <span class="comment">// We will be able to have this information once this code is stable:</span>
+        <span class="comment">//</span>
+        <span class="comment">// ```</span>
+        <span class="comment">// let span = Span::call_site();</span>
+        <span class="comment">// let source = span.source_file();</span>
+        <span class="comment">// let file_path = source.path();</span>
+        <span class="comment">// ```</span>
+        <span class="comment">//</span>
+        <span class="comment">// Then we can use proc_macro to parse the file and check if glib is imported somehow.</span>
         <span class="kw">let</span> <span class="ident">glib</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="string">&quot;glib&quot;</span>, <span class="ident">Span::call_site</span>());
         <span class="macro">quote!</span>(#<span class="ident">glib</span>)
     })
