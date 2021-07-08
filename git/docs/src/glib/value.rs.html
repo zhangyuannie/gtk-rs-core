@@ -1407,6 +1407,33 @@
 <span id="1334">1334</span>
 <span id="1335">1335</span>
 <span id="1336">1336</span>
+<span id="1337">1337</span>
+<span id="1338">1338</span>
+<span id="1339">1339</span>
+<span id="1340">1340</span>
+<span id="1341">1341</span>
+<span id="1342">1342</span>
+<span id="1343">1343</span>
+<span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
+<span id="1350">1350</span>
+<span id="1351">1351</span>
+<span id="1352">1352</span>
+<span id="1353">1353</span>
+<span id="1354">1354</span>
+<span id="1355">1355</span>
+<span id="1356">1356</span>
+<span id="1357">1357</span>
+<span id="1358">1358</span>
+<span id="1359">1359</span>
+<span id="1360">1360</span>
+<span id="1361">1361</span>
+<span id="1362">1362</span>
+<span id="1363">1363</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -1732,6 +1759,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
 <span class="comment">// TODO: Should use impl !Send for Value {} once stable</span>
+<span class="doccomment">/// An opaque structure used to hold different types of values.</span>
+<span class="doccomment">/// The data within the structure has protected scope: it is accessible only</span>
+<span class="doccomment">/// to functions within a `GTypeValueTable` structure, or implementations of</span>
+<span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
+<span class="doccomment">/// types.</span>
+<span class="doccomment">/// [`Value`][crate::Value] users cannot make any assumptions about how data is stored</span>
+<span class="doccomment">/// within the 2 element `data` union, and the `g_type` member should</span>
+<span class="doccomment">/// only be accessed through the G_VALUE_TYPE() macro.</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">gobject_ffi::GValue</span>);
@@ -1794,6 +1829,25 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
+    <span class="doccomment">/// king.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the call was successful, it returns [`true`] and sets `contents` to the file</span>
+    <span class="doccomment">/// contents and `length` to the length of the file contents in bytes. The string</span>
+    <span class="doccomment">/// stored in `contents` will be nul-terminated, so for text files you can pass</span>
+    <span class="doccomment">/// [`None`] for the `length` argument. If the call was not successful, it returns</span>
+    <span class="doccomment">/// [`false`] and sets `error`. The error domain is `G_FILE_ERROR`. Possible error</span>
+    <span class="doccomment">/// codes are those in the `GFileError` enumeration. In the error case,</span>
+    <span class="doccomment">/// `contents` is set to [`None`] and `length` is set to zero.</span>
+    <span class="doccomment">/// ## `filename`</span>
+    <span class="doccomment">/// name of a file to read contents from, in the GLib file name encoding</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`true`] on success, [`false`] if an error occurred</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `contents`</span>
+    <span class="doccomment">/// location to store an allocated string, use `g_free()` to free</span>
+    <span class="doccomment">///  the returned string</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
