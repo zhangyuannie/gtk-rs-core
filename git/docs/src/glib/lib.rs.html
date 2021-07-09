@@ -345,6 +345,7 @@
 <span id="272">272</span>
 <span id="273">273</span>
 <span id="274">274</span>
+<span id="275">275</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -504,13 +505,14 @@
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::utils</span>::<span class="kw-2">*</span>;
 <span class="kw">mod</span> <span class="ident">main_context</span>;
 <span class="kw">mod</span> <span class="ident">main_context_channel</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::main_context::MainContextAcquireGuard</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::main_context_channel</span>::{<span class="ident">Receiver</span>, <span class="ident">Sender</span>, <span class="ident">SyncSender</span>};
+<span class="kw">mod</span> <span class="ident">date</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">value</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">variant</span>;
 <span class="kw">mod</span> <span class="ident">variant_dict</span>;
 <span class="kw">mod</span> <span class="ident">variant_iter</span>;
 <span class="kw">mod</span> <span class="ident">variant_type</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::main_context_channel</span>::{<span class="ident">Receiver</span>, <span class="ident">Sender</span>, <span class="ident">SyncSender</span>};
-<span class="kw">mod</span> <span class="ident">date</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::date::Date</span>;
 <span class="kw">mod</span> <span class="ident">value_array</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span><span class="ident">::value_array::ValueArray</span>;
