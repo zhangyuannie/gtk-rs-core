@@ -521,6 +521,7 @@
 <span id="448">448</span>
 <span id="449">449</span>
 <span id="450">450</span>
+<span id="451">451</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -613,8 +614,9 @@
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::no_effect</span>)]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">unref</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_expr</span>
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_expr</span>;
             }
         }
 

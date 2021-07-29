@@ -648,6 +648,10 @@
 <span id="575">575</span>
 <span id="576">576</span>
 <span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -960,8 +964,9 @@
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::no_effect</span>)]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">free</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_expr</span>
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_expr</span>;
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -986,18 +991,21 @@
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::no_effect</span>)]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">free</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_expr</span>
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_expr</span>;
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::no_effect</span>)]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">init</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_expr</span>
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_expr</span>;
             }
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::no_effect</span>)]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_expr</span>
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_expr</span>;
             }
         }
 
