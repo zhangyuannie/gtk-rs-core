@@ -297,85 +297,13 @@
 <span id="224">224</span>
 <span id="225">225</span>
 <span id="226">226</span>
-<span id="227">227</span>
-<span id="228">228</span>
-<span id="229">229</span>
-<span id="230">230</span>
-<span id="231">231</span>
-<span id="232">232</span>
-<span id="233">233</span>
-<span id="234">234</span>
-<span id="235">235</span>
-<span id="236">236</span>
-<span id="237">237</span>
-<span id="238">238</span>
-<span id="239">239</span>
-<span id="240">240</span>
-<span id="241">241</span>
-<span id="242">242</span>
-<span id="243">243</span>
-<span id="244">244</span>
-<span id="245">245</span>
-<span id="246">246</span>
-<span id="247">247</span>
-<span id="248">248</span>
-<span id="249">249</span>
-<span id="250">250</span>
-<span id="251">251</span>
-<span id="252">252</span>
-<span id="253">253</span>
-<span id="254">254</span>
-<span id="255">255</span>
-<span id="256">256</span>
-<span id="257">257</span>
-<span id="258">258</span>
-<span id="259">259</span>
-<span id="260">260</span>
-<span id="261">261</span>
-<span id="262">262</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
-
-<span class="doccomment">//! # Cairo bindings</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! This library contains safe Rust bindings for [Cairo](https://www.cairographics.org/).</span>
-<span class="doccomment">//! It is a part of [gtk-rs](https://gtk-rs.org/).</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Cairo 1.14 is the lowest supported version for the underlying library.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Crate features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## Default-on features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **use_glib** - Use with [glib](mod@glib)</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## Fileformat features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **png** - Reading and writing PNG images</span>
-<span class="doccomment">//! * **pdf** - Rendering PDF documents</span>
-<span class="doccomment">//! * **svg** - Rendering SVG documents</span>
-<span class="doccomment">//! * **ps** - Rendering PostScript documents</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## Cairo API version features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **v1_16** - Use Cairo 1.16 APIs</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## Documentation features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **dox** - Used to keep system dependent items in documentation</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## X Window features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **xcb** - X Window System rendering using the XCB library</span>
-<span class="doccomment">//! * **xlib** - X Window System rendering using XLib</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ## Windows API features</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * **win32-surface** - Microsoft Windows surface support</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::missing_safety_doc</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::wrong_self_convention</span>)]</span>
+<span class="attribute">#![<span class="ident">doc</span> <span class="op">=</span> <span class="macro">include_str!</span>(<span class="string">&quot;../README.md&quot;</span>)]</span>
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ffi</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;freetype&quot;</span>)]</span>
