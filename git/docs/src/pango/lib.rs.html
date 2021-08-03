@@ -134,6 +134,10 @@
 <span id="61">61</span>
 <span id="62">62</span>
 <span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -185,6 +189,10 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">attr_iterator</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">attr_list</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">attribute</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::attribute</span>::{
+    <span class="ident">AttrColor</span>, <span class="ident">AttrFloat</span>, <span class="ident">AttrFontDesc</span>, <span class="ident">AttrInt</span>, <span class="ident">AttrLanguage</span>, <span class="ident">IsAttribute</span>,
+};
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">color</span>;
 <span class="kw">mod</span> <span class="ident">functions</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">item</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">language</span>;

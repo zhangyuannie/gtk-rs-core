@@ -78,11 +78,13 @@
 <span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
+<span id="8">8</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! Traits and essential types intended for blanket imports.</span>
 
+<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::attribute::IsAttribute</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::auto::traits</span>::<span class="kw-2">*</span>;
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">glib::prelude</span>::<span class="kw-2">*</span>;

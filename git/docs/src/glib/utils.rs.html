@@ -468,6 +468,39 @@
 <span id="395">395</span>
 <span id="396">396</span>
 <span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -505,22 +538,6 @@
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_set_prgname</span>(<span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
-<span class="doccomment">/// Returns the value of an environment variable.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On UNIX, the name and value are byte strings which might or might not</span>
-<span class="doccomment">/// be in some consistent character set and encoding. On Windows, they are</span>
-<span class="doccomment">/// in UTF-8.</span>
-<span class="doccomment">/// On Windows, in case the environment variable&#39;s value contains</span>
-<span class="doccomment">/// references to other environment variables, they are expanded.</span>
-<span class="doccomment">/// ## `variable`</span>
-<span class="doccomment">/// the environment variable to get</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the value of the environment variable, or [`None`] if</span>
-<span class="doccomment">///  the environment variable is not found. The returned string</span>
-<span class="doccomment">///  may be overwritten by the next call to `g_getenv()`, `g_setenv()`</span>
-<span class="doccomment">///  or `g_unsetenv()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_getenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OsString</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -554,6 +571,26 @@
     }
 }
 
+<span class="doccomment">/// Removes an environment variable from the environment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the</span>
+<span class="doccomment">/// memory used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls `g_unsetenv()` while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.) This</span>
+<span class="doccomment">/// function is only safe to use at the very start of your program, before</span>
+<span class="doccomment">/// creating any other threads (or creating objects that create worker</span>
+<span class="doccomment">/// threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to remove, must</span>
+<span class="doccomment">///  not contain &#39;=&#39;</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unsetenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsetenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -564,6 +601,21 @@
     <span class="kw">unsafe</span> { <span class="ident">g_unsetenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
+<span class="doccomment">/// Returns the value of the environment variable `variable` in the</span>
+<span class="doccomment">/// provided list `envp`.</span>
+<span class="doccomment">/// ## `envp`</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///  an environment list (eg, as returned from [`environ()`][crate::environ()]), or [`None`]</span>
+<span class="doccomment">///  for an empty environment list</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to get</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the value of the environment variable, or [`None`] if</span>
+<span class="doccomment">///  the environment variable is not set in `envp`. The returned</span>
+<span class="doccomment">///  string is owned by `envp`, and will be freed if `variable` is</span>
+<span class="doccomment">///  set or unset again.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_environ_getenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">environ_getenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">envp</span>: <span class="kw-2">&amp;</span>[<span class="ident">OsString</span>], <span class="ident">variable</span>: <span class="ident">K</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OsString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -642,6 +694,20 @@
     }
 }
 
+<span class="doccomment">/// Converts an escaped ASCII-encoded URI to a local filename in the</span>
+<span class="doccomment">/// encoding used for filenames.</span>
+<span class="doccomment">/// ## `uri`</span>
+<span class="doccomment">/// a uri describing a filename (escaped, encoded in ASCII).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a newly-allocated string holding</span>
+<span class="doccomment">///  the resulting filename, or [`None`] on an error.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// Location to store hostname for the URI.</span>
+<span class="doccomment">///  If there is no hostname in the URI, [`None`] will be</span>
+<span class="doccomment">///  stored in this location.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_filename_from_uri&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filename_from_uri</span>(<span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">std::path::PathBuf</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">GString</span><span class="op">&gt;</span>), <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
