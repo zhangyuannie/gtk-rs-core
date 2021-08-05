@@ -1512,6 +1512,47 @@
 <span id="1439">1439</span>
 <span id="1440">1440</span>
 <span id="1441">1441</span>
+<span id="1442">1442</span>
+<span id="1443">1443</span>
+<span id="1444">1444</span>
+<span id="1445">1445</span>
+<span id="1446">1446</span>
+<span id="1447">1447</span>
+<span id="1448">1448</span>
+<span id="1449">1449</span>
+<span id="1450">1450</span>
+<span id="1451">1451</span>
+<span id="1452">1452</span>
+<span id="1453">1453</span>
+<span id="1454">1454</span>
+<span id="1455">1455</span>
+<span id="1456">1456</span>
+<span id="1457">1457</span>
+<span id="1458">1458</span>
+<span id="1459">1459</span>
+<span id="1460">1460</span>
+<span id="1461">1461</span>
+<span id="1462">1462</span>
+<span id="1463">1463</span>
+<span id="1464">1464</span>
+<span id="1465">1465</span>
+<span id="1466">1466</span>
+<span id="1467">1467</span>
+<span id="1468">1468</span>
+<span id="1469">1469</span>
+<span id="1470">1470</span>
+<span id="1471">1471</span>
+<span id="1472">1472</span>
+<span id="1473">1473</span>
+<span id="1474">1474</span>
+<span id="1475">1475</span>
+<span id="1476">1476</span>
+<span id="1477">1477</span>
+<span id="1478">1478</span>
+<span id="1479">1479</span>
+<span id="1480">1480</span>
+<span id="1481">1481</span>
+<span id="1482">1482</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -1548,6 +1589,16 @@
 <span class="doccomment">//! let hello = &quot;Hello!&quot;.to_variant();</span>
 <span class="doccomment">//! assert_eq!(hello.str(), Some(&quot;Hello!&quot;));</span>
 <span class="doccomment">//! assert_eq!(num.str(), None);</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! // `bytes` tries to borrow a byte array (GVariant type `ay`),</span>
+<span class="doccomment">//! // rather than creating a deep copy which would be expensive for</span>
+<span class="doccomment">//! // nontrivially sized byte arrays.</span>
+<span class="doccomment">//! // The test data here is the zstd compression header, which</span>
+<span class="doccomment">//! // stands in for arbitrary binary data (e.g. not UTF-8).</span>
+<span class="doccomment">//! let bufdata = b&quot;\xFD\x2F\xB5\x28&quot;;</span>
+<span class="doccomment">//! let bufv = bufdata.to_variant();</span>
+<span class="doccomment">//! assert_eq!(bufv.bytes().unwrap(), bufdata);</span>
+<span class="doccomment">//! assert!(num.bytes().is_err());</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! // Variant carrying a Variant</span>
 <span class="doccomment">//! let variant = Variant::from_variant(&amp;hello);</span>
@@ -2106,6 +2157,28 @@
                     <span class="prelude-val">Some</span>(<span class="ident">ret</span>)
                 }
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+            }
+        }
+    }
+
+    <span class="doccomment">/// Tries to extract a `&amp;[u8]` from a variant of type `ay` (array of bytes).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Returns an error if the type is not `ay`.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
+        <span class="kw">unsafe</span> {
+            <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
+            <span class="kw">let</span> <span class="ident">expected_ty</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">Vec</span>::<span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
+            <span class="kw">if</span> <span class="ident">t</span> <span class="op">=</span><span class="op">=</span> <span class="ident">expected_ty</span> {
+                <span class="kw">let</span> <span class="ident">selfv</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">to_glib_none</span>();
+                <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_size</span>(<span class="ident">selfv</span>.<span class="number">0</span>);
+                <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_data</span>(<span class="ident">selfv</span>.<span class="number">0</span>);
+                <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
+                <span class="prelude-val">Ok</span>(<span class="ident">ret</span>)
+            } <span class="kw">else</span> {
+                <span class="prelude-val">Err</span>(<span class="ident">VariantTypeMismatchError</span> {
+                    <span class="ident">actual</span>: <span class="ident">t</span>.<span class="ident">to_owned</span>(),
+                    <span class="ident">expected</span>: <span class="ident">expected_ty</span>.<span class="ident">to_owned</span>(),
+                })
             }
         }
     }
@@ -2888,6 +2961,15 @@
         <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="string">&quot;this is a test&quot;</span>;
         <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">to_variant</span>();
         <span class="macro">assert_eq!</span>(<span class="ident">v</span>.<span class="ident">str</span>(), <span class="prelude-val">Some</span>(<span class="ident">s</span>));
+        <span class="macro">assert_eq!</span>(<span class="number">42u32</span>.<span class="ident">to_variant</span>().<span class="ident">str</span>(), <span class="prelude-val">None</span>);
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_bytes</span>() {
+        <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="string">b&quot;this is a test&quot;</span>;
+        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">to_variant</span>();
+        <span class="macro">assert_eq!</span>(<span class="ident">v</span>.<span class="ident">bytes</span>().<span class="ident">unwrap</span>(), <span class="ident">b</span>);
+        <span class="macro">assert!</span>(<span class="number">42u32</span>.<span class="ident">to_variant</span>().<span class="ident">bytes</span>().<span class="ident">is_err</span>());
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
