@@ -1617,6 +1617,35 @@
 <span id="1544">1544</span>
 <span id="1545">1545</span>
 <span id="1546">1546</span>
+<span id="1547">1547</span>
+<span id="1548">1548</span>
+<span id="1549">1549</span>
+<span id="1550">1550</span>
+<span id="1551">1551</span>
+<span id="1552">1552</span>
+<span id="1553">1553</span>
+<span id="1554">1554</span>
+<span id="1555">1555</span>
+<span id="1556">1556</span>
+<span id="1557">1557</span>
+<span id="1558">1558</span>
+<span id="1559">1559</span>
+<span id="1560">1560</span>
+<span id="1561">1561</span>
+<span id="1562">1562</span>
+<span id="1563">1563</span>
+<span id="1564">1564</span>
+<span id="1565">1565</span>
+<span id="1566">1566</span>
+<span id="1567">1567</span>
+<span id="1568">1568</span>
+<span id="1569">1569</span>
+<span id="1570">1570</span>
+<span id="1571">1571</span>
+<span id="1572">1572</span>
+<span id="1573">1573</span>
+<span id="1574">1574</span>
+<span id="1575">1575</span>
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
@@ -2423,6 +2452,28 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_normal_form</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="doccomment">/// Returns a copy of the variant in the opposite endianness.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Performs a byteswapping operation on the contents of `self`. The</span>
+    <span class="doccomment">/// result is that all multi-byte numeric data contained in `self` is</span>
+    <span class="doccomment">/// byteswapped. That includes 16, 32, and 64bit signed and unsigned</span>
+    <span class="doccomment">/// integers as well as file handles and double precision floating point</span>
+    <span class="doccomment">/// values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is an identity mapping on any value that does not</span>
+    <span class="doccomment">/// contain multi-byte numeric data. That include strings, booleans,</span>
+    <span class="doccomment">/// bytes and containers containing only these things (recursively).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The returned value is always in normal form and is marked as trusted.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the byteswapped form of `self`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_byteswap&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">byteswap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_byteswap</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
+    }
+
     <span class="doccomment">/// Determines the number of children in a container GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Determines the number of children in a container [`Variant`][crate::Variant] instance.</span>
@@ -3148,6 +3199,13 @@
         <span class="comment">// Test ? conversion</span>
         <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">try_get</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>()<span class="question-mark">?</span>, <span class="number">42</span>);
         <span class="prelude-val">Ok</span>(())
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_byteswap</span>() {
+        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="number">42u32</span>.<span class="ident">to_variant</span>();
+        <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">byteswap</span>().<span class="ident">get</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>(), <span class="number">704643072u32</span>);
+        <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">byteswap</span>().<span class="ident">byteswap</span>().<span class="ident">get</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>(), <span class="number">42u32</span>);
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
