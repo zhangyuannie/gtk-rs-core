@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `cairo&#x2F;src&#x2F;recording_surface.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>recording_surface.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `cairo&#x2F;src&#x2F;recording_surface.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>recording_surface.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -144,13 +144,13 @@
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
 <span class="kw">use</span> <span class="ident">std::ops::Deref</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::enums</span>::{<span class="ident">Content</span>, <span class="ident">SurfaceType</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error::Error</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::rectangle::Rectangle</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::enums</span>::{<span class="ident">Content</span>, <span class="ident">SurfaceType</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::rectangle::Rectangle</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::surface::Surface</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::surface::Surface</span>;
 
 <span class="macro">declare_surface!</span>(<span class="ident">RecordingSurface</span>, <span class="ident">SurfaceType::Recording</span>);
 <span class="kw">impl</span> <span class="ident">RecordingSurface</span> {
@@ -166,7 +166,7 @@
                 <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">::std::ptr::null</span>(),
             };
 
-            <span class="self">Self</span><span class="ident">::from_raw_full</span>(<span class="ident">ffi::cairo_recording_surface_create</span>(<span class="ident">content</span>.<span class="ident">into</span>(), <span class="ident">extends</span>))
+            <span class="ident"><span class="self">Self</span>::from_raw_full</span>(<span class="ident">ffi::cairo_recording_surface_create</span>(<span class="ident">content</span>.<span class="ident">into</span>(), <span class="ident">extends</span>))
         }
     }
 

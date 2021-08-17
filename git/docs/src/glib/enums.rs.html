@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib&#x2F;src&#x2F;enums.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enums.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib&#x2F;src&#x2F;enums.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enums.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -801,10 +801,10 @@
 </pre><pre class="rust">
 <span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::translate</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::value::Value</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::CStr</span>;
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Type</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::value::Value</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::CStr</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Type</span>;
 <span class="kw">use</span> <span class="ident">std::cmp</span>;
 
 <span class="doccomment">/// These are logical ids for special directories which are defined</span>
@@ -844,15 +844,15 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GUserDirectory</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Desktop</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DESKTOP</span>,
-            <span class="self">Self</span><span class="ident">::Documents</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DOCUMENTS</span>,
-            <span class="self">Self</span><span class="ident">::Downloads</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DOWNLOAD</span>,
-            <span class="self">Self</span><span class="ident">::Music</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_MUSIC</span>,
-            <span class="self">Self</span><span class="ident">::Pictures</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_PICTURES</span>,
-            <span class="self">Self</span><span class="ident">::PublicShare</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_PUBLIC_SHARE</span>,
-            <span class="self">Self</span><span class="ident">::Templates</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_TEMPLATES</span>,
-            <span class="self">Self</span><span class="ident">::Videos</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_VIDEOS</span>,
-            <span class="self">Self</span><span class="ident">::NDirectories</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_N_DIRECTORIES</span>,
+            <span class="ident"><span class="self">Self</span>::Desktop</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DESKTOP</span>,
+            <span class="ident"><span class="self">Self</span>::Documents</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DOCUMENTS</span>,
+            <span class="ident"><span class="self">Self</span>::Downloads</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_DOWNLOAD</span>,
+            <span class="ident"><span class="self">Self</span>::Music</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_MUSIC</span>,
+            <span class="ident"><span class="self">Self</span>::Pictures</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_PICTURES</span>,
+            <span class="ident"><span class="self">Self</span>::PublicShare</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_PUBLIC_SHARE</span>,
+            <span class="ident"><span class="self">Self</span>::Templates</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_TEMPLATES</span>,
+            <span class="ident"><span class="self">Self</span>::Videos</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_DIRECTORY_VIDEOS</span>,
+            <span class="ident"><span class="self">Self</span>::NDirectories</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::G_USER_N_DIRECTORIES</span>,
         }
     }
 }

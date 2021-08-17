@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk-pixbuf&#x2F;src&#x2F;auto&#x2F;enums.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enums.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk-pixbuf&#x2F;src&#x2F;auto&#x2F;enums.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enums.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -656,7 +656,7 @@
             <span class="ident">f</span>,
             <span class="string">&quot;Colorspace::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="self">Self</span><span class="ident">::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rgb&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rgb&quot;</span>,
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -669,8 +669,8 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkColorspace</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_COLORSPACE_RGB</span>,
-            <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_COLORSPACE_RGB</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
         }
     }
 }
@@ -679,8 +679,8 @@
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkColorspace</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkColorspace</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_COLORSPACE_RGB</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Rgb</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_COLORSPACE_RGB</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rgb</span>,
+            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -713,7 +713,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
-        <span class="self">Self</span><span class="ident">::static_type</span>()
+        <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
 
@@ -768,10 +768,10 @@
             <span class="ident">f</span>,
             <span class="string">&quot;InterpType::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="self">Self</span><span class="ident">::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Nearest&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Tiles&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilinear&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Hyper&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Nearest&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Tiles&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilinear&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Hyper&quot;</span>,
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -784,11 +784,11 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkInterpType</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_NEAREST</span>,
-            <span class="self">Self</span><span class="ident">::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_TILES</span>,
-            <span class="self">Self</span><span class="ident">::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_BILINEAR</span>,
-            <span class="self">Self</span><span class="ident">::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_HYPER</span>,
-            <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_NEAREST</span>,
+            <span class="ident"><span class="self">Self</span>::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_TILES</span>,
+            <span class="ident"><span class="self">Self</span>::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_BILINEAR</span>,
+            <span class="ident"><span class="self">Self</span>::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_HYPER</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
         }
     }
 }
@@ -797,11 +797,11 @@
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkInterpType</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkInterpType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_INTERP_NEAREST</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Nearest</span>,
-            <span class="ident">ffi::GDK_INTERP_TILES</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Tiles</span>,
-            <span class="ident">ffi::GDK_INTERP_BILINEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Bilinear</span>,
-            <span class="ident">ffi::GDK_INTERP_HYPER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Hyper</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_INTERP_NEAREST</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Nearest</span>,
+            <span class="ident">ffi::GDK_INTERP_TILES</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Tiles</span>,
+            <span class="ident">ffi::GDK_INTERP_BILINEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Bilinear</span>,
+            <span class="ident">ffi::GDK_INTERP_HYPER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Hyper</span>,
+            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -834,7 +834,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
-        <span class="self">Self</span><span class="ident">::static_type</span>()
+        <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
 
@@ -874,8 +874,8 @@
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufAlphaMode::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="self">Self</span><span class="ident">::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilevel&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Full&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilevel&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Full&quot;</span>,
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -888,9 +888,9 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufAlphaMode</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span>,
-            <span class="self">Self</span><span class="ident">::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span>,
-            <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span>,
+            <span class="ident"><span class="self">Self</span>::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
         }
     }
 }
@@ -899,9 +899,9 @@
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufAlphaMode</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufAlphaMode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Bilevel</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Full</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Bilevel</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Full</span>,
+            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -934,7 +934,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
-        <span class="self">Self</span><span class="ident">::static_type</span>()
+        <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
 
@@ -977,13 +977,13 @@
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufError::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="self">Self</span><span class="ident">::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;CorruptImage&quot;</span>,
-                <span class="self">Self</span><span class="ident">::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;InsufficientMemory&quot;</span>,
-                <span class="self">Self</span><span class="ident">::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;BadOption&quot;</span>,
-                <span class="self">Self</span><span class="ident">::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnknownType&quot;</span>,
-                <span class="self">Self</span><span class="ident">::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnsupportedOperation&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Failed&quot;</span>,
-                <span class="self">Self</span><span class="ident">::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;IncompleteAnimation&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;CorruptImage&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;InsufficientMemory&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;BadOption&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnknownType&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnsupportedOperation&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Failed&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;IncompleteAnimation&quot;</span>,
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -996,14 +996,14 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufError</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span>,
-            <span class="self">Self</span><span class="ident">::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span>,
-            <span class="self">Self</span><span class="ident">::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span>,
-            <span class="self">Self</span><span class="ident">::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span>,
-            <span class="self">Self</span><span class="ident">::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span>,
-            <span class="self">Self</span><span class="ident">::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span>,
-            <span class="self">Self</span><span class="ident">::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span>,
-            <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span>,
+            <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span>,
+            <span class="ident"><span class="self">Self</span>::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span>,
+            <span class="ident"><span class="self">Self</span>::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span>,
+            <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span>,
+            <span class="ident"><span class="self">Self</span>::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span>,
+            <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
         }
     }
 }
@@ -1012,14 +1012,14 @@
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufError</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufError</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::CorruptImage</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::InsufficientMemory</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::BadOption</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::UnknownType</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::UnsupportedOperation</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Failed</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::IncompleteAnimation</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::CorruptImage</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::InsufficientMemory</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::BadOption</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::UnknownType</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Failed</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>,
+            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -1035,14 +1035,14 @@
 
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">code</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">code</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::CorruptImage</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::InsufficientMemory</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::BadOption</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::UnknownType</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::UnsupportedOperation</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::Failed</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::IncompleteAnimation</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="self">Self</span><span class="ident">::Failed</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::CorruptImage</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::InsufficientMemory</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::BadOption</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnknownType</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
         }
     }
 }
@@ -1075,7 +1075,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
-        <span class="self">Self</span><span class="ident">::static_type</span>()
+        <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
 
@@ -1107,10 +1107,10 @@
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufRotation::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="self">Self</span><span class="ident">::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;None&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Counterclockwise&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Upsidedown&quot;</span>,
-                <span class="self">Self</span><span class="ident">::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Clockwise&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;None&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Counterclockwise&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Upsidedown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Clockwise&quot;</span>,
                 <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -1123,11 +1123,11 @@
 
     <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufRotation</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="self">Self</span><span class="ident">::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span>,
-            <span class="self">Self</span><span class="ident">::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span>,
-            <span class="self">Self</span><span class="ident">::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span>,
-            <span class="self">Self</span><span class="ident">::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span>,
-            <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span>,
+            <span class="ident"><span class="self">Self</span>::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span>,
+            <span class="ident"><span class="self">Self</span>::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span>,
+            <span class="ident"><span class="self">Self</span>::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
         }
     }
 }
@@ -1136,11 +1136,11 @@
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufRotation</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufRotation</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::None</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Counterclockwise</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Upsidedown</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Clockwise</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::None</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Counterclockwise</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Upsidedown</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Clockwise</span>,
+            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -1173,7 +1173,7 @@
     }
 
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
-        <span class="self">Self</span><span class="ident">::static_type</span>()
+        <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
 </pre></div>
