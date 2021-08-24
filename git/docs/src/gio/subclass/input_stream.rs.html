@@ -462,10 +462,6 @@
 <span id="389">389</span>
 <span id="390">390</span>
 <span id="391">391</span>
-<span id="392">392</span>
-<span id="393">393</span>
-<span id="394">394</span>
-<span id="395">395</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::subclass::prelude</span>::<span class="kw-2">*</span>;
@@ -614,16 +610,12 @@
 
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">InputStreamImpl</span><span class="op">&gt;</span> <span class="ident">IsSubclassable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">InputStream</span> {
     <span class="kw">fn</span> <span class="ident">class_init</span>(<span class="ident">class</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::glib::Class</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {
-        <span class="op">&lt;</span><span class="ident">glib::Object</span> <span class="kw">as</span> <span class="ident">IsSubclassable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::class_init</span>(<span class="ident">class</span>);
+        <span class="ident"><span class="self">Self</span>::parent_class_init</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">class</span>);
 
         <span class="kw">let</span> <span class="ident">klass</span> <span class="op">=</span> <span class="ident">class</span>.<span class="ident">as_mut</span>();
         <span class="ident">klass</span>.<span class="ident">read_fn</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">stream_read</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
         <span class="ident">klass</span>.<span class="ident">close_fn</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">stream_close</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
         <span class="ident">klass</span>.<span class="ident">skip</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">stream_skip</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
-    }
-
-    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">instance</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">glib::subclass::InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {
-        <span class="op">&lt;</span><span class="ident">glib::Object</span> <span class="kw">as</span> <span class="ident">IsSubclassable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::instance_init</span>(<span class="ident">instance</span>);
     }
 }
 
