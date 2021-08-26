@@ -455,6 +455,8 @@
 <span id="382">382</span>
 <span id="383">383</span>
 <span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -486,6 +488,18 @@
     <span class="ident">set_prgname</span>(<span class="ident">name</span>)
 }
 
+<span class="doccomment">/// Sets the name of the program. This name should not be localized,</span>
+<span class="doccomment">/// in contrast to [`set_application_name()`][crate::set_application_name()].</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you are using `GApplication` the program name is set in</span>
+<span class="doccomment">/// `g_application_run()`. In case of GDK or GTK+ it is set in</span>
+<span class="doccomment">/// `gdk_init()`, which is called by `gtk_init()` and the</span>
+<span class="doccomment">/// `GtkApplication::startup` handler. The program name is found by</span>
+<span class="doccomment">/// taking the last component of `argv`[0].</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that for thread-safety reasons this function can only be called once.</span>
+<span class="doccomment">/// ## `prgname`</span>
+<span class="doccomment">/// the name of the program.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_set_prgname&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_prgname</span>(<span class="ident">name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>) {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_set_prgname</span>(<span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
@@ -501,6 +515,36 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_getenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Sets an environment variable. On UNIX, both the variable&#39;s name and</span>
+<span class="doccomment">/// value can be arbitrary byte strings, except that the variable&#39;s name</span>
+<span class="doccomment">/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the memory</span>
+<span class="doccomment">/// used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls `g_setenv()` while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.)</span>
+<span class="doccomment">/// This function is only safe to use at the very start of your program,</span>
+<span class="doccomment">/// before creating any other threads (or creating objects that create</span>
+<span class="doccomment">/// worker threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to set, must not</span>
+<span class="doccomment">///  contain &#39;=&#39;.</span>
+<span class="doccomment">/// ## `value`</span>
+<span class="doccomment">/// the value for to set the variable to.</span>
+<span class="doccomment">/// ## `overwrite`</span>
+<span class="doccomment">/// whether to change the variable if it already exists.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`false`] if the environment variable couldn&#39;t be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_setenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">variable_name</span>: <span class="ident">K</span>,
@@ -524,26 +568,6 @@
     }
 }
 
-<span class="doccomment">/// Removes an environment variable from the environment.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Note that on some systems, when variables are overwritten, the</span>
-<span class="doccomment">/// memory used for the previous variables and its value isn&#39;t reclaimed.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
-<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
-<span class="doccomment">/// calls `g_unsetenv()` while another thread is calling `getenv()`. (And note</span>
-<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.) This</span>
-<span class="doccomment">/// function is only safe to use at the very start of your program, before</span>
-<span class="doccomment">/// creating any other threads (or creating objects that create worker</span>
-<span class="doccomment">/// threads of their own).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
-<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
-<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
-<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
-<span class="doccomment">/// ## `variable`</span>
-<span class="doccomment">/// the environment variable to remove, must</span>
-<span class="doccomment">///  not contain &#39;=&#39;</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unsetenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsetenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -670,26 +694,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_tmp_dir</span>()) }
 }
 
-<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
-<span class="doccomment">/// on most UNIX-like systems.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
-<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
-<span class="doccomment">/// `g_mkstemp()` is slightly more flexible than `mkstemp()` in that the</span>
-<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
-<span class="doccomment">/// The X string will be modified to form the name of a file that</span>
-<span class="doccomment">/// didn&#39;t exist. The string should be in the GLib file name encoding.</span>
-<span class="doccomment">/// Most importantly, on Windows it should be in UTF-8.</span>
-<span class="doccomment">/// ## `tmpl`</span>
-<span class="doccomment">/// template filename</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A file handle (as from `open()`) to the file</span>
-<span class="doccomment">///  opened for reading and writing. The file is opened in binary</span>
-<span class="doccomment">///  mode on platforms where there is a difference. The file handle</span>
-<span class="doccomment">///  should be closed with `close()`. In case of errors, -1 is</span>
-<span class="doccomment">///  returned and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">tmpl</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
