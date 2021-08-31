@@ -1414,6 +1414,21 @@
 <span id="1341">1341</span>
 <span id="1342">1342</span>
 <span id="1343">1343</span>
+<span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
+<span id="1350">1350</span>
+<span id="1351">1351</span>
+<span id="1352">1352</span>
+<span id="1353">1353</span>
+<span id="1354">1354</span>
+<span id="1355">1355</span>
+<span id="1356">1356</span>
+<span id="1357">1357</span>
+<span id="1358">1358</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `Value` binding and helper traits.</span>
@@ -1833,6 +1848,21 @@
     }
 
     <span class="doccomment">/// Tries to transform the value into a value of the target type</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate</span>
+    <span class="doccomment">/// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value</span>
+    <span class="doccomment">/// into a `G_TYPE_FLOAT` value. Performing transformations between</span>
+    <span class="doccomment">/// value types might incur precision lossage. Especially</span>
+    <span class="doccomment">/// transformations into strings might reveal seemingly arbitrary</span>
+    <span class="doccomment">/// results and shouldn&#39;t be relied upon for production code (such</span>
+    <span class="doccomment">/// as rcfile value or object property serialization).</span>
+    <span class="doccomment">/// ## `dest_value`</span>
+    <span class="doccomment">/// Target value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Whether a transformation rule was found and could be applied.</span>
+    <span class="doccomment">///  Upon failing transformations, `dest_value` is left untouched.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_transform&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ValueType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
