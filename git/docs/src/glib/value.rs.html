@@ -1415,6 +1415,20 @@
 <span id="1342">1342</span>
 <span id="1343">1343</span>
 <span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
+<span id="1350">1350</span>
+<span id="1351">1351</span>
+<span id="1352">1352</span>
+<span id="1353">1353</span>
+<span id="1354">1354</span>
+<span id="1355">1355</span>
+<span id="1356">1356</span>
+<span id="1357">1357</span>
+<span id="1358">1358</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `Value` binding and helper traits.</span>
@@ -1809,6 +1823,20 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
+    <span class="doccomment">/// -in `err_no`.</span>
+    <span class="doccomment">/// For example, if you pass in `EEXIST` this function returns</span>
+    <span class="doccomment">/// `G_FILE_ERROR_EXIST`. Unlike `errno` values, you can portably</span>
+    <span class="doccomment">/// assume that all `GFileError` values will exist.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Normally a `GFileError` value goes into a [`Error`][crate::Error] returned</span>
+    <span class="doccomment">/// from a function that manipulates files. So you would use</span>
+    <span class="doccomment">/// `g_file_error_from_errno()` when constructing a [`Error`][crate::Error].</span>
+    <span class="doccomment">/// ## `err_no`</span>
+    <span class="doccomment">/// an &quot;errno&quot; value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `GFileError` corresponding to the given `errno`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
