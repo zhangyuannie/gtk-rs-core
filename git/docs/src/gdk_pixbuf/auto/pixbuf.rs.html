@@ -1511,9 +1511,9 @@
     <span class="doccomment">/// the stream contained invalid data, or the operation was cancelled.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;gdk_pixbuf_new_from_stream&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_stream&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_stream</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::InputStream</span><span class="op">&gt;</span>, <span class="ident">Q</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="ident">stream</span>: <span class="kw-2">&amp;</span><span class="ident">P</span>,
-        <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Q</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_stream</span>(
+        <span class="ident">stream</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::InputStream</span><span class="op">&gt;</span>,
+        <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Pixbuf</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
@@ -1570,12 +1570,12 @@
     <span class="doccomment">/// the stream contained invalid data, or the operation was cancelled.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;gdk_pixbuf_new_from_stream_at_scale&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_stream_at_scale&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_stream_at_scale</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::InputStream</span><span class="op">&gt;</span>, <span class="ident">Q</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="ident">stream</span>: <span class="kw-2">&amp;</span><span class="ident">P</span>,
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_stream_at_scale</span>(
+        <span class="ident">stream</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::InputStream</span><span class="op">&gt;</span>,
         <span class="ident">width</span>: <span class="ident">i32</span>,
         <span class="ident">height</span>: <span class="ident">i32</span>,
         <span class="ident">preserve_aspect_ratio</span>: <span class="ident">bool</span>,
-        <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Q</span><span class="op">&gt;</span>,
+        <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">gio::Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Pixbuf</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
@@ -2223,7 +2223,7 @@
     }
 
     <span class="comment">//#[doc(alias = &quot;gdk_pixbuf_save&quot;)]</span>
-    <span class="comment">//pub fn save&lt;P: AsRef&lt;std::path::Path&gt;&gt;(&amp;self, filename: P, type_: &amp;str, error: Option&lt;&amp;mut glib::Error&gt;, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool {</span>
+    <span class="comment">//pub fn save(&amp;self, filename: impl AsRef&lt;std::path::Path&gt;, type_: &amp;str, error: Option&lt;&amp;mut glib::Error&gt;, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool {</span>
     <span class="comment">//    unsafe { TODO: call ffi:gdk_pixbuf_save() }</span>
     <span class="comment">//}</span>
 
@@ -2243,17 +2243,17 @@
     <span class="comment">//}</span>
 
     <span class="comment">//#[doc(alias = &quot;gdk_pixbuf_save_to_stream&quot;)]</span>
-    <span class="comment">//pub fn save_to_stream&lt;P: IsA&lt;gio::OutputStream&gt;, Q: IsA&lt;gio::Cancellable&gt;&gt;(&amp;self, stream: &amp;P, type_: &amp;str, cancellable: Option&lt;&amp;Q&gt;, error: Option&lt;&amp;mut glib::Error&gt;, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool {</span>
+    <span class="comment">//pub fn save_to_stream(&amp;self, stream: &amp;impl IsA&lt;gio::OutputStream&gt;, type_: &amp;str, cancellable: Option&lt;&amp;impl IsA&lt;gio::Cancellable&gt;&gt;, error: Option&lt;&amp;mut glib::Error&gt;, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool {</span>
     <span class="comment">//    unsafe { TODO: call ffi:gdk_pixbuf_save_to_stream() }</span>
     <span class="comment">//}</span>
 
     <span class="comment">//#[doc(alias = &quot;gdk_pixbuf_save_to_stream_async&quot;)]</span>
-    <span class="comment">//pub fn save_to_stream_async&lt;P: IsA&lt;gio::OutputStream&gt;, Q: IsA&lt;gio::Cancellable&gt;, R: FnOnce(Result&lt;(), glib::Error&gt;) + Send + &#39;static&gt;(&amp;self, stream: &amp;P, type_: &amp;str, cancellable: Option&lt;&amp;Q&gt;, callback: R, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) {</span>
+    <span class="comment">//pub fn save_to_stream_async&lt;P: FnOnce(Result&lt;(), glib::Error&gt;) + Send + &#39;static&gt;(&amp;self, stream: &amp;impl IsA&lt;gio::OutputStream&gt;, type_: &amp;str, cancellable: Option&lt;&amp;impl IsA&lt;gio::Cancellable&gt;&gt;, callback: P, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) {</span>
     <span class="comment">//    unsafe { TODO: call ffi:gdk_pixbuf_save_to_stream_async() }</span>
     <span class="comment">//}</span>
 
     <span class="comment">//</span>
-    <span class="comment">//pub fn save_to_stream_async_future&lt;P: IsA&lt;gio::OutputStream&gt; + Clone + &#39;static&gt;(&amp;self, stream: &amp;P, type_: &amp;str, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; Pin&lt;Box_&lt;dyn std::future::Future&lt;Output = Result&lt;(), glib::Error&gt;&gt; + &#39;static&gt;&gt; {</span>
+    <span class="comment">//pub fn save_to_stream_async_future(&amp;self, stream: &amp;(impl IsA&lt;gio::OutputStream&gt; + Clone + &#39;static), type_: &amp;str, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; Pin&lt;Box_&lt;dyn std::future::Future&lt;Output = Result&lt;(), glib::Error&gt;&gt; + &#39;static&gt;&gt; {</span>
 
     <span class="comment">//let stream = stream.clone();</span>
     <span class="comment">//let type_ = String::from(type_);</span>

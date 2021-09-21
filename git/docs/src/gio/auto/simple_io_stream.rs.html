@@ -180,9 +180,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// a new [`SimpleIOStream`][crate::SimpleIOStream] instance.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_simple_io_stream_new&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">InputStream</span><span class="op">&gt;</span>, <span class="ident">Q</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">OutputStream</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="ident">input_stream</span>: <span class="kw-2">&amp;</span><span class="ident">P</span>,
-        <span class="ident">output_stream</span>: <span class="kw-2">&amp;</span><span class="ident">Q</span>,
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">input_stream</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">InputStream</span><span class="op">&gt;</span>,
+        <span class="ident">output_stream</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">OutputStream</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SimpleIOStream</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">IOStream::from_glib_full</span>(<span class="ident">ffi::g_simple_io_stream_new</span>(
