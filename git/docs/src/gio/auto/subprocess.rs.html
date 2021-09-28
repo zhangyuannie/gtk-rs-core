@@ -1178,7 +1178,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This value has no particular meaning, but it can be used with the</span>
     <span class="doccomment">/// macros defined by the system headers such as WIFEXITED. It can also</span>
-    <span class="doccomment">/// be used with `g_spawn_check_exit_status()`.</span>
+    <span class="doccomment">/// be used with `g_spawn_check_wait_status()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It is more likely that you want to use [`has_exited()`][Self::has_exited()]</span>
     <span class="doccomment">/// followed by [`exit_status()`][Self::exit_status()].</span>
@@ -1380,7 +1380,7 @@
         ))
     }
 
-    <span class="doccomment">/// Combines [`wait()`][Self::wait()] with `g_spawn_check_exit_status()`.</span>
+    <span class="doccomment">/// Combines [`wait()`][Self::wait()] with `g_spawn_check_wait_status()`.</span>
     <span class="doccomment">/// ## `cancellable`</span>
     <span class="doccomment">/// a [`Cancellable`][crate::Cancellable]</span>
     <span class="doccomment">///</span>
@@ -1408,7 +1408,7 @@
         }
     }
 
-    <span class="doccomment">/// Combines [`wait_async()`][Self::wait_async()] with `g_spawn_check_exit_status()`.</span>
+    <span class="doccomment">/// Combines [`wait_async()`][Self::wait_async()] with `g_spawn_check_wait_status()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the asynchronous version of [`wait_check()`][Self::wait_check()].</span>
     <span class="doccomment">/// ## `cancellable`</span>

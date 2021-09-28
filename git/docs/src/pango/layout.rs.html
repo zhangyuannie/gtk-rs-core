@@ -168,7 +168,6 @@
 <span id="95">95</span>
 <span id="96">96</span>
 <span id="97">97</span>
-<span id="98">98</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
@@ -219,33 +218,32 @@
         <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">length</span> }
     }
 
-    <span class="doccomment">/// Converts from x offset to the byte index of the corresponding</span>
-    <span class="doccomment">/// character within the text of the layout. If `x_pos` is outside the line,</span>
-    <span class="doccomment">/// `index_` and `trailing` will point to the very first or very last position</span>
-    <span class="doccomment">/// in the line. This determination is based on the resolved direction</span>
-    <span class="doccomment">/// of the paragraph; for example, if the resolved direction is</span>
-    <span class="doccomment">/// right-to-left, then an X position to the right of the line (after it)</span>
+    <span class="doccomment">/// Converts from x offset to the byte index of the corresponding character</span>
+    <span class="doccomment">/// within the text of the layout.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `x_pos` is outside the line, `index_` and `trailing` will point to the very</span>
+    <span class="doccomment">/// first or very last position in the line. This determination is based on the</span>
+    <span class="doccomment">/// resolved direction of the paragraph; for example, if the resolved direction</span>
+    <span class="doccomment">/// is right-to-left, then an X position to the right of the line (after it)</span>
     <span class="doccomment">/// results in 0 being stored in `index_` and `trailing`. An X position to the</span>
-    <span class="doccomment">/// left of the line results in `index_` pointing to the (logical) last</span>
-    <span class="doccomment">/// grapheme in the line and `trailing` being set to the number of characters</span>
-    <span class="doccomment">/// in that grapheme. The reverse is true for a left-to-right line.</span>
+    <span class="doccomment">/// left of the line results in `index_` pointing to the (logical) last grapheme</span>
+    <span class="doccomment">/// in the line and `trailing` being set to the number of characters in that</span>
+    <span class="doccomment">/// grapheme. The reverse is true for a left-to-right line.</span>
     <span class="doccomment">/// ## `x_pos`</span>
-    <span class="doccomment">/// the X offset (in Pango units)</span>
-    <span class="doccomment">///  from the left edge of the line.</span>
+    <span class="doccomment">/// the X offset (in Pango units) from the left edge of the line.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`false`] if `x_pos` was outside the line, [`true`] if inside</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `index_`</span>
-    <span class="doccomment">/// location to store calculated byte index for</span>
-    <span class="doccomment">///  the grapheme in which the user clicked.</span>
+    <span class="doccomment">/// location to store calculated byte index for the grapheme</span>
+    <span class="doccomment">///  in which the user clicked</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `trailing`</span>
-    <span class="doccomment">/// location to store an integer indicating where</span>
-    <span class="doccomment">///  in the grapheme the user clicked. It will either</span>
-    <span class="doccomment">///  be zero, or the number of characters in the</span>
-    <span class="doccomment">///  grapheme. 0 represents the leading edge of the grapheme.</span>
+    <span class="doccomment">/// location to store an integer indicating where in the</span>
+    <span class="doccomment">///  grapheme the user clicked. It will either be zero, or the number of</span>
+    <span class="doccomment">///  characters in the grapheme. 0 represents the leading edge of the grapheme.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_line_x_to_index&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_to_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x_pos</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">HitPosition</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">index</span> <span class="op">=</span> <span class="number">0</span>;

@@ -1810,19 +1810,19 @@
     <span class="doccomment">/// concurrently accessed in any way from any number of threads without</span>
     <span class="doccomment">/// problems.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is heavily optimised for dealing with data in serialised</span>
+    <span class="doccomment">/// [`Variant`][crate::Variant] is heavily optimised for dealing with data in serialized</span>
     <span class="doccomment">/// form. It works particularly well with data located in memory-mapped</span>
-    <span class="doccomment">/// files. It can perform nearly all deserialisation operations in a</span>
+    <span class="doccomment">/// files. It can perform nearly all deserialization operations in a</span>
     <span class="doccomment">/// small constant time, usually touching only a single memory page.</span>
-    <span class="doccomment">/// Serialised [`Variant`][crate::Variant] data can also be sent over the network.</span>
+    <span class="doccomment">/// Serialized [`Variant`][crate::Variant] data can also be sent over the network.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] is largely compatible with D-Bus. Almost all types of</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] instances can be sent over D-Bus. See [`VariantType`][crate::VariantType] for</span>
-    <span class="doccomment">/// exceptions. (However, [`Variant`][crate::Variant]&#39;s serialisation format is not the same</span>
-    <span class="doccomment">/// as the serialisation format of a D-Bus message body: use `GDBusMessage`,</span>
+    <span class="doccomment">/// exceptions. (However, [`Variant`][crate::Variant]&#39;s serialization format is not the same</span>
+    <span class="doccomment">/// as the serialization format of a D-Bus message body: use `GDBusMessage`,</span>
     <span class="doccomment">/// in the gio library, for those.)</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For space-efficiency, the [`Variant`][crate::Variant] serialisation format does not</span>
+    <span class="doccomment">/// For space-efficiency, the [`Variant`][crate::Variant] serialization format does not</span>
     <span class="doccomment">/// automatically include the variant&#39;s length, type or endianness,</span>
     <span class="doccomment">/// which must either be implied from context (such as knowledge that a</span>
     <span class="doccomment">/// particular file format always contains a little-endian</span>
@@ -1852,14 +1852,14 @@
     <span class="doccomment">/// in the future.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The memory allocated by [`Variant`][crate::Variant] can be grouped into 4 broad</span>
-    <span class="doccomment">/// purposes: memory for serialised data, memory for the type</span>
+    <span class="doccomment">/// purposes: memory for serialized data, memory for the type</span>
     <span class="doccomment">/// information cache, buffer management memory and memory for the</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] structure itself.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// ## Serialised Data Memory</span>
+    <span class="doccomment">/// ## Serialized Data Memory</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the memory that is used for storing GVariant data in</span>
-    <span class="doccomment">/// serialised form. This is what would be sent over the network or</span>
+    <span class="doccomment">/// serialized form. This is what would be sent over the network or</span>
     <span class="doccomment">/// what would end up on disk, not counting any indicator of the</span>
     <span class="doccomment">/// endianness, or of the length or type of the top-level variant.</span>
     <span class="doccomment">///</span>
@@ -1893,7 +1893,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// As an example, consider a dictionary mapping strings to variants.</span>
     <span class="doccomment">/// In the case that the dictionary is empty, 0 bytes are required for</span>
-    <span class="doccomment">/// the serialisation.</span>
+    <span class="doccomment">/// the serialization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If we add an item &quot;width&quot; that maps to the int32 value of 500 then</span>
     <span class="doccomment">/// we will use 4 byte to store the int32 (so 6 for the variant</span>
@@ -1919,7 +1919,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// For each GVariant type that currently exists in the program a type</span>
     <span class="doccomment">/// information structure is kept in the type information cache. The</span>
-    <span class="doccomment">/// type information structure is required for rapid deserialisation.</span>
+    <span class="doccomment">/// type information structure is required for rapid deserialization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Continuing with the above example, if a [`Variant`][crate::Variant] exists with the</span>
     <span class="doccomment">/// type &quot;a{sv}&quot; then a type information struct will exist for</span>
@@ -1964,14 +1964,14 @@
     <span class="doccomment">/// ## Buffer Management Memory</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] uses an internal buffer management structure to deal</span>
-    <span class="doccomment">/// with the various different possible sources of serialised data</span>
+    <span class="doccomment">/// with the various different possible sources of serialized data</span>
     <span class="doccomment">/// that it uses. The buffer is responsible for ensuring that the</span>
     <span class="doccomment">/// correct call is made when the data is no longer in use by</span>
     <span class="doccomment">/// [`Variant`][crate::Variant]. This may involve a `g_free()` or a `g_slice_free()` or</span>
     <span class="doccomment">/// even `g_mapped_file_unref()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// One buffer management structure is used for each chunk of</span>
-    <span class="doccomment">/// serialised data. The size of the buffer management structure</span>
+    <span class="doccomment">/// serialized data. The size of the buffer management structure</span>
     <span class="doccomment">/// is 4 * (void *). On 32-bit systems, that&#39;s 16 bytes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## GVariant structure</span>
@@ -1981,7 +1981,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] structures only exist if they are explicitly created</span>
     <span class="doccomment">/// with API calls. For example, if a [`Variant`][crate::Variant] is constructed out of</span>
-    <span class="doccomment">/// serialised data for the example given above (with the dictionary)</span>
+    <span class="doccomment">/// serialized data for the example given above (with the dictionary)</span>
     <span class="doccomment">/// then although there are 9 individual values that comprise the</span>
     <span class="doccomment">/// entire dictionary (two keys, two values, two variants containing</span>
     <span class="doccomment">/// the values, two dictionary entries, plus the dictionary itself),</span>
@@ -1991,8 +1991,8 @@
     <span class="doccomment">/// If calls are made to start accessing the other values then</span>
     <span class="doccomment">/// [`Variant`][crate::Variant] instances will exist for those values only for as long</span>
     <span class="doccomment">/// as they are in use (ie: until you call `g_variant_unref()`). The</span>
-    <span class="doccomment">/// type information is shared. The serialised data and the buffer</span>
-    <span class="doccomment">/// management structure for that serialised data is shared by the</span>
+    <span class="doccomment">/// type information is shared. The serialized data and the buffer</span>
+    <span class="doccomment">/// management structure for that serialized data is shared by the</span>
     <span class="doccomment">/// child.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Summary</span>
@@ -2000,12 +2000,12 @@
     <span class="doccomment">/// To put the entire example together, for our dictionary mapping</span>
     <span class="doccomment">/// strings to variants (with two entries, as given above), we are</span>
     <span class="doccomment">/// using 91 bytes of memory for type information, 29 bytes of memory</span>
-    <span class="doccomment">/// for the serialised data, 16 bytes for buffer management and 24</span>
+    <span class="doccomment">/// for the serialized data, 16 bytes for buffer management and 24</span>
     <span class="doccomment">/// bytes for the [`Variant`][crate::Variant] instance, or a total of 160 bytes, plus</span>
     <span class="doccomment">/// malloc overhead. If we were to use [`child_value()`][Self::child_value()] to</span>
     <span class="doccomment">/// access the two dictionary entries, we would use an additional 48</span>
     <span class="doccomment">/// bytes. If we were to have other dictionaries of the same type, we</span>
-    <span class="doccomment">/// would use more memory for the serialised data and buffer</span>
+    <span class="doccomment">/// would use more memory for the serialized data and buffer</span>
     <span class="doccomment">/// management for those dictionaries, but the type information would</span>
     <span class="doccomment">/// be shared.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GVariant&quot;</span>)]</span>
@@ -2191,7 +2191,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that values borrowed from the returned child are not guaranteed to</span>
     <span class="doccomment">/// still be valid after the child is freed even if you still hold a reference</span>
-    <span class="doccomment">/// to `self`, if `self` has not been serialised at the time this function is</span>
+    <span class="doccomment">/// to `self`, if `self` has not been serialized at the time this function is</span>
     <span class="doccomment">/// called. To avoid this, you can serialize `self` by calling</span>
     <span class="doccomment">/// [`data()`][Self::data()] and optionally ignoring the return value.</span>
     <span class="doccomment">///</span>
@@ -2351,8 +2351,8 @@
 
     <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Constructs a new serialised-mode [`Variant`][crate::Variant] instance. This is the</span>
-    <span class="doccomment">/// inner interface for creation of new serialised values that gets</span>
+    <span class="doccomment">/// Constructs a new serialized-mode [`Variant`][crate::Variant] instance. This is the</span>
+    <span class="doccomment">/// inner interface for creation of new serialized values that gets</span>
     <span class="doccomment">/// called from various functions in gvariant.c.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A reference is taken on `bytes`.</span>
@@ -2403,7 +2403,7 @@
 
     <span class="doccomment">/// Returns the serialised form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Returns a pointer to the serialised form of a [`Variant`][crate::Variant] instance.</span>
+    <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][crate::Variant] instance.</span>
     <span class="doccomment">/// The semantics of this function are exactly the same as</span>
     <span class="doccomment">/// [`data()`][Self::data()], except that the returned [`Bytes`][crate::Bytes] holds</span>
     <span class="doccomment">/// a reference to the variant data.</span>
@@ -2433,7 +2433,7 @@
     <span class="doccomment">/// [`Variant`][crate::Variant] is created with the same value as `self`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It makes sense to call this function if you&#39;ve received [`Variant`][crate::Variant]</span>
-    <span class="doccomment">/// data from untrusted sources and you want to ensure your serialised</span>
+    <span class="doccomment">/// data from untrusted sources and you want to ensure your serialized</span>
     <span class="doccomment">/// output is definitely in normal form.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `self` is already in normal form, a new reference will be returned</span>

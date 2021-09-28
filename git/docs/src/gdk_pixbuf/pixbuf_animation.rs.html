@@ -149,6 +149,7 @@
 <span id="76">76</span>
 <span id="77">77</span>
 <span id="78">78</span>
+<span id="79">79</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::PixbufAnimation</span>;
@@ -160,9 +161,10 @@
 <span class="kw">use</span> <span class="ident">std::time::SystemTime</span>;
 
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">PixbufAnimationExtManual</span> {
-    <span class="doccomment">/// Get an iterator for displaying an animation. The iterator provides</span>
-    <span class="doccomment">/// the frames that should be displayed at a given time. It should be</span>
-    <span class="doccomment">/// freed after use with `g_object_unref()`.</span>
+    <span class="doccomment">/// Get an iterator for displaying an animation.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The iterator provides the frames that should be displayed at a</span>
+    <span class="doccomment">/// given time.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `start_time` would normally come from `g_get_current_time()`, and marks</span>
     <span class="doccomment">/// the beginning of animation playback. After creating an iterator, you</span>
@@ -174,7 +176,7 @@
     <span class="doccomment">/// the image is updated, you should reinstall the timeout with the new,</span>
     <span class="doccomment">/// possibly-changed delay time.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// As a shortcut, if `start_time` is [`None`], the result of</span>
+    <span class="doccomment">/// As a shortcut, if `start_time` is `NULL`, the result of</span>
     <span class="doccomment">/// `g_get_current_time()` will be used automatically.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// To update the image (i.e. possibly change the result of</span>
@@ -185,14 +187,14 @@
     <span class="doccomment">/// after the delay time, you should also update it whenever you</span>
     <span class="doccomment">/// receive the area_updated signal and</span>
     <span class="doccomment">/// [`PixbufAnimationIterExtManual::on_currently_loading_frame()`][crate::prelude::PixbufAnimationIterExtManual::on_currently_loading_frame()] returns</span>
-    <span class="doccomment">/// [`true`]. In this case, the frame currently being fed into the loader</span>
+    <span class="doccomment">/// `TRUE`. In this case, the frame currently being fed into the loader</span>
     <span class="doccomment">/// has received new data, so needs to be refreshed. The delay time for</span>
     <span class="doccomment">/// a frame may also be modified after an area_updated signal, for</span>
     <span class="doccomment">/// example if the delay time for a frame is encoded in the data after</span>
     <span class="doccomment">/// the frame itself. So your timeout should be reinstalled after any</span>
     <span class="doccomment">/// area_updated signal.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A delay time of -1 is possible, indicating &quot;infinite.&quot;</span>
+    <span class="doccomment">/// A delay time of -1 is possible, indicating &quot;infinite&quot;.</span>
     <span class="doccomment">/// ## `start_time`</span>
     <span class="doccomment">/// time when the animation starts playing</span>
     <span class="doccomment">///</span>

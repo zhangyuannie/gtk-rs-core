@@ -643,6 +643,9 @@
 <span id="570">570</span>
 <span id="571">571</span>
 <span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ActionGroup</span>;
@@ -1202,6 +1205,9 @@
     <span class="doccomment">/// [`signal_subscribe()`][Self::signal_subscribe()] is called, in order to avoid memory</span>
     <span class="doccomment">/// leaks through callbacks queued on the [`glib::MainContext`][crate::glib::MainContext] after it’s stopped being</span>
     <span class="doccomment">/// iterated.</span>
+    <span class="doccomment">/// Alternatively, any idle source with a priority lower than `G_PRIORITY_DEFAULT`</span>
+    <span class="doccomment">/// that was scheduled after unsubscription, also indicates that all resources</span>
+    <span class="doccomment">/// of this subscription are released.</span>
     <span class="doccomment">/// ## `subscription_id`</span>
     <span class="doccomment">/// a subscription id obtained from</span>
     <span class="doccomment">///  [`signal_subscribe()`][Self::signal_subscribe()]</span>

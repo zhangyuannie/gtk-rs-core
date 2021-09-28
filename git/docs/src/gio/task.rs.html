@@ -594,9 +594,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Although GLib currently rate-limits the tasks queued via</span>
     <span class="doccomment">/// [`run_in_thread()`][Self::run_in_thread()], you should not assume that it will always</span>
-    <span class="doccomment">/// do this. If you have a very large number of tasks to run, but don&#39;t</span>
-    <span class="doccomment">/// want them to all run at once, you should only queue a limited</span>
-    <span class="doccomment">/// number of them at a time.</span>
+    <span class="doccomment">/// do this. If you have a very large number of tasks to run (several tens of</span>
+    <span class="doccomment">/// tasks), but don&#39;t want them to all run at once, you should only queue a</span>
+    <span class="doccomment">/// limited number of them (around ten) at a time.</span>
     <span class="doccomment">/// ## `task_func`</span>
     <span class="doccomment">/// a `GTaskThreadFunc`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_task_run_in_thread&quot;</span>)]</span>

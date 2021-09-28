@@ -1392,7 +1392,7 @@
     <span class="doccomment">/// Note that there is no `g_uri_equal ()` function, because comparing</span>
     <span class="doccomment">/// URIs usefully requires scheme-specific knowledge that [`Uri`][crate::Uri] does</span>
     <span class="doccomment">/// not have. [`Uri`][crate::Uri] can help with normalization if you use the various</span>
-    <span class="doccomment">/// encoded [`UriFlags`][crate::UriFlags] as well as `G_URI_FLAGS_SCHEME_NORMALIZE` however</span>
+    <span class="doccomment">/// encoded [`UriFlags`][crate::UriFlags] as well as [`UriFlags::SCHEME_NORMALIZE`][crate::UriFlags::SCHEME_NORMALIZE] however</span>
     <span class="doccomment">/// it is not comprehensive.</span>
     <span class="doccomment">/// For example, `data:,foo` and `data:;base64,Zm9v` resolve to the same</span>
     <span class="doccomment">/// thing according to the `data:` URI specification which GLib does not</span>

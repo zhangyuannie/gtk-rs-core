@@ -137,6 +137,7 @@
 <span id="64">64</span>
 <span id="65">65</span>
 <span id="66">66</span>
+<span id="67">67</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::AttrType</span>;
@@ -184,9 +185,10 @@
 }
 
 <span class="doccomment">/// The [`AttrClass`][crate::AttrClass] structure stores the type and operations for</span>
-<span class="doccomment">/// a particular type of attribute. The functions in this structure should</span>
-<span class="doccomment">/// not be called directly. Instead, one should use the wrapper functions</span>
-<span class="doccomment">/// provided for [`Attribute`][crate::Attribute].</span>
+<span class="doccomment">/// a particular type of attribute.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The functions in this structure should not be called directly. Instead,</span>
+<span class="doccomment">/// one should use the wrapper functions provided for [`Attribute`][crate::Attribute].</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoAttrClass&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">AttrClass</span>(<span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::PangoAttrClass</span>);
 

@@ -337,6 +337,7 @@
 <span id="264">264</span>
 <span id="265">265</span>
 <span id="266">266</span>
+<span id="267">267</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::prelude</span>::<span class="kw-2">*</span>;
@@ -404,9 +405,6 @@
     <span class="doccomment">/// if `cancellable` has already been cancelled when you call, which</span>
     <span class="doccomment">/// may happen if you call this method after a source triggers due</span>
     <span class="doccomment">/// to having been cancelled.</span>
-    <span class="doccomment">/// ## `buffer`</span>
-    <span class="doccomment">/// a buffer to</span>
-    <span class="doccomment">///  read data into (which should be at least `count` bytes long).</span>
     <span class="doccomment">/// ## `cancellable`</span>
     <span class="doccomment">/// a [`Cancellable`][crate::Cancellable], or [`None`]</span>
     <span class="doccomment">///</span>
@@ -414,6 +412,10 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// the number of bytes read, or -1 on error (including</span>
     <span class="doccomment">///  [`IOErrorEnum::WouldBlock`][crate::IOErrorEnum::WouldBlock]).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `buffer`</span>
+    <span class="doccomment">/// a</span>
+    <span class="doccomment">///  buffer to read data into (which should be at least `count` bytes long).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_pollable_input_stream_read_nonblocking&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">read_nonblocking</span><span class="op">&lt;</span><span class="ident">C</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,

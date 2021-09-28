@@ -108,7 +108,7 @@ commandline then you should implement your own <a href="../struct.Application.ht
 and override <code>local_command_line()</code>. In this case, you most likely want
 to return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> from your <code>local_command_line()</code> implementation to
 suppress the default handling. See
-[gapplication-example-cmdline2.c][gapplication-example-cmdline2]
+[gapplication-example-cmdline2.c][https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline2.c]
 for an example.</p>
 <p>If, after the above is done, the use count of the application is zero
 then the exit status is returned immediately. If the use count is

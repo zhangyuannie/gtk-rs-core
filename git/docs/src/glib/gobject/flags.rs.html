@@ -137,13 +137,17 @@
 <span id="64">64</span>
 <span id="65">65</span>
 <span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 
 <span class="macro">bitflags::bitflags!</span> {
     <span class="doccomment">/// Through the [`ParamFlags`][crate::ParamFlags] flag values, certain aspects of parameters</span>
-    <span class="doccomment">/// can be configured. See also `G_PARAM_STATIC_STRINGS`.</span>
+    <span class="doccomment">/// can be configured.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// See also: `G_PARAM_STATIC_STRINGS`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GParamFlags&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ParamFlags</span>: <span class="ident">u32</span> {
         <span class="doccomment">/// the parameter is readable</span>
