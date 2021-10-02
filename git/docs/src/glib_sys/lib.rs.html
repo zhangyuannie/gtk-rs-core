@@ -7988,7 +7988,7 @@
 
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">GMutex</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">GMutex</span> {
     <span class="kw">pub</span> <span class="ident">p</span>: <span class="ident">gpointer</span>,
     <span class="kw">pub</span> <span class="ident">i</span>: [<span class="ident">c_uint</span>; <span class="number">2</span>],
 }
@@ -8001,7 +8001,7 @@
 
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">GTokenValue</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">GTokenValue</span> {
     <span class="kw">pub</span> <span class="ident">v_symbol</span>: <span class="ident">gpointer</span>,
     <span class="kw">pub</span> <span class="ident">v_identifier</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
     <span class="kw">pub</span> <span class="ident">v_binary</span>: <span class="ident">c_ulong</span>,
@@ -8037,7 +8037,7 @@
 
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">GVariantBuilder_u</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">GVariantBuilder_u</span> {
     <span class="kw">pub</span> <span class="ident">s</span>: <span class="ident">GVariantBuilder_u_s</span>,
     <span class="kw">pub</span> <span class="ident">x</span>: [<span class="ident">size_t</span>; <span class="number">16</span>],
 }
@@ -8053,7 +8053,7 @@
 
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="ident">union</span> <span class="ident">GVariantDict_u</span> {
+<span class="kw">pub</span> <span class="kw">union</span> <span class="ident">GVariantDict_u</span> {
     <span class="kw">pub</span> <span class="ident">s</span>: <span class="ident">GVariantDict_u_s</span>,
     <span class="kw">pub</span> <span class="ident">x</span>: [<span class="ident">size_t</span>; <span class="number">16</span>],
 }

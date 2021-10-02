@@ -1705,9 +1705,9 @@
 <span class="doccomment">//! assert_eq!(variant.child_value(1).str(), Some(&quot;there!&quot;));</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! // You can also convert from and to a Vec</span>
-<span class="doccomment">//! let array = vec![&quot;Hello&quot;, &quot;there!&quot;].to_variant();</span>
+<span class="doccomment">//! let variant = vec![&quot;Hello&quot;, &quot;there!&quot;].to_variant();</span>
 <span class="doccomment">//! assert_eq!(variant.n_children(), 2);</span>
-<span class="doccomment">//! let vec = &lt;Vec&lt;String&gt;&gt;::from_variant(&amp;array).unwrap();</span>
+<span class="doccomment">//! let vec = &lt;Vec&lt;String&gt;&gt;::from_variant(&amp;variant).unwrap();</span>
 <span class="doccomment">//! assert_eq!(vec[0], &quot;Hello&quot;);</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! // Conversion to and from HashMap is also possible</span>
