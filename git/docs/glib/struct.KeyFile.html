@@ -77,7 +77,7 @@ and should not be accessed directly.</p>
 <a href="struct.KeyFile.html#method.load_from_file" title="Self::load_from_file()"><code>load_from_file()</code></a>, <a href="struct.KeyFile.html#method.load_from_data" title="Self::load_from_data()"><code>load_from_data()</code></a>,
 <a href="struct.KeyFile.html#method.load_from_dirs" title="Self::load_from_dirs()"><code>load_from_dirs()</code></a> or <a href="struct.KeyFile.html#method.load_from_data_dirs" title="Self::load_from_data_dirs()"><code>load_from_data_dirs()</code></a> to
 read an existing key file.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>an empty <a href="struct.KeyFile.html" title="crate::KeyFile"><code>KeyFile</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.comment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#59-78" title="goto source code">[src]</a></div><a href="#method.comment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.comment" class="fnname">comment</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Retrieves a comment above <code>key</code> from <code>group_name</code>.
 If <code>key</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> then <code>comment</code> will be read from above
@@ -86,11 +86,11 @@ If <code>key</code> is <a href="https://doc.rust-lang.org/nightly/core/option/en
 <p>Note that the returned string does not include the ‘#’ comment markers,
 but does include any whitespace after them (on each line). It includes
 the line breaks between lines, but does not include the final line break.</p>
-<h2 id="group_name" class="section-header"><a href="#group_name"><code>group_name</code></a></h2>
+<h6 id="group_name" class="section-header"><a href="#group_name"><code>group_name</code></a></h6>
 <p>a group name, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="key" class="section-header"><a href="#key"><code>key</code></a></h2>
+<h6 id="key" class="section-header"><a href="#key"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>a comment that should be freed with <code>g_free()</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.double" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#98-113" title="goto source code">[src]</a></div><a href="#method.double" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.double" class="fnname">double</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code> as a
 double. If <code>group_name</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the start_group is used.</p>
@@ -98,11 +98,11 @@ double. If <code>group_name</code> is <a href="https://doc.rust-lang.org/nightly
 <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. Likewise, if the value associated
 with <code>key</code> cannot be interpreted as a double then 0.0 is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-1" class="section-header"><a href="#group_name-1"><code>group_name</code></a></h2>
+<h6 id="group_name-1" class="section-header"><a href="#group_name-1"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-1" class="section-header"><a href="#key-1"><code>key</code></a></h2>
+<h6 id="key-1" class="section-header"><a href="#key-1"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the value associated with the key as a double, or
 0.0 if the key was not found or could not be parsed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.double_list" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#135-155" title="goto source code">[src]</a></div><a href="#method.double_list" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.double_list" class="fnname">double_list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the values associated with <code>key</code> under <code>group_name</code> as
@@ -111,30 +111,30 @@ doubles.</p>
 <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. Likewise, if the values associated
 with <code>key</code> cannot be interpreted as doubles then <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-2" class="section-header"><a href="#group_name-2"><code>group_name</code></a></h2>
+<h6 id="group_name-2" class="section-header"><a href="#group_name-2"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-2" class="section-header"><a href="#key-2"><code>key</code></a></h2>
+<h6 id="key-2" class="section-header"><a href="#key-2"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>the values associated with the key as a list of doubles, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the
 key was not found or could not be parsed. The returned list of doubles
 should be freed with <code>g_free()</code> when no longer needed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.groups" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#170-180" title="goto source code">[src]</a></div><a href="#method.groups" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.groups" class="fnname">groups</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Returns all groups in the key file loaded with <code>self</code>.
 The array of returned groups will be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated, so
 <code>length</code> may optionally be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>a newly-allocated <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated array of strings.
 Use <code>g_strfreev()</code> to free it.</p>
-<h2 id="length" class="section-header"><a href="#length"><code>length</code></a></h2>
+<h6 id="length" class="section-header"><a href="#length"><code>length</code></a></h6>
 <p>return location for the number of returned groups, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.int64" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#196-211" title="goto source code">[src]</a></div><a href="#method.int64" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.int64" class="fnname">int64</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code> as a signed
 64-bit integer. This is similar to <a href="struct.KeyFile.html#method.integer" title="Self::integer()"><code>integer()</code></a> but can return
 64-bit results without truncation.</p>
-<h2 id="group_name-3" class="section-header"><a href="#group_name-3"><code>group_name</code></a></h2>
+<h6 id="group_name-3" class="section-header"><a href="#group_name-3"><code>group_name</code></a></h6>
 <p>a non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> group name</p>
-<h2 id="key-3" class="section-header"><a href="#key-3"><code>key</code></a></h2>
+<h6 id="key-3" class="section-header"><a href="#key-3"><code>key</code></a></h6>
 <p>a non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> key</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p>the value associated with the key as a signed 64-bit integer, or
 0 if the key was not found or could not be parsed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.integer" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#232-247" title="goto source code">[src]</a></div><a href="#method.integer" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.integer" class="fnname">integer</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code> as an
@@ -144,11 +144,11 @@ integer.</p>
 with <code>key</code> cannot be interpreted as an integer, or is out of range
 for a <code>gint</code>, then 0 is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-4" class="section-header"><a href="#group_name-4"><code>group_name</code></a></h2>
+<h6 id="group_name-4" class="section-header"><a href="#group_name-4"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-4" class="section-header"><a href="#key-4"><code>key</code></a></h2>
+<h6 id="key-4" class="section-header"><a href="#key-4"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
 <p>the value associated with the key as an integer, or
 0 if the key was not found or could not be parsed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.integer_list" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#270-290" title="goto source code">[src]</a></div><a href="#method.integer_list" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.integer_list" class="fnname">integer_list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the values associated with <code>key</code> under <code>group_name</code> as
@@ -158,11 +158,11 @@ integers.</p>
 with <code>key</code> cannot be interpreted as integers, or are out of range for
 <code>gint</code>, then <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-5" class="section-header"><a href="#group_name-5"><code>group_name</code></a></h2>
+<h6 id="group_name-5" class="section-header"><a href="#group_name-5"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-5" class="section-header"><a href="#key-5"><code>key</code></a></h2>
+<h6 id="key-5" class="section-header"><a href="#key-5"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
 <p>the values associated with the key as a list of integers, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if
 the key was not found or could not be parsed. The returned list of
 integers should be freed with <code>g_free()</code> when no longer needed.</p>
@@ -171,12 +171,12 @@ returned keys will be <a href="https://doc.rust-lang.org/nightly/core/option/enu
 optionally be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>. In the event that the <code>group_name</code> cannot
 be found, <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned and <code>error</code> is set to
 <a href="enum.KeyFileError.html#variant.GroupNotFound" title="crate::KeyFileError::GroupNotFound"><code>KeyFileError::GroupNotFound</code></a>.</p>
-<h2 id="group_name-6" class="section-header"><a href="#group_name-6"><code>group_name</code></a></h2>
+<h6 id="group_name-6" class="section-header"><a href="#group_name-6"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
 <p>a newly-allocated <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated array of strings.
 Use <code>g_strfreev()</code> to free it.</p>
-<h2 id="length-1" class="section-header"><a href="#length-1"><code>length</code></a></h2>
+<h6 id="length-1" class="section-header"><a href="#length-1"><code>length</code></a></h6>
 <p>return location for the number of keys returned, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.locale_for_key" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#352-366" title="goto source code">[src]</a></div><a href="#method.locale_for_key" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.locale_for_key" class="fnname">locale_for_key</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;locale: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_56</code></strong> only.</div></div></summary><div class="docblock"><p>Returns the actual locale which the result of
 <a href="struct.KeyFile.html#method.locale_string" title="Self::locale_string()"><code>locale_string()</code></a> or <a href="struct.KeyFile.html#method.locale_string_list" title="Self::locale_string_list()"><code>locale_string_list()</code></a>
@@ -186,26 +186,26 @@ came from.</p>
 <code>group_name</code>, <code>key</code> and <code>locale</code>, the result of those functions will
 have originally been tagged with the locale that is the result of
 this function.</p>
-<h2 id="group_name-7" class="section-header"><a href="#group_name-7"><code>group_name</code></a></h2>
+<h6 id="group_name-7" class="section-header"><a href="#group_name-7"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-6" class="section-header"><a href="#key-6"><code>key</code></a></h2>
+<h6 id="key-6" class="section-header"><a href="#key-6"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="locale" class="section-header"><a href="#locale"><code>locale</code></a></h2>
+<h6 id="locale" class="section-header"><a href="#locale"><code>locale</code></a></h6>
 <p>a locale identifier or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
+<h5 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h5>
 <p>the locale from the file, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the key was not
 found or the entry in the file was was untranslated</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.start_group" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#375-377" title="goto source code">[src]</a></div><a href="#method.start_group" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.start_group" class="fnname">start_group</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the name of the start group of the file.</p>
-<h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
+<h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
 <p>The start group of the key file.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.uint64" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#393-408" title="goto source code">[src]</a></div><a href="#method.uint64" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.uint64" class="fnname">uint64</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code> as an unsigned
 64-bit integer. This is similar to <a href="struct.KeyFile.html#method.integer" title="Self::integer()"><code>integer()</code></a> but can return
 large positive results without truncation.</p>
-<h2 id="group_name-8" class="section-header"><a href="#group_name-8"><code>group_name</code></a></h2>
+<h6 id="group_name-8" class="section-header"><a href="#group_name-8"><code>group_name</code></a></h6>
 <p>a non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> group name</p>
-<h2 id="key-7" class="section-header"><a href="#key-7"><code>key</code></a></h2>
+<h6 id="key-7" class="section-header"><a href="#key-7"><code>key</code></a></h6>
 <p>a non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> key</p>
-<h1 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h1>
+<h5 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h5>
 <p>the value associated with the key as an unsigned 64-bit integer,
 or 0 if the key was not found or could not be parsed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.value" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#428-443" title="goto source code">[src]</a></div><a href="#method.value" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.value" class="fnname">value</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the raw value associated with <code>key</code> under <code>group_name</code>.
@@ -214,36 +214,36 @@ Use <a href="struct.KeyFile.html#method.string" title="Self::string()"><code>str
 <code>error</code> is set to <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. In the
 event that the <code>group_name</code> cannot be found, <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.GroupNotFound" title="crate::KeyFileError::GroupNotFound"><code>KeyFileError::GroupNotFound</code></a>.</p>
-<h2 id="group_name-9" class="section-header"><a href="#group_name-9"><code>group_name</code></a></h2>
+<h6 id="group_name-9" class="section-header"><a href="#group_name-9"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-8" class="section-header"><a href="#key-8"><code>key</code></a></h2>
+<h6 id="key-8" class="section-header"><a href="#key-8"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h1>
+<h5 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h5>
 <p>a newly allocated string or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the specified
 key cannot be found.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.has_group" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#454-461" title="goto source code">[src]</a></div><a href="#method.has_group" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.has_group" class="fnname">has_group</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Looks whether the key file has the group <code>group_name</code>.</p>
-<h2 id="group_name-10" class="section-header"><a href="#group_name-10"><code>group_name</code></a></h2>
+<h6 id="group_name-10" class="section-header"><a href="#group_name-10"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h1 id="returns-13" class="section-header"><a href="#returns-13">Returns</a></h1>
+<h5 id="returns-13" class="section-header"><a href="#returns-13">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>group_name</code> is a part of <code>self</code>, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>
 otherwise.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load_from_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#476-491" title="goto source code">[src]</a></div><a href="#method.load_from_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load_from_bytes" class="fnname">load_from_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;bytes: &amp;<a class="struct" href="struct.Bytes.html" title="struct glib::Bytes">Bytes</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.KeyFileFlags.html" title="struct glib::KeyFileFlags">KeyFileFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_50</code></strong> only.</div></div></summary><div class="docblock"><p>Loads a key file from the data in <code>bytes</code> into an empty <a href="struct.KeyFile.html" title="crate::KeyFile"><code>KeyFile</code></a> structure.
 If the object cannot be created then <code>error</code> is set to a <a href="enum.KeyFileError.html" title="crate::KeyFileError"><code>KeyFileError</code></a>.</p>
-<h2 id="bytes" class="section-header"><a href="#bytes"><code>bytes</code></a></h2>
+<h6 id="bytes" class="section-header"><a href="#bytes"><code>bytes</code></a></h6>
 <p>a <a href="struct.Bytes.html" title="crate::Bytes"><code>Bytes</code></a></p>
-<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<h6 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h6>
 <p>flags from <a href="struct.KeyFileFlags.html" title="crate::KeyFileFlags"><code>KeyFileFlags</code></a></p>
-<h1 id="returns-14" class="section-header"><a href="#returns-14">Returns</a></h1>
+<h5 id="returns-14" class="section-header"><a href="#returns-14">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a key file could be loaded, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load_from_data" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#506-523" title="goto source code">[src]</a></div><a href="#method.load_from_data" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load_from_data" class="fnname">load_from_data</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.KeyFileFlags.html" title="struct glib::KeyFileFlags">KeyFileFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Loads a key file from memory into an empty <a href="struct.KeyFile.html" title="crate::KeyFile"><code>KeyFile</code></a> structure.
 If the object cannot be created then <code>error</code> is set to a <a href="enum.KeyFileError.html" title="crate::KeyFileError"><code>KeyFileError</code></a>.</p>
-<h2 id="data" class="section-header"><a href="#data"><code>data</code></a></h2>
+<h6 id="data" class="section-header"><a href="#data"><code>data</code></a></h6>
 <p>key file loaded in memory</p>
-<h2 id="length-2" class="section-header"><a href="#length-2"><code>length</code></a></h2>
+<h6 id="length-2" class="section-header"><a href="#length-2"><code>length</code></a></h6>
 <p>the length of <code>data</code> in bytes (or (gsize)-1 if data is nul-terminated)</p>
-<h2 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h2>
+<h6 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h6>
 <p>flags from <a href="struct.KeyFileFlags.html" title="crate::KeyFileFlags"><code>KeyFileFlags</code></a></p>
-<h1 id="returns-15" class="section-header"><a href="#returns-15">Returns</a></h1>
+<h5 id="returns-15" class="section-header"><a href="#returns-15">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a key file could be loaded, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load_from_file" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#542-561" title="goto source code">[src]</a></div><a href="#method.load_from_file" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load_from_file" class="fnname">load_from_file</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;file: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.KeyFileFlags.html" title="struct glib::KeyFileFlags">KeyFileFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Loads a key file into an empty <a href="struct.KeyFile.html" title="crate::KeyFile"><code>KeyFile</code></a> structure.</p>
 <p>If the OS returns an error when opening or reading the file, a
@@ -251,42 +251,42 @@ If the object cannot be created then <code>error</code> is set to a <a href="enu
 <code>G_KEY_FILE_ERROR</code> is returned.</p>
 <p>This function will never return a <a href="enum.KeyFileError.html#variant.NotFound" title="crate::KeyFileError::NotFound"><code>KeyFileError::NotFound</code></a> error. If the
 <code>file</code> is not found, <code>G_FILE_ERROR_NOENT</code> is returned.</p>
-<h2 id="file" class="section-header"><a href="#file"><code>file</code></a></h2>
+<h6 id="file" class="section-header"><a href="#file"><code>file</code></a></h6>
 <p>the path of a filename to load, in the GLib filename encoding</p>
-<h2 id="flags-2" class="section-header"><a href="#flags-2"><code>flags</code></a></h2>
+<h6 id="flags-2" class="section-header"><a href="#flags-2"><code>flags</code></a></h6>
 <p>flags from <a href="struct.KeyFileFlags.html" title="crate::KeyFileFlags"><code>KeyFileFlags</code></a></p>
-<h1 id="returns-16" class="section-header"><a href="#returns-16">Returns</a></h1>
+<h5 id="returns-16" class="section-header"><a href="#returns-16">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a key file could be loaded, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.remove_comment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#576-595" title="goto source code">[src]</a></div><a href="#method.remove_comment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.remove_comment" class="fnname">remove_comment</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Removes a comment above <code>key</code> from <code>group_name</code>.
 If <code>key</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> then <code>comment</code> will be removed above <code>group_name</code>.
 If both <code>key</code> and <code>group_name</code> are <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, then <code>comment</code> will
 be removed above the first group in the file.</p>
-<h2 id="group_name-11" class="section-header"><a href="#group_name-11"><code>group_name</code></a></h2>
+<h6 id="group_name-11" class="section-header"><a href="#group_name-11"><code>group_name</code></a></h6>
 <p>a group name, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="key-9" class="section-header"><a href="#key-9"><code>key</code></a></h2>
+<h6 id="key-9" class="section-header"><a href="#key-9"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-17" class="section-header"><a href="#returns-17">Returns</a></h1>
+<h5 id="returns-17" class="section-header"><a href="#returns-17">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the comment was removed, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.remove_group" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#606-620" title="goto source code">[src]</a></div><a href="#method.remove_group" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.remove_group" class="fnname">remove_group</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Removes the specified group, <code>group_name</code>,
 from the key file.</p>
-<h2 id="group_name-12" class="section-header"><a href="#group_name-12"><code>group_name</code></a></h2>
+<h6 id="group_name-12" class="section-header"><a href="#group_name-12"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h1 id="returns-18" class="section-header"><a href="#returns-18">Returns</a></h1>
+<h5 id="returns-18" class="section-header"><a href="#returns-18">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the group was removed, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.remove_key" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#632-647" title="goto source code">[src]</a></div><a href="#method.remove_key" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.remove_key" class="fnname">remove_key</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Removes <code>key</code> in <code>group_name</code> from the key file.</p>
-<h2 id="group_name-13" class="section-header"><a href="#group_name-13"><code>group_name</code></a></h2>
+<h6 id="group_name-13" class="section-header"><a href="#group_name-13"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-10" class="section-header"><a href="#key-10"><code>key</code></a></h2>
+<h6 id="key-10" class="section-header"><a href="#key-10"><code>key</code></a></h6>
 <p>a key name to remove</p>
-<h1 id="returns-19" class="section-header"><a href="#returns-19">Returns</a></h1>
+<h5 id="returns-19" class="section-header"><a href="#returns-19">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the key was removed, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_boolean" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#658-667" title="goto source code">[src]</a></div><a href="#method.set_boolean" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_boolean" class="fnname">set_boolean</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></div></summary><div class="docblock"><p>Associates a new boolean value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-14" class="section-header"><a href="#group_name-14"><code>group_name</code></a></h2>
+<h6 id="group_name-14" class="section-header"><a href="#group_name-14"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-11" class="section-header"><a href="#key-11"><code>key</code></a></h2>
+<h6 id="key-11" class="section-header"><a href="#key-11"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value" class="section-header"><a href="#value"><code>value</code></a></h2>
+<h6 id="value" class="section-header"><a href="#value"><code>value</code></a></h6>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> or <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_comment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#693-714" title="goto source code">[src]</a></div><a href="#method.set_comment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_comment" class="fnname">set_comment</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;comment: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Places a comment above <code>key</code> from <code>group_name</code>.</p>
 <p>If <code>key</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> then <code>comment</code> will be written above <code>group_name</code>.
@@ -294,82 +294,82 @@ If both <code>key</code> and <code>group_name</code> are <a href="https://doc.ru
 written above the first group in the file.</p>
 <p>Note that this function prepends a ‘#’ comment marker to
 each line of <code>comment</code>.</p>
-<h2 id="group_name-15" class="section-header"><a href="#group_name-15"><code>group_name</code></a></h2>
+<h6 id="group_name-15" class="section-header"><a href="#group_name-15"><code>group_name</code></a></h6>
 <p>a group name, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="key-12" class="section-header"><a href="#key-12"><code>key</code></a></h2>
+<h6 id="key-12" class="section-header"><a href="#key-12"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="comment" class="section-header"><a href="#comment"><code>comment</code></a></h2>
+<h6 id="comment" class="section-header"><a href="#comment"><code>comment</code></a></h6>
 <p>a comment</p>
-<h1 id="returns-20" class="section-header"><a href="#returns-20">Returns</a></h1>
+<h5 id="returns-20" class="section-header"><a href="#returns-20">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the comment was written, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_double" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#725-734" title="goto source code">[src]</a></div><a href="#method.set_double" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_double" class="fnname">set_double</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Associates a new double value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-16" class="section-header"><a href="#group_name-16"><code>group_name</code></a></h2>
+<h6 id="group_name-16" class="section-header"><a href="#group_name-16"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-13" class="section-header"><a href="#key-13"><code>key</code></a></h2>
+<h6 id="key-13" class="section-header"><a href="#key-13"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value-1" class="section-header"><a href="#value-1"><code>value</code></a></h2>
+<h6 id="value-1" class="section-header"><a href="#value-1"><code>value</code></a></h6>
 <p>a double value</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_int64" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#745-754" title="goto source code">[src]</a></div><a href="#method.set_int64" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_int64" class="fnname">set_int64</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</h4></div></summary><div class="docblock"><p>Associates a new integer value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-17" class="section-header"><a href="#group_name-17"><code>group_name</code></a></h2>
+<h6 id="group_name-17" class="section-header"><a href="#group_name-17"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-14" class="section-header"><a href="#key-14"><code>key</code></a></h2>
+<h6 id="key-14" class="section-header"><a href="#key-14"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value-2" class="section-header"><a href="#value-2"><code>value</code></a></h2>
+<h6 id="value-2" class="section-header"><a href="#value-2"><code>value</code></a></h6>
 <p>an integer value</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_integer" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#765-774" title="goto source code">[src]</a></div><a href="#method.set_integer" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_integer" class="fnname">set_integer</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Associates a new integer value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-18" class="section-header"><a href="#group_name-18"><code>group_name</code></a></h2>
+<h6 id="group_name-18" class="section-header"><a href="#group_name-18"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-15" class="section-header"><a href="#key-15"><code>key</code></a></h2>
+<h6 id="key-15" class="section-header"><a href="#key-15"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value-3" class="section-header"><a href="#value-3"><code>value</code></a></h2>
+<h6 id="value-3" class="section-header"><a href="#value-3"><code>value</code></a></h6>
 <p>an integer value</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_list_separator" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#782-786" title="goto source code">[src]</a></div><a href="#method.set_list_separator" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_list_separator" class="fnname">set_list_separator</a>(&amp;self, separator: <a class="struct" href="char/struct.Char.html" title="struct glib::char::Char">Char</a>)</h4></div></summary><div class="docblock"><p>Sets the character which is used to separate
 values in lists. Typically ‘;’ or ‘,’ are used
 as separators. The default list separator is ‘;’.</p>
-<h2 id="separator" class="section-header"><a href="#separator"><code>separator</code></a></h2>
+<h6 id="separator" class="section-header"><a href="#separator"><code>separator</code></a></h6>
 <p>the separator</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_locale_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#799-809" title="goto source code">[src]</a></div><a href="#method.set_locale_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_locale_string" class="fnname">set_locale_string</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;locale: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>)</h4></div></summary><div class="docblock"><p>Associates a string value for <code>key</code> and <code>locale</code> under <code>group_name</code>.
 If the translation for <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-19" class="section-header"><a href="#group_name-19"><code>group_name</code></a></h2>
+<h6 id="group_name-19" class="section-header"><a href="#group_name-19"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-16" class="section-header"><a href="#key-16"><code>key</code></a></h2>
+<h6 id="key-16" class="section-header"><a href="#key-16"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="locale-1" class="section-header"><a href="#locale-1"><code>locale</code></a></h2>
+<h6 id="locale-1" class="section-header"><a href="#locale-1"><code>locale</code></a></h6>
 <p>a locale identifier</p>
-<h2 id="string" class="section-header"><a href="#string"><code>string</code></a></h2>
+<h6 id="string" class="section-header"><a href="#string"><code>string</code></a></h6>
 <p>a string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#823-832" title="goto source code">[src]</a></div><a href="#method.set_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_string" class="fnname">set_string</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></div></summary><div class="docblock"><p>Associates a new string value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.
 If <code>group_name</code> cannot be found then it is created.
 Unlike <a href="struct.KeyFile.html#method.set_value" title="Self::set_value()"><code>set_value()</code></a>, this function handles characters
 that need escaping, such as newlines.</p>
-<h2 id="group_name-20" class="section-header"><a href="#group_name-20"><code>group_name</code></a></h2>
+<h6 id="group_name-20" class="section-header"><a href="#group_name-20"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-17" class="section-header"><a href="#key-17"><code>key</code></a></h2>
+<h6 id="key-17" class="section-header"><a href="#key-17"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="string-1" class="section-header"><a href="#string-1"><code>string</code></a></h2>
+<h6 id="string-1" class="section-header"><a href="#string-1"><code>string</code></a></h6>
 <p>a string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_uint64" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#843-852" title="goto source code">[src]</a></div><a href="#method.set_uint64" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_uint64" class="fnname">set_uint64</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>)</h4></div></summary><div class="docblock"><p>Associates a new integer value with <code>key</code> under <code>group_name</code>.
 If <code>key</code> cannot be found then it is created.</p>
-<h2 id="group_name-21" class="section-header"><a href="#group_name-21"><code>group_name</code></a></h2>
+<h6 id="group_name-21" class="section-header"><a href="#group_name-21"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-18" class="section-header"><a href="#key-18"><code>key</code></a></h2>
+<h6 id="key-18" class="section-header"><a href="#key-18"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value-4" class="section-header"><a href="#value-4"><code>value</code></a></h2>
+<h6 id="value-4" class="section-header"><a href="#value-4"><code>value</code></a></h6>
 <p>an integer value</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_value" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/key_file.rs.html#867-876" title="goto source code">[src]</a></div><a href="#method.set_value" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_value" class="fnname">set_value</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></div></summary><div class="docblock"><p>Associates a new value with <code>key</code> under <code>group_name</code>.</p>
 <p>If <code>key</code> cannot be found then it is created. If <code>group_name</code> cannot
 be found then it is created. To set an UTF-8 string which may contain
 characters that need escaping (such as newlines or spaces), use
 <a href="struct.KeyFile.html#method.set_string" title="Self::set_string()"><code>set_string()</code></a>.</p>
-<h2 id="group_name-22" class="section-header"><a href="#group_name-22"><code>group_name</code></a></h2>
+<h6 id="group_name-22" class="section-header"><a href="#group_name-22"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-19" class="section-header"><a href="#key-19"><code>key</code></a></h2>
+<h6 id="key-19" class="section-header"><a href="#key-19"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="value-5" class="section-header"><a href="#value-5"><code>value</code></a></h2>
+<h6 id="value-5" class="section-header"><a href="#value-5"><code>value</code></a></h6>
 <p>a string</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#13-463" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.KeyFile.html" title="struct glib::KeyFile">KeyFile</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.save_to_file" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#28-42" title="goto source code">[src]</a></div><a href="#method.save_to_file" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.save_to_file" class="fnname">save_to_file</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;&gt;(&amp;self, filename: T) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Writes the contents of <code>self</code> to <code>filename</code> using
 <a href="functions/fn.file_set_contents.html" title="crate::file_set_contents()"><code>file_set_contents()</code></a>. If you need stricter guarantees about durability of
@@ -377,22 +377,22 @@ the written file than are provided by <a href="functions/fn.file_set_contents.ht
 <a href="functions/fn.file_set_contents_full.html" title="crate::file_set_contents_full()"><code>file_set_contents_full()</code></a> with the return value of <a href="struct.KeyFile.html#method.to_data" title="Self::to_data()"><code>to_data()</code></a>.</p>
 <p>This function can fail for any of the reasons that
 <a href="functions/fn.file_set_contents.html" title="crate::file_set_contents()"><code>file_set_contents()</code></a> may fail.</p>
-<h2 id="filename" class="section-header"><a href="#filename"><code>filename</code></a></h2>
+<h6 id="filename" class="section-header"><a href="#filename"><code>filename</code></a></h6>
 <p>the name of the file to write to</p>
-<h1 id="returns-21" class="section-header"><a href="#returns-21">Returns</a></h1>
+<h5 id="returns-21" class="section-header"><a href="#returns-21">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if successful, else <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> with <code>error</code> set</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load_from_data_dirs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#62-84" title="goto source code">[src]</a></div><a href="#method.load_from_data_dirs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load_from_data_dirs" class="fnname">load_from_data_dirs</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;file: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.KeyFileFlags.html" title="struct glib::KeyFileFlags">KeyFileFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>This function looks for a key file named <code>file</code> in the paths
 returned from <a href="functions/fn.user_data_dir.html" title="crate::user_data_dir()"><code>user_data_dir()</code></a> and <a href="functions/fn.system_data_dirs.html" title="crate::system_data_dirs()"><code>system_data_dirs()</code></a>,
 loads the file into <code>self</code> and returns the file’s full path in
 <code>full_path</code>. If the file could not be loaded then an <code>error</code> is
 set to either a <code>GFileError</code> or <a href="enum.KeyFileError.html" title="crate::KeyFileError"><code>KeyFileError</code></a>.</p>
-<h2 id="file-1" class="section-header"><a href="#file-1"><code>file</code></a></h2>
+<h6 id="file-1" class="section-header"><a href="#file-1"><code>file</code></a></h6>
 <p>a relative path to a filename to open and parse</p>
-<h2 id="flags-3" class="section-header"><a href="#flags-3"><code>flags</code></a></h2>
+<h6 id="flags-3" class="section-header"><a href="#flags-3"><code>flags</code></a></h6>
 <p>flags from <a href="struct.KeyFileFlags.html" title="crate::KeyFileFlags"><code>KeyFileFlags</code></a></p>
-<h1 id="returns-22" class="section-header"><a href="#returns-22">Returns</a></h1>
+<h5 id="returns-22" class="section-header"><a href="#returns-22">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a key file could be loaded, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
-<h2 id="full_path" class="section-header"><a href="#full_path"><code>full_path</code></a></h2>
+<h6 id="full_path" class="section-header"><a href="#full_path"><code>full_path</code></a></h6>
 <p>return location for a string containing the full path
 of the file, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load_from_dirs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#110-136" title="goto source code">[src]</a></div><a href="#method.load_from_dirs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load_from_dirs" class="fnname">load_from_dirs</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;, U:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;file: T, <br>&nbsp;&nbsp;&nbsp;&nbsp;search_dirs: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[U]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.KeyFileFlags.html" title="struct glib::KeyFileFlags">KeyFileFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html" title="struct std::path::PathBuf">PathBuf</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>This function looks for a key file named <code>file</code> in the paths
@@ -403,24 +403,24 @@ returns the file’s full path in <code>full_path</code>.</p>
 the file is found but the OS returns an error when opening or reading the
 file, a <code>G_FILE_ERROR</code> is returned. If there is a problem parsing the file, a
 <code>G_KEY_FILE_ERROR</code> is returned.</p>
-<h2 id="file-2" class="section-header"><a href="#file-2"><code>file</code></a></h2>
+<h6 id="file-2" class="section-header"><a href="#file-2"><code>file</code></a></h6>
 <p>a relative path to a filename to open and parse</p>
-<h2 id="search_dirs" class="section-header"><a href="#search_dirs"><code>search_dirs</code></a></h2>
+<h6 id="search_dirs" class="section-header"><a href="#search_dirs"><code>search_dirs</code></a></h6>
 <p><a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated array of directories to search</p>
-<h2 id="flags-4" class="section-header"><a href="#flags-4"><code>flags</code></a></h2>
+<h6 id="flags-4" class="section-header"><a href="#flags-4"><code>flags</code></a></h6>
 <p>flags from <a href="struct.KeyFileFlags.html" title="crate::KeyFileFlags"><code>KeyFileFlags</code></a></p>
-<h1 id="returns-23" class="section-header"><a href="#returns-23">Returns</a></h1>
+<h5 id="returns-23" class="section-header"><a href="#returns-23">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a key file could be loaded, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
-<h2 id="full_path-1" class="section-header"><a href="#full_path-1"><code>full_path</code></a></h2>
+<h6 id="full_path-1" class="section-header"><a href="#full_path-1"><code>full_path</code></a></h6>
 <p>return location for a string containing the full path
 of the file, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_data" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#152-158" title="goto source code">[src]</a></div><a href="#method.to_data" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_data" class="fnname">to_data</a>(&amp;self) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div></summary><div class="docblock"><p>This function outputs <code>self</code> as a string.</p>
 <p>Note that this function never reports an error,
 so it is safe to pass <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> as <code>error</code>.</p>
-<h1 id="returns-24" class="section-header"><a href="#returns-24">Returns</a></h1>
+<h5 id="returns-24" class="section-header"><a href="#returns-24">Returns</a></h5>
 <p>a newly allocated string holding
 the contents of the <a href="struct.KeyFile.html" title="crate::KeyFile"><code>KeyFile</code></a></p>
-<h2 id="length-3" class="section-header"><a href="#length-3"><code>length</code></a></h2>
+<h6 id="length-3" class="section-header"><a href="#length-3"><code>length</code></a></h6>
 <p>return location for the length of the
 returned string, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.boolean" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#178-193" title="goto source code">[src]</a></div><a href="#method.boolean" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.boolean" class="fnname">boolean</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code> as a
@@ -429,11 +429,11 @@ boolean.</p>
 to <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. Likewise, if the value
 associated with <code>key</code> cannot be interpreted as a boolean then <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>
 is returned and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-23" class="section-header"><a href="#group_name-23"><code>group_name</code></a></h2>
+<h6 id="group_name-23" class="section-header"><a href="#group_name-23"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-20" class="section-header"><a href="#key-20"><code>key</code></a></h2>
+<h6 id="key-20" class="section-header"><a href="#key-20"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-25" class="section-header"><a href="#returns-25">Returns</a></h1>
+<h5 id="returns-25" class="section-header"><a href="#returns-25">Returns</a></h5>
 <p>the value associated with the key as a boolean,
 or <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the key was not found or could not be parsed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.has_key" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#214-229" title="goto source code">[src]</a></div><a href="#method.has_key" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.has_key" class="fnname">has_key</a>(&amp;self, group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Looks whether the key file has the key <code>key</code> in the group
@@ -444,11 +444,11 @@ this function, you must pass a <a href="error/struct.Error.html" title="crate::E
 whether it is not <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> to see if an error occurred.</p>
 <p>Language bindings should use <a href="struct.KeyFile.html#method.value" title="Self::value()"><code>value()</code></a> to test whether
 or not a key exists.</p>
-<h2 id="group_name-24" class="section-header"><a href="#group_name-24"><code>group_name</code></a></h2>
+<h6 id="group_name-24" class="section-header"><a href="#group_name-24"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-21" class="section-header"><a href="#key-21"><code>key</code></a></h2>
+<h6 id="key-21" class="section-header"><a href="#key-21"><code>key</code></a></h6>
 <p>a key name</p>
-<h1 id="returns-26" class="section-header"><a href="#returns-26">Returns</a></h1>
+<h5 id="returns-26" class="section-header"><a href="#returns-26">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>key</code> is a part of <code>group_name</code>, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.boolean_list" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#251-270" title="goto source code">[src]</a></div><a href="#method.boolean_list" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.boolean_list" class="fnname">boolean_list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the values associated with <code>key</code> under <code>group_name</code> as
 booleans.</p>
@@ -456,11 +456,11 @@ booleans.</p>
 <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. Likewise, if the values associated
 with <code>key</code> cannot be interpreted as booleans then <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.InvalidValue" title="crate::KeyFileError::InvalidValue"><code>KeyFileError::InvalidValue</code></a>.</p>
-<h2 id="group_name-25" class="section-header"><a href="#group_name-25"><code>group_name</code></a></h2>
+<h6 id="group_name-25" class="section-header"><a href="#group_name-25"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-22" class="section-header"><a href="#key-22"><code>key</code></a></h2>
+<h6 id="key-22" class="section-header"><a href="#key-22"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-27" class="section-header"><a href="#returns-27">Returns</a></h1>
+<h5 id="returns-27" class="section-header"><a href="#returns-27">Returns</a></h5>
 <p>the values associated with the key as a list of booleans, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the
 key was not found or could not be parsed. The returned list of booleans
 should be freed with <code>g_free()</code> when no longer needed.</p>
@@ -471,11 +471,11 @@ like \s.</p>
 <code>error</code> is set to <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. In the
 event that the <code>group_name</code> cannot be found, <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.GroupNotFound" title="crate::KeyFileError::GroupNotFound"><code>KeyFileError::GroupNotFound</code></a>.</p>
-<h2 id="group_name-26" class="section-header"><a href="#group_name-26"><code>group_name</code></a></h2>
+<h6 id="group_name-26" class="section-header"><a href="#group_name-26"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-23" class="section-header"><a href="#key-23"><code>key</code></a></h2>
+<h6 id="key-23" class="section-header"><a href="#key-23"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-28" class="section-header"><a href="#returns-28">Returns</a></h1>
+<h5 id="returns-28" class="section-header"><a href="#returns-28">Returns</a></h5>
 <p>a newly allocated string or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the specified
 key cannot be found.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.string_list" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#329-352" title="goto source code">[src]</a></div><a href="#method.string_list" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.string_list" class="fnname">string_list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the values associated with <code>key</code> under <code>group_name</code>.</p>
@@ -483,11 +483,11 @@ key cannot be found.</p>
 <code>error</code> is set to <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. In the
 event that the <code>group_name</code> cannot be found, <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned
 and <code>error</code> is set to <a href="enum.KeyFileError.html#variant.GroupNotFound" title="crate::KeyFileError::GroupNotFound"><code>KeyFileError::GroupNotFound</code></a>.</p>
-<h2 id="group_name-27" class="section-header"><a href="#group_name-27"><code>group_name</code></a></h2>
+<h6 id="group_name-27" class="section-header"><a href="#group_name-27"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-24" class="section-header"><a href="#key-24"><code>key</code></a></h2>
+<h6 id="key-24" class="section-header"><a href="#key-24"><code>key</code></a></h6>
 <p>a key</p>
-<h1 id="returns-29" class="section-header"><a href="#returns-29">Returns</a></h1>
+<h5 id="returns-29" class="section-header"><a href="#returns-29">Returns</a></h5>
 <p>a <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated string array or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the specified
 key cannot be found. The array should be freed with <code>g_strfreev()</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.locale_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#379-403" title="goto source code">[src]</a></div><a href="#method.locale_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.locale_string" class="fnname">locale_string</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;locale: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the value associated with <code>key</code> under <code>group_name</code>
@@ -500,13 +500,13 @@ the lifetime of the <a href="struct.KeyFile.html" title="crate::KeyFile"><code>K
 to <a href="enum.KeyFileError.html#variant.KeyNotFound" title="crate::KeyFileError::KeyNotFound"><code>KeyFileError::KeyNotFound</code></a>. If the value associated
 with <code>key</code> cannot be interpreted or no suitable translation can
 be found then the untranslated value is returned.</p>
-<h2 id="group_name-28" class="section-header"><a href="#group_name-28"><code>group_name</code></a></h2>
+<h6 id="group_name-28" class="section-header"><a href="#group_name-28"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-25" class="section-header"><a href="#key-25"><code>key</code></a></h2>
+<h6 id="key-25" class="section-header"><a href="#key-25"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="locale-2" class="section-header"><a href="#locale-2"><code>locale</code></a></h2>
+<h6 id="locale-2" class="section-header"><a href="#locale-2"><code>locale</code></a></h6>
 <p>a locale identifier or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-30" class="section-header"><a href="#returns-30">Returns</a></h1>
+<h5 id="returns-30" class="section-header"><a href="#returns-30">Returns</a></h5>
 <p>a newly allocated string or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the specified
 key cannot be found.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.locale_string_list" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/key_file.rs.html#433-462" title="goto source code">[src]</a></div><a href="#method.locale_string_list" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.locale_string_list" class="fnname">locale_string_list</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;group_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;locale: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the values associated with <code>key</code> under <code>group_name</code>
@@ -521,13 +521,13 @@ with <code>key</code> cannot be interpreted or no suitable translations
 can be found then the untranslated values are returned. The
 returned array is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated, so <code>length</code> may optionally
 be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h2 id="group_name-29" class="section-header"><a href="#group_name-29"><code>group_name</code></a></h2>
+<h6 id="group_name-29" class="section-header"><a href="#group_name-29"><code>group_name</code></a></h6>
 <p>a group name</p>
-<h2 id="key-26" class="section-header"><a href="#key-26"><code>key</code></a></h2>
+<h6 id="key-26" class="section-header"><a href="#key-26"><code>key</code></a></h6>
 <p>a key</p>
-<h2 id="locale-3" class="section-header"><a href="#locale-3"><code>locale</code></a></h2>
+<h6 id="locale-3" class="section-header"><a href="#locale-3"><code>locale</code></a></h6>
 <p>a locale identifier or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-31" class="section-header"><a href="#returns-31">Returns</a></h1>
+<h5 id="returns-31" class="section-header"><a href="#returns-31">Returns</a></h5>
 <p>a newly allocated <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated string array
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the key isn’t found. The string array should be freed
 with <code>g_strfreev()</code>.</p>

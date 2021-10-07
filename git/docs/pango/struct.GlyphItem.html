@@ -90,11 +90,11 @@ cases, it may happen that <code>item</code>-&gt;extra_attrs for some of the
 result items can have multiple attributes of the same type.</p>
 <p>This function takes ownership of <code>self</code>; it will be reused
 as one of the elements in the list.</p>
-<h2 id="text" class="section-header"><a href="#text"><code>text</code></a></h2>
+<h6 id="text" class="section-header"><a href="#text"><code>text</code></a></h6>
 <p>text that <code>list</code> applies to</p>
-<h2 id="list" class="section-header"><a href="#list"><code>list</code></a></h2>
+<h6 id="list" class="section-header"><a href="#list"><code>list</code></a></h6>
 <p>a <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a></p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>a
 list of glyph items resulting from splitting <code>self</code>. Free
 the elements using <code>Pango::</code>GlyphItem::free()``, the list using
@@ -108,12 +108,12 @@ to the length of <code>self</code> (that is, there must be at least one byte
 assigned to each item, you can’t create a zero-length item).</p>
 <p>This function is similar in function to <a href="struct.Item.html#method.split" title="crate::Item::split()"><code>Item::split()</code></a> (and uses
 it internally.)</p>
-<h2 id="text-1" class="section-header"><a href="#text-1"><code>text</code></a></h2>
+<h6 id="text-1" class="section-header"><a href="#text-1"><code>text</code></a></h6>
 <p>text to which positions in <code>self</code> apply</p>
-<h2 id="split_index" class="section-header"><a href="#split_index"><code>split_index</code></a></h2>
+<h6 id="split_index" class="section-header"><a href="#split_index"><code>split_index</code></a></h6>
 <p>byte index of position to split item, relative to the
 start of the item</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the newly allocated item representing text before
 <code>split_index</code>, which should be freed
 with <code>pango_glyph_item_free()</code>.</p>

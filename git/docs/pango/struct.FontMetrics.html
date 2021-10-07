@@ -81,7 +81,7 @@ for documentation of their meaning.</p>
 <p>This is merely a representative value useful, for example, for
 determining the initial size for a window. Actual characters in
 text will be wider and narrower than this.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the character width, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.approximate_digit_width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#54-56" title="goto source code">[src]</a></div><a href="#method.approximate_digit_width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.approximate_digit_width" class="fnname">approximate_digit_width</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the approximate digit width for a font metrics structure.</p>
 <p>This is merely a representative value useful, for example, for
@@ -89,44 +89,44 @@ determining the initial size for a window. Actual digits in
 text can be wider or narrower than this, though this value
 is generally somewhat more accurate than the result of
 <a href="struct.FontMetrics.html#method.approximate_char_width" title="Self::approximate_char_width()"><code>approximate_char_width()</code></a> for digits.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the digit width, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ascent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#70-72" title="goto source code">[src]</a></div><a href="#method.ascent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ascent" class="fnname">ascent</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the ascent from a font metrics structure.</p>
 <p>The ascent is the distance from the baseline to the logical top
 of a line of text. (The logical top may be above or below the top
 of the actual drawn ink. It is necessary to lay out the text to
 figure where the ink will be.)</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the ascent, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.descent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#86-88" title="goto source code">[src]</a></div><a href="#method.descent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.descent" class="fnname">descent</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the descent from a font metrics structure.</p>
 <p>The descent is the distance from the baseline to the logical bottom
 of a line of text. (The logical bottom may be above or below the
 bottom of the actual drawn ink. It is necessary to lay out the text
 to figure where the ink will be.)</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>the descent, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.height" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#104-106" title="goto source code">[src]</a></div><a href="#method.height" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.height" class="fnname">height</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the line height from a font metrics structure.</p>
 <p>The line height is the distance between successive baselines
 in wrapped text.</p>
 <p>If the line height is not available, 0 is returned.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>the height, in Pango units</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.strikethrough_position" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#118-120" title="goto source code">[src]</a></div><a href="#method.strikethrough_position" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.strikethrough_position" class="fnname">strikethrough_position</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the suggested position to draw the strikethrough.</p>
 <p>The value returned is the distance <em>above</em> the
 baseline of the top of the strikethrough.</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p>the suggested strikethrough position, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.strikethrough_thickness" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#129-131" title="goto source code">[src]</a></div><a href="#method.strikethrough_thickness" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.strikethrough_thickness" class="fnname">strikethrough_thickness</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the suggested thickness to draw for the strikethrough.</p>
-<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
 <p>the suggested strikethrough thickness, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.underline_position" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#144-146" title="goto source code">[src]</a></div><a href="#method.underline_position" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.underline_position" class="fnname">underline_position</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the suggested position to draw the underline.</p>
 <p>The value returned is the distance <em>above</em> the baseline of the top
 of the underline. Since most fonts have underline positions beneath
 the baseline, this value is typically negative.</p>
-<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
 <p>the suggested underline position, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.underline_thickness" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#155-157" title="goto source code">[src]</a></div><a href="#method.underline_thickness" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.underline_thickness" class="fnname">underline_thickness</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the suggested thickness to draw for the underline.</p>
-<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
 <p>the suggested underline thickness, in Pango units.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#7-23" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.FontMetrics.html" title="struct pango::FontMetrics">FontMetrics</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#7-23" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.FontMetrics.html" title="struct pango::FontMetrics">FontMetrics</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_from" class="method trait-impl has-srclink"><div class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#131" title="goto source code">[src]</a></div><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></div></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>

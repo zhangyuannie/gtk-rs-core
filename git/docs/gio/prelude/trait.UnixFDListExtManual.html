@@ -85,9 +85,9 @@ system-wide file descriptor limit.</p>
 <p>The index of the file descriptor in the list is returned. If you use
 this index with <a href="trait.UnixFDListExtManual.html#tymethod.get" title="crate::prelude::UnixFDListExtManual::get()"><code>UnixFDListExtManual::get()</code></a> then you will receive back a
 duplicated copy of the same file descriptor.</p>
-<h2 id="fd" class="section-header"><a href="#fd"><code>fd</code></a></h2>
+<h6 id="fd" class="section-header"><a href="#fd"><code>fd</code></a></h6>
 <p>a valid open file descriptor</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the index of the appended fd in case of success, else -1
 (and <code>error</code> is set)</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.get" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/unix_fd_list.rs.html#87" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.get" class="fnname">get</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="type" href="https://doc.rust-lang.org/nightly/std/os/fd/raw/type.RawFd.html" title="type std::os::fd::raw::RawFd">RawFd</a>, <a class="struct" href="../../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Gets a file descriptor out of <code>self</code>.</p>
@@ -99,9 +99,9 @@ close-on-exec before being returned. You must call <code>close()</code> on it
 when you are done.</p>
 <p>A possible cause of failure is exceeding the per-process or
 system-wide file descriptor limit.</p>
-<h2 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h2>
+<h6 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h6>
 <p>the index into the list</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the file descriptor, or -1 in case of error</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.peek_fds" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/unix_fd_list.rs.html#108" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.peek_fds" class="fnname">peek_fds</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="type" href="https://doc.rust-lang.org/nightly/std/os/fd/raw/type.RawFd.html" title="type std::os::fd::raw::RawFd">RawFd</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the array of file descriptors that is contained in this
 object.</p>
@@ -113,7 +113,7 @@ descriptors in the returned array. The returned array is also
 terminated with -1.</p>
 <p>This function never returns <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>. In case there are no file
 descriptors contained in <code>self</code>, an empty array is returned.</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>an array of file
 descriptors</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.steal_fds" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/unix_fd_list.rs.html#134" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.steal_fds" class="fnname">steal_fds</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="type" href="https://doc.rust-lang.org/nightly/std/os/fd/raw/type.RawFd.html" title="type std::os::fd::raw::RawFd">RawFd</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the array of file descriptors that is contained in this
@@ -130,7 +130,7 @@ descriptors in the returned array. The returned array is also
 terminated with -1.</p>
 <p>This function never returns <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>. In case there are no file
 descriptors contained in <code>self</code>, an empty array is returned.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>an array of file
 descriptors</p>
 </div></details></div><h2 id="implementors" class="small-section-header">Implementors<a href="#implementors" class="anchor"></a></h2><div class="item-list" id="implementors-list"><div id="impl-UnixFDListExtManual" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/unix_fd_list.rs.html#137-187" title="goto source code">[src]</a></div><a href="#impl-UnixFDListExtManual" class="anchor"></a><h3 class="code-header in-band">impl&lt;O:&nbsp;<a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.UnixFDList.html" title="struct gio::UnixFDList">UnixFDList</a>&gt;&gt; <a class="trait" href="trait.UnixFDListExtManual.html" title="trait gio::prelude::UnixFDListExtManual">UnixFDListExtManual</a> for O</h3></div></div><script type="text/javascript" src="../../implementors/gio/prelude/trait.UnixFDListExtManual.js" async></script></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>

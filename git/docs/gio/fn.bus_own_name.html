@@ -118,19 +118,19 @@ before <code>name</code> is requested from the bus.</p>
 to [own names][gdbus-owning-names] and export objects.
 Simply register objects to be exported in <code>bus_acquired_handler</code> and
 unregister the objects (if any) in <code>name_lost_handler</code>.</p>
-<h2 id="bus_type" class="section-header"><a href="#bus_type"><code>bus_type</code></a></h2>
+<h3 id="bus_type" class="section-header"><a href="#bus_type"><code>bus_type</code></a></h3>
 <p>the type of bus to own a name on</p>
-<h2 id="name" class="section-header"><a href="#name"><code>name</code></a></h2>
+<h3 id="name" class="section-header"><a href="#name"><code>name</code></a></h3>
 <p>the well-known name to own</p>
-<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<h3 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h3>
 <p>a set of flags from the <a href="struct.BusNameOwnerFlags.html" title="crate::BusNameOwnerFlags"><code>BusNameOwnerFlags</code></a> enumeration</p>
-<h2 id="bus_acquired_handler" class="section-header"><a href="#bus_acquired_handler"><code>bus_acquired_handler</code></a></h2>
+<h3 id="bus_acquired_handler" class="section-header"><a href="#bus_acquired_handler"><code>bus_acquired_handler</code></a></h3>
 <p>handler to invoke when connected to the bus of type <code>bus_type</code> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="name_acquired_handler" class="section-header"><a href="#name_acquired_handler"><code>name_acquired_handler</code></a></h2>
+<h3 id="name_acquired_handler" class="section-header"><a href="#name_acquired_handler"><code>name_acquired_handler</code></a></h3>
 <p>handler to invoke when <code>name</code> is acquired or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="name_lost_handler" class="section-header"><a href="#name_lost_handler"><code>name_lost_handler</code></a></h2>
+<h3 id="name_lost_handler" class="section-header"><a href="#name_lost_handler"><code>name_lost_handler</code></a></h3>
 <p>handler to invoke when <code>name</code> is lost or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
 <p>an identifier (never 0) that can be used with
 <code>g_bus_unown_name()</code> to stop owning the name.</p>
 </div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="gio" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>

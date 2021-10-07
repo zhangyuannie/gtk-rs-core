@@ -78,13 +78,13 @@ and device coordinates.</p>
 y_device = x_user * matrix-&gt;yx + y_user * matrix-&gt;yy + matrix-&gt;y0;</code></pre></div></div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#28-178" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Matrix.html" title="struct pango::Matrix">Matrix</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.concat" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#35-39" title="goto source code">[src]</a></div><a href="#method.concat" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.concat" class="fnname">concat</a>(&amp;mut self, new_matrix: &amp;<a class="struct" href="struct.Matrix.html" title="struct pango::Matrix">Matrix</a>)</h4></div></summary><div class="docblock"><p>Changes the transformation represented by <code>self</code> to be the
 transformation given by first applying transformation
 given by <code>new_matrix</code> then applying the original transformation.</p>
-<h2 id="new_matrix" class="section-header"><a href="#new_matrix"><code>new_matrix</code></a></h2>
+<h6 id="new_matrix" class="section-header"><a href="#new_matrix"><code>new_matrix</code></a></h6>
 <p>a <a href="struct.Matrix.html" title="crate::Matrix"><code>Matrix</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.font_scale_factor" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#53-55" title="goto source code">[src]</a></div><a href="#method.font_scale_factor" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.font_scale_factor" class="fnname">font_scale_factor</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></h4></div></summary><div class="docblock"><p>Returns the scale factor of a matrix on the height of the font.</p>
 <p>That is, the scale factor in the direction perpendicular to the
 vector that the X coordinate is mapped to. If the scale in the X
 coordinate is needed as well, use <a href="struct.Matrix.html#method.font_scale_factors" title="Self::font_scale_factors()"><code>font_scale_factors()</code></a>.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the scale factor of <code>self</code> on the height of the font,
 or 1.0 if <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.font_scale_factors" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#75-88" title="goto source code">[src]</a></div><a href="#method.font_scale_factors" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.font_scale_factors" class="fnname">font_scale_factors</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Calculates the scale factor of a matrix on the width and height of the font.</p>
@@ -92,22 +92,22 @@ or 1.0 if <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/o
 and <code>yscale</code> is the scale factor in the direction perpendicular to the
 vector that the X coordinate is mapped to.</p>
 <p>Note that output numbers will always be non-negative.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1><h2 id="xscale" class="section-header"><a href="#xscale"><code>xscale</code></a></h2>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5><h6 id="xscale" class="section-header"><a href="#xscale"><code>xscale</code></a></h6>
 <p>output scale factor in the x direction</p>
-<h2 id="yscale" class="section-header"><a href="#yscale"><code>yscale</code></a></h2>
+<h6 id="yscale" class="section-header"><a href="#yscale"><code>yscale</code></a></h6>
 <p>output scale factor perpendicular to the x direction</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.rotate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#96-100" title="goto source code">[src]</a></div><a href="#method.rotate" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.rotate" class="fnname">rotate</a>(&amp;mut self, degrees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Changes the transformation represented by <code>self</code> to be the
 transformation given by first rotating by <code>degrees</code> degrees
 counter-clockwise then applying the original transformation.</p>
-<h2 id="degrees" class="section-header"><a href="#degrees"><code>degrees</code></a></h2>
+<h6 id="degrees" class="section-header"><a href="#degrees"><code>degrees</code></a></h6>
 <p>degrees to rotate counter-clockwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.scale" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#111-115" title="goto source code">[src]</a></div><a href="#method.scale" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.scale" class="fnname">scale</a>(&amp;mut self, scale_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, scale_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Changes the transformation represented by <code>self</code> to be the
 transformation given by first scaling by <code>sx</code> in the X direction
 and <code>sy</code> in the Y direction then applying the original
 transformation.</p>
-<h2 id="scale_x" class="section-header"><a href="#scale_x"><code>scale_x</code></a></h2>
+<h6 id="scale_x" class="section-header"><a href="#scale_x"><code>scale_x</code></a></h6>
 <p>amount to scale by in X direction</p>
-<h2 id="scale_y" class="section-header"><a href="#scale_y"><code>scale_y</code></a></h2>
+<h6 id="scale_y" class="section-header"><a href="#scale_y"><code>scale_y</code></a></h6>
 <p>amount to scale by in Y direction</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.transform_distance" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#137-141" title="goto source code">[src]</a></div><a href="#method.transform_distance" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.transform_distance" class="fnname">transform_distance</a>(&amp;self, dx: &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, dy: &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Transforms the distance vector (<code>dx</code>,<code>dy</code>) by <code>self</code>.</p>
 <p>This is similar to <a href="struct.Matrix.html#method.transform_point" title="Self::transform_point()"><code>transform_point()</code></a>,
@@ -119,21 +119,21 @@ dy2 = dx1 * yx + dy1 * yy;</code></pre></div>
 always transforms to the same vector. If (<code>x1</code>,<code>y1</code>) transforms
 to (<code>x2</code>,<code>y2</code>) then (<code>x1</code>+<code>dx1</code>,<code>y1</code>+<code>dy1</code>) will transform to
 (<code>x1</code>+<code>dx2</code>,<code>y1</code>+<code>dy2</code>) for all values of <code>x1</code> and <code>x2</code>.</p>
-<h2 id="dx" class="section-header"><a href="#dx"><code>dx</code></a></h2>
+<h6 id="dx" class="section-header"><a href="#dx"><code>dx</code></a></h6>
 <p>in/out X component of a distance vector</p>
-<h2 id="dy" class="section-header"><a href="#dy"><code>dy</code></a></h2>
+<h6 id="dy" class="section-header"><a href="#dy"><code>dy</code></a></h6>
 <p>in/out Y component of a distance vector</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.transform_point" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#154-158" title="goto source code">[src]</a></div><a href="#method.transform_point" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.transform_point" class="fnname">transform_point</a>(&amp;self, x: &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, y: &amp;mut <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Transforms the point (<code>x</code>, <code>y</code>) by <code>self</code>.</p>
-<h2 id="x" class="section-header"><a href="#x"><code>x</code></a></h2>
+<h6 id="x" class="section-header"><a href="#x"><code>x</code></a></h6>
 <p>in/out X position</p>
-<h2 id="y" class="section-header"><a href="#y"><code>y</code></a></h2>
+<h6 id="y" class="section-header"><a href="#y"><code>y</code></a></h6>
 <p>in/out Y position</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.translate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#173-177" title="goto source code">[src]</a></div><a href="#method.translate" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.translate" class="fnname">translate</a>(&amp;mut self, tx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, ty: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></div></summary><div class="docblock"><p>Changes the transformation represented by <code>self</code> to be the
 transformation given by first translating by (<code>tx</code>, <code>ty</code>)
 then applying the original transformation.</p>
-<h2 id="tx" class="section-header"><a href="#tx"><code>tx</code></a></h2>
+<h6 id="tx" class="section-header"><a href="#tx"><code>tx</code></a></h6>
 <p>amount to translate in the X direction</p>
-<h2 id="ty" class="section-header"><a href="#ty"><code>ty</code></a></h2>
+<h6 id="ty" class="section-header"><a href="#ty"><code>ty</code></a></h6>
 <p>amount to translate in the Y direction</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#8-26" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.Matrix.html" title="struct pango::Matrix">Matrix</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/matrix.rs.html#8-26" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.Matrix.html" title="struct pango::Matrix">Matrix</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_from" class="method trait-impl has-srclink"><div class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#131" title="goto source code">[src]</a></div><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></div></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>

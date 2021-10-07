@@ -76,7 +76,7 @@ and visual attribute information.</p>
 <p>The storage for the glyph information is owned by the structure
 which simplifies memory management.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#28-243" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#36-38" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h4></div></summary><div class="docblock"><p>Create a new <a href="struct.GlyphString.html" title="crate::GlyphString"><code>GlyphString</code></a>.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the newly allocated <a href="struct.GlyphString.html" title="crate::GlyphString"><code>GlyphString</code></a>, which
 should be freed with <code>Pango::</code>GlyphString::free()``.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#60-72" title="goto source code">[src]</a></div><a href="#method.extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.extents" class="fnname">extents</a>(&amp;mut self, font: &amp;impl <a class="trait" href="../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="struct.Font.html" title="struct pango::Font">Font</a>&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a>, <a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Compute the logical and ink extents of a glyph string.</p>
@@ -84,27 +84,27 @@ should be freed with <code>Pango::</code>GlyphString::free()``.</p>
 about the interpretation of the rectangles.</p>
 <p>Examples of logical (red) and ink (green) rects:</p>
 <p><img src="rects1.png" alt="" /> <img src="rects2.png" alt="" /></p>
-<h2 id="font" class="section-header"><a href="#font"><code>font</code></a></h2>
+<h6 id="font" class="section-header"><a href="#font"><code>font</code></a></h6>
 <p>a <a href="struct.Font.html" title="crate::Font"><code>Font</code></a></p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1><h2 id="ink_rect" class="section-header"><a href="#ink_rect"><code>ink_rect</code></a></h2>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5><h6 id="ink_rect" class="section-header"><a href="#ink_rect"><code>ink_rect</code></a></h6>
 <p>rectangle used to store the extents of the glyph string as drawn</p>
-<h2 id="logical_rect" class="section-header"><a href="#logical_rect"><code>logical_rect</code></a></h2>
+<h6 id="logical_rect" class="section-header"><a href="#logical_rect"><code>logical_rect</code></a></h6>
 <p>rectangle used to store the logical extents of the glyph string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.extents_range" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#98-117" title="goto source code">[src]</a></div><a href="#method.extents_range" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.extents_range" class="fnname">extents_range</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;start: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;font: &amp;impl <a class="trait" href="../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="struct.Font.html" title="struct pango::Font">Font</a>&gt;<br>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a>, <a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the extents of a sub-portion of a glyph string.</p>
 <p>The extents are relative to the start of the glyph string range
 (the origin of their coordinate system is at the start of the range,
 not at the start of the entire glyph string).</p>
-<h2 id="start" class="section-header"><a href="#start"><code>start</code></a></h2>
+<h6 id="start" class="section-header"><a href="#start"><code>start</code></a></h6>
 <p>start index</p>
-<h2 id="end" class="section-header"><a href="#end"><code>end</code></a></h2>
+<h6 id="end" class="section-header"><a href="#end"><code>end</code></a></h6>
 <p>end index (the range is the set of bytes with
 indices such that start &lt;= index &lt; end)</p>
-<h2 id="font-1" class="section-header"><a href="#font-1"><code>font</code></a></h2>
+<h6 id="font-1" class="section-header"><a href="#font-1"><code>font</code></a></h6>
 <p>a <a href="struct.Font.html" title="crate::Font"><code>Font</code></a></p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1><h2 id="ink_rect-1" class="section-header"><a href="#ink_rect-1"><code>ink_rect</code></a></h2>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5><h6 id="ink_rect-1" class="section-header"><a href="#ink_rect-1"><code>ink_rect</code></a></h6>
 <p>rectangle used to
 store the extents of the glyph string range as drawn</p>
-<h2 id="logical_rect-1" class="section-header"><a href="#logical_rect-1"><code>logical_rect</code></a></h2>
+<h6 id="logical_rect-1" class="section-header"><a href="#logical_rect-1"><code>logical_rect</code></a></h6>
 <p>rectangle used to
 store the logical extents of the glyph string range</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#137-139" title="goto source code">[src]</a></div><a href="#method.width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.width" class="fnname">width</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Computes the logical width of the glyph string.</p>
@@ -112,27 +112,27 @@ store the logical extents of the glyph string range</p>
 However, since this only computes the width, it’s much faster. This
 is in fact only a convenience function that computes the sum of
 <code>geometry</code> for each glyph in the <code>self</code>.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>the logical width of the glyph string.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.index_to_x" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#164-186" title="goto source code">[src]</a></div><a href="#method.index_to_x" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.index_to_x" class="fnname">index_to_x</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;analysis: &amp;mut <a class="struct" href="analysis/struct.Analysis.html" title="struct pango::analysis::Analysis">Analysis</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;trailing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Converts from character position to x position.</p>
 <p>The X position is measured from the left edge of the run.
 Character positions are computed by dividing up each cluster
 into equal portions.</p>
-<h2 id="text" class="section-header"><a href="#text"><code>text</code></a></h2>
+<h6 id="text" class="section-header"><a href="#text"><code>text</code></a></h6>
 <p>the text for the run</p>
-<h2 id="length" class="section-header"><a href="#length"><code>length</code></a></h2>
+<h6 id="length" class="section-header"><a href="#length"><code>length</code></a></h6>
 <p>the number of bytes (not characters) in <code>text</code>.</p>
-<h2 id="analysis" class="section-header"><a href="#analysis"><code>analysis</code></a></h2>
+<h6 id="analysis" class="section-header"><a href="#analysis"><code>analysis</code></a></h6>
 <p>the analysis information return from <a href="functions/fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a></p>
-<h2 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h2>
+<h6 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h6>
 <p>the byte index within <code>text</code></p>
-<h2 id="trailing" class="section-header"><a href="#trailing"><code>trailing</code></a></h2>
+<h6 id="trailing" class="section-header"><a href="#trailing"><code>trailing</code></a></h6>
 <p>whether we should compute the result for the beginning (<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>)
 or end (<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>) of the character.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1><h2 id="x_pos" class="section-header"><a href="#x_pos"><code>x_pos</code></a></h2>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5><h6 id="x_pos" class="section-header"><a href="#x_pos"><code>x_pos</code></a></h6>
 <p>location to store result</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_size" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#192-196" title="goto source code">[src]</a></div><a href="#method.set_size" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_size" class="fnname">set_size</a>(&amp;mut self, new_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Resize a glyph string to the given length.</p>
-<h2 id="new_len" class="section-header"><a href="#new_len"><code>new_len</code></a></h2>
+<h6 id="new_len" class="section-header"><a href="#new_len"><code>new_len</code></a></h6>
 <p>the new length of the string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.x_to_index" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#224-242" title="goto source code">[src]</a></div><a href="#method.x_to_index" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.x_to_index" class="fnname">x_to_index</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;analysis: &amp;mut <a class="struct" href="analysis/struct.Analysis.html" title="struct pango::analysis::Analysis">Analysis</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x_pos: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Convert from x offset to character position.</p>
 <p>Character positions are computed by dividing up each cluster into
@@ -140,17 +140,17 @@ equal portions. In scripts where positioning within a cluster is
 not allowed (such as Thai), the returned value may not be a valid
 cursor position; the caller must combine the result with the logical
 attributes for the text to compute the valid cursor position.</p>
-<h2 id="text-1" class="section-header"><a href="#text-1"><code>text</code></a></h2>
+<h6 id="text-1" class="section-header"><a href="#text-1"><code>text</code></a></h6>
 <p>the text for the run</p>
-<h2 id="length-1" class="section-header"><a href="#length-1"><code>length</code></a></h2>
+<h6 id="length-1" class="section-header"><a href="#length-1"><code>length</code></a></h6>
 <p>the number of bytes (not characters) in text.</p>
-<h2 id="analysis-1" class="section-header"><a href="#analysis-1"><code>analysis</code></a></h2>
+<h6 id="analysis-1" class="section-header"><a href="#analysis-1"><code>analysis</code></a></h6>
 <p>the analysis information return from <a href="functions/fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a></p>
-<h2 id="x_pos-1" class="section-header"><a href="#x_pos-1"><code>x_pos</code></a></h2>
+<h6 id="x_pos-1" class="section-header"><a href="#x_pos-1"><code>x_pos</code></a></h6>
 <p>the x offset (in Pango units)</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1><h2 id="index_-1" class="section-header"><a href="#index_-1"><code>index_</code></a></h2>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5><h6 id="index_-1" class="section-header"><a href="#index_-1"><code>index_</code></a></h6>
 <p>location to store calculated byte index within <code>text</code></p>
-<h2 id="trailing-1" class="section-header"><a href="#trailing-1"><code>trailing</code></a></h2>
+<h6 id="trailing-1" class="section-header"><a href="#trailing-1"><code>trailing</code></a></h6>
 <p>location to store a boolean indicating whether the
 user clicked on the leading or trailing edge of the character</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph.rs.html#8-23" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h3></div></summary><div class="impl-items"><div id="method.num_glyphs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph.rs.html#9-11" title="goto source code">[src]</a></div><a href="#method.num_glyphs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.num_glyphs" class="fnname">num_glyphs</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div><div id="method.glyph_info" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph.rs.html#13-22" title="goto source code">[src]</a></div><a href="#method.glyph_info" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.glyph_info" class="fnname">glyph_info</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="glyph/struct.GlyphInfo.html" title="struct pango::glyph::GlyphInfo">GlyphInfo</a>&gt;</h4></div></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#12-26" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_string.rs.html#12-26" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

@@ -75,23 +75,23 @@
 <p>The base direction is used when computing bidirectional levels.
 (see <a href="struct.Context.html#method.set_base_dir" title="crate::Context::set_base_dir()"><code>Context::set_base_dir()</code></a>). <a href="functions/fn.itemize.html" title="crate::itemize()"><code>itemize()</code></a> gets the
 base direction from the <a href="struct.Context.html" title="crate::Context"><code>Context</code></a>.</p>
-<h2 id="context" class="section-header"><a href="#context"><code>context</code></a></h2>
+<h3 id="context" class="section-header"><a href="#context"><code>context</code></a></h3>
 <p>a structure holding information that affects
 the itemization process.</p>
-<h2 id="base_dir" class="section-header"><a href="#base_dir"><code>base_dir</code></a></h2>
+<h3 id="base_dir" class="section-header"><a href="#base_dir"><code>base_dir</code></a></h3>
 <p>base direction to use for bidirectional processing</p>
-<h2 id="text" class="section-header"><a href="#text"><code>text</code></a></h2>
+<h3 id="text" class="section-header"><a href="#text"><code>text</code></a></h3>
 <p>the text to itemize.</p>
-<h2 id="start_index" class="section-header"><a href="#start_index"><code>start_index</code></a></h2>
+<h3 id="start_index" class="section-header"><a href="#start_index"><code>start_index</code></a></h3>
 <p>first byte in <code>text</code> to process</p>
-<h2 id="length" class="section-header"><a href="#length"><code>length</code></a></h2>
+<h3 id="length" class="section-header"><a href="#length"><code>length</code></a></h3>
 <p>the number of bytes (not characters) to process
 after <code>start_index</code>. This must be &gt;= 0.</p>
-<h2 id="attrs" class="section-header"><a href="#attrs"><code>attrs</code></a></h2>
+<h3 id="attrs" class="section-header"><a href="#attrs"><code>attrs</code></a></h3>
 <p>the set of attributes that apply to <code>text</code>.</p>
-<h2 id="cached_iter" class="section-header"><a href="#cached_iter"><code>cached_iter</code></a></h2>
+<h3 id="cached_iter" class="section-header"><a href="#cached_iter"><code>cached_iter</code></a></h3>
 <p>Cached attribute iterator</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
 <p>a <code>GList</code> of
 <a href="struct.Item.html" title="crate::Item"><code>Item</code></a> structures. The items should be freed using
 <code>Pango::</code>Item::free()`` probably in combination with <code>g_list_free_full()</code>.</p>

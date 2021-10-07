@@ -118,7 +118,7 @@
 <div class="item-spacer"></div>    fn <a href="#tymethod.connect_is_remote_notify" class="fnname">connect_is_remote_notify</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a>;
 <div class="item-spacer"></div>    fn <a href="#tymethod.connect_resource_base_path_notify" class="fnname">connect_resource_base_path_notify</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a>;
 </details>}</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Trait containing all <a href="../struct.Application.html" title="Application"><code>Application</code></a> methods.</p>
-<h1 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h1>
+<h2 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h2>
 <p><a href="../struct.Application.html" title="crate::Application"><code>Application</code></a></p>
 </div></details><h2 id="required-methods" class="small-section-header">Required methods<a href="#required-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><div id="tymethod.activate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#355" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.activate" class="fnname">activate</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Activates the application.</p>
 <p>In essence, this results in the <code>signal::Application::activate</code> signal being
@@ -134,17 +134,17 @@ is passed to <code>signal::Application::handle-local-options</code>. If
 be sent to the primary instance. See
 <code>g_application_add_main_option_entries()</code> for more details.</p>
 <p>See <code>GOptionEntry</code> for more documentation of the arguments.</p>
-<h2 id="long_name" class="section-header"><a href="#long_name"><code>long_name</code></a></h2>
+<h6 id="long_name" class="section-header"><a href="#long_name"><code>long_name</code></a></h6>
 <p>the long name of an option used to specify it in a commandline</p>
-<h2 id="short_name" class="section-header"><a href="#short_name"><code>short_name</code></a></h2>
+<h6 id="short_name" class="section-header"><a href="#short_name"><code>short_name</code></a></h6>
 <p>the short name of an option</p>
-<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<h6 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h6>
 <p>flags from <a href="../../glib/auto/flags/struct.OptionFlags.html" title="crate::glib::OptionFlags"><code>glib::OptionFlags</code></a></p>
-<h2 id="arg" class="section-header"><a href="#arg"><code>arg</code></a></h2>
+<h6 id="arg" class="section-header"><a href="#arg"><code>arg</code></a></h6>
 <p>the type of the option, as a <a href="../../glib/auto/enums/enum.OptionArg.html" title="crate::glib::OptionArg"><code>glib::OptionArg</code></a></p>
-<h2 id="description" class="section-header"><a href="#description"><code>description</code></a></h2>
+<h6 id="description" class="section-header"><a href="#description"><code>description</code></a></h6>
 <p>the description for the option in <code>--help</code> output</p>
-<h2 id="arg_description" class="section-header"><a href="#arg_description"><code>arg_description</code></a></h2>
+<h6 id="arg_description" class="section-header"><a href="#arg_description"><code>arg_description</code></a></h6>
 <p>the placeholder to use for the extra argument
 parsed by the option in <code>--help</code> output</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.bind_busy_property" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#411" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.bind_busy_property" class="fnname">bind_busy_property</a>(&amp;self, object: &amp;impl <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../../glib/object/struct.Object.html" title="struct glib::object::Object">Object</a>&gt;, property: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></div></summary><div class="docblock"><p>Marks <code>self</code> as busy (see <a href="trait.ApplicationExt.html#tymethod.mark_busy" title="Self::mark_busy()"><code>mark_busy()</code></a>) while
@@ -152,12 +152,12 @@ parsed by the option in <code>--help</code> output</p>
 <p>The binding holds a reference to <code>self</code> while it is active, but
 not to <code>object</code>. Instead, the binding is destroyed when <code>object</code> is
 finalized.</p>
-<h2 id="object" class="section-header"><a href="#object"><code>object</code></a></h2>
+<h6 id="object" class="section-header"><a href="#object"><code>object</code></a></h6>
 <p>a <a href="../../glib/object/struct.Object.html" title="crate::glib::Object"><code>glib::Object</code></a></p>
-<h2 id="property" class="section-header"><a href="#property"><code>property</code></a></h2>
+<h6 id="property" class="section-header"><a href="#property"><code>property</code></a></h6>
 <p>the name of a boolean property of <code>object</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.application_id" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#420" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.application_id" class="fnname">application_id</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the unique identifier for <code>self</code>.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the identifier for <code>self</code>, owned by <code>self</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.dbus_connection" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#441" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.dbus_connection" class="fnname">dbus_connection</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.DBusConnection.html" title="struct gio::DBusConnection">DBusConnection</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the <a href="../struct.DBusConnection.html" title="crate::DBusConnection"><code>DBusConnection</code></a> being used by the application, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
 <p>If <a href="../struct.Application.html" title="crate::Application"><code>Application</code></a> is using its D-Bus backend then this function will
@@ -169,7 +169,7 @@ application.</p>
 normally be in use but we were unable to connect to the bus.</p>
 <p>This function must not be called before the application has been
 registered. See <a href="trait.ApplicationExt.html#tymethod.is_registered" title="Self::is_registered()"><code>is_registered()</code></a>.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>a <a href="../struct.DBusConnection.html" title="crate::DBusConnection"><code>DBusConnection</code></a>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.dbus_object_path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#463" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.dbus_object_path" class="fnname">dbus_object_path</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the D-Bus object path being used by the application, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
 <p>If <a href="../struct.Application.html" title="crate::Application"><code>Application</code></a> is using its D-Bus backend then this function will
@@ -182,25 +182,25 @@ the result of this function is undefined.</p>
 normally be in use but we were unable to connect to the bus.</p>
 <p>This function must not be called before the application has been
 registered. See <a href="trait.ApplicationExt.html#tymethod.is_registered" title="Self::is_registered()"><code>is_registered()</code></a>.</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the object path, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.flags" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#474" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.flags" class="fnname">flags</a>(&amp;self) -&gt; <a class="struct" href="../struct.ApplicationFlags.html" title="struct gio::ApplicationFlags">ApplicationFlags</a></h4></div></summary><div class="docblock"><p>Gets the flags for <code>self</code>.</p>
 <p>See <a href="../struct.ApplicationFlags.html" title="crate::ApplicationFlags"><code>ApplicationFlags</code></a>.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>the flags for <code>self</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.inactivity_timeout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#486" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.inactivity_timeout" class="fnname">inactivity_timeout</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></h4></div></summary><div class="docblock"><p>Gets the current inactivity timeout for the application.</p>
 <p>This is the amount of time (in milliseconds) after the last call to
 <a href="trait.ApplicationExt.html#tymethod.release" title="Self::release()"><code>release()</code></a> before the application stops running.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>the timeout, in milliseconds</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.is_busy" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#496" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.is_busy" class="fnname">is_busy</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Gets the application’s current busy state, as set through
 <a href="trait.ApplicationExt.html#tymethod.mark_busy" title="Self::mark_busy()"><code>mark_busy()</code></a> or <a href="trait.ApplicationExt.html#tymethod.bind_busy_property" title="Self::bind_busy_property()"><code>bind_busy_property()</code></a>.</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>self</code> is currently marked as busy</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.is_registered" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#508" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.is_registered" class="fnname">is_registered</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Checks if <code>self</code> is registered.</p>
 <p>An application is registered if <a href="trait.ApplicationExt.html#tymethod.register" title="Self::register()"><code>register()</code></a> has been
 successfully called.</p>
-<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>self</code> is registered</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.is_remote" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#526" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.is_remote" class="fnname">is_remote</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Checks if <code>self</code> is remote.</p>
 <p>If <code>self</code> is remote then it means that another instance of
@@ -210,11 +210,11 @@ performed by the primary instance.</p>
 <p>The value of this property cannot be accessed before
 <a href="trait.ApplicationExt.html#tymethod.register" title="Self::register()"><code>register()</code></a> has been called. See
 <a href="trait.ApplicationExt.html#tymethod.is_registered" title="Self::is_registered()"><code>is_registered()</code></a>.</p>
-<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>self</code> is remote</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.resource_base_path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#537" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.resource_base_path" class="fnname">resource_base_path</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the resource base path of <code>self</code>.</p>
 <p>See <a href="trait.ApplicationExt.html#tymethod.set_resource_base_path" title="Self::set_resource_base_path()"><code>set_resource_base_path()</code></a> for more information.</p>
-<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
 <p>the base resource path, if one is set</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.hold" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#547" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.hold" class="fnname">hold</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Increases the use count of <code>self</code>.</p>
 <p>Use this function to indicate that the application has a reason to
@@ -239,9 +239,9 @@ opening files (eg: “view” vs “edit”, etc). Unless you have a need
 for this functionality, you should use “”.</p>
 <p>The application must be registered before calling this function
 and it must have the <a href="../struct.ApplicationFlags.html#associatedconstant.HANDLES_OPEN" title="crate::ApplicationFlags::HANDLES_OPEN"><code>ApplicationFlags::HANDLES_OPEN</code></a> flag set.</p>
-<h2 id="files" class="section-header"><a href="#files"><code>files</code></a></h2>
+<h6 id="files" class="section-header"><a href="#files"><code>files</code></a></h6>
 <p>an array of <code>GFiles</code> to open</p>
-<h2 id="hint" class="section-header"><a href="#hint"><code>hint</code></a></h2>
+<h6 id="hint" class="section-header"><a href="#hint"><code>hint</code></a></h6>
 <p>a hint (or “”), but never <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.quit" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#599" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.quit" class="fnname">quit</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Immediately quits the application.</p>
 <p>Upon return to the mainloop, <a href="trait.ApplicationExtManual.html#tymethod.run" title="crate::prelude::ApplicationExtManual::run()"><code>ApplicationExtManual::run()</code></a> will return,
@@ -276,9 +276,9 @@ is set appropriately.</p>
 <p>Note: the return value of this function is not an indicator that this
 instance is or is not the primary instance of the application. See
 <a href="trait.ApplicationExt.html#tymethod.is_remote" title="Self::is_remote()"><code>is_remote()</code></a> for that.</p>
-<h2 id="cancellable" class="section-header"><a href="#cancellable"><code>cancellable</code></a></h2>
+<h6 id="cancellable" class="section-header"><a href="#cancellable"><code>cancellable</code></a></h6>
 <p>a <a href="../struct.Cancellable.html" title="crate::Cancellable"><code>Cancellable</code></a>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
+<h5 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if registration succeeded</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.release" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#647" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.release" class="fnname">release</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Decrease the use count of <code>self</code>.</p>
 <p>When the use count reaches zero, the application will stop running.</p>
@@ -304,16 +304,16 @@ execution of the application, as long as <code>id</code> is the same string.</p>
 notifications without an id.</p>
 <p>If <code>notification</code> is no longer relevant, it can be withdrawn with
 <a href="trait.ApplicationExt.html#tymethod.withdraw_notification" title="Self::withdraw_notification()"><code>withdraw_notification()</code></a>.</p>
-<h2 id="id" class="section-header"><a href="#id"><code>id</code></a></h2>
+<h6 id="id" class="section-header"><a href="#id"><code>id</code></a></h6>
 <p>id of the notification, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="notification" class="section-header"><a href="#notification"><code>notification</code></a></h2>
+<h6 id="notification" class="section-header"><a href="#notification"><code>notification</code></a></h6>
 <p>the <a href="../struct.Notification.html" title="crate::Notification"><code>Notification</code></a> to send</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_application_id" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#692" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_application_id" class="fnname">set_application_id</a>(&amp;self, application_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets the unique identifier for <code>self</code>.</p>
 <p>The application id can only be modified if <code>self</code> has not yet
 been registered.</p>
 <p>If non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the application id must be valid. See
 <a href="../struct.Application.html#method.id_is_valid" title="crate::Application::id_is_valid()"><code>Application::id_is_valid()</code></a>.</p>
-<h2 id="application_id" class="section-header"><a href="#application_id"><code>application_id</code></a></h2>
+<h6 id="application_id" class="section-header"><a href="#application_id"><code>application_id</code></a></h6>
 <p>the identifier for <code>self</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_default" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#701" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_default" class="fnname">set_default</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Sets or unsets the default application for the process, as returned
 by <a href="../struct.Application.html#method.default" title="crate::Application::default()"><code>Application::default()</code></a>.</p>
@@ -324,7 +324,7 @@ back to <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#
 <p>The flags can only be modified if <code>self</code> has not yet been
 registered.</p>
 <p>See <a href="../struct.ApplicationFlags.html" title="crate::ApplicationFlags"><code>ApplicationFlags</code></a>.</p>
-<h2 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h2>
+<h6 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h6>
 <p>the flags for <code>self</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_inactivity_timeout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#725" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_inactivity_timeout" class="fnname">set_inactivity_timeout</a>(&amp;self, inactivity_timeout: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>)</h4></div></summary><div class="docblock"><p>Sets the current inactivity timeout for the application.</p>
 <p>This is the amount of time (in milliseconds) after the last call to
@@ -332,23 +332,23 @@ registered.</p>
 <p>This call has no side effects of its own. The value set here is only
 used for next time <a href="trait.ApplicationExt.html#tymethod.release" title="Self::release()"><code>release()</code></a> drops the use count to
 zero. Any timeouts currently in progress are not impacted.</p>
-<h2 id="inactivity_timeout" class="section-header"><a href="#inactivity_timeout"><code>inactivity_timeout</code></a></h2>
+<h6 id="inactivity_timeout" class="section-header"><a href="#inactivity_timeout"><code>inactivity_timeout</code></a></h6>
 <p>the timeout, in milliseconds</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_option_context_description" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#736" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_option_context_description" class="fnname">set_option_context_description</a>(&amp;self, description: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_56</code></strong> only.</div></div><div class="docblock"><p>Adds a description to the <code>self</code> option context.</p>
 <p>See <code>g_option_context_set_description()</code> for more information.</p>
-<h2 id="description-1" class="section-header"><a href="#description-1"><code>description</code></a></h2>
+<h6 id="description-1" class="section-header"><a href="#description-1"><code>description</code></a></h6>
 <p>a string to be shown in <code>--help</code> output
 after the list of options, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_option_context_parameter_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#750" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_option_context_parameter_string" class="fnname">set_option_context_parameter_string</a>(&amp;self, parameter_string: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_56</code></strong> only.</div></div><div class="docblock"><p>Sets the parameter string to be used by the commandline handling of <code>self</code>.</p>
 <p>This function registers the argument to be passed to <code>g_option_context_new()</code>
 when the internal <code>GOptionContext</code> of <code>self</code> is created.</p>
 <p>See <code>g_option_context_new()</code> for more information about <code>parameter_string</code>.</p>
-<h2 id="parameter_string" class="section-header"><a href="#parameter_string"><code>parameter_string</code></a></h2>
+<h6 id="parameter_string" class="section-header"><a href="#parameter_string"><code>parameter_string</code></a></h6>
 <p>a string which is displayed
 in the first line of <code>--help</code> output, after the usage summary <code>programname [OPTION...]</code>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_option_context_summary" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#761" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_option_context_summary" class="fnname">set_option_context_summary</a>(&amp;self, summary: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></div></summary><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_56</code></strong> only.</div></div><div class="docblock"><p>Adds a summary to the <code>self</code> option context.</p>
 <p>See <code>g_option_context_set_summary()</code> for more information.</p>
-<h2 id="summary" class="section-header"><a href="#summary"><code>summary</code></a></h2>
+<h6 id="summary" class="section-header"><a href="#summary"><code>summary</code></a></h6>
 <p>a string to be shown in <code>--help</code> output
 before the list of options, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_resource_base_path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#799" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_resource_base_path" class="fnname">set_resource_base_path</a>(&amp;self, resource_path: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets (or unsets) the base resource path of <code>self</code>.</p>
@@ -378,14 +378,14 @@ a sub-class of <a href="../struct.Application.html" title="crate::Application"><
 this function during the instance initialization. Alternatively, you
 can call this function in the <code>GApplicationClass.startup</code> virtual function,
 before chaining up to the parent implementation.</p>
-<h2 id="resource_path" class="section-header"><a href="#resource_path"><code>resource_path</code></a></h2>
+<h6 id="resource_path" class="section-header"><a href="#resource_path"><code>resource_path</code></a></h6>
 <p>the resource path to use</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.unbind_busy_property" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#809" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.unbind_busy_property" class="fnname">unbind_busy_property</a>(&amp;self, object: &amp;impl <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../../glib/object/struct.Object.html" title="struct glib::object::Object">Object</a>&gt;, property: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></div></summary><div class="docblock"><p>Destroys a binding between <code>property</code> and the busy state of
 <code>self</code> that was previously created with
 <a href="trait.ApplicationExt.html#tymethod.bind_busy_property" title="Self::bind_busy_property()"><code>bind_busy_property()</code></a>.</p>
-<h2 id="object-1" class="section-header"><a href="#object-1"><code>object</code></a></h2>
+<h6 id="object-1" class="section-header"><a href="#object-1"><code>object</code></a></h6>
 <p>a <a href="../../glib/object/struct.Object.html" title="crate::glib::Object"><code>glib::Object</code></a></p>
-<h2 id="property-1" class="section-header"><a href="#property-1"><code>property</code></a></h2>
+<h6 id="property-1" class="section-header"><a href="#property-1"><code>property</code></a></h6>
 <p>the name of a boolean property of <code>object</code></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.unmark_busy" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#819" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.unmark_busy" class="fnname">unmark_busy</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Decreases the busy count of <code>self</code>.</p>
 <p>When the busy count reaches zero, the new state will be propagated
@@ -402,17 +402,17 @@ the sent notification.</p>
 <p>Note that notifications are dismissed when the user clicks on one
 of the buttons in a notification or triggers its default action, so
 there is no need to explicitly withdraw the notification in that case.</p>
-<h2 id="id-1" class="section-header"><a href="#id-1"><code>id</code></a></h2>
+<h6 id="id-1" class="section-header"><a href="#id-1"><code>id</code></a></h6>
 <p>id of a previously sent notification</p>
 </div></details><div id="tymethod.set_action_group" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#840" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_action_group" class="fnname">set_action_group</a>&lt;P:&nbsp;<a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.ActionGroup.html" title="struct gio::ActionGroup">ActionGroup</a>&gt;&gt;(&amp;self, action_group: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>P&gt;)</h4></div><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_activate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#845" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.connect_activate" class="fnname">connect_activate</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) + 'static&gt;(&amp;self, f: F) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></h4></div></summary><div class="docblock"><p>The ::activate signal is emitted on the primary instance when an
 activation occurs. See <a href="trait.ApplicationExt.html#tymethod.activate" title="Self::activate()"><code>activate()</code></a>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_command_line" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#859-862" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.connect_command_line" class="fnname">connect_command_line</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, &amp;<a class="struct" href="../struct.ApplicationCommandLine.html" title="struct gio::ApplicationCommandLine">ApplicationCommandLine</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></h4></div></summary><div class="docblock"><p>The ::command-line signal is emitted on the primary instance when
 a commandline is not handled locally. See <a href="trait.ApplicationExtManual.html#tymethod.run" title="crate::prelude::ApplicationExtManual::run()"><code>ApplicationExtManual::run()</code></a> and
 the <a href="../struct.ApplicationCommandLine.html" title="crate::ApplicationCommandLine"><code>ApplicationCommandLine</code></a> documentation for more information.</p>
-<h2 id="command_line" class="section-header"><a href="#command_line"><code>command_line</code></a></h2>
+<h6 id="command_line" class="section-header"><a href="#command_line"><code>command_line</code></a></h6>
 <p>a <a href="../struct.ApplicationCommandLine.html" title="crate::ApplicationCommandLine"><code>ApplicationCommandLine</code></a> representing the
 passed commandline</p>
-<h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
+<h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
 <p>An integer that is set as the exit status for the calling
 process. See <a href="trait.ApplicationCommandLineExt.html#tymethod.set_exit_status" title="crate::prelude::ApplicationCommandLineExt::set_exit_status()"><code>ApplicationCommandLineExt::set_exit_status()</code></a>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_handle_local_options" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#915-918" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.connect_handle_local_options" class="fnname">connect_handle_local_options</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self, &amp;<a class="struct" href="../../glib/variant_dict/struct.VariantDict.html" title="struct glib::variant_dict::VariantDict">VariantDict</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;f: F<br>) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></h4></div></summary><div class="docblock"><p>The ::handle-local-options signal is emitted on the local instance
@@ -449,9 +449,9 @@ chain up then this signal will never be emitted.</p>
 <p>You can override <code>local_command_line()</code> if you need more powerful
 capabilities than what is provided here, but this should not
 normally be required.</p>
-<h2 id="options" class="section-header"><a href="#options"><code>options</code></a></h2>
+<h6 id="options" class="section-header"><a href="#options"><code>options</code></a></h6>
 <p>the options dictionary</p>
-<h1 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h1>
+<h5 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h5>
 <p>an exit code. If you have handled your options and want
 to exit the process, return a non-negative option, 0 for success,
 and a positive value for failure. To continue, return -1 to let
@@ -460,7 +460,7 @@ the default option processing continue.</p>
 when a new instance has taken over. This can only happen if the application
 is using the <a href="../struct.ApplicationFlags.html#associatedconstant.ALLOW_REPLACEMENT" title="crate::ApplicationFlags::ALLOW_REPLACEMENT"><code>ApplicationFlags::ALLOW_REPLACEMENT</code></a> flag.</p>
 <p>The default handler for this signal calls <a href="trait.ApplicationExt.html#tymethod.quit" title="Self::quit()"><code>quit()</code></a>.</p>
-<h1 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h1>
+<h5 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the signal has been handled</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.connect_shutdown" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gio/auto/application.rs.html#937" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.connect_shutdown" class="fnname">connect_shutdown</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) + 'static&gt;(&amp;self, f: F) -&gt; <a class="struct" href="../../glib/signal/struct.SignalHandlerId.html" title="struct glib::signal::SignalHandlerId">SignalHandlerId</a></h4></div></summary><div class="docblock"><p>The ::shutdown signal is emitted only on the registered primary instance
 immediately after the main loop terminates.</p>

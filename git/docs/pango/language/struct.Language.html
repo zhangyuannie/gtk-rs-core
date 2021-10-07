@@ -84,9 +84,9 @@ lowercase, mapping ‘_’ to ‘-’, and stripping all characters other
 than letters and ‘-’.</p>
 <p>Use <a href="struct.Language.html#method.default" title="Self::default()"><code>default()</code></a> if you want to get the
 <a href="struct.Language.html" title="crate::Language"><code>Language</code></a> for the current locale of the process.</p>
-<h2 id="language" class="section-header"><a href="#language"><code>language</code></a></h2>
+<h6 id="language" class="section-header"><a href="#language"><code>language</code></a></h6>
 <p>a string representing a language tag</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>a <a href="struct.Language.html" title="crate::Language"><code>Language</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/language.rs.html#101-103" title="goto source code">[src]</a></div><a href="#method.to_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="../../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a></h4></div></summary><div class="docblock"><p>Gets the RFC-3066 format string representing the given language tag.</p>
 <p>Returns (transfer none): a string representing the language tag</p>
@@ -95,12 +95,12 @@ language ranges.</p>
 <p>A language tag is considered to match a range in the list if the
 range is ‘*’, the range is exactly the tag, or the range is a prefix
 of the tag, and the character after it in the tag is ‘-’.</p>
-<h2 id="range_list" class="section-header"><a href="#range_list"><code>range_list</code></a></h2>
+<h6 id="range_list" class="section-header"><a href="#range_list"><code>range_list</code></a></h6>
 <p>a list of language ranges, separated by ‘;’, ‘:’,
 ‘,’, or space characters.
 Each element must either be ‘*’, or a RFC 3066 language range
 canonicalized as by <a href="struct.Language.html#method.from_string" title="Self::from_string()"><code>from_string()</code></a></p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a match was found</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.includes_script" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/language.rs.html#152-159" title="goto source code">[src]</a></div><a href="#method.includes_script" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.includes_script" class="fnname">includes_script</a>(&amp;self, script: <a class="enum" href="../enum.Script.html" title="enum pango::Script">Script</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Determines if <code>script</code> is one of the scripts used to
 write <code>self</code>.</p>
@@ -112,9 +112,9 @@ determining if a supplied language tag is relevant to
 a particular section of text. It probably is not useful
 for applications in most circumstances.</p>
 <p>This function uses <a href="struct.Language.html#method.scripts" title="Self::scripts()"><code>scripts()</code></a> internally.</p>
-<h2 id="script" class="section-header"><a href="#script"><code>script</code></a></h2>
+<h6 id="script" class="section-header"><a href="#script"><code>script</code></a></h6>
 <p>a <a href="../enum.Script.html" title="crate::Script"><code>Script</code></a></p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>script</code> is one of the scripts used
 to write <code>self</code> or if nothing is known about <code>self</code>
 (including the case that <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>), <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise.</p>
@@ -136,7 +136,7 @@ function internally.</p>
 <p>Note: while the return value is declared as <a href="../enum.Script.html" title="crate::Script"><code>Script</code></a>, the
 returned values are from the <code>GUnicodeScript</code> enumeration, which
 may have more values. Callers need to handle unknown values.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>An array of <a href="../enum.Script.html" title="crate::Script"><code>Script</code></a> values, with the number of entries in
 the array stored in <code>num_scripts</code>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if Pango does not have
 any information about this particular language tag (also the case
@@ -153,7 +153,7 @@ as sample text in a font selection dialog.</p>
 “The quick brown fox…” is returned. This can be detected by
 comparing the returned pointer value to that returned for (non-existent)
 language code “xx”. That is, compare to:</p>
-<div class="example-wrap"><pre class="language-text"><code>pango_language_get_sample_string (pango_language_from_string (&quot;xx&quot;))</code></pre></div><h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<div class="example-wrap"><pre class="language-text"><code>pango_language_get_sample_string (pango_language_from_string (&quot;xx&quot;))</code></pre></div><h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>the sample string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.preferred" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/language.rs.html#261-275" title="goto source code">[src]</a></div><a href="#method.preferred" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.preferred" class="fnname">preferred</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.Language.html" title="struct pango::language::Language">Language</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_48</code></strong> only.</div></div></summary><div class="docblock"><p>Returns the list of languages that the user prefers.</p>
 <p>The list is specified by the <code>PANGO_LANGUAGE</code> or <code>LANGUAGE</code>
@@ -164,7 +164,7 @@ list does not necessarily include the language returned by
 text returned by <a href="struct.Language.html#method.sample_string" title="Self::sample_string()"><code>sample_string()</code></a>,
 you should first try the default language, followed by the
 languages returned by this function.</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p>a <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated array
 of <a href="struct.Language.html" title="crate::Language"><code>Language</code></a>*</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Default" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/language.rs.html#66-71" title="goto source code">[src]</a></div><a href="#impl-Default" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="struct.Language.html" title="struct pango::language::Language">Language</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.default" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/language.rs.html#68-70" title="goto source code">[src]</a></div><a href="#method.default" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default" class="fnname">default</a>() -&gt; Self</h4></div></summary><div class='docblock'><p>Returns the “default value” for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>

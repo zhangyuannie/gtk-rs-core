@@ -75,13 +75,13 @@
 strings and the values are <a href="variant/struct.Variant.html"><code>Variant</code>s</a>.</p>
 <p>Variant dictionaries can easily be converted to/from <code>Variant</code>s of the
 appropriate type.  In <code>glib</code> terms, this is a variant of the form <code>&quot;a{sv}&quot;</code>.</p>
-<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
+<h2 id="panics" class="section-header"><a href="#panics">Panics</a></h2>
 <p>Note, pretty much all methods on this struct will panic if the
 <a href="#method.end_unsafe"><code>end_unsafe()</code></a> method was called on the instance.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#31-188" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.VariantDict.html" title="struct glib::VariantDict">VariantDict</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#41-46" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>(from_asv: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;) -&gt; Self</h4></div></summary><div class="docblock"><p>Create a new <code>VariantDict</code> optionally populating it with the given <code>Variant</code></p>
 <p>Since <code>Variant</code>s are immutable, this does not couple the <code>VariantDict</code> with
 the input <code>Variant</code>, instead the contents are copied into the <code>VariantDict</code>.</p>
-<h1 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h1>
+<h5 id="panics-1" class="section-header"><a href="#panics-1">Panics</a></h5>
 <p>This function will panic if the given <code>Variant</code> is not of the correct type.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.contains" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#53-60" title="goto source code">[src]</a></div><a href="#method.contains" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.contains" class="fnname">contains</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Check if this <code>VariantDict</code> contains the given key.</p>
 <p>Look up whether or not the given key is present, returning <code>true</code> if it
@@ -119,7 +119,7 @@ returned.  If <code>key</code> was not present then <code>false</code> is return
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.end_unsafe" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/variant_dict.rs.html#167-169" title="goto source code">[src]</a></div><a href="#method.end_unsafe" class="anchor"></a><h4 class="code-header">pub unsafe fn <a href="#method.end_unsafe" class="fnname">end_unsafe</a>(&amp;self) -&gt; <a class="struct" href="variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a></h4></div></summary><div class="docblock"><p>Convert this dictionary to a <a href="variant/struct.Variant.html"><code>Variant</code></a></p>
 <p>This method converts <code>self</code> into an instance of <a href="variant/struct.Variant.html"><code>Variant</code></a>
 but in doing so renders it very unsafe to use.</p>
-<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<h5 id="safety" class="section-header"><a href="#safety">Safety</a></h5>
 <p>After calling this, the underlying <code>GVariantDict</code> is in a state where
 the only valid operations to perform as reference ones.  As such
 any attempt to read/update the dictionary <em>will</em> fail and emit warnings

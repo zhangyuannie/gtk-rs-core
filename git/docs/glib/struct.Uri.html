@@ -81,7 +81,7 @@ help prevent
 <a href="https://en.wikipedia.org/wiki/IDN_homograph_attack">homograph attacks</a>, so
 <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> is not suitable for formatting URIs for display to the user for making
 security-sensitive decisions.</p>
-<h2 id="relative-and-absolute-uris--relative-absolute-uris" class="section-header"><a href="#relative-and-absolute-uris--relative-absolute-uris">Relative and absolute URIs # {<code>relative</code>-absolute-uris}</a></h2>
+<h3 id="relative-and-absolute-uris--relative-absolute-uris" class="section-header"><a href="#relative-and-absolute-uris--relative-absolute-uris">Relative and absolute URIs # {<code>relative</code>-absolute-uris}</a></h3>
 <p>As defined in <a href="https://tools.ietf.org/html/rfc3986%60section%60-4">RFC 3986</a>, the
 hierarchical nature of URIs means that they can either be ‘relative
 references’ (sometimes referred to as ‘relative URIs’) or ‘URIs’ (for
@@ -103,7 +103,7 @@ resolved relative to a base URI using <a href="struct.Uri.html#method.parse_rela
 <p>A <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> instance is always an absolute URI. A string may be an absolute URI
 or a relative reference; see the documentation for individual functions as to
 what forms they accept.</p>
-<h2 id="parsing-uris" class="section-header"><a href="#parsing-uris">Parsing URIs</a></h2>
+<h3 id="parsing-uris" class="section-header"><a href="#parsing-uris">Parsing URIs</a></h3>
 <p>The most minimalist APIs for parsing URIs are <a href="struct.Uri.html#method.split" title="Self::split()"><code>split()</code></a> and
 <a href="struct.Uri.html#method.split_with_user" title="Self::split_with_user()"><code>split_with_user()</code></a>. These split a URI into its component
 parts, and return the parts; the difference between the two is that
@@ -131,7 +131,7 @@ first, and use that to decide what flags to parse it with.</p>
 <p>For example, you might want to use <a href="struct.UriParamsFlags.html#associatedconstant.WWW_FORM" title="crate::UriParamsFlags::WWW_FORM"><code>UriParamsFlags::WWW_FORM</code></a> when parsing the
 params for a web URI, so compare the result of <a href="struct.Uri.html#method.peek_scheme" title="Self::peek_scheme()"><code>peek_scheme()</code></a> against
 <code>http</code> and <code>https</code>.</p>
-<h2 id="building-uris" class="section-header"><a href="#building-uris">Building URIs</a></h2>
+<h3 id="building-uris" class="section-header"><a href="#building-uris">Building URIs</a></h3>
 <p><a href="struct.Uri.html#method.join" title="Self::join()"><code>join()</code></a> and <a href="struct.Uri.html#method.join_with_user" title="Self::join_with_user()"><code>join_with_user()</code></a> can be used to construct
 valid URI strings from a set of component strings. They are the
 inverse of <a href="struct.Uri.html#method.split" title="Self::split()"><code>split()</code></a> and <a href="struct.Uri.html#method.split_with_user" title="Self::split_with_user()"><code>split_with_user()</code></a>.</p>
@@ -141,14 +141,14 @@ construct a <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> fr
 <a href="struct.UriFlags.html" title="crate::UriFlags"><code>UriFlags</code></a> argument. In particular, it is important to keep in mind
 whether the URI components you are using are already <code>%</code>-encoded. If so,
 you must pass the <a href="struct.UriFlags.html#associatedconstant.ENCODED" title="crate::UriFlags::ENCODED"><code>UriFlags::ENCODED</code></a> flag.</p>
-<h2 id="file-uris" class="section-header"><a href="#file-uris"><code>file://</code> URIs</a></h2>
+<h3 id="file-uris" class="section-header"><a href="#file-uris"><code>file://</code> URIs</a></h3>
 <p>Note that Windows and Unix both define special rules for parsing
 <code>file://</code> URIs (involving non-UTF-8 character sets on Unix, and the
 interpretation of path separators on Windows). <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> does not
 implement these rules. Use <code>g_filename_from_uri()</code> and
 <code>g_filename_to_uri()</code> if you want to properly convert between
 <code>file://</code> URIs and local filenames.</p>
-<h2 id="uri-equality" class="section-header"><a href="#uri-equality">URI Equality</a></h2>
+<h3 id="uri-equality" class="section-header"><a href="#uri-equality">URI Equality</a></h3>
 <p>Note that there is no <code>g_uri_equal ()</code> function, because comparing
 URIs usefully requires scheme-specific knowledge that <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> does
 not have. <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> can help with normalization if you use the various
@@ -163,14 +163,14 @@ handle.</p>
 be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.)</p>
 <p>Depending on the URI scheme, <code>g_uri_parse_params()</code> may be useful for
 further parsing this information.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p><code>self</code>’s authentication parameters.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.flags" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#158-160" title="goto source code">[src]</a></div><a href="#method.flags" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.flags" class="fnname">flags</a>(&amp;self) -&gt; <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s flags set upon construction.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p><code>self</code>’s flags.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.fragment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#170-172" title="goto source code">[src]</a></div><a href="#method.fragment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.fragment" class="fnname">fragment</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s fragment, which may contain <code>%</code>-encoding, depending on
 the flags with which <code>self</code> was created.</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p><code>self</code>’s fragment.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.host" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#189-191" title="goto source code">[src]</a></div><a href="#method.host" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.host" class="fnname">host</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s host. This will never have <code>%</code>-encoded characters,
 unless it is non-UTF-8 (which can only be the case if <code>self</code> was
@@ -180,77 +180,77 @@ that address, without the brackets around it that are necessary in
 the string form of the URI. Note that in this case there may also
 be a scope ID attached to the address. Eg, <code>fe80::1234%``em1</code> (or
 <code>fe80::1234%``25em1</code> if the string is still encoded).</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p><code>self</code>’s host.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.password" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#202-204" title="goto source code">[src]</a></div><a href="#method.password" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.password" class="fnname">password</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s password, which may contain <code>%</code>-encoding, depending on
 the flags with which <code>self</code> was created. (If <code>self</code> was not created
 with <a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a> then this will be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.)</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p><code>self</code>’s password.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.path" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#214-216" title="goto source code">[src]</a></div><a href="#method.path" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.path" class="fnname">path</a>(&amp;self) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s path, which may contain <code>%</code>-encoding, depending on the
 flags with which <code>self</code> was created.</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p><code>self</code>’s path.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.port" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#225-227" title="goto source code">[src]</a></div><a href="#method.port" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.port" class="fnname">port</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s port.</p>
-<h1 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h1>
+<h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
 <p><code>self</code>’s port, or <code>-1</code> if no port was specified.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.query" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#240-242" title="goto source code">[src]</a></div><a href="#method.query" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.query" class="fnname">query</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s query, which may contain <code>%</code>-encoding, depending on the
 flags with which <code>self</code> was created.</p>
 <p>For queries consisting of a series of <code>name=value</code> parameters,
 <code>GUriParamsIter</code> or <code>g_uri_parse_params()</code> may be useful.</p>
-<h1 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h1>
+<h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
 <p><code>self</code>’s query.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.scheme" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#252-254" title="goto source code">[src]</a></div><a href="#method.scheme" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.scheme" class="fnname">scheme</a>(&amp;self) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s scheme. Note that this will always be all-lowercase,
 regardless of the string or strings that <code>self</code> was created from.</p>
-<h1 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h1>
+<h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
 <p><code>self</code>’s scheme.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.user" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#266-268" title="goto source code">[src]</a></div><a href="#method.user" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.user" class="fnname">user</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the ‘username’ component of <code>self</code>’s userinfo, which may contain
 <code>%</code>-encoding, depending on the flags with which <code>self</code> was created.
 If <code>self</code> was not created with <a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a> or
 <a href="struct.UriFlags.html#associatedconstant.HAS_AUTH_PARAMS" title="crate::UriFlags::HAS_AUTH_PARAMS"><code>UriFlags::HAS_AUTH_PARAMS</code></a>, this is the same as <a href="struct.Uri.html#method.userinfo" title="Self::userinfo()"><code>userinfo()</code></a>.</p>
-<h1 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h1>
+<h5 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h5>
 <p><code>self</code>’s user.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.userinfo" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#278-280" title="goto source code">[src]</a></div><a href="#method.userinfo" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.userinfo" class="fnname">userinfo</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets <code>self</code>’s userinfo, which may contain <code>%</code>-encoding, depending on
 the flags with which <code>self</code> was created.</p>
-<h1 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h1>
+<h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
 <p><code>self</code>’s userinfo.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.parse_relative" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#295-310" title="goto source code">[src]</a></div><a href="#method.parse_relative" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.parse_relative" class="fnname">parse_relative</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;uri_ref: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_ref</code> according to <code>flags</code> and, if it is a
 [relative URI][relative-absolute-uris], resolves it relative to <code>self</code>.
 If the result is not a valid absolute URI, it will be discarded, and an error
 returned.</p>
-<h2 id="uri_ref" class="section-header"><a href="#uri_ref"><code>uri_ref</code></a></h2>
+<h6 id="uri_ref" class="section-header"><a href="#uri_ref"><code>uri_ref</code></a></h6>
 <p>a string representing a relative or absolute URI</p>
-<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<h6 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h6>
 <p>flags describing how to parse <code>uri_ref</code></p>
-<h1 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h1>
+<h5 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h5>
 <p>a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a>, or NULL on error.</p>
 </div></details><div id="method.to_str" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#314-316" title="goto source code">[src]</a></div><a href="#method.to_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_str" class="fnname">to_str</a>(&amp;self) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string_partial" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#328-335" title="goto source code">[src]</a></div><a href="#method.to_string_partial" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_string_partial" class="fnname">to_string_partial</a>(&amp;self, flags: <a class="struct" href="struct.UriHideFlags.html" title="struct glib::UriHideFlags">UriHideFlags</a>) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Returns a string representing <code>self</code>, subject to the options in
 <code>flags</code>. See <a href="struct.Uri.html#method.to_str" title="Self::to_str()"><code>to_str()</code></a> and <a href="struct.UriHideFlags.html" title="crate::UriHideFlags"><code>UriHideFlags</code></a> for more details.</p>
-<h2 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h2>
+<h6 id="flags-1" class="section-header"><a href="#flags-1"><code>flags</code></a></h6>
 <p>flags describing what parts of <code>self</code> to hide</p>
-<h1 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h1>
+<h5 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h5>
 <p>a string representing
 <code>self</code>, which the caller must free.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.build" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#362-384" title="goto source code">[src]</a></div><a href="#method.build" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.build" class="fnname">build</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;scheme: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;userinfo: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;host: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;query: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;fragment: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Creates a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> from the given components according to <code>flags</code>.</p>
 <p>See also <a href="struct.Uri.html#method.build_with_user" title="Self::build_with_user()"><code>build_with_user()</code></a>, which allows specifying the
 components of the “userinfo” separately.</p>
-<h2 id="flags-2" class="section-header"><a href="#flags-2"><code>flags</code></a></h2>
+<h6 id="flags-2" class="section-header"><a href="#flags-2"><code>flags</code></a></h6>
 <p>flags describing how to build the <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a></p>
-<h2 id="scheme" class="section-header"><a href="#scheme"><code>scheme</code></a></h2>
+<h6 id="scheme" class="section-header"><a href="#scheme"><code>scheme</code></a></h6>
 <p>the URI scheme</p>
-<h2 id="userinfo" class="section-header"><a href="#userinfo"><code>userinfo</code></a></h2>
+<h6 id="userinfo" class="section-header"><a href="#userinfo"><code>userinfo</code></a></h6>
 <p>the userinfo component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host" class="section-header"><a href="#host"><code>host</code></a></h2>
+<h6 id="host" class="section-header"><a href="#host"><code>host</code></a></h6>
 <p>the host component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port" class="section-header"><a href="#port"><code>port</code></a></h2>
+<h6 id="port" class="section-header"><a href="#port"><code>port</code></a></h6>
 <p>the port, or <code>-1</code></p>
-<h2 id="path" class="section-header"><a href="#path"><code>path</code></a></h2>
+<h6 id="path" class="section-header"><a href="#path"><code>path</code></a></h6>
 <p>the path component</p>
-<h2 id="query" class="section-header"><a href="#query"><code>query</code></a></h2>
+<h6 id="query" class="section-header"><a href="#query"><code>query</code></a></h6>
 <p>the query component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment" class="section-header"><a href="#fragment"><code>fragment</code></a></h2>
+<h6 id="fragment" class="section-header"><a href="#fragment"><code>fragment</code></a></h6>
 <p>the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-13" class="section-header"><a href="#returns-13">Returns</a></h1>
+<h5 id="returns-13" class="section-header"><a href="#returns-13">Returns</a></h5>
 <p>a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.build_with_user" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#419-445" title="goto source code">[src]</a></div><a href="#method.build_with_user" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.build_with_user" class="fnname">build_with_user</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;scheme: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;user: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;password: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;auth_params: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;host: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;query: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;fragment: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Creates a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> from the given components according to <code>flags</code>
 (<a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a> is added unconditionally). The <code>flags</code> must be
@@ -259,27 +259,27 @@ coherent with the passed values, in particular use <code>%</code>-encoded values
 <p>In contrast to <a href="struct.Uri.html#method.build" title="Self::build()"><code>build()</code></a>, this allows specifying the components
 of the ‘userinfo’ field separately. Note that <code>user</code> must be non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>
 if either <code>password</code> or <code>auth_params</code> is non-<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h2 id="flags-3" class="section-header"><a href="#flags-3"><code>flags</code></a></h2>
+<h6 id="flags-3" class="section-header"><a href="#flags-3"><code>flags</code></a></h6>
 <p>flags describing how to build the <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a></p>
-<h2 id="scheme-1" class="section-header"><a href="#scheme-1"><code>scheme</code></a></h2>
+<h6 id="scheme-1" class="section-header"><a href="#scheme-1"><code>scheme</code></a></h6>
 <p>the URI scheme</p>
-<h2 id="user" class="section-header"><a href="#user"><code>user</code></a></h2>
+<h6 id="user" class="section-header"><a href="#user"><code>user</code></a></h6>
 <p>the user component of the userinfo, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="password" class="section-header"><a href="#password"><code>password</code></a></h2>
+<h6 id="password" class="section-header"><a href="#password"><code>password</code></a></h6>
 <p>the password component of the userinfo, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="auth_params" class="section-header"><a href="#auth_params"><code>auth_params</code></a></h2>
+<h6 id="auth_params" class="section-header"><a href="#auth_params"><code>auth_params</code></a></h6>
 <p>the auth params of the userinfo, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-1" class="section-header"><a href="#host-1"><code>host</code></a></h2>
+<h6 id="host-1" class="section-header"><a href="#host-1"><code>host</code></a></h6>
 <p>the host component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-1" class="section-header"><a href="#port-1"><code>port</code></a></h2>
+<h6 id="port-1" class="section-header"><a href="#port-1"><code>port</code></a></h6>
 <p>the port, or <code>-1</code></p>
-<h2 id="path-1" class="section-header"><a href="#path-1"><code>path</code></a></h2>
+<h6 id="path-1" class="section-header"><a href="#path-1"><code>path</code></a></h6>
 <p>the path component</p>
-<h2 id="query-1" class="section-header"><a href="#query-1"><code>query</code></a></h2>
+<h6 id="query-1" class="section-header"><a href="#query-1"><code>query</code></a></h6>
 <p>the query component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment-1" class="section-header"><a href="#fragment-1"><code>fragment</code></a></h2>
+<h6 id="fragment-1" class="section-header"><a href="#fragment-1"><code>fragment</code></a></h6>
 <p>the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-14" class="section-header"><a href="#returns-14">Returns</a></h1>
+<h5 id="returns-14" class="section-header"><a href="#returns-14">Returns</a></h5>
 <p>a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.escape_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#469-478" title="goto source code">[src]</a></div><a href="#method.escape_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.escape_bytes" class="fnname">escape_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;unescaped: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;reserved_chars_allowed: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Escapes arbitrary data for use in a URI.</p>
 <p>Normally all characters that are not ‘unreserved’ (i.e. ASCII
@@ -290,12 +290,12 @@ in the URI specification, since those are allowed unescaped in some
 portions of a URI.</p>
 <p>Though technically incorrect, this will also allow escaping nul
 bytes as <code>%``00</code>.</p>
-<h2 id="unescaped" class="section-header"><a href="#unescaped"><code>unescaped</code></a></h2>
+<h6 id="unescaped" class="section-header"><a href="#unescaped"><code>unescaped</code></a></h6>
 <p>the unescaped input data.</p>
-<h2 id="reserved_chars_allowed" class="section-header"><a href="#reserved_chars_allowed"><code>reserved_chars_allowed</code></a></h2>
+<h6 id="reserved_chars_allowed" class="section-header"><a href="#reserved_chars_allowed"><code>reserved_chars_allowed</code></a></h6>
 <p>a string of reserved
 characters that are allowed to be used, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h1 id="returns-15" class="section-header"><a href="#returns-15">Returns</a></h1>
+<h5 id="returns-15" class="section-header"><a href="#returns-15">Returns</a></h5>
 <p>an escaped version of <code>unescaped</code>.
 The returned string should be freed when no longer needed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.escape_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#501-513" title="goto source code">[src]</a></div><a href="#method.escape_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.escape_string" class="fnname">escape_string</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;unescaped: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;reserved_chars_allowed: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;allow_utf8: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Escapes a string for use in a URI.</p>
@@ -305,14 +305,14 @@ escaped. But if you specify characters in <code>reserved_chars_allowed</code>
 they are not escaped. This is useful for the “reserved” characters
 in the URI specification, since those are allowed unescaped in some
 portions of a URI.</p>
-<h2 id="unescaped-1" class="section-header"><a href="#unescaped-1"><code>unescaped</code></a></h2>
+<h6 id="unescaped-1" class="section-header"><a href="#unescaped-1"><code>unescaped</code></a></h6>
 <p>the unescaped input string.</p>
-<h2 id="reserved_chars_allowed-1" class="section-header"><a href="#reserved_chars_allowed-1"><code>reserved_chars_allowed</code></a></h2>
+<h6 id="reserved_chars_allowed-1" class="section-header"><a href="#reserved_chars_allowed-1"><code>reserved_chars_allowed</code></a></h6>
 <p>a string of reserved
 characters that are allowed to be used, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h2 id="allow_utf8" class="section-header"><a href="#allow_utf8"><code>allow_utf8</code></a></h2>
+<h6 id="allow_utf8" class="section-header"><a href="#allow_utf8"><code>allow_utf8</code></a></h6>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the result can include UTF-8 characters.</p>
-<h1 id="returns-16" class="section-header"><a href="#returns-16">Returns</a></h1>
+<h5 id="returns-16" class="section-header"><a href="#returns-16">Returns</a></h5>
 <p>an escaped version of <code>unescaped</code>. The
 returned string should be freed when no longer needed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_valid" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#532-542" title="goto source code">[src]</a></div><a href="#method.is_valid" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_valid" class="fnname">is_valid</a>(uri_string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_string</code> according to <code>flags</code>, to determine whether it is a valid
@@ -321,11 +321,11 @@ relative to another URI using <a href="struct.Uri.html#method.parse_relative" ti
 <p>If it’s not a valid URI, an error is returned explaining how it’s invalid.</p>
 <p>See <a href="struct.Uri.html#method.split" title="Self::split()"><code>split()</code></a>, and the definition of <a href="struct.UriFlags.html" title="crate::UriFlags"><code>UriFlags</code></a>, for more
 information on the effect of <code>flags</code>.</p>
-<h2 id="uri_string" class="section-header"><a href="#uri_string"><code>uri_string</code></a></h2>
+<h6 id="uri_string" class="section-header"><a href="#uri_string"><code>uri_string</code></a></h6>
 <p>a string containing an absolute URI</p>
-<h2 id="flags-4" class="section-header"><a href="#flags-4"><code>flags</code></a></h2>
+<h6 id="flags-4" class="section-header"><a href="#flags-4"><code>flags</code></a></h6>
 <p>flags for parsing <code>uri_string</code></p>
-<h1 id="returns-17" class="section-header"><a href="#returns-17">Returns</a></h1>
+<h5 id="returns-17" class="section-header"><a href="#returns-17">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>uri_string</code> is a valid absolute URI, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> on error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.join" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#579-601" title="goto source code">[src]</a></div><a href="#method.join" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.join" class="fnname">join</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;scheme: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;userinfo: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;host: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;query: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;fragment: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Joins the given components together according to <code>flags</code> to create
 an absolute URI string. <code>path</code> may not be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> (though it may be the empty
@@ -338,23 +338,23 @@ characters (<code>//</code>). See
 components of the ‘userinfo’ separately.</p>
 <p><a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a> and <a href="struct.UriFlags.html#associatedconstant.HAS_AUTH_PARAMS" title="crate::UriFlags::HAS_AUTH_PARAMS"><code>UriFlags::HAS_AUTH_PARAMS</code></a> are ignored if set
 in <code>flags</code>.</p>
-<h2 id="flags-5" class="section-header"><a href="#flags-5"><code>flags</code></a></h2>
+<h6 id="flags-5" class="section-header"><a href="#flags-5"><code>flags</code></a></h6>
 <p>flags describing how to build the URI string</p>
-<h2 id="scheme-2" class="section-header"><a href="#scheme-2"><code>scheme</code></a></h2>
+<h6 id="scheme-2" class="section-header"><a href="#scheme-2"><code>scheme</code></a></h6>
 <p>the URI scheme, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="userinfo-1" class="section-header"><a href="#userinfo-1"><code>userinfo</code></a></h2>
+<h6 id="userinfo-1" class="section-header"><a href="#userinfo-1"><code>userinfo</code></a></h6>
 <p>the userinfo component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-2" class="section-header"><a href="#host-2"><code>host</code></a></h2>
+<h6 id="host-2" class="section-header"><a href="#host-2"><code>host</code></a></h6>
 <p>the host component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-2" class="section-header"><a href="#port-2"><code>port</code></a></h2>
+<h6 id="port-2" class="section-header"><a href="#port-2"><code>port</code></a></h6>
 <p>the port, or <code>-1</code></p>
-<h2 id="path-2" class="section-header"><a href="#path-2"><code>path</code></a></h2>
+<h6 id="path-2" class="section-header"><a href="#path-2"><code>path</code></a></h6>
 <p>the path component</p>
-<h2 id="query-2" class="section-header"><a href="#query-2"><code>query</code></a></h2>
+<h6 id="query-2" class="section-header"><a href="#query-2"><code>query</code></a></h6>
 <p>the query component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment-2" class="section-header"><a href="#fragment-2"><code>fragment</code></a></h2>
+<h6 id="fragment-2" class="section-header"><a href="#fragment-2"><code>fragment</code></a></h6>
 <p>the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-18" class="section-header"><a href="#returns-18">Returns</a></h1>
+<h5 id="returns-18" class="section-header"><a href="#returns-18">Returns</a></h5>
 <p>an absolute URI string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.join_with_user" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#639-665" title="goto source code">[src]</a></div><a href="#method.join_with_user" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.join_with_user" class="fnname">join_with_user</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;scheme: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;user: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;password: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;auth_params: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;host: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;query: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;fragment: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Joins the given components together according to <code>flags</code> to create
 an absolute URI string. <code>path</code> may not be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> (though it may be the empty
@@ -363,56 +363,56 @@ string).</p>
 of the ‘userinfo’ separately. It otherwise behaves the same.</p>
 <p><a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a> and <a href="struct.UriFlags.html#associatedconstant.HAS_AUTH_PARAMS" title="crate::UriFlags::HAS_AUTH_PARAMS"><code>UriFlags::HAS_AUTH_PARAMS</code></a> are ignored if set
 in <code>flags</code>.</p>
-<h2 id="flags-6" class="section-header"><a href="#flags-6"><code>flags</code></a></h2>
+<h6 id="flags-6" class="section-header"><a href="#flags-6"><code>flags</code></a></h6>
 <p>flags describing how to build the URI string</p>
-<h2 id="scheme-3" class="section-header"><a href="#scheme-3"><code>scheme</code></a></h2>
+<h6 id="scheme-3" class="section-header"><a href="#scheme-3"><code>scheme</code></a></h6>
 <p>the URI scheme, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="user-1" class="section-header"><a href="#user-1"><code>user</code></a></h2>
+<h6 id="user-1" class="section-header"><a href="#user-1"><code>user</code></a></h6>
 <p>the user component of the userinfo, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="password-1" class="section-header"><a href="#password-1"><code>password</code></a></h2>
+<h6 id="password-1" class="section-header"><a href="#password-1"><code>password</code></a></h6>
 <p>the password component of the userinfo, or
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="auth_params-1" class="section-header"><a href="#auth_params-1"><code>auth_params</code></a></h2>
+<h6 id="auth_params-1" class="section-header"><a href="#auth_params-1"><code>auth_params</code></a></h6>
 <p>the auth params of the userinfo, or
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-3" class="section-header"><a href="#host-3"><code>host</code></a></h2>
+<h6 id="host-3" class="section-header"><a href="#host-3"><code>host</code></a></h6>
 <p>the host component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-3" class="section-header"><a href="#port-3"><code>port</code></a></h2>
+<h6 id="port-3" class="section-header"><a href="#port-3"><code>port</code></a></h6>
 <p>the port, or <code>-1</code></p>
-<h2 id="path-3" class="section-header"><a href="#path-3"><code>path</code></a></h2>
+<h6 id="path-3" class="section-header"><a href="#path-3"><code>path</code></a></h6>
 <p>the path component</p>
-<h2 id="query-3" class="section-header"><a href="#query-3"><code>query</code></a></h2>
+<h6 id="query-3" class="section-header"><a href="#query-3"><code>query</code></a></h6>
 <p>the query component, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment-3" class="section-header"><a href="#fragment-3"><code>fragment</code></a></h2>
+<h6 id="fragment-3" class="section-header"><a href="#fragment-3"><code>fragment</code></a></h6>
 <p>the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-19" class="section-header"><a href="#returns-19">Returns</a></h1>
+<h5 id="returns-19" class="section-header"><a href="#returns-19">Returns</a></h5>
 <p>an absolute URI string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.list_extract_uris" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#679-685" title="goto source code">[src]</a></div><a href="#method.list_extract_uris" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.list_extract_uris" class="fnname">list_extract_uris</a>(uri_list: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Splits an URI list conforming to the text/uri-list
 mime type defined in RFC 2483 into individual URIs,
 discarding any comments. The URIs are not validated.</p>
-<h2 id="uri_list" class="section-header"><a href="#uri_list"><code>uri_list</code></a></h2>
+<h6 id="uri_list" class="section-header"><a href="#uri_list"><code>uri_list</code></a></h6>
 <p>an URI list</p>
-<h1 id="returns-20" class="section-header"><a href="#returns-20">Returns</a></h1>
+<h5 id="returns-20" class="section-header"><a href="#returns-20">Returns</a></h5>
 <p>a newly allocated <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>-terminated list
 of strings holding the individual URIs. The array should be freed
 with <code>g_strfreev()</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.parse" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#699-709" title="goto source code">[src]</a></div><a href="#method.parse" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.parse" class="fnname">parse</a>(uri_string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_string</code> according to <code>flags</code>. If the result is not a
 valid [absolute URI][relative-absolute-uris], it will be discarded, and an
 error returned.</p>
-<h2 id="uri_string-1" class="section-header"><a href="#uri_string-1"><code>uri_string</code></a></h2>
+<h6 id="uri_string-1" class="section-header"><a href="#uri_string-1"><code>uri_string</code></a></h6>
 <p>a string representing an absolute URI</p>
-<h2 id="flags-7" class="section-header"><a href="#flags-7"><code>flags</code></a></h2>
+<h6 id="flags-7" class="section-header"><a href="#flags-7"><code>flags</code></a></h6>
 <p>flags describing how to parse <code>uri_string</code></p>
-<h1 id="returns-21" class="section-header"><a href="#returns-21">Returns</a></h1>
+<h5 id="returns-21" class="section-header"><a href="#returns-21">Returns</a></h5>
 <p>a new <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a>, or NULL on error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.parse_scheme" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#732-734" title="goto source code">[src]</a></div><a href="#method.parse_scheme" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.parse_scheme" class="fnname">parse_scheme</a>(uri: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the scheme portion of a URI string.
 <a href="https://tools.ietf.org/html/rfc3986%60section%60-3">RFC 3986</a> decodes the scheme
 as:</p>
 <div class="example-wrap"><pre class="language-text"><code>URI = scheme &quot;:&quot; hier-part [ &quot;?&quot; query ] [ &quot;#&quot; fragment ]</code></pre></div>
 <p>Common schemes include <code>file</code>, <code>https</code>, <code>svn+ssh</code>, etc.</p>
-<h2 id="uri" class="section-header"><a href="#uri"><code>uri</code></a></h2>
+<h6 id="uri" class="section-header"><a href="#uri"><code>uri</code></a></h6>
 <p>a valid URI.</p>
-<h1 id="returns-22" class="section-header"><a href="#returns-22">Returns</a></h1>
+<h5 id="returns-22" class="section-header"><a href="#returns-22">Returns</a></h5>
 <p>The ‘scheme’ component of the URI, or
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error. The returned string should be freed when no longer needed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.peek_scheme" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#756-758" title="goto source code">[src]</a></div><a href="#method.peek_scheme" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.peek_scheme" class="fnname">peek_scheme</a>(uri: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the scheme portion of a URI string.
@@ -422,9 +422,9 @@ as:</p>
 <p>Common schemes include <code>file</code>, <code>https</code>, <code>svn+ssh</code>, etc.</p>
 <p>Unlike <a href="struct.Uri.html#method.parse_scheme" title="Self::parse_scheme()"><code>parse_scheme()</code></a>, the returned scheme is normalized to
 all-lowercase and does not need to be freed.</p>
-<h2 id="uri-1" class="section-header"><a href="#uri-1"><code>uri</code></a></h2>
+<h6 id="uri-1" class="section-header"><a href="#uri-1"><code>uri</code></a></h6>
 <p>a valid URI.</p>
-<h1 id="returns-23" class="section-header"><a href="#returns-23">Returns</a></h1>
+<h5 id="returns-23" class="section-header"><a href="#returns-23">Returns</a></h5>
 <p>The ‘scheme’ component of the URI, or
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error. The returned string is normalized to all-lowercase, and
 interned via <code>g_intern_string()</code>, so it does not need to be freed.</p>
@@ -434,13 +434,13 @@ interned via <code>g_intern_string()</code>, so it does not need to be freed.</p
 discarded, and an error returned.</p>
 <p>(If <code>base_uri_string</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, this just returns <code>uri_ref</code>, or
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if <code>uri_ref</code> is invalid or not absolute.)</p>
-<h2 id="base_uri_string" class="section-header"><a href="#base_uri_string"><code>base_uri_string</code></a></h2>
+<h6 id="base_uri_string" class="section-header"><a href="#base_uri_string"><code>base_uri_string</code></a></h6>
 <p>a string representing a base URI</p>
-<h2 id="uri_ref-1" class="section-header"><a href="#uri_ref-1"><code>uri_ref</code></a></h2>
+<h6 id="uri_ref-1" class="section-header"><a href="#uri_ref-1"><code>uri_ref</code></a></h6>
 <p>a string representing a relative or absolute URI</p>
-<h2 id="flags-8" class="section-header"><a href="#flags-8"><code>flags</code></a></h2>
+<h6 id="flags-8" class="section-header"><a href="#flags-8"><code>flags</code></a></h6>
 <p>flags describing how to parse <code>uri_ref</code></p>
-<h1 id="returns-24" class="section-header"><a href="#returns-24">Returns</a></h1>
+<h5 id="returns-24" class="section-header"><a href="#returns-24">Returns</a></h5>
 <p>the resolved URI string,
 or NULL on error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.split" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#854-905" title="goto source code">[src]</a></div><a href="#method.split" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split" class="fnname">split</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;uri_ref: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_ref</code> (which can be an
@@ -457,32 +457,32 @@ need to use <a href="struct.UriFlags.html#associatedconstant.ENCODED" title="cra
 <a href="struct.UriFlags.html#associatedconstant.HAS_AUTH_PARAMS" title="crate::UriFlags::HAS_AUTH_PARAMS"><code>UriFlags::HAS_AUTH_PARAMS</code></a> <code>flags</code> are ignored by <a href="struct.Uri.html#method.split" title="Self::split()"><code>split()</code></a>,
 since it always returns only the full userinfo; use
 <a href="struct.Uri.html#method.split_with_user" title="Self::split_with_user()"><code>split_with_user()</code></a> if you want it split up.</p>
-<h2 id="uri_ref-2" class="section-header"><a href="#uri_ref-2"><code>uri_ref</code></a></h2>
+<h6 id="uri_ref-2" class="section-header"><a href="#uri_ref-2"><code>uri_ref</code></a></h6>
 <p>a string containing a relative or absolute URI</p>
-<h2 id="flags-9" class="section-header"><a href="#flags-9"><code>flags</code></a></h2>
+<h6 id="flags-9" class="section-header"><a href="#flags-9"><code>flags</code></a></h6>
 <p>flags for parsing <code>uri_ref</code></p>
-<h1 id="returns-25" class="section-header"><a href="#returns-25">Returns</a></h1>
+<h5 id="returns-25" class="section-header"><a href="#returns-25">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>uri_ref</code> parsed successfully, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>
 on error.</p>
-<h2 id="scheme-4" class="section-header"><a href="#scheme-4"><code>scheme</code></a></h2>
+<h6 id="scheme-4" class="section-header"><a href="#scheme-4"><code>scheme</code></a></h6>
 <p>on return, contains
 the scheme (converted to lowercase), or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="userinfo-2" class="section-header"><a href="#userinfo-2"><code>userinfo</code></a></h2>
+<h6 id="userinfo-2" class="section-header"><a href="#userinfo-2"><code>userinfo</code></a></h6>
 <p>on return, contains
 the userinfo, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-4" class="section-header"><a href="#host-4"><code>host</code></a></h2>
+<h6 id="host-4" class="section-header"><a href="#host-4"><code>host</code></a></h6>
 <p>on return, contains the
 host, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-4" class="section-header"><a href="#port-4"><code>port</code></a></h2>
+<h6 id="port-4" class="section-header"><a href="#port-4"><code>port</code></a></h6>
 <p>on return, contains the
 port, or <code>-1</code></p>
-<h2 id="path-4" class="section-header"><a href="#path-4"><code>path</code></a></h2>
+<h6 id="path-4" class="section-header"><a href="#path-4"><code>path</code></a></h6>
 <p>on return, contains the
 path</p>
-<h2 id="query-4" class="section-header"><a href="#query-4"><code>query</code></a></h2>
+<h6 id="query-4" class="section-header"><a href="#query-4"><code>query</code></a></h6>
 <p>on return, contains the
 query, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment-4" class="section-header"><a href="#fragment-4"><code>fragment</code></a></h2>
+<h6 id="fragment-4" class="section-header"><a href="#fragment-4"><code>fragment</code></a></h6>
 <p>on return, contains
 the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.split_network" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#935-959" title="goto source code">[src]</a></div><a href="#method.split_network" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split_network" class="fnname">split_network</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;uri_string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_string</code> (which must be an [absolute URI][relative-absolute-uris])
@@ -491,20 +491,20 @@ See the documentation for <a href="struct.Uri.html#method.split" title="Self::sp
 mostly a wrapper around that function with simpler arguments.
 However, it will return an error if <code>uri_string</code> is a relative URI,
 or does not contain a hostname component.</p>
-<h2 id="uri_string-2" class="section-header"><a href="#uri_string-2"><code>uri_string</code></a></h2>
+<h6 id="uri_string-2" class="section-header"><a href="#uri_string-2"><code>uri_string</code></a></h6>
 <p>a string containing an absolute URI</p>
-<h2 id="flags-10" class="section-header"><a href="#flags-10"><code>flags</code></a></h2>
+<h6 id="flags-10" class="section-header"><a href="#flags-10"><code>flags</code></a></h6>
 <p>flags for parsing <code>uri_string</code></p>
-<h1 id="returns-26" class="section-header"><a href="#returns-26">Returns</a></h1>
+<h5 id="returns-26" class="section-header"><a href="#returns-26">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>uri_string</code> parsed successfully,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> on error.</p>
-<h2 id="scheme-5" class="section-header"><a href="#scheme-5"><code>scheme</code></a></h2>
+<h6 id="scheme-5" class="section-header"><a href="#scheme-5"><code>scheme</code></a></h6>
 <p>on return, contains
 the scheme (converted to lowercase), or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-5" class="section-header"><a href="#host-5"><code>host</code></a></h2>
+<h6 id="host-5" class="section-header"><a href="#host-5"><code>host</code></a></h6>
 <p>on return, contains the
 host, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-5" class="section-header"><a href="#port-5"><code>port</code></a></h2>
+<h6 id="port-5" class="section-header"><a href="#port-5"><code>port</code></a></h6>
 <p>on return, contains the
 port, or <code>-1</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.split_with_user" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#1018-1077" title="goto source code">[src]</a></div><a href="#method.split_with_user" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split_with_user" class="fnname">split_with_user</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;uri_ref: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;flags: <a class="struct" href="struct.UriFlags.html" title="struct glib::UriFlags">UriFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GString.html" title="struct glib::GString">GString</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Parses <code>uri_ref</code> (which can be an
@@ -517,38 +517,38 @@ information on the effect of <code>flags</code>. Note that <code>password</code>
 be parsed out if <code>flags</code> contains <a href="struct.UriFlags.html#associatedconstant.HAS_PASSWORD" title="crate::UriFlags::HAS_PASSWORD"><code>UriFlags::HAS_PASSWORD</code></a>, and
 <code>auth_params</code> will only be parsed out if <code>flags</code> contains
 <a href="struct.UriFlags.html#associatedconstant.HAS_AUTH_PARAMS" title="crate::UriFlags::HAS_AUTH_PARAMS"><code>UriFlags::HAS_AUTH_PARAMS</code></a>.</p>
-<h2 id="uri_ref-3" class="section-header"><a href="#uri_ref-3"><code>uri_ref</code></a></h2>
+<h6 id="uri_ref-3" class="section-header"><a href="#uri_ref-3"><code>uri_ref</code></a></h6>
 <p>a string containing a relative or absolute URI</p>
-<h2 id="flags-11" class="section-header"><a href="#flags-11"><code>flags</code></a></h2>
+<h6 id="flags-11" class="section-header"><a href="#flags-11"><code>flags</code></a></h6>
 <p>flags for parsing <code>uri_ref</code></p>
-<h1 id="returns-27" class="section-header"><a href="#returns-27">Returns</a></h1>
+<h5 id="returns-27" class="section-header"><a href="#returns-27">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>uri_ref</code> parsed successfully, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>
 on error.</p>
-<h2 id="scheme-6" class="section-header"><a href="#scheme-6"><code>scheme</code></a></h2>
+<h6 id="scheme-6" class="section-header"><a href="#scheme-6"><code>scheme</code></a></h6>
 <p>on return, contains
 the scheme (converted to lowercase), or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="user-2" class="section-header"><a href="#user-2"><code>user</code></a></h2>
+<h6 id="user-2" class="section-header"><a href="#user-2"><code>user</code></a></h6>
 <p>on return, contains
 the user, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="password-2" class="section-header"><a href="#password-2"><code>password</code></a></h2>
+<h6 id="password-2" class="section-header"><a href="#password-2"><code>password</code></a></h6>
 <p>on return, contains
 the password, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="auth_params-2" class="section-header"><a href="#auth_params-2"><code>auth_params</code></a></h2>
+<h6 id="auth_params-2" class="section-header"><a href="#auth_params-2"><code>auth_params</code></a></h6>
 <p>on return, contains
 the auth_params, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="host-6" class="section-header"><a href="#host-6"><code>host</code></a></h2>
+<h6 id="host-6" class="section-header"><a href="#host-6"><code>host</code></a></h6>
 <p>on return, contains the
 host, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="port-6" class="section-header"><a href="#port-6"><code>port</code></a></h2>
+<h6 id="port-6" class="section-header"><a href="#port-6"><code>port</code></a></h6>
 <p>on return, contains the
 port, or <code>-1</code></p>
-<h2 id="path-5" class="section-header"><a href="#path-5"><code>path</code></a></h2>
+<h6 id="path-5" class="section-header"><a href="#path-5"><code>path</code></a></h6>
 <p>on return, contains the
 path</p>
-<h2 id="query-5" class="section-header"><a href="#query-5"><code>query</code></a></h2>
+<h6 id="query-5" class="section-header"><a href="#query-5"><code>query</code></a></h6>
 <p>on return, contains the
 query, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="fragment-5" class="section-header"><a href="#fragment-5"><code>fragment</code></a></h2>
+<h6 id="fragment-5" class="section-header"><a href="#fragment-5"><code>fragment</code></a></h6>
 <p>on return, contains
 the fragment, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.unescape_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#1104-1123" title="goto source code">[src]</a></div><a href="#method.unescape_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.unescape_bytes" class="fnname">unescape_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;escaped_string: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;illegal_characters: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.Bytes.html" title="struct glib::Bytes">Bytes</a>, <a class="struct" href="error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></summary><div class="docblock"><p>Unescapes a segment of an escaped string as binary data.</p>
@@ -559,15 +559,15 @@ character in <code>escaped_string</code>, then that is an error and <a href="htt
 returned. This is useful if you want to avoid for instance having a slash
 being expanded in an escaped path element, which might confuse pathname
 handling.</p>
-<h2 id="escaped_string" class="section-header"><a href="#escaped_string"><code>escaped_string</code></a></h2>
+<h6 id="escaped_string" class="section-header"><a href="#escaped_string"><code>escaped_string</code></a></h6>
 <p>A URI-escaped string</p>
-<h2 id="length" class="section-header"><a href="#length"><code>length</code></a></h2>
+<h6 id="length" class="section-header"><a href="#length"><code>length</code></a></h6>
 <p>the length (in bytes) of <code>escaped_string</code> to escape, or <code>-1</code> if it
 is nul-terminated.</p>
-<h2 id="illegal_characters" class="section-header"><a href="#illegal_characters"><code>illegal_characters</code></a></h2>
+<h6 id="illegal_characters" class="section-header"><a href="#illegal_characters"><code>illegal_characters</code></a></h6>
 <p>a string of illegal characters
 not to be allowed, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h1 id="returns-28" class="section-header"><a href="#returns-28">Returns</a></h1>
+<h5 id="returns-28" class="section-header"><a href="#returns-28">Returns</a></h5>
 <p>an unescaped version of <code>escaped_string</code>
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error (if decoding failed, using <a href="enum.UriError.html#variant.Failed" title="crate::UriError::Failed"><code>UriError::Failed</code></a> error
 code). The returned <a href="struct.Bytes.html" title="crate::Bytes"><code>Bytes</code></a> should be unreffed when no longer needed.</p>
@@ -579,15 +579,15 @@ want to avoid for instance having a slash being expanded in an
 escaped path element, which might confuse pathname handling.</p>
 <p>Note: <code>NUL</code> byte is not accepted in the output, in contrast to
 <a href="struct.Uri.html#method.unescape_bytes" title="Self::unescape_bytes()"><code>unescape_bytes()</code></a>.</p>
-<h2 id="escaped_string-1" class="section-header"><a href="#escaped_string-1"><code>escaped_string</code></a></h2>
+<h6 id="escaped_string-1" class="section-header"><a href="#escaped_string-1"><code>escaped_string</code></a></h6>
 <p>A string, may be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="escaped_string_end" class="section-header"><a href="#escaped_string_end"><code>escaped_string_end</code></a></h2>
+<h6 id="escaped_string_end" class="section-header"><a href="#escaped_string_end"><code>escaped_string_end</code></a></h6>
 <p>Pointer to end of <code>escaped_string</code>,
 may be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h2 id="illegal_characters-1" class="section-header"><a href="#illegal_characters-1"><code>illegal_characters</code></a></h2>
+<h6 id="illegal_characters-1" class="section-header"><a href="#illegal_characters-1"><code>illegal_characters</code></a></h6>
 <p>An optional string of illegal
 characters not to be allowed, may be <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h1 id="returns-29" class="section-header"><a href="#returns-29">Returns</a></h1>
+<h5 id="returns-29" class="section-header"><a href="#returns-29">Returns</a></h5>
 <p>an unescaped version of <code>escaped_string</code>,
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error. The returned string should be freed when no longer
 needed. As a special case if <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is given for <code>escaped_string</code>, this
@@ -598,12 +598,12 @@ character appears as an escaped character in <code>escaped_string</code>, then
 that is an error and <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> will be returned. This is useful if you
 want to avoid for instance having a slash being expanded in an
 escaped path element, which might confuse pathname handling.</p>
-<h2 id="escaped_string-2" class="section-header"><a href="#escaped_string-2"><code>escaped_string</code></a></h2>
+<h6 id="escaped_string-2" class="section-header"><a href="#escaped_string-2"><code>escaped_string</code></a></h6>
 <p>an escaped string to be unescaped.</p>
-<h2 id="illegal_characters-2" class="section-header"><a href="#illegal_characters-2"><code>illegal_characters</code></a></h2>
+<h6 id="illegal_characters-2" class="section-header"><a href="#illegal_characters-2"><code>illegal_characters</code></a></h6>
 <p>a string of illegal characters
 not to be allowed, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>
-<h1 id="returns-30" class="section-header"><a href="#returns-30">Returns</a></h1>
+<h5 id="returns-30" class="section-header"><a href="#returns-30">Returns</a></h5>
 <p>an unescaped version of <code>escaped_string</code>.
 The returned string should be freed when no longer needed.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#14-131" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a></h3><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v2_66</code></strong> only.</div></div></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/auto/uri.rs.html#14-131" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.Uri.html" title="struct glib::Uri">Uri</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
@@ -636,8 +636,8 @@ operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.h
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_owned" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89" title="goto source code">[src]</a></div><a href="#method.to_owned" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned" class="fnname">to_owned</a>(&amp;self) -&gt; T</h4></div></summary><div class='docblock'><p>Creates owned data from borrowed data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_into" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#93" title="goto source code">[src]</a></div><a href="#method.clone_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into" class="fnname">clone_into</a>(&amp;self, target: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T)</h4></div></summary><div class="item-info"><div class="stab unstable"><details><summary><span class="emoji">🔬</span> This is a nightly-only experimental API. (<code>toowned_clone_into</code>)</summary><p>recently added</p>
 </details></div></div><div class='docblock'><p>Uses borrowed data to replace owned data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into">Read more</a></p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#894-898" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#895-897" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="struct" href="value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToString" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2374-2388" title="goto source code">[src]</a></div><a href="#impl-ToString" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2380" title="goto source code">[src]</a></div><a href="#method.to_string" class="anchor"></a><h4 class="code-header">pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></h4></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#899-903" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#900-902" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="struct" href="value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToString" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2372-2386" title="goto source code">[src]</a></div><a href="#impl-ToString" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2378" title="goto source code">[src]</a></div><a href="#method.to_string" class="anchor"></a><h4 class="code-header">pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></h4></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryFrom%3CU%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#583-592" title="goto source code">[src]</a></div><a href="#impl-TryFrom%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error" class="type trait-impl has-srclink"><a href="#associatedtype.Error" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="type">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></h4></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#589" title="goto source code">[src]</a></div><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></div></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryInto%3CU%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#569-578" title="goto source code">[src]</a></div><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="type">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>

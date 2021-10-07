@@ -82,20 +82,20 @@ at the iterator location.</p>
 <p>When multiple attributes of the same type overlap,
 the attribute whose range starts closest to the
 current location is used.</p>
-<h2 id="type_" class="section-header"><a href="#type_"><code>type_</code></a></h2>
+<h6 id="type_" class="section-header"><a href="#type_"><code>type_</code></a></h6>
 <p>the type of attribute to find</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the current
 attribute of the given type, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if no attribute
 of that type applies to the current location.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.attrs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_iterator.rs.html#77-83" title="goto source code">[src]</a></div><a href="#method.attrs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.attrs" class="fnname">attrs</a>(&amp;mut self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>&gt;</h4></div></summary><div class="docblock"><p>Gets a list of all attributes at the current position of the
 iterator.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>a list of all attributes for the current range. To free
 this value, call <code>Pango::</code>Attribute::destroy()`` on each
 value and <code>g_slist_free()</code> on the list.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.next" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_iterator.rs.html#92-94" title="goto source code">[src]</a></div><a href="#method.next" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.next" class="fnname">next</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Advance the iterator until the next change of style.</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if the iterator is at the end
 of the list, otherwise <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.range" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_iterator.rs.html#112-125" title="goto source code">[src]</a></div><a href="#method.range" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.range" class="fnname">range</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Get the range of the current segment.</p>
@@ -103,13 +103,13 @@ of the list, otherwise <a href="https://doc.rust-lang.org/nightly/std/primitive.
 like the values in <a href="struct.Attribute.html" title="crate::Attribute"><code>Attribute</code></a>. To deal with this API
 oversight, stored return values that wouldn’t fit into
 a signed integer are clamped to <code>G_MAXINT</code>.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1><h2 id="start" class="section-header"><a href="#start"><code>start</code></a></h2>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5><h6 id="start" class="section-header"><a href="#start"><code>start</code></a></h6>
 <p>location to store the start of the range</p>
-<h2 id="end" class="section-header"><a href="#end"><code>end</code></a></h2>
+<h6 id="end" class="section-header"><a href="#end"><code>end</code></a></h6>
 <p>location to store the end of the range</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_iterator.rs.html#11-60" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.AttrIterator.html" title="struct pango::AttrIterator">AttrIterator</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.font" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_iterator.rs.html#39-59" title="goto source code">[src]</a></div><a href="#method.font" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.font" class="fnname">font</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;desc: &amp;mut <a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;language: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="language/struct.Language.html" title="struct pango::language::Language">Language</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;extra_attrs: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a>&amp;<a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><br>)</h4></div></summary><div class="docblock"><p>Get the font and other attributes at the current
 iterator position.</p>
-<h2 id="desc" class="section-header"><a href="#desc"><code>desc</code></a></h2>
+<h6 id="desc" class="section-header"><a href="#desc"><code>desc</code></a></h6>
 <p>a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a> to fill in with the current
 values. The family name in this structure will be set using
 <code>Pango::</code>FontDescription::set_family_static()`` using
@@ -117,10 +117,10 @@ values from an attribute in the <a href="struct.AttrList.html" title="crate::Att
 with the iterator, so if you plan to keep it around, you
 must call:
 <code>pango_font_description_set_family (desc, pango_font_description_get_family (desc))</code>.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1><h2 id="language" class="section-header"><a href="#language"><code>language</code></a></h2>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5><h6 id="language" class="section-header"><a href="#language"><code>language</code></a></h6>
 <p>location to store language tag
 for item, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if none is found.</p>
-<h2 id="extra_attrs" class="section-header"><a href="#extra_attrs"><code>extra_attrs</code></a></h2>
+<h6 id="extra_attrs" class="section-header"><a href="#extra_attrs"><code>extra_attrs</code></a></h6>
 <p>location in which to store a list of non-font attributes
 at the the current position; only the highest priority
 value of each attribute will be added to this list. In

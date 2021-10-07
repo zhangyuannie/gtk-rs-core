@@ -188,9 +188,9 @@ to register it with <a href="functions/fn.resources_register.html" title="crate:
 Otherwise this function will internally create a copy of the memory since
 GLib 2.56, or in older versions fail and exit the process.</p>
 <p>If <code>data</code> is empty or corrupt, <a href="enum.ResourceError.html#variant.Internal" title="crate::ResourceError::Internal"><code>ResourceError::Internal</code></a> will be returned.</p>
-<h2 id="data" class="section-header"><a href="#data"><code>data</code></a></h2>
+<h6 id="data" class="section-header"><a href="#data"><code>data</code></a></h6>
 <p>A <a href="../glib/bytes/struct.Bytes.html" title="crate::glib::Bytes"><code>glib::Bytes</code></a></p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>a new <a href="struct.Resource.html" title="crate::Resource"><code>Resource</code></a>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#161-357" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.Resource.html" title="struct gio::Resource">Resource</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.enumerate_children" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#179-198" title="goto source code">[src]</a></div><a href="#method.enumerate_children" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.enumerate_children" class="fnname">enumerate_children</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;lookup_flags: <a class="struct" href="struct.ResourceLookupFlags.html" title="struct gio::ResourceLookupFlags">ResourceLookupFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;, <a class="struct" href="../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Returns all the names of children at the specified <code>path</code> in the resource.
 The return result is a <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> terminated list of strings which should
@@ -198,25 +198,25 @@ be released with <code>g_strfreev()</code>.</p>
 <p>If <code>path</code> is invalid or does not exist in the <a href="struct.Resource.html" title="crate::Resource"><code>Resource</code></a>,
 <a href="enum.ResourceError.html#variant.NotFound" title="crate::ResourceError::NotFound"><code>ResourceError::NotFound</code></a> will be returned.</p>
 <p><code>lookup_flags</code> controls the behaviour of the lookup.</p>
-<h2 id="path" class="section-header"><a href="#path"><code>path</code></a></h2>
+<h6 id="path" class="section-header"><a href="#path"><code>path</code></a></h6>
 <p>A pathname inside the resource</p>
-<h2 id="lookup_flags" class="section-header"><a href="#lookup_flags"><code>lookup_flags</code></a></h2>
+<h6 id="lookup_flags" class="section-header"><a href="#lookup_flags"><code>lookup_flags</code></a></h6>
 <p>A <a href="struct.ResourceLookupFlags.html" title="crate::ResourceLookupFlags"><code>ResourceLookupFlags</code></a></p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>an array of constant strings</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.info" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#222-247" title="goto source code">[src]</a></div><a href="#method.info" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.info" class="fnname">info</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;lookup_flags: <a class="struct" href="struct.ResourceLookupFlags.html" title="struct gio::ResourceLookupFlags">ResourceLookupFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>, <a class="struct" href="../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Looks for a file at the specified <code>path</code> in the resource and
 if found returns information about it.</p>
 <p><code>lookup_flags</code> controls the behaviour of the lookup.</p>
-<h2 id="path-1" class="section-header"><a href="#path-1"><code>path</code></a></h2>
+<h6 id="path-1" class="section-header"><a href="#path-1"><code>path</code></a></h6>
 <p>A pathname inside the resource</p>
-<h2 id="lookup_flags-1" class="section-header"><a href="#lookup_flags-1"><code>lookup_flags</code></a></h2>
+<h6 id="lookup_flags-1" class="section-header"><a href="#lookup_flags-1"><code>lookup_flags</code></a></h6>
 <p>A <a href="struct.ResourceLookupFlags.html" title="crate::ResourceLookupFlags"><code>ResourceLookupFlags</code></a></p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the file was found. <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if there were errors</p>
-<h2 id="size" class="section-header"><a href="#size"><code>size</code></a></h2>
+<h6 id="size" class="section-header"><a href="#size"><code>size</code></a></h6>
 <p>a location to place the length of the contents of the file,
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the length is not needed</p>
-<h2 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h2>
+<h6 id="flags" class="section-header"><a href="#flags"><code>flags</code></a></h6>
 <p>a location to place the flags about the file,
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the length is not needed</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.lookup_data" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#273-292" title="goto source code">[src]</a></div><a href="#method.lookup_data" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.lookup_data" class="fnname">lookup_data</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;lookup_flags: <a class="struct" href="struct.ResourceLookupFlags.html" title="struct gio::ResourceLookupFlags">ResourceLookupFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../glib/bytes/struct.Bytes.html" title="struct glib::bytes::Bytes">Bytes</a>, <a class="struct" href="../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Looks for a file at the specified <code>path</code> in the resource and
@@ -230,21 +230,21 @@ the resource bundle, which is typically in some readonly data section
 in the program binary. For compressed files we allocate memory on
 the heap and automatically uncompress the data.</p>
 <p><code>lookup_flags</code> controls the behaviour of the lookup.</p>
-<h2 id="path-2" class="section-header"><a href="#path-2"><code>path</code></a></h2>
+<h6 id="path-2" class="section-header"><a href="#path-2"><code>path</code></a></h6>
 <p>A pathname inside the resource</p>
-<h2 id="lookup_flags-2" class="section-header"><a href="#lookup_flags-2"><code>lookup_flags</code></a></h2>
+<h6 id="lookup_flags-2" class="section-header"><a href="#lookup_flags-2"><code>lookup_flags</code></a></h6>
 <p>A <a href="struct.ResourceLookupFlags.html" title="crate::ResourceLookupFlags"><code>ResourceLookupFlags</code></a></p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p><a href="../glib/bytes/struct.Bytes.html" title="crate::glib::Bytes"><code>glib::Bytes</code></a> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error.
 Free the returned object with <code>g_bytes_unref()</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.open_stream" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#308-327" title="goto source code">[src]</a></div><a href="#method.open_stream" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.open_stream" class="fnname">open_stream</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;path: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;lookup_flags: <a class="struct" href="struct.ResourceLookupFlags.html" title="struct gio::ResourceLookupFlags">ResourceLookupFlags</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.InputStream.html" title="struct gio::InputStream">InputStream</a>, <a class="struct" href="../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Looks for a file at the specified <code>path</code> in the resource and
 returns a <a href="struct.InputStream.html" title="crate::InputStream"><code>InputStream</code></a> that lets you read the data.</p>
 <p><code>lookup_flags</code> controls the behaviour of the lookup.</p>
-<h2 id="path-3" class="section-header"><a href="#path-3"><code>path</code></a></h2>
+<h6 id="path-3" class="section-header"><a href="#path-3"><code>path</code></a></h6>
 <p>A pathname inside the resource</p>
-<h2 id="lookup_flags-3" class="section-header"><a href="#lookup_flags-3"><code>lookup_flags</code></a></h2>
+<h6 id="lookup_flags-3" class="section-header"><a href="#lookup_flags-3"><code>lookup_flags</code></a></h6>
 <p>A <a href="struct.ResourceLookupFlags.html" title="crate::ResourceLookupFlags"><code>ResourceLookupFlags</code></a></p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p><a href="struct.InputStream.html" title="crate::InputStream"><code>InputStream</code></a> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error.
 Free the returned object with <code>g_object_unref()</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.load" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#346-356" title="goto source code">[src]</a></div><a href="#method.load" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.load" class="fnname">load</a>(filename: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="struct.Resource.html" title="struct gio::Resource">Resource</a>, <a class="struct" href="../glib/error/struct.Error.html" title="struct glib::error::Error">Error</a>&gt;</h4></div></summary><div class="docblock"><p>Loads a binary resource bundle and creates a <a href="struct.Resource.html" title="crate::Resource"><code>Resource</code></a> representation of it, allowing
@@ -255,9 +255,9 @@ to register it with <a href="functions/fn.resources_register.html" title="crate:
 <a href="enum.ResourceError.html#variant.Internal" title="crate::ResourceError::Internal"><code>ResourceError::Internal</code></a> will be returned. If <code>filename</code> doesn’t exist, or
 there is an error in reading it, an error from <code>g_mapped_file_new()</code> will be
 returned.</p>
-<h2 id="filename" class="section-header"><a href="#filename"><code>filename</code></a></h2>
+<h6 id="filename" class="section-header"><a href="#filename"><code>filename</code></a></h6>
 <p>the path of a filename to load, in the GLib filename encoding</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p>a new <a href="struct.Resource.html" title="crate::Resource"><code>Resource</code></a>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> on error</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#11-159" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.Resource.html" title="struct gio::Resource">Resource</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/resource.rs.html#11-159" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.Resource.html" title="struct gio::Resource">Resource</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_from" class="method trait-impl has-srclink"><div class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#131" title="goto source code">[src]</a></div><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></div></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>

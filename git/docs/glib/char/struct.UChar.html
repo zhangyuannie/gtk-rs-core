@@ -77,7 +77,7 @@ The check for whether a Rust <code>char</code> (a Unicode scalar value) actually
 done in the <code>new</code> function; see its documentation for details.</p>
 <p>The inner <code>libc::c_uchar</code> (which is equivalent to <code>u8</code>) can be extracted with <code>.0</code>, or
 by calling <code>my_char.into_glib()</code>.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">glib::UChar</span>;
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
 

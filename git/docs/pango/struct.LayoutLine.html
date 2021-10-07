@@ -79,25 +79,25 @@ attributes, or settings of the parent <a href="struct.Layout.html" title="crate:
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#27-182" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#45-56" title="goto source code">[src]</a></div><a href="#method.extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.extents" class="fnname">extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a>, <a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of a layout line.</p>
 <p>See <a href="prelude/trait.FontExt.html#tymethod.glyph_extents" title="crate::prelude::FontExt::glyph_extents()"><code>FontExt::glyph_extents()</code></a> for details
 about the interpretation of the rectangles.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1><h2 id="ink_rect" class="section-header"><a href="#ink_rect"><code>ink_rect</code></a></h2>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5><h6 id="ink_rect" class="section-header"><a href="#ink_rect"><code>ink_rect</code></a></h6>
 <p>rectangle used to store the extents of
 the glyph string as drawn</p>
-<h2 id="logical_rect" class="section-header"><a href="#logical_rect"><code>logical_rect</code></a></h2>
+<h6 id="logical_rect" class="section-header"><a href="#logical_rect"><code>logical_rect</code></a></h6>
 <p>rectangle used to store the logical
 extents of the glyph string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.height" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#70-77" title="goto source code">[src]</a></div><a href="#method.height" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.height" class="fnname">height</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Computes the height of the line, i.e. the distance between
 this and the previous lines baseline.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1><h2 id="height" class="section-header"><a href="#height"><code>height</code></a></h2>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5><h6 id="height" class="section-header"><a href="#height"><code>height</code></a></h6>
 <p>return location for the line height</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.pixel_extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#98-109" title="goto source code">[src]</a></div><a href="#method.pixel_extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.pixel_extents" class="fnname">pixel_extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a>, <a class="struct" href="rectangle/struct.Rectangle.html" title="struct pango::rectangle::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of <code>self</code> in device units.</p>
 <p>This function just calls <a href="struct.LayoutLine.html#method.extents" title="Self::extents()"><code>extents()</code></a> followed by
 two <a href="functions/fn.extents_to_pixels.html" title="crate::extents_to_pixels()"><code>extents_to_pixels()</code></a> calls, rounding <code>ink_rect</code> and <code>logical_rect</code>
 such that the rounded rectangles fully contain the unrounded one (that is,
 passes them as first argument to <a href="functions/fn.extents_to_pixels.html" title="crate::extents_to_pixels()"><code>extents_to_pixels()</code></a>).</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1><h2 id="ink_rect-1" class="section-header"><a href="#ink_rect-1"><code>ink_rect</code></a></h2>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5><h6 id="ink_rect-1" class="section-header"><a href="#ink_rect-1"><code>ink_rect</code></a></h6>
 <p>rectangle used to store the extents of
 the glyph string as drawn</p>
-<h2 id="logical_rect-1" class="section-header"><a href="#logical_rect-1"><code>logical_rect</code></a></h2>
+<h6 id="logical_rect-1" class="section-header"><a href="#logical_rect-1"><code>logical_rect</code></a></h6>
 <p>rectangle used to store the logical
 extents of the glyph string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.x_ranges" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#140-153" title="goto source code">[src]</a></div><a href="#method.x_ranges" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.x_ranges" class="fnname">x_ranges</a>(&amp;self, start_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, end_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</h4></div></summary><div class="docblock"><p>Gets a list of visual ranges corresponding to a given logical range.</p>
@@ -105,17 +105,17 @@ extents of the glyph string</p>
 ranges which are adjacent. The ranges will be sorted from left to
 right. The ranges are with respect to the left edge of the entire
 layout, not with respect to the line.</p>
-<h2 id="start_index" class="section-header"><a href="#start_index"><code>start_index</code></a></h2>
+<h6 id="start_index" class="section-header"><a href="#start_index"><code>start_index</code></a></h6>
 <p>Start byte index of the logical range. If this value
 is less than the start index for the line, then the first range
 will extend all the way to the leading edge of the layout. Otherwise,
 it will start at the leading edge of the first character.</p>
-<h2 id="end_index" class="section-header"><a href="#end_index"><code>end_index</code></a></h2>
+<h6 id="end_index" class="section-header"><a href="#end_index"><code>end_index</code></a></h6>
 <p>Ending byte index of the logical range. If this value is
 greater than the end index for the line, then the last range will
 extend all the way to the trailing edge of the layout. Otherwise,
 it will end at the trailing edge of the last character.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1><h2 id="ranges" class="section-header"><a href="#ranges"><code>ranges</code></a></h2>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5><h6 id="ranges" class="section-header"><a href="#ranges"><code>ranges</code></a></h6>
 <p>location to
 store a pointer to an array of ranges. The array will be of length
 <code>2*n_ranges</code>, with each range starting at <code>(*ranges)[2*n]</code> and of
@@ -123,13 +123,13 @@ width <code>(*ranges)[2*n + 1] - (*ranges)[2*n]</code>. This array must be freed
 with <code>g_free()</code>. The coordinates are relative to the layout and are in
 Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.index_to_x" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout_line.rs.html#169-181" title="goto source code">[src]</a></div><a href="#method.index_to_x" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.index_to_x" class="fnname">index_to_x</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, trailing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Converts an index within a line to a X position.</p>
-<h2 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h2>
+<h6 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h6>
 <p>byte offset of a grapheme within the layout</p>
-<h2 id="trailing" class="section-header"><a href="#trailing"><code>trailing</code></a></h2>
+<h6 id="trailing" class="section-header"><a href="#trailing"><code>trailing</code></a></h6>
 <p>an integer indicating the edge of the grapheme to retrieve
 the position of. If &gt; 0, the trailing edge of the grapheme,
 if 0, the leading of the grapheme</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1><h2 id="x_pos" class="section-header"><a href="#x_pos"><code>x_pos</code></a></h2>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5><h6 id="x_pos" class="section-header"><a href="#x_pos"><code>x_pos</code></a></h6>
 <p>location to store the x_offset (in Pango units)</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/layout.rs.html#35-97" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.start_index" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/layout.rs.html#41-43" title="goto source code">[src]</a></div><a href="#method.start_index" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.start_index" class="fnname">start_index</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>The byte index of the start of this line into the text used to create
 the source <a href="struct.Layout.html"><code>Layout</code></a>.</p>
@@ -144,14 +144,14 @@ results in 0 being stored in <code>index_</code> and <code>trailing</code>. An X
 left of the line results in <code>index_</code> pointing to the (logical) last grapheme
 in the line and <code>trailing</code> being set to the number of characters in that
 grapheme. The reverse is true for a left-to-right line.</p>
-<h2 id="x_pos-1" class="section-header"><a href="#x_pos-1"><code>x_pos</code></a></h2>
+<h6 id="x_pos-1" class="section-header"><a href="#x_pos-1"><code>x_pos</code></a></h6>
 <p>the X offset (in Pango units) from the left edge of the line.</p>
-<h1 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h1>
+<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if <code>x_pos</code> was outside the line, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if inside</p>
-<h2 id="index_-1" class="section-header"><a href="#index_-1"><code>index_</code></a></h2>
+<h6 id="index_-1" class="section-header"><a href="#index_-1"><code>index_</code></a></h6>
 <p>location to store calculated byte index for the grapheme
 in which the user clicked</p>
-<h2 id="trailing-1" class="section-header"><a href="#trailing-1"><code>trailing</code></a></h2>
+<h6 id="trailing-1" class="section-header"><a href="#trailing-1"><code>trailing</code></a></h6>
 <p>location to store an integer indicating where in the
 grapheme the user clicked. It will either be zero, or the number of
 characters in the grapheme. 0 represents the leading edge of the grapheme.</p>

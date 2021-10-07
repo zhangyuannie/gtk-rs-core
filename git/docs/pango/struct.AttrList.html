@@ -82,12 +82,12 @@ suitable for storing attributes for large amounts of text. In general, you
 should not use a single <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a> for more than one paragraph of text.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#31-183" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.new" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#41-43" title="goto source code">[src]</a></div><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a></h4></div></summary><div class="docblock"><p>Create a new empty attribute list with a reference
 count of one.</p>
-<h1 id="returns" class="section-header"><a href="#returns">Returns</a></h1>
+<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>the newly allocated
 <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a>, which should be freed with
 <code>Pango::</code>AttrList::unref()``</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.copy" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#54-56" title="goto source code">[src]</a></div><a href="#method.copy" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.copy" class="fnname">copy</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a>&gt;</h4></div></summary><div class="docblock"><p>Copy <code>self</code> and return an identical new list.</p>
-<h1 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h1>
+<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the newly allocated
 <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a>, with a reference count of one,
 which should be freed with <code>Pango::</code>AttrList::unref()``.
@@ -95,21 +95,21 @@ Returns <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.filter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#71-91" title="goto source code">[src]</a></div><a href="#method.filter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.filter" class="fnname">filter</a>&lt;P:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut">FnMut</a>(&amp;<a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;(&amp;self, func: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a>&gt;</h4></div></summary><div class="docblock"><p>Given a <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a> and callback function, removes
 any elements of <code>self</code> for which <code>func</code> returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> and
 inserts them into a new list.</p>
-<h2 id="func" class="section-header"><a href="#func"><code>func</code></a></h2>
+<h6 id="func" class="section-header"><a href="#func"><code>func</code></a></h6>
 <p>callback function;
 returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if an attribute should be filtered out</p>
-<h1 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h1>
+<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the new
 <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a> or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if no attributes of the
 given types were found</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.attributes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#105-111" title="goto source code">[src]</a></div><a href="#method.attributes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.attributes" class="fnname">attributes</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Gets a list of all attributes in <code>self</code>.</p>
-<h1 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h1>
+<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>a list of all attributes in <code>self</code>. To free this value,
 call <code>Pango::</code>Attribute::destroy()`` on each value and
 <code>g_slist_free()</code> on the list.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.iterator" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#124-126" title="goto source code">[src]</a></div><a href="#method.iterator" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.iterator" class="fnname">iterator</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.AttrIterator.html" title="struct pango::AttrIterator">AttrIterator</a>&gt;</h4></div></summary><div class="docblock"><p>Create a iterator initialized to the beginning of the list.</p>
 <p><code>self</code> must not be modified until this iterator is freed.</p>
-<h1 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h1>
+<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>the newly allocated
 <a href="struct.AttrIterator.html" title="crate::AttrIterator"><code>AttrIterator</code></a>, which should be freed with
 <code>Pango::</code>AttrIterator::destroy()``</p>
@@ -123,11 +123,11 @@ of each attribute in <code>other</code> in sequence (offset in position
 by <code>pos</code>).</p>
 <p>This operation proves useful for, for instance, inserting
 a pre-edit string in the middle of an edit buffer.</p>
-<h2 id="other" class="section-header"><a href="#other"><code>other</code></a></h2>
+<h6 id="other" class="section-header"><a href="#other"><code>other</code></a></h6>
 <p>another <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a></p>
-<h2 id="pos" class="section-header"><a href="#pos"><code>pos</code></a></h2>
+<h6 id="pos" class="section-header"><a href="#pos"><code>pos</code></a></h6>
 <p>the position in <code>self</code> at which to insert <code>other</code></p>
-<h2 id="len" class="section-header"><a href="#len"><code>len</code></a></h2>
+<h6 id="len" class="section-header"><a href="#len"><code>len</code></a></h6>
 <p>the length of the spliced segment. (Note that this
 must be specified since the attributes in <code>other</code> may only
 be present at some subsection of this range)</p>
@@ -141,11 +141,11 @@ range are removed.</p>
 range are shortened to reflect the removal.</p>
 <p>Attributes start and end positions are updated if they are
 behind <code>pos</code> + <code>remove</code>.</p>
-<h2 id="pos-1" class="section-header"><a href="#pos-1"><code>pos</code></a></h2>
+<h6 id="pos-1" class="section-header"><a href="#pos-1"><code>pos</code></a></h6>
 <p>the position of the change</p>
-<h2 id="remove" class="section-header"><a href="#remove"><code>remove</code></a></h2>
+<h6 id="remove" class="section-header"><a href="#remove"><code>remove</code></a></h6>
 <p>the number of removed bytes</p>
-<h2 id="add" class="section-header"><a href="#add"><code>add</code></a></h2>
+<h6 id="add" class="section-header"><a href="#add"><code>add</code></a></h6>
 <p>the number of added bytes</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_list.rs.html#8-86" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.change" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_list.rs.html#24-29" title="goto source code">[src]</a></div><a href="#method.change" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.change" class="fnname">change</a>(&amp;self, attr: <a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>)</h4></div></summary><div class="docblock"><p>Insert the given attribute into the <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a>.</p>
 <p>It will replace any attributes of the same type
@@ -157,17 +157,17 @@ much slower for large lists). However,
 <a href="struct.AttrList.html#method.insert" title="Self::insert()"><code>insert()</code></a> is not suitable for
 continually changing a set of attributes since it
 never removes or combines existing attributes.</p>
-<h2 id="attr" class="section-header"><a href="#attr"><code>attr</code></a></h2>
+<h6 id="attr" class="section-header"><a href="#attr"><code>attr</code></a></h6>
 <p>the attribute to insert</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.insert" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_list.rs.html#63-68" title="goto source code">[src]</a></div><a href="#method.insert" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.insert" class="fnname">insert</a>(&amp;self, attr: <a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>)</h4></div></summary><div class="docblock"><p>Insert the given attribute into the <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a>.</p>
 <p>It will be inserted after all other attributes with a
 matching <code>start_index</code>.</p>
-<h2 id="attr-1" class="section-header"><a href="#attr-1"><code>attr</code></a></h2>
+<h6 id="attr-1" class="section-header"><a href="#attr-1"><code>attr</code></a></h6>
 <p>the attribute to insert</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.insert_before" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/attr_list.rs.html#77-85" title="goto source code">[src]</a></div><a href="#method.insert_before" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.insert_before" class="fnname">insert_before</a>(&amp;self, attr: <a class="struct" href="struct.Attribute.html" title="struct pango::Attribute">Attribute</a>)</h4></div></summary><div class="docblock"><p>Insert the given attribute into the <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a>.</p>
 <p>It will be inserted before all other attributes with a
 matching <code>start_index</code>.</p>
-<h2 id="attr-2" class="section-header"><a href="#attr-2"><code>attr</code></a></h2>
+<h6 id="attr-2" class="section-header"><a href="#attr-2"><code>attr</code></a></h6>
 <p>the attribute to insert</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#9-29" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/attr_list.rs.html#9-29" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_from" class="method trait-impl has-srclink"><div class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#131" title="goto source code">[src]</a></div><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></div></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
