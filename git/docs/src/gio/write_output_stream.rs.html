@@ -467,23 +467,23 @@
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">write</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>();
             <span class="kw">let</span> <span class="ident">write</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">write</span> {
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                         <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Closed</span>,
                         <span class="string">&quot;Alwritey closed&quot;</span>,
                     ));
                 }
-                <span class="prelude-val">Some</span>(<span class="ident">Writer::Write</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>,
-                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Writer::Write</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) =&gt; <span class="ident">write</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) =&gt; <span class="ident">write</span>,
             };
 
             <span class="kw">loop</span> {
                 <span class="kw">match</span> <span class="ident">std_error_to_gio_error</span>(<span class="ident">write</span>.<span class="ident">write</span>(<span class="ident">buffer</span>)) {
-                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>,
+                    <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) =&gt; <span class="kw">return</span> <span class="ident">res</span>,
                 }
             }
         }
@@ -492,7 +492,7 @@
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
             <span class="prelude-val">Ok</span>(())
         }
@@ -501,30 +501,30 @@
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">write</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>();
             <span class="kw">let</span> <span class="ident">write</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">write</span> {
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                         <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Closed</span>,
                         <span class="string">&quot;Alwritey closed&quot;</span>,
                     ));
                 }
-                <span class="prelude-val">Some</span>(<span class="ident">Writer::Write</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>,
-                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Writer::Write</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) =&gt; <span class="ident">write</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) =&gt; <span class="ident">write</span>,
             };
 
             <span class="kw">loop</span> {
                 <span class="kw">match</span> <span class="ident">std_error_to_gio_error</span>(<span class="ident">write</span>.<span class="ident">flush</span>()) {
-                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>,
+                    <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) =&gt; <span class="kw">return</span> <span class="ident">res</span>,
                 }
             }
         }
     }
 
     <span class="kw">impl</span> <span class="ident">SeekableImpl</span> <span class="kw">for</span> <span class="ident">WriteOutputStream</span> {
-        <span class="kw">fn</span> <span class="ident">tell</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span> {
+        <span class="kw">fn</span> <span class="ident">tell</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">i64</span> {
             <span class="comment">// XXX: stream_position is not stable yet</span>
             <span class="comment">// let mut write = self.write.borrow_mut();</span>
             <span class="comment">// match *write {</span>
@@ -536,7 +536,7 @@
             <span class="op">-</span><span class="number">1</span>
         }
 
-        <span class="kw">fn</span> <span class="ident">can_seek</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_seek</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">bool</span> {
             <span class="kw">let</span> <span class="ident">write</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow</span>();
             <span class="macro">matches!</span>(<span class="kw-2">*</span><span class="ident">write</span>, <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw">_</span>)))
         }
@@ -547,15 +547,15 @@
             <span class="ident">offset</span>: <span class="ident">i64</span>,
             <span class="ident">type_</span>: <span class="ident">glib::SeekType</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">use</span> <span class="ident">std::io::SeekFrom</span>;
 
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">write</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>();
             <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">write</span> {
-                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">Writer::WriteSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">write</span>)) =&gt; {
                     <span class="kw">let</span> <span class="ident">pos</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">type_</span> {
-                        <span class="ident">glib::SeekType::Cur</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">SeekFrom::Current</span>(<span class="ident">offset</span>),
-                        <span class="ident">glib::SeekType::Set</span> <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="ident">glib::SeekType::Cur</span> =&gt; <span class="ident">SeekFrom::Current</span>(<span class="ident">offset</span>),
+                        <span class="ident">glib::SeekType::Set</span> =&gt; {
                             <span class="kw">if</span> <span class="ident">offset</span> <span class="op">&lt;</span> <span class="number">0</span> {
                                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::InvalidArgument</span>,
@@ -565,25 +565,25 @@
                                 <span class="ident">SeekFrom::Start</span>(<span class="ident">offset</span> <span class="kw">as</span> <span class="ident">u64</span>)
                             }
                         }
-                        <span class="ident">glib::SeekType::End</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">SeekFrom::End</span>(<span class="ident">offset</span>),
-                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unimplemented!</span>(),
+                        <span class="ident">glib::SeekType::End</span> =&gt; <span class="ident">SeekFrom::End</span>(<span class="ident">offset</span>),
+                        <span class="kw">_</span> =&gt; <span class="macro">unimplemented!</span>(),
                     };
 
                     <span class="kw">loop</span> {
                         <span class="kw">match</span> <span class="ident">std_error_to_gio_error</span>(<span class="ident">write</span>.<span class="ident">seek</span>(<span class="ident">pos</span>)) {
-                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                            <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
+                            <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                            <span class="prelude-val">Some</span>(<span class="ident">res</span>) =&gt; <span class="kw">return</span> <span class="ident">res</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
                         }
                     }
                 }
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotSupported</span>,
                     <span class="string">&quot;Truncating not supported&quot;</span>,
                 )),
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">can_truncate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_truncate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">bool</span> {
             <span class="bool-val">false</span>
         }
 
@@ -592,7 +592,7 @@
             <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">_offset</span>: <span class="ident">i64</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                 <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotSupported</span>,
                 <span class="string">&quot;Truncating not supported&quot;</span>,
@@ -606,7 +606,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">WriteOutputStream</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">write</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">WriteOutputStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">write</span>: <span class="ident">W</span>) -&gt; <span class="ident">WriteOutputStream</span> {
         <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">glib::Object::new</span>(<span class="kw-2">&amp;</span>[]).<span class="ident">expect</span>(<span class="string">&quot;Failed to create write input stream&quot;</span>);
 
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::WriteOutputStream::from_instance</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>);
@@ -614,7 +614,7 @@
         <span class="ident">obj</span>
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">write</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">WriteOutputStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">write</span>: <span class="ident">W</span>) -&gt; <span class="ident">WriteOutputStream</span> {
         <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">glib::Object::new</span>(<span class="kw-2">&amp;</span>[]).<span class="ident">expect</span>(<span class="string">&quot;Failed to create write input stream&quot;</span>);
 
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::WriteOutputStream::from_instance</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>);
@@ -622,23 +622,23 @@
         <span class="ident">obj</span>
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close_and_take</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close_and_take</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::WriteOutputStream::from_instance</span>(<span class="self">self</span>);
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">imp</span>.<span class="ident">write</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
 
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">inner</span> {
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">None</span> =&gt; {
                 <span class="macro">panic!</span>(<span class="string">&quot;Stream already closed or inner taken&quot;</span>);
             }
-            <span class="prelude-val">Some</span>(<span class="ident">imp::Writer::Write</span>(<span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>.<span class="ident">writer</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">imp::Writer::WriteSeek</span>(<span class="ident">write</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">write</span>.<span class="ident">writer</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">imp::Writer::Write</span>(<span class="ident">write</span>)) =&gt; <span class="ident">write</span>.<span class="ident">writer</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">imp::Writer::WriteSeek</span>(<span class="ident">write</span>)) =&gt; <span class="ident">write</span>.<span class="ident">writer</span>,
         };
 
         <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>(<span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>);
 
         <span class="kw">match</span> <span class="ident">ret</span> {
-            <span class="ident">AnyOrPanic::Any</span>(<span class="ident">w</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">w</span>,
-            <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">p</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">std::panic::resume_unwind</span>(<span class="ident">p</span>),
+            <span class="ident">AnyOrPanic::Any</span>(<span class="ident">w</span>) =&gt; <span class="ident">w</span>,
+            <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">p</span>) =&gt; <span class="ident">std::panic::resume_unwind</span>(<span class="ident">p</span>),
         }
     }
 }
@@ -652,13 +652,13 @@
 <span class="comment">// catching panics along the way</span>
 <span class="kw">struct</span> <span class="ident">AnyWriter</span> {
     <span class="ident">writer</span>: <span class="ident">AnyOrPanic</span>,
-    <span class="ident">write_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
-    <span class="ident">flush_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
-    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    <span class="ident">write_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
+    <span class="ident">flush_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
+    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">AnyWriter</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">w</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">w</span>: <span class="ident">W</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">writer</span>: <span class="ident">AnyOrPanic::Any</span>(<span class="ident">Box::new</span>(<span class="ident">w</span>)),
             <span class="ident">write_fn</span>: <span class="ident"><span class="self">Self</span>::write_fn</span>::<span class="op">&lt;</span><span class="ident">W</span><span class="op">&gt;</span>,
@@ -667,7 +667,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">w</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">w</span>: <span class="ident">W</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">writer</span>: <span class="ident">AnyOrPanic::Any</span>(<span class="ident">Box::new</span>(<span class="ident">w</span>)),
             <span class="ident">write_fn</span>: <span class="ident"><span class="self">Self</span>::write_fn</span>::<span class="op">&lt;</span><span class="ident">W</span><span class="op">&gt;</span>,
@@ -676,52 +676,52 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">write_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">write_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">write</span>(<span class="ident">buffer</span>))
     }
 
-    <span class="kw">fn</span> <span class="ident">flush_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">flush_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">flush</span>())
     }
 
     <span class="kw">fn</span> <span class="ident">seek_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Seek</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>,
         <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">seek</span>(<span class="ident">pos</span>))
     }
 
-    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">func</span>: <span class="ident">F</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">writer</span> {
-            <span class="ident">AnyOrPanic::Any</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">writer</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">AnyOrPanic::Any</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">writer</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">writer</span>.<span class="ident">downcast_mut</span>::<span class="op">&lt;</span><span class="ident">W</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
                 <span class="kw">match</span> <span class="ident">std::panic::catch_unwind</span>(<span class="ident">std::panic::AssertUnwindSafe</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">func</span>(<span class="ident">w</span>))) {
-                    <span class="prelude-val">Ok</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">res</span>,
-                    <span class="prelude-val">Err</span>(<span class="ident">panic</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="prelude-val">Ok</span>(<span class="ident">res</span>) =&gt; <span class="ident">res</span>,
+                    <span class="prelude-val">Err</span>(<span class="ident">panic</span>) =&gt; {
                         <span class="self">self</span>.<span class="ident">writer</span> <span class="op">=</span> <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">panic</span>);
                         <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(<span class="ident">std::io::ErrorKind::Other</span>, <span class="string">&quot;Panicked&quot;</span>))
                     }
                 }
             }
-            <span class="ident">AnyOrPanic::Panic</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(
+            <span class="ident">AnyOrPanic::Panic</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(
                 <span class="ident">std::io::ErrorKind::Other</span>,
                 <span class="string">&quot;Panicked before&quot;</span>,
             )),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         (<span class="self">self</span>.<span class="ident">write_fn</span>)(<span class="self">self</span>, <span class="ident">buffer</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         (<span class="self">self</span>.<span class="ident">flush_fn</span>)(<span class="self">self</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">seek_fn</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">seek_fn</span> {
             <span class="ident">seek_fn</span>(<span class="self">self</span>, <span class="ident">pos</span>)
         } <span class="kw">else</span> {

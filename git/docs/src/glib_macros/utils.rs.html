@@ -286,35 +286,35 @@
 };
 
 <span class="comment">// find the #[@attr_name] attribute in @attrs</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_attribute_meta</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>], <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MetaList</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_attribute_meta</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>], <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">MetaList</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">find</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="ident">attr_name</span>)) {
-        <span class="prelude-val">Some</span>(<span class="ident">a</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">a</span>.<span class="ident">parse_meta</span>(),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">a</span>) =&gt; <span class="ident">a</span>.<span class="ident">parse_meta</span>(),
+        <span class="kw">_</span> =&gt; <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>),
     };
     <span class="kw">match</span> <span class="ident">meta</span><span class="question-mark">?</span> {
-        <span class="ident">Meta::List</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">n</span>)),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
+        <span class="ident">Meta::List</span>(<span class="ident">n</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">n</span>)),
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
     }
 }
 
 <span class="comment">// parse a single meta like: ident = &quot;value&quot;</span>
-<span class="kw">fn</span> <span class="ident">parse_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">String</span>, <span class="ident">String</span>)<span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">parse_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">String</span>, <span class="ident">String</span>)<span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">meta</span> {
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">m</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">m</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">m</span>) =&gt; <span class="ident">m</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
     };
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="ident">Meta::NameValue</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">n</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
+        <span class="ident">Meta::NameValue</span>(<span class="ident">n</span>) =&gt; <span class="ident">n</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
     };
     <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">meta</span>.<span class="ident">lit</span> {
-        <span class="ident">Lit::Str</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>.<span class="ident">value</span>(),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
+        <span class="ident">Lit::Str</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>.<span class="ident">value</span>(),
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;wrong meta type&quot;</span>),
     };
 
     <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">meta</span>.<span class="ident">path</span>.<span class="ident">get_ident</span>() {
-        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;missing ident&quot;</span>),
-        <span class="prelude-val">Some</span>(<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ident</span>,
+        <span class="prelude-val">None</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;missing ident&quot;</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">ident</span>) =&gt; <span class="ident">ident</span>,
     };
 
     <span class="prelude-val">Ok</span>((<span class="ident">ident</span>.<span class="ident">to_string</span>(), <span class="ident">value</span>))
@@ -325,37 +325,37 @@
     <span class="ident">TypeName</span>(<span class="ident">String</span>),
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_enum_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">EnumAttribute</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_enum_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">EnumAttribute</span><span class="op">&gt;</span> {
     <span class="kw">let</span> (<span class="ident">ident</span>, <span class="ident">v</span>) <span class="op">=</span> <span class="ident">parse_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span>;
 
     <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">as_ref</span>() {
-        <span class="string">&quot;type_name&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">EnumAttribute::TypeName</span>(<span class="ident">v</span>)),
-        <span class="ident">s</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Unknown enum meta {}&quot;</span>, <span class="ident">s</span>),
+        <span class="string">&quot;type_name&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">EnumAttribute::TypeName</span>(<span class="ident">v</span>)),
+        <span class="ident">s</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Unknown enum meta {}&quot;</span>, <span class="ident">s</span>),
     }
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_nested_meta</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">MetaList</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">NestedMeta</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_nested_meta</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">MetaList</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">NestedMeta</span><span class="op">&gt;</span> {
     <span class="ident">meta</span>.<span class="ident">nested</span>.<span class="ident">iter</span>().<span class="ident">find</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">n</span> {
-        <span class="ident">NestedMeta::Meta</span>(<span class="ident">m</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">m</span>.<span class="ident">path</span>().<span class="ident">is_ident</span>(<span class="ident">name</span>),
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+        <span class="ident">NestedMeta::Meta</span>(<span class="ident">m</span>) =&gt; <span class="ident">m</span>.<span class="ident">path</span>().<span class="ident">is_ident</span>(<span class="ident">name</span>),
+        <span class="kw">_</span> =&gt; <span class="bool-val">false</span>,
     })
 }
 
 <span class="comment">// Parse attribute such as:</span>
 <span class="comment">// #[genum(type_name = &quot;TestAnimalType&quot;)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_type_name</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>, <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_type_name</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>, <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">find_attribute_meta</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>, <span class="ident">attr_name</span>)<span class="question-mark">?</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing &#39;{}&#39; attribute&quot;</span>, <span class="ident">attr_name</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">meta</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Missing &#39;{}&#39; attribute&quot;</span>, <span class="ident">attr_name</span>),
     };
 
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">find_nested_meta</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>, <span class="string">&quot;type_name&quot;</span>) {
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;type_name&#39;&quot;</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">meta</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;type_name&#39;&quot;</span>),
     };
 
     <span class="kw">match</span> <span class="ident">parse_enum_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span> {
-        <span class="ident">EnumAttribute::TypeName</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
+        <span class="ident">EnumAttribute::TypeName</span>(<span class="ident">n</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
     }
 }
 
@@ -364,30 +364,30 @@
     <span class="ident">Name</span>(<span class="ident">String</span>),
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_error_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ErrorDomainAttribute</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_error_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ErrorDomainAttribute</span><span class="op">&gt;</span> {
     <span class="kw">let</span> (<span class="ident">ident</span>, <span class="ident">v</span>) <span class="op">=</span> <span class="ident">parse_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span>;
 
     <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">as_ref</span>() {
-        <span class="string">&quot;name&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">ErrorDomainAttribute::Name</span>(<span class="ident">v</span>)),
-        <span class="ident">s</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Unknown enum meta {}&quot;</span>, <span class="ident">s</span>),
+        <span class="string">&quot;name&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">ErrorDomainAttribute::Name</span>(<span class="ident">v</span>)),
+        <span class="ident">s</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Unknown enum meta {}&quot;</span>, <span class="ident">s</span>),
     }
 }
 
 <span class="comment">// Parse attribute such as:</span>
 <span class="comment">// #[gerror_domain(name = &quot;MyError&quot;)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_name</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>, <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_name</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>, <span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">find_attribute_meta</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>, <span class="ident">attr_name</span>)<span class="question-mark">?</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing &#39;{}&#39; attribute&quot;</span>, <span class="ident">attr_name</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">meta</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Missing &#39;{}&#39; attribute&quot;</span>, <span class="ident">attr_name</span>),
     };
 
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">find_nested_meta</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>, <span class="string">&quot;name&quot;</span>) {
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>,
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;name&#39;&quot;</span>),
+        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">meta</span>,
+        <span class="kw">_</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Missing meta &#39;name&#39;&quot;</span>),
     };
 
     <span class="kw">match</span> <span class="ident">parse_error_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span> {
-        <span class="ident">ErrorDomainAttribute::Name</span>(<span class="ident">n</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
+        <span class="ident">ErrorDomainAttribute::Name</span>(<span class="ident">n</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">n</span>),
     }
 }
 
@@ -397,40 +397,40 @@
     <span class="ident">Nick</span>(<span class="ident">String</span>),
 }
 
-<span class="kw">fn</span> <span class="ident">parse_item_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ItemAttribute</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">parse_item_attribute</span>(<span class="ident">meta</span>: <span class="kw-2">&amp;</span><span class="ident">NestedMeta</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ItemAttribute</span><span class="op">&gt;</span> {
     <span class="kw">let</span> (<span class="ident">ident</span>, <span class="ident">v</span>) <span class="op">=</span> <span class="ident">parse_attribute</span>(<span class="ident">meta</span>)<span class="question-mark">?</span>;
 
     <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">as_ref</span>() {
-        <span class="string">&quot;name&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">ItemAttribute::Name</span>(<span class="ident">v</span>)),
-        <span class="string">&quot;nick&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">ItemAttribute::Nick</span>(<span class="ident">v</span>)),
-        <span class="ident">s</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">bail!</span>(<span class="string">&quot;Unknown item meta {}&quot;</span>, <span class="ident">s</span>),
+        <span class="string">&quot;name&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">ItemAttribute::Name</span>(<span class="ident">v</span>)),
+        <span class="string">&quot;nick&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">ItemAttribute::Nick</span>(<span class="ident">v</span>)),
+        <span class="ident">s</span> =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Unknown item meta {}&quot;</span>, <span class="ident">s</span>),
     }
 }
 
 <span class="comment">// Parse optional enum item attributes such as:</span>
 <span class="comment">// #[genum(name = &quot;My Name&quot;, nick = &quot;my-nick&quot;)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_item_attributes</span>(<span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemAttribute</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_item_attributes</span>(<span class="ident">attr_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ItemAttribute</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="ident">find_attribute_meta</span>(<span class="ident">attrs</span>, <span class="ident">attr_name</span>)<span class="question-mark">?</span>;
 
     <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">meta</span>
+        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">meta</span>
             .<span class="ident">nested</span>
             .<span class="ident">iter</span>()
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">parse_item_attribute</span>(<span class="ident">m</span>))
             .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()<span class="question-mark">?</span>,
-        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Vec::new</span>(),
+        <span class="prelude-val">None</span> =&gt; <span class="ident">Vec::new</span>(),
     };
 
     <span class="prelude-val">Ok</span>(<span class="ident">v</span>)
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">crate_ident_new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">crate_ident_new</span>() -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">use</span> <span class="ident">proc_macro_crate::FoundCrate</span>;
 
     <span class="kw">match</span> <span class="ident">crate_name</span>(<span class="string">&quot;glib&quot;</span>) {
-        <span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Name</span>(<span class="ident">name</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">name</span>),
-        <span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Itself</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="string">&quot;glib&quot;</span>.<span class="ident">to_string</span>()),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+        <span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Name</span>(<span class="ident">name</span>)) =&gt; <span class="prelude-val">Some</span>(<span class="ident">name</span>),
+        <span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Itself</span>) =&gt; <span class="prelude-val">Some</span>(<span class="string">&quot;glib&quot;</span>.<span class="ident">to_string</span>()),
+        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">None</span>,
     }
     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="ident">glib</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>, <span class="ident">Span::call_site</span>());
@@ -462,12 +462,12 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gen_enum_from_glib</span>(
     <span class="ident">enum_name</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>,
     <span class="ident">enum_variants</span>: <span class="kw-2">&amp;</span><span class="ident">Punctuated</span><span class="op">&lt;</span><span class="ident">Variant</span>, <span class="ident">Comma</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+) -&gt; <span class="ident">TokenStream</span> {
     <span class="comment">// FIXME: can we express this with a match()?</span>
     <span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">enum_variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">ident</span>;
-        <span class="macro">quote_spanned!</span> { <span class="ident">v</span>.<span class="ident">span</span>() <span class="op">=</span><span class="op">&gt;</span>
-            <span class="kw">if</span> <span class="ident">value</span> <span class="op">=</span><span class="op">=</span> #<span class="ident">enum_name</span>::#<span class="ident">name</span> <span class="kw">as</span> <span class="ident">i32</span> {
+        <span class="macro">quote_spanned!</span> { <span class="ident">v</span>.<span class="ident">span</span>() =&gt;
+            <span class="kw">if</span> <span class="ident">value</span> <span class="op">==</span> #<span class="ident">enum_name</span>::#<span class="ident">name</span> <span class="kw">as</span> <span class="ident">i32</span> {
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(#<span class="ident">enum_name</span>::#<span class="ident">name</span>);
             }
         }

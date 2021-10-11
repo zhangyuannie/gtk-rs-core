@@ -172,7 +172,7 @@
     }
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_quad_init&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">p1</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p2</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p3</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p4</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Quad</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">p1</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p2</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p3</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>, <span class="ident">p4</span>: <span class="kw-2">&amp;</span><span class="ident">Point</span>) -&gt; <span class="ident">Quad</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_quad_alloc</span>();
@@ -189,7 +189,7 @@
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_quad_init_from_rect&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_rect&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_rect</span>(<span class="ident">r</span>: <span class="kw-2">&amp;</span><span class="ident">Rect</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Quad</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_rect</span>(<span class="ident">r</span>: <span class="kw-2">&amp;</span><span class="ident">Rect</span>) -&gt; <span class="ident">Quad</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_quad_alloc</span>();
@@ -200,7 +200,7 @@
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_quad_init_from_points&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_points&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_points</span>(<span class="ident">points</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">Point</span>; <span class="number">4</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Quad</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_points</span>(<span class="ident">points</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">Point</span>; <span class="number">4</span>]) -&gt; <span class="ident">Quad</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">points</span> <span class="op">=</span> [

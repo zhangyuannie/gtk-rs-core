@@ -497,43 +497,43 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">EulerOrder</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;EulerOrder::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::Default</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Default&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Xyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Xyz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Yzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Yzx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Zxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Zxy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Xzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Xzy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Yxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Yxz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Zyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Zyx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Sxyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Sxyz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Sxyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Sxyx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Sxzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Sxzy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Sxzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Sxzx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Syzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Syzx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Syzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Syzy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Syxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Syxz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Syxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Syxy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Szxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Szxy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Szxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Szxz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Szyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Szyx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Szyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Szyz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rzyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rzyx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rxyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rxyx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Ryzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Ryzx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rxzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rxzx&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rxzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rxzy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Ryzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Ryzy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rzxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rzxy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Ryxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Ryxy&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Ryxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Ryxz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rzxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rzxz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rxyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rxyz&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Rzyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rzyz&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Default</span> =&gt; <span class="string">&quot;Default&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Xyz</span> =&gt; <span class="string">&quot;Xyz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Yzx</span> =&gt; <span class="string">&quot;Yzx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Zxy</span> =&gt; <span class="string">&quot;Zxy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Xzy</span> =&gt; <span class="string">&quot;Xzy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Yxz</span> =&gt; <span class="string">&quot;Yxz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Zyx</span> =&gt; <span class="string">&quot;Zyx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Sxyz</span> =&gt; <span class="string">&quot;Sxyz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Sxyx</span> =&gt; <span class="string">&quot;Sxyx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Sxzy</span> =&gt; <span class="string">&quot;Sxzy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Sxzx</span> =&gt; <span class="string">&quot;Sxzx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Syzx</span> =&gt; <span class="string">&quot;Syzx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Syzy</span> =&gt; <span class="string">&quot;Syzy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Syxz</span> =&gt; <span class="string">&quot;Syxz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Syxy</span> =&gt; <span class="string">&quot;Syxy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Szxy</span> =&gt; <span class="string">&quot;Szxy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Szxz</span> =&gt; <span class="string">&quot;Szxz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Szyx</span> =&gt; <span class="string">&quot;Szyx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Szyz</span> =&gt; <span class="string">&quot;Szyz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rzyx</span> =&gt; <span class="string">&quot;Rzyx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rxyx</span> =&gt; <span class="string">&quot;Rxyx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Ryzx</span> =&gt; <span class="string">&quot;Ryzx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rxzx</span> =&gt; <span class="string">&quot;Rxzx&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rxzy</span> =&gt; <span class="string">&quot;Rxzy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Ryzy</span> =&gt; <span class="string">&quot;Ryzy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rzxy</span> =&gt; <span class="string">&quot;Rzxy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Ryxy</span> =&gt; <span class="string">&quot;Ryxy&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Ryxz</span> =&gt; <span class="string">&quot;Ryxz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rzxz</span> =&gt; <span class="string">&quot;Rzxz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rxyz</span> =&gt; <span class="string">&quot;Rxyz&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rzyz</span> =&gt; <span class="string">&quot;Rzyz&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -543,81 +543,81 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">EulerOrder</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::graphene_euler_order_t</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::graphene_euler_order_t</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::graphene_euler_order_t</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Default</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_DEFAULT</span>,
-            <span class="ident"><span class="self">Self</span>::Xyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_XYZ</span>,
-            <span class="ident"><span class="self">Self</span>::Yzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_YZX</span>,
-            <span class="ident"><span class="self">Self</span>::Zxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZXY</span>,
-            <span class="ident"><span class="self">Self</span>::Xzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_XZY</span>,
-            <span class="ident"><span class="self">Self</span>::Yxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_YXZ</span>,
-            <span class="ident"><span class="self">Self</span>::Zyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZYX</span>,
-            <span class="ident"><span class="self">Self</span>::Sxyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYZ</span>,
-            <span class="ident"><span class="self">Self</span>::Sxyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYX</span>,
-            <span class="ident"><span class="self">Self</span>::Sxzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZY</span>,
-            <span class="ident"><span class="self">Self</span>::Sxzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZX</span>,
-            <span class="ident"><span class="self">Self</span>::Syzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZX</span>,
-            <span class="ident"><span class="self">Self</span>::Syzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZY</span>,
-            <span class="ident"><span class="self">Self</span>::Syxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXZ</span>,
-            <span class="ident"><span class="self">Self</span>::Syxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXY</span>,
-            <span class="ident"><span class="self">Self</span>::Szxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXY</span>,
-            <span class="ident"><span class="self">Self</span>::Szxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXZ</span>,
-            <span class="ident"><span class="self">Self</span>::Szyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYX</span>,
-            <span class="ident"><span class="self">Self</span>::Szyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYZ</span>,
-            <span class="ident"><span class="self">Self</span>::Rzyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYX</span>,
-            <span class="ident"><span class="self">Self</span>::Rxyx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYX</span>,
-            <span class="ident"><span class="self">Self</span>::Ryzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZX</span>,
-            <span class="ident"><span class="self">Self</span>::Rxzx</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZX</span>,
-            <span class="ident"><span class="self">Self</span>::Rxzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZY</span>,
-            <span class="ident"><span class="self">Self</span>::Ryzy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZY</span>,
-            <span class="ident"><span class="self">Self</span>::Rzxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXY</span>,
-            <span class="ident"><span class="self">Self</span>::Ryxy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXY</span>,
-            <span class="ident"><span class="self">Self</span>::Ryxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXZ</span>,
-            <span class="ident"><span class="self">Self</span>::Rzxz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXZ</span>,
-            <span class="ident"><span class="self">Self</span>::Rxyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYZ</span>,
-            <span class="ident"><span class="self">Self</span>::Rzyz</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYZ</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Default</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_DEFAULT</span>,
+            <span class="ident"><span class="self">Self</span>::Xyz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_XYZ</span>,
+            <span class="ident"><span class="self">Self</span>::Yzx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_YZX</span>,
+            <span class="ident"><span class="self">Self</span>::Zxy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZXY</span>,
+            <span class="ident"><span class="self">Self</span>::Xzy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_XZY</span>,
+            <span class="ident"><span class="self">Self</span>::Yxz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_YXZ</span>,
+            <span class="ident"><span class="self">Self</span>::Zyx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZYX</span>,
+            <span class="ident"><span class="self">Self</span>::Sxyz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYZ</span>,
+            <span class="ident"><span class="self">Self</span>::Sxyx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYX</span>,
+            <span class="ident"><span class="self">Self</span>::Sxzy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZY</span>,
+            <span class="ident"><span class="self">Self</span>::Sxzx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZX</span>,
+            <span class="ident"><span class="self">Self</span>::Syzx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZX</span>,
+            <span class="ident"><span class="self">Self</span>::Syzy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZY</span>,
+            <span class="ident"><span class="self">Self</span>::Syxz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXZ</span>,
+            <span class="ident"><span class="self">Self</span>::Syxy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXY</span>,
+            <span class="ident"><span class="self">Self</span>::Szxy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXY</span>,
+            <span class="ident"><span class="self">Self</span>::Szxz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXZ</span>,
+            <span class="ident"><span class="self">Self</span>::Szyx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYX</span>,
+            <span class="ident"><span class="self">Self</span>::Szyz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYZ</span>,
+            <span class="ident"><span class="self">Self</span>::Rzyx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYX</span>,
+            <span class="ident"><span class="self">Self</span>::Rxyx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYX</span>,
+            <span class="ident"><span class="self">Self</span>::Ryzx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZX</span>,
+            <span class="ident"><span class="self">Self</span>::Rxzx</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZX</span>,
+            <span class="ident"><span class="self">Self</span>::Rxzy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZY</span>,
+            <span class="ident"><span class="self">Self</span>::Ryzy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZY</span>,
+            <span class="ident"><span class="self">Self</span>::Rzxy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXY</span>,
+            <span class="ident"><span class="self">Self</span>::Ryxy</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXY</span>,
+            <span class="ident"><span class="self">Self</span>::Ryxz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXZ</span>,
+            <span class="ident"><span class="self">Self</span>::Rzxz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXZ</span>,
+            <span class="ident"><span class="self">Self</span>::Rxyz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYZ</span>,
+            <span class="ident"><span class="self">Self</span>::Rzyz</span> =&gt; <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYZ</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::graphene_euler_order_t</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">EulerOrder</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::graphene_euler_order_t</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::graphene_euler_order_t</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_DEFAULT</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Default</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_XYZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Xyz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_YZX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Yzx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZXY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Zxy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_XZY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Xzy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_YXZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Yxz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZYX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Zyx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Sxyz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Sxyx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Sxzy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Sxzx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Syzx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Syzy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Syxz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Syxy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Szxy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Szxz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Szyx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Szyz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rzyx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rxyx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ryzx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZX</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rxzx</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rxzy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ryzy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rzxy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ryxy</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Ryxz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rzxz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rxyz</span>,
-            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYZ</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rzyz</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_DEFAULT</span> =&gt; <span class="ident"><span class="self">Self</span>::Default</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_XYZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Xyz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_YZX</span> =&gt; <span class="ident"><span class="self">Self</span>::Yzx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZXY</span> =&gt; <span class="ident"><span class="self">Self</span>::Zxy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_XZY</span> =&gt; <span class="ident"><span class="self">Self</span>::Xzy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_YXZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Yxz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_ZYX</span> =&gt; <span class="ident"><span class="self">Self</span>::Zyx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Sxyz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXYX</span> =&gt; <span class="ident"><span class="self">Self</span>::Sxyx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZY</span> =&gt; <span class="ident"><span class="self">Self</span>::Sxzy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SXZX</span> =&gt; <span class="ident"><span class="self">Self</span>::Sxzx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZX</span> =&gt; <span class="ident"><span class="self">Self</span>::Syzx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYZY</span> =&gt; <span class="ident"><span class="self">Self</span>::Syzy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Syxz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SYXY</span> =&gt; <span class="ident"><span class="self">Self</span>::Syxy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXY</span> =&gt; <span class="ident"><span class="self">Self</span>::Szxy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZXZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Szxz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYX</span> =&gt; <span class="ident"><span class="self">Self</span>::Szyx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_SZYZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Szyz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYX</span> =&gt; <span class="ident"><span class="self">Self</span>::Rzyx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYX</span> =&gt; <span class="ident"><span class="self">Self</span>::Rxyx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZX</span> =&gt; <span class="ident"><span class="self">Self</span>::Ryzx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZX</span> =&gt; <span class="ident"><span class="self">Self</span>::Rxzx</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXZY</span> =&gt; <span class="ident"><span class="self">Self</span>::Rxzy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYZY</span> =&gt; <span class="ident"><span class="self">Self</span>::Ryzy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXY</span> =&gt; <span class="ident"><span class="self">Self</span>::Rzxy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXY</span> =&gt; <span class="ident"><span class="self">Self</span>::Ryxy</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RYXZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Ryxz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZXZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Rzxz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RXYZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Rxyz</span>,
+            <span class="ident">ffi::GRAPHENE_EULER_ORDER_RZYZ</span> =&gt; <span class="ident"><span class="self">Self</span>::Rzyz</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
@@ -643,15 +643,15 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">RayIntersectionKind</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;RayIntersectionKind::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;None&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Enter</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Enter&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Leave</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Leave&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::None</span> =&gt; <span class="string">&quot;None&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Enter</span> =&gt; <span class="string">&quot;Enter&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Leave</span> =&gt; <span class="string">&quot;Leave&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -661,25 +661,25 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">RayIntersectionKind</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::graphene_ray_intersection_kind_t</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::graphene_ray_intersection_kind_t</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::graphene_ray_intersection_kind_t</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_NONE</span>,
-            <span class="ident"><span class="self">Self</span>::Enter</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_ENTER</span>,
-            <span class="ident"><span class="self">Self</span>::Leave</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_LEAVE</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::None</span> =&gt; <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_NONE</span>,
+            <span class="ident"><span class="self">Self</span>::Enter</span> =&gt; <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_ENTER</span>,
+            <span class="ident"><span class="self">Self</span>::Leave</span> =&gt; <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_LEAVE</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::graphene_ray_intersection_kind_t</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RayIntersectionKind</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::graphene_ray_intersection_kind_t</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::graphene_ray_intersection_kind_t</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">skip_assert_initialized!</span>();
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_NONE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::None</span>,
-            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_ENTER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Enter</span>,
-            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_LEAVE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Leave</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_NONE</span> =&gt; <span class="ident"><span class="self">Self</span>::None</span>,
+            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_ENTER</span> =&gt; <span class="ident"><span class="self">Self</span>::Enter</span>,
+            <span class="ident">ffi::GRAPHENE_RAY_INTERSECTION_KIND_LEAVE</span> =&gt; <span class="ident"><span class="self">Self</span>::Leave</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }

@@ -217,7 +217,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">ffi</span>: <span class="ident">cairo_user_data_key_t</span> { <span class="ident">unused</span>: <span class="number">0</span> },
             <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
@@ -241,13 +241,13 @@
 <span class="comment">// See &lt;https://github.com/gtk-rs/cairo/issues/256&gt;</span>
 
 <span class="macro">macro_rules!</span> <span class="ident">user_data_methods</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_get_user_data</span>: <span class="ident">path</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_set_user_data</span>: <span class="ident">path</span>,) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_get_user_data</span>: <span class="ident">path</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_set_user_data</span>: <span class="ident">path</span>,) =&gt; {
         <span class="doccomment">/// Attach user data to `self` for the given `key`.</span>
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_user_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident"><span class="kw">crate</span>::UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
             <span class="ident">value</span>: <span class="ident">std::rc::Rc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
             <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">destructor</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">libc::c_void</span>) {
                 <span class="kw">let</span> <span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">T</span> <span class="op">=</span> <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw">_</span>;
                 <span class="ident">drop</span>(<span class="ident">std::rc::Rc::from_raw</span>(<span class="ident">ptr</span>))
@@ -270,7 +270,7 @@
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident"><span class="kw">crate</span>::UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::rc::Rc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::rc::Rc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">user_data_ptr</span>(<span class="ident">key</span>)<span class="question-mark">?</span>.<span class="ident">as_ptr</span>();
 
             <span class="comment">// Safety:</span>
@@ -295,7 +295,7 @@
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_data_ptr</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident"><span class="kw">crate</span>::UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::ptr::NonNull</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::ptr::NonNull</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
             <span class="comment">// Safety:</span>
             <span class="comment">//</span>
             <span class="comment">// If `ffi_get_user_data` returns a non-null pointer,</span>
@@ -327,7 +327,7 @@
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">remove_user_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident"><span class="kw">crate</span>::UserDataKey</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="kw">unsafe</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_set_user_data</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>(), <span class="kw-2">&amp;</span><span class="ident">key</span>.<span class="ident">ffi</span>, <span class="ident">std::ptr::null_mut</span>(), <span class="prelude-val">None</span>)
             };

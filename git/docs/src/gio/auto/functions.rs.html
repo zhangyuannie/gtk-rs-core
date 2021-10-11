@@ -1463,7 +1463,7 @@
 
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bus_get_future</span>(
     <span class="ident">bus_type</span>: <span class="ident">BusType</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box_</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::future::Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DBusConnection</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box_</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::future::Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DBusConnection</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box_::pin</span>(<span class="ident"><span class="kw">crate</span>::GioFuture::new</span>(
         <span class="kw-2">&amp;</span>(),
         <span class="kw">move</span> <span class="op">|</span><span class="ident">_obj</span>, <span class="ident">cancellable</span>, <span class="ident">send</span><span class="op">|</span> {
@@ -1503,7 +1503,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bus_get_sync</span>(
     <span class="ident">bus_type</span>: <span class="ident">BusType</span>,
     <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DBusConnection</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DBusConnection</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_bus_get_sync</span>(
@@ -1549,7 +1549,7 @@
 <span class="doccomment">/// [`true`] if the file type corresponds to a type that</span>
 <span class="doccomment">///  can be executable, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_can_be_executable&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_can_be_executable</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_can_be_executable</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_content_type_can_be_executable</span>(
             <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1568,7 +1568,7 @@
 <span class="doccomment">/// [`true`] if the two strings are identical or equivalent,</span>
 <span class="doccomment">///  [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_equals&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_equals</span>(<span class="ident">type1</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type2</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_equals</span>(<span class="ident">type1</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type2</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_content_type_equals</span>(
             <span class="ident">type1</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1586,7 +1586,7 @@
 <span class="doccomment">/// Newly allocated string with content type or</span>
 <span class="doccomment">///  [`None`]. Free with `g_free()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_from_mime_type&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_from_mime_type</span>(<span class="ident">mime_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_from_mime_type</span>(<span class="ident">mime_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_from_mime_type</span>(
             <span class="ident">mime_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1603,7 +1603,7 @@
 <span class="doccomment">/// a short description of the content type `type_`. Free the</span>
 <span class="doccomment">///  returned string with `g_free()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_description&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_description</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::GString</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_description</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">glib::GString</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_get_description</span>(<span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -1620,7 +1620,7 @@
 <span class="doccomment">/// the registered generic icon name for the given `type_`,</span>
 <span class="doccomment">///  or [`None`] if unknown. Free with `g_free()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_generic_icon_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_generic_icon_name</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_generic_icon_name</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_get_generic_icon_name</span>(
             <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1637,7 +1637,7 @@
 <span class="doccomment">/// [`Icon`][crate::Icon] corresponding to the content type. Free the returned</span>
 <span class="doccomment">///  object with `g_object_unref()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_icon&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_icon</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Icon</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_icon</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Icon</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_get_icon</span>(<span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -1652,7 +1652,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_60&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_60&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_mime_dirs&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_mime_dirs</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_mime_dirs</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">FromGlibPtrContainer::from_glib_none</span>(<span class="ident">ffi::g_content_type_get_mime_dirs</span>()) }
 }
 
@@ -1665,7 +1665,7 @@
 <span class="doccomment">/// the registered mime type for the</span>
 <span class="doccomment">///  given `type_`, or [`None`] if unknown; free with `g_free()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_mime_type&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_mime_type</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_mime_type</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_get_mime_type</span>(<span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -1678,7 +1678,7 @@
 <span class="doccomment">/// symbolic [`Icon`][crate::Icon] corresponding to the content type.</span>
 <span class="doccomment">///  Free the returned object with `g_object_unref()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_get_symbolic_icon&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_symbolic_icon</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Icon</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_get_symbolic_icon</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Icon</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_content_type_get_symbolic_icon</span>(
             <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1704,7 +1704,7 @@
 <span class="doccomment">/// return location for the certainty</span>
 <span class="doccomment">///  of the result, or [`None`]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_guess&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_guess</span>(<span class="ident">filename</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">glib::GString</span>, <span class="ident">bool</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_guess</span>(<span class="ident">filename</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; (<span class="ident">glib::GString</span>, <span class="ident">bool</span>) {
     <span class="kw">let</span> <span class="ident">data_size</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">usize</span>;
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result_uncertain</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit::uninit</span>();
@@ -1739,7 +1739,7 @@
 <span class="doccomment">/// an [`None`]-terminated</span>
 <span class="doccomment">///  array of zero or more content types. Free with `g_strfreev()`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_guess_for_tree&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_guess_for_tree</span>(<span class="ident">root</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">File</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_guess_for_tree</span>(<span class="ident">root</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">File</span><span class="op">&gt;</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">FromGlibPtrContainer::from_glib_full</span>(<span class="ident">ffi::g_content_type_guess_for_tree</span>(
             <span class="ident">root</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1758,7 +1758,7 @@
 <span class="doccomment">/// [`true`] if `type_` is a kind of `supertype`,</span>
 <span class="doccomment">///  [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_is_a&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_a</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">supertype</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_a</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">supertype</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_content_type_is_a</span>(
             <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1781,7 +1781,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_52&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_52&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_is_mime_type&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_mime_type</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">mime_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_mime_type</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">mime_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_content_type_is_mime_type</span>(
             <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1801,7 +1801,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if the type is the unknown type.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_type_is_unknown&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_unknown</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type_is_unknown</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_content_type_is_unknown</span>(<span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -1854,7 +1854,7 @@
 <span class="doccomment">/// list of the registered</span>
 <span class="doccomment">///  content types</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_content_types_get_registered&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_types_get_registered</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_types_get_registered</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">FromGlibPtrContainer::from_glib_full</span>(<span class="ident">ffi::g_content_types_get_registered</span>()) }
 }
 
@@ -1874,7 +1874,7 @@
 <span class="doccomment">/// a copy of `string` with all</span>
 <span class="doccomment">///  non-optionally-escaped bytes escaped</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_address_escape_value&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_address_escape_value</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::GString</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_address_escape_value</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">glib::GString</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_dbus_address_escape_value</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -1897,7 +1897,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_address_get_for_bus_sync</span>(
     <span class="ident">bus_type</span>: <span class="ident">BusType</span>,
     <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">glib::GString</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">glib::GString</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_dbus_address_get_for_bus_sync</span>(
@@ -1970,7 +1970,7 @@
 
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_address_get_stream_future</span>(
     <span class="ident">address</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span>
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span>
     <span class="ident">Box_</span><span class="op">&lt;</span>
         <span class="kw">dyn</span> <span class="ident">std::future::Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">IOStream</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span><span class="op">&gt;</span>
             <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -2012,7 +2012,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_address_get_stream_sync</span>(
     <span class="ident">address</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Cancellable</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">IOStream</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">IOStream</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out_guid</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
@@ -2040,7 +2040,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_68&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_68&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_escape_object_path&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_escape_object_path</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::GString</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_escape_object_path</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">glib::GString</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_dbus_escape_object_path</span>(<span class="ident">s</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2067,7 +2067,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// A valid D-Bus GUID. Free with `g_free()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_generate_guid&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_generate_guid</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::GString</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_generate_guid</span>() -&gt; <span class="ident">glib::GString</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_dbus_generate_guid</span>()) }
 }
 
@@ -2110,7 +2110,7 @@
 <span class="doccomment">///  [`glib::VariantType`][crate::glib::VariantType] `type_` holding the data from `gvalue` or an empty [`glib::Variant`][crate::glib::Variant]</span>
 <span class="doccomment">///  in case of failure. Free with `g_variant_unref()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_gvalue_to_gvariant&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_gvalue_to_gvariant</span>(<span class="ident">gvalue</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Value</span>, <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">glib::VariantTy</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Variant</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_gvalue_to_gvariant</span>(<span class="ident">gvalue</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Value</span>, <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">glib::VariantTy</span>) -&gt; <span class="ident">glib::Variant</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_dbus_gvalue_to_gvariant</span>(
             <span class="ident">gvalue</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2139,7 +2139,7 @@
 <span class="doccomment">/// ## `out_gvalue`</span>
 <span class="doccomment">/// Return location pointing to a zero-filled (uninitialized) [`glib::Value`][crate::glib::Value].</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_gvariant_to_gvalue&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_gvariant_to_gvalue</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_gvariant_to_gvalue</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) -&gt; <span class="ident">glib::Value</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">out_gvalue</span> <span class="op">=</span> <span class="ident">glib::Value::uninitialized</span>();
         <span class="ident">ffi::g_dbus_gvariant_to_gvalue</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">out_gvalue</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>);
@@ -2160,7 +2160,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if `string` is a valid D-Bus address, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_address&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_address</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_address</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_address</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2178,7 +2178,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_70&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_70&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_error_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_error_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_error_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_error_name</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2193,7 +2193,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if `string` is a GUID, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_guid&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_guid</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_guid</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_guid</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2205,7 +2205,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if valid, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_interface_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_interface_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_interface_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_interface_name</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2217,7 +2217,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if valid, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_member_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_member_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_member_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_member_name</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2229,7 +2229,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if valid, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_name</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2245,7 +2245,7 @@
 <span class="doccomment">/// [`true`] if `string` is a valid D-Bus address that is</span>
 <span class="doccomment">/// supported by this library, [`false`] if `error` is set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_supported_address&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_supported_address</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_supported_address</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">ffi::g_dbus_is_supported_address</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">error</span>);
@@ -2265,7 +2265,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`true`] if valid, [`false`] otherwise.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_is_unique_name&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_unique_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dbus_is_unique_name</span>(<span class="ident">string</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_dbus_is_unique_name</span>(<span class="ident">string</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
@@ -2283,7 +2283,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`IOErrorEnum`][crate::IOErrorEnum] value for the given errno.h error number.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_error_from_errno&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">io_error_from_errno</span>(<span class="ident">err_no</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">IOErrorEnum</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">io_error_from_errno</span>(<span class="ident">err_no</span>: <span class="ident">i32</span>) -&gt; <span class="ident">IOErrorEnum</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_io_error_from_errno</span>(<span class="ident">err_no</span>)) }
 }
 
@@ -2412,7 +2412,7 @@
     <span class="ident">filename</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">root_path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">root_group</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SettingsBackend</span> {
+) -&gt; <span class="ident">SettingsBackend</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_keyfile_settings_backend_new</span>(
             <span class="ident">filename</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2432,7 +2432,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// a newly created [`SettingsBackend`][crate::SettingsBackend]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_memory_settings_backend_new&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">memory_settings_backend_new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SettingsBackend</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">memory_settings_backend_new</span>() -&gt; <span class="ident">SettingsBackend</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_memory_settings_backend_new</span>()) }
 }
 
@@ -2456,7 +2456,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// a newly created [`SettingsBackend`][crate::SettingsBackend]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_null_settings_backend_new&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">null_settings_backend_new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SettingsBackend</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">null_settings_backend_new</span>() -&gt; <span class="ident">SettingsBackend</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_null_settings_backend_new</span>()) }
 }
 
@@ -2478,7 +2478,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resources_enumerate_children</span>(
     <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup_flags</span>: <span class="ident">ResourceLookupFlags</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_resources_enumerate_children</span>(
@@ -2518,7 +2518,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resources_get_info</span>(
     <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup_flags</span>: <span class="ident">ResourceLookupFlags</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">u32</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">u32</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit::uninit</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">flags</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit::uninit</span>();
@@ -2567,7 +2567,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resources_lookup_data</span>(
     <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup_flags</span>: <span class="ident">ResourceLookupFlags</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">glib::Bytes</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">glib::Bytes</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_resources_lookup_data</span>(
@@ -2601,7 +2601,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">resources_open_stream</span>(
     <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
     <span class="ident">lookup_flags</span>: <span class="ident">ResourceLookupFlags</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">InputStream</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">InputStream</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_resources_open_stream</span>(
@@ -2653,7 +2653,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">unix</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">unix</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_is_mount_path_system_internal&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_mount_path_system_internal</span>(<span class="ident">mount_path</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_mount_path_system_internal</span>(<span class="ident">mount_path</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_unix_is_mount_path_system_internal</span>(
             <span class="ident">mount_path</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2680,7 +2680,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_56&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_56&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_is_system_device_path&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_system_device_path</span>(<span class="ident">device_path</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_system_device_path</span>(<span class="ident">device_path</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib</span>(<span class="ident">ffi::g_unix_is_system_device_path</span>(
             <span class="ident">device_path</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2706,7 +2706,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_56&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_56&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unix_is_system_fs_type&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_system_fs_type</span>(<span class="ident">fs_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_is_system_fs_type</span>(<span class="ident">fs_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_unix_is_system_fs_type</span>(<span class="ident">fs_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 </code></pre></div>

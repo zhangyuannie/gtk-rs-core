@@ -664,13 +664,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;Colorspace::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Rgb&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Rgb</span> =&gt; <span class="string">&quot;Rgb&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -680,26 +680,26 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::GdkColorspace</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkColorspace</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::GdkColorspace</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Rgb</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_COLORSPACE_RGB</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Rgb</span> =&gt; <span class="ident">ffi::GDK_COLORSPACE_RGB</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkColorspace</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkColorspace</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkColorspace</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_COLORSPACE_RGB</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Rgb</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_COLORSPACE_RGB</span> =&gt; <span class="ident"><span class="self">Self</span>::Rgb</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_colorspace_get_type</span>()) }
     }
 }
@@ -711,13 +711,13 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">glib::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib</span>(<span class="ident">glib::gobject_ffi::g_value_get_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="ident">Colorspace</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">glib::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">glib::gobject_ffi::g_value_set_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="self">self</span>.<span class="ident">into_glib</span>());
@@ -725,7 +725,7 @@
         <span class="ident">value</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Type</span> {
         <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
@@ -777,16 +777,16 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;InterpType::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Nearest&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Tiles&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilinear&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Hyper&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Nearest</span> =&gt; <span class="string">&quot;Nearest&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Tiles</span> =&gt; <span class="string">&quot;Tiles&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Bilinear</span> =&gt; <span class="string">&quot;Bilinear&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Hyper</span> =&gt; <span class="string">&quot;Hyper&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -796,32 +796,32 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::GdkInterpType</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkInterpType</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::GdkInterpType</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Nearest</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_NEAREST</span>,
-            <span class="ident"><span class="self">Self</span>::Tiles</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_TILES</span>,
-            <span class="ident"><span class="self">Self</span>::Bilinear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_BILINEAR</span>,
-            <span class="ident"><span class="self">Self</span>::Hyper</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_INTERP_HYPER</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Nearest</span> =&gt; <span class="ident">ffi::GDK_INTERP_NEAREST</span>,
+            <span class="ident"><span class="self">Self</span>::Tiles</span> =&gt; <span class="ident">ffi::GDK_INTERP_TILES</span>,
+            <span class="ident"><span class="self">Self</span>::Bilinear</span> =&gt; <span class="ident">ffi::GDK_INTERP_BILINEAR</span>,
+            <span class="ident"><span class="self">Self</span>::Hyper</span> =&gt; <span class="ident">ffi::GDK_INTERP_HYPER</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkInterpType</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkInterpType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkInterpType</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_INTERP_NEAREST</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Nearest</span>,
-            <span class="ident">ffi::GDK_INTERP_TILES</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Tiles</span>,
-            <span class="ident">ffi::GDK_INTERP_BILINEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Bilinear</span>,
-            <span class="ident">ffi::GDK_INTERP_HYPER</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Hyper</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_INTERP_NEAREST</span> =&gt; <span class="ident"><span class="self">Self</span>::Nearest</span>,
+            <span class="ident">ffi::GDK_INTERP_TILES</span> =&gt; <span class="ident"><span class="self">Self</span>::Tiles</span>,
+            <span class="ident">ffi::GDK_INTERP_BILINEAR</span> =&gt; <span class="ident"><span class="self">Self</span>::Bilinear</span>,
+            <span class="ident">ffi::GDK_INTERP_HYPER</span> =&gt; <span class="ident"><span class="self">Self</span>::Hyper</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_interp_type_get_type</span>()) }
     }
 }
@@ -833,13 +833,13 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">glib::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib</span>(<span class="ident">glib::gobject_ffi::g_value_get_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="ident">InterpType</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">glib::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">glib::gobject_ffi::g_value_set_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="self">self</span>.<span class="ident">into_glib</span>());
@@ -847,7 +847,7 @@
         <span class="ident">value</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Type</span> {
         <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
@@ -890,14 +890,14 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufAlphaMode::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Bilevel&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Full&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Bilevel</span> =&gt; <span class="string">&quot;Bilevel&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Full</span> =&gt; <span class="string">&quot;Full&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -907,28 +907,28 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::GdkPixbufAlphaMode</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufAlphaMode</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::GdkPixbufAlphaMode</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Bilevel</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span>,
-            <span class="ident"><span class="self">Self</span>::Full</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::Bilevel</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span>,
+            <span class="ident"><span class="self">Self</span>::Full</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufAlphaMode</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufAlphaMode</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufAlphaMode</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Bilevel</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Full</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ALPHA_BILEVEL</span> =&gt; <span class="ident"><span class="self">Self</span>::Bilevel</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ALPHA_FULL</span> =&gt; <span class="ident"><span class="self">Self</span>::Full</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_pixbuf_alpha_mode_get_type</span>()) }
     }
 }
@@ -940,13 +940,13 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">glib::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib</span>(<span class="ident">glib::gobject_ffi::g_value_get_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="ident">PixbufAlphaMode</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">glib::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">glib::gobject_ffi::g_value_set_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="self">self</span>.<span class="ident">into_glib</span>());
@@ -954,7 +954,7 @@
         <span class="ident">value</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Type</span> {
         <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
@@ -994,19 +994,19 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufError::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;CorruptImage&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;InsufficientMemory&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;BadOption&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnknownType&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;UnsupportedOperation&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Failed&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;IncompleteAnimation&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::CorruptImage</span> =&gt; <span class="string">&quot;CorruptImage&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> =&gt; <span class="string">&quot;InsufficientMemory&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::BadOption</span> =&gt; <span class="string">&quot;BadOption&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::UnknownType</span> =&gt; <span class="string">&quot;UnknownType&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> =&gt; <span class="string">&quot;UnsupportedOperation&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Failed</span> =&gt; <span class="string">&quot;Failed&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> =&gt; <span class="string">&quot;IncompleteAnimation&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -1016,61 +1016,61 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::GdkPixbufError</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufError</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::GdkPixbufError</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::CorruptImage</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span>,
-            <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span>,
-            <span class="ident"><span class="self">Self</span>::BadOption</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span>,
-            <span class="ident"><span class="self">Self</span>::UnknownType</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span>,
-            <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span>,
-            <span class="ident"><span class="self">Self</span>::Failed</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span>,
-            <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::CorruptImage</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span>,
+            <span class="ident"><span class="self">Self</span>::InsufficientMemory</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span>,
+            <span class="ident"><span class="self">Self</span>::BadOption</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span>,
+            <span class="ident"><span class="self">Self</span>::UnknownType</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span>,
+            <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span>,
+            <span class="ident"><span class="self">Self</span>::Failed</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span>,
+            <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufError</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufError</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufError</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::CorruptImage</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::InsufficientMemory</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::BadOption</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::UnknownType</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Failed</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> =&gt; <span class="ident"><span class="self">Self</span>::CorruptImage</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> =&gt; <span class="ident"><span class="self">Self</span>::InsufficientMemory</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> =&gt; <span class="ident"><span class="self">Self</span>::BadOption</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> =&gt; <span class="ident"><span class="self">Self</span>::UnknownType</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> =&gt; <span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> =&gt; <span class="ident"><span class="self">Self</span>::Failed</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> =&gt; <span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ErrorDomain</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
-    <span class="kw">fn</span> <span class="ident">domain</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Quark</span> {
+    <span class="kw">fn</span> <span class="ident">domain</span>() -&gt; <span class="ident">Quark</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_pixbuf_error_quark</span>()) }
     }
 
-    <span class="kw">fn</span> <span class="ident">code</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">fn</span> <span class="ident">code</span>(<span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="self">self</span>.<span class="ident">into_glib</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">code</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">code</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">code</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::CorruptImage</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::InsufficientMemory</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::BadOption</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnknownType</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
-            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_CORRUPT_IMAGE</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::CorruptImage</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::InsufficientMemory</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_BAD_OPTION</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::BadOption</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNKNOWN_TYPE</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnknownType</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::UnsupportedOperation</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_FAILED</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::IncompleteAnimation</span>),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident"><span class="self">Self</span>::Failed</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_pixbuf_error_get_type</span>()) }
     }
 }
@@ -1082,13 +1082,13 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">glib::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib</span>(<span class="ident">glib::gobject_ffi::g_value_get_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="ident">PixbufError</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">glib::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">glib::gobject_ffi::g_value_set_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="self">self</span>.<span class="ident">into_glib</span>());
@@ -1096,7 +1096,7 @@
         <span class="ident">value</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Type</span> {
         <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }
@@ -1125,16 +1125,16 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;PixbufRotation::{}&quot;</span>,
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-                <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;None&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Counterclockwise&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Upsidedown&quot;</span>,
-                <span class="ident"><span class="self">Self</span>::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Clockwise&quot;</span>,
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Unknown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::None</span> =&gt; <span class="string">&quot;None&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Counterclockwise</span> =&gt; <span class="string">&quot;Counterclockwise&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Upsidedown</span> =&gt; <span class="string">&quot;Upsidedown&quot;</span>,
+                <span class="ident"><span class="self">Self</span>::Clockwise</span> =&gt; <span class="string">&quot;Clockwise&quot;</span>,
+                <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
     }
@@ -1144,32 +1144,32 @@
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">ffi::GdkPixbufRotation</span>;
 
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::GdkPixbufRotation</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">ffi::GdkPixbufRotation</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span>,
-            <span class="ident"><span class="self">Self</span>::Counterclockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span>,
-            <span class="ident"><span class="self">Self</span>::Upsidedown</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span>,
-            <span class="ident"><span class="self">Self</span>::Clockwise</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span>,
-            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
+            <span class="ident"><span class="self">Self</span>::None</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span>,
+            <span class="ident"><span class="self">Self</span>::Counterclockwise</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span>,
+            <span class="ident"><span class="self">Self</span>::Upsidedown</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span>,
+            <span class="ident"><span class="self">Self</span>::Clockwise</span> =&gt; <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span>,
+            <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">ffi::GdkPixbufRotation</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufRotation</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">ffi::GdkPixbufRotation</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">match</span> <span class="ident">value</span> {
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::None</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Counterclockwise</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Upsidedown</span>,
-            <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Clockwise</span>,
-            <span class="ident">value</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_NONE</span> =&gt; <span class="ident"><span class="self">Self</span>::None</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</span> =&gt; <span class="ident"><span class="self">Self</span>::Counterclockwise</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_UPSIDEDOWN</span> =&gt; <span class="ident"><span class="self">Self</span>::Upsidedown</span>,
+            <span class="ident">ffi::GDK_PIXBUF_ROTATE_CLOCKWISE</span> =&gt; <span class="ident"><span class="self">Self</span>::Clockwise</span>,
+            <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_pixbuf_rotation_get_type</span>()) }
     }
 }
@@ -1181,13 +1181,13 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">glib::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">glib::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib</span>(<span class="ident">glib::gobject_ffi::g_value_get_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="ident">PixbufRotation</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">glib::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">glib::gobject_ffi::g_value_set_enum</span>(<span class="ident">value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="self">self</span>.<span class="ident">into_glib</span>());
@@ -1195,7 +1195,7 @@
         <span class="ident">value</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Type</span> {
         <span class="ident"><span class="self">Self</span>::static_type</span>()
     }
 }

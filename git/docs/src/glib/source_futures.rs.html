@@ -538,14 +538,14 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">SourceFuture</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">oneshot::Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">oneshot::Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
     <span class="doccomment">/// Create a new `SourceFuture`</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The provided closure should return a newly created `glib::Source` when called</span>
     <span class="doccomment">/// and pass the value provided by the source to the oneshot sender that is passed</span>
     <span class="doccomment">/// to the closure.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">create_source</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceFuture</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">create_source</span>: <span class="ident">F</span>) -&gt; <span class="ident">SourceFuture</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SourceFuture</span> {
             <span class="ident">create_source</span>: <span class="prelude-val">Some</span>(<span class="ident">create_source</span>),
             <span class="ident">source</span>: <span class="prelude-val">None</span>,
@@ -557,11 +557,11 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Future</span> <span class="kw">for</span> <span class="ident">SourceFuture</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">oneshot::Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">oneshot::Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">T</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">task::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">task::Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">SourceFuture</span> {
             <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">create_source</span>,
             <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">source</span>,
@@ -596,13 +596,13 @@
         };
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::match_wild_err_arm</span>)]</span>
         <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="kw">_</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic!</span>(<span class="string">&quot;Source sender was unexpectedly closed&quot;</span>),
-            <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="ident">v</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="kw">_</span>)) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Source sender was unexpectedly closed&quot;</span>),
+            <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="ident">v</span>)) =&gt; {
                 <span class="comment">// Get rid of the reference to the source, it triggered</span>
                 <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">source</span>.<span class="ident">take</span>();
                 <span class="ident">Poll::Ready</span>(<span class="ident">v</span>)
             }
-            <span class="ident">Poll::Pending</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Poll::Pending</span>,
+            <span class="ident">Poll::Pending</span> =&gt; <span class="ident">Poll::Pending</span>,
         }
     }
 }
@@ -619,7 +619,7 @@
 <span class="doccomment">/// Create a `Future` that will resolve after the given number of milliseconds.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Future` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future</span>(<span class="ident">value</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future</span>(<span class="ident">value</span>: <span class="ident">Duration</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">timeout_future_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">value</span>)
 }
 
@@ -629,7 +629,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">value</span>: <span class="ident">Duration</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceFuture::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">send</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">send</span>);
         <span class="ident"><span class="kw">crate</span>::timeout_source_new</span>(<span class="ident">value</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
@@ -642,7 +642,7 @@
 <span class="doccomment">/// Create a `Future` that will resolve after the given number of seconds.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Future` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future_seconds</span>(<span class="ident">value</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future_seconds</span>(<span class="ident">value</span>: <span class="ident">u32</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">timeout_future_seconds_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">value</span>)
 }
 
@@ -652,7 +652,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timeout_future_seconds_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">value</span>: <span class="ident">u32</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceFuture::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">send</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">send</span>);
         <span class="ident"><span class="kw">crate</span>::timeout_source_new_seconds</span>(<span class="ident">value</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
@@ -669,7 +669,7 @@
 <span class="doccomment">/// The `Future` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_watch_future</span>(
     <span class="ident">pid</span>: <span class="ident"><span class="kw">crate</span>::Pid</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> (<span class="ident"><span class="kw">crate</span>::Pid</span>, <span class="ident">i32</span>)<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> (<span class="ident"><span class="kw">crate</span>::Pid</span>, <span class="ident">i32</span>)<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">child_watch_future_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">pid</span>)
 }
 
@@ -681,7 +681,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_watch_future_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">pid</span>: <span class="ident"><span class="kw">crate</span>::Pid</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> (<span class="ident"><span class="kw">crate</span>::Pid</span>, <span class="ident">i32</span>)<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> (<span class="ident"><span class="kw">crate</span>::Pid</span>, <span class="ident">i32</span>)<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceFuture::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">send</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">send</span>);
         <span class="ident"><span class="kw">crate</span>::child_watch_source_new</span>(<span class="ident">pid</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="ident">pid</span>, <span class="ident">code</span><span class="op">|</span> {
@@ -695,7 +695,7 @@
 <span class="doccomment">/// Create a `Future` that will resolve once the given UNIX signal is raised</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Future` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_future</span>(<span class="ident">signum</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_future</span>(<span class="ident">signum</span>: <span class="ident">i32</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">unix_signal_future_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">signum</span>)
 }
 
@@ -707,7 +707,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_future_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">signum</span>: <span class="ident">i32</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceFuture::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">send</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">send</span>);
         <span class="ident"><span class="kw">crate</span>::unix_signal_source_new</span>(<span class="ident">signum</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
@@ -728,14 +728,14 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span> <span class="ident">SourceStream</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">mpsc::UnboundedSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">mpsc::UnboundedSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
     <span class="doccomment">/// Create a new `SourceStream`</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The provided closure should return a newly created `glib::Source` when called</span>
     <span class="doccomment">/// and pass the values provided by the source to the sender that is passed</span>
     <span class="doccomment">/// to the closure.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">create_source</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SourceStream</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">create_source</span>: <span class="ident">F</span>) -&gt; <span class="ident">SourceStream</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SourceStream</span> {
             <span class="ident">create_source</span>: <span class="prelude-val">Some</span>(<span class="ident">create_source</span>),
             <span class="ident">source</span>: <span class="prelude-val">None</span>,
@@ -745,11 +745,11 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Stream</span> <span class="kw">for</span> <span class="ident">SourceStream</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">T</span><span class="op">&gt;</span>
 <span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">mpsc::UnboundedSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">mpsc::UnboundedSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">Source</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">task::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">task::Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">SourceStream</span> {
             <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">create_source</span>,
             <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">source</span>,
@@ -784,14 +784,14 @@
         };
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::match_wild_err_arm</span>)]</span>
         <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="ident">Poll::Ready</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Poll::Ready</span>(<span class="ident">v</span>) =&gt; {
                 <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">is_none</span>() {
                     <span class="comment">// Get rid of the reference to the source, it triggered</span>
                     <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">source</span>.<span class="ident">take</span>();
                 }
                 <span class="ident">Poll::Ready</span>(<span class="ident">v</span>)
             }
-            <span class="ident">Poll::Pending</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Poll::Pending</span>,
+            <span class="ident">Poll::Pending</span> =&gt; <span class="ident">Poll::Pending</span>,
         }
     }
 }
@@ -808,7 +808,7 @@
 <span class="doccomment">/// Create a `Stream` that will provide a value every given number of milliseconds.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Future` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream</span>(<span class="ident">value</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream</span>(<span class="ident">value</span>: <span class="ident">Duration</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">interval_stream_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">value</span>)
 }
 
@@ -818,7 +818,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">value</span>: <span class="ident">Duration</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceStream::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="ident"><span class="kw">crate</span>::timeout_source_new</span>(<span class="ident">value</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="kw">if</span> <span class="ident">send</span>.<span class="ident">unbounded_send</span>(()).<span class="ident">is_err</span>() {
@@ -833,7 +833,7 @@
 <span class="doccomment">/// Create a `Stream` that will provide a value every given number of seconds.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Stream` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream_seconds</span>(<span class="ident">value</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream_seconds</span>(<span class="ident">value</span>: <span class="ident">u32</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">interval_stream_seconds_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">value</span>)
 }
 
@@ -843,7 +843,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">interval_stream_seconds_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">value</span>: <span class="ident">u32</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceStream::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="ident"><span class="kw">crate</span>::timeout_source_new_seconds</span>(<span class="ident">value</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="kw">if</span> <span class="ident">send</span>.<span class="ident">unbounded_send</span>(()).<span class="ident">is_err</span>() {
@@ -860,7 +860,7 @@
 <span class="doccomment">/// Create a `Stream` that will provide a value whenever the given UNIX signal is raised</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Stream` must be spawned on an `Executor` backed by a `glib::MainContext`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_stream</span>(<span class="ident">signum</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_stream</span>(<span class="ident">signum</span>: <span class="ident">i32</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">unix_signal_stream_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">signum</span>)
 }
 
@@ -872,7 +872,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_signal_stream_with_priority</span>(
     <span class="ident">priority</span>: <span class="ident">Priority</span>,
     <span class="ident">signum</span>: <span class="ident">i32</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="ident">Box::pin</span>(<span class="ident">SourceStream::new</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">send</span><span class="op">|</span> {
         <span class="ident"><span class="kw">crate</span>::unix_signal_source_new</span>(<span class="ident">signum</span>, <span class="prelude-val">None</span>, <span class="ident">priority</span>, <span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="kw">if</span> <span class="ident">send</span>.<span class="ident">unbounded_send</span>(()).<span class="ident">is_err</span>() {

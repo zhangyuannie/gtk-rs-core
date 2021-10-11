@@ -494,10 +494,10 @@
 <span class="kw">impl</span> <span class="ident">Future</span> <span class="kw">for</span> <span class="ident">FutureWrapper</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> ();
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="self">self</span>: <span class="ident">pin::Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">get_mut</span>() {
-            <span class="ident">FutureWrapper::Send</span>(<span class="ident">fut</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Pin::new</span>(<span class="ident">fut</span>).<span class="ident">poll</span>(<span class="ident">ctx</span>),
-            <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">fut</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Pin::new</span>(<span class="ident">fut</span>.<span class="ident">get_mut</span>()).<span class="ident">poll</span>(<span class="ident">ctx</span>),
+            <span class="ident">FutureWrapper::Send</span>(<span class="ident">fut</span>) =&gt; <span class="ident">Pin::new</span>(<span class="ident">fut</span>).<span class="ident">poll</span>(<span class="ident">ctx</span>),
+            <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">fut</span>) =&gt; <span class="ident">Pin::new</span>(<span class="ident">fut</span>.<span class="ident">get_mut</span>()).<span class="ident">poll</span>(<span class="ident">ctx</span>),
         }
     }
 }
@@ -526,7 +526,7 @@
         <span class="ident">source</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GSource</span>,
         <span class="ident">callback</span>: <span class="ident">ffi::GSourceFunc</span>,
         <span class="ident">_user_data</span>: <span class="ident">ffi::gpointer</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::gboolean</span> {
+    ) -&gt; <span class="ident">ffi::gboolean</span> {
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span>(<span class="ident">source</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TaskSource</span>);
         <span class="macro">assert!</span>(<span class="ident">callback</span>.<span class="ident">is_none</span>());
 
@@ -552,7 +552,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">WakerSource</span> {
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">clone_raw</span>(<span class="ident">waker</span>: <span class="kw-2">*</span><span class="kw">const</span> ()) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RawWaker</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">clone_raw</span>(<span class="ident">waker</span>: <span class="kw-2">*</span><span class="kw">const</span> ()) -&gt; <span class="ident">RawWaker</span> {
         <span class="kw">static</span> <span class="ident">VTABLE</span>: <span class="ident">RawWakerVTable</span> <span class="op">=</span> <span class="ident">RawWakerVTable::new</span>(
             <span class="ident">WakerSource::clone_raw</span>,
             <span class="ident">WakerSource::wake_raw</span>,
@@ -584,7 +584,7 @@
         <span class="ident">source</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GSource</span>,
         <span class="ident">_callback</span>: <span class="ident">ffi::GSourceFunc</span>,
         <span class="ident">_user_data</span>: <span class="ident">ffi::gpointer</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ffi::gboolean</span> {
+    ) -&gt; <span class="ident">ffi::gboolean</span> {
         <span class="comment">// Set ready-time to -1 so that we&#39;re not called again before</span>
         <span class="comment">// being woken up another time.</span>
         <span class="ident">ffi::g_source_set_ready_time</span>(<span class="ident">mut_override</span>(<span class="ident">source</span>), <span class="op">-</span><span class="number">1</span>);
@@ -601,7 +601,7 @@
 <span class="kw">impl</span> <span class="ident">TaskSource</span> {
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_source_new&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">priority</span>: <span class="ident">Priority</span>, <span class="ident">future</span>: <span class="ident">FutureWrapper</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Source</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">priority</span>: <span class="ident">Priority</span>, <span class="ident">future</span>: <span class="ident">FutureWrapper</span>) -&gt; <span class="ident">Source</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">static</span> <span class="ident">TASK_SOURCE_FUNCS</span>: <span class="ident">ffi::GSourceFuncs</span> <span class="op">=</span> <span class="ident">ffi::GSourceFuncs</span> {
                 <span class="ident">check</span>: <span class="prelude-val">None</span>,
@@ -656,7 +656,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">source</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>;
         <span class="kw">let</span> <span class="ident">executor</span>: <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="ident">MainContext</span><span class="op">&gt;</span> <span class="op">=</span>
             <span class="kw">unsafe</span> { <span class="ident">from_glib_borrow</span>(<span class="ident">ffi::g_source_get_context</span>(<span class="ident">mut_override</span>(<span class="ident">source</span>))) };
@@ -740,7 +740,7 @@
     <span class="doccomment">/// This must only be called if no `MainLoop` or anything else is running on this specific main</span>
     <span class="doccomment">/// context.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::transmute_ptr_to_ptr</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">block_on</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">F::Output</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">block_on</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">F::Output</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="prelude-val">None</span>;
         <span class="kw">let</span> <span class="ident">l</span> <span class="op">=</span> <span class="ident">MainLoop::new</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>), <span class="bool-val">false</span>);
         <span class="kw">let</span> <span class="ident">l_clone</span> <span class="op">=</span> <span class="ident">l</span>.<span class="ident">clone</span>();
@@ -769,7 +769,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Spawn</span> <span class="kw">for</span> <span class="ident">MainContext</span> {
-    <span class="kw">fn</span> <span class="ident">spawn_obj</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">FutureObj</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, ()<span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SpawnError</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">spawn_obj</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">FutureObj</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, ()<span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SpawnError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">FutureWrapper::Send</span>(<span class="ident">f</span>));
         <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
         <span class="prelude-val">Ok</span>(())
@@ -777,7 +777,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">LocalSpawn</span> <span class="kw">for</span> <span class="ident">MainContext</span> {
-    <span class="kw">fn</span> <span class="ident">spawn_local_obj</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">LocalFutureObj</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, ()<span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SpawnError</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">spawn_local_obj</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">LocalFutureObj</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, ()<span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SpawnError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(
             <span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>,
             <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">ThreadGuard::new</span>(<span class="ident">f</span>)),

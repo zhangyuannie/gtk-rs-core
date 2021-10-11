@@ -287,17 +287,17 @@
 <span class="doccomment">/// Trait for a type list of prerequisite object types.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">PrerequisiteList</span> {
     <span class="doccomment">/// Returns the list of types for this list.</span>
-    <span class="kw">fn</span> <span class="ident">types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">types</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">PrerequisiteList</span> <span class="kw">for</span> () {
-    <span class="kw">fn</span> <span class="ident">types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">types</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
         <span class="macro">vec!</span>[]
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident"><span class="kw">crate</span>::ObjectType</span><span class="op">&gt;</span> <span class="ident">PrerequisiteList</span> <span class="kw">for</span> (<span class="ident">T</span>,) {
-    <span class="kw">fn</span> <span class="ident">types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">types</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
         <span class="macro">vec!</span>[<span class="ident">T::static_type</span>().<span class="ident">into_glib</span>()]
     }
 }
@@ -305,14 +305,14 @@
 <span class="comment">// Generates all the PrerequisiteList impls for prerequisite_lists of arbitrary sizes based on a list of type</span>
 <span class="comment">// parameters like A B C. It would generate the impl then for (A, B) and (A, B, C).</span>
 <span class="macro">macro_rules!</span> <span class="ident">prerequisite_list_trait</span>(
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>: <span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> (
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>: <span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) =&gt; (
         <span class="macro">prerequisite_list_trait!</span>(<span class="ident">__impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>; $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="kw-2">*</span>);
     );
-    (<span class="ident">__impl</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> (
+    (<span class="ident">__impl</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) =&gt; (
         <span class="macro">prerequisite_list_trait_impl!</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span>);
         <span class="macro">prerequisite_list_trait!</span>(<span class="ident">__impl</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span> , <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>; $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name2</span>),<span class="kw-2">*</span>);
     );
-    (<span class="ident">__impl</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> (
+    (<span class="ident">__impl</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>:<span class="ident">ident</span>) =&gt; (
         <span class="macro">prerequisite_list_trait_impl!</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span>);
         <span class="macro">prerequisite_list_trait_impl!</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name1</span>);
     );
@@ -322,9 +322,9 @@
 <span class="comment">// arguments. Takes a list of type parameters as parameters, e.g. A B C</span>
 <span class="comment">// and then implements the trait on (A, B, C).</span>
 <span class="macro">macro_rules!</span> <span class="ident">prerequisite_list_trait_impl</span>(
-    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>) <span class="op">=</span><span class="op">&gt;</span> (
+    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>),<span class="op">+</span>) =&gt; (
         <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident"><span class="kw">crate</span>::ObjectType</span>),<span class="op">+</span><span class="op">&gt;</span> <span class="ident">PrerequisiteList</span> <span class="kw">for</span> ( $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span> ) {
-            <span class="kw">fn</span> <span class="ident">types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">types</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ffi::GType</span><span class="op">&gt;</span> {
                 <span class="macro">vec!</span>[$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name::static_type</span>().<span class="ident">into_glib</span>()),<span class="op">+</span>]
             }
         }
@@ -341,7 +341,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This will register the type with the type system on the first call.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_type&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">type_</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span>;
+    <span class="kw">fn</span> <span class="ident">type_</span>() -&gt; <span class="ident">Type</span>;
 }
 
 <span class="doccomment">/// The central trait for defining a `GObject` interface.</span>
@@ -389,12 +389,12 @@
     <span class="doccomment">/// Properties installed for this interface.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// All implementors of the interface must provide these properties.</span>
-    <span class="kw">fn</span> <span class="ident">properties</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">ParamSpec</span>] {
+    <span class="kw">fn</span> <span class="ident">properties</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">ParamSpec</span>] {
         <span class="kw-2">&amp;</span>[]
     }
 
     <span class="doccomment">/// Signals installed for this interface.</span>
-    <span class="kw">fn</span> <span class="ident">signals</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">Signal</span>] {
+    <span class="kw">fn</span> <span class="ident">signals</span>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">Signal</span>] {
         <span class="kw-2">&amp;</span>[]
     }
 }
@@ -403,7 +403,7 @@
     <span class="doccomment">/// Get interface from an instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This will panic if `obj` does not implement the interface.</span>
-    <span class="kw">fn</span> <span class="ident">from_instance</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from_instance</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">obj</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) -&gt; <span class="kw-2">&amp;</span><span class="self">Self</span> {
         <span class="macro">assert!</span>(<span class="ident">obj</span>.<span class="ident">as_ref</span>().<span class="ident">type_</span>().<span class="ident">is_a</span>(<span class="ident"><span class="self">Self</span>::type_</span>()));
 
         <span class="kw">unsafe</span> {
@@ -449,7 +449,7 @@
 <span class="doccomment">/// ensure that it&#39;s only ever called once.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`object_interface!`]: ../../macro.object_interface.html</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">register_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectInterface</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">register_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectInterface</span><span class="op">&gt;</span>() -&gt; <span class="ident">Type</span> {
     <span class="kw">unsafe</span> {
         <span class="kw">use</span> <span class="ident">std::ffi::CString</span>;
 

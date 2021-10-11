@@ -363,9 +363,9 @@
 <span class="doccomment">///     y: glib::clone::Upgrade::upgrade(y)?,</span>
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_downgrade_fields</span>(<span class="ident">fields</span>: <span class="ident">syn::Fields</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">DowngradeStructParts</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_downgrade_fields</span>(<span class="ident">fields</span>: <span class="ident">syn::Fields</span>) -&gt; <span class="ident">DowngradeStructParts</span> {
     <span class="kw">match</span> <span class="ident">fields</span> {
-        <span class="ident">Fields::Unnamed</span>(<span class="ident">FieldsUnnamed</span> { <span class="ident">unnamed</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Fields::Unnamed</span>(<span class="ident">FieldsUnnamed</span> { <span class="ident">unnamed</span>, .. }) =&gt; {
             <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">unnamed</span>
                 .<span class="ident">into_pairs</span>()
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">pair</span><span class="op">|</span> <span class="ident">pair</span>.<span class="ident">into_value</span>())
@@ -408,7 +408,7 @@
                 },
             }
         }
-        <span class="ident">Fields::Named</span>(<span class="ident">FieldsNamed</span> { <span class="ident">named</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">Fields::Named</span>(<span class="ident">FieldsNamed</span> { <span class="ident">named</span>, .. }) =&gt; {
             <span class="kw">let</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Ident</span>, <span class="ident">Type</span>)<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">named</span>
                 .<span class="ident">into_pairs</span>()
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">pair</span><span class="op">|</span> <span class="ident">pair</span>.<span class="ident">into_value</span>())
@@ -450,7 +450,7 @@
                 },
             }
         }
-        <span class="ident">Fields::Unit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">DowngradeStructParts</span> {
+        <span class="ident">Fields::Unit</span> =&gt; <span class="ident">DowngradeStructParts</span> {
             <span class="ident">weak_fields</span>: <span class="macro">quote!</span> {},
             <span class="ident">end_of_struct</span>: <span class="macro">quote!</span> { ; },
             <span class="ident">destruct</span>: <span class="macro">quote!</span> {},

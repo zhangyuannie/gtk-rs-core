@@ -491,23 +491,23 @@
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">read</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read</span>.<span class="ident">borrow_mut</span>();
             <span class="kw">let</span> <span class="ident">read</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">read</span> {
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                         <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Closed</span>,
                         <span class="string">&quot;Already closed&quot;</span>,
                     ));
                 }
-                <span class="prelude-val">Some</span>(<span class="ident">Reader::Read</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">read</span>,
-                <span class="prelude-val">Some</span>(<span class="ident">Reader::ReadSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">read</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Reader::Read</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) =&gt; <span class="ident">read</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">Reader::ReadSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) =&gt; <span class="ident">read</span>,
             };
 
             <span class="kw">loop</span> {
                 <span class="kw">match</span> <span class="ident">std_error_to_gio_error</span>(<span class="ident">read</span>.<span class="ident">read</span>(<span class="ident">buffer</span>)) {
-                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>,
+                    <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                    <span class="prelude-val">Some</span>(<span class="ident">res</span>) =&gt; <span class="kw">return</span> <span class="ident">res</span>,
                 }
             }
         }
@@ -516,14 +516,14 @@
             <span class="kw-2">&amp;</span><span class="self">self</span>,
             <span class="ident">_stream</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
             <span class="prelude-val">Ok</span>(())
         }
     }
 
     <span class="kw">impl</span> <span class="ident">SeekableImpl</span> <span class="kw">for</span> <span class="ident">ReadInputStream</span> {
-        <span class="kw">fn</span> <span class="ident">tell</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span> {
+        <span class="kw">fn</span> <span class="ident">tell</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">i64</span> {
             <span class="comment">// XXX: stream_position is not stable yet</span>
             <span class="comment">// let mut read = self.read.borrow_mut();</span>
             <span class="comment">// match *read {</span>
@@ -535,7 +535,7 @@
             <span class="op">-</span><span class="number">1</span>
         }
 
-        <span class="kw">fn</span> <span class="ident">can_seek</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_seek</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">bool</span> {
             <span class="kw">let</span> <span class="ident">read</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read</span>.<span class="ident">borrow</span>();
             <span class="macro">matches!</span>(<span class="kw-2">*</span><span class="ident">read</span>, <span class="prelude-val">Some</span>(<span class="ident">Reader::ReadSeek</span>(<span class="kw">_</span>)))
         }
@@ -546,15 +546,15 @@
             <span class="ident">offset</span>: <span class="ident">i64</span>,
             <span class="ident">type_</span>: <span class="ident">glib::SeekType</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="kw">use</span> <span class="ident">std::io::SeekFrom</span>;
 
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">read</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read</span>.<span class="ident">borrow_mut</span>();
             <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">read</span> {
-                <span class="prelude-val">Some</span>(<span class="ident">Reader::ReadSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">Reader::ReadSeek</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>)) =&gt; {
                     <span class="kw">let</span> <span class="ident">pos</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">type_</span> {
-                        <span class="ident">glib::SeekType::Cur</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">SeekFrom::Current</span>(<span class="ident">offset</span>),
-                        <span class="ident">glib::SeekType::Set</span> <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="ident">glib::SeekType::Cur</span> =&gt; <span class="ident">SeekFrom::Current</span>(<span class="ident">offset</span>),
+                        <span class="ident">glib::SeekType::Set</span> =&gt; {
                             <span class="kw">if</span> <span class="ident">offset</span> <span class="op">&lt;</span> <span class="number">0</span> {
                                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::InvalidArgument</span>,
@@ -564,25 +564,25 @@
                                 <span class="ident">SeekFrom::Start</span>(<span class="ident">offset</span> <span class="kw">as</span> <span class="ident">u64</span>)
                             }
                         }
-                        <span class="ident">glib::SeekType::End</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">SeekFrom::End</span>(<span class="ident">offset</span>),
-                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unimplemented!</span>(),
+                        <span class="ident">glib::SeekType::End</span> =&gt; <span class="ident">SeekFrom::End</span>(<span class="ident">offset</span>),
+                        <span class="kw">_</span> =&gt; <span class="macro">unimplemented!</span>(),
                     };
 
                     <span class="kw">loop</span> {
                         <span class="kw">match</span> <span class="ident">std_error_to_gio_error</span>(<span class="ident">read</span>.<span class="ident">seek</span>(<span class="ident">pos</span>)) {
-                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                            <span class="prelude-val">Some</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">res</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
+                            <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                            <span class="prelude-val">Some</span>(<span class="ident">res</span>) =&gt; <span class="kw">return</span> <span class="ident">res</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
                         }
                     }
                 }
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotSupported</span>,
                     <span class="string">&quot;Truncating not supported&quot;</span>,
                 )),
             }
         }
 
-        <span class="kw">fn</span> <span class="ident">can_truncate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">fn</span> <span class="ident">can_truncate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>) -&gt; <span class="ident">bool</span> {
             <span class="bool-val">false</span>
         }
 
@@ -591,7 +591,7 @@
             <span class="ident">_seekable</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="self">Self</span>::Type</span>,
             <span class="ident">_offset</span>: <span class="ident">i64</span>,
             <span class="ident">_cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Cancellable</span><span class="op">&gt;</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+        ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
             <span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                 <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotSupported</span>,
                 <span class="string">&quot;Truncating not supported&quot;</span>,
@@ -605,7 +605,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ReadInputStream</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">read</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ReadInputStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">read</span>: <span class="ident">R</span>) -&gt; <span class="ident">ReadInputStream</span> {
         <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">glib::Object::new</span>(<span class="kw-2">&amp;</span>[]).<span class="ident">expect</span>(<span class="string">&quot;Failed to create read input stream&quot;</span>);
 
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::ReadInputStream::from_instance</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>);
@@ -614,7 +614,7 @@
         <span class="ident">obj</span>
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">read</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ReadInputStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">read</span>: <span class="ident">R</span>) -&gt; <span class="ident">ReadInputStream</span> {
         <span class="kw">let</span> <span class="ident">obj</span> <span class="op">=</span> <span class="ident">glib::Object::new</span>(<span class="kw-2">&amp;</span>[]).<span class="ident">expect</span>(<span class="string">&quot;Failed to create read input stream&quot;</span>);
 
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::ReadInputStream::from_instance</span>(<span class="kw-2">&amp;</span><span class="ident">obj</span>);
@@ -623,23 +623,23 @@
         <span class="ident">obj</span>
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close_and_take</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">close_and_take</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">imp::ReadInputStream::from_instance</span>(<span class="self">self</span>);
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">imp</span>.<span class="ident">read</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
 
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">inner</span> {
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">None</span> =&gt; {
                 <span class="macro">panic!</span>(<span class="string">&quot;Stream already closed or inner taken&quot;</span>);
             }
-            <span class="prelude-val">Some</span>(<span class="ident">imp::Reader::Read</span>(<span class="ident">read</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">read</span>.<span class="ident">reader</span>,
-            <span class="prelude-val">Some</span>(<span class="ident">imp::Reader::ReadSeek</span>(<span class="ident">read</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">read</span>.<span class="ident">reader</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">imp::Reader::Read</span>(<span class="ident">read</span>)) =&gt; <span class="ident">read</span>.<span class="ident">reader</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">imp::Reader::ReadSeek</span>(<span class="ident">read</span>)) =&gt; <span class="ident">read</span>.<span class="ident">reader</span>,
         };
 
         <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>(<span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>);
 
         <span class="kw">match</span> <span class="ident">ret</span> {
-            <span class="ident">AnyOrPanic::Any</span>(<span class="ident">r</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">r</span>,
-            <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">p</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">std::panic::resume_unwind</span>(<span class="ident">p</span>),
+            <span class="ident">AnyOrPanic::Any</span>(<span class="ident">r</span>) =&gt; <span class="ident">r</span>,
+            <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">p</span>) =&gt; <span class="ident">std::panic::resume_unwind</span>(<span class="ident">p</span>),
         }
     }
 }
@@ -653,12 +653,12 @@
 <span class="comment">// catching panics along the way</span>
 <span class="kw">struct</span> <span class="ident">AnyReader</span> {
     <span class="ident">reader</span>: <span class="ident">AnyOrPanic</span>,
-    <span class="ident">read_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
-    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    <span class="ident">read_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
+    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">AnyReader</span> {
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">r</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">r</span>: <span class="ident">R</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">reader</span>: <span class="ident">AnyOrPanic::Any</span>(<span class="ident">Box::new</span>(<span class="ident">r</span>)),
             <span class="ident">read_fn</span>: <span class="ident"><span class="self">Self</span>::read_fn</span>::<span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>,
@@ -666,7 +666,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">r</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new_seekable</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="ident">Seek</span> <span class="op">+</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">r</span>: <span class="ident">R</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">reader</span>: <span class="ident">AnyOrPanic::Any</span>(<span class="ident">Box::new</span>(<span class="ident">r</span>)),
             <span class="ident">read_fn</span>: <span class="ident"><span class="self">Self</span>::read_fn</span>::<span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>,
@@ -674,44 +674,44 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">read_fn</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read_fn</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Read</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">r</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">read</span>(<span class="ident">buffer</span>))
     }
 
     <span class="kw">fn</span> <span class="ident">seek_fn</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">Seek</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyReader</span>,
         <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">r</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">seek</span>(<span class="ident">pos</span>))
     }
 
-    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">func</span>: <span class="ident">F</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">reader</span> {
-            <span class="ident">AnyOrPanic::Any</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">reader</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">AnyOrPanic::Any</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">reader</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">reader</span>.<span class="ident">downcast_mut</span>::<span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
                 <span class="kw">match</span> <span class="ident">std::panic::catch_unwind</span>(<span class="ident">std::panic::AssertUnwindSafe</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">func</span>(<span class="ident">r</span>))) {
-                    <span class="prelude-val">Ok</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">res</span>,
-                    <span class="prelude-val">Err</span>(<span class="ident">panic</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="prelude-val">Ok</span>(<span class="ident">res</span>) =&gt; <span class="ident">res</span>,
+                    <span class="prelude-val">Err</span>(<span class="ident">panic</span>) =&gt; {
                         <span class="self">self</span>.<span class="ident">reader</span> <span class="op">=</span> <span class="ident">AnyOrPanic::Panic</span>(<span class="ident">panic</span>);
                         <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(<span class="ident">std::io::ErrorKind::Other</span>, <span class="string">&quot;Panicked&quot;</span>))
                     }
                 }
             }
-            <span class="ident">AnyOrPanic::Panic</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(
+            <span class="ident">AnyOrPanic::Panic</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">std::io::Error::new</span>(
                 <span class="ident">std::io::ErrorKind::Other</span>,
                 <span class="string">&quot;Panicked before&quot;</span>,
             )),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         (<span class="self">self</span>.<span class="ident">read_fn</span>)(<span class="self">self</span>, <span class="ident">buffer</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">seek_fn</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">seek_fn</span> {
             <span class="ident">seek_fn</span>(<span class="self">self</span>, <span class="ident">pos</span>)
         } <span class="kw">else</span> {
@@ -722,62 +722,62 @@
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">std_error_to_gio_error</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(
     <span class="ident">res</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">std::io::Error</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">res</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">res</span>)),
-        <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="prelude-val">Ok</span>(<span class="ident">res</span>) =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">res</span>)),
+        <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
             <span class="kw">use</span> <span class="ident">std::io::ErrorKind</span>;
 
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::wildcard_in_or_patterns</span>)]</span>
             <span class="kw">match</span> <span class="ident">err</span>.<span class="ident">kind</span>() {
-                <span class="ident">ErrorKind::NotFound</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::NotFound</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotFound</span>,
                     <span class="string">&quot;Not Found&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::PermissionDenied</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::PermissionDenied</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::PermissionDenied</span>,
                     <span class="string">&quot;Permission Denied&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::ConnectionRefused</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::ConnectionRefused</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::ConnectionRefused</span>,
                     <span class="string">&quot;Connection Refused&quot;</span>,
                 ))),
                 <span class="ident">ErrorKind::ConnectionReset</span>
                 <span class="op">|</span> <span class="ident">ErrorKind::ConnectionAborted</span>
-                <span class="op">|</span> <span class="ident">ErrorKind::NotConnected</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="op">|</span> <span class="ident">ErrorKind::NotConnected</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::NotConnected</span>,
                     <span class="string">&quot;Connection Reset&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::AddrInUse</span> <span class="op">|</span> <span class="ident">ErrorKind::AddrNotAvailable</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::AddrInUse</span> <span class="op">|</span> <span class="ident">ErrorKind::AddrNotAvailable</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::AddressInUse</span>,
                     <span class="string">&quot;Address In Use&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::BrokenPipe</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::BrokenPipe</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::BrokenPipe</span>,
                     <span class="string">&quot;Broken Pipe&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::AlreadyExists</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::AlreadyExists</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Exists</span>,
                     <span class="string">&quot;Already Exists&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::WouldBlock</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::WouldBlock</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::WouldBlock</span>,
                     <span class="string">&quot;Would Block&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::InvalidInput</span> <span class="op">|</span> <span class="ident">ErrorKind::InvalidData</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::InvalidInput</span> <span class="op">|</span> <span class="ident">ErrorKind::InvalidData</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::InvalidData</span>,
                     <span class="string">&quot;Invalid Input&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::TimedOut</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::TimedOut</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::TimedOut</span>,
                     <span class="string">&quot;Timed Out&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::Interrupted</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
-                <span class="ident">ErrorKind::UnexpectedEof</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::Interrupted</span> =&gt; <span class="prelude-val">None</span>,
+                <span class="ident">ErrorKind::UnexpectedEof</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Closed</span>,
                     <span class="string">&quot;Unexpected Eof&quot;</span>,
                 ))),
-                <span class="ident">ErrorKind::WriteZero</span> <span class="op">|</span> <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
+                <span class="ident">ErrorKind::WriteZero</span> <span class="op">|</span> <span class="kw">_</span> =&gt; <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                     <span class="ident"><span class="kw">crate</span>::IOErrorEnum::Failed</span>,
                     <span class="macro">format!</span>(<span class="string">&quot;Unknown error: {:?}&quot;</span>, <span class="ident">err</span>).<span class="ident">as_str</span>(),
                 ))),

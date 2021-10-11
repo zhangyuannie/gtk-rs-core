@@ -81,7 +81,7 @@ translation of GLib core data types.</p>
         <span class="kw">unsafe</span> { <span class="ident">gdk::ffi::gdk_window_set_accept_focus</span>(<span class="self">self</span>.<span class="ident">pointer</span>, <span class="ident">accept_focus</span>.<span class="ident">into_glib</span>()) }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_accept_focus</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_accept_focus</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">gdk::ffi::gdk_window_get_accept_focus</span>(<span class="self">self</span>.<span class="ident">pointer</span>)) }
     }</code></pre></div>
 <p>Implementing <a href="trait.OptionIntoGlib.html" title="OptionIntoGlib"><code>OptionIntoGlib</code></a> on a Rust type <code>T</code> allows specifying a sentinel to indicate
@@ -92,7 +92,7 @@ In the example below, <a href="trait.IntoGlib.html" title="IntoGlib"><code>IntoG
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct</span> <span class="ident">SpecialU32</span>(<span class="ident">u32</span>);
 <span class="kw">impl</span> <span class="ident">IntoGlib</span> <span class="kw">for</span> <span class="ident">SpecialU32</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">libc::c_uint</span>;
-    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">libc::c_uint</span> {
+    <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">libc::c_uint</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="kw">as</span> <span class="ident">libc::c_uint</span>
     }
 }
@@ -103,8 +103,8 @@ In the example below, <a href="trait.IntoGlib.html" title="IntoGlib"><code>IntoG
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">impl</span> <span class="ident">TryFromGlib</span><span class="op">&lt;</span><span class="ident">libc::c_uint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SpecialU32</span> {
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">GlibNoneError</span>;
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">val</span>: <span class="ident">libc::c_uint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">GlibNoneError</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="ident">val</span> <span class="op">=</span><span class="op">=</span> <span class="ident">SpecialU32::GLIB_NONE</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">val</span>: <span class="ident">libc::c_uint</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">GlibNoneError</span><span class="op">&gt;</span> {
+        <span class="kw">if</span> <span class="ident">val</span> <span class="op">==</span> <span class="ident">SpecialU32::GLIB_NONE</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">GlibNoneError</span>);
         }
         <span class="prelude-val">Ok</span>(<span class="ident">SpecialU32</span>(<span class="ident">val</span> <span class="kw">as</span> <span class="ident">u32</span>))
@@ -117,7 +117,7 @@ target Rust type’s range. In the example below, the Rust type <code>U32</code>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">struct</span> <span class="ident">U32</span>(<span class="ident">u32</span>);
 <span class="kw">impl</span> <span class="ident">TryFromGlib</span><span class="op">&lt;</span><span class="ident">libc::c_long</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">U32</span> {
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">TryFromIntError</span>;
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">val</span>: <span class="ident">libc::c_long</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">TryFromIntError</span><span class="op">&gt;</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">val</span>: <span class="ident">libc::c_long</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">TryFromIntError</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">U32</span>(<span class="ident">u32::try_from</span>(<span class="ident">val</span>)<span class="question-mark">?</span>))
     }
 }</code></pre></div>
@@ -137,13 +137,13 @@ which are the only ones properly handled by the Rust bindings.</p>
 <p>For more information about floating references, please refer to the “Floating references” section
 of <a href="https://developer.gnome.org/gobject/stable/gobject-The-Base-Object-Type.html">the gobject reference</a>.</p>
 
-<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code>    <span class="kw">fn</span> <span class="ident">get_title</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code>    <span class="kw">fn</span> <span class="ident">get_title</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">title</span> <span class="op">=</span> <span class="ident">gtk::ffi::gtk_window_get_title</span>(<span class="self">self</span>.<span class="ident">pointer</span>);
             <span class="ident">from_glib_none</span>(<span class="ident">title</span>)
         }
     }
-    <span class="kw">fn</span> <span class="ident">create_bool</span>(<span class="ident">value</span>: <span class="ident">gboolean</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">create_bool</span>(<span class="ident">value</span>: <span class="ident">gboolean</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">variant</span> <span class="op">=</span> <span class="ident">ffi::g_variant_new_boolean</span>(<span class="ident">value</span>);
             <span class="comment">// g_variant_new_boolean has `transfer none`</span>

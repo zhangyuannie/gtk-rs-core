@@ -2012,13 +2012,13 @@
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Variant</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">ffi::GVariant</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="kw-2">ref</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::g_variant_ref_sink</span>(<span class="ident">ptr</span>),
-        <span class="ident">unref</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::g_variant_unref</span>(<span class="ident">ptr</span>),
+        <span class="kw-2">ref</span> =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::g_variant_ref_sink</span>(<span class="ident">ptr</span>),
+        <span class="ident">unref</span> =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::g_variant_unref</span>(<span class="ident">ptr</span>),
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticType</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">static_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Type</span> {
+    <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span> {
         <span class="ident">Type::VARIANT</span>
     }
 }
@@ -2032,7 +2032,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::value::FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Variant</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::value::GenericValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident"><span class="kw">crate</span>::Value</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident"><span class="kw">crate</span>::Value</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">gobject_ffi::g_value_dup_variant</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
         <span class="ident">from_glib_full</span>(<span class="ident">ptr</span>)
@@ -2041,7 +2041,7 @@
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::value::ToValue</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Value</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Value::from_type</span>(<span class="ident">Variant::static_type</span>());
             <span class="ident">gobject_ffi::g_value_take_variant</span>(
@@ -2052,14 +2052,14 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Type</span> {
+    <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Type</span> {
         <span class="ident">Variant::static_type</span>()
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::value::ToValueOptional</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">to_value_optional</span>(<span class="ident">s</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="self">Self</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Value</span> {
+    <span class="kw">fn</span> <span class="ident">to_value_optional</span>(<span class="ident">s</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="self">Self</span><span class="op">&gt;</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Value</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">gobject_ffi::g_value_take_variant</span>(
@@ -2081,13 +2081,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">VariantTypeMismatchError</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">actual</span>: <span class="ident">VariantType</span>, <span class="ident">expected</span>: <span class="ident">VariantType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">actual</span>: <span class="ident">VariantType</span>, <span class="ident">expected</span>: <span class="ident">VariantType</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">actual</span>, <span class="ident">expected</span> }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">VariantTypeMismatchError</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;Type mismatch: Expected &#39;{}&#39; got &#39;{}&#39;&quot;</span>,
@@ -2109,14 +2109,14 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a [`VariantType`][crate::VariantType]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">VariantTy</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">VariantTy</span> {
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_ptr</span>(<span class="ident">ffi::g_variant_get_type</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
     <span class="doccomment">/// Returns `true` if the type of the value corresponds to `T`.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">type_</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">T::static_variant_type</span>()
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">type_</span>() <span class="op">==</span> <span class="ident">T::static_variant_type</span>()
     }
 
     <span class="doccomment">/// Tries to extract a value of type `T`.</span>
@@ -2142,12 +2142,12 @@
     <span class="doccomment">/// ## `format_string`</span>
     <span class="doccomment">/// a [`Variant`][crate::Variant] format string</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">T::from_variant</span>(<span class="self">self</span>)
     }
 
     <span class="doccomment">/// Tries to extract a value of type `T`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">get</span>().<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
             <span class="ident">VariantTypeMismatchError::new</span>(
                 <span class="self">self</span>.<span class="ident">type_</span>().<span class="ident">to_owned</span>(),
@@ -2158,7 +2158,7 @@
 
     <span class="doccomment">/// Boxes value.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_variant</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
@@ -2167,7 +2167,7 @@
     <span class="doccomment">/// Returns `Some` if self contains a `Variant`.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_variant&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_variant</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
@@ -2209,7 +2209,7 @@
     <span class="doccomment">/// the child at the specified index</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_child_value&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_get_child_value&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Variant</span> {
         <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">is_container</span>());
         <span class="macro">assert!</span>(<span class="ident">index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">n_children</span>());
 
@@ -2220,7 +2220,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// It returns `None` if `self` is not a container type or if the given</span>
     <span class="doccomment">/// `index` is larger than number of children.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_child_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_child_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span>(<span class="self">self</span>.<span class="ident">is_container</span>() <span class="op">&amp;&amp;</span> <span class="ident">index</span> <span class="op">&lt;</span> <span class="self">self</span>.<span class="ident">n_children</span>()) {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -2238,7 +2238,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_child_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">FromVariant</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">index</span>: <span class="ident">usize</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
         <span class="comment">// TODO: In the future optimize this by using g_variant_get_child()</span>
         <span class="comment">// directly to avoid allocating a GVariant.</span>
         <span class="self">self</span>.<span class="ident">try_child_value</span>(<span class="ident">index</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">try_get</span>()).<span class="ident">transpose</span>()
@@ -2251,7 +2251,7 @@
     <span class="doccomment">/// * if `self` is not a container type.</span>
     <span class="doccomment">/// * if given `index` is larger than number of children.</span>
     <span class="doccomment">/// * if the expected variant type does not match</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">T</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) -&gt; <span class="ident">T</span> {
         <span class="comment">// TODO: In the future optimize this by using g_variant_get_child()</span>
         <span class="comment">// directly to avoid allocating a GVariant.</span>
         <span class="self">self</span>.<span class="ident">child_value</span>(<span class="ident">index</span>).<span class="ident">get</span>().<span class="ident">unwrap</span>()
@@ -2263,10 +2263,10 @@
     <span class="doccomment">/// strings).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_str&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_get_string&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">type_</span>().<span class="ident">to_str</span>() {
-                <span class="string">&quot;s&quot;</span> <span class="op">|</span> <span class="string">&quot;o&quot;</span> <span class="op">|</span> <span class="string">&quot;g&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="string">&quot;s&quot;</span> <span class="op">|</span> <span class="string">&quot;o&quot;</span> <span class="op">|</span> <span class="string">&quot;g&quot;</span> =&gt; {
                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">len</span> <span class="op">=</span> <span class="number">0</span>;
                     <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_string</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">len</span>);
                     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">str::from_utf8_unchecked</span>(<span class="ident">slice::from_raw_parts</span>(
@@ -2275,7 +2275,7 @@
                     ));
                     <span class="prelude-val">Some</span>(<span class="ident">ret</span>)
                 }
-                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+                <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
             }
         }
     }
@@ -2283,11 +2283,11 @@
     <span class="doccomment">/// Tries to extract a `&amp;[u8]` from a variant of type `ay` (array of bytes).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns an error if the type is not `ay`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
             <span class="kw">let</span> <span class="ident">expected_ty</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">Vec</span>::<span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
-            <span class="kw">if</span> <span class="ident">t</span> <span class="op">=</span><span class="op">=</span> <span class="ident">expected_ty</span> {
+            <span class="kw">if</span> <span class="ident">t</span> <span class="op">==</span> <span class="ident">expected_ty</span> {
                 <span class="kw">let</span> <span class="ident">selfv</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">to_glib_none</span>();
                 <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_size</span>(<span class="ident">selfv</span>.<span class="number">0</span>);
                 <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_data</span>(<span class="ident">selfv</span>.<span class="number">0</span>);
@@ -2305,7 +2305,7 @@
     <span class="doccomment">/// Creates a new GVariant array from children.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// All children must be of type `T`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_array</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">children</span>: <span class="kw-2">&amp;</span>[<span class="ident">Variant</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_array</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">children</span>: <span class="kw-2">&amp;</span>[<span class="ident">Variant</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">T::static_variant_type</span>();
 
         <span class="kw">for</span> <span class="ident">child</span> <span class="kw">in</span> <span class="ident">children</span> {
@@ -2321,7 +2321,7 @@
     }
 
     <span class="doccomment">/// Creates a new GVariant tuple from children.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_tuple</span>(<span class="ident">children</span>: <span class="kw-2">&amp;</span>[<span class="ident">Variant</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_tuple</span>(<span class="ident">children</span>: <span class="kw-2">&amp;</span>[<span class="ident">Variant</span>]) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_tuple</span>(
                 <span class="ident">children</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2331,15 +2331,15 @@
     }
 
     <span class="doccomment">/// Creates a new maybe Variant.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_maybe</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">child</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Variant</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_maybe</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">child</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Variant</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">T::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">child</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">child</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">child</span>) =&gt; {
                 <span class="macro">assert_eq!</span>(<span class="ident">type_</span>, <span class="ident">child</span>.<span class="ident">type_</span>());
 
                 <span class="ident">child</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>
             }
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">std::ptr::null</span>(),
+            <span class="prelude-val">None</span> =&gt; <span class="ident">std::ptr::null</span>(),
         };
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_maybe</span>(
@@ -2371,7 +2371,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// a new [`Variant`][crate::Variant] with a floating reference</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_bytes&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_from_bytes</span>(
                 <span class="ident">T::static_variant_type</span>().<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
@@ -2393,7 +2393,7 @@
     <span class="doccomment">/// Since the data is not validated, this is potentially dangerous if called</span>
     <span class="doccomment">/// on bytes which are not guaranteed to have come from serialising another</span>
     <span class="doccomment">/// Variant.  The caller is responsible for ensuring bad data is not passed in.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_bytes_trusted</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_bytes_trusted</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_from_bytes</span>(
             <span class="ident">T::static_variant_type</span>().<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
             <span class="ident">bytes</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2413,7 +2413,7 @@
     <span class="doccomment">/// A new [`Bytes`][crate::Bytes] representing the variant data</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_data_as_bytes&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_get_data_as_bytes&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">data_as_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Bytes</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">data_as_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Bytes</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_data_as_bytes</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
@@ -2447,7 +2447,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// a trusted [`Variant`][crate::Variant]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_get_normal_form&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">normal_form</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">normal_form</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_normal_form</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
@@ -2469,7 +2469,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// the byteswapped form of `self`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_byteswap&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">byteswap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">byteswap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_byteswap</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
@@ -2491,7 +2491,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// the number of children in the container</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_n_children&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">n_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">n_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
         <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">is_container</span>());
 
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_n_children</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
@@ -2501,7 +2501,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that this heap allocates a variant for each element,</span>
     <span class="doccomment">/// which can be particularly expensive for large arrays.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">VariantIter</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">iter</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">VariantIter</span> {
         <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">is_container</span>());
 
         <span class="ident">VariantIter::new</span>(<span class="self">self</span>.<span class="ident">clone</span>())
@@ -2524,7 +2524,7 @@
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// # Ok::&lt;(), Box&lt;dyn std::error::Error&gt;&gt;(())</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">array_iter_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">VariantStrIter</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">array_iter_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">VariantStrIter</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">child_ty</span> <span class="op">=</span> <span class="ident">String::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">actual_ty</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> <span class="ident">expected_ty</span> <span class="op">=</span> <span class="ident">child_ty</span>.<span class="ident">with_array</span>();
@@ -2546,7 +2546,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if `self` is a container</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_is_container&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_container</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_container</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_is_container</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) <span class="op">!</span><span class="op">=</span> <span class="ident">ffi::GFALSE</span> }
     }
 }
@@ -2555,7 +2555,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">Variant</span> {}
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Variant&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;ptr&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)
             .<span class="ident">field</span>(<span class="string">&quot;type&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">type_</span>())
@@ -2565,7 +2565,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">serialized</span>: <span class="ident">GString</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_print</span>(
                 <span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2578,7 +2578,7 @@
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Variant</span> {
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_equal&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_equal</span>(
                 <span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
@@ -2591,7 +2591,7 @@
 <span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">Variant</span> {}
 
 <span class="kw">impl</span> <span class="ident">PartialOrd</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">if</span> <span class="ident">ffi::g_variant_classify</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)
                 <span class="op">!</span><span class="op">=</span> <span class="ident">ffi::g_variant_classify</span>(<span class="ident">other</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)
@@ -2623,7 +2623,7 @@
 <span class="doccomment">/// Converts to `Variant`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToVariant</span> {
     <span class="doccomment">/// Returns a `Variant` clone of `self`.</span>
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span>;
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span>;
 }
 
 <span class="doccomment">/// Extracts a value.</span>
@@ -2631,49 +2631,49 @@
     <span class="doccomment">/// Tries to extract a value.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if the variant&#39;s type matches `Self`.</span>
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 }
 
 <span class="doccomment">/// Returns `VariantType` of `Self`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">StaticVariantType</span> {
     <span class="doccomment">/// Returns the `VariantType` corresponding to `Self`.</span>
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="string">&quot;v&quot;</span>).<span class="ident">into</span>() }
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">ToVariant</span><span class="op">&gt;</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">ToVariant</span><span class="op">&gt;</span><span class="ident">::to_variant</span>(<span class="self">self</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">StaticVariantType</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>()
     }
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">impl_numeric</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ty</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">type_str</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">new_fn</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_fn</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ty</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">type_str</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">new_fn</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_fn</span>:<span class="ident">ident</span>) =&gt; {
         <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
                 <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">type_str</span>).<span class="ident">into</span>() }
             }
         }
 
         <span class="kw">impl</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+            <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
                 <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">new_fn</span>(<span class="kw-2">*</span><span class="self">self</span>)) }
             }
         }
 
         <span class="kw">impl</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                 <span class="kw">unsafe</span> {
                     <span class="kw">if</span> <span class="ident">variant</span>.<span class="ident">is</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>() {
                         <span class="prelude-val">Some</span>(<span class="ident">ffi</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_fn</span>(<span class="ident">variant</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
@@ -2696,19 +2696,19 @@
 <span class="macro">impl_numeric!</span>(<span class="ident">f64</span>, <span class="string">&quot;d&quot;</span>, <span class="ident">g_variant_new_double</span>, <span class="ident">g_variant_get_double</span>);
 
 <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">bool</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="string">&quot;b&quot;</span>).<span class="ident">into</span>() }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="ident">bool</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_boolean</span>(<span class="self">self</span>.<span class="ident">into_glib</span>())) }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="ident">bool</span> {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">if</span> <span class="ident">variant</span>.<span class="ident">is</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>() {
                 <span class="prelude-val">Some</span>(<span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_get_boolean</span>(
@@ -2722,37 +2722,37 @@
 }
 
 <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="string">&quot;s&quot;</span>).<span class="ident">into</span>() }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="self">self</span>[..].<span class="ident">to_variant</span>()
     }
 }
 
 <span class="kw">impl</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="ident">variant</span>.<span class="ident">str</span>().<span class="ident">map</span>(<span class="ident">String::from</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">str</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="string">&quot;s&quot;</span>).<span class="ident">into</span>() }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="ident">str</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_take_string</span>(<span class="self">self</span>.<span class="ident">to_glib_full</span>())) }
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">child_type</span> <span class="op">=</span> <span class="ident">T::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">signature</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;m{}&quot;</span>, <span class="ident">child_type</span>.<span class="ident">to_str</span>());
 
@@ -2763,13 +2763,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span><span class="op">&gt;</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="ident">Variant::from_maybe</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">to_variant</span>()).<span class="ident">as_ref</span>())
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">FromVariant</span><span class="op">&gt;</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">if</span> <span class="ident">variant</span>.<span class="ident">is</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>() {
                 <span class="kw">let</span> <span class="ident">c_child</span> <span class="op">=</span> <span class="ident">ffi::g_variant_get_maybe</span>(<span class="ident">variant</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
@@ -2788,13 +2788,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> [<span class="ident">T</span>] {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="ident">T::static_variant_type</span>().<span class="ident">with_array</span>().<span class="ident">into</span>()
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span><span class="op">&gt;</span> <span class="ident">ToVariant</span> <span class="kw">for</span> [<span class="ident">T</span>] {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="self">self</span>.<span class="ident">len</span>());
         <span class="kw">for</span> <span class="ident">child</span> <span class="kw">in</span> <span class="self">self</span> {
             <span class="ident">vec</span>.<span class="ident">push</span>(<span class="ident">child</span>.<span class="ident">to_variant</span>());
@@ -2804,7 +2804,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">variant</span>.<span class="ident">is_container</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -2813,8 +2813,8 @@
 
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">variant</span>.<span class="ident">n_children</span>() {
             <span class="kw">match</span> <span class="ident">variant</span>.<span class="ident">child_value</span>(<span class="ident">i</span>).<span class="ident">get</span>() {
-                <span class="prelude-val">Some</span>(<span class="ident">child</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">vec</span>.<span class="ident">push</span>(<span class="ident">child</span>),
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">child</span>) =&gt; <span class="ident">vec</span>.<span class="ident">push</span>(<span class="ident">child</span>),
+                <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
             }
         }
 
@@ -2823,7 +2823,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span><span class="op">&gt;</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="self">self</span>.<span class="ident">len</span>());
         <span class="kw">for</span> <span class="ident">child</span> <span class="kw">in</span> <span class="self">self</span> {
             <span class="ident">vec</span>.<span class="ident">push</span>(<span class="ident">child</span>.<span class="ident">to_variant</span>());
@@ -2833,7 +2833,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span><span class="ident">::static_variant_type</span>()
     }
 }
@@ -2855,7 +2855,7 @@
     <span class="ident">V</span>: <span class="ident">FromVariant</span>,
     <span class="ident">H</span>: <span class="ident">BuildHasher</span> <span class="op">+</span> <span class="ident">Default</span>,
 {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">variant</span>.<span class="ident">is_container</span>() {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
@@ -2865,12 +2865,12 @@
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">variant</span>.<span class="ident">n_children</span>() {
             <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">variant</span>.<span class="ident">child_value</span>(<span class="ident">i</span>);
             <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">entry</span>.<span class="ident">child_value</span>(<span class="number">0</span>).<span class="ident">get</span>() {
-                <span class="prelude-val">Some</span>(<span class="ident">key</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">key</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">key</span>) =&gt; <span class="ident">key</span>,
+                <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
             };
             <span class="kw">let</span> <span class="ident">val</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">entry</span>.<span class="ident">child_value</span>(<span class="number">1</span>).<span class="ident">get</span>() {
-                <span class="prelude-val">Some</span>(<span class="ident">val</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">val</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                <span class="prelude-val">Some</span>(<span class="ident">val</span>) =&gt; <span class="ident">val</span>,
+                <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
             };
 
             <span class="ident">map</span>.<span class="ident">insert</span>(<span class="ident">key</span>, <span class="ident">val</span>);
@@ -2885,7 +2885,7 @@
     <span class="ident">K</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">Hash</span>,
     <span class="ident">V</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span>,
 {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="self">self</span>.<span class="ident">len</span>());
         <span class="kw">for</span> (<span class="ident">key</span>, <span class="ident">value</span>) <span class="kw">in</span> <span class="self">self</span> {
             <span class="kw">let</span> <span class="ident">entry</span> <span class="op">=</span> <span class="ident">DictEntry::new</span>(<span class="ident">key</span>, <span class="ident">value</span>).<span class="ident">to_variant</span>();
@@ -2924,15 +2924,15 @@
     <span class="ident">K</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">Hash</span>,
     <span class="ident">V</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span>,
 {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">key</span>: <span class="ident">K</span>, <span class="ident">value</span>: <span class="ident">V</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">key</span>: <span class="ident">K</span>, <span class="ident">value</span>: <span class="ident">V</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">key</span>, <span class="ident">value</span> }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">K</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">K</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">V</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">V</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">value</span>
     }
 }
@@ -2942,14 +2942,14 @@
     <span class="ident">K</span>: <span class="ident">FromVariant</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">Hash</span>,
     <span class="ident">V</span>: <span class="ident">FromVariant</span>,
 {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">variant</span>.<span class="ident">child_value</span>(<span class="number">0</span>).<span class="ident">get</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">key</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">key</span>,
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">key</span>) =&gt; <span class="ident">key</span>,
+            <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
         };
         <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">variant</span>.<span class="ident">child_value</span>(<span class="number">1</span>).<span class="ident">get</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">value</span>,
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            <span class="prelude-val">Some</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
+            <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
         };
 
         <span class="prelude-val">Some</span>(<span class="self">Self</span> { <span class="ident">key</span>, <span class="ident">value</span> })
@@ -2961,7 +2961,7 @@
     <span class="ident">K</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">Hash</span>,
     <span class="ident">V</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span>,
 {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_dict_entry</span>(
                 <span class="self">self</span>.<span class="ident">key</span>.<span class="ident">to_variant</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -2972,19 +2972,19 @@
 }
 
 <span class="kw">impl</span> <span class="ident">ToVariant</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
         <span class="ident">Variant::from_variant</span>(<span class="self">self</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">FromVariant</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="ident">variant</span>.<span class="ident">as_variant</span>()
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">StaticVariantType</span>, <span class="ident">V</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">DictEntry</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">key_type</span> <span class="op">=</span> <span class="ident">K::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">value_type</span> <span class="op">=</span> <span class="ident">V::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">signature</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;{{{}{}}}&quot;</span>, <span class="ident">key_type</span>.<span class="ident">to_str</span>(), <span class="ident">value_type</span>.<span class="ident">to_str</span>());
@@ -3001,7 +3001,7 @@
     <span class="ident">V</span>: <span class="ident">StaticVariantType</span>,
     <span class="ident">H</span>: <span class="ident">BuildHasher</span> <span class="op">+</span> <span class="ident">Default</span>,
 {
-    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">key_type</span> <span class="op">=</span> <span class="ident">K::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">value_type</span> <span class="op">=</span> <span class="ident">V::static_variant_type</span>();
         <span class="kw">let</span> <span class="ident">signature</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;a{{{}{}}}&quot;</span>, <span class="ident">key_type</span>.<span class="ident">to_str</span>(), <span class="ident">value_type</span>.<span class="ident">to_str</span>());
@@ -3013,13 +3013,13 @@
 }
 
 <span class="macro">macro_rules!</span> <span class="ident">tuple_impls</span> {
-    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>:<span class="ident">expr</span> <span class="op">=</span><span class="op">&gt;</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>)<span class="op">+</span>))<span class="op">+</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>:<span class="ident">expr</span> =&gt; ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>:<span class="ident">tt</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>)<span class="op">+</span>))<span class="op">+</span>) =&gt; {
         $(
             <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>),<span class="op">+</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,)<span class="op">+</span>)
             <span class="kw">where</span>
                 $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">StaticVariantType</span>,)<span class="op">+</span>
             {
-                <span class="kw">fn</span> <span class="ident">static_variant_type</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">signature</span> <span class="op">=</span> <span class="ident">String::with_capacity</span>(<span class="number">255</span>);
                     <span class="ident">signature</span>.<span class="ident">push</span>(<span class="string">&#39;(&#39;</span>);
                     $(
@@ -3035,12 +3035,12 @@
             <span class="kw">where</span>
                 $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">FromVariant</span>,)<span class="op">+</span>
             {
-                <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                     <span class="prelude-val">Some</span>((
                         $(
                             <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name::from_variant</span>(<span class="kw-2">&amp;</span><span class="ident">variant</span>.<span class="ident">child_value</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>)) {
-                                <span class="prelude-val">Some</span>(<span class="ident">field</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">field</span>,
-                                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+                                <span class="prelude-val">Some</span>(<span class="ident">field</span>) =&gt; <span class="ident">field</span>,
+                                <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="prelude-val">None</span>,
                             },
                         )<span class="op">+</span>
                     ))
@@ -3051,7 +3051,7 @@
             <span class="kw">where</span>
                 $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">ToVariant</span>,)<span class="op">+</span>
             {
-                <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Variant</span> {
+                <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>);
                     $(
                         <span class="kw">let</span> <span class="ident">field</span> <span class="op">=</span> <span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">n</span>.<span class="ident">to_variant</span>();
@@ -3065,22 +3065,22 @@
 }
 
 <span class="macro">tuple_impls!</span> {
-    <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span>)
-    <span class="number">2</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span>)
-    <span class="number">3</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span>)
-    <span class="number">4</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span>)
-    <span class="number">5</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span>)
-    <span class="number">6</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span>)
-    <span class="number">7</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span>)
-    <span class="number">8</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span>)
-    <span class="number">9</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span>)
-    <span class="number">10</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span>)
-    <span class="number">11</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span>)
-    <span class="number">12</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span>)
-    <span class="number">13</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span>)
-    <span class="number">14</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span>)
-    <span class="number">15</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span> <span class="number">14</span> <span class="ident">T14</span>)
-    <span class="number">16</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span> <span class="number">14</span> <span class="ident">T14</span> <span class="number">15</span> <span class="ident">T15</span>)
+    <span class="number">1</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span>)
+    <span class="number">2</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span>)
+    <span class="number">3</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span>)
+    <span class="number">4</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span>)
+    <span class="number">5</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span>)
+    <span class="number">6</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span>)
+    <span class="number">7</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span>)
+    <span class="number">8</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span>)
+    <span class="number">9</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span>)
+    <span class="number">10</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span>)
+    <span class="number">11</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span>)
+    <span class="number">12</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span>)
+    <span class="number">13</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span>)
+    <span class="number">14</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span>)
+    <span class="number">15</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span> <span class="number">14</span> <span class="ident">T14</span>)
+    <span class="number">16</span> =&gt; (<span class="number">0</span> <span class="ident">T0</span> <span class="number">1</span> <span class="ident">T1</span> <span class="number">2</span> <span class="ident">T2</span> <span class="number">3</span> <span class="ident">T3</span> <span class="number">4</span> <span class="ident">T4</span> <span class="number">5</span> <span class="ident">T5</span> <span class="number">6</span> <span class="ident">T6</span> <span class="number">7</span> <span class="ident">T7</span> <span class="number">8</span> <span class="ident">T8</span> <span class="number">9</span> <span class="ident">T9</span> <span class="number">10</span> <span class="ident">T10</span> <span class="number">11</span> <span class="ident">T11</span> <span class="number">12</span> <span class="ident">T12</span> <span class="number">13</span> <span class="ident">T13</span> <span class="number">14</span> <span class="ident">T14</span> <span class="number">15</span> <span class="ident">T15</span>)
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
@@ -3089,7 +3089,7 @@
     <span class="kw">use</span> <span class="ident">std::collections</span>::{<span class="ident">HashMap</span>, <span class="ident">HashSet</span>};
 
     <span class="macro">macro_rules!</span> <span class="ident">unsigned</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>) =&gt; {
             <span class="attribute">#[<span class="ident">test</span>]</span>
             <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>() {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">n</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty::max_value</span>();
@@ -3103,7 +3103,7 @@
     }
 
     <span class="macro">macro_rules!</span> <span class="ident">signed</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ident</span>) =&gt; {
             <span class="attribute">#[<span class="ident">test</span>]</span>
             <span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>() {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">n</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty::max_value</span>();
@@ -3190,7 +3190,7 @@
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_get</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">test_get</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="number">42u32</span>.<span class="ident">to_variant</span>();
         <span class="macro">assert!</span>(<span class="ident">u</span>.<span class="ident">get</span>::<span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>().<span class="ident">is_none</span>());
         <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">get</span>::<span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>(), <span class="number">42</span>);

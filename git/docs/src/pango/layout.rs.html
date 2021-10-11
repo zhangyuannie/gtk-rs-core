@@ -208,13 +208,13 @@
     <span class="doccomment">/// the source [`Layout`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Layout`]: crate::Layout</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">start_index</span> }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The length of this line&#39;s text, in bytes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="kw">unsafe</span> { (<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">length</span> }
     }
 
@@ -245,7 +245,7 @@
     <span class="doccomment">///  grapheme the user clicked. It will either be zero, or the number of</span>
     <span class="doccomment">///  characters in the grapheme. 0 represents the leading edge of the grapheme.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_line_x_to_index&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_to_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x_pos</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">HitPosition</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_to_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x_pos</span>: <span class="ident">i32</span>) -&gt; <span class="ident">HitPosition</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">index</span> <span class="op">=</span> <span class="number">0</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">trailing</span> <span class="op">=</span> <span class="number">0</span>;
 

@@ -117,7 +117,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// a new [`SocketService`][crate::SocketService].</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_threaded_socket_service_new&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">max_threads</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ThreadedSocketService</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">max_threads</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>) -&gt; <span class="ident">ThreadedSocketService</span> {
         <span class="kw">let</span> <span class="ident">max_threads</span> <span class="op">=</span> <span class="ident">max_threads</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span> <span class="kw">as</span> <span class="ident">i32</span>).<span class="ident">unwrap_or</span>(<span class="op">-</span><span class="number">1</span>);
         <span class="kw">unsafe</span> {
             <span class="ident">SocketService::from_glib_full</span>(<span class="ident">ffi::g_threaded_socket_service_new</span>(<span class="ident">max_threads</span>))

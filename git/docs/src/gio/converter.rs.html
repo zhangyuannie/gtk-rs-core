@@ -353,7 +353,7 @@
         <span class="ident">inbuf</span>: <span class="ident">IN</span>,
         <span class="ident">outbuf</span>: <span class="ident">OUT</span>,
         <span class="ident">flags</span>: <span class="ident">ConverterFlags</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">ConverterResult</span>, <span class="ident">usize</span>, <span class="ident">usize</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span>;
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">ConverterResult</span>, <span class="ident">usize</span>, <span class="ident">usize</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Converter</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ConverterExtManual</span> <span class="kw">for</span> <span class="ident">O</span> {
@@ -363,7 +363,7 @@
         <span class="ident">inbuf</span>: <span class="ident">IN</span>,
         <span class="ident">outbuf</span>: <span class="ident">OUT</span>,
         <span class="ident">flags</span>: <span class="ident">ConverterFlags</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">ConverterResult</span>, <span class="ident">usize</span>, <span class="ident">usize</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">ConverterResult</span>, <span class="ident">usize</span>, <span class="ident">usize</span>), <span class="ident">glib::Error</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">inbuf</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">IN</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">inbuf</span>);
         <span class="kw">let</span> (<span class="ident">inbuf_size</span>, <span class="ident">inbuf</span>) <span class="op">=</span> {
             <span class="kw">let</span> <span class="ident">slice</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="ident">inbuf</span>).<span class="ident">as_ref</span>();

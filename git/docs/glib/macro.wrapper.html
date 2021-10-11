@@ -75,39 +75,39 @@
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> : <span class="ident">ident</span>(<span class="ident">Boxed</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> : <span class="ident">ty</span> <span class="op">&gt;</span>) ;
  <span class="kw">match</span> <span class="kw">fn</span>
  {
-     <span class="ident">copy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">copy_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">copy_expr</span> : <span class="ident">expr</span>, <span class="ident">free</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_arg</span> :
+     <span class="ident">copy</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">copy_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">copy_expr</span> : <span class="ident">expr</span>, <span class="ident">free</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_arg</span> :
      <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">free_expr</span> : <span class="ident">expr</span>,
-     $(<span class="ident">init</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_expr</span> : <span class="ident">expr</span>, <span class="ident">clear</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_arg</span>
-       : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_expr</span> : <span class="ident">expr</span>,) <span class="question-mark">?</span> $(<span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>,)
+     $(<span class="ident">init</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">init_expr</span> : <span class="ident">expr</span>, <span class="ident">clear</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_arg</span>
+       : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">clear_expr</span> : <span class="ident">expr</span>,) <span class="question-mark">?</span> $(<span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>,)
      <span class="question-mark">?</span>
- }) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ }) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> : <span class="ident">ident</span>(<span class="ident">Shared</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> : <span class="ident">ty</span> <span class="op">&gt;</span>) ;
  <span class="kw">match</span> <span class="kw">fn</span>
  {
-     <span class="kw-2">ref</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ref_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ref_expr</span> : <span class="ident">expr</span>, <span class="ident">unref</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_arg</span> :
-     <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_expr</span> : <span class="ident">expr</span>, $(<span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>,) <span class="question-mark">?</span>
- }) <span class="op">=</span><span class="op">&gt;</span> { ... };
+     <span class="kw-2">ref</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ref_arg</span> : <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ref_expr</span> : <span class="ident">expr</span>, <span class="ident">unref</span> =&gt; <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_arg</span> :
+     <span class="ident">ident</span> <span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">unref_expr</span> : <span class="ident">expr</span>, $(<span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>,) <span class="question-mark">?</span>
+ }) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">Object</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> : <span class="ident">ty</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span> : <span class="ident">ty</span>) <span class="question-mark">?</span> <span class="op">&gt;</span>)
  $(@ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ; <span class="kw">match</span> <span class="kw">fn</span>
- { <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ { <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">Object</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> : <span class="ident">ty</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span> : <span class="ident">ty</span>) <span class="question-mark">?</span> <span class="op">&gt;</span>) @ <span class="ident">extends</span>
  $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span> : <span class="ident">path</span>), <span class="op">+</span> $(, @ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ; <span class="kw">match</span> <span class="kw">fn</span>
- { <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ { <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">ObjectSubclass</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> : <span class="ident">ty</span> <span class="op">&gt;</span>)
- $(@ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ $(@ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">ObjectSubclass</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> : <span class="ident">ty</span> <span class="op">&gt;</span>) @ <span class="ident">extends</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span> : <span class="ident">path</span>), <span class="op">+</span>
- $(, @ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ $(, @ <span class="ident">implements</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">Interface</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> : <span class="ident">ty</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span> : <span class="ident">ty</span>) <span class="question-mark">?</span> <span class="op">&gt;</span>)
  $(@ <span class="ident">requires</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ; <span class="kw">match</span> <span class="kw">fn</span>
- { <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ { <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span> : <span class="ident">expr</span>, }) =&gt; { ... };
     ($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span> : <span class="ident">meta</span>]</span>) <span class="op">*</span> <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> :
  <span class="ident">ident</span>(<span class="ident">ObjectInterface</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">iface_name</span> : <span class="ident">ty</span> <span class="op">&gt;</span>)
- $(@ <span class="ident">requires</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) <span class="op">=</span><span class="op">&gt;</span> { ... };
+ $(@ <span class="ident">requires</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span> : <span class="ident">path</span>), <span class="op">+</span>) <span class="question-mark">?</span> ;) =&gt; { ... };
 }</code></pre></div>
 </div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Defines a wrapper type and implements the appropriate traits.</p>
 <p>The basic syntax is</p>
@@ -117,7 +117,7 @@
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">kind</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">foreign</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fn_name</span> <span class="op">=</span><span class="op">&gt;</span> <span class="comment">/* a closure-like expression */</span>,
+        <span class="macro-nonterminal">$</span><span class="macro-nonterminal">fn_name</span> =&gt; <span class="comment">/* a closure-like expression */</span>,
         ...
     }
 }</code></pre></div>
@@ -144,8 +144,8 @@ class implements.</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextIter</span>(<span class="ident">Boxed</span><span class="op">&lt;</span><span class="ident">ffi::GtkTextIter</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">copy</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_copy</span>(<span class="ident">ptr</span>),
-        <span class="ident">free</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_free</span>(<span class="ident">ptr</span>),
+        <span class="ident">copy</span> =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_copy</span>(<span class="ident">ptr</span>),
+        <span class="ident">free</span> =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_free</span>(<span class="ident">ptr</span>),
     }
 }</code></pre></div>
 <p><code>copy</code>: <code>|*const $foreign| -&gt; *mut $foreign</code> creates a copy of the value.</p>
@@ -157,9 +157,9 @@ class implements.</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextIter</span>(<span class="ident">Boxed</span><span class="op">&lt;</span><span class="ident">ffi::GtkTextIter</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">copy</span>     <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_copy</span>(<span class="ident">ptr</span>),
-        <span class="ident">free</span>     <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_free</span>(<span class="ident">ptr</span>),
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span>    <span class="ident">ffi::gtk_text_iter_get_type</span>(),
+        <span class="ident">copy</span>     =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_copy</span>(<span class="ident">ptr</span>),
+        <span class="ident">free</span>     =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gtk_text_iter_free</span>(<span class="ident">ptr</span>),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span>    <span class="ident">ffi::gtk_text_iter_get_type</span>(),
     }
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> (optional) returns the
@@ -173,8 +173,8 @@ class implements.</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FrameTimings</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">ffi::GdkFrameTimings</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="kw-2">ref</span>   <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_ref</span>(<span class="ident">ptr</span>),
-        <span class="ident">unref</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_unref</span>(<span class="ident">ptr</span>),
+        <span class="kw-2">ref</span>   =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_ref</span>(<span class="ident">ptr</span>),
+        <span class="ident">unref</span> =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_unref</span>(<span class="ident">ptr</span>),
     }
 }</code></pre></div>
 <p><code>ref</code>: <code>|*mut $foreign|</code> increases the refcount.</p>
@@ -186,9 +186,9 @@ class implements.</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FrameTimings</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">ffi::GdkFrameTimings</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="kw-2">ref</span>      <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_ref</span>(<span class="ident">ptr</span>),
-        <span class="ident">unref</span>    <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_unref</span>(<span class="ident">ptr</span>),
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span>    <span class="ident">ffi::gdk_frame_timings_get_type</span>(),
+        <span class="kw-2">ref</span>      =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_ref</span>(<span class="ident">ptr</span>),
+        <span class="ident">unref</span>    =&gt; <span class="op">|</span><span class="ident">ptr</span><span class="op">|</span> <span class="ident">ffi::gdk_frame_timings_unref</span>(<span class="ident">ptr</span>),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span>    <span class="ident">ffi::gdk_frame_timings_get_type</span>(),
     }
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> (optional) returns the
@@ -205,7 +205,7 @@ $foreign type; see below for <a href="#non-derivable-classes">non-derivable clas
         @<span class="ident">implements</span> <span class="ident">Interface1</span>, <span class="ident">Interface2</span>, ...;
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::instance_get_type</span>(),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::instance_get_type</span>(),
     }
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> returns the <code>glib_ffi::GType</code>
@@ -221,7 +221,7 @@ specify all the parent classes of the one you are wrapping. The uppermost parent
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">WindowGroup</span>(<span class="ident">Object</span><span class="op">&lt;</span><span class="ident">ffi::GtkWindowGroup</span>, <span class="ident">ffi::GtkWindowGroupClass</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_window_group_get_type</span>(),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_window_group_get_type</span>(),
     }
 }</code></pre></div>
 <p>In contrast, <code>ffi::GtkButton</code> has a parent, grandparent, etc. classes, which must be specified:</p>
@@ -231,7 +231,7 @@ specify all the parent classes of the one you are wrapping. The uppermost parent
         <span class="comment">// see note on interfaces in the example below</span>
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
     }
 }</code></pre></div>
 <h5 id="objects-which-implement-interfaces" class="section-header"><a href="#objects-which-implement-interfaces">Objects which implement interfaces</a></h5>
@@ -245,7 +245,7 @@ behind the <code>@implements</code> keyword:</p>
         @<span class="ident">implements</span> <span class="ident">Buildable</span>, <span class="ident">Actionable</span>;  <span class="comment">// interfaces</span>
 
     <span class="kw">match</span> <span class="kw">fn</span> {
-        <span class="ident">type_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
+        <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
     }
 }</code></pre></div>
 <h5 id="non-derivable-classes" class="section-header"><a href="#non-derivable-classes">Non-derivable classes</a></h5>

@@ -731,15 +731,15 @@
         <span class="ident">method_call</span>: <span class="ident">MethodCall</span>,
         <span class="ident">get_property</span>: <span class="ident">GetProperty</span>,
         <span class="ident">set_property</span>: <span class="ident">SetProperty</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RegistrationId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span>
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RegistrationId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">MethodCall</span>: <span class="ident">Fn</span>(<span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">glib::Variant</span>, <span class="ident">DBusMethodInvocation</span>)
             <span class="op">+</span> <span class="ident">Send</span>
             <span class="op">+</span> <span class="ident">Sync</span>
             <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="ident">GetProperty</span>:
-            <span class="ident">Fn</span>(<span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">glib::Variant</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="ident">SetProperty</span>: <span class="ident">Fn</span>(<span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">glib::Variant</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+            <span class="ident">Fn</span>(<span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">glib::Variant</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+        <span class="ident">SetProperty</span>: <span class="ident">Fn</span>(<span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">glib::Variant</span>) -&gt; <span class="ident">bool</span>
             <span class="op">+</span> <span class="ident">Send</span>
             <span class="op">+</span> <span class="ident">Sync</span>
             <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -825,7 +825,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unregister_object</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">registration_id</span>: <span class="ident">RegistrationId</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::error::BoolError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">glib::error::BoolError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="macro">glib::result_from_gboolean!</span>(
                 <span class="ident">ffi::g_dbus_connection_unregister_object</span>(
@@ -871,7 +871,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">object_path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">action_group</span>: <span class="kw-2">&amp;</span><span class="ident">P</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ActionGroupExportId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">ActionGroupExportId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">std::ptr::null_mut</span>();
             <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">ffi::g_dbus_connection_export_action_group</span>(
@@ -928,7 +928,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">object_path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">menu</span>: <span class="kw-2">&amp;</span><span class="ident">P</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">MenuModelExportId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">MenuModelExportId</span>, <span class="ident">glib::Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">error</span> <span class="op">=</span> <span class="ident">std::ptr::null_mut</span>();
             <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">ffi::g_dbus_connection_export_menu_model</span>(
@@ -996,20 +996,20 @@
     <span class="doccomment">///  [`remove_filter()`][Self::remove_filter()]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dbus_connection_add_filter&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_filter</span><span class="op">&lt;</span>
-        <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+        <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     <span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">filter_function</span>: <span class="ident">P</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FilterId</span> {
+    ) -&gt; <span class="ident">FilterId</span> {
         <span class="kw">let</span> <span class="ident">filter_function_data</span>: <span class="ident">Box_</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box_::new</span>(<span class="ident">filter_function</span>);
         <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">filter_function_func</span><span class="op">&lt;</span>
-            <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+            <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="op">&gt;</span>(
             <span class="ident">connection</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GDBusConnection</span>,
             <span class="ident">message</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GDBusMessage</span>,
             <span class="ident">incoming</span>: <span class="ident">glib::ffi::gboolean</span>,
             <span class="ident">user_data</span>: <span class="ident">glib::ffi::gpointer</span>,
-        ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GDBusMessage</span> {
+        ) -&gt; <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GDBusMessage</span> {
             <span class="kw">let</span> <span class="ident">connection</span> <span class="op">=</span> <span class="ident">from_glib_borrow</span>(<span class="ident">connection</span>);
             <span class="kw">let</span> <span class="ident">message</span> <span class="op">=</span> <span class="ident">from_glib_full</span>(<span class="ident">message</span>);
             <span class="kw">let</span> <span class="ident">incoming</span> <span class="op">=</span> <span class="ident">from_glib</span>(<span class="ident">incoming</span>);
@@ -1019,7 +1019,7 @@
         }
         <span class="kw">let</span> <span class="ident">filter_function</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">filter_function_func</span>::<span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="kw">as</span> <span class="kw">_</span>);
         <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">user_data_free_func_func</span><span class="op">&lt;</span>
-            <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+            <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">DBusMessage</span>, <span class="ident">bool</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DBusMessage</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="op">&gt;</span>(
             <span class="ident">data</span>: <span class="ident">glib::ffi::gpointer</span>,
         ) {
@@ -1140,7 +1140,7 @@
         <span class="ident">arg0</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">flags</span>: <span class="ident">DBusSignalFlags</span>,
         <span class="ident">callback</span>: <span class="ident">P</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SignalSubscriptionId</span> {
+    ) -&gt; <span class="ident">SignalSubscriptionId</span> {
         <span class="kw">let</span> <span class="ident">callback_data</span>: <span class="ident">Box_</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box_::new</span>(<span class="ident">callback</span>);
         <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">callback_func</span><span class="op">&lt;</span>
             <span class="ident">P</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">DBusConnection</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) <span class="op">+</span> <span class="lifetime">&#39;static</span>,

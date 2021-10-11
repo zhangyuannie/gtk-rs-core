@@ -443,7 +443,7 @@
 <span class="doccomment">/// the resolution in &quot;dots per inch&quot;. A negative value will</span>
 <span class="doccomment">///  be returned if no resolution has previously been set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_cairo_context_get_resolution&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">context_get_resolution</span>(<span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="ident">pango::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f64</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">context_get_resolution</span>(<span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="ident">pango::Context</span>) -&gt; <span class="ident">f64</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::pango_cairo_context_get_resolution</span>(<span class="ident">context</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
@@ -511,7 +511,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// the newly created [`pango::Context`][crate::pango::Context]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_cairo_create_context&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_context</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">pango::Context</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_context</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">pango::Context</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::pango_cairo_create_context</span>(<span class="ident">mut_override</span>(
             <span class="ident">cr</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -538,7 +538,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// the newly created [`pango::Layout`][crate::pango::Layout]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_cairo_create_layout&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_layout</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">pango::Layout</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_layout</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">pango::Layout</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ffi::pango_cairo_create_layout</span>(<span class="ident">mut_override</span>(
             <span class="ident">cr</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,

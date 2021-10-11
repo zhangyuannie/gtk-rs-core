@@ -85,7 +85,7 @@ the same signal handler multiple times.</p>
 }
 
 <span class="kw">impl</span> <span class="ident">Button</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">widget</span> <span class="op">=</span> <span class="ident">gtk::Button::new</span>();
         <span class="kw">let</span> <span class="ident">clicked_handler_id</span> <span class="op">=</span> <span class="ident">RefCell::new</span>(<span class="prelude-val">Some</span>(<span class="ident">widget</span>.<span class="ident">connect_clicked</span>(<span class="op">|</span><span class="ident">_button</span><span class="op">|</span> {
             <span class="comment">// Do something.</span>
