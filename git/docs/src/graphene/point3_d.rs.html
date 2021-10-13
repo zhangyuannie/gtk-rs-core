@@ -121,9 +121,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">x</span>: <span class="ident">f32</span>, <span class="ident">y</span>: <span class="ident">f32</span>, <span class="ident">z</span>: <span class="ident">f32</span>) -&gt; <span class="ident">Point3D</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_point3d_alloc</span>();
-            <span class="ident">ffi::graphene_point3d_init</span>(<span class="ident">alloc</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">z</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Point3D::uninitialized</span>();
+            <span class="ident">ffi::graphene_point3d_init</span>(<span class="ident">p</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">z</span>);
+            <span class="ident">p</span>
         }
     }
 
@@ -132,9 +132,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_point</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="ident">Point3D</span>) -&gt; <span class="ident">Point3D</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_point3d_alloc</span>();
-            <span class="ident">ffi::graphene_point3d_init_from_point</span>(<span class="ident">alloc</span>, <span class="ident">src</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Point3D::uninitialized</span>();
+            <span class="ident">ffi::graphene_point3d_init_from_point</span>(<span class="ident">p</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">src</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            <span class="ident">p</span>
         }
     }
 
@@ -143,9 +143,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_vec3</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">Vec3</span>) -&gt; <span class="ident">Point3D</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_point3d_alloc</span>();
-            <span class="ident">ffi::graphene_point3d_init_from_vec3</span>(<span class="ident">alloc</span>, <span class="ident">v</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Point3D::uninitialized</span>();
+            <span class="ident">ffi::graphene_point3d_init_from_vec3</span>(<span class="ident">p</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">v</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            <span class="ident">p</span>
         }
     }
 }

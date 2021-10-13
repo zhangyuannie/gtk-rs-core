@@ -111,6 +111,22 @@
 <span id="38">38</span>
 <span id="39">39</span>
 <span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Point3D</span>;
@@ -119,19 +135,35 @@
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
 
 <span class="kw">impl</span> <span class="ident">Triangle</span> {
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_triangle_init_from_float&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_float&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_float</span>(<span class="ident">a</span>: [<span class="ident">f32</span>; <span class="number">3</span>], <span class="ident">b</span>: [<span class="ident">f32</span>; <span class="number">3</span>], <span class="ident">c</span>: [<span class="ident">f32</span>; <span class="number">3</span>]) -&gt; <span class="ident">Triangle</span> {
+        <span class="macro">assert_initialized_main_thread!</span>();
+        <span class="kw">unsafe</span> {
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tri</span> <span class="op">=</span> <span class="ident">Triangle::uninitialized</span>();
+            <span class="ident">ffi::graphene_triangle_init_from_float</span>(
+                <span class="ident">tri</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">a</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
+                <span class="ident">b</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
+                <span class="ident">c</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
+            );
+            <span class="ident">tri</span>
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_triangle_init_from_point3d&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_point3d&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_point3d</span>(<span class="ident">a</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Point3D</span><span class="op">&gt;</span>, <span class="ident">b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Point3D</span><span class="op">&gt;</span>, <span class="ident">c</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Point3D</span><span class="op">&gt;</span>) -&gt; <span class="ident">Triangle</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_triangle_alloc</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tri</span> <span class="op">=</span> <span class="ident">Triangle::uninitialized</span>();
             <span class="ident">ffi::graphene_triangle_init_from_point3d</span>(
-                <span class="ident">alloc</span>,
+                <span class="ident">tri</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
                 <span class="ident">a</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">b</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">c</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             );
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="ident">tri</span>
         }
     }
 
@@ -140,14 +172,14 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_vec3</span>(<span class="ident">a</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Vec3</span><span class="op">&gt;</span>, <span class="ident">b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Vec3</span><span class="op">&gt;</span>, <span class="ident">c</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Vec3</span><span class="op">&gt;</span>) -&gt; <span class="ident">Triangle</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_triangle_alloc</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tri</span> <span class="op">=</span> <span class="ident">Triangle::uninitialized</span>();
             <span class="ident">ffi::graphene_triangle_init_from_vec3</span>(
-                <span class="ident">alloc</span>,
+                <span class="ident">tri</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
                 <span class="ident">a</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">b</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">c</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             );
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="ident">tri</span>
         }
     }
 }

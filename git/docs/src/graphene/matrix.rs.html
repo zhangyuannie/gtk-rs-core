@@ -274,6 +274,16 @@
 <span id="201">201</span>
 <span id="202">202</span>
 <span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Matrix</span>;
@@ -283,30 +293,14 @@
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
 
 <span class="kw">impl</span> <span class="ident">Matrix</span> {
-    <span class="doccomment">/// Initializes a [`Matrix`][crate::Matrix] with the given array of floating</span>
-    <span class="doccomment">/// point values.</span>
-    <span class="doccomment">/// ## `v`</span>
-    <span class="doccomment">/// an array of at least 16 floating</span>
-    <span class="doccomment">///  point values</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// the initialized matrix</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_matrix_init_from_float&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">init_from_float</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">f32</span>; <span class="number">16</span>]) {
-        <span class="kw">unsafe</span> {
-            <span class="ident">ffi::graphene_matrix_init_from_float</span>(<span class="self">self</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>);
-        }
-    }
-
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;graphene_matrix_init_from_2d&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;new_from_2d&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_2d</span>(<span class="ident">xx</span>: <span class="ident">f64</span>, <span class="ident">yx</span>: <span class="ident">f64</span>, <span class="ident">xy</span>: <span class="ident">f64</span>, <span class="ident">yy</span>: <span class="ident">f64</span>, <span class="ident">x_0</span>: <span class="ident">f64</span>, <span class="ident">y_0</span>: <span class="ident">f64</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_from_2d</span>(<span class="ident">alloc</span>, <span class="ident">xx</span>, <span class="ident">yx</span>, <span class="ident">xy</span>, <span class="ident">yy</span>, <span class="ident">x_0</span>, <span class="ident">y_0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_from_2d</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">xx</span>, <span class="ident">yx</span>, <span class="ident">xy</span>, <span class="ident">yy</span>, <span class="ident">x_0</span>, <span class="ident">y_0</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -315,9 +309,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_float</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span>[<span class="ident">f32</span>; <span class="number">16</span>]) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_from_float</span>(<span class="ident">alloc</span>, <span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_from_float</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">v</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -326,9 +320,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_matrix</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="ident">Matrix</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_from_matrix</span>(<span class="ident">alloc</span>, <span class="ident">src</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_from_matrix</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">src</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -337,15 +331,15 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_vec4</span>(<span class="ident">v0</span>: <span class="kw-2">&amp;</span><span class="ident">Vec4</span>, <span class="ident">v1</span>: <span class="kw-2">&amp;</span><span class="ident">Vec4</span>, <span class="ident">v2</span>: <span class="kw-2">&amp;</span><span class="ident">Vec4</span>, <span class="ident">v3</span>: <span class="kw-2">&amp;</span><span class="ident">Vec4</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
             <span class="ident">ffi::graphene_matrix_init_from_vec4</span>(
-                <span class="ident">alloc</span>,
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
                 <span class="ident">v0</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">v1</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">v2</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">v3</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             );
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="ident">mat</span>
         }
     }
 
@@ -360,9 +354,17 @@
     ) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_frustum</span>(<span class="ident">alloc</span>, <span class="ident">left</span>, <span class="ident">right</span>, <span class="ident">bottom</span>, <span class="ident">top</span>, <span class="ident">z_near</span>, <span class="ident">z_far</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_frustum</span>(
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">left</span>,
+                <span class="ident">right</span>,
+                <span class="ident">bottom</span>,
+                <span class="ident">top</span>,
+                <span class="ident">z_near</span>,
+                <span class="ident">z_far</span>,
+            );
+            <span class="ident">mat</span>
         }
     }
 
@@ -370,9 +372,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_identity</span>() -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_identity</span>(<span class="ident">alloc</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_identity</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -380,14 +382,14 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_look_at</span>(<span class="ident">eye</span>: <span class="kw-2">&amp;</span><span class="ident">Vec3</span>, <span class="ident">center</span>: <span class="kw-2">&amp;</span><span class="ident">Vec3</span>, <span class="ident">up</span>: <span class="kw-2">&amp;</span><span class="ident">Vec3</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
             <span class="ident">ffi::graphene_matrix_init_look_at</span>(
-                <span class="ident">alloc</span>,
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
                 <span class="ident">eye</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">center</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">up</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             );
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="ident">mat</span>
         }
     }
 
@@ -402,9 +404,17 @@
     ) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_ortho</span>(<span class="ident">alloc</span>, <span class="ident">left</span>, <span class="ident">right</span>, <span class="ident">top</span>, <span class="ident">bottom</span>, <span class="ident">z_near</span>, <span class="ident">z_far</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_ortho</span>(
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">left</span>,
+                <span class="ident">right</span>,
+                <span class="ident">top</span>,
+                <span class="ident">bottom</span>,
+                <span class="ident">z_near</span>,
+                <span class="ident">z_far</span>,
+            );
+            <span class="ident">mat</span>
         }
     }
 
@@ -412,9 +422,15 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_perspective</span>(<span class="ident">fovy</span>: <span class="ident">f32</span>, <span class="ident">aspect</span>: <span class="ident">f32</span>, <span class="ident">z_near</span>: <span class="ident">f32</span>, <span class="ident">z_far</span>: <span class="ident">f32</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_perspective</span>(<span class="ident">alloc</span>, <span class="ident">fovy</span>, <span class="ident">aspect</span>, <span class="ident">z_near</span>, <span class="ident">z_far</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_perspective</span>(
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">fovy</span>,
+                <span class="ident">aspect</span>,
+                <span class="ident">z_near</span>,
+                <span class="ident">z_far</span>,
+            );
+            <span class="ident">mat</span>
         }
     }
 
@@ -422,9 +438,13 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_rotate</span>(<span class="ident">angle</span>: <span class="ident">f32</span>, <span class="ident">axis</span>: <span class="kw-2">&amp;</span><span class="ident">Vec3</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_rotate</span>(<span class="ident">alloc</span>, <span class="ident">angle</span>, <span class="ident">axis</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_rotate</span>(
+                <span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">angle</span>,
+                <span class="ident">axis</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            );
+            <span class="ident">mat</span>
         }
     }
 
@@ -432,9 +452,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_scale</span>(<span class="ident">x</span>: <span class="ident">f32</span>, <span class="ident">y</span>: <span class="ident">f32</span>, <span class="ident">z</span>: <span class="ident">f32</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_scale</span>(<span class="ident">alloc</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">z</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_scale</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">z</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -442,9 +462,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_skew</span>(<span class="ident">x_skew</span>: <span class="ident">f32</span>, <span class="ident">y_skew</span>: <span class="ident">f32</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_skew</span>(<span class="ident">alloc</span>, <span class="ident">x_skew</span>, <span class="ident">y_skew</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_skew</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">x_skew</span>, <span class="ident">y_skew</span>);
+            <span class="ident">mat</span>
         }
     }
 
@@ -452,9 +472,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_translate</span>(<span class="ident">p</span>: <span class="kw-2">&amp;</span><span class="ident">Point3D</span>) -&gt; <span class="ident">Matrix</span> {
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">alloc</span> <span class="op">=</span> <span class="ident">ffi::graphene_matrix_alloc</span>();
-            <span class="ident">ffi::graphene_matrix_init_translate</span>(<span class="ident">alloc</span>, <span class="ident">p</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">from_glib_full</span>(<span class="ident">alloc</span>)
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
+            <span class="ident">ffi::graphene_matrix_init_translate</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">p</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            <span class="ident">mat</span>
         }
     }
 

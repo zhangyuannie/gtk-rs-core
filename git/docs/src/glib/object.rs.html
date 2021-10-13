@@ -3203,6 +3203,10 @@
 <span id="3130">3130</span>
 <span id="3131">3131</span>
 <span id="3132">3132</span>
+<span id="3133">3133</span>
+<span id="3134">3134</span>
+<span id="3135">3135</span>
+<span id="3136">3136</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` Object wrapper implementation and `Object` binding.</span>
@@ -3795,21 +3799,6 @@
     }
 }
 
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules!</span> <span class="ident">glib_weak_impl</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>) =&gt; {
-        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::clone::Downgrade</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-            <span class="kw">type</span> <span class="ident">Weak</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::WeakRef</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
-
-            <span class="kw">fn</span> <span class="ident">downgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Weak</span> {
-                <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::ObjectExt</span><span class="op">&gt;</span><span class="ident">::downgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>)
-            }
-        }
-    };
-}
-
 <span class="doccomment">/// ObjectType implementations for Object types. See `wrapper!`.</span>
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">glib_object_wrapper</span> {
@@ -4174,7 +4163,18 @@
             }
         }
 
-        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_weak_impl!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>);
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">weak_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>);
+    };
+
+    (@<span class="ident">weak_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>) =&gt; {
+        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::clone::Downgrade</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+            <span class="kw">type</span> <span class="ident">Weak</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::WeakRef</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+
+            <span class="kw">fn</span> <span class="ident">downgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Weak</span> {
+                <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::ObjectExt</span><span class="op">&gt;</span><span class="ident">::downgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>)
+            }
+        }
     };
 
     (@<span class="ident">munch_impls</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, ) =&gt; { };
@@ -4223,7 +4223,8 @@
     <span class="comment">// This case is only for glib::Object itself below. All other cases have glib::Object in its</span>
     <span class="comment">// parent class list</span>
     (@<span class="ident">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>:<span class="ident">ty</span>, @<span class="ident">ffi_class</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>:<span class="ident">ty</span>, @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
             @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>);
 
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -4231,16 +4232,19 @@
     };
 
     (@<span class="ident">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>:<span class="ident">ty</span>,
-        @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
-            <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
-                @<span class="macro-nonterminal">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, @<span class="ident">ffi_class</span> <span class="ident">std::os::raw::c_void</span>,
-                @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>)<span class="kw-2">*</span>]);
+     @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, @<span class="ident">ffi_class</span> <span class="ident">std::os::raw::c_void</span>,
+            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>)<span class="kw-2">*</span>]
+        );
     };
 
     (@<span class="ident">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>:<span class="ident">ty</span>, @<span class="ident">ffi_class</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>:<span class="ident">ty</span>,
-        @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
-            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>);
+     @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
+            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>
+        );
         <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">munch_first_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>)<span class="kw-2">*</span>);
         <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">munch_impls</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>)<span class="kw-2">*</span>);
 
@@ -4259,30 +4263,34 @@
     };
 
     (@<span class="ident">object_subclass</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span>:<span class="ident">ty</span>,
-        @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
-            <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
-                @<span class="macro-nonterminal">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,
-                <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclass</span><span class="op">&gt;</span><span class="ident">::Instance</span>,
-                @<span class="ident">ffi_class</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclass</span><span class="op">&gt;</span><span class="ident">::Class</span>,
-                @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::IntoGlib::into_glib</span>(<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclassType</span><span class="op">&gt;</span><span class="ident">::type_</span>()),
-                @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>)<span class="kw-2">*</span>]);
+     @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">object</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>,
+            <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclass</span><span class="op">&gt;</span><span class="ident">::Instance</span>,
+            @<span class="ident">ffi_class</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclass</span><span class="op">&gt;</span><span class="ident">::Class</span>,
+            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::IntoGlib::into_glib</span>(<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::subclass::types::ObjectSubclassType</span><span class="op">&gt;</span><span class="ident">::type_</span>()),
+            @<span class="ident">extends</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">extends</span>)<span class="kw-2">*</span>], @<span class="ident">implements</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">implements</span>)<span class="kw-2">*</span>]
+        );
 
-            <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::ObjectSubclassIs</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
-                <span class="kw">type</span> <span class="ident">Subclass</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span>;
-            }
+        <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::object::ObjectSubclassIs</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+            <span class="kw">type</span> <span class="ident">Subclass</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">subclass</span>;
+        }
     };
 
     (@<span class="ident">interface</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>:<span class="ident">ty</span>,
-        @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
-            <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
-                @<span class="macro-nonterminal">interface</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, @<span class="ident">ffi_class</span> <span class="ident">std::os::raw::c_void</span>,
-                @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>)<span class="kw-2">*</span>]);
+     @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">interface</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, @<span class="ident">ffi_class</span> <span class="ident">std::os::raw::c_void</span>,
+            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>)<span class="kw-2">*</span>]
+        );
     };
 
     (@<span class="ident">interface</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>:<span class="ident">ty</span>, @<span class="ident">ffi_class</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>:<span class="ident">ty</span>,
-        @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
-        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
-            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>);
+     @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>:<span class="ident">expr</span>, @<span class="ident">requires</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>]) =&gt; {
+        <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(
+            @<span class="macro-nonterminal">generic_impl</span> [$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>)<span class="kw-2">*</span>] <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_class_name</span>,
+            @<span class="ident">type_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">get_type_expr</span>
+        );
         <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">munch_impls</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">requires</span>)<span class="kw-2">*</span>);
 
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
