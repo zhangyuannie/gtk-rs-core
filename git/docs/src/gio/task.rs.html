@@ -465,6 +465,7 @@
 <span id="392">392</span>
 <span id="393">393</span>
 <span id="394">394</span>
+<span id="395">395</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::AsyncResult</span>;
@@ -609,9 +610,10 @@
         <span class="comment">// We intentionally do not expose a way to set the task data in the bindings.</span>
         <span class="comment">// If we detect that the task data is set, there is not much we can do, so we panic.</span>
         <span class="kw">unsafe</span> {
-            <span class="kw">if</span> <span class="op">!</span><span class="ident">ffi::g_task_get_task_data</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">is_null</span>() {
-                <span class="macro">panic!</span>(<span class="string">&quot;Task data was manually set or the task was run thread multiple times&quot;</span>);
-            }
+            <span class="macro">assert!</span>(
+                <span class="ident">ffi::g_task_get_task_data</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">is_null</span>(),
+                <span class="string">&quot;Task data was manually set or the task was run thread multiple times&quot;</span>
+            );
 
             <span class="ident">ffi::g_task_set_task_data</span>(
                 <span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,

@@ -909,6 +909,9 @@
 <span id="836">836</span>
 <span id="837">837</span>
 <span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! Module that contains the basic infrastructure for subclassing `GObject`.</span>
@@ -1270,9 +1273,11 @@
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">class_data</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">class_data</span> {
-            <span class="kw">if</span> <span class="ident">class_data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_</span>).<span class="ident">is_some</span>() {
-                <span class="macro">panic!</span>(<span class="string">&quot;The class_data already contains a key for {}&quot;</span>, <span class="ident">type_</span>);
-            }
+            <span class="macro">assert!</span>(
+                <span class="ident">class_data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_</span>).<span class="ident">is_none</span>(),
+                <span class="string">&quot;The class_data already contains a key for {}&quot;</span>,
+                <span class="ident">type_</span>
+            );
 
             <span class="ident">class_data</span>.<span class="ident">insert</span>(<span class="ident">type_</span>, <span class="ident">Box::new</span>(<span class="ident">data</span>));
         }
@@ -1537,9 +1542,11 @@
             }
 
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">instance_data</span>) <span class="op">=</span> <span class="ident">priv_</span>.<span class="ident">instance_data</span> {
-                <span class="kw">if</span> <span class="ident">instance_data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_</span>).<span class="ident">is_some</span>() {
-                    <span class="macro">panic!</span>(<span class="string">&quot;The class_data already contains a key for {}&quot;</span>, <span class="ident">type_</span>);
-                }
+                <span class="macro">assert!</span>(
+                    <span class="ident">instance_data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_</span>).<span class="ident">is_none</span>(),
+                    <span class="string">&quot;The class_data already contains a key for {}&quot;</span>,
+                    <span class="ident">type_</span>
+                );
 
                 <span class="ident">instance_data</span>.<span class="ident">insert</span>(<span class="ident">type_</span>, <span class="ident">Box::new</span>(<span class="ident">data</span>));
             }
@@ -1646,24 +1653,23 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">register_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span>() -&gt; <span class="ident">Type</span> {
     <span class="comment">// GLib aligns the type private data to two gsizes, so we can&#39;t safely store any type there that</span>
     <span class="comment">// requires a bigger alignment.</span>
-    <span class="kw">if</span> <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">&gt;</span> <span class="number">2</span> <span class="op">*</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>() {
-        <span class="macro">panic!</span>(
-            <span class="string">&quot;Alignment {} of type not supported, bigger than {}&quot;</span>,
-            <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
-            <span class="number">2</span> <span class="op">*</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>(),
-        );
-    }
+    <span class="macro">assert!</span>(
+        <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">&lt;</span><span class="op">=</span> <span class="number">2</span> <span class="op">*</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>(),
+        <span class="string">&quot;Alignment {} of type not supported, bigger than {}&quot;</span>,
+        <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(),
+        <span class="number">2</span> <span class="op">*</span> <span class="ident">mem::size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>(),
+    );
 
     <span class="kw">unsafe</span> {
         <span class="kw">use</span> <span class="ident">std::ffi::CString</span>;
 
         <span class="kw">let</span> <span class="ident">type_name</span> <span class="op">=</span> <span class="ident">CString::new</span>(<span class="ident">T::NAME</span>).<span class="ident">unwrap</span>();
-        <span class="kw">if</span> <span class="ident">gobject_ffi::g_type_from_name</span>(<span class="ident">type_name</span>.<span class="ident">as_ptr</span>()) <span class="op">!</span><span class="op">=</span> <span class="ident">gobject_ffi::G_TYPE_INVALID</span> {
-            <span class="macro">panic!</span>(
-                <span class="string">&quot;Type {} has already been registered&quot;</span>,
-                <span class="ident">type_name</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>()
-            );
-        }
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">gobject_ffi::g_type_from_name</span>(<span class="ident">type_name</span>.<span class="ident">as_ptr</span>()),
+            <span class="ident">gobject_ffi::G_TYPE_INVALID</span>,
+            <span class="string">&quot;Type {} has already been registered&quot;</span>,
+            <span class="ident">type_name</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>()
+        );
 
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">from_glib</span>(<span class="ident">gobject_ffi::g_type_register_static_simple</span>(
             <span class="op">&lt;</span><span class="ident">T::ParentType</span> <span class="kw">as</span> <span class="ident">StaticType</span><span class="op">&gt;</span><span class="ident">::static_type</span>().<span class="ident">into_glib</span>(),

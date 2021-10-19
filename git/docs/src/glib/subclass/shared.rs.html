@@ -402,12 +402,12 @@
         }
 
         <span class="kw">let</span> <span class="ident">type_name</span> <span class="op">=</span> <span class="ident">CString::new</span>(<span class="ident">T::NAME</span>).<span class="ident">unwrap</span>();
-        <span class="kw">if</span> <span class="ident">gobject_ffi::g_type_from_name</span>(<span class="ident">type_name</span>.<span class="ident">as_ptr</span>()) <span class="op">!</span><span class="op">=</span> <span class="ident">gobject_ffi::G_TYPE_INVALID</span> {
-            <span class="macro">panic!</span>(
-                <span class="string">&quot;Type {} has already been registered&quot;</span>,
-                <span class="ident">type_name</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>()
-            );
-        }
+        <span class="macro">assert_eq!</span>(
+            <span class="ident">gobject_ffi::g_type_from_name</span>(<span class="ident">type_name</span>.<span class="ident">as_ptr</span>()),
+            <span class="ident">gobject_ffi::G_TYPE_INVALID</span>,
+            <span class="string">&quot;Type {} has already been registered&quot;</span>,
+            <span class="ident">type_name</span>.<span class="ident">to_str</span>().<span class="ident">unwrap</span>()
+        );
 
         <span class="ident">from_glib</span>(<span class="ident">gobject_ffi::g_boxed_type_register_static</span>(
             <span class="ident">type_name</span>.<span class="ident">as_ptr</span>(),

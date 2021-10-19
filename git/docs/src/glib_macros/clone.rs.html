@@ -829,7 +829,6 @@
 <span id="756">756</span>
 <span id="757">757</span>
 <span id="758">758</span>
-<span id="759">759</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::crate_ident_new</span>;
@@ -1043,9 +1042,11 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
                 <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;,&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;=&quot;</span> {
                     <span class="kw">break</span>;
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;.&quot;</span> {
-                    <span class="kw">if</span> <span class="op">!</span><span class="ident">prev_is_ident</span> {
-                        <span class="macro">panic!</span>(<span class="string">&quot;Unexpected `.` after `{}`&quot;</span>, <span class="ident">borrow_kind</span>.<span class="ident">to_str</span>());
-                    }
+                    <span class="macro">assert!</span>(
+                        <span class="ident">prev_is_ident</span>,
+                        <span class="string">&quot;Unexpected `.` after `{}`&quot;</span>,
+                        <span class="ident">borrow_kind</span>.<span class="ident">to_str</span>()
+                    );
                     <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
                     <span class="ident">name</span>.<span class="ident">push</span>(<span class="string">&#39;.&#39;</span>);
                     <span class="ident">parts</span>.<span class="ident">next</span>();
@@ -1068,12 +1069,11 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
             <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected end after ident `{}`&quot;</span>, <span class="ident">name</span>),
         }
     }
-    <span class="kw">if</span> <span class="ident">name</span>.<span class="ident">is_empty</span>() {
-        <span class="macro">panic!</span>(
-            <span class="string">&quot;Expected ident, found `{}`&quot;</span>,
-            <span class="ident">parts</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>()
-        );
-    }
+    <span class="macro">assert!</span>(
+        <span class="op">!</span><span class="ident">name</span>.<span class="ident">is_empty</span>(),
+        <span class="string">&quot;Expected ident, found `{}`&quot;</span>,
+        <span class="ident">parts</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>()
+    );
     <span class="ident">name</span>
 }
 
@@ -1144,10 +1144,10 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
             <span class="string">&quot;Can&#39;t use `self` as variable name. Try storing it in a temporary variable or \
                 rename it using `as`.&quot;</span>
         );
-    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">name</span>.<span class="ident">ends_with</span>(<span class="string">&#39;.&#39;</span>) {
-        <span class="macro">panic!</span>(<span class="string">&quot;Invalid variable name: `{}`&quot;</span>, <span class="ident">name</span>);
-    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">name</span>.<span class="ident">contains</span>(<span class="string">&#39;.&#39;</span>) <span class="op">&amp;&amp;</span> <span class="ident">alias</span>.<span class="ident">is_none</span>() {
-        <span class="macro">panic!</span>(
+    } <span class="kw">else</span> {
+        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">name</span>.<span class="ident">ends_with</span>(<span class="string">&#39;.&#39;</span>), <span class="string">&quot;Invalid variable name: `{}`&quot;</span>, <span class="ident">name</span>);
+        <span class="macro">assert!</span>(
+            <span class="op">!</span><span class="ident">name</span>.<span class="ident">contains</span>(<span class="string">&#39;.&#39;</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">alias</span>.<span class="ident">is_some</span>(),
             <span class="string">&quot;`{}`: Field accesses are not allowed as is, you must rename it!&quot;</span>,
             <span class="ident">name</span>
         );
@@ -1261,9 +1261,8 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
             <span class="kw">let</span> <span class="ident">i_s</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">to_string</span>();
             <span class="kw">if</span> <span class="ident">i_s</span> <span class="op">==</span> <span class="string">&quot;panic&quot;</span> {
                 <span class="kw">return</span> <span class="ident">WrapperKind::DefaultPanic</span>;
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">i_s</span> <span class="op">!</span><span class="op">=</span> <span class="string">&quot;return&quot;</span> {
-                <span class="macro">panic!</span>(<span class="string">&quot;Unknown keyword `@default-{}`&quot;</span>, <span class="ident">i_s</span>);
             }
+            <span class="macro">assert!</span>(<span class="ident">i_s</span> <span class="op">==</span> <span class="string">&quot;return&quot;</span>, <span class="string">&quot;Unknown keyword `@default-{}`&quot;</span>, <span class="ident">i_s</span>);
         }
         <span class="prelude-val">Some</span>(<span class="ident">x</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unknown token `{}` after `@default-`&quot;</span>, <span class="ident">x</span>.<span class="ident">to_string</span>()),
         <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected end after `@default-`&quot;</span>),
@@ -1559,16 +1558,14 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
                     <span class="ident">parse_ident</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">elements</span>);
                     <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">true</span>;
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;,&quot;</span> {
-                    <span class="kw">if</span> <span class="op">!</span><span class="ident">prev_is_ident</span> {
-                        <span class="macro">panic!</span>(<span class="string">&quot;Unexpected `,`&quot;</span>);
-                    }
+                    <span class="macro">assert!</span>(<span class="ident">prev_is_ident</span>, <span class="string">&quot;Unexpected `,`&quot;</span>);
                     <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;|&quot;</span> {
-                    <span class="kw">if</span> <span class="ident">elements</span>.<span class="ident">is_empty</span>() {
-                        <span class="macro">panic!</span>(<span class="string">&quot;If you have nothing to clone, no need to use this macro!&quot;</span>);
-                    } <span class="kw">else</span> {
-                        <span class="macro">panic!</span>(<span class="string">&quot;Expected `=&gt;` before closure&quot;</span>);
-                    }
+                    <span class="macro">assert!</span>(
+                        <span class="op">!</span><span class="ident">elements</span>.<span class="ident">is_empty</span>(),
+                        <span class="string">&quot;If you have nothing to clone, no need to use this macro!&quot;</span>
+                    );
+                    <span class="macro">panic!</span>(<span class="string">&quot;Expected `=&gt;` before closure&quot;</span>);
                 }
             }
             <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>)) =&gt; {
@@ -1582,9 +1579,10 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
             <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected end 4&quot;</span>),
         }
     }
-    <span class="kw">if</span> <span class="ident">elements</span>.<span class="ident">is_empty</span>() {
-        <span class="macro">panic!</span>(<span class="string">&quot;If you have nothing to clone, no need to use this macro!&quot;</span>);
-    }
+    <span class="macro">assert!</span>(
+        <span class="op">!</span><span class="ident">elements</span>.<span class="ident">is_empty</span>(),
+        <span class="string">&quot;If you have nothing to clone, no need to use this macro!&quot;</span>
+    );
     <span class="kw">let</span> <span class="ident">return_kind</span> <span class="op">=</span> <span class="ident">parse_return_kind</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>);
     <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">check_before_closure</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>);
     <span class="ident">build_closure</span>(<span class="ident">parts</span>, <span class="ident">elements</span>, <span class="ident">return_kind</span>, <span class="ident">kind</span>)
