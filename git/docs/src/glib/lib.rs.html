@@ -290,6 +290,8 @@
 <span id="217">217</span>
 <span id="218">218</span>
 <span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -392,6 +394,8 @@
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::main_context::MainContextAcquireGuard</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::main_context_channel</span>::{<span class="ident">Receiver</span>, <span class="ident">Sender</span>, <span class="ident">SyncSender</span>};
 <span class="kw">mod</span> <span class="ident">date</span>;
+<span class="kw">mod</span> <span class="ident">time_span</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::time_span</span>::<span class="kw-2">*</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">value</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">variant</span>;
 <span class="kw">mod</span> <span class="ident">variant_dict</span>;
