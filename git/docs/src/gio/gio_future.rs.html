@@ -361,8 +361,8 @@
 <span class="comment">// Taken from the fragile crate</span>
 <span class="kw">use</span> <span class="ident">std::sync::atomic</span>::{<span class="ident">AtomicUsize</span>, <span class="ident">Ordering</span>};
 <span class="kw">fn</span> <span class="ident">next_thread_id</span>() -&gt; <span class="ident">usize</span> {
-    <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">COUNTER</span>: <span class="ident">AtomicUsize</span> <span class="op">=</span> <span class="ident">AtomicUsize::new</span>(<span class="number">0</span>);
-    <span class="kw">unsafe</span> { <span class="ident">COUNTER</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::SeqCst</span>) }
+    <span class="kw">static</span> <span class="ident">COUNTER</span>: <span class="ident">AtomicUsize</span> <span class="op">=</span> <span class="ident">AtomicUsize::new</span>(<span class="number">0</span>);
+    <span class="ident">COUNTER</span>.<span class="ident">fetch_add</span>(<span class="number">1</span>, <span class="ident">Ordering::SeqCst</span>)
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_thread_id&quot;</span>)]</span>

@@ -948,9 +948,37 @@
 <span id="875">875</span>
 <span id="876">876</span>
 <span id="877">877</span>
+<span id="878">878</span>
+<span id="879">879</span>
+<span id="880">880</span>
+<span id="881">881</span>
+<span id="882">882</span>
+<span id="883">883</span>
+<span id="884">884</span>
+<span id="885">885</span>
+<span id="886">886</span>
+<span id="887">887</span>
+<span id="888">888</span>
+<span id="889">889</span>
+<span id="890">890</span>
+<span id="891">891</span>
+<span id="892">892</span>
+<span id="893">893</span>
+<span id="894">894</span>
+<span id="895">895</span>
+<span id="896">896</span>
+<span id="897">897</span>
+<span id="898">898</span>
+<span id="899">899</span>
+<span id="900">900</span>
+<span id="901">901</span>
+<span id="902">902</span>
+<span id="903">903</span>
+<span id="904">904</span>
+<span id="905">905</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::{<span class="ident">mut_override</span>, <span class="ident">FromGlibPtrFull</span>, <span class="ident">IntoGlib</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Continue</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::MainContext</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Priority</span>;
@@ -1127,7 +1155,8 @@
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">try_recv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">mpsc::TryRecvError</span><span class="op">&gt;</span> {
+    <span class="comment">// SAFETY: Must be called from the main context the channel was attached to.</span>
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_recv</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">mpsc::TryRecvError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">inner</span> <span class="op">=</span> (<span class="self">self</span>.<span class="number">0</span>).<span class="number">0</span>.<span class="ident">lock</span>().<span class="ident">unwrap</span>();
 
         <span class="comment">// Pop item if we have any</span>
@@ -1246,8 +1275,26 @@
     <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">source</span>.<span class="ident">source_funcs</span>.<span class="ident">take</span>();
 
     <span class="comment">// Take the callback out of the source. This will panic if the value is dropped</span>
-    <span class="comment">// from a different thread than where the callback was created</span>
-    <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">source</span>.<span class="ident">callback</span>.<span class="ident">take</span>();
+    <span class="comment">// from a different thread than where the callback was created so try to drop it</span>
+    <span class="comment">// from the main context if we&#39;re on another thread and the main context still exists.</span>
+    <span class="comment">//</span>
+    <span class="comment">// This can only really happen if the caller to `attach()` gets the `Source` from the returned</span>
+    <span class="comment">// `SourceId` and sends it to another thread or otherwise retrieves it from the main context,</span>
+    <span class="comment">// but better safe than sorry.</span>
+    <span class="kw">let</span> <span class="ident">callback</span> <span class="op">=</span> <span class="ident">source</span>
+        .<span class="ident">callback</span>
+        .<span class="ident">take</span>()
+        .<span class="ident">expect</span>(<span class="string">&quot;channel source finalized twice&quot;</span>);
+    <span class="kw">if</span> <span class="op">!</span><span class="ident">callback</span>.<span class="ident">is_owner</span>() {
+        <span class="kw">let</span> <span class="ident">context</span> <span class="op">=</span>
+            <span class="ident">ffi::g_source_get_context</span>(<span class="ident">source</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ChannelSource</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::GSource</span>);
+        <span class="kw">if</span> <span class="op">!</span><span class="ident">context</span>.<span class="ident">is_null</span>() {
+            <span class="kw">let</span> <span class="ident">context</span> <span class="op">=</span> <span class="ident">MainContext::from_glib_none</span>(<span class="ident">context</span>);
+            <span class="ident">context</span>.<span class="ident">invoke</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
+                <span class="ident">drop</span>(<span class="ident">callback</span>);
+            });
+        }
+    }
 }
 
 <span class="doccomment">/// A `Sender` that can be used to send items to the corresponding main context receiver.</span>
@@ -1258,6 +1305,10 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`MainContext::channel()`]: struct.MainContext.html#method.channel</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">Channel</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
+
+<span class="comment">// It&#39;s safe to send the Sender to other threads for attaching it as</span>
+<span class="comment">// long as the items to be sent can also be sent between threads.</span>
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Send</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Sender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
@@ -1304,6 +1355,10 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`MainContext::sync_channel()`]: struct.MainContext.html#method.sync_channel</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SyncSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">Channel</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
+
+<span class="comment">// It&#39;s safe to send the SyncSender to other threads for attaching it as</span>
+<span class="comment">// long as the items to be sent can also be sent between threads.</span>
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Send</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SyncSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">SyncSender</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
@@ -1449,14 +1504,15 @@
             }
 
             <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">Source::from_glib_full</span>(<span class="ident">mut_override</span>(<span class="kw-2">&amp;</span>(<span class="kw-2">*</span><span class="ident">source</span>).<span class="ident">source</span>));
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">context</span>) <span class="op">=</span> <span class="ident">context</span> {
-                <span class="macro">assert!</span>(<span class="ident">context</span>.<span class="ident">is_owner</span>());
-                <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="ident">context</span>))
-            } <span class="kw">else</span> {
-                <span class="kw">let</span> <span class="ident">context</span> <span class="op">=</span> <span class="ident">MainContext::ref_thread_default</span>();
-                <span class="macro">assert!</span>(<span class="ident">context</span>.<span class="ident">is_owner</span>());
-                <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">context</span>))
-            }
+            <span class="kw">let</span> <span class="ident">context</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">context</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">context</span>) =&gt; <span class="ident">context</span>.<span class="ident">clone</span>(),
+                <span class="prelude-val">None</span> =&gt; <span class="ident">MainContext::ref_thread_default</span>(),
+            };
+
+            <span class="kw">let</span> <span class="ident">_acquire</span> <span class="op">=</span> <span class="ident">context</span>
+                .<span class="ident">acquire</span>()
+                .<span class="ident">expect</span>(<span class="string">&quot;main context already acquired by another thread&quot;</span>);
+            <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">context</span>))
         }
     }
 }
