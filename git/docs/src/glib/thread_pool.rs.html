@@ -315,7 +315,7 @@
                 <span class="ident">ptr::null_mut</span>(),
                 <span class="ident">max_threads</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span> <span class="kw">as</span> <span class="ident">i32</span>).<span class="ident">unwrap_or</span>(<span class="op">-</span><span class="number">1</span>),
                 <span class="ident">ffi::GFALSE</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">err</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">err</span>,
             );
             <span class="kw">if</span> <span class="ident">pool</span>.<span class="ident">is_null</span>() {
                 <span class="prelude-val">Err</span>(<span class="ident">from_glib_full</span>(<span class="ident">err</span>))
@@ -334,7 +334,7 @@
                 <span class="ident">ptr::null_mut</span>(),
                 <span class="ident">max_threads</span> <span class="kw">as</span> <span class="ident">i32</span>,
                 <span class="ident">ffi::GTRUE</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">err</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">err</span>,
             );
             <span class="kw">if</span> <span class="ident">pool</span>.<span class="ident">is_null</span>() {
                 <span class="prelude-val">Err</span>(<span class="ident">from_glib_full</span>(<span class="ident">err</span>))
@@ -354,8 +354,8 @@
             <span class="kw">let</span> <span class="ident">func</span> <span class="op">=</span> <span class="ident">Box::into_raw</span>(<span class="ident">func</span>);
             <span class="kw">let</span> <span class="ident">ret</span>: <span class="ident">bool</span> <span class="op">=</span> <span class="ident">from_glib</span>(<span class="ident">ffi::g_thread_pool_push</span>(
                 <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>(),
-                <span class="ident">func</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">err</span>,
+                <span class="ident">func</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">err</span>,
             ));
             <span class="kw">if</span> <span class="ident">ret</span> {
                 <span class="prelude-val">Ok</span>(())
@@ -386,7 +386,7 @@
             <span class="kw">let</span> <span class="ident">ret</span>: <span class="ident">bool</span> <span class="op">=</span> <span class="ident">from_glib</span>(<span class="ident">ffi::g_thread_pool_set_max_threads</span>(
                 <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>(),
                 <span class="ident">max_threads</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span> <span class="kw">as</span> <span class="ident">i32</span>).<span class="ident">unwrap_or</span>(<span class="op">-</span><span class="number">1</span>),
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">err</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">err</span>,
             ));
             <span class="kw">if</span> <span class="ident">ret</span> {
                 <span class="prelude-val">Ok</span>(())
@@ -467,7 +467,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ThreadPool</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::g_thread_pool_free</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>(), <span class="ident">ffi::GFALSE</span>, <span class="ident">ffi::GTRUE</span>);
         }
@@ -475,7 +475,7 @@
 }
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">spawn_func</span>(<span class="ident">func</span>: <span class="ident">ffi::gpointer</span>, <span class="ident">_data</span>: <span class="ident">ffi::gpointer</span>) {
-    <span class="kw">let</span> <span class="ident">func</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">FnOnce</span>()<span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box::from_raw</span>(<span class="ident">func</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>);
+    <span class="kw">let</span> <span class="ident">func</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">FnOnce</span>()<span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Box::from_raw</span>(<span class="ident">func</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>);
     <span class="ident">func</span>()
 }
 

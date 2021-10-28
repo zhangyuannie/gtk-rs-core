@@ -140,17 +140,17 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">not</span>(<span class="ident">unix</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">passwd</span> {
-    <span class="ident">pw_name</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
-    <span class="ident">pw_passwd</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
+    <span class="ident">pw_name</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
+    <span class="ident">pw_passwd</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
     <span class="ident">pw_uid</span>: <span class="ident">u32</span>,
     <span class="ident">pw_gid</span>: <span class="ident">u32</span>,
-    <span class="ident">pw_gecos</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
-    <span class="ident">pw_dir</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
-    <span class="ident">pw_shell</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>,
+    <span class="ident">pw_gecos</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
+    <span class="ident">pw_dir</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
+    <span class="ident">pw_shell</span>: <span class="kw-2">*mut</span> <span class="ident">c_char</span>,
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">GPid</span> <span class="op">=</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_void</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">GPid</span> <span class="op">=</span> <span class="kw-2">*mut</span> <span class="ident">c_void</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">GPid</span> <span class="op">=</span> <span class="ident">c_int</span>;
@@ -184,7 +184,7 @@
     <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
         <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">g_win32_get_package_installation_directory_of_module</span>(
             <span class="ident">hmodule</span>: <span class="ident">gpointer</span>,
-        ) -&gt; <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_char</span>;
+        ) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span>;
     }
 }
 </code></pre></div>

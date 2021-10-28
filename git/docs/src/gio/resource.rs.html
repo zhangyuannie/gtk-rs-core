@@ -230,11 +230,11 @@
             <span class="comment">// https://bugzilla.gnome.org/show_bug.cgi?id=790030</span>
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">data</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">clone</span>();
             <span class="kw">let</span> <span class="ident">data_ptr</span> <span class="op">=</span> <span class="ident">glib::ffi::g_bytes_get_data</span>(<span class="ident">data</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">ptr::null_mut</span>());
-            <span class="kw">if</span> <span class="ident">data_ptr</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">%</span> <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="kw-2">*</span><span class="kw">const</span> <span class="ident">u8</span><span class="op">&gt;</span>() <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
+            <span class="kw">if</span> <span class="ident">data_ptr</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">%</span> <span class="ident">mem::align_of</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">u8</span><span class="op">&gt;</span>() <span class="op">!</span><span class="op">=</span> <span class="number">0</span> {
                 <span class="ident">data</span> <span class="op">=</span> <span class="ident">glib::Bytes::from</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">data</span>);
             }
 
-            <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_resource_new_from_data</span>(<span class="ident">data</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">error</span>);
+            <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">ffi::g_resource_new_from_data</span>(<span class="ident">data</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="kw-2">&amp;mut</span> <span class="ident">error</span>);
             <span class="kw">if</span> <span class="ident">error</span>.<span class="ident">is_null</span>() {
                 <span class="prelude-val">Ok</span>(<span class="ident">from_glib_full</span>(<span class="ident">ret</span>))
             } <span class="kw">else</span> {

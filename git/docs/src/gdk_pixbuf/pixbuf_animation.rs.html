@@ -223,7 +223,7 @@
                 <span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">start_time</span>
                     .<span class="ident">as_ref</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">glib::ffi::GTimeVal</span>)
+                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">glib::ffi::GTimeVal</span>)
                     .<span class="ident">unwrap_or</span>(<span class="ident">ptr::null</span>()),
             ))
         }

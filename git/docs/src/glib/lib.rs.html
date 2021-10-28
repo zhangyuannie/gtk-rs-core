@@ -492,13 +492,13 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">value</span>
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
         <span class="macro">assert!</span>(
             <span class="self">self</span>.<span class="ident">thread_id</span> <span class="op">==</span> <span class="ident">thread_id</span>(),
             <span class="string">&quot;Value accessed from different thread than where it was created&quot;</span>
         );
 
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">value</span>
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">value</span>
     }
 
     <span class="doccomment">/// Returns `true` if the current thread owns the value, i.e. it can be accessed safely.</span>
@@ -508,7 +508,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ThreadGuard</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="macro">assert!</span>(
             <span class="self">self</span>.<span class="ident">thread_id</span> <span class="op">==</span> <span class="ident">thread_id</span>(),
             <span class="string">&quot;Value dropped on a different thread than where it was created&quot;</span>

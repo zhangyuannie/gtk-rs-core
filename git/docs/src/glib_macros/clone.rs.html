@@ -1010,7 +1010,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 
 <span class="kw">fn</span> <span class="ident">check_tokens</span>(
     <span class="ident">tokens_to_check</span>: <span class="kw-2">&amp;</span>[<span class="ident">SimpleToken</span>],
-    <span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>,
+    <span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>,
 ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">TokenCheck</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="ident">String::new</span>();
 
@@ -1031,7 +1031,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_full_ident&quot;</span>)]</span>
-<span class="kw">fn</span> <span class="ident">full_ident</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>, <span class="ident">borrow_kind</span>: <span class="ident">BorrowKind</span>) -&gt; <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">full_ident</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>, <span class="ident">borrow_kind</span>: <span class="ident">BorrowKind</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
 
@@ -1078,7 +1078,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_keyword&quot;</span>)]</span>
-<span class="kw">fn</span> <span class="ident">keyword</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">keyword</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">stored</span> <span class="op">=</span> <span class="bool-val">false</span>;
@@ -1111,7 +1111,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
     <span class="ident">ret</span>
 }
 
-<span class="kw">fn</span> <span class="ident">parse_ident</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>, <span class="ident">elements</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ElemToClone</span><span class="op">&gt;</span>) {
+<span class="kw">fn</span> <span class="ident">parse_ident</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>, <span class="ident">elements</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ElemToClone</span><span class="op">&gt;</span>) {
     <span class="kw">let</span> <span class="ident">borrow_kind</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">keyword</span>(<span class="ident">parts</span>).<span class="ident">as_str</span>() {
         <span class="string">&quot;strong&quot;</span> =&gt; <span class="ident">BorrowKind::Strong</span>,
         <span class="string">&quot;weak&quot;</span> =&gt; <span class="ident">BorrowKind::Weak</span>,
@@ -1196,7 +1196,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_expr&quot;</span>)]</span>
-<span class="kw">fn</span> <span class="ident">expr</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">expr</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">String</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">total</span> <span class="op">=</span> <span class="number">0</span>;
     <span class="kw">match</span> <span class="ident">parts</span>.<span class="ident">next</span>() {
@@ -1243,7 +1243,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_return_kind&quot;</span>)]</span>
-<span class="kw">fn</span> <span class="ident">return_kind</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">WrapperKind</span> {
+<span class="kw">fn</span> <span class="ident">return_kind</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">WrapperKind</span> {
     <span class="kw">match</span> <span class="ident">check_tokens</span>(
         <span class="kw-2">&amp;</span>[<span class="ident">SimpleToken::Ident</span>(<span class="string">&quot;default&quot;</span>), <span class="ident">SimpleToken::Punct</span>(<span class="string">&quot;-&quot;</span>)],
         <span class="ident">parts</span>,
@@ -1270,7 +1270,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
     <span class="ident">WrapperKind::DefaultReturn</span>(<span class="ident">expr</span>(<span class="ident">parts</span>))
 }
 
-<span class="kw">fn</span> <span class="ident">parse_return_kind</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">WrapperKind</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">parse_return_kind</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">WrapperKind</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">parts</span>.<span class="ident">peek</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Punct</span>(<span class="ident">p</span>)) <span class="kw">if</span> <span class="ident">p</span>.<span class="ident">to_string</span>() <span class="op">==</span> <span class="string">&quot;@&quot;</span> =&gt; {}
         <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;Unexpected end 2&quot;</span>),
@@ -1311,7 +1311,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
     }
 }
 
-<span class="kw">fn</span> <span class="ident">check_move_after_async</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) {
+<span class="kw">fn</span> <span class="ident">check_move_after_async</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) {
     <span class="kw">match</span> <span class="ident">parts</span>.<span class="ident">next</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>)) <span class="kw">if</span> <span class="ident">i</span>.<span class="ident">to_string</span>() <span class="op">==</span> <span class="string">&quot;move&quot;</span> =&gt; {}
         <span class="comment">// The next checks are just for better error messages.</span>
@@ -1331,7 +1331,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
     }
 }
 
-<span class="kw">fn</span> <span class="ident">check_async_syntax</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">BlockKind</span> {
+<span class="kw">fn</span> <span class="ident">check_async_syntax</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">BlockKind</span> {
     <span class="ident">check_move_after_async</span>(<span class="ident">parts</span>);
     <span class="kw">match</span> <span class="ident">parts</span>.<span class="ident">peek</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Punct</span>(<span class="ident">p</span>)) <span class="kw">if</span> <span class="ident">p</span>.<span class="ident">to_string</span>() <span class="op">==</span> <span class="string">&quot;|&quot;</span> =&gt; {
@@ -1356,7 +1356,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="comment">// Returns `true` if this is an async context.</span>
-<span class="kw">fn</span> <span class="ident">check_before_closure</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">BlockKind</span> {
+<span class="kw">fn</span> <span class="ident">check_before_closure</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">BlockKind</span> {
     <span class="kw">let</span> <span class="ident">is_async</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">parts</span>.<span class="ident">peek</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>)) <span class="kw">if</span> <span class="ident">i</span>.<span class="ident">to_string</span>() <span class="op">==</span> <span class="string">&quot;move&quot;</span> =&gt; <span class="bool-val">false</span>,
         <span class="prelude-val">Some</span>(<span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>)) <span class="kw">if</span> <span class="ident">i</span>.<span class="ident">to_string</span>() <span class="op">==</span> <span class="string">&quot;async&quot;</span> =&gt; <span class="bool-val">true</span>,
@@ -1408,7 +1408,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_closure&quot;</span>)]</span>
-<span class="kw">fn</span> <span class="ident">closure</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TokenTree</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">closure</span>(<span class="ident">parts</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Peekable</span><span class="op">&lt;</span><span class="ident">ProcIter</span><span class="op">&gt;</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">TokenTree</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
 
     <span class="kw">loop</span> {
@@ -1425,7 +1425,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">String::new</span>();
     <span class="comment">// This is used in case of &quot;if ident&quot; or other similar cases.</span>
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
-    <span class="kw">let</span> <span class="ident">handle_ident_like</span> <span class="op">=</span> <span class="op">|</span><span class="ident">i</span>: <span class="ident">String</span>, <span class="ident">ret</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">String</span>, <span class="ident">prev_is_ident</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">bool</span><span class="op">|</span> {
+    <span class="kw">let</span> <span class="ident">handle_ident_like</span> <span class="op">=</span> <span class="op">|</span><span class="ident">i</span>: <span class="ident">String</span>, <span class="ident">ret</span>: <span class="kw-2">&amp;mut</span> <span class="ident">String</span>, <span class="ident">prev_is_ident</span>: <span class="kw-2">&amp;mut</span> <span class="ident">bool</span><span class="op">|</span> {
         <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">prev_is_ident</span> {
             <span class="ident">ret</span>.<span class="ident">push</span>(<span class="string">&#39; &#39;</span>);
         }
@@ -1439,8 +1439,8 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
                 <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
                 <span class="ident">ret</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">p</span>.<span class="ident">to_string</span>());
             }
-            <span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>) =&gt; <span class="ident">handle_ident_like</span>(<span class="ident">i</span>.<span class="ident">to_string</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ret</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev_is_ident</span>),
-            <span class="ident">TokenTree::Literal</span>(<span class="ident">l</span>) =&gt; <span class="ident">handle_ident_like</span>(<span class="ident">l</span>.<span class="ident">to_string</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ret</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">prev_is_ident</span>),
+            <span class="ident">TokenTree::Ident</span>(<span class="ident">i</span>) =&gt; <span class="ident">handle_ident_like</span>(<span class="ident">i</span>.<span class="ident">to_string</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">ret</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev_is_ident</span>),
+            <span class="ident">TokenTree::Literal</span>(<span class="ident">l</span>) =&gt; <span class="ident">handle_ident_like</span>(<span class="ident">l</span>.<span class="ident">to_string</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">ret</span>, <span class="kw-2">&amp;mut</span> <span class="ident">prev_is_ident</span>),
             <span class="ident">TokenTree::Group</span>(<span class="ident">g</span>) =&gt; {
                 <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">false</span>;
                 <span class="ident">ret</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="ident">group_to_string</span>(<span class="kw-2">&amp;</span><span class="ident">g</span>));
@@ -1555,7 +1555,7 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
                     <span class="ident">parts</span>.<span class="ident">next</span>();
                     <span class="kw">break</span>;
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;@&quot;</span> {
-                    <span class="ident">parse_ident</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">elements</span>);
+                    <span class="ident">parse_ident</span>(<span class="kw-2">&amp;mut</span> <span class="ident">parts</span>, <span class="kw-2">&amp;mut</span> <span class="ident">elements</span>);
                     <span class="ident">prev_is_ident</span> <span class="op">=</span> <span class="bool-val">true</span>;
                 } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">p_s</span> <span class="op">==</span> <span class="string">&quot;,&quot;</span> {
                     <span class="macro">assert!</span>(<span class="ident">prev_is_ident</span>, <span class="string">&quot;Unexpected `,`&quot;</span>);
@@ -1583,8 +1583,8 @@ let {0} = match {1}::clone::Upgrade::upgrade(&amp;{0}) {{
         <span class="op">!</span><span class="ident">elements</span>.<span class="ident">is_empty</span>(),
         <span class="string">&quot;If you have nothing to clone, no need to use this macro!&quot;</span>
     );
-    <span class="kw">let</span> <span class="ident">return_kind</span> <span class="op">=</span> <span class="ident">parse_return_kind</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>);
-    <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">check_before_closure</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">parts</span>);
+    <span class="kw">let</span> <span class="ident">return_kind</span> <span class="op">=</span> <span class="ident">parse_return_kind</span>(<span class="kw-2">&amp;mut</span> <span class="ident">parts</span>);
+    <span class="kw">let</span> <span class="ident">kind</span> <span class="op">=</span> <span class="ident">check_before_closure</span>(<span class="kw-2">&amp;mut</span> <span class="ident">parts</span>);
     <span class="ident">build_closure</span>(<span class="ident">parts</span>, <span class="ident">elements</span>, <span class="ident">return_kind</span>, <span class="ident">kind</span>)
 }
 </code></pre></div>

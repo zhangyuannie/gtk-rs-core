@@ -418,33 +418,33 @@
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_raw_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_raw_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span> {
         <span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_raw_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_raw_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>()
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_full</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_full</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
         <span class="ident">ScaledFont</span>(<span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>))
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_full</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_full</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
         <span class="ident">from_glib_full</span>(<span class="ident">ptr</span>)
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_none</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_none</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
         <span class="ident">from_glib_none</span>(<span class="ident">ptr</span>)
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>))]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_none</span>(<span class="ident">ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_none</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_scaled_font_t</span>) -&gt; <span class="ident">ScaledFont</span> {
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
         <span class="ident">ffi::cairo_scaled_font_reference</span>(<span class="ident">ptr</span>);
         <span class="ident">ScaledFont</span>(<span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>))
@@ -472,7 +472,7 @@
             <span class="ident">max_y_advance</span>: <span class="number">0.0</span>,
         };
 
-        <span class="kw">unsafe</span> { <span class="ident">ffi::cairo_scaled_font_extents</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">extents</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">ffi::cairo_scaled_font_extents</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">extents</span>) }
 
         <span class="ident">extents</span>
     }
@@ -490,7 +490,7 @@
 
         <span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">CString::new</span>(<span class="ident">text</span>).<span class="ident">unwrap</span>();
         <span class="kw">unsafe</span> {
-            <span class="ident">ffi::cairo_scaled_font_text_extents</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>(), <span class="ident">text</span>.<span class="ident">as_ptr</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">extents</span>)
+            <span class="ident">ffi::cairo_scaled_font_text_extents</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>(), <span class="ident">text</span>.<span class="ident">as_ptr</span>(), <span class="kw-2">&amp;mut</span> <span class="ident">extents</span>)
         }
 
         <span class="ident">extents</span>
@@ -512,7 +512,7 @@
                 <span class="self">self</span>.<span class="ident">to_raw_none</span>(),
                 <span class="ident">glyphs</span>.<span class="ident">as_ptr</span>(),
                 <span class="ident">glyphs</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">extents</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">extents</span>,
             )
         }
 
@@ -531,9 +531,9 @@
         <span class="comment">// types before they&#39;re of any use to Rust code.</span>
 
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">glyphs_ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">Glyph</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">glyphs_ptr</span>: <span class="kw-2">*mut</span> <span class="ident">Glyph</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">glyph_count</span> <span class="op">=</span> <span class="number">0i32</span>;
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">clusters_ptr</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TextCluster</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">clusters_ptr</span>: <span class="kw-2">*mut</span> <span class="ident">TextCluster</span> <span class="op">=</span> <span class="ident">ptr::null_mut</span>();
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cluster_count</span> <span class="op">=</span> <span class="number">0i32</span>;
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">cluster_flags</span> <span class="op">=</span> <span class="number">0i32</span>;
             <span class="kw">let</span> <span class="ident">text_length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
@@ -545,11 +545,11 @@
                 <span class="ident">y</span>,
                 <span class="ident">text</span>.<span class="ident">as_ptr</span>(),
                 <span class="ident">text_length</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">glyphs_ptr</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">glyph_count</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">clusters_ptr</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cluster_count</span>,
-                <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">cluster_flags</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">glyphs_ptr</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">glyph_count</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">clusters_ptr</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">cluster_count</span>,
+                <span class="kw-2">&amp;mut</span> <span class="ident">cluster_flags</span>,
             );
             <span class="ident">status_to_result</span>(<span class="ident">status</span>)<span class="question-mark">?</span>;
 
@@ -642,7 +642,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>))]</span>
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ScaledFont</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::cairo_scaled_font_destroy</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>());
         }

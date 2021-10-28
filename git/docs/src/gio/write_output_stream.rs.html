@@ -652,9 +652,9 @@
 <span class="comment">// catching panics along the way</span>
 <span class="kw">struct</span> <span class="ident">AnyWriter</span> {
     <span class="ident">writer</span>: <span class="ident">AnyOrPanic</span>,
-    <span class="ident">write_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
-    <span class="ident">flush_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
-    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    <span class="ident">write_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
+    <span class="ident">flush_fn</span>: <span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
+    <span class="ident">seek_fn</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">AnyWriter</span> {
@@ -676,23 +676,23 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">write_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">write</span>(<span class="ident">buffer</span>))
+    <span class="kw">fn</span> <span class="ident">write_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">write</span>(<span class="ident">buffer</span>))
     }
 
-    <span class="kw">fn</span> <span class="ident">flush_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">flush</span>())
+    <span class="kw">fn</span> <span class="ident">flush_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">flush</span>())
     }
 
     <span class="kw">fn</span> <span class="ident">seek_fn</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Seek</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
-        <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AnyWriter</span>,
+        <span class="ident">s</span>: <span class="kw-2">&amp;mut</span> <span class="ident">AnyWriter</span>,
         <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>,
     ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
-        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">seek</span>(<span class="ident">pos</span>))
+        <span class="ident">s</span>.<span class="ident">with_inner</span>(<span class="op">|</span><span class="ident">w</span>: <span class="kw-2">&amp;mut</span> <span class="ident">W</span><span class="op">|</span> <span class="ident">w</span>.<span class="ident">seek</span>(<span class="ident">pos</span>))
     }
 
-    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">W</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+    <span class="kw">fn</span> <span class="ident">with_inner</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="lifetime">&#39;static</span>, <span class="ident">T</span>, <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">W</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">func</span>: <span class="ident">F</span>,
     ) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">writer</span> {
@@ -713,15 +713,15 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">write</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         (<span class="self">self</span>.<span class="ident">write_fn</span>)(<span class="self">self</span>, <span class="ident">buffer</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">flush</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         (<span class="self">self</span>.<span class="ident">flush_fn</span>)(<span class="self">self</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">seek</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">pos</span>: <span class="ident">std::io::SeekFrom</span>) -&gt; <span class="ident">std::io::Result</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">seek_fn</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">seek_fn</span> {
             <span class="ident">seek_fn</span>(<span class="self">self</span>, <span class="ident">pos</span>)
         } <span class="kw">else</span> {

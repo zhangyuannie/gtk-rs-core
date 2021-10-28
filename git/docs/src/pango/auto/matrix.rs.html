@@ -283,7 +283,7 @@
     <span class="doccomment">/// ## `new_matrix`</span>
     <span class="doccomment">/// a [`Matrix`][crate::Matrix]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_concat&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">concat</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">new_matrix</span>: <span class="kw-2">&amp;</span><span class="ident">Matrix</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">concat</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">new_matrix</span>: <span class="kw-2">&amp;</span><span class="ident">Matrix</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_concat</span>(<span class="self">self</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">new_matrix</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
         }
@@ -344,7 +344,7 @@
     <span class="doccomment">/// ## `degrees`</span>
     <span class="doccomment">/// degrees to rotate counter-clockwise</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_rotate&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rotate</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">degrees</span>: <span class="ident">f64</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rotate</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">degrees</span>: <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_rotate</span>(<span class="self">self</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">degrees</span>);
         }
@@ -359,7 +359,7 @@
     <span class="doccomment">/// ## `scale_y`</span>
     <span class="doccomment">/// amount to scale by in Y direction</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_scale&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">scale_x</span>: <span class="ident">f64</span>, <span class="ident">scale_y</span>: <span class="ident">f64</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">scale_x</span>: <span class="ident">f64</span>, <span class="ident">scale_y</span>: <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_scale</span>(<span class="self">self</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">scale_x</span>, <span class="ident">scale_y</span>);
         }
@@ -385,7 +385,7 @@
     <span class="doccomment">/// ## `dy`</span>
     <span class="doccomment">/// in/out Y component of a distance vector</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_transform_distance&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform_distance</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">f64</span>, <span class="ident">dy</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">f64</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform_distance</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">dx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f64</span>, <span class="ident">dy</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_transform_distance</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">dx</span>, <span class="ident">dy</span>);
         }
@@ -402,7 +402,7 @@
     <span class="doccomment">/// ## `y`</span>
     <span class="doccomment">/// in/out Y position</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_transform_point&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform_point</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">f64</span>, <span class="ident">y</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">f64</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform_point</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f64</span>, <span class="ident">y</span>: <span class="kw-2">&amp;mut</span> <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_transform_point</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">x</span>, <span class="ident">y</span>);
         }
@@ -421,7 +421,7 @@
     <span class="doccomment">/// ## `ty`</span>
     <span class="doccomment">/// amount to translate in the Y direction</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_translate&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">translate</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">tx</span>: <span class="ident">f64</span>, <span class="ident">ty</span>: <span class="ident">f64</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">translate</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">tx</span>: <span class="ident">f64</span>, <span class="ident">ty</span>: <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_matrix_translate</span>(<span class="self">self</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">tx</span>, <span class="ident">ty</span>);
         }

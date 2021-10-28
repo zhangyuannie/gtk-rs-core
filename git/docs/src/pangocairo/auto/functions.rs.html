@@ -590,7 +590,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">glyph_string_path</span>(
     <span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>,
     <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">pango::Font</span><span class="op">&gt;</span>,
-    <span class="ident">glyphs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">pango::GlyphString</span>,
+    <span class="ident">glyphs</span>: <span class="kw-2">&amp;mut</span> <span class="ident">pango::GlyphString</span>,
 ) {
     <span class="kw">unsafe</span> {
         <span class="ident">ffi::pango_cairo_glyph_string_path</span>(
@@ -681,7 +681,7 @@
 <span class="doccomment">/// ## `glyph_item`</span>
 <span class="doccomment">/// a [`pango::GlyphItem`][crate::pango::GlyphItem]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_cairo_show_glyph_item&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_glyph_item</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>, <span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">pango::GlyphItem</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_glyph_item</span>(<span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>, <span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">pango::GlyphItem</span>) {
     <span class="kw">unsafe</span> {
         <span class="ident">ffi::pango_cairo_show_glyph_item</span>(
             <span class="ident">mut_override</span>(<span class="ident">cr</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>),
@@ -705,7 +705,7 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show_glyph_string</span>(
     <span class="ident">cr</span>: <span class="kw-2">&amp;</span><span class="ident">cairo::Context</span>,
     <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">pango::Font</span><span class="op">&gt;</span>,
-    <span class="ident">glyphs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">pango::GlyphString</span>,
+    <span class="ident">glyphs</span>: <span class="kw-2">&amp;mut</span> <span class="ident">pango::GlyphString</span>,
 ) {
     <span class="kw">unsafe</span> {
         <span class="ident">ffi::pango_cairo_show_glyph_string</span>(

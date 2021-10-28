@@ -310,7 +310,7 @@
         <span class="macro">assert_initialized_main_thread!</span>();
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mat</span> <span class="op">=</span> <span class="ident">Matrix::uninitialized</span>();
-            <span class="ident">ffi::graphene_matrix_init_from_float</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">v</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>);
+            <span class="ident">ffi::graphene_matrix_init_from_float</span>(<span class="ident">mat</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>, <span class="ident">v</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>);
             <span class="ident">mat</span>
         }
     }

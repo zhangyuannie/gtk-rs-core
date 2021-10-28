@@ -303,8 +303,8 @@
         <span class="macro">quote_spanned!</span> {<span class="ident">v</span>.<span class="ident">span</span>()=&gt;
             #<span class="ident">crate_ident::gobject_ffi::GEnumValue</span> {
                 <span class="ident">value</span>: #<span class="ident">enum_name</span>::#<span class="ident">name</span> <span class="kw">as</span> <span class="ident">i32</span>,
-                <span class="ident">value_name</span>: #<span class="ident">value_name</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
-                <span class="ident">value_nick</span>: #<span class="ident">value_nick</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span>,
+                <span class="ident">value_name</span>: #<span class="ident">value_name</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
+                <span class="ident">value_nick</span>: #<span class="ident">value_nick</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
             },
         }
     });
@@ -385,7 +385,7 @@
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> #<span class="ident">crate_ident::value::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
                 <span class="kw">unsafe</span> {
                     #<span class="ident">crate_ident::gobject_ffi::g_value_set_enum</span>(
-                        #<span class="ident">crate_ident::translate::ToGlibPtrMut::to_glib_none_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">value</span>).<span class="number">0</span>,
+                        #<span class="ident">crate_ident::translate::ToGlibPtrMut::to_glib_none_mut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">value</span>).<span class="number">0</span>,
                         #<span class="ident">crate_ident::translate::IntoGlib::into_glib</span>(<span class="kw-2">*</span><span class="self">self</span>)
                     )
                 }

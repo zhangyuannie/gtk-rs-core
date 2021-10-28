@@ -354,7 +354,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">SendUnique</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Ref</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">let</span> <span class="ident">is_unique</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">obj</span>.<span class="ident">is_unique</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">thread</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">thread</span>.<span class="ident">borrow_mut</span>();
 

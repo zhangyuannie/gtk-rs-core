@@ -306,13 +306,13 @@
     <span class="kw">type</span> <span class="ident">InnerType</span>;
 
     <span class="doccomment">/// The function used to increment the inner type refcount</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>;
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>;
 
     <span class="doccomment">/// Converts the RefCounted object to a raw pointer to InnerType</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>;
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>;
 
     <span class="doccomment">/// Converts a raw pointer to InnerType to a RefCounted object</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span>;
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span>;
 }
 
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">RefCounted</span> <span class="kw">for</span> <span class="ident">std::sync::Arc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
@@ -321,16 +321,16 @@
 {
     <span class="kw">type</span> <span class="ident">InnerType</span> <span class="op">=</span> <span class="ident">T</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
         <span class="ident">std::sync::Arc::increment_strong_count</span>(<span class="ident">this</span>);
         <span class="ident">this</span>
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
         <span class="ident">std::sync::Arc::into_raw</span>(<span class="self">self</span>)
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">std::sync::Arc::from_raw</span>(<span class="ident">this</span>)
     }
 }
@@ -341,17 +341,17 @@
 {
     <span class="kw">type</span> <span class="ident">InnerType</span> <span class="op">=</span> <span class="ident">T</span>;
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">ref_</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
         <span class="kw">use</span> <span class="ident">std::mem::ManuallyDrop</span>;
         <span class="kw">let</span> <span class="ident">this_rc</span> <span class="op">=</span> <span class="ident">ManuallyDrop::new</span>(<span class="ident">std::rc::Rc::from_raw</span>(<span class="ident">this</span>));
-        <span class="ident">std::rc::Rc::into_raw</span>(<span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">this_rc</span>.<span class="ident">clone</span>()))
+        <span class="ident">std::rc::Rc::into_raw</span>(<span class="ident">ManuallyDrop::take</span>(<span class="kw-2">&amp;mut</span> <span class="ident">this_rc</span>.<span class="ident">clone</span>()))
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span> {
         <span class="ident">std::rc::Rc::into_raw</span>(<span class="self">self</span>)
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw</span>(<span class="ident">this</span>: <span class="kw-2">*const</span> <span class="ident"><span class="self">Self</span>::InnerType</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">std::rc::Rc::from_raw</span>(<span class="ident">this</span>)
     }
 }
@@ -392,12 +392,12 @@
     <span class="kw">unsafe</span> {
         <span class="kw">use</span> <span class="ident">std::ffi::CString</span>;
         <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">shared_ref</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">SharedType</span><span class="op">&gt;</span>(<span class="ident">v</span>: <span class="ident">ffi::gpointer</span>) -&gt; <span class="ident">ffi::gpointer</span> {
-            <span class="ident">T::RefCountedType::ref_</span>(<span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="op">&lt;</span><span class="ident">T::RefCountedType</span> <span class="kw">as</span> <span class="ident">RefCounted</span><span class="op">&gt;</span><span class="ident">::InnerType</span>)
+            <span class="ident">T::RefCountedType::ref_</span>(<span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="op">&lt;</span><span class="ident">T::RefCountedType</span> <span class="kw">as</span> <span class="ident">RefCounted</span><span class="op">&gt;</span><span class="ident">::InnerType</span>)
                 <span class="kw">as</span> <span class="ident">ffi::gpointer</span>
         }
         <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">shared_unref</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">SharedType</span><span class="op">&gt;</span>(<span class="ident">v</span>: <span class="ident">ffi::gpointer</span>) {
             <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">T::RefCountedType::from_raw</span>(
-                <span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="op">&lt;</span><span class="ident">T::RefCountedType</span> <span class="kw">as</span> <span class="ident">RefCounted</span><span class="op">&gt;</span><span class="ident">::InnerType</span>,
+                <span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="op">&lt;</span><span class="ident">T::RefCountedType</span> <span class="kw">as</span> <span class="ident">RefCounted</span><span class="op">&gt;</span><span class="ident">::InnerType</span>,
             );
         }
 

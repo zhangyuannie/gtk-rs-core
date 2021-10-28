@@ -374,7 +374,7 @@
     <span class="doccomment">/// interfaces to do additional type-specific initialization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Optional</span>
-    <span class="kw">fn</span> <span class="ident">type_init</span>(<span class="ident">_type_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">InitializingType</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {}
+    <span class="kw">fn</span> <span class="ident">type_init</span>(<span class="ident">_type_</span>: <span class="kw-2">&amp;mut</span> <span class="ident">InitializingType</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {}
 
     <span class="doccomment">/// Interface initialization.</span>
     <span class="doccomment">///</span>
@@ -384,7 +384,7 @@
     <span class="doccomment">/// and for setting default implementations of interface functions.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Optional</span>
-    <span class="kw">fn</span> <span class="ident">interface_init</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {}
+    <span class="kw">fn</span> <span class="ident">interface_init</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {}
 
     <span class="doccomment">/// Properties installed for this interface.</span>
     <span class="doccomment">///</span>
@@ -407,11 +407,11 @@
         <span class="macro">assert!</span>(<span class="ident">obj</span>.<span class="ident">as_ref</span>().<span class="ident">type_</span>().<span class="ident">is_a</span>(<span class="ident"><span class="self">Self</span>::type_</span>()));
 
         <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">klass</span> <span class="op">=</span> (<span class="kw-2">*</span>(<span class="ident">obj</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">gobject_ffi::GTypeInstance</span>)).<span class="ident">g_class</span>;
+            <span class="kw">let</span> <span class="ident">klass</span> <span class="op">=</span> (<span class="kw-2">*</span>(<span class="ident">obj</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">gobject_ffi::GTypeInstance</span>)).<span class="ident">g_class</span>;
             <span class="kw">let</span> <span class="ident">interface</span> <span class="op">=</span>
-                <span class="ident">gobject_ffi::g_type_interface_peek</span>(<span class="ident">klass</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>, <span class="ident"><span class="self">Self</span>::type_</span>().<span class="ident">into_glib</span>());
+                <span class="ident">gobject_ffi::g_type_interface_peek</span>(<span class="ident">klass</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>, <span class="ident"><span class="self">Self</span>::type_</span>().<span class="ident">into_glib</span>());
             <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">interface</span>.<span class="ident">is_null</span>());
-            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">interface</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="self">Self</span>)
+            <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">interface</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="self">Self</span>)
         }
     }
 }
@@ -422,12 +422,12 @@
     <span class="ident">klass</span>: <span class="ident">ffi::gpointer</span>,
     <span class="ident">_klass_data</span>: <span class="ident">ffi::gpointer</span>,
 ) {
-    <span class="kw">let</span> <span class="ident">iface</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span>(<span class="ident">klass</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">T</span>);
+    <span class="kw">let</span> <span class="ident">iface</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">klass</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">T</span>);
 
     <span class="kw">let</span> <span class="ident">pspecs</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">ObjectInterface</span><span class="op">&gt;</span><span class="ident">::properties</span>();
     <span class="kw">for</span> <span class="ident">pspec</span> <span class="kw">in</span> <span class="ident">pspecs</span> {
         <span class="ident">gobject_ffi::g_object_interface_install_property</span>(
-            <span class="ident">iface</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">T</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>,
+            <span class="ident">iface</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">T</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
             <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
         );
     }
@@ -476,7 +476,7 @@
 
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">from_glib</span>(<span class="ident">type_</span>);
 
-        <span class="ident">T::type_init</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">InitializingType</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">type_</span>, <span class="ident">marker::PhantomData</span>));
+        <span class="ident">T::type_init</span>(<span class="kw-2">&amp;mut</span> <span class="ident">InitializingType</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">type_</span>, <span class="ident">marker::PhantomData</span>));
 
         <span class="ident">type_</span>
     }

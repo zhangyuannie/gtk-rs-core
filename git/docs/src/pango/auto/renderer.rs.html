@@ -728,7 +728,7 @@
     <span class="doccomment">/// Y position of left edge of baseline, in user space coordinates</span>
     <span class="doccomment">///  in Pango units</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_renderer_draw_glyph_item&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">draw_glyph_item</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">GlyphItem</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>);
+    <span class="kw">fn</span> <span class="ident">draw_glyph_item</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">GlyphItem</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>);
 
     <span class="doccomment">/// Draws the glyphs in `glyphs` with the specified [`Renderer`][crate::Renderer].</span>
     <span class="doccomment">/// ## `font`</span>
@@ -742,7 +742,7 @@
     <span class="doccomment">/// Y position of left edge of baseline, in user space coordinates</span>
     <span class="doccomment">///  in Pango units.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_renderer_draw_glyphs&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">draw_glyphs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&gt;</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">GlyphString</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>);
+    <span class="kw">fn</span> <span class="ident">draw_glyphs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&gt;</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;mut</span> <span class="ident">GlyphString</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>);
 
     <span class="doccomment">/// Draws `layout` with the specified [`Renderer`][crate::Renderer].</span>
     <span class="doccomment">///</span>
@@ -981,7 +981,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">draw_glyph_item</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">GlyphItem</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) {
+    <span class="kw">fn</span> <span class="ident">draw_glyph_item</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">glyph_item</span>: <span class="kw-2">&amp;mut</span> <span class="ident">GlyphItem</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_renderer_draw_glyph_item</span>(
                 <span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -993,7 +993,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">draw_glyphs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&gt;</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">GlyphString</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) {
+    <span class="kw">fn</span> <span class="ident">draw_glyphs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&gt;</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;mut</span> <span class="ident">GlyphString</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">ffi::pango_renderer_draw_glyphs</span>(
                 <span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -1131,7 +1131,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Renderer</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;Renderer&quot;</span>)
     }
 }

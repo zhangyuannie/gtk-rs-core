@@ -1036,10 +1036,10 @@
             <span class="ident">markup_text</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             <span class="ident">length</span>,
             <span class="ident">accel_marker</span>.<span class="ident">into_glib</span>(),
-            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">attr_list</span>,
-            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">text</span>,
+            <span class="kw-2">&amp;mut</span> <span class="ident">attr_list</span>,
+            <span class="kw-2">&amp;mut</span> <span class="ident">text</span>,
             <span class="ident">accel_char</span>.<span class="ident">as_mut_ptr</span>(),
-            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">error</span>,
+            <span class="kw-2">&amp;mut</span> <span class="ident">error</span>,
         );
         <span class="kw">let</span> <span class="ident">accel_char</span> <span class="op">=</span> <span class="ident">accel_char</span>.<span class="ident">assume_init</span>();
         <span class="kw">if</span> <span class="ident">error</span>.<span class="ident">is_null</span>() {
@@ -1205,7 +1205,7 @@
 <span class="doccomment">/// ## `position`</span>
 <span class="doccomment">/// corresponding position</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_quantize_line_geometry&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">quantize_line_geometry</span>(<span class="ident">thickness</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">i32</span>, <span class="ident">position</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">i32</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">quantize_line_geometry</span>(<span class="ident">thickness</span>: <span class="kw-2">&amp;mut</span> <span class="ident">i32</span>, <span class="ident">position</span>: <span class="kw-2">&amp;mut</span> <span class="ident">i32</span>) {
     <span class="kw">unsafe</span> {
         <span class="ident">ffi::pango_quantize_line_geometry</span>(<span class="ident">thickness</span>, <span class="ident">position</span>);
     }
@@ -1234,7 +1234,7 @@
 <span class="doccomment">/// ## `glyphs`</span>
 <span class="doccomment">/// glyph string in which to store results</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_shape&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shape</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">analysis</span>: <span class="kw-2">&amp;</span><span class="ident">Analysis</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">GlyphString</span>) {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shape</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">analysis</span>: <span class="kw-2">&amp;</span><span class="ident">Analysis</span>, <span class="ident">glyphs</span>: <span class="kw-2">&amp;mut</span> <span class="ident">GlyphString</span>) {
     <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
     <span class="kw">unsafe</span> {
         <span class="ident">ffi::pango_shape</span>(
