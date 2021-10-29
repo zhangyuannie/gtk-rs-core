@@ -1173,22 +1173,6 @@
 <span id="1100">1100</span>
 <span id="1101">1101</span>
 <span id="1102">1102</span>
-<span id="1103">1103</span>
-<span id="1104">1104</span>
-<span id="1105">1105</span>
-<span id="1106">1106</span>
-<span id="1107">1107</span>
-<span id="1108">1108</span>
-<span id="1109">1109</span>
-<span id="1110">1110</span>
-<span id="1111">1111</span>
-<span id="1112">1112</span>
-<span id="1113">1113</span>
-<span id="1114">1114</span>
-<span id="1115">1115</span>
-<span id="1116">1116</span>
-<span id="1117">1117</span>
-<span id="1118">1118</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `Value` binding and helper traits.</span>
@@ -1542,17 +1526,6 @@
     <span class="doccomment">/// used instead.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// An opaque structure used to hold different types of values.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The data within the structure has protected scope: it is accessible only</span>
-    <span class="doccomment">/// to functions within a `GTypeValueTable` structure, or implementations of</span>
-    <span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
-    <span class="doccomment">/// types.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Value`][crate::Value] users cannot make any assumptions about how data is stored</span>
-    <span class="doccomment">/// within the 2 element `data` union, and the `g_type` member should</span>
-    <span class="doccomment">/// only be accessed through the G_VALUE_TYPE() macro.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GValue</span><span class="op">&gt;</span>);
 
@@ -1623,11 +1596,6 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
-    <span class="doccomment">/// -1 is returned and `error` will be set.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `name_used`</span>
-    <span class="doccomment">/// location to store actual name used,</span>
-    <span class="doccomment">///  or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
