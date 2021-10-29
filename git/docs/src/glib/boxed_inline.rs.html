@@ -544,6 +544,21 @@
 <span id="471">471</span>
 <span id="472">472</span>
 <span id="473">473</span>
+<span id="474">474</span>
+<span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` BoxedInline wrapper implementation.</span>
@@ -878,6 +893,21 @@
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
         <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_none_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec::from_glib_none_num_as_vec</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>, <span class="ident">num</span>)
+            }
+
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_container_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec::from_glib_container_num_as_vec</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>, <span class="ident">num</span>)
+            }
+
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec::from_glib_full_num_as_vec</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>, <span class="ident">num</span>)
+            }
+        }
+
+        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+        <span class="kw">impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_none_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="ident">num</span> <span class="op">==</span> <span class="number">0</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() {
                     <span class="kw">return</span> <span class="ident">Vec::new</span>();
                 }
@@ -889,13 +919,13 @@
                 <span class="ident">res</span>
             }
 
-            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_container_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_container_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec::from_glib_none_num_as_vec</span>(<span class="ident">ptr</span>, <span class="ident">num</span>);
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>);
                 <span class="ident">res</span>
             }
 
-            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full_num_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>, <span class="ident">num</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="ident">num</span> <span class="op">==</span> <span class="number">0</span> <span class="op">|</span><span class="op">|</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() {
                     <span class="kw">return</span> <span class="ident">Vec::new</span>();
                 }
