@@ -1319,14 +1319,87 @@
 <span id="1246">1246</span>
 <span id="1247">1247</span>
 <span id="1248">1248</span>
+<span id="1249">1249</span>
+<span id="1250">1250</span>
+<span id="1251">1251</span>
+<span id="1252">1252</span>
+<span id="1253">1253</span>
+<span id="1254">1254</span>
+<span id="1255">1255</span>
+<span id="1256">1256</span>
+<span id="1257">1257</span>
+<span id="1258">1258</span>
+<span id="1259">1259</span>
+<span id="1260">1260</span>
+<span id="1261">1261</span>
+<span id="1262">1262</span>
+<span id="1263">1263</span>
+<span id="1264">1264</span>
+<span id="1265">1265</span>
+<span id="1266">1266</span>
+<span id="1267">1267</span>
+<span id="1268">1268</span>
+<span id="1269">1269</span>
+<span id="1270">1270</span>
+<span id="1271">1271</span>
+<span id="1272">1272</span>
+<span id="1273">1273</span>
+<span id="1274">1274</span>
+<span id="1275">1275</span>
+<span id="1276">1276</span>
+<span id="1277">1277</span>
+<span id="1278">1278</span>
+<span id="1279">1279</span>
+<span id="1280">1280</span>
+<span id="1281">1281</span>
+<span id="1282">1282</span>
+<span id="1283">1283</span>
+<span id="1284">1284</span>
+<span id="1285">1285</span>
+<span id="1286">1286</span>
+<span id="1287">1287</span>
+<span id="1288">1288</span>
+<span id="1289">1289</span>
+<span id="1290">1290</span>
+<span id="1291">1291</span>
+<span id="1292">1292</span>
+<span id="1293">1293</span>
+<span id="1294">1294</span>
+<span id="1295">1295</span>
+<span id="1296">1296</span>
+<span id="1297">1297</span>
+<span id="1298">1298</span>
+<span id="1299">1299</span>
+<span id="1300">1300</span>
+<span id="1301">1301</span>
+<span id="1302">1302</span>
+<span id="1303">1303</span>
+<span id="1304">1304</span>
+<span id="1305">1305</span>
+<span id="1306">1306</span>
+<span id="1307">1307</span>
+<span id="1308">1308</span>
+<span id="1309">1309</span>
+<span id="1310">1310</span>
+<span id="1311">1311</span>
+<span id="1312">1312</span>
+<span id="1313">1313</span>
+<span id="1314">1314</span>
+<span id="1315">1315</span>
+<span id="1316">1316</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::is_canonical_pspec_name</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::IsA</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ParamFlags</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::StaticType</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Type</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Value</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::{
+    <span class="ident">object</span>::{<span class="ident">Interface</span>, <span class="ident">InterfaceRef</span>, <span class="ident">IsClass</span>, <span class="ident">IsInterface</span>, <span class="ident">ObjectClass</span>},
+    <span class="ident">Object</span>,
+};
 
 <span class="kw">use</span> <span class="ident">std::char::CharTryFromError</span>;
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -1846,6 +1919,69 @@
             <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
                 <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">overridden</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Similar to [`ParamSpec::new_override`] but specific for an interface.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```ignore</span>
+    <span class="doccomment">/// let pspec = ParamSpec::new_override_interface::&lt;gtk::Scrollable&gt;(&quot;vadjustment&quot;);</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the interface.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_override_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsInterface</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="comment">// in case it&#39;s an interface</span>
+        <span class="kw">let</span> <span class="ident">interface_ref</span>: <span class="ident">InterfaceRef</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Interface::from_type</span>(<span class="ident">T::static_type</span>()).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">interface_ref</span>
+            .<span class="ident">find_property</span>(<span class="ident">name</span>)
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Similar to [`ParamSpec::new_override`] but specific for a class.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust, ignore</span>
+    <span class="doccomment">/// let pspec = ParamSpec::new_override_class::&lt;gtk::Button&gt;(&quot;label&quot;);</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the class.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_override_class</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsClass</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">ObjectClass::from_type</span>(<span class="ident">T::static_type</span>())
+            .<span class="ident">unwrap</span>()
+            .<span class="ident">find_property</span>(<span class="ident">name</span>)
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             ))
         }
     }
