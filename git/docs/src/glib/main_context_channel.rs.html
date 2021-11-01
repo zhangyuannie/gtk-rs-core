@@ -975,7 +975,6 @@
 <span id="902">902</span>
 <span id="903">903</span>
 <span id="904">904</span>
-<span id="905">905</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1621,8 +1620,7 @@
 
         <span class="kw">let</span> <span class="ident">helper</span> <span class="op">=</span> <span class="ident">Helper</span>(<span class="ident">l</span>.<span class="ident">clone</span>());
         <span class="ident">receiver</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">c</span>), <span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">helper</span>;
-
+            <span class="kw">let</span> <span class="ident">_helper</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">helper</span>;
             <span class="ident">Continue</span>(<span class="bool-val">true</span>)
         });
 
