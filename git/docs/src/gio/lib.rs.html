@@ -188,6 +188,12 @@
 <span id="115">115</span>
 <span id="116">116</span>
 <span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -285,6 +291,12 @@
 
 <span class="kw">mod</span> <span class="ident">gio_future</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::gio_future</span>::<span class="kw-2">*</span>;
+
+<span class="kw">mod</span> <span class="ident">io_extension</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io_extension</span>::<span class="kw-2">*</span>;
+
+<span class="kw">mod</span> <span class="ident">io_extension_point</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::io_extension_point</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">subclass</span>;
