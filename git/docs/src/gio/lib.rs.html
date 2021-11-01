@@ -185,6 +185,9 @@
 <span id="112">112</span>
 <span id="113">113</span>
 <span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -216,6 +219,9 @@
 <span class="kw">mod</span> <span class="ident">desktop_app_info</span>;
 <span class="kw">mod</span> <span class="ident">error</span>;
 <span class="kw">mod</span> <span class="ident">file</span>;
+<span class="kw">mod</span> <span class="ident">file_attribute_info</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::file_attribute_info::FileAttributeInfo</span>;
+<span class="kw">mod</span> <span class="ident">file_attribute_info_list</span>;
 <span class="kw">mod</span> <span class="ident">file_attribute_matcher</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::file_attribute_matcher::FileAttributematcherIter</span>;
 <span class="kw">mod</span> <span class="ident">file_enumerator</span>;

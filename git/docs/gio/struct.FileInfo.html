@@ -85,8 +85,8 @@ attribute in the <a href="struct.FileInfo.html" title="crate::FileInfo"><code>Fi
 or <a href="prelude/trait.FileExt.html#tymethod.set_attributes_async" title="crate::prelude::FileExt::set_attributes_async()"><code>FileExt::set_attributes_async()</code></a> on a GFile.</p>
 <p>However, not all attributes can be changed in the file. For instance,
 the actual size of a file cannot be changed via <a href="struct.FileInfo.html#method.set_size" title="Self::set_size()"><code>set_size()</code></a>.
-You may call <code>g_file_query_settable_attributes()</code> and
-<code>g_file_query_writable_namespaces()</code> to discover the settable attributes
+You may call <a href="prelude/trait.FileExt.html#tymethod.query_settable_attributes" title="crate::prelude::FileExt::query_settable_attributes()"><code>FileExt::query_settable_attributes()</code></a> and
+<a href="prelude/trait.FileExt.html#tymethod.query_writable_namespaces" title="crate::prelude::FileExt::query_writable_namespaces()"><code>FileExt::query_writable_namespaces()</code></a> to discover the settable attributes
 of a particular file at runtime.</p>
 <p>The direct accessors, such as <a href="struct.FileInfo.html#method.name" title="Self::name()"><code>name()</code></a>, are slightly more
 optimized than the generic attribute accessors, such as
