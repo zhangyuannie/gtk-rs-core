@@ -824,7 +824,7 @@
             <span class="number">0</span>
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">stream</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>),
+            <span class="ident">stream</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>),
             <span class="prelude-val">Ok</span>(<span class="number">5</span>)
         );
         <span class="macro">assert_eq!</span>(

@@ -1368,7 +1368,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">InputStream</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">io::Read</span> <span class="kw">for</span> <span class="ident">InputStreamRead</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]) -&gt; <span class="ident">io::Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">gio_result</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>().<span class="ident">read</span>(<span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>);
+        <span class="kw">let</span> <span class="ident">gio_result</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>().<span class="ident">read</span>(<span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>);
         <span class="ident">to_std_io_result</span>(<span class="ident">gio_result</span>)
     }
 }
@@ -1382,7 +1382,7 @@
         };
         <span class="kw">let</span> <span class="ident">seekable</span>: <span class="kw-2">&amp;</span><span class="ident">Seekable</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ref</span>();
         <span class="kw">let</span> <span class="ident">gio_result</span> <span class="op">=</span> <span class="ident">seekable</span>
-            .<span class="ident">seek</span>(<span class="ident">pos</span>, <span class="ident">type_</span>, <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>)
+            .<span class="ident">seek</span>(<span class="ident">pos</span>, <span class="ident">type_</span>, <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">seekable</span>.<span class="ident">tell</span>() <span class="kw">as</span> <span class="ident">u64</span>);
         <span class="ident">to_std_io_result</span>(<span class="ident">gio_result</span>)
     }
@@ -1629,7 +1629,7 @@
             <span class="ident">strm</span>.<span class="ident">read_all_async</span>(
                 <span class="ident">buf</span>,
                 <span class="ident">glib::PRIORITY_DEFAULT_IDLE</span>,
-                <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>,
+                <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>,
                 <span class="kw">move</span> <span class="op">|</span><span class="ident">ret</span><span class="op">|</span> {
                     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">ret</span>).<span class="ident">unwrap</span>();
                     <span class="ident">l</span>.<span class="ident">quit</span>();
@@ -1651,7 +1651,7 @@
         <span class="kw">let</span> <span class="ident">strm</span> <span class="op">=</span> <span class="ident">MemoryInputStream::from_bytes</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">10</span>];
 
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">strm</span>.<span class="ident">read_all</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">strm</span>.<span class="ident">read_all</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>).<span class="ident">unwrap</span>();
 
         <span class="macro">assert_eq!</span>(<span class="ident">ret</span>.<span class="number">0</span>, <span class="number">3</span>);
         <span class="macro">assert!</span>(<span class="ident">ret</span>.<span class="number">1</span>.<span class="ident">is_none</span>());
@@ -1666,7 +1666,7 @@
         <span class="kw">let</span> <span class="ident">strm</span> <span class="op">=</span> <span class="ident">MemoryInputStream::from_bytes</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="number">0</span>; <span class="number">10</span>];
 
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">strm</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>);
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">strm</span>.<span class="ident">read</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>, <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>);
 
         <span class="macro">assert_eq!</span>(<span class="ident">ret</span>.<span class="ident">unwrap</span>(), <span class="number">3</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">buf</span>[<span class="number">0</span>], <span class="number">1</span>);
@@ -1684,7 +1684,7 @@
             <span class="ident">strm</span>.<span class="ident">read_async</span>(
                 <span class="ident">buf</span>,
                 <span class="ident">glib::PRIORITY_DEFAULT_IDLE</span>,
-                <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>,
+                <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>,
                 <span class="kw">move</span> <span class="op">|</span><span class="ident">ret</span><span class="op">|</span> {
                     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">ret</span>).<span class="ident">unwrap</span>();
                     <span class="ident">l</span>.<span class="ident">quit</span>();
@@ -1708,7 +1708,7 @@
             <span class="ident">strm</span>.<span class="ident">read_bytes_async</span>(
                 <span class="number">10</span>,
                 <span class="ident">glib::PRIORITY_DEFAULT_IDLE</span>,
-                <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>,
+                <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>,
                 <span class="kw">move</span> <span class="op">|</span><span class="ident">ret</span><span class="op">|</span> {
                     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">ret</span>).<span class="ident">unwrap</span>();
                     <span class="ident">l</span>.<span class="ident">quit</span>();
@@ -1729,7 +1729,7 @@
             <span class="ident">strm</span>.<span class="ident">skip_async</span>(
                 <span class="number">10</span>,
                 <span class="ident">glib::PRIORITY_DEFAULT_IDLE</span>,
-                <span class="ident"><span class="kw">crate</span>::NONE_CANCELLABLE</span>,
+                <span class="ident"><span class="kw">crate</span>::Cancellable::NONE</span>,
                 <span class="kw">move</span> <span class="op">|</span><span class="ident">ret</span><span class="op">|</span> {
                     <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">ret</span>).<span class="ident">unwrap</span>();
                     <span class="ident">l</span>.<span class="ident">quit</span>();
