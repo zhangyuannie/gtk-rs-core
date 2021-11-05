@@ -3427,60 +3427,6 @@
 <span id="3354">3354</span>
 <span id="3355">3355</span>
 <span id="3356">3356</span>
-<span id="3357">3357</span>
-<span id="3358">3358</span>
-<span id="3359">3359</span>
-<span id="3360">3360</span>
-<span id="3361">3361</span>
-<span id="3362">3362</span>
-<span id="3363">3363</span>
-<span id="3364">3364</span>
-<span id="3365">3365</span>
-<span id="3366">3366</span>
-<span id="3367">3367</span>
-<span id="3368">3368</span>
-<span id="3369">3369</span>
-<span id="3370">3370</span>
-<span id="3371">3371</span>
-<span id="3372">3372</span>
-<span id="3373">3373</span>
-<span id="3374">3374</span>
-<span id="3375">3375</span>
-<span id="3376">3376</span>
-<span id="3377">3377</span>
-<span id="3378">3378</span>
-<span id="3379">3379</span>
-<span id="3380">3380</span>
-<span id="3381">3381</span>
-<span id="3382">3382</span>
-<span id="3383">3383</span>
-<span id="3384">3384</span>
-<span id="3385">3385</span>
-<span id="3386">3386</span>
-<span id="3387">3387</span>
-<span id="3388">3388</span>
-<span id="3389">3389</span>
-<span id="3390">3390</span>
-<span id="3391">3391</span>
-<span id="3392">3392</span>
-<span id="3393">3393</span>
-<span id="3394">3394</span>
-<span id="3395">3395</span>
-<span id="3396">3396</span>
-<span id="3397">3397</span>
-<span id="3398">3398</span>
-<span id="3399">3399</span>
-<span id="3400">3400</span>
-<span id="3401">3401</span>
-<span id="3402">3402</span>
-<span id="3403">3403</span>
-<span id="3404">3404</span>
-<span id="3405">3405</span>
-<span id="3406">3406</span>
-<span id="3407">3407</span>
-<span id="3408">3408</span>
-<span id="3409">3409</span>
-<span id="3410">3410</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` Object wrapper implementation and `Object` binding.</span>
@@ -4755,21 +4701,13 @@
     <span class="doccomment">/// This fails if the property does not exist, if the type of the property is different than</span>
     <span class="doccomment">/// the provided value, or if the property is not writable.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_set_property&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">set_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">ToValue</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">value</span>: <span class="ident">V</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">set_property</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="ident">ToValue</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="ident">V</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Sets the property `property_name` of the object to value `value`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This fails if the property does not exist, the type of the property is different than the</span>
     <span class="doccomment">/// provided value, or if the property is not writable.</span>
-    <span class="kw">fn</span> <span class="ident">set_property_from_value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">set_property_from_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Sets multiple properties of the object at once.</span>
     <span class="doccomment">///</span>
@@ -4790,21 +4728,21 @@
     <span class="doccomment">/// This fails if the property does not exist or is not writable.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_property&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_get_property&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Check if the object has a property `property_name` of the given `type_`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If no type is provided then only the existence of the property is checked.</span>
-    <span class="kw">fn</span> <span class="ident">has_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">has_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span>;
 
     <span class="doccomment">/// Get the type of the property `property_name` of this object.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This returns `None` if the property does not exist.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_property_type&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">property_type</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">property_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Get the [`ParamSpec`](crate::ParamSpec) of the property `property_name` of this object.</span>
-    <span class="kw">fn</span> <span class="ident">find_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">find_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Return all [`ParamSpec`](crate::ParamSpec) of the properties of this object.</span>
     <span class="kw">fn</span> <span class="ident">list_properties</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span>;
@@ -4893,14 +4831,13 @@
     <span class="doccomment">/// handler of the signal is emitted, otherwise before.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This fails if the signal does not exist.</span>
-    <span class="kw">fn</span> <span class="ident">connect</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">connect</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
 
     <span class="doccomment">/// Connect to the signal `signal_id` on this object.</span>
@@ -4930,14 +4867,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Same as `connect` but takes a non-`Send+Sync` closure. If the signal is emitted from a</span>
     <span class="doccomment">/// different thread than it was connected to then the signal emission will panic.</span>
-    <span class="kw">fn</span> <span class="ident">connect_local</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">connect_local</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
 
     <span class="doccomment">/// Connect to the signal `signal_id` on this object.</span>
@@ -4973,14 +4909,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The provided closure must be valid until the signal handler is disconnected, and it must</span>
     <span class="doccomment">/// be allowed to call the closure from the threads the signal is emitted from.</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">connect_unsafe</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">connect_unsafe</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Connect to the signal `signal_id` on this object.</span>
@@ -5029,9 +4964,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the signal has a return value then this is returned here.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_emit_by_name&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">emit_by_name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">emit_by_name</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
@@ -5041,9 +4976,9 @@
     <span class="doccomment">/// arguments of the wrong types were provided.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the signal has a return value then this is returned here.</span>
-    <span class="kw">fn</span> <span class="ident">emit_by_name_with_values</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">emit_by_name_with_values</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="ident">Value</span>],
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
@@ -5122,7 +5057,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This emits the `notify` signal.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_notify&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">notify</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>);
+    <span class="kw">fn</span> <span class="ident">notify</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>);
 
     <span class="doccomment">/// Notify that the given property has changed its value.</span>
     <span class="doccomment">///</span>
@@ -5139,11 +5074,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The binding can be unidirectional or bidirectional and optionally it is possible to</span>
     <span class="doccomment">/// transform the property values before they&#39;re passed to the other object.</span>
-    <span class="kw">fn</span> <span class="ident">bind_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span>: <span class="ident">ObjectType</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">M</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">bind_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span>: <span class="ident">ObjectType</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
-        <span class="ident">source_property</span>: <span class="ident">N</span>,
+        <span class="ident">source_property</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
         <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">O</span>,
-        <span class="ident">target_property</span>: <span class="ident">M</span>,
+        <span class="ident">target_property</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
     ) -&gt; <span class="ident">BindingBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Returns the strong reference count of this object.</span>
@@ -5194,13 +5129,7 @@
         <span class="ident">Interface::from_class</span>(<span class="self">self</span>.<span class="ident">object_class</span>())
     }
 
-    <span class="kw">fn</span> <span class="ident">set_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">ToValue</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">value</span>: <span class="ident">V</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
-
+    <span class="kw">fn</span> <span class="ident">set_property</span><span class="op">&lt;</span><span class="ident">V</span>: <span class="ident">ToValue</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="ident">V</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">find_property</span>(<span class="ident">property_name</span>) {
             <span class="prelude-val">Some</span>(<span class="ident">pspec</span>) =&gt; <span class="ident">pspec</span>,
             <span class="prelude-val">None</span> =&gt; {
@@ -5225,13 +5154,7 @@
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">set_property_from_value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
-
+    <span class="kw">fn</span> <span class="ident">set_property_from_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">find_property</span>(<span class="ident">property_name</span>) {
             <span class="prelude-val">Some</span>(<span class="ident">pspec</span>) =&gt; <span class="ident">pspec</span>,
             <span class="prelude-val">None</span> =&gt; {
@@ -5321,9 +5244,7 @@
         <span class="prelude-val">Ok</span>(())
     }
 
-    <span class="kw">fn</span> <span class="ident">property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
-
+    <span class="kw">fn</span> <span class="ident">property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">find_property</span>(<span class="ident">property_name</span>) {
             <span class="prelude-val">Some</span>(<span class="ident">pspec</span>) =&gt; <span class="ident">pspec</span>,
             <span class="prelude-val">None</span> =&gt; {
@@ -5362,15 +5283,15 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">has_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">object_class</span>().<span class="ident">has_property</span>(<span class="ident">property_name</span>, <span class="ident">type_</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">property_type</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">property_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">object_class</span>().<span class="ident">property_type</span>(<span class="ident">property_name</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">find_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">find_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">object_class</span>().<span class="ident">find_property</span>(<span class="ident">property_name</span>)
     }
 
@@ -5468,14 +5389,13 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">connect</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">connect</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">connect_unsafe</span>(<span class="ident">signal_name</span>, <span class="ident">after</span>, <span class="ident">callback</span>) }
@@ -5494,14 +5414,13 @@
         <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">connect_unsafe_id</span>(<span class="ident">signal_id</span>, <span class="ident">details</span>, <span class="ident">after</span>, <span class="ident">callback</span>) }
     }
 
-    <span class="kw">fn</span> <span class="ident">connect_local</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">connect_local</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="kw">let</span> <span class="ident">callback</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::ThreadGuard::new</span>(<span class="ident">callback</span>);
@@ -5532,17 +5451,15 @@
         }
     }
 
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">connect_unsafe</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>, <span class="ident">F</span><span class="op">&gt;</span>(
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">connect_unsafe</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
         <span class="ident">callback</span>: <span class="ident">F</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>
     <span class="kw">where</span>
-        <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>,
         <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>,
     {
-        <span class="kw">let</span> <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="ident">signal_name</span>.<span class="ident">into</span>();
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> (<span class="ident">signal_id</span>, <span class="ident">details</span>) <span class="op">=</span> <span class="ident">SignalId::parse_name</span>(<span class="ident">signal_name</span>, <span class="ident">type_</span>, <span class="bool-val">true</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">bool_error!</span>(<span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; not found&quot;</span>, <span class="ident">signal_name</span>, <span class="ident">type_</span>))<span class="question-mark">?</span>;
@@ -5738,24 +5655,22 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_by_name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">emit_by_name</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="ident">signal_name</span>.<span class="ident">into</span>();
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> <span class="ident">signal_id</span> <span class="op">=</span> <span class="ident">SignalId::lookup</span>(<span class="ident">signal_name</span>, <span class="ident">type_</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">bool_error!</span>(<span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; not found&quot;</span>, <span class="ident">signal_name</span>, <span class="ident">type_</span>))<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">emit</span>(<span class="ident">signal_id</span>, <span class="ident">args</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_by_name_with_values</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">emit_by_name_with_values</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">signal_name</span>: <span class="ident">N</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="ident">Value</span>],
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="ident">signal_name</span>.<span class="ident">into</span>();
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> <span class="ident">signal_id</span> <span class="op">=</span> <span class="ident">SignalId::lookup</span>(<span class="ident">signal_name</span>, <span class="ident">type_</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">bool_error!</span>(<span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; not found&quot;</span>, <span class="ident">signal_name</span>, <span class="ident">type_</span>))<span class="question-mark">?</span>;
@@ -5924,9 +5839,7 @@
         )
     }
 
-    <span class="kw">fn</span> <span class="ident">notify</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
-
+    <span class="kw">fn</span> <span class="ident">notify</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
         <span class="kw">unsafe</span> {
             <span class="ident">gobject_ffi::g_object_notify</span>(
                 <span class="self">self</span>.<span class="ident">as_object_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -5955,15 +5868,12 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">bind_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span>: <span class="ident">ObjectType</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">M</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+    <span class="kw">fn</span> <span class="ident">bind_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span>: <span class="ident">ObjectType</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
-        <span class="ident">source_property</span>: <span class="ident">N</span>,
+        <span class="ident">source_property</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
         <span class="ident">target</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">O</span>,
-        <span class="ident">target_property</span>: <span class="ident">M</span>,
+        <span class="ident">target_property</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
     ) -&gt; <span class="ident">BindingBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">source_property</span> <span class="op">=</span> <span class="ident">source_property</span>.<span class="ident">into</span>();
-        <span class="kw">let</span> <span class="ident">target_property</span> <span class="op">=</span> <span class="ident">target_property</span>.<span class="ident">into</span>();
-
         <span class="ident">BindingBuilder::new</span>(<span class="self">self</span>, <span class="ident">source_property</span>, <span class="ident">target</span>, <span class="ident">target_property</span>)
     }
 
@@ -6127,12 +6037,7 @@
     <span class="doccomment">/// Check if the object class has a property `property_name` of the given `type_`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If no type is provided then only the existence of the property is checked.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">ptype</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">property_type</span>(<span class="ident">property_name</span>);
 
         <span class="kw">match</span> (<span class="ident">ptype</span>, <span class="ident">type_</span>) {
@@ -6146,18 +6051,14 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This returns `None` if the property does not exist.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_property_type&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">property_type</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">property_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">find_property</span>(<span class="ident">property_name</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">pspec</span><span class="op">|</span> <span class="ident">pspec</span>.<span class="ident">value_type</span>())
     }
 
     <span class="doccomment">/// Get the [`ParamSpec`](crate::ParamSpec) of the property `property_name` of this object class.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_class_find_property&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">klass</span> <span class="op">=</span> <span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">gobject_ffi::GObjectClass</span>;
 
@@ -6750,12 +6651,7 @@
     <span class="doccomment">/// Check if this interface has a property `property_name` of the given `type_`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If no type is provided then only the existence of the property is checked.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-        <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="ident">bool</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">type_</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">let</span> <span class="ident">ptype</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">property_type</span>(<span class="ident">property_name</span>);
 
         <span class="kw">match</span> (<span class="ident">ptype</span>, <span class="ident">type_</span>) {
@@ -6769,18 +6665,14 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This returns `None` if the property does not exist.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_property_type&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">property_type</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="ident">N</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">property_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Type</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">find_property</span>(<span class="ident">property_name</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">pspec</span><span class="op">|</span> <span class="ident">pspec</span>.<span class="ident">value_type</span>())
     }
 
     <span class="doccomment">/// Get the [`ParamSpec`](crate::ParamSpec) of the property `property_name` of this interface.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_interface_find_property&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_property</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">N</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">property_name</span>: <span class="ident">N</span>,
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">property_name</span> <span class="op">=</span> <span class="ident">property_name</span>.<span class="ident">into</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_property</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">property_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::ParamSpec</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">interface</span> <span class="op">=</span> <span class="self">self</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">gobject_ffi::GTypeInterface</span>;
 
