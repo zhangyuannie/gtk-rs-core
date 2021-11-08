@@ -353,9 +353,6 @@
 <span id="280">280</span>
 <span id="281">281</span>
 <span id="282">282</span>
-<span id="283">283</span>
-<span id="284">284</span>
-<span id="285">285</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::needless_doctest_main</span>)]</span>
@@ -565,20 +562,17 @@
 <span class="doccomment">//!     let obj = SimpleObject::new();</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//!     // Get the name property and change its value.</span>
-<span class="doccomment">//!     assert_eq!(obj.property(&quot;name&quot;).unwrap().get::&lt;Option&lt;&amp;str&gt;&gt;(), Ok(None));</span>
-<span class="doccomment">//!     obj.set_property(&quot;name&quot;, &amp;&quot;test&quot;).unwrap();</span>
-<span class="doccomment">//!     assert_eq!(</span>
-<span class="doccomment">//!         obj.property(&quot;name&quot;).unwrap().get::&lt;&amp;str&gt;(),</span>
-<span class="doccomment">//!         Ok(&quot;test&quot;)</span>
-<span class="doccomment">//!     );</span>
+<span class="doccomment">//!     assert_eq!(obj.property::&lt;Option&lt;String&gt;&gt;(&quot;name&quot;), None);</span>
+<span class="doccomment">//!     obj.set_property(&quot;name&quot;, &quot;test&quot;);</span>
+<span class="doccomment">//!     assert_eq!(&amp;obj.property::&lt;String&gt;(&quot;name&quot;), &quot;test&quot;);</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     assert_eq!(obj.property(&quot;animal&quot;).unwrap().get::&lt;Animal&gt;(), Ok(Animal::Goat));</span>
-<span class="doccomment">//!     obj.set_property(&quot;animal&quot;, &amp;Animal::Cat).unwrap();</span>
-<span class="doccomment">//!     assert_eq!(obj.property(&quot;animal&quot;).unwrap().get::&lt;Animal&gt;(), Ok(Animal::Cat));</span>
+<span class="doccomment">//!     assert_eq!(obj.property::&lt;Animal&gt;(&quot;animal&quot;), Animal::Goat);</span>
+<span class="doccomment">//!     obj.set_property(&quot;animal&quot;, Animal::Cat);</span>
+<span class="doccomment">//!     assert_eq!(obj.property::&lt;Animal&gt;(&quot;animal&quot;), Animal::Cat);</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!     assert_eq!(obj.property(&quot;flags&quot;).unwrap().get::&lt;MyFlags&gt;(), Ok(MyFlags::A));</span>
-<span class="doccomment">//!     obj.set_property(&quot;flags&quot;, &amp;MyFlags::B).unwrap();</span>
-<span class="doccomment">//!     assert_eq!(obj.property(&quot;flags&quot;).unwrap().get::&lt;MyFlags&gt;(), Ok(MyFlags::B));</span>
+<span class="doccomment">//!     assert_eq!(obj.property::&lt;MyFlags&gt;(&quot;flags&quot;), MyFlags::A);</span>
+<span class="doccomment">//!     obj.set_property(&quot;flags&quot;, MyFlags::B);</span>
+<span class="doccomment">//!     assert_eq!(obj.property::&lt;MyFlags&gt;(&quot;flags&quot;), MyFlags::B);</span>
 <span class="doccomment">//! }</span>
 <span class="doccomment">//! ```</span>
 <span class="doccomment">//!</span>
