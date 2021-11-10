@@ -547,7 +547,7 @@
 
 <span class="kw">impl</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">VariantDict</span> {
     <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="string">&quot;a{sv}&quot;</span>).<span class="ident">into</span>() }
+        <span class="ident">Cow::Borrowed</span>(<span class="ident">VariantTy::VARDICT</span>)
     }
 }
 

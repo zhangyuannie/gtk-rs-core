@@ -396,7 +396,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_variant_iter_array</span>() {
-        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Variant::from_array</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span>[
+        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Variant::array_from_iter</span>::<span class="op">&lt;</span><span class="ident">String</span>, <span class="kw">_</span><span class="op">&gt;</span>([
             <span class="string">&quot;foo&quot;</span>.<span class="ident">to_string</span>().<span class="ident">to_variant</span>(),
             <span class="string">&quot;bar&quot;</span>.<span class="ident">to_string</span>().<span class="ident">to_variant</span>(),
         ]);
@@ -409,7 +409,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_variant_iter_tuple</span>() {
-        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Variant::from_tuple</span>(<span class="kw-2">&amp;</span>[
+        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">Variant::tuple_from_iter</span>([
             <span class="string">&quot;foo&quot;</span>.<span class="ident">to_string</span>().<span class="ident">to_variant</span>(),
             <span class="string">&quot;bar&quot;</span>.<span class="ident">to_string</span>().<span class="ident">to_variant</span>(),
         ]);
