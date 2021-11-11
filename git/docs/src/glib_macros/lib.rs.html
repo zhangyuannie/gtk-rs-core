@@ -591,6 +591,32 @@
 <span id="518">518</span>
 <span id="519">519</span>
 <span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">mod</span> <span class="ident">clone</span>;
@@ -600,6 +626,7 @@
 <span class="kw">mod</span> <span class="ident">genum_derive</span>;
 <span class="kw">mod</span> <span class="ident">gerror_domain_derive</span>;
 <span class="kw">mod</span> <span class="ident">gflags_attribute</span>;
+<span class="kw">mod</span> <span class="ident">gvariant_derive</span>;
 <span class="kw">mod</span> <span class="ident">object_interface_attribute</span>;
 <span class="kw">mod</span> <span class="ident">object_subclass_attribute</span>;
 <span class="kw">mod</span> <span class="ident">utils</span>;
@@ -1110,6 +1137,31 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">downgrade</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
     <span class="ident">downgrade_derive::impl_downgrade</span>(<span class="ident">input</span>)
+}
+
+<span class="doccomment">/// Derive macro for serializing/deserializing custom structs as [`glib::Variant`]s.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib::prelude::*;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[derive(glib::GVariant, PartialEq, Eq, Debug)]</span>
+<span class="doccomment">/// struct Foo {</span>
+<span class="doccomment">///     some_string: String,</span>
+<span class="doccomment">///     some_int: i32,</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let v = Foo { some_string: String::from(&quot;bar&quot;), some_int: 1 };</span>
+<span class="doccomment">/// let var = v.to_variant();</span>
+<span class="doccomment">/// assert_eq!(var.get::&lt;Foo&gt;(), Some(v));</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`glib::Variant`]: variant/struct.Variant.html</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GVariant</span>)]</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gvariant_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
+    <span class="ident">gvariant_derive::impl_variant</span>(<span class="ident">input</span>)
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
