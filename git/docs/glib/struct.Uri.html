@@ -145,8 +145,8 @@ you must pass the <a href="struct.UriFlags.html#associatedconstant.ENCODED" titl
 <p>Note that Windows and Unix both define special rules for parsing
 <code>file://</code> URIs (involving non-UTF-8 character sets on Unix, and the
 interpretation of path separators on Windows). <a href="struct.Uri.html" title="crate::Uri"><code>Uri</code></a> does not
-implement these rules. Use <code>g_filename_from_uri()</code> and
-<code>g_filename_to_uri()</code> if you want to properly convert between
+implement these rules. Use <a href="fn.filename_from_uri.html" title="crate::filename_from_uri()"><code>filename_from_uri()</code></a> and
+<a href="fn.filename_to_uri.html" title="crate::filename_to_uri()"><code>filename_to_uri()</code></a> if you want to properly convert between
 <code>file://</code> URIs and local filenames.</p>
 <h3 id="uri-equality" class="section-header"><a href="#uri-equality">URI Equality</a></h3>
 <p>Note that there is no <code>g_uri_equal ()</code> function, because comparing
