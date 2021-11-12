@@ -1196,6 +1196,12 @@
 <span id="1123">1123</span>
 <span id="1124">1124</span>
 <span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `Value` binding and helper traits.</span>
@@ -1641,6 +1647,12 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
+    <span class="doccomment">/// he file handle should be closed with</span>
+    <span class="doccomment">///  `close()`. In case of errors, -1 is returned and `error` will be set.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `name_used`</span>
+    <span class="doccomment">/// location to store actual name used,</span>
+    <span class="doccomment">///  or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
