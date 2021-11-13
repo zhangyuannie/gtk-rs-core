@@ -2668,6 +2668,16 @@
 <span id="2595">2595</span>
 <span id="2596">2596</span>
 <span id="2597">2597</span>
+<span id="2598">2598</span>
+<span id="2599">2599</span>
+<span id="2600">2600</span>
+<span id="2601">2601</span>
+<span id="2602">2602</span>
+<span id="2603">2603</span>
+<span id="2604">2604</span>
+<span id="2605">2605</span>
+<span id="2606">2606</span>
+<span id="2607">2607</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! Translation between GLib/GLib-based FFI types and their Rust counterparts.</span>
@@ -3552,7 +3562,8 @@
                 <span class="ident">list</span> <span class="op">=</span> <span class="ident">ffi::g_list_prepend</span>(<span class="ident">list</span>, <span class="ident">Ptr::to</span>(<span class="ident">stash</span>.<span class="number">0</span>));
             }
         }
-        (<span class="ident">list</span>, (<span class="prelude-val">Some</span>(<span class="ident">List</span>(<span class="ident">list</span>)), <span class="ident">stash_vec</span>))
+        <span class="kw">let</span> <span class="ident">stash</span> <span class="op">=</span> (<span class="ident">ptr::NonNull::new</span>(<span class="ident">list</span>).<span class="ident">map</span>(<span class="ident">List</span>), <span class="ident">stash_vec</span>);
+        (<span class="ident">list</span>, <span class="ident">stash</span>)
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3606,11 +3617,11 @@
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GList&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">List</span>(<span class="kw-2">*mut</span> <span class="ident">ffi::GList</span>);
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">List</span>(<span class="ident">ptr::NonNull</span><span class="op">&lt;</span><span class="ident">ffi::GList</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">List</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">ffi::g_list_free</span>(<span class="self">self</span>.<span class="number">0</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_list_free</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
@@ -3632,7 +3643,9 @@
                 <span class="ident">list</span> <span class="op">=</span> <span class="ident">ffi::g_slist_prepend</span>(<span class="ident">list</span>, <span class="ident">Ptr::to</span>(<span class="ident">stash</span>.<span class="number">0</span>));
             }
         }
-        (<span class="ident">list</span>, (<span class="prelude-val">Some</span>(<span class="ident">SList</span>(<span class="ident">list</span>)), <span class="ident">stash_vec</span>))
+
+        <span class="kw">let</span> <span class="ident">stash</span> <span class="op">=</span> (<span class="ident">ptr::NonNull::new</span>(<span class="ident">list</span>).<span class="ident">map</span>(<span class="ident">SList</span>), <span class="ident">stash_vec</span>);
+        (<span class="ident">list</span>, <span class="ident">stash</span>)
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3687,11 +3700,11 @@
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GSList&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SList</span>(<span class="kw-2">*mut</span> <span class="ident">ffi::GSList</span>);
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SList</span>(<span class="ident">ptr::NonNull</span><span class="op">&lt;</span><span class="ident">ffi::GSList</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">SList</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">ffi::g_slist_free</span>(<span class="self">self</span>.<span class="number">0</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_slist_free</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
@@ -3723,7 +3736,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*mut</span> <span class="ident">ffi::GHashTable</span>, <span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">to_glib_full</span>();
-        <span class="ident">Stash</span>(<span class="ident">ptr</span>, <span class="ident">HashTable</span>(<span class="ident">ptr</span>))
+        <span class="ident">Stash</span>(<span class="ident">ptr</span>, <span class="ident">HashTable</span>(<span class="kw">unsafe</span> { <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>) }))
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -3746,21 +3759,21 @@
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GHashTable&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HashTable</span>(<span class="kw-2">*mut</span> <span class="ident">ffi::GHashTable</span>);
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HashTable</span>(<span class="ident">ptr::NonNull</span><span class="op">&lt;</span><span class="ident">ffi::GHashTable</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">HashTable</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
-        <span class="kw">unsafe</span> { <span class="ident">ffi::g_hash_table_unref</span>(<span class="self">self</span>.<span class="number">0</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_hash_table_unref</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GPtrArray&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PtrArray</span>(<span class="kw-2">*mut</span> <span class="ident">ffi::GPtrArray</span>);
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PtrArray</span>(<span class="ident">ptr::NonNull</span><span class="op">&lt;</span><span class="ident">ffi::GPtrArray</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">PtrArray</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">unsafe</span> {
-            <span class="ident">ffi::g_ptr_array_unref</span>(<span class="self">self</span>.<span class="number">0</span>);
+            <span class="ident">ffi::g_ptr_array_unref</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>());
         }
     }
 }
@@ -3783,7 +3796,14 @@
                 <span class="ident">ffi::g_ptr_array_add</span>(<span class="ident">arr</span>, <span class="ident">Ptr::to</span>(<span class="ident">stash</span>.<span class="number">0</span>));
             }
         }
-        (<span class="ident">arr</span>, (<span class="prelude-val">Some</span>(<span class="ident">PtrArray</span>(<span class="ident">arr</span>)), <span class="ident">stash_vec</span>))
+
+        (
+            <span class="ident">arr</span>,
+            (
+                <span class="prelude-val">Some</span>(<span class="ident">PtrArray</span>(<span class="kw">unsafe</span> { <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">arr</span>) })),
+                <span class="ident">stash_vec</span>,
+            ),
+        )
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>

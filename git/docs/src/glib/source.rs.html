@@ -1343,37 +1343,6 @@
 <span id="1270">1270</span>
 <span id="1271">1271</span>
 <span id="1272">1272</span>
-<span id="1273">1273</span>
-<span id="1274">1274</span>
-<span id="1275">1275</span>
-<span id="1276">1276</span>
-<span id="1277">1277</span>
-<span id="1278">1278</span>
-<span id="1279">1279</span>
-<span id="1280">1280</span>
-<span id="1281">1281</span>
-<span id="1282">1282</span>
-<span id="1283">1283</span>
-<span id="1284">1284</span>
-<span id="1285">1285</span>
-<span id="1286">1286</span>
-<span id="1287">1287</span>
-<span id="1288">1288</span>
-<span id="1289">1289</span>
-<span id="1290">1290</span>
-<span id="1291">1291</span>
-<span id="1292">1292</span>
-<span id="1293">1293</span>
-<span id="1294">1294</span>
-<span id="1295">1295</span>
-<span id="1296">1296</span>
-<span id="1297">1297</span>
-<span id="1298">1298</span>
-<span id="1299">1299</span>
-<span id="1300">1300</span>
-<span id="1301">1301</span>
-<span id="1302">1302</span>
-<span id="1303">1303</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::{<span class="ident">from_glib</span>, <span class="ident">from_glib_full</span>, <span class="ident">FromGlib</span>, <span class="ident">IntoGlib</span>, <span class="ident">ToGlibPtr</span>};
@@ -2035,37 +2004,6 @@
 <span class="doccomment">/// process exits.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// `func` will be called when `pid` exits</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Sets a function to be called when the child indicated by `pid`</span>
-<span class="doccomment">/// exits, at a default priority, `G_PRIORITY_DEFAULT`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you obtain `pid` from [`spawn_async()`][crate::spawn_async()] or `g_spawn_async_with_pipes()`</span>
-<span class="doccomment">/// you will need to pass [`SpawnFlags::DO_NOT_REAP_CHILD`][crate::SpawnFlags::DO_NOT_REAP_CHILD] as flag to</span>
-<span class="doccomment">/// the spawn function for the child watching to work.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Note that on platforms where `GPid` must be explicitly closed</span>
-<span class="doccomment">/// (see `g_spawn_close_pid()`) `pid` must not be closed while the</span>
-<span class="doccomment">/// source is still active. Typically, you will want to call</span>
-<span class="doccomment">/// `g_spawn_close_pid()` in the callback function for the source.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// GLib supports only a single callback per process id.</span>
-<span class="doccomment">/// On POSIX platforms, the same restrictions mentioned for</span>
-<span class="doccomment">/// `g_child_watch_source_new()` apply to this function.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This internally creates a main loop source using</span>
-<span class="doccomment">/// `g_child_watch_source_new()` and attaches it to the main loop context</span>
-<span class="doccomment">/// using `g_source_attach()`. You can do these steps manually if you</span>
-<span class="doccomment">/// need greater control.</span>
-<span class="doccomment">/// ## `pid`</span>
-<span class="doccomment">/// process id to watch. On POSIX the positive pid of a child</span>
-<span class="doccomment">///  process. On Windows a handle for a process (which doesn&#39;t have</span>
-<span class="doccomment">///  to be a child).</span>
-<span class="doccomment">/// ## `function`</span>
-<span class="doccomment">/// function to call</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the ID (greater than 0) of the event source.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_child_watch_add_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">child_watch_add</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">pid</span>: <span class="ident">Pid</span>, <span class="ident">func</span>: <span class="ident">F</span>) -&gt; <span class="ident">SourceId</span>
 <span class="kw">where</span>
