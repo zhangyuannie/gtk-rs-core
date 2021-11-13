@@ -353,6 +353,9 @@
 <span id="280">280</span>
 <span id="281">281</span>
 <span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::needless_doctest_main</span>)]</span>
@@ -439,11 +442,14 @@
 <span class="doccomment">//!         // This type name must be unique per process.</span>
 <span class="doccomment">//!         const NAME: &amp;&#39;static str = &quot;SimpleObject&quot;;</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!         // The parent type this one is inheriting from.</span>
 <span class="doccomment">//!         type Type = super::SimpleObject;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!         // The parent type this one is inheriting from.</span>
+<span class="doccomment">//!         // Optional, if not specified it defaults to `glib::Object`</span>
 <span class="doccomment">//!         type ParentType = glib::Object;</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//!         // Interfaces this type implements</span>
+<span class="doccomment">//!         // Interfaces this type implements.</span>
+<span class="doccomment">//!         // Optional, if not specified it defaults to `()`</span>
 <span class="doccomment">//!         type Interfaces = ();</span>
 <span class="doccomment">//!     }</span>
 <span class="doccomment">//!</span>

@@ -293,7 +293,6 @@
 <span id="220">220</span>
 <span id="221">221</span>
 <span id="222">222</span>
-<span id="223">223</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::object::Cast</span>;
@@ -402,7 +401,6 @@
         <span class="kw">impl</span> <span class="ident">ObjectSubclass</span> <span class="kw">for</span> <span class="ident">InitableTestType</span> {
             <span class="kw">const</span> <span class="ident">NAME</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;InitableTestType&quot;</span>;
             <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::InitableTestType</span>;
-            <span class="kw">type</span> <span class="ident">ParentType</span> <span class="op">=</span> <span class="ident">glib::Object</span>;
             <span class="kw">type</span> <span class="ident">Interfaces</span> <span class="op">=</span> (<span class="ident">Initable</span>,);
 
             <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
