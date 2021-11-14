@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Closure",""]]});
+initSidebarItems({"struct":[["Closure",""]],"trait":[["ToClosureReturnValue",""]]});
