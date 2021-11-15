@@ -982,7 +982,7 @@
 
 <span class="doccomment">//! Module that contains the basic infrastructure for subclassing `GObject`.</span>
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::object</span>::{<span class="ident">Cast</span>, <span class="ident">IsClass</span>, <span class="ident">ObjectSubclassIs</span>, <span class="ident">ObjectType</span>, <span class="ident">ParentClassIs</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::object</span>::{<span class="ident">Cast</span>, <span class="ident">IsClass</span>, <span class="ident">IsInterface</span>, <span class="ident">ObjectSubclassIs</span>, <span class="ident">ObjectType</span>, <span class="ident">ParentClassIs</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Closure</span>, <span class="ident">Object</span>, <span class="ident">StaticType</span>, <span class="ident">Type</span>, <span class="ident">Value</span>};
 <span class="kw">use</span> <span class="ident">std::marker</span>;
@@ -1167,7 +1167,7 @@
 }
 
 <span class="doccomment">/// Trait for implementable interfaces.</span>
-<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">IsImplementable</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span>: <span class="ident"><span class="kw">crate</span>::object::IsInterface</span>
+<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">IsImplementable</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span>: <span class="ident">IsInterface</span>
 <span class="kw">where</span>
     <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ObjectType</span><span class="op">&gt;</span><span class="ident">::GlibClassType</span>: <span class="ident">Copy</span>,
 {
@@ -1175,12 +1175,12 @@
     <span class="doccomment">/// interface initialization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is automatically called during type initialization.</span>
-    <span class="kw">fn</span> <span class="ident">interface_init</span>(<span class="ident">iface</span>: <span class="kw-2">&amp;mut</span> <span class="ident"><span class="kw">crate</span>::Interface</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>);
+    <span class="kw">fn</span> <span class="ident">interface_init</span>(<span class="ident">_iface</span>: <span class="kw-2">&amp;mut</span> <span class="ident"><span class="kw">crate</span>::Interface</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>) {}
 
     <span class="doccomment">/// Instance specific initialization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is automatically called during instance initialization.</span>
-    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">_instance</span>: <span class="kw-2">&amp;mut</span> <span class="ident">InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
+    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">_instance</span>: <span class="kw-2">&amp;mut</span> <span class="ident">InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {}
 }
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">interface_init</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span>, <span class="ident">A</span>: <span class="ident">IsImplementable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(

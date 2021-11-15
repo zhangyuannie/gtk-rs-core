@@ -291,8 +291,6 @@
 <span id="218">218</span>
 <span id="219">219</span>
 <span id="220">220</span>
-<span id="221">221</span>
-<span id="222">222</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::object::Cast</span>;
@@ -354,8 +352,6 @@
         <span class="kw">let</span> <span class="ident">iface</span> <span class="op">=</span> <span class="ident">iface</span>.<span class="ident">as_mut</span>();
         <span class="ident">iface</span>.<span class="ident">init</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">initable_init</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
     }
-
-    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">_instance</span>: <span class="kw-2">&amp;mut</span> <span class="ident">glib::subclass::InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {}
 }
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">initable_init</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">InitableImpl</span><span class="op">&gt;</span>(

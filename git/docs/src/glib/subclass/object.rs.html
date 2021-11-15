@@ -689,9 +689,6 @@
 <span id="616">616</span>
 <span id="617">617</span>
 <span id="618">618</span>
-<span id="619">619</span>
-<span id="620">620</span>
-<span id="621">621</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! Module that contains all types needed for creating a direct subclass of `GObject`</span>
@@ -1114,10 +1111,7 @@
         <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Dummy</span>(<span class="ident">ObjectInterface</span><span class="op">&lt;</span><span class="ident">imp::DummyInterface</span><span class="op">&gt;</span>);
     }
 
-    <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span> <span class="ident">IsImplementable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Dummy</span> {
-        <span class="kw">fn</span> <span class="ident">interface_init</span>(<span class="ident">_iface</span>: <span class="kw-2">&amp;mut</span> <span class="ident"><span class="kw">crate</span>::Interface</span><span class="op">&lt;</span><span class="ident">Dummy</span><span class="op">&gt;</span>) {}
-        <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">_instance</span>: <span class="kw-2">&amp;mut</span> <span class="ident"><span class="kw">super</span>::<span class="kw">super</span>::InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {}
-    }
+    <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ObjectSubclass</span><span class="op">&gt;</span> <span class="ident">IsImplementable</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Dummy</span> {}
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_create</span>() {

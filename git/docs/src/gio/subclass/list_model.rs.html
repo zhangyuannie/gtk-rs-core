@@ -219,8 +219,6 @@
 <span id="146">146</span>
 <span id="147">147</span>
 <span id="148">148</span>
-<span id="149">149</span>
-<span id="150">150</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ListModel</span>;
@@ -301,8 +299,6 @@
         <span class="ident">iface</span>.<span class="ident">get_n_items</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">list_model_get_n_items</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
         <span class="ident">iface</span>.<span class="ident">get_item</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">list_model_get_item</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
     }
-
-    <span class="kw">fn</span> <span class="ident">instance_init</span>(<span class="ident">_instance</span>: <span class="kw-2">&amp;mut</span> <span class="ident">glib::subclass::InitializingObject</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) {}
 }
 
 <span class="kw">static</span> <span class="ident">LIST_ITEM_TYPE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">glib::Quark</span><span class="op">&gt;</span> <span class="op">=</span>
