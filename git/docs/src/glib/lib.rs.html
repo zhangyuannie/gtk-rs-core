@@ -297,6 +297,8 @@
 <span id="224">224</span>
 <span id="225">225</span>
 <span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -389,6 +391,8 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">translate</span>;
 <span class="kw">mod</span> <span class="ident">gstring</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::gstring::GString</span>;
+<span class="kw">mod</span> <span class="ident">gstring_builder</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::gstring_builder::GStringBuilder</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">types</span>;
 <span class="kw">mod</span> <span class="ident">unicollate</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::unicollate</span>::{<span class="ident">CollationKey</span>, <span class="ident">FilenameCollationKey</span>};
