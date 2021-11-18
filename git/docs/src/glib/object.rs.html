@@ -3864,6 +3864,18 @@
 <span id="3791">3791</span>
 <span id="3792">3792</span>
 <span id="3793">3793</span>
+<span id="3794">3794</span>
+<span id="3795">3795</span>
+<span id="3796">3796</span>
+<span id="3797">3797</span>
+<span id="3798">3798</span>
+<span id="3799">3799</span>
+<span id="3800">3800</span>
+<span id="3801">3801</span>
+<span id="3802">3802</span>
+<span id="3803">3803</span>
+<span id="3804">3804</span>
+<span id="3805">3805</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` Object wrapper implementation and `Object` binding.</span>
@@ -4787,6 +4799,18 @@
                 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
                 <span class="macro">assert_ne!</span>((<span class="kw-2">*</span><span class="ident">ptr</span>).<span class="ident">ref_count</span>, <span class="number">0</span>);
                 <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibPtrFull</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::from_glib_full</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>)
+            }
+        }
+
+        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+        <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::value::FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+            <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::value::GenericValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::Value</span>) -&gt; <span class="self">Self</span> {
+                <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::gobject_ffi::g_value_get_object</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::ToGlibPtr::to_glib_none</span>(<span class="ident">value</span>).<span class="number">0</span>);
+                <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
+                <span class="macro">assert_ne!</span>((<span class="kw-2">*</span><span class="ident">ptr</span>).<span class="ident">ref_count</span>, <span class="number">0</span>);
+                <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>)
             }
         }
 
