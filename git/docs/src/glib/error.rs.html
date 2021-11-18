@@ -350,6 +350,21 @@
 <span id="277">277</span>
 <span id="278">278</span>
 <span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `Error` binding and helper trait.</span>
@@ -580,6 +595,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ToValue</span>;
     <span class="kw">use</span> <span class="ident">std::ffi::CString</span>;
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
@@ -627,6 +643,20 @@
 
         <span class="kw">let</span> <span class="ident">true_dynamic_res</span> <span class="op">=</span> <span class="macro">result_from_gboolean!</span>(<span class="ident">ffi::GTRUE</span>, <span class="string">&quot;{} message&quot;</span>, <span class="string">&quot;Dynamic&quot;</span>);
         <span class="macro">assert!</span>(<span class="ident">true_dynamic_res</span>.<span class="ident">is_ok</span>());
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_value</span>() {
+        <span class="kw">let</span> <span class="ident">e1</span> <span class="op">=</span> <span class="ident">Error::new</span>(<span class="ident"><span class="kw">crate</span>::FileError::Failed</span>, <span class="string">&quot;Failed&quot;</span>);
+        <span class="comment">// This creates a copy ...</span>
+        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">e1</span>.<span class="ident">to_value</span>();
+        <span class="comment">// ... so we have to get the raw pointer from inside the value to check for equality.</span>
+        <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span>
+            <span class="kw">unsafe</span> { <span class="ident">gobject_ffi::g_value_get_boxed</span>(<span class="ident">v</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">ffi::GError</span> };
+
+        <span class="kw">let</span> <span class="ident">e2</span> <span class="op">=</span> <span class="ident">v</span>.<span class="ident">get</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Error</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+
+        <span class="macro">assert_eq!</span>(<span class="ident">ptr</span>, <span class="ident">e2</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
     }
 }
 </code></pre></div>

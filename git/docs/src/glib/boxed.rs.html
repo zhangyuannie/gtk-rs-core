@@ -547,6 +547,7 @@
 <span id="474">474</span>
 <span id="475">475</span>
 <span id="476">476</span>
+<span id="477">477</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` Boxed wrapper implementation.</span>
@@ -805,7 +806,8 @@
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::Value</span>) -&gt; <span class="self">Self</span> {
                 <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::gobject_ffi::g_value_get_boxed</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::ToGlibPtr::to_glib_none</span>(<span class="ident">value</span>).<span class="number">0</span>);
                 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
-                <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>)
+                <span class="macro">assert_eq!</span>(<span class="ident">std::mem::size_of</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&gt;</span>(), <span class="ident">std::mem::size_of</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi::gpointer</span><span class="op">&gt;</span>());
+                <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="kw-2">&amp;</span><span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>)
             }
         }
 
