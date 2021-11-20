@@ -98,7 +98,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_value</span>() {
-        <span class="kw">let</span> <span class="ident">dt1</span> <span class="op">=</span> <span class="ident">DateTime::new_now_utc</span>().<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">dt1</span> <span class="op">=</span> <span class="ident">DateTime::now_utc</span>().<span class="ident">unwrap</span>();
         <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">dt1</span>.<span class="ident">to_value</span>();
         <span class="kw">let</span> <span class="ident">dt2</span> <span class="op">=</span> <span class="ident">v</span>.<span class="ident">get</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">DateTime</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
 

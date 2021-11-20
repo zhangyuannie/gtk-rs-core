@@ -1387,6 +1387,67 @@
 <span id="1314">1314</span>
 <span id="1315">1315</span>
 <span id="1316">1316</span>
+<span id="1317">1317</span>
+<span id="1318">1318</span>
+<span id="1319">1319</span>
+<span id="1320">1320</span>
+<span id="1321">1321</span>
+<span id="1322">1322</span>
+<span id="1323">1323</span>
+<span id="1324">1324</span>
+<span id="1325">1325</span>
+<span id="1326">1326</span>
+<span id="1327">1327</span>
+<span id="1328">1328</span>
+<span id="1329">1329</span>
+<span id="1330">1330</span>
+<span id="1331">1331</span>
+<span id="1332">1332</span>
+<span id="1333">1333</span>
+<span id="1334">1334</span>
+<span id="1335">1335</span>
+<span id="1336">1336</span>
+<span id="1337">1337</span>
+<span id="1338">1338</span>
+<span id="1339">1339</span>
+<span id="1340">1340</span>
+<span id="1341">1341</span>
+<span id="1342">1342</span>
+<span id="1343">1343</span>
+<span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
+<span id="1350">1350</span>
+<span id="1351">1351</span>
+<span id="1352">1352</span>
+<span id="1353">1353</span>
+<span id="1354">1354</span>
+<span id="1355">1355</span>
+<span id="1356">1356</span>
+<span id="1357">1357</span>
+<span id="1358">1358</span>
+<span id="1359">1359</span>
+<span id="1360">1360</span>
+<span id="1361">1361</span>
+<span id="1362">1362</span>
+<span id="1363">1363</span>
+<span id="1364">1364</span>
+<span id="1365">1365</span>
+<span id="1366">1366</span>
+<span id="1367">1367</span>
+<span id="1368">1368</span>
+<span id="1369">1369</span>
+<span id="1370">1370</span>
+<span id="1371">1371</span>
+<span id="1372">1372</span>
+<span id="1373">1373</span>
+<span id="1374">1374</span>
+<span id="1375">1375</span>
+<span id="1376">1376</span>
+<span id="1377">1377</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1591,652 +1652,6 @@
     <span class="comment">//pub fn steal_qdata(&amp;self, quark: /*Ignored*/glib::Quark) -&gt; /*Unimplemented*/Option&lt;Fundamental: Pointer&gt; {</span>
     <span class="comment">//    unsafe { TODO: call gobject_ffi::g_param_spec_steal_qdata() }</span>
     <span class="comment">//}</span>
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_boolean&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_boolean</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">default_value</span>: <span class="ident">bool</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_boolean</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">default_value</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_boxed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_boxed</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">boxed_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_boxed</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">boxed_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_char&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_char</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">i8</span>,
-        <span class="ident">maximum</span>: <span class="ident">i8</span>,
-        <span class="ident">default_value</span>: <span class="ident">i8</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_char</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_double&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_double</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">f64</span>,
-        <span class="ident">maximum</span>: <span class="ident">f64</span>,
-        <span class="ident">default_value</span>: <span class="ident">f64</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_double</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_enum&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_enum</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">enum_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">default_value</span>: <span class="ident">i32</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_enum</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">enum_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_flags&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_flags</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">flags_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">default_value</span>: <span class="ident">u32</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_flags</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">flags_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_float&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_float</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">f32</span>,
-        <span class="ident">maximum</span>: <span class="ident">f32</span>,
-        <span class="ident">default_value</span>: <span class="ident">f32</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_float</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_gtype&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_type</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">is_a_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_gtype</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">is_a_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_int&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_int</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">i32</span>,
-        <span class="ident">maximum</span>: <span class="ident">i32</span>,
-        <span class="ident">default_value</span>: <span class="ident">i32</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_int</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_int64&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_int64</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">i64</span>,
-        <span class="ident">maximum</span>: <span class="ident">i64</span>,
-        <span class="ident">default_value</span>: <span class="ident">i64</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_int64</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_long&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_long</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">libc::c_long</span>,
-        <span class="ident">maximum</span>: <span class="ident">libc::c_long</span>,
-        <span class="ident">default_value</span>: <span class="ident">libc::c_long</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_long</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_object&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_object</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">object_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_object</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">object_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_override</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">overridden</span>: <span class="kw-2">&amp;</span><span class="ident">ParamSpec</span>) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">overridden</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="comment">// rustdoc-stripper-ignore-next</span>
-    <span class="doccomment">/// Similar to [`ParamSpec::new_override`] but specific for an interface.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```ignore</span>
-    <span class="doccomment">/// let pspec = ParamSpec::new_override_interface::&lt;gtk::Scrollable&gt;(&quot;vadjustment&quot;);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the interface.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_override_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsInterface</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="comment">// in case it&#39;s an interface</span>
-        <span class="kw">let</span> <span class="ident">interface_ref</span>: <span class="ident">InterfaceRef</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Interface::from_type</span>(<span class="ident">T::static_type</span>()).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">interface_ref</span>
-            .<span class="ident">find_property</span>(<span class="ident">name</span>)
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="comment">// rustdoc-stripper-ignore-next</span>
-    <span class="doccomment">/// Similar to [`ParamSpec::new_override`] but specific for a class.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust, ignore</span>
-    <span class="doccomment">/// let pspec = ParamSpec::new_override_class::&lt;gtk::Button&gt;(&quot;label&quot;);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the class.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_override_class</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsClass</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">ObjectClass::from_type</span>(<span class="ident">T::static_type</span>())
-            .<span class="ident">unwrap</span>()
-            .<span class="ident">find_property</span>(<span class="ident">name</span>)
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_param&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_param</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">param_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_param</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">param_type</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_pointer&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_pointer</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">flags</span>: <span class="ident">ParamFlags</span>) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_pointer</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_string&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_string</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">default_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">let</span> <span class="ident">default_value</span> <span class="op">=</span> <span class="ident">default_value</span>.<span class="ident">to_glib_none</span>();
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_string</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">default_value</span>.<span class="number">0</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uchar&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_uchar</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">u8</span>,
-        <span class="ident">maximum</span>: <span class="ident">u8</span>,
-        <span class="ident">default_value</span>: <span class="ident">u8</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uchar</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uint&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_uint</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">u32</span>,
-        <span class="ident">maximum</span>: <span class="ident">u32</span>,
-        <span class="ident">default_value</span>: <span class="ident">u32</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uint</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uint64&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_uint64</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">u64</span>,
-        <span class="ident">maximum</span>: <span class="ident">u64</span>,
-        <span class="ident">default_value</span>: <span class="ident">u64</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uint64</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_ulong&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_ulong</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">minimum</span>: <span class="ident">libc::c_ulong</span>,
-        <span class="ident">maximum</span>: <span class="ident">libc::c_ulong</span>,
-        <span class="ident">default_value</span>: <span class="ident">libc::c_ulong</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_ulong</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">minimum</span>,
-                <span class="ident">maximum</span>,
-                <span class="ident">default_value</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_unichar&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_unichar</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">default_value</span>: <span class="ident">char</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_unichar</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">default_value</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_value_array&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_value_array</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">element_spec</span>: <span class="kw-2">&amp;</span><span class="ident">ParamSpec</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_value_array</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">element_spec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
-
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_variant&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_variant</span>(
-        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-        <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::VariantTy</span>,
-        <span class="ident">default_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Variant</span><span class="op">&gt;</span>,
-        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
-    ) -&gt; <span class="ident">ParamSpec</span> {
-        <span class="macro">assert!</span>(
-            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
-            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
-            <span class="ident">name</span>
-        );
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_variant</span>(
-                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">default_value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
-            ))
-        }
-    }
 }
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">ParamSpecType</span>:
@@ -2399,6 +1814,37 @@
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecChar</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_char&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">i8</span>,
+        <span class="ident">maximum</span>: <span class="ident">i8</span>,
+        <span class="ident">default_value</span>: <span class="ident">i8</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_char</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecUChar</span>,
     <span class="ident">gobject_ffi::GParamSpecUChar</span>,
@@ -2407,6 +1853,37 @@
     <span class="number">1</span>,
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecUChar</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uchar&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">u8</span>,
+        <span class="ident">maximum</span>: <span class="ident">u8</span>,
+        <span class="ident">default_value</span>: <span class="ident">u8</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uchar</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecBoolean</span>,
@@ -2417,6 +1894,33 @@
 
 <span class="macro">define_param_spec_default!</span>(<span class="ident">ParamSpecBoolean</span>, <span class="ident">bool</span>, <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">from_glib</span>(<span class="ident">x</span>));
 
+<span class="kw">impl</span> <span class="ident">ParamSpecBoolean</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_boolean&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">default_value</span>: <span class="ident">bool</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_boolean</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">default_value</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecInt</span>,
     <span class="ident">gobject_ffi::GParamSpecInt</span>,
@@ -2425,6 +1929,37 @@
     <span class="number">3</span>,
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecInt</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_int&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">i32</span>,
+        <span class="ident">maximum</span>: <span class="ident">i32</span>,
+        <span class="ident">default_value</span>: <span class="ident">i32</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_int</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecUInt</span>,
@@ -2435,6 +1970,37 @@
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecUInt</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uint&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">u32</span>,
+        <span class="ident">maximum</span>: <span class="ident">u32</span>,
+        <span class="ident">default_value</span>: <span class="ident">u32</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uint</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecLong</span>,
     <span class="ident">gobject_ffi::GParamSpecLong</span>,
@@ -2443,6 +2009,37 @@
     <span class="number">5</span>,
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecLong</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_long&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">libc::c_long</span>,
+        <span class="ident">maximum</span>: <span class="ident">libc::c_long</span>,
+        <span class="ident">default_value</span>: <span class="ident">libc::c_long</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_long</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecULong</span>,
@@ -2453,6 +2050,37 @@
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecULong</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_ulong&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">libc::c_ulong</span>,
+        <span class="ident">maximum</span>: <span class="ident">libc::c_ulong</span>,
+        <span class="ident">default_value</span>: <span class="ident">libc::c_ulong</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_ulong</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecInt64</span>,
     <span class="ident">gobject_ffi::GParamSpecInt64</span>,
@@ -2461,6 +2089,37 @@
     <span class="number">7</span>,
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecInt64</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_int64&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">i64</span>,
+        <span class="ident">maximum</span>: <span class="ident">i64</span>,
+        <span class="ident">default_value</span>: <span class="ident">i64</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_int64</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecUInt64</span>,
@@ -2471,6 +2130,37 @@
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecUInt64</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_uint64&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">u64</span>,
+        <span class="ident">maximum</span>: <span class="ident">u64</span>,
+        <span class="ident">default_value</span>: <span class="ident">u64</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_uint64</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecUnichar</span>,
     <span class="ident">gobject_ffi::GParamSpecUnichar</span>,
@@ -2479,6 +2169,33 @@
 );
 
 <span class="macro">define_param_spec_default!</span>(<span class="ident">ParamSpecUnichar</span>, <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">char</span>, <span class="ident">CharTryFromError</span><span class="op">&gt;</span>, <span class="ident">TryFrom::try_from</span>);
+
+<span class="kw">impl</span> <span class="ident">ParamSpecUnichar</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_unichar&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">default_value</span>: <span class="ident">char</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_unichar</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">default_value</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecEnum</span>,
@@ -2490,6 +2207,33 @@
 <span class="macro">define_param_spec_default!</span>(<span class="ident">ParamSpecEnum</span>, <span class="ident">i32</span>, <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>);
 
 <span class="kw">impl</span> <span class="ident">ParamSpecEnum</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_enum&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">enum_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">default_value</span>: <span class="ident">i32</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_enum</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">enum_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_enum_class&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_class</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::EnumClass</span> {
         <span class="kw">unsafe</span> {
@@ -2513,6 +2257,33 @@
 <span class="macro">define_param_spec_default!</span>(<span class="ident">ParamSpecFlags</span>, <span class="ident">u32</span>, <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>);
 
 <span class="kw">impl</span> <span class="ident">ParamSpecFlags</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_flags&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">flags_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">default_value</span>: <span class="ident">u32</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_flags</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">flags_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_flags_class&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags_class</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::FlagsClass</span> {
         <span class="kw">unsafe</span> {
@@ -2535,6 +2306,37 @@
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecFloat</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_float&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">f32</span>,
+        <span class="ident">maximum</span>: <span class="ident">f32</span>,
+        <span class="ident">default_value</span>: <span class="ident">f32</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_float</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec_numeric!</span>(
     <span class="ident">ParamSpecDouble</span>,
     <span class="ident">gobject_ffi::GParamSpecDouble</span>,
@@ -2543,6 +2345,37 @@
     <span class="number">13</span>,
     <span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">x</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecDouble</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_double&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">minimum</span>: <span class="ident">f64</span>,
+        <span class="ident">maximum</span>: <span class="ident">f64</span>,
+        <span class="ident">default_value</span>: <span class="ident">f64</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_double</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">minimum</span>,
+                <span class="ident">maximum</span>,
+                <span class="ident">default_value</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecString</span>,
@@ -2561,12 +2394,67 @@
     }
 });
 
+<span class="kw">impl</span> <span class="ident">ParamSpecString</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_string&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">default_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">let</span> <span class="ident">default_value</span> <span class="op">=</span> <span class="ident">default_value</span>.<span class="ident">to_glib_none</span>();
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_string</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">default_value</span>.<span class="number">0</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecParam</span>,
     <span class="ident">gobject_ffi::GParamSpecParam</span>,
     <span class="ident">param_spec_param</span>,
     <span class="number">15</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecParam</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_param&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">param_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_param</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">param_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecBoxed</span>,
@@ -2575,12 +2463,59 @@
     <span class="number">16</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecBoxed</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_boxed&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">boxed_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_boxed</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">boxed_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecPointer</span>,
     <span class="ident">gobject_ffi::GParamSpecPointer</span>,
     <span class="ident">param_spec_pointer</span>,
     <span class="number">17</span>
 );
+
+<span class="kw">impl</span> <span class="ident">ParamSpecPointer</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_pointer&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">flags</span>: <span class="ident">ParamFlags</span>) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_pointer</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
 
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecValueArray</span>,
@@ -2590,6 +2525,31 @@
 );
 
 <span class="kw">impl</span> <span class="ident">ParamSpecValueArray</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_value_array&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">element_spec</span>: <span class="kw-2">&amp;</span><span class="ident">ParamSpec</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_value_array</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">element_spec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_element_spec&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">element_spec</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ParamSpec</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -2616,6 +2576,33 @@
     <span class="number">19</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecObject</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_object&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">object_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_object</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">object_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecOverride</span>,
     <span class="ident">gobject_ffi::GParamSpecOverride</span>,
@@ -2624,6 +2611,87 @@
 );
 
 <span class="kw">impl</span> <span class="ident">ParamSpecOverride</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">overridden</span>: <span class="kw-2">&amp;</span><span class="ident">ParamSpec</span>) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">overridden</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Similar to [`ParamSpecOverride::new`] but specific for an interface.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```ignore</span>
+    <span class="doccomment">/// let pspec = ParamSpecOverride::for_interface::&lt;gtk::Scrollable&gt;(&quot;vadjustment&quot;);</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the interface.</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsInterface</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="comment">// in case it&#39;s an interface</span>
+        <span class="kw">let</span> <span class="ident">interface_ref</span>: <span class="ident">InterfaceRef</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Interface::from_type</span>(<span class="ident">T::static_type</span>()).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">interface_ref</span>
+            .<span class="ident">find_property</span>(<span class="ident">name</span>)
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>)
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Similar to [`ParamSpecOverride::new`] but specific for a class.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust, ignore</span>
+    <span class="doccomment">/// let pspec = ParamSpecOverride::for_class::&lt;gtk::Button&gt;(&quot;label&quot;);</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the property `name` doesn&#39;t exist in the class.</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_class</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsClass</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">ObjectClass::from_type</span>(<span class="ident">T::static_type</span>())
+            .<span class="ident">unwrap</span>()
+            .<span class="ident">find_property</span>(<span class="ident">name</span>)
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;Couldn&#39;t find a property named `{}` to override&quot;</span>, <span class="ident">name</span>));
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_override</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">pspec</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>)
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_overridden&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">overridden</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ParamSpec</span> {
         <span class="kw">unsafe</span> {
@@ -2641,6 +2709,33 @@
     <span class="number">21</span>
 );
 
+<span class="kw">impl</span> <span class="ident">ParamSpecGType</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_gtype&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">is_a_type</span>: <span class="ident"><span class="kw">crate</span>::Type</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_gtype</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">is_a_type</span>.<span class="ident">into_glib</span>(),
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+}
+
 <span class="macro">define_param_spec!</span>(
     <span class="ident">ParamSpecVariant</span>,
     <span class="ident">gobject_ffi::GParamSpecVariant</span>,
@@ -2655,6 +2750,33 @@
 );
 
 <span class="kw">impl</span> <span class="ident">ParamSpecVariant</span> {
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_variant&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
+        <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">nick</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">blurb</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::VariantTy</span>,
+        <span class="ident">default_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::Variant</span><span class="op">&gt;</span>,
+        <span class="ident">flags</span>: <span class="ident">ParamFlags</span>,
+    ) -&gt; <span class="ident">ParamSpec</span> {
+        <span class="macro">assert!</span>(
+            <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
+            <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
+            <span class="ident">name</span>
+        );
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">gobject_ffi::g_param_spec_variant</span>(
+                <span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">nick</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">blurb</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">default_value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">flags</span>.<span class="ident">into_glib</span>(),
+            ))
+        }
+    }
+
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_type&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident"><span class="kw">crate</span>::VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -2675,7 +2797,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_param_spec_string</span>() {
-        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">ParamSpec::new_string</span>(
+        <span class="kw">let</span> <span class="ident">pspec</span> <span class="op">=</span> <span class="ident">ParamSpecString::new</span>(
             <span class="string">&quot;name&quot;</span>,
             <span class="string">&quot;nick&quot;</span>,
             <span class="string">&quot;blurb&quot;</span>,

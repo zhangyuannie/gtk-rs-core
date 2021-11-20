@@ -959,28 +959,28 @@
                 <span class="kw">use</span> <span class="ident">once_cell::sync::Lazy</span>;
                 <span class="kw">static</span> <span class="ident">PROPERTIES</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ParamSpec</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
                     <span class="macro">vec!</span>[
-                        <span class="ident"><span class="kw">crate</span>::ParamSpec::new_string</span>(
+                        <span class="ident"><span class="kw">crate</span>::ParamSpecString::new</span>(
                             <span class="string">&quot;name&quot;</span>,
                             <span class="string">&quot;Name&quot;</span>,
                             <span class="string">&quot;Name of this object&quot;</span>,
                             <span class="prelude-val">None</span>,
                             <span class="ident"><span class="kw">crate</span>::ParamFlags::READWRITE</span>,
                         ),
-                        <span class="ident"><span class="kw">crate</span>::ParamSpec::new_string</span>(
+                        <span class="ident"><span class="kw">crate</span>::ParamSpecString::new</span>(
                             <span class="string">&quot;construct-name&quot;</span>,
                             <span class="string">&quot;Construct Name&quot;</span>,
                             <span class="string">&quot;Construct Name of this object&quot;</span>,
                             <span class="prelude-val">None</span>,
                             <span class="ident"><span class="kw">crate</span>::ParamFlags::READWRITE</span> <span class="op">|</span> <span class="ident"><span class="kw">crate</span>::ParamFlags::CONSTRUCT_ONLY</span>,
                         ),
-                        <span class="ident"><span class="kw">crate</span>::ParamSpec::new_boolean</span>(
+                        <span class="ident"><span class="kw">crate</span>::ParamSpecBoolean::new</span>(
                             <span class="string">&quot;constructed&quot;</span>,
                             <span class="string">&quot;Constructed&quot;</span>,
                             <span class="string">&quot;True if the constructed() virtual method was called&quot;</span>,
                             <span class="bool-val">false</span>,
                             <span class="ident"><span class="kw">crate</span>::ParamFlags::READABLE</span>,
                         ),
-                        <span class="ident"><span class="kw">crate</span>::ParamSpec::new_object</span>(
+                        <span class="ident"><span class="kw">crate</span>::ParamSpecObject::new</span>(
                             <span class="string">&quot;child&quot;</span>,
                             <span class="string">&quot;Child&quot;</span>,
                             <span class="string">&quot;Child object&quot;</span>,
