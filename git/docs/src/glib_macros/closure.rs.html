@@ -335,6 +335,8 @@
 <span id="262">262</span>
 <span id="263">263</span>
 <span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::crate_ident_new</span>;
@@ -569,6 +571,7 @@
             }
         });
         <span class="kw">let</span> <span class="ident">arg_names</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">args</span>;
+        <span class="kw">let</span> <span class="ident">args_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">args</span>.<span class="ident">len</span>();
         <span class="kw">let</span> <span class="ident">closure</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">closure</span>;
         <span class="kw">let</span> <span class="ident">constructor</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="self">self</span>.<span class="ident">constructor</span>, <span class="ident">Span::call_site</span>());
 
@@ -576,7 +579,8 @@
             {
                 <span class="kw">let</span> #<span class="ident">closure_ident</span> <span class="op">=</span> {
                     #(#<span class="ident">outer_before</span>)<span class="op">*</span>
-                    #<span class="ident">crate_ident::closure::Closure</span>::#<span class="ident">constructor</span>(<span class="kw">move</span> <span class="op">|</span>#<span class="ident">values_ident</span><span class="op">|</span> {
+                    #<span class="ident">crate_ident::closure::RustClosure</span>::#<span class="ident">constructor</span>(<span class="kw">move</span> <span class="op">|</span>#<span class="ident">values_ident</span><span class="op">|</span> {
+                        <span class="macro">assert_eq!</span>(#<span class="ident">values_ident</span>.<span class="ident">len</span>(), #<span class="ident">args_len</span>);
                         #(#<span class="ident">inner_before</span>)<span class="op">*</span>
                         #(#<span class="ident">arg_values</span>)<span class="op">*</span>
                         #<span class="ident">crate_ident::closure::ToClosureReturnValue::to_closure_return_value</span>(

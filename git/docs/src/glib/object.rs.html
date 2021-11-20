@@ -3975,6 +3975,71 @@
 <span id="3902">3902</span>
 <span id="3903">3903</span>
 <span id="3904">3904</span>
+<span id="3905">3905</span>
+<span id="3906">3906</span>
+<span id="3907">3907</span>
+<span id="3908">3908</span>
+<span id="3909">3909</span>
+<span id="3910">3910</span>
+<span id="3911">3911</span>
+<span id="3912">3912</span>
+<span id="3913">3913</span>
+<span id="3914">3914</span>
+<span id="3915">3915</span>
+<span id="3916">3916</span>
+<span id="3917">3917</span>
+<span id="3918">3918</span>
+<span id="3919">3919</span>
+<span id="3920">3920</span>
+<span id="3921">3921</span>
+<span id="3922">3922</span>
+<span id="3923">3923</span>
+<span id="3924">3924</span>
+<span id="3925">3925</span>
+<span id="3926">3926</span>
+<span id="3927">3927</span>
+<span id="3928">3928</span>
+<span id="3929">3929</span>
+<span id="3930">3930</span>
+<span id="3931">3931</span>
+<span id="3932">3932</span>
+<span id="3933">3933</span>
+<span id="3934">3934</span>
+<span id="3935">3935</span>
+<span id="3936">3936</span>
+<span id="3937">3937</span>
+<span id="3938">3938</span>
+<span id="3939">3939</span>
+<span id="3940">3940</span>
+<span id="3941">3941</span>
+<span id="3942">3942</span>
+<span id="3943">3943</span>
+<span id="3944">3944</span>
+<span id="3945">3945</span>
+<span id="3946">3946</span>
+<span id="3947">3947</span>
+<span id="3948">3948</span>
+<span id="3949">3949</span>
+<span id="3950">3950</span>
+<span id="3951">3951</span>
+<span id="3952">3952</span>
+<span id="3953">3953</span>
+<span id="3954">3954</span>
+<span id="3955">3955</span>
+<span id="3956">3956</span>
+<span id="3957">3957</span>
+<span id="3958">3958</span>
+<span id="3959">3959</span>
+<span id="3960">3960</span>
+<span id="3961">3961</span>
+<span id="3962">3962</span>
+<span id="3963">3963</span>
+<span id="3964">3964</span>
+<span id="3965">3965</span>
+<span id="3966">3966</span>
+<span id="3967">3967</span>
+<span id="3968">3968</span>
+<span id="3969">3969</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! `IMPL` Object wrapper implementation and `Object` binding.</span>
@@ -3992,13 +4057,14 @@
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
 
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::closure::TryFromClosureReturnValue</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::subclass</span>::{<span class="ident">prelude::ObjectSubclass</span>, <span class="ident">SignalId</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::value::ToValue</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::BoolError</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Closure</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::SignalHandlerId</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Type</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Value</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Closure</span>, <span class="ident">RustClosure</span>};
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::thread_id</span>;
 
@@ -5639,7 +5705,7 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Connect a closure to the signal `signal_name` on this object.</span>
@@ -5650,7 +5716,12 @@
     <span class="doccomment">/// This panics if the signal does not exist.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Same as [`Self::connect`] but takes a [`Closure`](crate::Closure) instead of a `Fn`.</span>
-    <span class="kw">fn</span> <span class="ident">connect_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">after</span>: <span class="ident">bool</span>, <span class="ident">closure</span>: <span class="ident">Closure</span>) -&gt; <span class="ident">SignalHandlerId</span>;
+    <span class="kw">fn</span> <span class="ident">connect_closure</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">after</span>: <span class="ident">bool</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
+    ) -&gt; <span class="ident">SignalHandlerId</span>;
 
     <span class="doccomment">/// Similar to [`Self::connect_closure_id`] but fails instead of panicking.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_connect_closure&quot;</span>)]</span>
@@ -5659,7 +5730,7 @@
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Connect a closure to the signal `signal_id` on this object.</span>
@@ -5677,7 +5748,7 @@
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="ident">SignalHandlerId</span>;
 
     <span class="doccomment">/// Limits the lifetime of `closure` to the lifetime of the object. When</span>
@@ -5685,15 +5756,15 @@
     <span class="doccomment">/// invalidated. An invalidated closure will ignore any calls to</span>
     <span class="doccomment">/// [`Closure::invoke`](crate::Closure::invoke).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_watch_closure&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">watch_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">closure</span>: <span class="kw-2">&amp;</span><span class="ident">Closure</span>);
+    <span class="kw">fn</span> <span class="ident">watch_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">closure</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Closure</span><span class="op">&gt;</span>);
 
     <span class="doccomment">/// Similar to [`Self::emit`] but fails instead of panicking.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_emitv&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">try_emit</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Emit signal by signal id.</span>
     <span class="doccomment">///</span>
@@ -5704,7 +5775,7 @@
     <span class="doccomment">/// If the wrong number of arguments is provided, or arguments of the wrong types</span>
     <span class="doccomment">/// were provided.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_emitv&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">emit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_id</span>: <span class="ident">SignalId</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">emit</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_id</span>: <span class="ident">SignalId</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="ident">R</span>;
 
     <span class="doccomment">/// Similar to [`Self::emit_with_values`] but fails instead of panicking.</span>
     <span class="kw">fn</span> <span class="ident">try_emit_with_values</span>(
@@ -5718,11 +5789,11 @@
 
     <span class="doccomment">/// Similar to [`Self::emit_by_name`] but fails instead of panicking.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_emit_by_name&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">try_emit_by_name</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit_by_name</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Emit signal by its name.</span>
     <span class="doccomment">///</span>
@@ -5733,7 +5804,11 @@
     <span class="doccomment">/// If the signal does not exist, the wrong number of arguments is provided, or</span>
     <span class="doccomment">/// arguments of the wrong types were provided.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_emit_by_name&quot;</span>)]</span>
-    <span class="kw">fn</span> <span class="ident">emit_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">emit_by_name</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
+    ) -&gt; <span class="ident">R</span>;
 
     <span class="doccomment">/// Similar to [`Self::emit_by_name_with_values`] but fails instead of panicking.</span>
     <span class="kw">fn</span> <span class="ident">try_emit_by_name_with_values</span>(
@@ -5753,12 +5828,12 @@
     <span class="kw">fn</span> <span class="ident">emit_by_name_with_values</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="ident">Value</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Similar to [`Self::emit_with_details`] but fails instead of panicking.</span>
-    <span class="kw">fn</span> <span class="ident">try_emit_with_details</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit_with_details</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="ident">Quark</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Emit signal by signal id with details.</span>
     <span class="doccomment">///</span>
@@ -5768,12 +5843,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the wrong number of arguments is provided, or arguments of the wrong types</span>
     <span class="doccomment">/// were provided.</span>
-    <span class="kw">fn</span> <span class="ident">emit_with_details</span>(
+    <span class="kw">fn</span> <span class="ident">emit_with_details</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="ident">Quark</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>;
+    ) -&gt; <span class="ident">R</span>;
 
     <span class="doccomment">/// Similar to [`Self::emit_with_details_and_values`] but fails instead of panicking.</span>
     <span class="kw">fn</span> <span class="ident">try_emit_with_details_and_values</span>(
@@ -6427,14 +6502,43 @@
             })
         };
 
-        <span class="self">self</span>.<span class="ident">try_connect_closure_id</span>(<span class="ident">signal_id</span>, <span class="ident">details</span>, <span class="ident">after</span>, <span class="ident">closure</span>)
+        <span class="kw">let</span> <span class="ident">signal_query</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">query</span>();
+        <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
+        <span class="kw">let</span> <span class="ident">signal_name</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">name</span>();
+
+        <span class="kw">let</span> <span class="ident">signal_query_type</span> <span class="op">=</span> <span class="ident">signal_query</span>.<span class="ident">type_</span>();
+        <span class="macro">assert!</span>(
+            <span class="ident">type_</span>.<span class="ident">is_a</span>(<span class="ident">signal_query_type</span>),
+            <span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; but got type &#39;{}&#39;&quot;</span>,
+            <span class="ident">signal_name</span>,
+            <span class="ident">type_</span>,
+            <span class="ident">signal_query_type</span>
+        );
+
+        <span class="kw">let</span> <span class="ident">handler</span> <span class="op">=</span> <span class="ident">gobject_ffi::g_signal_connect_closure_by_id</span>(
+            <span class="self">self</span>.<span class="ident">as_object_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
+            <span class="ident">details</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">d</span><span class="op">|</span> <span class="ident">d</span>.<span class="ident">into_glib</span>()).<span class="ident">unwrap_or</span>(<span class="number">0</span>), <span class="comment">// 0 matches no detail</span>
+            <span class="ident">closure</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            <span class="ident">after</span>.<span class="ident">into_glib</span>(),
+        );
+
+        <span class="kw">if</span> <span class="ident">handler</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="prelude-val">Err</span>(<span class="macro">bool_error!</span>(
+                <span class="string">&quot;Failed to connect to signal &#39;{}&#39; of type &#39;{}&#39;&quot;</span>,
+                <span class="ident">signal_name</span>,
+                <span class="ident">type_</span>
+            ))
+        } <span class="kw">else</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">from_glib</span>(<span class="ident">handler</span>))
+        }
     }
 
     <span class="kw">fn</span> <span class="ident">try_connect_closure</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> (<span class="ident">signal_id</span>, <span class="ident">details</span>) <span class="op">=</span> <span class="ident">SignalId::parse_name</span>(<span class="ident">signal_name</span>, <span class="ident">type_</span>, <span class="bool-val">true</span>)
@@ -6442,7 +6546,12 @@
         <span class="self">self</span>.<span class="ident">try_connect_closure_id</span>(<span class="ident">signal_id</span>, <span class="prelude-val">Some</span>(<span class="ident">details</span>), <span class="ident">after</span>, <span class="ident">closure</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">connect_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">after</span>: <span class="ident">bool</span>, <span class="ident">closure</span>: <span class="ident">Closure</span>) -&gt; <span class="ident">SignalHandlerId</span> {
+    <span class="kw">fn</span> <span class="ident">connect_closure</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">after</span>: <span class="ident">bool</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
+    ) -&gt; <span class="ident">SignalHandlerId</span> {
         <span class="self">self</span>.<span class="ident">try_connect_closure</span>(<span class="ident">signal_name</span>, <span class="ident">after</span>, <span class="ident">closure</span>)
             .<span class="ident">unwrap</span>()
     }
@@ -6452,7 +6561,7 @@
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SignalHandlerId</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">signal_query</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">query</span>();
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
@@ -6472,7 +6581,7 @@
                 <span class="self">self</span>.<span class="ident">as_object_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
                 <span class="ident">details</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">d</span><span class="op">|</span> <span class="ident">d</span>.<span class="ident">into_glib</span>()).<span class="ident">unwrap_or</span>(<span class="number">0</span>), <span class="comment">// 0 matches no detail</span>
-                <span class="ident">closure</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">closure</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">after</span>.<span class="ident">into_glib</span>(),
             );
 
@@ -6493,13 +6602,14 @@
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span>,
         <span class="ident">after</span>: <span class="ident">bool</span>,
-        <span class="ident">closure</span>: <span class="ident">Closure</span>,
+        <span class="ident">closure</span>: <span class="ident">RustClosure</span>,
     ) -&gt; <span class="ident">SignalHandlerId</span> {
         <span class="self">self</span>.<span class="ident">try_connect_closure_id</span>(<span class="ident">signal_id</span>, <span class="ident">details</span>, <span class="ident">after</span>, <span class="ident">closure</span>)
             .<span class="ident">unwrap</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">watch_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">closure</span>: <span class="kw-2">&amp;</span><span class="ident">Closure</span>) {
+    <span class="kw">fn</span> <span class="ident">watch_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">closure</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Closure</span><span class="op">&gt;</span>) {
+        <span class="kw">let</span> <span class="ident">closure</span> <span class="op">=</span> <span class="ident">closure</span>.<span class="ident">as_ref</span>();
         <span class="kw">unsafe</span> {
             <span class="ident">gobject_ffi::g_object_watch_closure</span>(
                 <span class="self">self</span>.<span class="ident">as_object_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
@@ -6522,11 +6632,11 @@
             .<span class="ident">unwrap</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">try_emit</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">signal_query</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">query</span>();
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
@@ -6549,26 +6659,31 @@
 
             <span class="ident">validate_signal_arguments</span>(<span class="ident">type_</span>, <span class="kw-2">&amp;</span><span class="ident">signal_query</span>, <span class="kw-2">&amp;mut</span> <span class="ident">args</span>[<span class="number">1</span>..])<span class="question-mark">?</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="ident">Value::uninitialized</span>();
-            <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
-                <span class="ident">gobject_ffi::g_value_init</span>(
-                    <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
-                    <span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into_glib</span>(),
-                );
-            }
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">Value::from_type</span>(<span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into</span>())
+            } <span class="kw">else</span> {
+                <span class="ident">Value::uninitialized</span>()
+            };
+            <span class="kw">let</span> <span class="ident">return_value_ptr</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>
+            } <span class="kw">else</span> {
+                <span class="ident">ptr::null_mut</span>()
+            };
 
             <span class="ident">gobject_ffi::g_signal_emitv</span>(
                 <span class="ident">mut_override</span>(<span class="ident">args</span>.<span class="ident">as_ptr</span>()) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">gobject_ffi::GValue</span>,
                 <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
                 <span class="number">0</span>,
-                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">return_value_ptr</span>,
             );
 
-            <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>))
+            <span class="ident">R::try_from_closure_return_value</span>(
+                <span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>),
+            )
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">emit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_id</span>: <span class="ident">SignalId</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">emit</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_id</span>: <span class="ident">SignalId</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="ident">R</span> {
         <span class="self">self</span>.<span class="ident">try_emit</span>(<span class="ident">signal_id</span>, <span class="ident">args</span>).<span class="ident">unwrap</span>()
     }
 
@@ -6597,19 +6712,22 @@
 
             <span class="ident">validate_signal_arguments</span>(<span class="ident">type_</span>, <span class="kw-2">&amp;</span><span class="ident">signal_query</span>, <span class="kw-2">&amp;mut</span> <span class="ident">args</span>[<span class="number">1</span>..])<span class="question-mark">?</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="ident">Value::uninitialized</span>();
-            <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
-                <span class="ident">gobject_ffi::g_value_init</span>(
-                    <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
-                    <span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into_glib</span>(),
-                );
-            }
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">Value::from_type</span>(<span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into</span>())
+            } <span class="kw">else</span> {
+                <span class="ident">Value::uninitialized</span>()
+            };
+            <span class="kw">let</span> <span class="ident">return_value_ptr</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>
+            } <span class="kw">else</span> {
+                <span class="ident">ptr::null_mut</span>()
+            };
 
             <span class="ident">gobject_ffi::g_signal_emitv</span>(
                 <span class="ident">mut_override</span>(<span class="ident">args</span>.<span class="ident">as_ptr</span>()) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">gobject_ffi::GValue</span>,
                 <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
                 <span class="number">0</span>,
-                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">return_value_ptr</span>,
             );
 
             <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>))
@@ -6620,18 +6738,22 @@
         <span class="self">self</span>.<span class="ident">try_emit_with_values</span>(<span class="ident">signal_id</span>, <span class="ident">args</span>).<span class="ident">unwrap</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">try_emit_by_name</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit_by_name</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> <span class="ident">signal_id</span> <span class="op">=</span> <span class="ident">SignalId::lookup</span>(<span class="ident">signal_name</span>, <span class="ident">type_</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">bool_error!</span>(<span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; not found&quot;</span>, <span class="ident">signal_name</span>, <span class="ident">type_</span>))<span class="question-mark">?</span>;
         <span class="self">self</span>.<span class="ident">try_emit</span>(<span class="ident">signal_id</span>, <span class="ident">args</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">emit_by_name</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+        <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
+    ) -&gt; <span class="ident">R</span> {
         <span class="self">self</span>.<span class="ident">try_emit_by_name</span>(<span class="ident">signal_name</span>, <span class="ident">args</span>).<span class="ident">unwrap</span>()
     }
 
@@ -6651,12 +6773,12 @@
             .<span class="ident">unwrap</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">try_emit_with_details</span>(
+    <span class="kw">fn</span> <span class="ident">try_emit_with_details</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="ident">Quark</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">BoolError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">signal_query</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">query</span>();
         <span class="macro">assert!</span>(<span class="ident">signal_query</span>.<span class="ident">flags</span>().<span class="ident">contains</span>(<span class="ident"><span class="kw">crate</span>::SignalFlags::DETAILED</span>));
 
@@ -6681,31 +6803,36 @@
 
             <span class="ident">validate_signal_arguments</span>(<span class="ident">type_</span>, <span class="kw-2">&amp;</span><span class="ident">signal_query</span>, <span class="kw-2">&amp;mut</span> <span class="ident">args</span>)<span class="question-mark">?</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="ident">Value::uninitialized</span>();
-            <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
-                <span class="ident">gobject_ffi::g_value_init</span>(
-                    <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
-                    <span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into_glib</span>(),
-                );
-            }
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">Value::from_type</span>(<span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into</span>())
+            } <span class="kw">else</span> {
+                <span class="ident">Value::uninitialized</span>()
+            };
+            <span class="kw">let</span> <span class="ident">return_value_ptr</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>
+            } <span class="kw">else</span> {
+                <span class="ident">ptr::null_mut</span>()
+            };
 
             <span class="ident">gobject_ffi::g_signal_emitv</span>(
                 <span class="ident">mut_override</span>(<span class="ident">args</span>.<span class="ident">as_ptr</span>()) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">gobject_ffi::GValue</span>,
                 <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
                 <span class="ident">details</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">return_value_ptr</span>,
             );
 
-            <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>))
+            <span class="ident">R::try_from_closure_return_value</span>(
+                <span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>),
+            )
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_with_details</span>(
+    <span class="kw">fn</span> <span class="ident">emit_with_details</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">TryFromClosureReturnValue</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">signal_id</span>: <span class="ident">SignalId</span>,
         <span class="ident">details</span>: <span class="ident">Quark</span>,
         <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">ToValue</span>],
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Value</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="ident">R</span> {
         <span class="self">self</span>.<span class="ident">try_emit_with_details</span>(<span class="ident">signal_id</span>, <span class="ident">details</span>, <span class="ident">args</span>)
             .<span class="ident">unwrap</span>()
     }
@@ -6737,19 +6864,22 @@
 
             <span class="ident">validate_signal_arguments</span>(<span class="ident">type_</span>, <span class="kw-2">&amp;</span><span class="ident">signal_query</span>, <span class="kw-2">&amp;mut</span> <span class="ident">args</span>)<span class="question-mark">?</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="ident">Value::uninitialized</span>();
-            <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
-                <span class="ident">gobject_ffi::g_value_init</span>(
-                    <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
-                    <span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into_glib</span>(),
-                );
-            }
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">return_value</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">Value::from_type</span>(<span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into</span>())
+            } <span class="kw">else</span> {
+                <span class="ident">Value::uninitialized</span>()
+            };
+            <span class="kw">let</span> <span class="ident">return_value_ptr</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span> {
+                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>
+            } <span class="kw">else</span> {
+                <span class="ident">ptr::null_mut</span>()
+            };
 
             <span class="ident">gobject_ffi::g_signal_emitv</span>(
                 <span class="ident">mut_override</span>(<span class="ident">args</span>.<span class="ident">as_ptr</span>()) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">gobject_ffi::GValue</span>,
                 <span class="ident">signal_id</span>.<span class="ident">into_glib</span>(),
                 <span class="ident">details</span>.<span class="ident">into_glib</span>(),
-                <span class="ident">return_value</span>.<span class="ident">to_glib_none_mut</span>().<span class="number">0</span>,
+                <span class="ident">return_value_ptr</span>,
             );
 
             <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">return_value</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">type_</span>().<span class="ident">is_valid</span>() <span class="op">&amp;&amp;</span> <span class="ident">r</span>.<span class="ident">type_</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">Type::UNIT</span>))
