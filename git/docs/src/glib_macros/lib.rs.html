@@ -787,24 +787,45 @@
 <span id="714">714</span>
 <span id="715">715</span>
 <span id="716">716</span>
+<span id="717">717</span>
+<span id="718">718</span>
+<span id="719">719</span>
+<span id="720">720</span>
+<span id="721">721</span>
+<span id="722">722</span>
+<span id="723">723</span>
+<span id="724">724</span>
+<span id="725">725</span>
+<span id="726">726</span>
+<span id="727">727</span>
+<span id="728">728</span>
+<span id="729">729</span>
+<span id="730">730</span>
+<span id="731">731</span>
+<span id="732">732</span>
+<span id="733">733</span>
+<span id="734">734</span>
+<span id="735">735</span>
+<span id="736">736</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="kw">mod</span> <span class="ident">boxed_derive</span>;
 <span class="kw">mod</span> <span class="ident">clone</span>;
 <span class="kw">mod</span> <span class="ident">closure</span>;
 <span class="kw">mod</span> <span class="ident">downgrade_derive</span>;
-<span class="kw">mod</span> <span class="ident">gboxed_derive</span>;
-<span class="kw">mod</span> <span class="ident">gboxed_shared_derive</span>;
-<span class="kw">mod</span> <span class="ident">genum_derive</span>;
-<span class="kw">mod</span> <span class="ident">gerror_domain_derive</span>;
-<span class="kw">mod</span> <span class="ident">gflags_attribute</span>;
-<span class="kw">mod</span> <span class="ident">gvariant_derive</span>;
+<span class="kw">mod</span> <span class="ident">enum_derive</span>;
+<span class="kw">mod</span> <span class="ident">error_domain_derive</span>;
+<span class="kw">mod</span> <span class="ident">flags_attribute</span>;
 <span class="kw">mod</span> <span class="ident">object_interface_attribute</span>;
 <span class="kw">mod</span> <span class="ident">object_subclass_attribute</span>;
+<span class="kw">mod</span> <span class="ident">shared_boxed_derive</span>;
+<span class="kw">mod</span> <span class="ident">variant_derive</span>;
+
 <span class="kw">mod</span> <span class="ident">utils</span>;
 
 <span class="kw">use</span> <span class="ident">proc_macro::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">proc_macro_error::proc_macro_error</span>;
-<span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">parse_macro_input</span>, <span class="ident">DeriveInput</span>, <span class="ident">LitStr</span>};
+<span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">parse_macro_input</span>, <span class="ident">DeriveInput</span>, <span class="ident">NestedMeta</span>};
 
 <span class="doccomment">/// Macro for passing variables as strong or weak references into a closure.</span>
 <span class="doccomment">///</span>
@@ -1206,11 +1227,69 @@
     <span class="ident">closure::closure_inner</span>(<span class="ident">item</span>, <span class="string">&quot;new_local&quot;</span>)
 }
 
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GEnum</span>, <span class="ident">attributes</span>(<span class="ident">genum</span>))]</span>
+<span class="doccomment">/// Derive macro for register a rust enum in the glib type system and derive the</span>
+<span class="doccomment">/// the [`glib::Value`] traits.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib::prelude::*;</span>
+<span class="doccomment">/// use glib::subclass::prelude::*;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum)]</span>
+<span class="doccomment">/// #[enum_type(name = &quot;MyEnum&quot;)]</span>
+<span class="doccomment">/// enum MyEnum {</span>
+<span class="doccomment">///     Val,</span>
+<span class="doccomment">///     #[enum_value(name = &quot;My Val&quot;)]</span>
+<span class="doccomment">///     ValWithCustomName,</span>
+<span class="doccomment">///     #[enum_value(name = &quot;My Other Val&quot;, nick = &quot;other&quot;)]</span>
+<span class="doccomment">///     ValWithCustomNameAndNick,</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">/// ```</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Enum</span>, <span class="ident">attributes</span>(<span class="ident">enum_type</span>, <span class="ident">enum_value</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">genum_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">genum_derive::impl_genum</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
+    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">enum_derive::impl_enum</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
+    <span class="ident">gen</span>.<span class="ident">into</span>()
+}
+
+<span class="doccomment">/// Attribute macro for defining flags using the `bitflags` crate.</span>
+<span class="doccomment">/// This macro will also define a `GFlags::type_` function and</span>
+<span class="doccomment">/// the [`glib::Value`] traits.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The expected `GType` name has to be passed as macro attribute.</span>
+<span class="doccomment">/// The name and nick of each flag can also be optionally defined.</span>
+<span class="doccomment">/// Default name is the flag identifier in CamelCase and default nick</span>
+<span class="doccomment">/// is the identifier in kebab-case.</span>
+<span class="doccomment">/// Combined flags should not be registered with the `GType` system</span>
+<span class="doccomment">/// and so needs to be tagged with the `#[flags_value(skip)]` attribute.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib::prelude::*;</span>
+<span class="doccomment">/// use glib::subclass::prelude::*;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[glib::flags(name = &quot;MyFlags&quot;)]</span>
+<span class="doccomment">/// enum MyFlags {</span>
+<span class="doccomment">///     #[flags_value(name = &quot;Flag A&quot;, nick = &quot;nick-a&quot;)]</span>
+<span class="doccomment">///     A = 0b00000001,</span>
+<span class="doccomment">///     #[flags_value(name = &quot;Flag B&quot;)]</span>
+<span class="doccomment">///     B = 0b00000010,</span>
+<span class="doccomment">///     #[flags_value(skip)]</span>
+<span class="doccomment">///     AB = Self::A.bits() | Self::B.bits(),</span>
+<span class="doccomment">///     C = 0b00000100,</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
+<span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
+<span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="ident">attr</span>: <span class="ident">TokenStream</span>, <span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">attr_meta</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">attr</span> <span class="kw">as</span> <span class="ident">NestedMeta</span>);
+    <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">item</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
+    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">flags_attribute::impl_flags</span>(<span class="kw-2">&amp;</span><span class="ident">attr_meta</span>, <span class="kw-2">&amp;</span><span class="ident">input</span>);
     <span class="ident">gen</span>.<span class="ident">into</span>()
 }
 
@@ -1223,8 +1302,8 @@
 <span class="doccomment">/// use glib::prelude::*;</span>
 <span class="doccomment">/// use glib::subclass::prelude::*;</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(Debug, Copy, Clone, glib::GErrorDomain)]</span>
-<span class="doccomment">/// #[gerror_domain(name = &quot;ExFoo&quot;)]</span>
+<span class="doccomment">/// #[derive(Debug, Copy, Clone, glib::ErrorDomain)]</span>
+<span class="doccomment">/// #[error_domain(name = &quot;ExFoo&quot;)]</span>
 <span class="doccomment">/// enum Foo {</span>
 <span class="doccomment">///     Blah,</span>
 <span class="doccomment">///     Baaz,</span>
@@ -1232,11 +1311,11 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`ErrorDomain`]: error/trait.ErrorDomain.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GErrorDomain</span>, <span class="ident">attributes</span>(<span class="ident">gerror_domain</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">ErrorDomain</span>, <span class="ident">attributes</span>(<span class="ident">error_domain</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gerror_domain_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">error_domain_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">gerror_domain_derive::impl_gerror_domain</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
+    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">error_domain_derive::impl_error_domain</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
     <span class="ident">gen</span>.<span class="ident">into</span>()
 }
 
@@ -1249,18 +1328,18 @@
 <span class="doccomment">/// use glib::prelude::*;</span>
 <span class="doccomment">/// use glib::subclass::prelude::*;</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(Clone, Debug, PartialEq, Eq, glib::GBoxed)]</span>
-<span class="doccomment">/// #[gboxed(type_name = &quot;MyBoxed&quot;)]</span>
+<span class="doccomment">/// #[derive(Clone, Debug, PartialEq, Eq, glib::Boxed)]</span>
+<span class="doccomment">/// #[boxed_type(name = &quot;MyBoxed&quot;)]</span>
 <span class="doccomment">/// struct MyBoxed(String);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`BoxedType`]: subclass/boxed/trait.BoxedType.html</span>
 <span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GBoxed</span>, <span class="ident">attributes</span>(<span class="ident">gboxed</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Boxed</span>, <span class="ident">attributes</span>(<span class="ident">boxed_nullable</span>, <span class="ident">boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gboxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">gboxed_derive::impl_gboxed</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
+    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">boxed_derive::impl_boxed</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
     <span class="ident">gen</span>.<span class="ident">into</span>()
 }
 
@@ -1277,57 +1356,18 @@
 <span class="doccomment">/// struct MySharedInner {</span>
 <span class="doccomment">///   foo: String,</span>
 <span class="doccomment">/// }</span>
-<span class="doccomment">/// #[derive(Clone, Debug, PartialEq, Eq, glib::GSharedBoxed)]</span>
-<span class="doccomment">/// #[gshared_boxed(type_name = &quot;MyShared&quot;)]</span>
+<span class="doccomment">/// #[derive(Clone, Debug, PartialEq, Eq, glib::SharedBoxed)]</span>
+<span class="doccomment">/// #[shared_boxed_type(name = &quot;MySharedBoxed&quot;)]</span>
 <span class="doccomment">/// struct MyShared(std::sync::Arc&lt;MySharedInner&gt;);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`SharedType`]: subclass/shared/trait.SharedType.html</span>
 <span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GSharedBoxed</span>, <span class="ident">attributes</span>(<span class="ident">gshared_boxed</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">SharedBoxed</span>, <span class="ident">attributes</span>(<span class="ident">shared_boxed_nullable</span>, <span class="ident">shared_boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gshared_boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shared_boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">gboxed_shared_derive::impl_gshared_boxed</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
-    <span class="ident">gen</span>.<span class="ident">into</span>()
-}
-
-<span class="doccomment">/// Attribute macro for defining flags using the `bitflags` crate.</span>
-<span class="doccomment">/// This macro will also define a `GFlags::type_` function and</span>
-<span class="doccomment">/// the [`glib::Value`] traits.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The expected `GType` name has to be passed as macro attribute.</span>
-<span class="doccomment">/// The name and nick of each flag can also be optionally defined.</span>
-<span class="doccomment">/// Default name is the flag identifier in CamelCase and default nick</span>
-<span class="doccomment">/// is the identifier in kebab-case.</span>
-<span class="doccomment">/// Combined flags should not be registered with the `GType` system</span>
-<span class="doccomment">/// and so needs to be tagged with the `#[gflags(skip)]` attribute.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Example</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use glib::prelude::*;</span>
-<span class="doccomment">/// use glib::subclass::prelude::*;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[glib::gflags(&quot;MyFlags&quot;)]</span>
-<span class="doccomment">/// enum MyFlags {</span>
-<span class="doccomment">///     #[gflags(name = &quot;Flag A&quot;, nick = &quot;nick-a&quot;)]</span>
-<span class="doccomment">///     A = 0b00000001,</span>
-<span class="doccomment">///     #[gflags(name = &quot;Flag B&quot;)]</span>
-<span class="doccomment">///     B = 0b00000010,</span>
-<span class="doccomment">///     #[gflags(skip)]</span>
-<span class="doccomment">///     AB = Self::A.bits() | Self::B.bits(),</span>
-<span class="doccomment">///     C = 0b00000100,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
-<span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gflags</span>(<span class="ident">attr</span>: <span class="ident">TokenStream</span>, <span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">item</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="kw">let</span> <span class="ident">gtype_name</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">attr</span> <span class="kw">as</span> <span class="ident">LitStr</span>);
-    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">gflags_attribute::impl_gflags</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>, <span class="kw-2">&amp;</span><span class="ident">gtype_name</span>);
+    <span class="kw">let</span> <span class="ident">gen</span> <span class="op">=</span> <span class="ident">shared_boxed_derive::impl_shared_boxed</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>);
     <span class="ident">gen</span>.<span class="ident">into</span>()
 }
 
@@ -1467,7 +1507,7 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">/// use glib::prelude::*;</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(glib::GVariant, PartialEq, Eq, Debug)]</span>
+<span class="doccomment">/// #[derive(Debug, PartialEq, Eq, glib::Variant)]</span>
 <span class="doccomment">/// struct Foo {</span>
 <span class="doccomment">///     some_string: String,</span>
 <span class="doccomment">///     some_int: i32,</span>
@@ -1486,7 +1526,7 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">/// use glib::prelude::*;</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(glib::GVariant, PartialEq, Eq, Debug)]</span>
+<span class="doccomment">/// #[derive(Debug, PartialEq, Eq, glib::Variant)]</span>
 <span class="doccomment">/// struct Foo {</span>
 <span class="doccomment">///     some_vec: glib::FixedSizeVariantArray&lt;Vec&lt;u32&gt;, u32&gt;,</span>
 <span class="doccomment">///     some_int: i32,</span>
@@ -1498,10 +1538,10 @@
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`glib::Variant`]: variant/struct.Variant.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">GVariant</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gvariant_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Variant</span>)]</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">variant_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
-    <span class="ident">gvariant_derive::impl_variant</span>(<span class="ident">input</span>)
+    <span class="ident">variant_derive::impl_variant</span>(<span class="ident">input</span>)
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>

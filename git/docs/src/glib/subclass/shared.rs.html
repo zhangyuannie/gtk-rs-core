@@ -453,12 +453,12 @@
         <span class="ident">foo</span>: <span class="ident">String</span>,
     }
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::GSharedBoxed</span>)]</span>
-    <span class="attribute">#[<span class="ident">gshared_boxed</span>(<span class="ident">type_name</span> <span class="op">=</span> <span class="string">&quot;MySharedArc&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::SharedBoxed</span>)]</span>
+    <span class="attribute">#[<span class="ident">shared_boxed_type</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;MySharedArc&quot;</span>)]</span>
     <span class="kw">struct</span> <span class="ident">MySharedArc</span>(<span class="ident">std::sync::Arc</span><span class="op">&lt;</span><span class="ident">MySharedInner</span><span class="op">&gt;</span>);
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::GSharedBoxed</span>)]</span>
-    <span class="attribute">#[<span class="ident">gshared_boxed</span>(<span class="ident">type_name</span> <span class="op">=</span> <span class="string">&quot;MySharedRc&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::SharedBoxed</span>)]</span>
+    <span class="attribute">#[<span class="ident">shared_boxed_type</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;MySharedRc&quot;</span>)]</span>
     <span class="kw">struct</span> <span class="ident">MySharedRc</span>(<span class="ident">std::rc::Rc</span><span class="op">&lt;</span><span class="ident">MySharedInner</span><span class="op">&gt;</span>);
 
     <span class="attribute">#[<span class="ident">test</span>]</span>

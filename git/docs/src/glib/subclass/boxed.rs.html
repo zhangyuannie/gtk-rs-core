@@ -185,10 +185,10 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// This must be called only once and will panic on a second call.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// See [`GBoxed!`] for defining a function that ensures that</span>
+<span class="doccomment">/// See [`Boxed!`] for defining a function that ensures that</span>
 <span class="doccomment">/// this is only called once and returns the type id.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`GBoxed!`]: ../../derive.GBoxed.html</span>
+<span class="doccomment">/// [`Boxed!`]: ../../derive.Boxed.html</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">register_boxed_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">BoxedType</span><span class="op">&gt;</span>() -&gt; <span class="ident"><span class="kw">crate</span>::Type</span> {
     <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">boxed_copy</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">BoxedType</span><span class="op">&gt;</span>(<span class="ident">v</span>: <span class="ident">ffi::gpointer</span>) -&gt; <span class="ident">ffi::gpointer</span> {
         <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">v</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">T</span>);
@@ -228,8 +228,8 @@
     <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::value::ToValue</span>;
     <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::StaticType</span>;
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::GBoxed</span>)]</span>
-    <span class="attribute">#[<span class="ident">gboxed</span>(<span class="ident">type_name</span> <span class="op">=</span> <span class="string">&quot;MyBoxed&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">glib::Boxed</span>)]</span>
+    <span class="attribute">#[<span class="ident">boxed_type</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;MyBoxed&quot;</span>)]</span>
     <span class="kw">struct</span> <span class="ident">MyBoxed</span>(<span class="ident">String</span>);
 
     <span class="attribute">#[<span class="ident">test</span>]</span>

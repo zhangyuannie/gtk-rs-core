@@ -73,47 +73,47 @@
 
 <nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../glib/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a><h2 class="location">Struct Variant</h2><div class="sidebar-elems"><div class="block items"><h3 class="sidebar-title"><a href="#implementations">Methods</a></h3><div class="sidebar-links"><a href="#method.array_from_fixed_array">array_from_fixed_array</a><a href="#method.array_from_iter">array_from_iter</a><a href="#method.array_iter_str">array_iter_str</a><a href="#method.as_variant">as_variant</a><a href="#method.byteswap">byteswap</a><a href="#method.child_get">child_get</a><a href="#method.child_value">child_value</a><a href="#method.classify">classify</a><a href="#method.data">data</a><a href="#method.data_as_bytes">data_as_bytes</a><a href="#method.fixed_array">fixed_array</a><a href="#method.from_bytes">from_bytes</a><a href="#method.from_bytes_trusted">from_bytes_trusted</a><a href="#method.from_bytes_with_type">from_bytes_with_type</a><a href="#method.from_bytes_with_type_trusted">from_bytes_with_type_trusted</a><a href="#method.from_data">from_data</a><a href="#method.from_data_trusted">from_data_trusted</a><a href="#method.from_data_with_type">from_data_with_type</a><a href="#method.from_data_with_type_trusted">from_data_with_type_trusted</a><a href="#method.from_maybe">from_maybe</a><a href="#method.from_variant">from_variant</a><a href="#method.get">get</a><a href="#method.is">is</a><a href="#method.is_container">is_container</a><a href="#method.iter">iter</a><a href="#method.n_children">n_children</a><a href="#method.normal_form">normal_form</a><a href="#method.size">size</a><a href="#method.store">store</a><a href="#method.str">str</a><a href="#method.try_child_get">try_child_get</a><a href="#method.try_child_value">try_child_value</a><a href="#method.try_get">try_get</a><a href="#method.tuple_from_iter">tuple_from_iter</a><a href="#method.type_">type_</a></div><h3 class="sidebar-title"><a href="#trait-implementations">Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a><a href="#impl-Display">Display</a><a href="#impl-Eq">Eq</a><a href="#impl-From%3CVariant%3E">From&lt;Variant&gt;</a><a href="#impl-FromIterator%3CT%3E">FromIterator&lt;T&gt;</a><a href="#impl-FromVariant">FromVariant</a><a href="#impl-Hash">Hash</a><a href="#impl-PartialEq%3CVariant%3E">PartialEq&lt;Variant&gt;</a><a href="#impl-PartialOrd%3CVariant%3E">PartialOrd&lt;Variant&gt;</a><a href="#impl-Send">Send</a><a href="#impl-StaticType">StaticType</a><a href="#impl-StaticVariantType">StaticVariantType</a><a href="#impl-Sync">Sync</a><a href="#impl-ToVariant">ToVariant</a></div><h3 class="sidebar-title"><a href="#synthetic-implementations">Auto Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-RefUnwindSafe">RefUnwindSafe</a><a href="#impl-Unpin">Unpin</a><a href="#impl-UnwindSafe">UnwindSafe</a></div><h3 class="sidebar-title"><a href="#blanket-implementations">Blanket Implementations</a></h3><div class="sidebar-links"><a href="#impl-Any">Any</a><a href="#impl-Borrow%3CT%3E">Borrow&lt;T&gt;</a><a href="#impl-BorrowMut%3CT%3E">BorrowMut&lt;T&gt;</a><a href="#impl-From%3CT%3E">From&lt;T&gt;</a><a href="#impl-FromValueOptional%3C%27a%3E">FromValueOptional&lt;&#39;a&gt;</a><a href="#impl-Into%3CU%3E">Into&lt;U&gt;</a><a href="#impl-ToClosureReturnValue">ToClosureReturnValue</a><a href="#impl-ToOwned">ToOwned</a><a href="#impl-ToSendValue">ToSendValue</a><a href="#impl-ToString">ToString</a><a href="#impl-TryFrom%3CU%3E">TryFrom&lt;U&gt;</a><a href="#impl-TryFromClosureReturnValue">TryFromClosureReturnValue</a><a href="#impl-TryInto%3CU%3E">TryInto&lt;U&gt;</a></div></div><h2 class="location">Other items in<br><a href="../index.html">glib</a>::<wbr><a href="index.html">variant</a></h2><div id="sidebar-vars" data-name="Variant" data-ty="struct" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Struct <a href="../index.html">glib</a>::<wbr><a href="index.html">variant</a>::<wbr><a class="struct" href="#">Variant</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../../src/glib/variant.rs.html#115-373" title="goto source code">[src]</a></span></h1><div class="docblock item-decl"><pre class="rust struct"><code><div class="code-attribute">#[repr(transparent)]</div>pub struct Variant(_);</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A generic immutable value capable of carrying various types.</p>
 <p>See the <a href="index.html">module documentation</a> for more details.
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is a variant datatype; it can contain one or more values
+[<code>Variant</code>][crate::Variant] is a variant datatype; it can contain one or more values
 along with information about the type of the values.</p>
-<p>A <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> may contain simple types, like an integer, or a boolean value;
+<p>A [<code>Variant</code>][crate::Variant] may contain simple types, like an integer, or a boolean value;
 or complex types, like an array of two strings, or a dictionary of key
-value pairs. A <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is also immutable: once it’s been created neither
+value pairs. A [<code>Variant</code>][crate::Variant] is also immutable: once it’s been created neither
 its type nor its content can be modified further.</p>
 <p>GVariant is useful whenever data needs to be serialized, for example when
 sending method parameters in D-Bus, or when saving settings using GSettings.</p>
-<p>When creating a new <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>, you pass the data you want to store in it
+<p>When creating a new [<code>Variant</code>][crate::Variant], you pass the data you want to store in it
 along with a string representing the type of data you wish to pass to it.</p>
-<p>For instance, if you want to create a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> holding an integer value you
+<p>For instance, if you want to create a [<code>Variant</code>][crate::Variant] holding an integer value you
 can use:</p>
 <p><strong>⚠️ The following code is in C ⚠️</strong></p>
 <div class="example-wrap"><pre class="language-C"><code>  GVariant *v = g_variant_new (&quot;u&quot;, 40);</code></pre></div>
-<p>The string “u” in the first argument tells <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> that the data passed to
+<p>The string “u” in the first argument tells [<code>Variant</code>][crate::Variant] that the data passed to
 the constructor (40) is going to be an unsigned integer.</p>
-<p>More advanced examples of <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> in use can be found in documentation for
+<p>More advanced examples of [<code>Variant</code>][crate::Variant] in use can be found in documentation for
 [GVariant format strings][gvariant-format-strings-pointers].</p>
 <p>The range of possible values is determined by the type.</p>
-<p>The type system used by <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is <a href="../struct.VariantType.html" title="crate::VariantType"><code>VariantType</code></a>.</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instances always have a type and a value (which are given
-at construction time). The type and value of a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance
-can never change other than by the <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> itself being
-destroyed. A <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> cannot contain a pointer.</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is reference counted using <code>g_variant_ref()</code> and
-<code>g_variant_unref()</code>. <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> also has floating reference counts –
+<p>The type system used by [<code>Variant</code>][crate::Variant] is <a href="../struct.VariantType.html" title="crate::VariantType"><code>VariantType</code></a>.</p>
+<p>[<code>Variant</code>][crate::Variant] instances always have a type and a value (which are given
+at construction time). The type and value of a [<code>Variant</code>][crate::Variant] instance
+can never change other than by the [<code>Variant</code>][crate::Variant] itself being
+destroyed. A [<code>Variant</code>][crate::Variant] cannot contain a pointer.</p>
+<p>[<code>Variant</code>][crate::Variant] is reference counted using <code>g_variant_ref()</code> and
+<code>g_variant_unref()</code>. [<code>Variant</code>][crate::Variant] also has floating reference counts –
 see [<code>ref_sink()</code>][Self::ref_sink()].</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is completely threadsafe. A <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance can be
+<p>[<code>Variant</code>][crate::Variant] is completely threadsafe. A [<code>Variant</code>][crate::Variant] instance can be
 concurrently accessed in any way from any number of threads without
 problems.</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is heavily optimised for dealing with data in serialized
+<p>[<code>Variant</code>][crate::Variant] is heavily optimised for dealing with data in serialized
 form. It works particularly well with data located in memory-mapped
 files. It can perform nearly all deserialization operations in a
 small constant time, usually touching only a single memory page.
-Serialized <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> data can also be sent over the network.</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is largely compatible with D-Bus. Almost all types of
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instances can be sent over D-Bus. See <a href="../struct.VariantType.html" title="crate::VariantType"><code>VariantType</code></a> for
-exceptions. (However, <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>’s serialization format is not the same
+Serialized [<code>Variant</code>][crate::Variant] data can also be sent over the network.</p>
+<p>[<code>Variant</code>][crate::Variant] is largely compatible with D-Bus. Almost all types of
+[<code>Variant</code>][crate::Variant] instances can be sent over D-Bus. See <a href="../struct.VariantType.html" title="crate::VariantType"><code>VariantType</code></a> for
+exceptions. (However, [<code>Variant</code>][crate::Variant]’s serialization format is not the same
 as the serialization format of a D-Bus message body: use <code>GDBusMessage</code>,
 in the gio library, for those.)</p>
-<p>For space-efficiency, the <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> serialization format does not
+<p>For space-efficiency, the [<code>Variant</code>][crate::Variant] serialization format does not
 automatically include the variant’s length, type or endianness,
 which must either be implied from context (such as knowledge that a
 particular file format always contains a little-endian
@@ -121,25 +121,25 @@ particular file format always contains a little-endian
 or supplied out-of-band (for instance, a length, type and/or endianness
 indicator could be placed at the beginning of a file, network message
 or network stream).</p>
-<p>A <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>’s size is limited mainly by any lower level operating
+<p>A [<code>Variant</code>][crate::Variant]’s size is limited mainly by any lower level operating
 system constraints, such as the number of bits in <code>gsize</code>. For
 example, it is reasonable to have a 2GB file mapped into memory
 with <code>GMappedFile</code>, and call <a href="struct.Variant.html#method.from_data" title="Self::from_data()"><code>from_data()</code></a> on it.</p>
-<p>For convenience to C programmers, <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> features powerful
+<p>For convenience to C programmers, [<code>Variant</code>][crate::Variant] features powerful
 varargs-based value construction and destruction. This feature is
 designed to be embedded in other libraries.</p>
-<p>There is a Python-inspired text language for describing <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>
-values. <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> includes a printer for this language and a parser
+<p>There is a Python-inspired text language for describing [<code>Variant</code>][crate::Variant]
+values. [<code>Variant</code>][crate::Variant] includes a printer for this language and a parser
 with type inferencing.</p>
 <h3 id="memory-use" class="section-header"><a href="#memory-use">Memory Use</a></h3>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> tries to be quite efficient with respect to memory use.
+<p>[<code>Variant</code>][crate::Variant] tries to be quite efficient with respect to memory use.
 This section gives a rough idea of how much memory is used by the
 current implementation. The information here is subject to change
 in the future.</p>
-<p>The memory allocated by <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> can be grouped into 4 broad
+<p>The memory allocated by [<code>Variant</code>][crate::Variant] can be grouped into 4 broad
 purposes: memory for serialized data, memory for the type
 information cache, buffer management memory and memory for the
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> structure itself.</p>
+[<code>Variant</code>][crate::Variant] structure itself.</p>
 <h3 id="serialized-data-memory" class="section-header"><a href="#serialized-data-memory">Serialized Data Memory</a></h3>
 <p>This is the memory that is used for storing GVariant data in
 serialized form. This is what would be sent over the network or
@@ -192,13 +192,13 @@ dictionary.</p>
 <p>For each GVariant type that currently exists in the program a type
 information structure is kept in the type information cache. The
 type information structure is required for rapid deserialization.</p>
-<p>Continuing with the above example, if a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> exists with the
+<p>Continuing with the above example, if a [<code>Variant</code>][crate::Variant] exists with the
 type “a{sv}” then a type information struct will exist for
 “a{sv}”, “{sv}”, “s”, and “v”. Multiple uses of the same type
 will share the same type information. Additionally, all
 single-digit types are stored in read-only static memory and do
 not contribute to the writable memory footprint of a program using
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>.</p>
+[<code>Variant</code>][crate::Variant].</p>
 <p>Aside from the type information structures stored in read-only
 memory, there are two forms of type information. One is used for
 container types where there is a single element type: arrays and
@@ -226,28 +226,28 @@ that a program will probably only have a very small number of
 different types of values in it and that only one type information
 structure is required for many different values of the same type.</p>
 <h3 id="buffer-management-memory" class="section-header"><a href="#buffer-management-memory">Buffer Management Memory</a></h3>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> uses an internal buffer management structure to deal
+<p>[<code>Variant</code>][crate::Variant] uses an internal buffer management structure to deal
 with the various different possible sources of serialized data
 that it uses. The buffer is responsible for ensuring that the
 correct call is made when the data is no longer in use by
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>. This may involve a <code>g_free()</code> or a <code>g_slice_free()</code> or
+[<code>Variant</code>][crate::Variant]. This may involve a <code>g_free()</code> or a <code>g_slice_free()</code> or
 even <code>g_mapped_file_unref()</code>.</p>
 <p>One buffer management structure is used for each chunk of
 serialized data. The size of the buffer management structure
 is 4 * (void *). On 32-bit systems, that’s 16 bytes.</p>
 <h3 id="gvariant-structure" class="section-header"><a href="#gvariant-structure">GVariant structure</a></h3>
-<p>The size of a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> structure is 6 * (void *). On 32-bit
+<p>The size of a [<code>Variant</code>][crate::Variant] structure is 6 * (void *). On 32-bit
 systems, that’s 24 bytes.</p>
-<p><a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> structures only exist if they are explicitly created
-with API calls. For example, if a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is constructed out of
+<p>[<code>Variant</code>][crate::Variant] structures only exist if they are explicitly created
+with API calls. For example, if a [<code>Variant</code>][crate::Variant] is constructed out of
 serialized data for the example given above (with the dictionary)
 then although there are 9 individual values that comprise the
 entire dictionary (two keys, two values, two variants containing
 the values, two dictionary entries, plus the dictionary itself),
-only 1 <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance exists – the one referring to the
+only 1 [<code>Variant</code>][crate::Variant] instance exists – the one referring to the
 dictionary.</p>
 <p>If calls are made to start accessing the other values then
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instances will exist for those values only for as long
+[<code>Variant</code>][crate::Variant] instances will exist for those values only for as long
 as they are in use (ie: until you call <code>g_variant_unref()</code>). The
 type information is shared. The serialized data and the buffer
 management structure for that serialized data is shared by the
@@ -257,7 +257,7 @@ child.</p>
 strings to variants (with two entries, as given above), we are
 using 91 bytes of memory for type information, 29 bytes of memory
 for the serialized data, 16 bytes for buffer management and 24
-bytes for the <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance, or a total of 160 bytes, plus
+bytes for the [<code>Variant</code>][crate::Variant] instance, or a total of 160 bytes, plus
 malloc overhead. If we were to use <a href="struct.Variant.html#method.child_value" title="Self::child_value()"><code>child_value()</code></a> to
 access the two dictionary entries, we would use an additional 48
 bytes. If we were to have other dictionaries of the same type, we
@@ -277,7 +277,7 @@ Classifies <code>self</code> according to its top-level type.</p>
 <p>the <a href="../enum.VariantClass.html" title="crate::VariantClass"><code>VariantClass</code></a> of <code>self</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.get" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#519-521" title="goto source code">[src]</a></div><a href="#method.get" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.get" class="fnname">get</a>&lt;T:&nbsp;<a class="trait" href="trait.FromVariant.html" title="trait glib::variant::FromVariant">FromVariant</a>&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</h4></div></summary><div class="docblock"><p>Tries to extract a value of type <code>T</code>.</p>
 <p>Returns <code>Some</code> if <code>T</code> matches the variant’s type.
-Deconstructs a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance.</p>
+Deconstructs a [<code>Variant</code>][crate::Variant] instance.</p>
 <p>Think of this function as an analogue to <code>scanf()</code>.</p>
 <p>The arguments that are expected by this function are entirely
 determined by <code>format_string</code>. <code>format_string</code> also restricts the
@@ -291,7 +291,7 @@ the values and also determines if the values are copied or borrowed,
 see the section on
 [GVariant format strings][gvariant-format-strings-pointers].</p>
 <h6 id="format_string" class="section-header"><a href="#format_string"><code>format_string</code></a></h6>
-<p>a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> format string</p>
+<p>a [<code>Variant</code>][crate::Variant] format string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_get" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#524-531" title="goto source code">[src]</a></div><a href="#method.try_get" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.try_get" class="fnname">try_get</a>&lt;T:&nbsp;<a class="trait" href="trait.FromVariant.html" title="trait glib::variant::FromVariant">FromVariant</a>&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="struct" href="struct.VariantTypeMismatchError.html" title="struct glib::variant::VariantTypeMismatchError">VariantTypeMismatchError</a>&gt;</h4></div></summary><div class="docblock"><p>Tries to extract a value of type <code>T</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_variant" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#535-537" title="goto source code">[src]</a></div><a href="#method.from_variant" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_variant" class="fnname">from_variant</a>(value: &amp;<a class="struct" href="struct.Variant.html" title="struct glib::variant::Variant">Variant</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Boxes value.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.as_variant" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#544-546" title="goto source code">[src]</a></div><a href="#method.as_variant" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.as_variant" class="fnname">as_variant</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;</h4></div></summary><div class="docblock"><p>Unboxes self.</p>
@@ -301,10 +301,10 @@ see the section on
 <ul>
 <li>if <code>self</code> is not a container type.</li>
 <li>if given <code>index</code> is larger than number of children.
-Reads a child item out of a container <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance. This
+Reads a child item out of a container [<code>Variant</code>][crate::Variant] instance. This
 includes variants, maybes, arrays, tuples and dictionary
 entries. It is an error to call this function on any other type of
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>.</li>
+[<code>Variant</code>][crate::Variant].</li>
 </ul>
 <p>It is an error if <code>index_</code> is greater than the number of child items
 in the container. See <a href="struct.Variant.html#method.n_children" title="Self::n_children()"><code>n_children()</code></a>.</p>
@@ -317,7 +317,7 @@ called. To avoid this, you can serialize <code>self</code> by calling
 <a href="struct.Variant.html#method.data" title="Self::data()"><code>data()</code></a> and optionally ignoring the return value.</p>
 <p>There may be implementation specific restrictions on deeply nested values,
 which would result in the unit tuple being returned as the child value,
-instead of further nested children. <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is guaranteed to handle
+instead of further nested children. [<code>Variant</code>][crate::Variant] is guaranteed to handle
 nesting up to at least 64 levels.</p>
 <p>This function is O(1).</p>
 <h6 id="index_" class="section-header"><a href="#index_"><code>index_</code></a></h6>
@@ -378,7 +378,7 @@ the fixed array</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.tuple_from_iter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#768-778" title="goto source code">[src]</a></div><a href="#method.tuple_from_iter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.tuple_from_iter" class="fnname">tuple_from_iter</a>(children: impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = <a class="struct" href="struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;) -&gt; Self</h4></div></summary><div class="docblock"><p>Creates a new Variant tuple from children.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_maybe" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#782-798" title="goto source code">[src]</a></div><a href="#method.from_maybe" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_maybe" class="fnname">from_maybe</a>&lt;T:&nbsp;<a class="trait" href="trait.StaticVariantType.html" title="trait glib::variant::StaticVariantType">StaticVariantType</a>&gt;(child: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.Variant.html" title="struct glib::variant::Variant">Variant</a>&gt;) -&gt; Self</h4></div></summary><div class="docblock"><p>Creates a new maybe Variant.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#822-824" title="goto source code">[src]</a></div><a href="#method.from_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_bytes" class="fnname">from_bytes</a>&lt;T:&nbsp;<a class="trait" href="trait.StaticVariantType.html" title="trait glib::variant::StaticVariantType">StaticVariantType</a>&gt;(bytes: &amp;<a class="struct" href="../struct.Bytes.html" title="struct glib::Bytes">Bytes</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Constructs a new serialised-mode GVariant instance.
-Constructs a new serialized-mode <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance. This is the
+Constructs a new serialized-mode [<code>Variant</code>][crate::Variant] instance. This is the
 inner interface for creation of new serialized values that gets
 called from various functions in gvariant.c.</p>
 <p>A reference is taken on <code>bytes</code>.</p>
@@ -392,7 +392,7 @@ GLib 2.60) or (in older versions) fail and exit the process.</p>
 <h6 id="trusted" class="section-header"><a href="#trusted"><code>trusted</code></a></h6>
 <p>if the contents of <code>bytes</code> are trusted</p>
 <h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
-<p>a new <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> with a floating reference</p>
+<p>a new [<code>Variant</code>][crate::Variant] with a floating reference</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_bytes_trusted" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#838-840" title="goto source code">[src]</a></div><a href="#method.from_bytes_trusted" class="anchor"></a><h4 class="code-header">pub unsafe fn <a href="#method.from_bytes_trusted" class="fnname">from_bytes_trusted</a>&lt;T:&nbsp;<a class="trait" href="trait.StaticVariantType.html" title="trait glib::variant::StaticVariantType">StaticVariantType</a>&gt;(bytes: &amp;<a class="struct" href="../struct.Bytes.html" title="struct glib::Bytes">Bytes</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Constructs a new serialised-mode GVariant instance.</p>
 <p>This is the same as <code>from_bytes</code>, except that checks on the passed
 data are skipped.</p>
@@ -402,8 +402,8 @@ data are skipped.</p>
 on bytes which are not guaranteed to have come from serialising another
 Variant.  The caller is responsible for ensuring bad data is not passed in.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_data" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#886-888" title="goto source code">[src]</a></div><a href="#method.from_data" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_data" class="fnname">from_data</a>&lt;T:&nbsp;<a class="trait" href="trait.StaticVariantType.html" title="trait glib::variant::StaticVariantType">StaticVariantType</a>, A:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt;(data: A) -&gt; Self</h4></div></summary><div class="docblock"><p>Constructs a new serialised-mode GVariant instance.
-Creates a new <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance from serialized data.</p>
-<p><code>type_</code> is the type of <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance that will be constructed.
+Creates a new [<code>Variant</code>][crate::Variant] instance from serialized data.</p>
+<p><code>type_</code> is the type of [<code>Variant</code>][crate::Variant] instance that will be constructed.
 The interpretation of <code>data</code> depends on knowing the type.</p>
 <p><code>data</code> is not modified by this function and must remain valid with an
 unchanging value until such a time as <code>notify</code> is called with
@@ -434,7 +434,7 @@ process.</p>
 <h6 id="notify" class="section-header"><a href="#notify"><code>notify</code></a></h6>
 <p>function to call when <code>data</code> is no longer needed</p>
 <h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
-<p>a new floating <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> of type <code>type_</code></p>
+<p>a new floating [<code>Variant</code>][crate::Variant] of type <code>type_</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.from_data_trusted" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#902-904" title="goto source code">[src]</a></div><a href="#method.from_data_trusted" class="anchor"></a><h4 class="code-header">pub unsafe fn <a href="#method.from_data_trusted" class="fnname">from_data_trusted</a>&lt;T:&nbsp;<a class="trait" href="trait.StaticVariantType.html" title="trait glib::variant::StaticVariantType">StaticVariantType</a>, A:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;data: A<br>) -&gt; Self</h4></div></summary><div class="docblock"><p>Constructs a new serialised-mode GVariant instance.</p>
 <p>This is the same as <code>from_data</code>, except that checks on the passed
 data are skipped.</p>
@@ -462,14 +462,14 @@ data are skipped.</p>
 on bytes which are not guaranteed to have come from serialising another
 Variant.  The caller is responsible for ensuring bad data is not passed in.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.data_as_bytes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#1008-1010" title="goto source code">[src]</a></div><a href="#method.data_as_bytes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.data_as_bytes" class="fnname">data_as_bytes</a>(&amp;self) -&gt; <a class="struct" href="../struct.Bytes.html" title="struct glib::Bytes">Bytes</a></h4></div></summary><div class="docblock"><p>Returns the serialised form of a GVariant instance.
-Returns a pointer to the serialized form of a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance.
+Returns a pointer to the serialized form of a [<code>Variant</code>][crate::Variant] instance.
 The semantics of this function are exactly the same as
 <a href="struct.Variant.html#method.data" title="Self::data()"><code>data()</code></a>, except that the returned <a href="../struct.Bytes.html" title="crate::Bytes"><code>Bytes</code></a> holds
 a reference to the variant data.</p>
 <h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
 <p>A new <a href="../struct.Bytes.html" title="crate::Bytes"><code>Bytes</code></a> representing the variant data</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.data" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#1044-1051" title="goto source code">[src]</a></div><a href="#method.data" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.data" class="fnname">data</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><span class="notable-traits"><span class="notable-traits-tooltip">ⓘ<div class="notable-traits-tooltiptext"><span class="docblock"><div class="notable">Notable traits for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></div><code class="content"><span class="where fmt-newline">impl&lt;'_&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html" title="trait std::io::Write">Write</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span><span class="where fmt-newline">impl&lt;'_&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/std/io/trait.Read.html" title="trait std::io::Read">Read</a> for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'_ [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></span></code></span></div></span></span></h4></div></summary><div class="docblock"><p>Returns the serialised form of a GVariant instance.
-Returns a pointer to the serialized form of a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance.
+Returns a pointer to the serialized form of a [<code>Variant</code>][crate::Variant] instance.
 The returned data may not be in fully-normalised form if read from an
 untrusted source. The returned data must not be freed; it remains
 valid for as long as <code>self</code> exists.</p>
@@ -483,7 +483,7 @@ is O(1). If the value is not already in serialized form,
 serialization occurs implicitly and is approximately O(n) in the size
 of the result.</p>
 <p>To deserialize the data returned by this function, in addition to the
-serialized data, you must know the type of the <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>, and (if the
+serialized data, you must know the type of the [<code>Variant</code>][crate::Variant], and (if the
 machine might be different) the endianness of the machine that stored
 it. As a result, file formats or network messages that incorporate
 serialized <code>GVariants</code> must include this information either
@@ -517,7 +517,7 @@ serialized variant successfully, its type and (if the destination
 machine might be different) its endianness must also be available.</p>
 <p>This function is approximately O(n) in the size of <code>data</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.normal_form" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#1135-1137" title="goto source code">[src]</a></div><a href="#method.normal_form" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.normal_form" class="fnname">normal_form</a>(&amp;self) -&gt; Self</h4></div></summary><div class="docblock"><p>Returns a copy of the variant in normal form.
-Gets a <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance that has the same value as <code>self</code> and is
+Gets a [<code>Variant</code>][crate::Variant] instance that has the same value as <code>self</code> and is
 trusted to be in normal form.</p>
 <p>If <code>self</code> is already trusted to be in normal form then a new
 reference to <code>self</code> is returned.</p>
@@ -525,18 +525,18 @@ reference to <code>self</code> is returned.</p>
 is in normal form. If it is found to be in normal form then it is
 marked as trusted and a new reference to it is returned.</p>
 <p>If <code>self</code> is found not to be in normal form then a new trusted
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> is created with the same value as <code>self</code>.</p>
-<p>It makes sense to call this function if you’ve received <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>
+[<code>Variant</code>][crate::Variant] is created with the same value as <code>self</code>.</p>
+<p>It makes sense to call this function if you’ve received [<code>Variant</code>][crate::Variant]
 data from untrusted sources and you want to ensure your serialized
 output is definitely in normal form.</p>
 <p>If <code>self</code> is already in normal form, a new reference will be returned
 (which will be floating if <code>self</code> is floating). If it is not in normal form,
-the newly created <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> will be returned with a single non-floating
+the newly created [<code>Variant</code>][crate::Variant] will be returned with a single non-floating
 reference. Typically, <code>g_variant_take_ref()</code> should be called on the return
 value from this function to guarantee ownership of a single non-floating
 reference to it.</p>
 <h5 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h5>
-<p>a trusted <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a></p>
+<p>a trusted [<code>Variant</code>][crate::Variant]</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.byteswap" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#1157-1159" title="goto source code">[src]</a></div><a href="#method.byteswap" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.byteswap" class="fnname">byteswap</a>(&amp;self) -&gt; Self</h4></div></summary><div class="docblock"><p>Returns a copy of the variant in the opposite endianness.
 Performs a byteswapping operation on the contents of <code>self</code>. The
 result is that all multi-byte numeric data contained in <code>self</code> is
@@ -550,10 +550,10 @@ bytes and containers containing only these things (recursively).</p>
 <h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
 <p>the byteswapped form of <code>self</code></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.n_children" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/variant.rs.html#1179-1183" title="goto source code">[src]</a></div><a href="#method.n_children" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.n_children" class="fnname">n_children</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></h4></div></summary><div class="docblock"><p>Determines the number of children in a container GVariant instance.
-Determines the number of children in a container <a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a> instance.
+Determines the number of children in a container [<code>Variant</code>][crate::Variant] instance.
 This includes variants, maybes, arrays, tuples and dictionary
 entries. It is an error to call this function on any other type of
-<a href="struct.Variant.html" title="crate::Variant"><code>Variant</code></a>.</p>
+[<code>Variant</code>][crate::Variant].</p>
 <p>For variants, the return value is always 1. For values with maybe
 types, it is always zero or one. For arrays, it is the length of the
 array. For tuples it is the number of tuple items (which depends
@@ -610,7 +610,7 @@ operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.h
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_owned" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89" title="goto source code">[src]</a></div><a href="#method.to_owned" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned" class="fnname">to_owned</a>(&amp;self) -&gt; T</h4></div></summary><div class='docblock'><p>Creates owned data from borrowed data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_into" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#93" title="goto source code">[src]</a></div><a href="#method.clone_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into" class="fnname">clone_into</a>(&amp;self, target: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T)</h4></div></summary><div class="item-info"><div class="stab unstable"><details><summary><span class="emoji">🔬</span> This is a nightly-only experimental API. (<code>toowned_clone_into</code>)</summary><p>recently added</p>
 </details></div></div><div class='docblock'><p>Uses borrowed data to replace owned data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into">Read more</a></p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/value.rs.html#664-668" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/value.rs.html#665-667" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="struct" href="../value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/value.rs.html#658-662" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../../src/glib/value.rs.html#659-661" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self) -&gt; <a class="struct" href="../value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToString" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2390-2404" title="goto source code">[src]</a></div><a href="#impl-ToString" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2396" title="goto source code">[src]</a></div><a href="#method.to_string" class="anchor"></a><h4 class="code-header">pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></h4></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryFrom%3CU%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#587-596" title="goto source code">[src]</a></div><a href="#impl-TryFrom%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error" class="type trait-impl has-srclink"><a href="#associatedtype.Error" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="type">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></h4></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#593" title="goto source code">[src]</a></div><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></div></summary><div class='docblock'><p>Performs the conversion.</p>

@@ -95,9 +95,9 @@ directory.</p>
 <h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the name of <code>self</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.range" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/settings_schema_key.rs.html#121-123" title="goto source code">[src]</a></div><a href="#method.range" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.range" class="fnname">range</a>(&amp;self) -&gt; <a class="struct" href="../glib/variant/struct.Variant.html" title="struct glib::variant::Variant">Variant</a></h4></div></summary><div class="docblock"><p>Queries the range of a key.</p>
-<p>This function will return a <a href="../glib/variant/struct.Variant.html" title="crate::glib::Variant"><code>glib::Variant</code></a> that fully describes the range
+<p>This function will return a [<code>glib::Variant</code>][crate::glib::Variant] that fully describes the range
 of values that are valid for <code>self</code>.</p>
-<p>The type of <a href="../glib/variant/struct.Variant.html" title="crate::glib::Variant"><code>glib::Variant</code></a> returned is <code>(sv)</code>. The string describes
+<p>The type of [<code>glib::Variant</code>][crate::glib::Variant] returned is <code>(sv)</code>. The string describes
 the type of range restriction in effect. The type and meaning of
 the value contained in the variant depends on the string.</p>
 <p>If the string is <code>'type'</code> then the variant contains an empty array.
@@ -123,7 +123,7 @@ forms may be added to the possibilities described above.</p>
 <p>You should free the returned value with <code>g_variant_unref()</code> when it is
 no longer needed.</p>
 <h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
-<p>a <a href="../glib/variant/struct.Variant.html" title="crate::glib::Variant"><code>glib::Variant</code></a> describing the range</p>
+<p>a [<code>glib::Variant</code>][crate::glib::Variant] describing the range</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.summary" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/gio/auto/settings_schema_key.rs.html#144-150" title="goto source code">[src]</a></div><a href="#method.summary" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.summary" class="fnname">summary</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the summary for <code>self</code>.</p>
 <p>If no summary has been provided in the schema for <code>self</code>, returns
 <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>.</p>

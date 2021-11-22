@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros&#x2F;src&#x2F;gflags_attribute.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>gflags_attribute.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros&#x2F;src&#x2F;enum_derive.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enum_derive.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -249,73 +249,42 @@
 <span id="176">176</span>
 <span id="177">177</span>
 <span id="178">178</span>
-<span id="179">179</span>
-<span id="180">180</span>
-<span id="181">181</span>
-<span id="182">182</span>
-<span id="183">183</span>
-<span id="184">184</span>
-<span id="185">185</span>
-<span id="186">186</span>
-<span id="187">187</span>
-<span id="188">188</span>
-<span id="189">189</span>
-<span id="190">190</span>
-<span id="191">191</span>
-<span id="192">192</span>
-<span id="193">193</span>
-<span id="194">194</span>
-<span id="195">195</span>
-<span id="196">196</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">heck</span>::{<span class="ident">CamelCase</span>, <span class="ident">KebabCase</span>};
 <span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">proc_macro_error::abort_call_site</span>;
 <span class="kw">use</span> <span class="ident">quote</span>::{<span class="ident">quote</span>, <span class="ident">quote_spanned</span>};
-<span class="kw">use</span> <span class="ident">syn</span>::{
-    <span class="ident">punctuated::Punctuated</span>, <span class="ident">spanned::Spanned</span>, <span class="ident">token::Comma</span>, <span class="ident">Attribute</span>, <span class="ident">Data</span>, <span class="ident">DeriveInput</span>, <span class="ident">Ident</span>,
-    <span class="ident">LitStr</span>, <span class="ident">Variant</span>, <span class="ident">Visibility</span>,
-};
+<span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">punctuated::Punctuated</span>, <span class="ident">spanned::Spanned</span>, <span class="ident">token::Comma</span>, <span class="ident">Data</span>, <span class="ident">Ident</span>, <span class="ident">Variant</span>};
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils</span>::{
-    <span class="ident">crate_ident_new</span>, <span class="ident">find_attribute_meta</span>, <span class="ident">find_nested_meta</span>, <span class="ident">parse_item_attributes</span>, <span class="ident">ItemAttribute</span>,
+    <span class="ident">crate_ident_new</span>, <span class="ident">gen_enum_from_glib</span>, <span class="ident">parse_item_attributes</span>, <span class="ident">parse_name</span>, <span class="ident">ItemAttribute</span>,
 };
 
-<span class="comment">// Flag is not registered if it has the #[gflags(skip)] meta</span>
-<span class="kw">fn</span> <span class="ident">attribute_has_skip</span>(<span class="ident">attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">Attribute</span>]) -&gt; <span class="ident">bool</span> {
-    <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="ident">find_attribute_meta</span>(<span class="ident">attrs</span>, <span class="string">&quot;gflags&quot;</span>).<span class="ident">unwrap</span>();
-
-    <span class="kw">match</span> <span class="ident">meta</span> {
-        <span class="prelude-val">None</span> =&gt; <span class="bool-val">false</span>,
-        <span class="prelude-val">Some</span>(<span class="ident">meta</span>) =&gt; <span class="ident">find_nested_meta</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>, <span class="string">&quot;skip&quot;</span>).<span class="ident">is_some</span>(),
-    }
-}
-
-<span class="comment">// Generate glib::gobject_ffi::GFlagsValue structs mapping the enum such as:</span>
-<span class="comment">//     glib::gobject_ffi::GFlagsValue {</span>
-<span class="comment">//         value: MyFlags::A.bits(),</span>
-<span class="comment">//         value_name: &quot;The Name\0&quot; as *const _ as *const _,</span>
-<span class="comment">//         value_nick: &quot;nick\0&quot; as *const _ as *const _,</span>
+<span class="comment">// Generate glib::gobject_ffi::GEnumValue structs mapping the enum such as:</span>
+<span class="comment">//     glib::gobject_ffi::GEnumValue {</span>
+<span class="comment">//         value: Animal::Goat as i32,</span>
+<span class="comment">//         value_name: &quot;Goat\0&quot; as *const _ as *const _,</span>
+<span class="comment">//         value_nick: &quot;goat\0&quot; as *const _ as *const _,</span>
 <span class="comment">//     },</span>
-<span class="kw">fn</span> <span class="ident">gen_gflags_values</span>(
+<span class="kw">fn</span> <span class="ident">gen_enum_values</span>(
     <span class="ident">enum_name</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>,
     <span class="ident">enum_variants</span>: <span class="kw-2">&amp;</span><span class="ident">Punctuated</span><span class="op">&lt;</span><span class="ident">Variant</span>, <span class="ident">Comma</span><span class="op">&gt;</span>,
 ) -&gt; (<span class="ident">TokenStream</span>, <span class="ident">usize</span>) {
     <span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="ident">crate_ident_new</span>();
 
-    <span class="comment">// start at one as GFlagsValue array is null-terminated</span>
+    <span class="comment">// start at one as GEnumValue array is null-terminated</span>
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">n</span> <span class="op">=</span> <span class="number">1</span>;
-    <span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">enum_variants</span>.<span class="ident">iter</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> { <span class="op">!</span><span class="ident">attribute_has_skip</span>(<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">attrs</span>) } ).<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
+    <span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">enum_variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">ident</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value_name</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">to_string</span>().<span class="ident">to_camel_case</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value_nick</span> <span class="op">=</span> <span class="ident">name</span>.<span class="ident">to_string</span>().<span class="ident">to_kebab_case</span>();
 
-        <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">parse_item_attributes</span>(<span class="string">&quot;gflags&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">attrs</span>);
+        <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">parse_item_attributes</span>(<span class="string">&quot;enum_value&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">attrs</span>);
         <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">attrs</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">attrs</span>) =&gt; <span class="ident">attrs</span>,
             <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">abort_call_site!</span>(
-                <span class="string">&quot;{}: gflags enum supports only the following optional attributes: #[gflags(name = \&quot;The Name\&quot;, nick = \&quot;the-nick\&quot;)] or #[gflags(skip)]&quot;</span>,
+                <span class="string">&quot;{}: derive(glib::Enum) enum supports only the following optional attributes: #[enum_value(name = \&quot;The Cat\&quot;, nick = \&quot;chat\&quot;)]&quot;</span>,
                 <span class="ident">e</span>
             ),
         };
@@ -332,8 +301,8 @@
 
         <span class="ident">n</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
         <span class="macro">quote_spanned!</span> {<span class="ident">v</span>.<span class="ident">span</span>()=&gt;
-            #<span class="ident">crate_ident::gobject_ffi::GFlagsValue</span> {
-                <span class="ident">value</span>: #<span class="ident">enum_name</span>::#<span class="ident">name</span>.<span class="ident">bits</span>(),
+            #<span class="ident">crate_ident::gobject_ffi::GEnumValue</span> {
+                <span class="ident">value</span>: #<span class="ident">enum_name</span>::#<span class="ident">name</span> <span class="kw">as</span> <span class="ident">i32</span>,
                 <span class="ident">value_name</span>: #<span class="ident">value_name</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
                 <span class="ident">value_nick</span>: #<span class="ident">value_nick</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
             },
@@ -347,58 +316,53 @@
     )
 }
 
-<span class="kw">fn</span> <span class="ident">gen_bitflags</span>(
-    <span class="ident">enum_name</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>,
-    <span class="ident">visibility</span>: <span class="kw-2">&amp;</span><span class="ident">Visibility</span>,
-    <span class="ident">enum_variants</span>: <span class="kw-2">&amp;</span><span class="ident">Punctuated</span><span class="op">&lt;</span><span class="ident">Variant</span>, <span class="ident">Comma</span><span class="op">&gt;</span>,
-    <span class="ident">crate_ident</span>: <span class="kw-2">&amp;</span><span class="ident">TokenStream</span>,
-) -&gt; <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">enum_variants</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> {
-        <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">ident</span>;
-        <span class="kw">let</span> <span class="ident">disc</span> <span class="op">=</span> <span class="ident">v</span>.<span class="ident">discriminant</span>.<span class="ident">as_ref</span>().<span class="ident">expect</span>(<span class="string">&quot;missing discriminant&quot;</span>);
-        <span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">disc</span>.<span class="number">1</span>;
-
-        <span class="macro">quote_spanned!</span> {<span class="ident">v</span>.<span class="ident">span</span>()=&gt;
-            <span class="kw">const</span> #<span class="ident">name</span> <span class="op">=</span> #<span class="ident">value</span>;
-        }
-    });
-
-    <span class="macro">quote!</span> {
-        #<span class="macro">crate_ident::bitflags::bitflags!</span> {
-            #<span class="ident">visibility</span> <span class="kw">struct</span> #<span class="ident">enum_name</span>: <span class="ident">u32</span> {
-                #(#<span class="ident">recurse</span>)<span class="op">*</span>
-            }
-        }
-    }
-}
-
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_gflags</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">DeriveInput</span>, <span class="ident">gtype_name</span>: <span class="kw-2">&amp;</span><span class="ident">LitStr</span>) -&gt; <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">visibility</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">vis</span>;
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">impl_enum</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>;
-    <span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="ident">crate_ident_new</span>();
 
     <span class="kw">let</span> <span class="ident">enum_variants</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">input</span>.<span class="ident">data</span> {
         <span class="ident">Data::Enum</span>(<span class="kw-2">ref</span> <span class="ident">e</span>) =&gt; <span class="kw-2">&amp;</span><span class="ident">e</span>.<span class="ident">variants</span>,
-        <span class="kw">_</span> =&gt; <span class="macro">abort_call_site!</span>(<span class="string">&quot;gflags only supports enums&quot;</span>),
+        <span class="kw">_</span> =&gt; <span class="macro">abort_call_site!</span>(<span class="string">&quot;#[derive(glib::Enum)] only supports enums&quot;</span>),
     };
 
-    <span class="kw">let</span> <span class="ident">bitflags</span> <span class="op">=</span> <span class="ident">gen_bitflags</span>(<span class="ident">name</span>, <span class="ident">visibility</span>, <span class="ident">enum_variants</span>, <span class="kw-2">&amp;</span><span class="ident">crate_ident</span>);
-    <span class="kw">let</span> (<span class="ident">gflags_values</span>, <span class="ident">nb_gflags_values</span>) <span class="op">=</span> <span class="ident">gen_gflags_values</span>(<span class="ident">name</span>, <span class="ident">enum_variants</span>);
+    <span class="kw">let</span> <span class="ident">gtype_name</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">parse_name</span>(<span class="ident">input</span>, <span class="string">&quot;enum_type&quot;</span>) {
+        <span class="prelude-val">Ok</span>(<span class="ident">name</span>) =&gt; <span class="ident">name</span>,
+        <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="macro">abort_call_site!</span>(
+            <span class="string">&quot;{}: #[derive(glib::Enum)] requires #[enum_type(name = \&quot;EnumTypeName\&quot;)]&quot;</span>,
+            <span class="ident">e</span>
+        ),
+    };
+
+    <span class="kw">let</span> <span class="ident">from_glib</span> <span class="op">=</span> <span class="ident">gen_enum_from_glib</span>(<span class="ident">name</span>, <span class="ident">enum_variants</span>);
+    <span class="kw">let</span> (<span class="ident">enum_values</span>, <span class="ident">nb_enum_values</span>) <span class="op">=</span> <span class="ident">gen_enum_values</span>(<span class="ident">name</span>, <span class="ident">enum_variants</span>);
+
+    <span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="ident">crate_ident_new</span>();
 
     <span class="macro">quote!</span> {
-        #<span class="ident">bitflags</span>
-
         <span class="kw">impl</span> #<span class="ident">crate_ident::translate::IntoGlib</span> <span class="kw">for</span> #<span class="ident">name</span> {
-            <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">u32</span>;
+            <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="ident">i32</span>;
 
-            <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">u32</span> {
-                <span class="self">self</span>.<span class="ident">bits</span>()
+            <span class="kw">fn</span> <span class="ident">into_glib</span>(<span class="self">self</span>) -&gt; <span class="ident">i32</span> {
+                <span class="self">self</span> <span class="kw">as</span> <span class="ident">i32</span>
             }
         }
 
-        <span class="kw">impl</span> #<span class="ident">crate_ident::translate::FromGlib</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="kw">for</span> #<span class="ident">name</span> {
-            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">u32</span>) -&gt; <span class="self">Self</span> {
-                <span class="ident"><span class="self">Self</span>::from_bits_truncate</span>(<span class="ident">value</span>)
+        <span class="kw">impl</span> #<span class="ident">crate_ident::translate::TryFromGlib</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">i32</span>;
+
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">value</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">i32</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="ident">from_glib</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> {
+                    #<span class="ident">from_glib</span>
+                };
+
+                <span class="ident">from_glib</span>().<span class="ident">ok_or</span>(<span class="ident">value</span>)
+            }
+        }
+
+        <span class="kw">impl</span> #<span class="ident">crate_ident::translate::FromGlib</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">value</span>: <span class="ident">i32</span>) -&gt; <span class="self">Self</span> {
+                <span class="kw">use</span> #<span class="ident">crate_ident::translate::TryFromGlib</span>;
+
+                <span class="ident"><span class="self">Self</span>::try_from_glib</span>(<span class="ident">value</span>).<span class="ident">unwrap</span>()
             }
         }
 
@@ -410,7 +374,7 @@
             <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> #<span class="ident">crate_ident::value::GenericValueTypeChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> #<span class="ident">crate_ident::value::Value</span>) -&gt; <span class="self">Self</span> {
-                #<span class="ident">crate_ident::translate::from_glib</span>(#<span class="ident">crate_ident::gobject_ffi::g_value_get_flags</span>(
+                #<span class="ident">crate_ident::translate::from_glib</span>(#<span class="ident">crate_ident::gobject_ffi::g_value_get_enum</span>(
                     #<span class="ident">crate_ident::translate::ToGlibPtr::to_glib_none</span>(<span class="ident">value</span>).<span class="number">0</span>
                 ))
             }
@@ -420,7 +384,7 @@
             <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">crate_ident::value::Value</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> #<span class="ident">crate_ident::value::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
                 <span class="kw">unsafe</span> {
-                    #<span class="ident">crate_ident::gobject_ffi::g_value_set_flags</span>(
+                    #<span class="ident">crate_ident::gobject_ffi::g_value_set_enum</span>(
                         #<span class="ident">crate_ident::translate::ToGlibPtrMut::to_glib_none_mut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">value</span>).<span class="number">0</span>,
                         #<span class="ident">crate_ident::translate::IntoGlib::into_glib</span>(<span class="kw-2">*</span><span class="self">self</span>)
                     )
@@ -439,9 +403,9 @@
                 <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">TYPE</span>: #<span class="ident">crate_ident::Type</span> <span class="op">=</span> #<span class="ident">crate_ident::Type::INVALID</span>;
 
                 <span class="ident">ONCE</span>.<span class="ident">call_once</span>(<span class="op">|</span><span class="op">|</span> {
-                    <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">VALUES</span>: [#<span class="ident">crate_ident::gobject_ffi::GFlagsValue</span>; #<span class="ident">nb_gflags_values</span>] <span class="op">=</span> [
-                        #<span class="ident">gflags_values</span>
-                        #<span class="ident">crate_ident::gobject_ffi::GFlagsValue</span> {
+                    <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">VALUES</span>: [#<span class="ident">crate_ident::gobject_ffi::GEnumValue</span>; #<span class="ident">nb_enum_values</span>] <span class="op">=</span> [
+                        #<span class="ident">enum_values</span>
+                        #<span class="ident">crate_ident::gobject_ffi::GEnumValue</span> {
                             <span class="ident">value</span>: <span class="number">0</span>,
                             <span class="ident">value_name</span>: <span class="ident">std::ptr::null</span>(),
                             <span class="ident">value_nick</span>: <span class="ident">std::ptr::null</span>(),
@@ -450,7 +414,7 @@
 
                     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">std::ffi::CString::new</span>(#<span class="ident">gtype_name</span>).<span class="ident">expect</span>(<span class="string">&quot;CString::new failed&quot;</span>);
                     <span class="kw">unsafe</span> {
-                        <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> #<span class="ident">crate_ident::gobject_ffi::g_flags_register_static</span>(<span class="ident">name</span>.<span class="ident">as_ptr</span>(), <span class="ident">VALUES</span>.<span class="ident">as_ptr</span>());
+                        <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> #<span class="ident">crate_ident::gobject_ffi::g_enum_register_static</span>(<span class="ident">name</span>.<span class="ident">as_ptr</span>(), <span class="ident">VALUES</span>.<span class="ident">as_ptr</span>());
                         <span class="ident">TYPE</span> <span class="op">=</span> #<span class="ident">crate_ident::translate::from_glib</span>(<span class="ident">type_</span>);
                     }
                 });
