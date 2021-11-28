@@ -2642,7 +2642,7 @@
     <span class="doccomment">/// If the property `name` doesn&#39;t exist in the interface.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsInterface</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_interface</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsInterface</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">ParamSpec</span> {
         <span class="macro">assert!</span>(
             <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
             <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
@@ -2675,7 +2675,7 @@
     <span class="doccomment">/// If the property `name` doesn&#39;t exist in the class.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::new_ret_no_self</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_override&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_class</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsClass</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_class</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Object</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">IsClass</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">ParamSpec</span> {
         <span class="macro">assert!</span>(
             <span class="ident">is_canonical_pspec_name</span>(<span class="ident">name</span>),
             <span class="string">&quot;{} is not a valid canonical parameter name&quot;</span>,
