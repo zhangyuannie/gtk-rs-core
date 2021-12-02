@@ -602,6 +602,28 @@
 <span id="528">528</span>
 <span id="529">529</span>
 <span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="doccomment">//! Runtime type information.</span>
@@ -621,69 +643,91 @@
 
 <span class="kw">impl</span> <span class="ident">Type</span> {
     <span class="doccomment">/// An invalid `Type` used as error return value in some functions</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INVALID&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INVALID</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INVALID</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to the unit type `()`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_NONE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UNIT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_NONE</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `i8`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_CHAR&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I8</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_CHAR</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `u8`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UCHAR&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U8</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UCHAR</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `bool`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_BOOLEAN&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BOOL</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_BOOLEAN</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `i32`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INT</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `u32`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UINT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UINT</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to C `long`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_LONG&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I_LONG</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_LONG</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to C `unsigned long`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_ULONG&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U_LONG</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_ULONG</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `i64`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INT64</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `u64`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UINT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UINT64</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `f32`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_FLOAT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">F32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_FLOAT</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `f64`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_DOUBLE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">F64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_DOUBLE</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to `String`</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_STRING&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STRING</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_STRING</span>);
 
     <span class="doccomment">/// The fundamental type corresponding to a pointer</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_POINTER&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">POINTER</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_POINTER</span>);
 
     <span class="doccomment">/// The fundamental type of GVariant</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_VARIANT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_VARIANT</span>);
 
     <span class="doccomment">/// The fundamental type from which all interfaces are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INTERFACE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INTERFACE</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INTERFACE</span>);
 
     <span class="doccomment">/// The fundamental type from which all enumeration types are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_ENUM&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENUM</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_ENUM</span>);
 
     <span class="doccomment">/// The fundamental type from which all flags types are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_FLAGS&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FLAGS</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_FLAGS</span>);
 
     <span class="doccomment">/// The fundamental type from which all boxed types are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_BOXED&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BOXED</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_BOXED</span>);
 
     <span class="doccomment">/// The fundamental type from which all `GParamSpec` types are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_PARAM&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAM_SPEC</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_PARAM</span>);
 
     <span class="doccomment">/// The fundamental type from which all objects are derived</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_OBJECT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OBJECT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_OBJECT</span>);
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_type_name&quot;</span>)]</span>
@@ -1133,5 +1177,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (686e313a9 2021-11-27)" ></div>
+</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (48a5999fc 2021-12-01)" ></div>
 </body></html>
