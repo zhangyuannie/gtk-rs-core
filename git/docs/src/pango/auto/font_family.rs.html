@@ -290,16 +290,16 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`FontFamily`][struct@crate::FontFamily]</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FontFamilyExt</span>: <span class="lifetime">&#39;static</span> {
-    <span class="doccomment">/// Gets the [`FontFace`][crate::FontFace] of `self` with the given name.</span>
+    <span class="doccomment">/// Gets the [`FontFace`][crate::FontFace] of @self with the given name.</span>
     <span class="doccomment">/// ## `name`</span>
     <span class="doccomment">/// the name of a face. If the name is [`None`],</span>
-    <span class="doccomment">///  the family&#39;s default face (fontconfig calls it &quot;Regular&quot;)</span>
-    <span class="doccomment">///  will be returned.</span>
+    <span class="doccomment">///   the family&#39;s default face (fontconfig calls it &quot;Regular&quot;)</span>
+    <span class="doccomment">///   will be returned.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the [`FontFace`][crate::FontFace],</span>
-    <span class="doccomment">///  or [`None`] if no face with the given name exists.</span>
+    <span class="doccomment">///   or [`None`] if no face with the given name exists.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_family_get_face&quot;</span>)]</span>
@@ -315,7 +315,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the name of the family. This string is owned</span>
-    <span class="doccomment">///  by the family object and must not be modified or freed.</span>
+    <span class="doccomment">///   by the family object and must not be modified or freed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_family_get_name&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_name&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span>;
@@ -327,12 +327,12 @@
     <span class="doccomment">/// mean that the advance width of all characters are the same, but</span>
     <span class="doccomment">/// this categorization also includes Asian fonts which include</span>
     <span class="doccomment">/// double-width characters: characters that occupy two grid cells.</span>
-    <span class="doccomment">/// `g_unichar_iswide()` returns a result that indicates whether a</span>
+    <span class="doccomment">/// g_unichar_iswide() returns a result that indicates whether a</span>
     <span class="doccomment">/// character is typically double-width in a monospace font.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The best way to find out the grid-cell size is to call</span>
-    <span class="doccomment">/// [``FontMetrics::approximate_digit_width()``][crate::`FontMetrics::approximate_digit_width()`], since the</span>
-    <span class="doccomment">/// results of [``FontMetrics::approximate_char_width()``][crate::`FontMetrics::approximate_char_width()`] may</span>
+    <span class="doccomment">/// [`FontMetrics::approximate_digit_width()`][crate::FontMetrics::approximate_digit_width()], since the</span>
+    <span class="doccomment">/// results of [`FontMetrics::approximate_char_width()`][crate::FontMetrics::approximate_char_width()] may</span>
     <span class="doccomment">/// be affected by double-width characters.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
@@ -352,7 +352,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_family_is_variable&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">is_variable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>;
 
-    <span class="doccomment">/// Lists the different font faces that make up `self`.</span>
+    <span class="doccomment">/// Lists the different font faces that make up @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The faces in a family share a common design, but differ in slant, weight,</span>
     <span class="doccomment">/// width and other aspects.</span>
@@ -362,9 +362,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `faces`</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  location to store an array of pointers to [`FontFace`][crate::FontFace] objects,</span>
-    <span class="doccomment">///  or [`None`]. This array should be freed with `g_free()` when it is no</span>
-    <span class="doccomment">///  longer needed.</span>
+    <span class="doccomment">///   location to store an array of pointers to [`FontFace`][crate::FontFace] objects,</span>
+    <span class="doccomment">///   or [`None`]. This array should be freed with g_free() when it is no</span>
+    <span class="doccomment">///   longer needed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_family_list_faces&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">list_faces</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FontFace</span><span class="op">&gt;</span>;
 }

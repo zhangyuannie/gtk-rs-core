@@ -450,7 +450,7 @@
 <span class="macro">bitflags!</span> {
     <span class="doccomment">/// Flags influencing the shaping process.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`ShapeFlags`][crate::ShapeFlags] can be passed to ``shape_with_flags()``.</span>
+    <span class="doccomment">/// [`ShapeFlags`][crate::ShapeFlags] can be passed to `shape_with_flags()`.</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoShapeFlags&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ShapeFlags</span>: <span class="ident">u32</span> {
@@ -458,9 +458,9 @@
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_SHAPE_NONE&quot;</span>)]</span>
         <span class="kw">const</span> <span class="ident">NONE</span> <span class="op">=</span> <span class="ident">ffi::PANGO_SHAPE_NONE</span> <span class="kw">as</span> <span class="ident">u32</span>;
         <span class="doccomment">/// Round glyph positions</span>
-        <span class="doccomment">///  and widths to whole device units. This option should</span>
-        <span class="doccomment">///  be set if the target renderer can&#39;t do subpixel</span>
-        <span class="doccomment">///  positioning of glyphs.</span>
+        <span class="doccomment">///   and widths to whole device units. This option should</span>
+        <span class="doccomment">///   be set if the target renderer can&#39;t do subpixel</span>
+        <span class="doccomment">///   positioning of glyphs.</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_SHAPE_ROUND_POSITIONS&quot;</span>)]</span>
         <span class="kw">const</span> <span class="ident">ROUND_POSITIONS</span> <span class="op">=</span> <span class="ident">ffi::PANGO_SHAPE_ROUND_POSITIONS</span> <span class="kw">as</span> <span class="ident">u32</span>;
     }
@@ -551,7 +551,7 @@
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_SHOW_LINE_BREAKS&quot;</span>)]</span>
         <span class="kw">const</span> <span class="ident">LINE_BREAKS</span> <span class="op">=</span> <span class="ident">ffi::PANGO_SHOW_LINE_BREAKS</span> <span class="kw">as</span> <span class="ident">u32</span>;
         <span class="doccomment">/// Render default-ignorable Unicode</span>
-        <span class="doccomment">///  characters visibly</span>
+        <span class="doccomment">///   characters visibly</span>
         <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_SHOW_IGNORABLES&quot;</span>)]</span>
         <span class="kw">const</span> <span class="ident">IGNORABLES</span> <span class="op">=</span> <span class="ident">ffi::PANGO_SHOW_IGNORABLES</span> <span class="kw">as</span> <span class="ident">u32</span>;
     }

@@ -367,7 +367,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the newly allocated [`GlyphString`][crate::GlyphString], which</span>
-    <span class="doccomment">///  should be freed with `Pango::`GlyphString::free()``.</span>
+    <span class="doccomment">///   should be freed with `Pango::GlyphString::free()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_glyph_string_new&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">GlyphString</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::pango_glyph_string_new</span>()) }
@@ -375,7 +375,7 @@
 
     <span class="doccomment">/// Compute the logical and ink extents of a glyph string.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See the documentation for [``FontExt::glyph_extents()``][crate::prelude::`FontExt::glyph_extents()`] for details</span>
+    <span class="doccomment">/// See the documentation for [`FontExt::glyph_extents()`][crate::prelude::FontExt::glyph_extents()] for details</span>
     <span class="doccomment">/// about the interpretation of the rectangles.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Examples of logical (red) and ink (green) rects:</span>
@@ -416,7 +416,7 @@
     <span class="doccomment">/// start index</span>
     <span class="doccomment">/// ## `end`</span>
     <span class="doccomment">/// end index (the range is the set of bytes with</span>
-    <span class="doccomment">///  indices such that start &lt;= index &lt; end)</span>
+    <span class="doccomment">///   indices such that start &lt;= index &lt; end)</span>
     <span class="doccomment">/// ## `font`</span>
     <span class="doccomment">/// a [`Font`][crate::Font]</span>
     <span class="doccomment">///</span>
@@ -425,11 +425,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ink_rect`</span>
     <span class="doccomment">/// rectangle used to</span>
-    <span class="doccomment">///  store the extents of the glyph string range as drawn</span>
+    <span class="doccomment">///   store the extents of the glyph string range as drawn</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `logical_rect`</span>
     <span class="doccomment">/// rectangle used to</span>
-    <span class="doccomment">///  store the logical extents of the glyph string range</span>
+    <span class="doccomment">///   store the logical extents of the glyph string range</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_glyph_string_extents_range&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extents_range</span>(
         <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
@@ -460,10 +460,10 @@
 
     <span class="doccomment">/// Computes the logical width of the glyph string.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This can also be computed using [``extents()``][`Self::extents()`].</span>
+    <span class="doccomment">/// This can also be computed using [`extents()`][Self::extents()].</span>
     <span class="doccomment">/// However, since this only computes the width, it&#39;s much faster. This</span>
     <span class="doccomment">/// is in fact only a convenience function that computes the sum of</span>
-    <span class="doccomment">/// `geometry` for each glyph in the `self`.</span>
+    <span class="doccomment">/// @geometry.width for each glyph in the @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -481,21 +481,21 @@
     <span class="doccomment">/// where available, and computed by dividing up each cluster</span>
     <span class="doccomment">/// into equal portions, otherwise.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;glyphstring-positions-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Glyph positions&quot; src=&quot;glyphstring-positions-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;glyphstring-positions-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Glyph positions&quot; src=&quot;glyphstring-positions-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="doccomment">/// ## `text`</span>
     <span class="doccomment">/// the text for the run</span>
     <span class="doccomment">/// ## `length`</span>
-    <span class="doccomment">/// the number of bytes (not characters) in `text`.</span>
+    <span class="doccomment">/// the number of bytes (not characters) in @text.</span>
     <span class="doccomment">/// ## `analysis`</span>
-    <span class="doccomment">/// the analysis information return from [``itemize()``][`crate::itemize()`]</span>
+    <span class="doccomment">/// the analysis information return from [`itemize()`][crate::itemize()]</span>
     <span class="doccomment">/// ## `index_`</span>
-    <span class="doccomment">/// the byte index within `text`</span>
+    <span class="doccomment">/// the byte index within @text</span>
     <span class="doccomment">/// ## `trailing`</span>
     <span class="doccomment">/// whether we should compute the result for the beginning ([`false`])</span>
-    <span class="doccomment">///  or end ([`true`]) of the character.</span>
+    <span class="doccomment">///   or end ([`true`]) of the character.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -556,7 +556,7 @@
     <span class="doccomment">/// ## `length`</span>
     <span class="doccomment">/// the number of bytes (not characters) in text.</span>
     <span class="doccomment">/// ## `analysis`</span>
-    <span class="doccomment">/// the analysis information return from [``itemize()``][`crate::itemize()`]</span>
+    <span class="doccomment">/// the analysis information return from [`itemize()`][crate::itemize()]</span>
     <span class="doccomment">/// ## `x_pos`</span>
     <span class="doccomment">/// the x offset (in Pango units)</span>
     <span class="doccomment">///</span>
@@ -564,11 +564,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `index_`</span>
-    <span class="doccomment">/// location to store calculated byte index within `text`</span>
+    <span class="doccomment">/// location to store calculated byte index within @text</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `trailing`</span>
     <span class="doccomment">/// location to store a boolean indicating whether the</span>
-    <span class="doccomment">///  user clicked on the leading or trailing edge of the character</span>
+    <span class="doccomment">///   user clicked on the leading or trailing edge of the character</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_glyph_string_x_to_index&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_to_index</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">analysis</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Analysis</span>, <span class="ident">x_pos</span>: <span class="ident">i32</span>) -&gt; (<span class="ident">i32</span>, <span class="ident">i32</span>) {
         <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;

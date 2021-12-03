@@ -252,18 +252,18 @@
 <span class="doccomment">/// Whether to add a hyphen at the end of the run during shaping.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_ANALYSIS_FLAG_NEED_HYPHEN&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANALYSIS_FLAG_NEED_HYPHEN</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="ident">ffi::PANGO_ANALYSIS_FLAG_NEED_HYPHEN</span>;
-<span class="doccomment">/// Value for `start_index` in [`Attribute`][crate::Attribute] that indicates</span>
+<span class="doccomment">/// Value for @start_index in [`Attribute`][crate::Attribute] that indicates</span>
 <span class="doccomment">/// the beginning of the text.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ATTR_INDEX_FROM_TEXT_BEGINNING</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="ident">ffi::PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING</span>;
-<span class="doccomment">/// Value for `end_index` in [`Attribute`][crate::Attribute] that indicates</span>
+<span class="doccomment">/// Value for @end_index in [`Attribute`][crate::Attribute] that indicates</span>
 <span class="doccomment">/// the end of the text.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_ATTR_INDEX_TO_TEXT_END&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ATTR_INDEX_TO_TEXT_END</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="ident">ffi::PANGO_ATTR_INDEX_TO_TEXT_END</span>;
 <span class="doccomment">/// A `PangoGlyph` value that indicates a zero-width empty glpyh.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is useful for example in shaper modules, to use as the glyph for</span>
-<span class="doccomment">/// various zero-width Unicode characters (those passing [``is_zero_width()``][`crate::is_zero_width()`]).</span>
+<span class="doccomment">/// various zero-width Unicode characters (those passing [`is_zero_width()`][crate::is_zero_width()]).</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_GLYPH_EMPTY&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GLYPH_EMPTY</span>: <span class="ident">Glyph</span> <span class="op">=</span> <span class="ident">ffi::PANGO_GLYPH_EMPTY</span>;
 <span class="doccomment">/// A `PangoGlyph` value for invalid input.</span>

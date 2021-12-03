@@ -175,7 +175,7 @@
 <span class="macro">glib::wrapper!</span> {
     <span class="doccomment">/// A 3D volume delimited by 2D clip planes.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The contents of the `graphene_frustum_t` are private, and should not be</span>
+    <span class="doccomment">/// The contents of the [`Frustum`][crate::Frustum] are private, and should not be</span>
     <span class="doccomment">/// modified directly.</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Frustum</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">ffi::graphene_frustum_t</span><span class="op">&gt;</span>);

@@ -89,10 +89,10 @@ can be made.</p>
 <p>There are a number of parameters to adjust the formatting of a
 <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a>. The following image shows adjustable parameters
 (on the left) and font metrics (on the right):</p>
-<p><code>&lt;picture&gt;</code></p>
-<source srcset="layout-dark.png" media="(prefers-color-scheme: dark)">
- <img alt="Pango Layout Parameters" src="layout-light.png">
-`</picture>`
+<picture>
+  <source srcset="layout-dark.png" media="(prefers-color-scheme: dark)">
+  <img alt="Pango Layout Parameters" src="layout-light.png">
+</picture>
 <p>The following images demonstrate the effect of alignment and
 justification on the layout of text:</p>
 <div><table><thead><tr><th></th><th></th></tr></thead><tbody>
@@ -131,18 +131,18 @@ according to its contents.</p>
 <h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the bidirectional base direction
 is computed from the layout’s contents, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.baseline" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#153-155" title="goto source code">[src]</a></div><a href="#method.baseline" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.baseline" class="fnname">baseline</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the Y position of baseline of the first line in <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.baseline" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#153-155" title="goto source code">[src]</a></div><a href="#method.baseline" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.baseline" class="fnname">baseline</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the Y position of baseline of the first line in @self.</p>
 <h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
-<p>baseline of first line, from top of <code>self</code></p>
+<p>baseline of first line, from top of @self</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.caret_pos" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#183-195" title="goto source code">[src]</a></div><a href="#method.caret_pos" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.caret_pos" class="fnname">caret_pos</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a>, <a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_50</code></strong> only.</div></div></summary><div class="docblock"><p>Given an index within a layout, determines the positions that of the
 strong and weak cursors if the insertion point is at that index.</p>
 <p>This is a variant of <a href="struct.Layout.html#method.cursor_pos" title="Self::cursor_pos()"><code>cursor_pos()</code></a> that applies
 font metric information about caret slope and offset to the positions
 it returns.</p>
-<p><code>&lt;picture&gt;</code></p>
-<source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)">
- <img alt="Caret metrics" src="caret-metrics-light.png">
-`</picture>`
+<picture>
+  <source srcset="caret-metrics-dark.png" media="(prefers-color-scheme: dark)">
+  <img alt="Caret metrics" src="caret-metrics-light.png">
+</picture>
 ## `index_`
 the byte index of the cursor
 <h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5><h6 id="strong_pos" class="section-header"><a href="#strong_pos"><code>strong_pos</code></a></h6>
@@ -150,10 +150,10 @@ the byte index of the cursor
 <h6 id="weak_pos" class="section-header"><a href="#weak_pos"><code>weak_pos</code></a></h6>
 <p>location to store the weak cursor position</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.character_count" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#206-208" title="goto source code">[src]</a></div><a href="#method.character_count" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.character_count" class="fnname">character_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Returns the number of Unicode characters in the
-the text of <code>self</code>.</p>
+the text of @self.</p>
 <h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
 <p>the number of Unicode characters
-in the text of <code>self</code></p>
+in the text of @self</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.context" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#217-219" title="goto source code">[src]</a></div><a href="#method.context" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.context" class="fnname">context</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.Context.html" title="struct pango::Context">Context</a>&gt;</h4></div></summary><div class="docblock"><p>Retrieves the <a href="struct.Context.html" title="crate::Context"><code>Context</code></a> used for this layout.</p>
 <h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
 <p>the <a href="struct.Context.html" title="crate::Context"><code>Context</code></a> for the layout</p>
@@ -161,19 +161,19 @@ in the text of <code>self</code></p>
 strong and weak cursors if the insertion point is at that index.</p>
 <p>The position of each cursor is stored as a zero-width rectangle
 with the height of the run extents.</p>
-<p><code>&lt;picture&gt;</code></p>
-<source srcset="cursor-positions-dark.png" media="(prefers-color-scheme: dark)">
- <img alt="Cursor positions" src="cursor-positions-light.png">
-`</picture>`
+<picture>
+  <source srcset="cursor-positions-dark.png" media="(prefers-color-scheme: dark)">
+  <img alt="Cursor positions" src="cursor-positions-light.png">
+</picture>
 <p>The strong cursor location is the location where characters of the
 directionality equal to the base direction of the layout are inserted.
 The weak cursor location is the location where characters of the
 directionality opposite to the base direction of the layout are inserted.</p>
 <p>The following example shows text with both a strong and a weak cursor.</p>
-<p><code>&lt;picture&gt;</code></p>
-<source srcset="split-cursor-dark.png" media="(prefers-color-scheme: dark)">
- <img alt="Strong and weak cursors" src="split-cursor-light.png">
-`</picture>`
+<picture>
+  <source srcset="split-cursor-dark.png" media="(prefers-color-scheme: dark)">
+  <img alt="Strong and weak cursors" src="split-cursor-light.png">
+</picture>
 <p>The strong cursor has a little arrow pointing to the right, the weak
 cursor to the left. Typing a ‘c’ in this situation will insert the
 character after the ‘b’, and typing another Hebrew character, like ‘ג’,
@@ -184,18 +184,18 @@ will insert it at the end.</p>
 <p>location to store the strong cursor position</p>
 <h6 id="weak_pos-1" class="section-header"><a href="#weak_pos-1"><code>weak_pos</code></a></h6>
 <p>location to store the weak cursor position</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.direction" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#286-293" title="goto source code">[src]</a></div><a href="#method.direction" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.direction" class="fnname">direction</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="enum.Direction.html" title="enum pango::Direction">Direction</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_46</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the text direction at the given character position in <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.direction" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#286-293" title="goto source code">[src]</a></div><a href="#method.direction" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.direction" class="fnname">direction</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="enum.Direction.html" title="enum pango::Direction">Direction</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_46</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the text direction at the given character position in @self.</p>
 <h6 id="index" class="section-header"><a href="#index"><code>index</code></a></h6>
 <p>the byte index of the char</p>
 <h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
-<p>the text direction at <code>index</code></p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ellipsize" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#307-309" title="goto source code">[src]</a></div><a href="#method.ellipsize" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ellipsize" class="fnname">ellipsize</a>(&amp;self) -&gt; <a class="enum" href="enum.EllipsizeMode.html" title="enum pango::EllipsizeMode">EllipsizeMode</a></h4></div></summary><div class="docblock"><p>Gets the type of ellipsization being performed for <code>self</code>.</p>
+<p>the text direction at @index</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ellipsize" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#307-309" title="goto source code">[src]</a></div><a href="#method.ellipsize" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ellipsize" class="fnname">ellipsize</a>(&amp;self) -&gt; <a class="enum" href="enum.EllipsizeMode.html" title="enum pango::EllipsizeMode">EllipsizeMode</a></h4></div></summary><div class="docblock"><p>Gets the type of ellipsization being performed for @self.</p>
 <p>See <a href="struct.Layout.html#method.set_ellipsize" title="Self::set_ellipsize()"><code>set_ellipsize()</code></a>.</p>
 <p>Use <a href="struct.Layout.html#method.is_ellipsized" title="Self::is_ellipsized()"><code>is_ellipsized()</code></a> to query whether any
 paragraphs were actually ellipsized.</p>
 <h5 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h5>
-<p>the current ellipsization mode for <code>self</code></p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#334-345" title="goto source code">[src]</a></div><a href="#method.extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.extents" class="fnname">extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a>, <a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of <code>self</code>.</p>
+<p>the current ellipsization mode for @self</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#334-345" title="goto source code">[src]</a></div><a href="#method.extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.extents" class="fnname">extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a>, <a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of @self.</p>
 <p>Logical extents are usually what you want for positioning things. Note
 that both extents may have non-zero x and y. You may want to use those
 to offset where you render the layout. Not doing that is a very typical
@@ -245,7 +245,7 @@ plan to modify the contents of the line (glyphs, glyph widths, etc.).</p>
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the index is out of range. This layout line can be ref’ed
 and retained, but will become invalid if changes are made to the
 <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a>.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.line_count" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#459-461" title="goto source code">[src]</a></div><a href="#method.line_count" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.line_count" class="fnname">line_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Retrieves the count of lines for the <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.line_count" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#459-461" title="goto source code">[src]</a></div><a href="#method.line_count" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.line_count" class="fnname">line_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Retrieves the count of lines for the @self.</p>
 <h5 id="returns-20" class="section-header"><a href="#returns-20">Returns</a></h5>
 <p>the line count</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.line_readonly" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#480-487" title="goto source code">[src]</a></div><a href="#method.line_readonly" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.line_readonly" class="fnname">line_readonly</a>(&amp;self, line: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Retrieves a particular line from a <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a>.</p>
@@ -260,9 +260,9 @@ but the user is not expected to modify the contents of the line
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if the index is out of range. This layout line can be ref’ed
 and retained, but will become invalid if changes are made to the
 <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a>. No changes should be made to the line.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.line_spacing" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#496-498" title="goto source code">[src]</a></div><a href="#method.line_spacing" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.line_spacing" class="fnname">line_spacing</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the line spacing factor of <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.line_spacing" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#496-498" title="goto source code">[src]</a></div><a href="#method.line_spacing" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.line_spacing" class="fnname">line_spacing</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the line spacing factor of @self.</p>
 <p>See <a href="struct.Layout.html#method.set_line_spacing" title="Self::set_line_spacing()"><code>set_line_spacing()</code></a>.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.lines" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#513-517" title="goto source code">[src]</a></div><a href="#method.lines" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.lines" class="fnname">lines</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the lines of the <code>self</code> as a list.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.lines" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#513-517" title="goto source code">[src]</a></div><a href="#method.lines" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.lines" class="fnname">lines</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the lines of the @self as a list.</p>
 <p>Use the faster <a href="struct.Layout.html#method.lines_readonly" title="Self::lines_readonly()"><code>lines_readonly()</code></a> if you do not
 plan to modify the contents of the lines (glyphs, glyph widths, etc.).</p>
 <h5 id="returns-22" class="section-header"><a href="#returns-22">Returns</a></h5>
@@ -270,7 +270,7 @@ plan to modify the contents of the lines (glyphs, glyph widths, etc.).</p>
 containing the lines in the layout. This points to internal data of the
 <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> and must be used with care. It will become invalid on any
 change to the layout’s text or properties.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.lines_readonly" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#534-540" title="goto source code">[src]</a></div><a href="#method.lines_readonly" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.lines_readonly" class="fnname">lines_readonly</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the lines of the <code>self</code> as a list.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.lines_readonly" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#534-540" title="goto source code">[src]</a></div><a href="#method.lines_readonly" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.lines_readonly" class="fnname">lines_readonly</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Returns the lines of the @self as a list.</p>
 <p>This is a faster alternative to <a href="struct.Layout.html#method.lines" title="Self::lines()"><code>lines()</code></a>,
 but the user is not expected to modify the contents of the lines
 (glyphs, glyph widths, etc.).</p>
@@ -280,9 +280,9 @@ containing the lines in the layout. This points to internal data of the
 <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> and must be used with care. It will become invalid on any
 change to the layout’s text or properties. No changes should be made to
 the lines.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.pixel_extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#573-584" title="goto source code">[src]</a></div><a href="#method.pixel_extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.pixel_extents" class="fnname">pixel_extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a>, <a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of <code>self</code> in device units.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.pixel_extents" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#573-584" title="goto source code">[src]</a></div><a href="#method.pixel_extents" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.pixel_extents" class="fnname">pixel_extents</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a>, <a class="struct" href="struct.Rectangle.html" title="struct pango::Rectangle">Rectangle</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes the logical and ink extents of @self in device units.</p>
 <p>This function just calls <a href="struct.Layout.html#method.extents" title="Self::extents()"><code>extents()</code></a> followed by
-two <a href="functions/fn.extents_to_pixels.html" title="crate::extents_to_pixels()"><code>extents_to_pixels()</code></a> calls, rounding <code>ink_rect</code> and <code>logical_rect</code>
+two <a href="functions/fn.extents_to_pixels.html" title="crate::extents_to_pixels()"><code>extents_to_pixels()</code></a> calls, rounding @ink_rect and @logical_rect
 such that the rounded rectangles fully contain the unrounded one (that is,
 passes them as first argument to <a href="functions/fn.extents_to_pixels.html" title="crate::extents_to_pixels()"><code>extents_to_pixels()</code></a>).</p>
 <h5 id="returns-24" class="section-header"><a href="#returns-24">Returns</a></h5><h6 id="ink_rect-1" class="section-header"><a href="#ink_rect-1"><code>ink_rect</code></a></h6>
@@ -300,7 +300,7 @@ around <a href="struct.Layout.html#method.pixel_extents" title="Self::pixel_exte
 <p>location to store the logical width</p>
 <h6 id="height" class="section-header"><a href="#height"><code>height</code></a></h6>
 <p>location to store the logical height</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.serial" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#636-638" title="goto source code">[src]</a></div><a href="#method.serial" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.serial" class="fnname">serial</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></h4></div></summary><div class="docblock"><p>Returns the current serial number of <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.serial" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#636-638" title="goto source code">[src]</a></div><a href="#method.serial" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.serial" class="fnname">serial</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></h4></div></summary><div class="docblock"><p>Returns the current serial number of @self.</p>
 <p>The serial number is initialized to an small number larger than zero
 when a new layout is created and is increased whenever the layout is
 changed using any of the setter functions, or the <a href="struct.Context.html" title="crate::Context"><code>Context</code></a> it
@@ -311,8 +311,8 @@ and is useful for example to decide whether a layout needs redrawing.
 To force the serial to be increased, use
 <a href="struct.Layout.html#method.context_changed" title="Self::context_changed()"><code>context_changed()</code></a>.</p>
 <h5 id="returns-26" class="section-header"><a href="#returns-26">Returns</a></h5>
-<p>The current serial number of <code>self</code>.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_single_paragraph_mode" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#650-656" title="goto source code">[src]</a></div><a href="#method.is_single_paragraph_mode" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_single_paragraph_mode" class="fnname">is_single_paragraph_mode</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Obtains whether <code>self</code> is in single paragraph mode.</p>
+<p>The current serial number of @self.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_single_paragraph_mode" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#650-656" title="goto source code">[src]</a></div><a href="#method.is_single_paragraph_mode" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_single_paragraph_mode" class="fnname">is_single_paragraph_mode</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Obtains whether @self is in single paragraph mode.</p>
 <p>See <a href="struct.Layout.html#method.set_single_paragraph_mode" title="Self::set_single_paragraph_mode()"><code>set_single_paragraph_mode()</code></a>.</p>
 <h5 id="returns-27" class="section-header"><a href="#returns-27">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the layout does not break paragraphs
@@ -330,20 +330,20 @@ units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.tabs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#711-713" title="goto source code">[src]</a></div><a href="#method.tabs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.tabs" class="fnname">tabs</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.TabArray.html" title="struct pango::TabArray">TabArray</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the current <a href="struct.TabArray.html" title="crate::TabArray"><code>TabArray</code></a> used by this layout.</p>
 <p>If no <a href="struct.TabArray.html" title="crate::TabArray"><code>TabArray</code></a> has been set, then the default tabs are
 in use and <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned. Default tabs are every 8 spaces.</p>
-<p>The return value should be freed with <code>Pango::</code>TabArray::free()``.</p>
+<p>The return value should be freed with <code>Pango::TabArray::free()</code>.</p>
 <h5 id="returns-30" class="section-header"><a href="#returns-30">Returns</a></h5>
 <p>a copy of the tabs for this layout</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.text" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#724-726" title="goto source code">[src]</a></div><a href="#method.text" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.text" class="fnname">text</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the text in the layout.</p>
 <p>The returned text should not be freed or modified.</p>
 <h5 id="returns-31" class="section-header"><a href="#returns-31">Returns</a></h5>
-<p>the text in the <code>self</code></p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.unknown_glyphs_count" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#740-742" title="goto source code">[src]</a></div><a href="#method.unknown_glyphs_count" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.unknown_glyphs_count" class="fnname">unknown_glyphs_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Counts the number of unknown glyphs in <code>self</code>.</p>
+<p>the text in the @self</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.unknown_glyphs_count" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#740-742" title="goto source code">[src]</a></div><a href="#method.unknown_glyphs_count" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.unknown_glyphs_count" class="fnname">unknown_glyphs_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Counts the number of unknown glyphs in @self.</p>
 <p>This function can be used to determine if there are any fonts
 available to render all characters in a certain string, or when
 used in combination with <a href="enum.AttrType.html#variant.Fallback" title="crate::AttrType::Fallback"><code>AttrType::Fallback</code></a>, to check if a
 certain font supports all the characters in the string.</p>
 <h5 id="returns-32" class="section-header"><a href="#returns-32">Returns</a></h5>
-<p>The number of unknown glyphs in <code>self</code></p>
+<p>The number of unknown glyphs in @self</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#751-753" title="goto source code">[src]</a></div><a href="#method.width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.width" class="fnname">width</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the width to which the lines of the <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> should wrap.</p>
 <h5 id="returns-33" class="section-header"><a href="#returns-33">Returns</a></h5>
 <p>the width in Pango units, or -1 if no width set.</p>
@@ -352,7 +352,7 @@ certain font supports all the characters in the string.</p>
 any paragraphs were actually wrapped.</p>
 <h5 id="returns-34" class="section-header"><a href="#returns-34">Returns</a></h5>
 <p>active wrap mode.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.index_to_line_x" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#790-805" title="goto source code">[src]</a></div><a href="#method.index_to_line_x" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.index_to_line_x" class="fnname">index_to_line_x</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, trailing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Converts from byte <code>index_</code> within the <code>self</code> to line and X position.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.index_to_line_x" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#790-805" title="goto source code">[src]</a></div><a href="#method.index_to_line_x" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.index_to_line_x" class="fnname">index_to_line_x</a>(&amp;self, index_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, trailing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Converts from byte @index_ within the @self to line and X position.</p>
 <p>The X position is measured from the left edge of the line.</p>
 <h6 id="index_-1" class="section-header"><a href="#index_-1"><code>index_</code></a></h6>
 <p>the byte index of a grapheme within the layout</p>
@@ -373,29 +373,29 @@ always the leading edge of the grapheme and <code>pos-&gt;x + pos-&gt;width</cod
 trailing edge of the grapheme. If the directionality of the grapheme
 is right-to-left, then <code>pos-&gt;width</code> will be negative.</p>
 <h6 id="index_-2" class="section-header"><a href="#index_-2"><code>index_</code></a></h6>
-<p>byte index within <code>self</code></p>
+<p>byte index within @self</p>
 <h5 id="returns-36" class="section-header"><a href="#returns-36">Returns</a></h5><h6 id="pos" class="section-header"><a href="#pos"><code>pos</code></a></h6>
 <p>rectangle in which to store the position of the grapheme</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_ellipsized" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#843-845" title="goto source code">[src]</a></div><a href="#method.is_ellipsized" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_ellipsized" class="fnname">is_ellipsized</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Queries whether the layout had to ellipsize any paragraphs.</p>
-<p>This returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the ellipsization mode for <code>self</code>
-is not <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>, a positive width is set on <code>self</code>,
+<p>This returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the ellipsization mode for @self
+is not <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>, a positive width is set on @self,
 and there are paragraphs exceeding that width that have to be
 ellipsized.</p>
 <h5 id="returns-37" class="section-header"><a href="#returns-37">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if any paragraphs had to be ellipsized,
 <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_wrapped" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#859-861" title="goto source code">[src]</a></div><a href="#method.is_wrapped" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_wrapped" class="fnname">is_wrapped</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Queries whether the layout had to wrap any paragraphs.</p>
-<p>This returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a positive width is set on <code>self</code>,
-ellipsization mode of <code>self</code> is set to <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>,
+<p>This returns <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a positive width is set on @self,
+ellipsization mode of @self is set to <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>,
 and there are paragraphs exceeding the layout width that have
 to be wrapped.</p>
 <h5 id="returns-38" class="section-header"><a href="#returns-38">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if any paragraphs had to be wrapped, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a>
 otherwise</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.move_cursor_visually" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#909-932" title="goto source code">[src]</a></div><a href="#method.move_cursor_visually" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.move_cursor_visually" class="fnname">move_cursor_visually</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;strong: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;old_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;old_trailing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;direction: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></h4></div></summary><div class="docblock"><p>Computes a new cursor position from an old position and a direction.</p>
-<p>If <code>direction</code> is positive, then the new position will cause the strong
+<p>If @direction is positive, then the new position will cause the strong
 or weak cursor to be displayed one position to right of where it was
-with the old cursor position. If <code>direction</code> is negative, it will be
+with the old cursor position. If @direction is negative, it will be
 moved to the left.</p>
 <p>In the presence of bidirectional text, the correspondence between
 logical and visual order will depend on the direction of the current
@@ -412,7 +412,7 @@ to text insertion in the base direction for the layout.</p>
 <p>the byte index of the current cursor position</p>
 <h6 id="old_trailing" class="section-header"><a href="#old_trailing"><code>old_trailing</code></a></h6>
 <p>if 0, the cursor was at the leading edge of the
-grapheme indicated by <code>old_index</code>, if &gt; 0, the cursor
+grapheme indicated by @old_index, if &gt; 0, the cursor
 was at the trailing edge.</p>
 <h6 id="direction" class="section-header"><a href="#direction"><code>direction</code></a></h6>
 <p>direction to move cursor. A negative
@@ -424,10 +424,10 @@ beginning of the layout. A value of <code>G_MAXINT</code> indicates that
 the cursor has been moved off the end of the layout.</p>
 <h6 id="new_trailing" class="section-header"><a href="#new_trailing"><code>new_trailing</code></a></h6>
 <p>number of characters to move forward from
-the location returned for <code>new_index</code> to get the position where
+the location returned for @new_index to get the position where
 the cursor should be displayed. This allows distinguishing the
 position at the beginning of one line from the position at the
-end of the preceding line. <code>new_index</code> is always on the line where
+end of the preceding line. @new_index is always on the line where
 the cursor should be displayed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_alignment" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#941-945" title="goto source code">[src]</a></div><a href="#method.set_alignment" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_alignment" class="fnname">set_alignment</a>(&amp;self, alignment: <a class="enum" href="enum.Alignment.html" title="enum pango::Alignment">Alignment</a>)</h4></div></summary><div class="docblock"><p>Sets the alignment for the layout: how partial lines are
 positioned within the horizontal space available.</p>
@@ -435,12 +435,12 @@ positioned within the horizontal space available.</p>
 <h6 id="alignment" class="section-header"><a href="#alignment"><code>alignment</code></a></h6>
 <p>the alignment</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_attributes" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#953-957" title="goto source code">[src]</a></div><a href="#method.set_attributes" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_attributes" class="fnname">set_attributes</a>(&amp;self, attrs: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.AttrList.html" title="struct pango::AttrList">AttrList</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets the text attributes for a layout object.</p>
-<p>References <code>attrs</code>, so the caller can unref its reference.</p>
+<p>References @attrs, so the caller can unref its reference.</p>
 <h6 id="attrs" class="section-header"><a href="#attrs"><code>attrs</code></a></h6>
 <p>a <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_auto_dir" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#979-983" title="goto source code">[src]</a></div><a href="#method.set_auto_dir" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_auto_dir" class="fnname">set_auto_dir</a>(&amp;self, auto_dir: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></div></summary><div class="docblock"><p>Sets whether to calculate the base direction
 for the layout according to its contents.</p>
-<p>When this flag is on (the default), then paragraphs in <code>self</code> that
+<p>When this flag is on (the default), then paragraphs in @self that
 begin with strong right-to-left characters (Arabic and Hebrew principally),
 will have right-to-left layout, paragraphs with letters from other scripts
 will have left-to-right layout. Paragraphs with only neutral characters
@@ -454,8 +454,8 @@ base direction of the context, the interpretation of
 <h6 id="auto_dir" class="section-header"><a href="#auto_dir"><code>auto_dir</code></a></h6>
 <p>if <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, compute the bidirectional base direction
 from the layout’s contents</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_ellipsize" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1003-1007" title="goto source code">[src]</a></div><a href="#method.set_ellipsize" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_ellipsize" class="fnname">set_ellipsize</a>(&amp;self, ellipsize: <a class="enum" href="enum.EllipsizeMode.html" title="enum pango::EllipsizeMode">EllipsizeMode</a>)</h4></div></summary><div class="docblock"><p>Sets the type of ellipsization being performed for <code>self</code>.</p>
-<p>Depending on the ellipsization mode <code>ellipsize</code> text is
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_ellipsize" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1003-1007" title="goto source code">[src]</a></div><a href="#method.set_ellipsize" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_ellipsize" class="fnname">set_ellipsize</a>(&amp;self, ellipsize: <a class="enum" href="enum.EllipsizeMode.html" title="enum pango::EllipsizeMode">EllipsizeMode</a>)</h4></div></summary><div class="docblock"><p>Sets the type of ellipsization being performed for @self.</p>
+<p>Depending on the ellipsization mode @ellipsize text is
 removed from the start, middle, or end of text so they
 fit within the width and height of layout set with
 <a href="struct.Layout.html#method.set_width" title="Self::set_width()"><code>set_width()</code></a> and <a href="struct.Layout.html#method.set_height" title="Self::set_height()"><code>set_height()</code></a>.</p>
@@ -466,7 +466,7 @@ is ellipsized as a whole depends on the set height of the layout.</p>
 <p>The default value is <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>.</p>
 <p>See <a href="struct.Layout.html#method.set_height" title="Self::set_height()"><code>set_height()</code></a> for details.</p>
 <h6 id="ellipsize" class="section-header"><a href="#ellipsize"><code>ellipsize</code></a></h6>
-<p>the new ellipsization mode for <code>self</code></p>
+<p>the new ellipsization mode for @self</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_font_description" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1017-1021" title="goto source code">[src]</a></div><a href="#method.set_font_description" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_font_description" class="fnname">set_font_description</a>(&amp;self, desc: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets the default font description for the layout.</p>
 <p>If no font description is set on the layout, the
 font description from the layout’s context is used.</p>
@@ -474,14 +474,14 @@ font description from the layout’s context is used.</p>
 <p>the new <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>
 to unset the current font description</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_height" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1052-1056" title="goto source code">[src]</a></div><a href="#method.set_height" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_height" class="fnname">set_height</a>(&amp;self, height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Sets the height to which the <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> should be ellipsized at.</p>
-<p>There are two different behaviors, based on whether <code>height</code> is positive
+<p>There are two different behaviors, based on whether @height is positive
 or negative.</p>
-<p>If <code>height</code> is positive, it will be the maximum height of the layout. Only
+<p>If @height is positive, it will be the maximum height of the layout. Only
 lines would be shown that would fit, and if there is any text omitted,
 an ellipsis added. At least one line is included in each paragraph regardless
 of how small the height value is. A value of zero will render exactly one
 line for the entire layout.</p>
-<p>If <code>height</code> is negative, it will be the (negative of) maximum number of lines
+<p>If @height is negative, it will be the (negative of) maximum number of lines
 per paragraph. That is, the total number of lines shown may well be more than
 this value if the layout contains multiple paragraphs of text.
 The default value of -1 means that the first line of each paragraph is ellipsized.
@@ -490,7 +490,7 @@ paragraph. File a bug against pango at
 <a href="https://gitlab.gnome.org/gnome/pango">https://gitlab.gnome.org/gnome/pango</a>
 if your code relies on this behavior.</p>
 <p>Height setting only has effect if a positive width is set on
-<code>self</code> and ellipsization mode of <code>self</code> is not <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>.
+@self and ellipsization mode of @self is not <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>.
 The behavior is undefined if a height other than -1 is set and
 ellipsization mode is set to <a href="enum.EllipsizeMode.html#variant.None" title="crate::EllipsizeMode::None"><code>EllipsizeMode::None</code></a>, and may change in the
 future.</p>
@@ -498,9 +498,9 @@ future.</p>
 <p>the desired height of the layout in Pango units if positive,
 or desired number of lines if negative.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_indent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1071-1075" title="goto source code">[src]</a></div><a href="#method.set_indent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_indent" class="fnname">set_indent</a>(&amp;self, indent: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Sets the width in Pango units to indent each paragraph.</p>
-<p>A negative value of <code>indent</code> will produce a hanging indentation.
+<p>A negative value of @indent will produce a hanging indentation.
 That is, the first line will have the full width, and subsequent
-lines will be indented by the absolute value of <code>indent</code>.</p>
+lines will be indented by the absolute value of @indent.</p>
 <p>The indent setting is ignored if layout alignment is set to
 <a href="enum.Alignment.html#variant.Center" title="crate::Alignment::Center"><code>Alignment::Center</code></a>.</p>
 <p>The default value is 0.</p>
@@ -529,12 +529,13 @@ been called as well.</p>
 <p>whether the last line in the layout should be justified</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_line_spacing" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1142-1146" title="goto source code">[src]</a></div><a href="#method.set_line_spacing" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_line_spacing" class="fnname">set_line_spacing</a>(&amp;self, factor: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_44</code></strong> only.</div></div></summary><div class="docblock"><p>Sets a factor for line spacing.</p>
 <p>Typical values are: 0, 1, 1.5, 2. The default values is 0.</p>
-<p>If <code>factor</code> is non-zero, lines are placed so that</p>
-<p>baseline2 = baseline1 + factor * height2</p>
+<p>If @factor is non-zero, lines are placed so that</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">baseline2</span> <span class="op">=</span> <span class="ident">baseline1</span> <span class="op">+</span> <span class="ident">factor</span> <span class="op">*</span> <span class="ident">height2</span></code></pre></div>
 <p>where height2 is the line height of the second line
 (as determined by the font(s)). In this case, the spacing
 set with <a href="struct.Layout.html#method.set_spacing" title="Self::set_spacing()"><code>set_spacing()</code></a> is ignored.</p>
-<p>If <code>factor</code> is zero (the default), spacing is applied as before.</p>
+<p>If @factor is zero (the default), spacing is applied as before.</p>
 <p>Note: for semantics that are closer to the CSS line-height
 property, see <code>attr_line_height_new()</code>.</p>
 <h6 id="factor" class="section-header"><a href="#factor"><code>factor</code></a></h6>
@@ -547,30 +548,30 @@ but the markup text isn’t scanned for accelerators.</p>
 <h6 id="markup" class="section-header"><a href="#markup"><code>markup</code></a></h6>
 <p>marked-up text</p>
 <h6 id="length" class="section-header"><a href="#length"><code>length</code></a></h6>
-<p>length of marked-up text in bytes, or -1 if <code>markup</code> is
+<p>length of marked-up text in bytes, or -1 if @markup is
 <code>NUL</code>-terminated</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_markup_with_accel" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1197-1212" title="goto source code">[src]</a></div><a href="#method.set_markup_with_accel" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_markup_with_accel" class="fnname">set_markup_with_accel</a>(&amp;self, markup: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, accel_marker: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a></h4></div></summary><div class="docblock"><p>Sets the layout text and attribute list from marked-up text.</p>
 <p>See <a href="pango_markup.html">Pango Markup</a>).</p>
 <p>Replaces the current text and attribute list.</p>
-<p>If <code>accel_marker</code> is nonzero, the given character will mark the
-character following it as an accelerator. For example, <code>accel_marker</code>
+<p>If @accel_marker is nonzero, the given character will mark the
+character following it as an accelerator. For example, @accel_marker
 might be an ampersand or underscore. All characters marked
 as an accelerator will receive a <a href="enum.Underline.html#variant.Low" title="crate::Underline::Low"><code>Underline::Low</code></a> attribute,
-and the first character so marked will be returned in <code>accel_char</code>.
-Two <code>accel_marker</code> characters following each other produce a single
-literal <code>accel_marker</code> character.</p>
+and the first character so marked will be returned in @accel_char.
+Two @accel_marker characters following each other produce a single
+literal @accel_marker character.</p>
 <h6 id="markup-1" class="section-header"><a href="#markup-1"><code>markup</code></a></h6>
 <p>marked-up text (see <a href="pango_markup.html">Pango Markup</a>)</p>
 <h6 id="length-1" class="section-header"><a href="#length-1"><code>length</code></a></h6>
-<p>length of marked-up text in bytes, or -1 if <code>markup</code> is
+<p>length of marked-up text in bytes, or -1 if @markup is
 <code>NUL</code>-terminated</p>
 <h6 id="accel_marker" class="section-header"><a href="#accel_marker"><code>accel_marker</code></a></h6>
 <p>marker for accelerators in the text</p>
 <h5 id="returns-40" class="section-header"><a href="#returns-40">Returns</a></h5><h6 id="accel_char" class="section-header"><a href="#accel_char"><code>accel_char</code></a></h6>
 <p>return location
 for first located accelerator</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_single_paragraph_mode" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1225-1229" title="goto source code">[src]</a></div><a href="#method.set_single_paragraph_mode" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_single_paragraph_mode" class="fnname">set_single_paragraph_mode</a>(&amp;self, setting: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></div></summary><div class="docblock"><p>Sets the single paragraph mode of <code>self</code>.</p>
-<p>If <code>setting</code> is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, do not treat newlines and similar characters
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_single_paragraph_mode" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1225-1229" title="goto source code">[src]</a></div><a href="#method.set_single_paragraph_mode" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_single_paragraph_mode" class="fnname">set_single_paragraph_mode</a>(&amp;self, setting: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</h4></div></summary><div class="docblock"><p>Sets the single paragraph mode of @self.</p>
+<p>If @setting is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, do not treat newlines and similar characters
 as paragraph separators; instead, keep all text in a single paragraph,
 and display a glyph for paragraph separator characters. Used when
 you want to allow editing of newlines on a single text line.</p>
@@ -580,42 +581,43 @@ you want to allow editing of newlines on a single text line.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_spacing" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1250-1254" title="goto source code">[src]</a></div><a href="#method.set_spacing" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_spacing" class="fnname">set_spacing</a>(&amp;self, spacing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Sets the amount of spacing in Pango units between
 the lines of the layout.</p>
 <p>When placing lines with spacing, Pango arranges things so that</p>
-<p>line2.top = line1.bottom + spacing</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">line2</span>.<span class="ident">top</span> <span class="op">=</span> <span class="ident">line1</span>.<span class="ident">bottom</span> <span class="op">+</span> <span class="ident">spacing</span></code></pre></div>
 <p>The default value is 0.</p>
 <p>Note: Since 1.44, Pango is using the line height (as determined
 by the font) for placing lines when the line spacing factor is set
 to a non-zero value with <a href="struct.Layout.html#method.set_line_spacing" title="Self::set_line_spacing()"><code>set_line_spacing()</code></a>.
-In that case, the <code>spacing</code> set with this function is ignored.</p>
+In that case, the @spacing set with this function is ignored.</p>
 <p>Note: for semantics that are closer to the CSS line-height
 property, see <code>attr_line_height_new()</code>.</p>
 <h6 id="spacing" class="section-header"><a href="#spacing"><code>spacing</code></a></h6>
 <p>the amount of spacing</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_tabs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1271-1275" title="goto source code">[src]</a></div><a href="#method.set_tabs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_tabs" class="fnname">set_tabs</a>(&amp;self, tabs: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.TabArray.html" title="struct pango::TabArray">TabArray</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets the tabs to use for <code>self</code>, overriding the default tabs.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_tabs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1271-1275" title="goto source code">[src]</a></div><a href="#method.set_tabs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_tabs" class="fnname">set_tabs</a>(&amp;self, tabs: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.TabArray.html" title="struct pango::TabArray">TabArray</a>&gt;)</h4></div></summary><div class="docblock"><p>Sets the tabs to use for @self, overriding the default tabs.</p>
 <p><a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> will place content at the next tab position
 whenever it meets a Tab character (U+0009).</p>
-<p>By default, tabs are every 8 spaces. If <code>tabs</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the
-default tabs are reinstated. <code>tabs</code> is copied into the layout;
-you must free your copy of <code>tabs</code> yourself.</p>
+<p>By default, tabs are every 8 spaces. If @tabs is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the
+default tabs are reinstated. @tabs is copied into the layout;
+you must free your copy of @tabs yourself.</p>
 <p>Note that tabs and justification conflict with each other:
 Justification will move content away from its tab-aligned
 positions.</p>
 <h6 id="tabs" class="section-header"><a href="#tabs"><code>tabs</code></a></h6>
 <p>a <a href="struct.TabArray.html" title="crate::TabArray"><code>TabArray</code></a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_text" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1295-1300" title="goto source code">[src]</a></div><a href="#method.set_text" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_text" class="fnname">set_text</a>(&amp;self, text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></div></summary><div class="docblock"><p>Sets the text of the layout.</p>
-<p>This function validates <code>text</code> and renders invalid UTF-8
+<p>This function validates @text and renders invalid UTF-8
 with a placeholder glyph.</p>
 <p>Note that if you have used <a href="struct.Layout.html#method.set_markup" title="Self::set_markup()"><code>set_markup()</code></a> or
-<a href="struct.Layout.html#method.set_markup_with_accel" title="Self::set_markup_with_accel()"><code>set_markup_with_accel()</code></a> on <code>self</code> before, you
+<a href="struct.Layout.html#method.set_markup_with_accel" title="Self::set_markup_with_accel()"><code>set_markup_with_accel()</code></a> on @self before, you
 may want to call <a href="struct.Layout.html#method.set_attributes" title="Self::set_attributes()"><code>set_attributes()</code></a> to clear the
 attributes set on the layout from the markup as this function does
 not clear attributes.</p>
 <h6 id="text" class="section-header"><a href="#text"><code>text</code></a></h6>
 <p>the text</p>
 <h6 id="length-2" class="section-header"><a href="#length-2"><code>length</code></a></h6>
-<p>maximum length of <code>text</code>, in bytes. -1 indicates that
+<p>maximum length of @text, in bytes. -1 indicates that
 the string is nul-terminated and the length should be calculated.
 The text will also be truncated on encountering a nul-termination
-even when <code>length</code> is positive.</p>
+even when @length is positive.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.set_width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/layout.rs.html#1310-1314" title="goto source code">[src]</a></div><a href="#method.set_width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_width" class="fnname">set_width</a>(&amp;self, width: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Sets the width to which the lines of the <a href="struct.Layout.html" title="crate::Layout"><code>Layout</code></a> should wrap or
 ellipsized.</p>
 <p>The default value is -1: no width set.</p>
@@ -765,7 +767,7 @@ invalidated. An invalidated closure will ignore any calls to
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToClosureReturnValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/closure.rs.html#336-340" title="goto source code">[src]</a></div><a href="#impl-ToClosureReturnValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../glib/closure/trait.ToClosureReturnValue.html" title="trait glib::closure::ToClosureReturnValue">ToClosureReturnValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../glib/value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><div id="method.to_closure_return_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/closure.rs.html#337" title="goto source code">[src]</a></div><a href="#method.to_closure_return_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../glib/closure/trait.ToClosureReturnValue.html#tymethod.to_closure_return_value" class="fnname">to_closure_return_value</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/value/struct.Value.html" title="struct glib::value::Value">Value</a>&gt;</h4></div></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToOwned" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#84-96" title="goto source code">[src]</a></div><a href="#impl-ToOwned" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html" title="trait alloc::borrow::ToOwned">ToOwned</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Owned" class="type trait-impl has-srclink"><a href="#associatedtype.Owned" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#associatedtype.Owned" class="type">Owned</a> = T</h4></div></summary><div class='docblock'><p>The resulting type after obtaining ownership.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_owned" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89" title="goto source code">[src]</a></div><a href="#method.to_owned" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned" class="fnname">to_owned</a>(&amp;self) -&gt; T</h4></div></summary><div class='docblock'><p>Creates owned data from borrowed data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_into" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#93" title="goto source code">[src]</a></div><a href="#method.clone_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into" class="fnname">clone_into</a>(&amp;self, target: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>T)</h4></div></summary><div class="item-info"><div class="stab unstable"><span class="emoji">🔬</span> This is a nightly-only experimental API. (<code>toowned_clone_into</code>)</div></div><div class='docblock'><p>Uses borrowed data to replace owned data, usually by cloning. <a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#method.clone_into">Read more</a></p>
-</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#619-623" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../glib/value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../glib/value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#620" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../glib/value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(&amp;self) -&gt; <a class="struct" href="../glib/value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
+</div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToSendValue" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#647-651" title="goto source code">[src]</a></div><a href="#impl-ToSendValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../glib/value/trait.ToSendValue.html" title="trait glib::value::ToSendValue">ToSendValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="../glib/value/trait.ToValue.html" title="trait glib::value::ToValue">ToValue</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_send_value" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/glib/value.rs.html#648" title="goto source code">[src]</a></div><a href="#method.to_send_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../glib/value/trait.ToSendValue.html#tymethod.to_send_value" class="fnname">to_send_value</a>(&amp;self) -&gt; <a class="struct" href="../glib/value/struct.SendValue.html" title="struct glib::value::SendValue">SendValue</a></h4></div></summary><div class='docblock'><p>Returns a <code>SendValue</code> clone of <code>self</code>.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-ToString" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2388-2402" title="goto source code">[src]</a></div><a href="#impl-ToString" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html" title="trait alloc::string::ToString">ToString</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.to_string" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2394" title="goto source code">[src]</a></div><a href="#method.to_string" class="anchor"></a><h4 class="code-header">pub default fn <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string" class="fnname">to_string</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></h4></div></summary><div class='docblock'><p>Converts the given value to a <code>String</code>. <a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-TryFrom%3CU%3E" class="impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#587-596" title="goto source code">[src]</a></div><a href="#impl-TryFrom%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;T&gt;,&nbsp;</span></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><div id="associatedtype.Error" class="type trait-impl has-srclink"><a href="#associatedtype.Error" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" class="type">Error</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/convert/enum.Infallible.html" title="enum core::convert::Infallible">Infallible</a></h4></div></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.try_from" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#593" title="goto source code">[src]</a></div><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="type" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></div></summary><div class='docblock'><p>Performs the conversion.</p>

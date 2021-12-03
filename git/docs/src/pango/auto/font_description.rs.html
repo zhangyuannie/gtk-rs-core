@@ -759,15 +759,15 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the newly allocated [`FontDescription`][crate::FontDescription], which</span>
-    <span class="doccomment">///  should be freed using `Pango::`FontDescription::free()``.</span>
+    <span class="doccomment">///   should be freed using `Pango::FontDescription::free()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_new&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">FontDescription</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::pango_font_description_new</span>()) }
     }
 
-    <span class="doccomment">/// Determines if the style attributes of `new_match` are a closer match</span>
-    <span class="doccomment">/// for `self` than those of `old_match` are, or if `old_match` is [`None`],</span>
-    <span class="doccomment">/// determines if `new_match` is a match at all.</span>
+    <span class="doccomment">/// Determines if the style attributes of @new_match are a closer match</span>
+    <span class="doccomment">/// for @self than those of @old_match are, or if @old_match is [`None`],</span>
+    <span class="doccomment">/// determines if @new_match is a match at all.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Approximate matching is done for weight and style; other style attributes</span>
     <span class="doccomment">/// must match exactly. Style attributes are all attributes other than family</span>
@@ -775,7 +775,7 @@
     <span class="doccomment">/// [`Style::Oblique`][crate::Style::Oblique] and [`Style::Italic`][crate::Style::Italic] as matches, but not as good</span>
     <span class="doccomment">/// a match as when the styles are equal.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that `old_match` must match `self`.</span>
+    <span class="doccomment">/// Note that @old_match must match @self.</span>
     <span class="doccomment">/// ## `old_match`</span>
     <span class="doccomment">/// a [`FontDescription`][crate::FontDescription], or [`None`]</span>
     <span class="doccomment">/// ## `new_match`</span>
@@ -783,7 +783,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if `new_match` is a better match</span>
+    <span class="doccomment">/// [`true`] if @new_match is a better match</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_better_match&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">better_match</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -811,7 +811,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the two font descriptions are identical,</span>
-    <span class="doccomment">///  [`false`] otherwise.</span>
+    <span class="doccomment">///   [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_equal&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">equal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">desc2</span>: <span class="kw-2">&amp;</span><span class="ident">FontDescription</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -824,13 +824,13 @@
 
     <span class="doccomment">/// Gets the family name field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_family()``][`Self::set_family()`].</span>
+    <span class="doccomment">/// See [`set_family()`][Self::set_family()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the family name field for the font</span>
-    <span class="doccomment">///  description, or [`None`] if not previously set. This has the same</span>
-    <span class="doccomment">///  life-time as the font description itself and should not be freed.</span>
+    <span class="doccomment">///   description, or [`None`] if not previously set. This has the same</span>
+    <span class="doccomment">///   life-time as the font description itself and should not be freed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_family&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_family&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">family</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
@@ -843,13 +843,13 @@
 
     <span class="doccomment">/// Gets the gravity field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_gravity()``][`Self::set_gravity()`].</span>
+    <span class="doccomment">/// See [`set_gravity()`][Self::set_gravity()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the gravity field for the font description.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to find out</span>
-    <span class="doccomment">///  if the field was explicitly set or not.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to find out</span>
+    <span class="doccomment">///   if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_gravity&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_gravity&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gravity</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Gravity</span> {
@@ -865,7 +865,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a bitmask with bits set corresponding to the</span>
-    <span class="doccomment">///  fields in `self` that have been set.</span>
+    <span class="doccomment">///   fields in @self that have been set.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_set_fields&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_set_fields&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">FontMask</span> {
@@ -878,17 +878,17 @@
 
     <span class="doccomment">/// Gets the size field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_size()``][`Self::set_size()`].</span>
+    <span class="doccomment">/// See [`set_size()`][Self::set_size()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the size field for the font description in points</span>
-    <span class="doccomment">///  or device units. You must call</span>
-    <span class="doccomment">///  [``is_size_absolute()``][`Self::is_size_absolute()`] to find out</span>
-    <span class="doccomment">///  which is the case. Returns 0 if the size field has not previously</span>
-    <span class="doccomment">///  been set or it has been set to 0 explicitly.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to find out</span>
-    <span class="doccomment">///  if the field was explicitly set or not.</span>
+    <span class="doccomment">///   or device units. You must call</span>
+    <span class="doccomment">///   [`is_size_absolute()`][Self::is_size_absolute()] to find out</span>
+    <span class="doccomment">///   which is the case. Returns 0 if the size field has not previously</span>
+    <span class="doccomment">///   been set or it has been set to 0 explicitly.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to find out</span>
+    <span class="doccomment">///   if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_size&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_size&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
@@ -898,15 +898,15 @@
     <span class="doccomment">/// Determines whether the size of the font is in points (not absolute)</span>
     <span class="doccomment">/// or device units (absolute).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_size()``][`Self::set_size()`]</span>
-    <span class="doccomment">/// and [``set_absolute_size()``][`Self::set_absolute_size()`].</span>
+    <span class="doccomment">/// See [`set_size()`][Self::set_size()]</span>
+    <span class="doccomment">/// and [`set_absolute_size()`][Self::set_absolute_size()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// whether the size for the font description is in</span>
-    <span class="doccomment">///  points or device units. Use [``set_fields()``][`Self::set_fields()`]</span>
-    <span class="doccomment">///  to find out if the size field of the font description was explicitly</span>
-    <span class="doccomment">///  set or not.</span>
+    <span class="doccomment">///   points or device units. Use [`set_fields()`][Self::set_fields()]</span>
+    <span class="doccomment">///   to find out if the size field of the font description was explicitly</span>
+    <span class="doccomment">///   set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_size_is_absolute&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_size_is_absolute&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_size_absolute</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
@@ -919,13 +919,13 @@
 
     <span class="doccomment">/// Gets the stretch field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_stretch()``][`Self::set_stretch()`].</span>
+    <span class="doccomment">/// See [`set_stretch()`][Self::set_stretch()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the stretch field for the font description.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to find</span>
-    <span class="doccomment">///  out if the field was explicitly set or not.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to find</span>
+    <span class="doccomment">///   out if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_stretch&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_stretch&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stretch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Stretch</span> {
@@ -938,13 +938,13 @@
 
     <span class="doccomment">/// Gets the style field of a [`FontDescription`][crate::FontDescription].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_style()``][`Self::set_style()`].</span>
+    <span class="doccomment">/// See [`set_style()`][Self::set_style()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the style field for the font description.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to</span>
-    <span class="doccomment">///  find out if the field was explicitly set or not.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to</span>
+    <span class="doccomment">///   find out if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_style&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_style&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">style</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Style</span> {
@@ -953,13 +953,13 @@
 
     <span class="doccomment">/// Gets the variant field of a [`FontDescription`][crate::FontDescription].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_variant()``][`Self::set_variant()`].</span>
+    <span class="doccomment">/// See [`set_variant()`][Self::set_variant()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the variant field for the font description.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to find</span>
-    <span class="doccomment">///  out if the field was explicitly set or not.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to find</span>
+    <span class="doccomment">///   out if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_variant&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_variant&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
@@ -972,13 +972,13 @@
 
     <span class="doccomment">/// Gets the variations field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_variations()``][`Self::set_variations()`].</span>
+    <span class="doccomment">/// See [`set_variations()`][Self::set_variations()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the variations field for the font</span>
-    <span class="doccomment">///  description, or [`None`] if not previously set. This has the same</span>
-    <span class="doccomment">///  life-time as the font description itself and should not be freed.</span>
+    <span class="doccomment">///   description, or [`None`] if not previously set. This has the same</span>
+    <span class="doccomment">///   life-time as the font description itself and should not be freed.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_42&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_42&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_variations&quot;</span>)]</span>
@@ -993,13 +993,13 @@
 
     <span class="doccomment">/// Gets the weight field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_weight()``][`Self::set_weight()`].</span>
+    <span class="doccomment">/// See [`set_weight()`][Self::set_weight()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the weight field for the font description.</span>
-    <span class="doccomment">///  Use [``set_fields()``][`Self::set_fields()`] to find</span>
-    <span class="doccomment">///  out if the field was explicitly set or not.</span>
+    <span class="doccomment">///   Use [`set_fields()`][Self::set_fields()] to find</span>
+    <span class="doccomment">///   out if the field was explicitly set or not.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_get_weight&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_weight&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">weight</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Weight</span> {
@@ -1013,7 +1013,7 @@
     <span class="doccomment">/// Computes a hash of a [`FontDescription`][crate::FontDescription] structure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is suitable to be used, for example, as an argument</span>
-    <span class="doccomment">/// to `g_hash_table_new()`. The hash value is independent of `self`-&gt;mask.</span>
+    <span class="doccomment">/// to g_hash_table_new(). The hash value is independent of @self-&gt;mask.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -1023,21 +1023,21 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::pango_font_description_hash</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="doccomment">/// Merges the fields that are set in `desc_to_merge` into the fields in</span>
-    <span class="doccomment">/// `self`.</span>
+    <span class="doccomment">/// Merges the fields that are set in @desc_to_merge into the fields in</span>
+    <span class="doccomment">/// @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `replace_existing` is [`false`], only fields in `self` that</span>
+    <span class="doccomment">/// If @replace_existing is [`false`], only fields in @self that</span>
     <span class="doccomment">/// are not already set are affected. If [`true`], then fields that are</span>
     <span class="doccomment">/// already set will be replaced as well.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `desc_to_merge` is [`None`], this function performs nothing.</span>
+    <span class="doccomment">/// If @desc_to_merge is [`None`], this function performs nothing.</span>
     <span class="doccomment">/// ## `desc_to_merge`</span>
     <span class="doccomment">/// the [`FontDescription`][crate::FontDescription] to merge from,</span>
-    <span class="doccomment">///  or [`None`]</span>
+    <span class="doccomment">///   or [`None`]</span>
     <span class="doccomment">/// ## `replace_existing`</span>
-    <span class="doccomment">/// if [`true`], replace fields in `self` with the</span>
-    <span class="doccomment">///  corresponding values from `desc_to_merge`, even if they</span>
-    <span class="doccomment">///  are already exist.</span>
+    <span class="doccomment">/// if [`true`], replace fields in @self with the</span>
+    <span class="doccomment">///   corresponding values from @desc_to_merge, even if they</span>
+    <span class="doccomment">///   are already exist.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_merge&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">merge</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">desc_to_merge</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">FontDescription</span><span class="op">&gt;</span>, <span class="ident">replace_existing</span>: <span class="ident">bool</span>) {
         <span class="kw">unsafe</span> {
@@ -1051,12 +1051,12 @@
 
     <span class="doccomment">/// Sets the size field of a font description, in device units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is mutually exclusive with [``set_size()``][`Self::set_size()`]</span>
+    <span class="doccomment">/// This is mutually exclusive with [`set_size()`][Self::set_size()]</span>
     <span class="doccomment">/// which sets the font size in points.</span>
     <span class="doccomment">/// ## `size`</span>
     <span class="doccomment">/// the new size, in Pango units. There are `PANGO_SCALE` Pango units</span>
-    <span class="doccomment">///  in one device unit. For an output backend where a device unit is a pixel,</span>
-    <span class="doccomment">///  a `size` value of 10 * PANGO_SCALE gives a 10 pixel font.</span>
+    <span class="doccomment">///   in one device unit. For an output backend where a device unit is a pixel,</span>
+    <span class="doccomment">///   a @size value of 10 * PANGO_SCALE gives a 10 pixel font.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_set_absolute_size&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_absolute_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">f64</span>) {
         <span class="kw">unsafe</span> {
@@ -1086,7 +1086,7 @@
     <span class="doccomment">/// Sets the gravity field of a font description.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The gravity field</span>
-    <span class="doccomment">/// specifies how the glyphs should be rotated. If `gravity` is</span>
+    <span class="doccomment">/// specifies how the glyphs should be rotated. If @gravity is</span>
     <span class="doccomment">/// [`Gravity::Auto`][crate::Gravity::Auto], this actually unsets the gravity mask on</span>
     <span class="doccomment">/// the font description.</span>
     <span class="doccomment">///</span>
@@ -1104,16 +1104,16 @@
     <span class="doccomment">/// Sets the size field of a font description in fractional points.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is mutually exclusive with</span>
-    <span class="doccomment">/// [``set_absolute_size()``][`Self::set_absolute_size()`].</span>
+    <span class="doccomment">/// [`set_absolute_size()`][Self::set_absolute_size()].</span>
     <span class="doccomment">/// ## `size`</span>
     <span class="doccomment">/// the size of the font in points, scaled by `PANGO_SCALE`.</span>
-    <span class="doccomment">///  (That is, a `size` value of 10 * PANGO_SCALE is a 10 point font.</span>
-    <span class="doccomment">///  The conversion factor between points and device units depends on</span>
-    <span class="doccomment">///  system configuration and the output device. For screen display, a</span>
-    <span class="doccomment">///  logical DPI of 96 is common, in which case a 10 point font corresponds</span>
-    <span class="doccomment">///  to a 10 * (96 / 72) = 13.3 pixel font.</span>
-    <span class="doccomment">///  Use [``set_absolute_size()``][`Self::set_absolute_size()`] if you need</span>
-    <span class="doccomment">///  a particular size in device units.</span>
+    <span class="doccomment">///   (That is, a @size value of 10 * PANGO_SCALE is a 10 point font.</span>
+    <span class="doccomment">///   The conversion factor between points and device units depends on</span>
+    <span class="doccomment">///   system configuration and the output device. For screen display, a</span>
+    <span class="doccomment">///   logical DPI of 96 is common, in which case a 10 point font corresponds</span>
+    <span class="doccomment">///   to a 10 * (96 / 72) = 13.3 pixel font.</span>
+    <span class="doccomment">///   Use [`set_absolute_size()`][Self::set_absolute_size()] if you need</span>
+    <span class="doccomment">///   a particular size in device units.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_set_size&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
@@ -1173,7 +1173,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The format of the variations string is</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  AXIS1=VALUE,AXIS2=VALUE...</span>
+    <span class="doccomment">///     AXIS1=VALUE,AXIS2=VALUE...</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// with each AXIS a 4 character tag that identifies a font axis,</span>
     <span class="doccomment">/// and each VALUE a floating point number. Unknown axes are ignored,</span>
@@ -1197,12 +1197,12 @@
 
     <span class="doccomment">/// Sets the variations field of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is like [``set_variations()``][`Self::set_variations()`], except</span>
-    <span class="doccomment">/// that no copy of `variations` is made. The caller must make sure that</span>
-    <span class="doccomment">/// the string passed in stays around until `self` has been freed</span>
+    <span class="doccomment">/// This is like [`set_variations()`][Self::set_variations()], except</span>
+    <span class="doccomment">/// that no copy of @variations is made. The caller must make sure that</span>
+    <span class="doccomment">/// the string passed in stays around until @self has been freed</span>
     <span class="doccomment">/// or the name is set again. This function can be used if</span>
-    <span class="doccomment">/// `variations` is a static string such as a C string literal,</span>
-    <span class="doccomment">/// or if `self` is only needed temporarily.</span>
+    <span class="doccomment">/// @variations is a static string such as a C string literal,</span>
+    <span class="doccomment">/// or if @self is only needed temporarily.</span>
     <span class="doccomment">/// ## `variations`</span>
     <span class="doccomment">/// a string representing the variations</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_42&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
@@ -1235,13 +1235,13 @@
     <span class="doccomment">/// Creates a filename representation of a font description.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The filename is identical to the result from calling</span>
-    <span class="doccomment">/// [``to_str()``][`Self::to_str()`], but with underscores</span>
+    <span class="doccomment">/// [`to_str()`][Self::to_str()], but with underscores</span>
     <span class="doccomment">/// instead of characters that are untypical in filenames, and in</span>
     <span class="doccomment">/// lower case only.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a new string that must be freed with `g_free()`.</span>
+    <span class="doccomment">/// a new string that must be freed with g_free().</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_to_filename&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_filename</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -1253,14 +1253,14 @@
 
     <span class="doccomment">/// Creates a string representation of a font description.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``from_string()``][`Self::from_string()`] for a description</span>
+    <span class="doccomment">/// See [`from_string()`][Self::from_string()] for a description</span>
     <span class="doccomment">/// of the format of the string representation. The family list in</span>
     <span class="doccomment">/// the string description will only have a terminating comma if</span>
     <span class="doccomment">/// the last word of the list is a valid style option.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a new string that must be freed with `g_free()`.</span>
+    <span class="doccomment">/// a new string that must be freed with g_free().</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_to_string&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;to_string&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::GString</span> {
@@ -1271,7 +1271,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The unset fields will get back to their default values.</span>
     <span class="doccomment">/// ## `to_unset`</span>
-    <span class="doccomment">/// bitmask of fields in the `self` to unset.</span>
+    <span class="doccomment">/// bitmask of fields in the @self to unset.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_description_unset_fields&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unset_fields</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">to_unset</span>: <span class="ident">FontMask</span>) {
         <span class="kw">unsafe</span> {
@@ -1286,7 +1286,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The string must have the form</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  &quot;\[FAMILY-LIST] \[STYLE-OPTIONS] \[SIZE] \[VARIATIONS]&quot;,</span>
+    <span class="doccomment">///     &quot;\[FAMILY-LIST] \[STYLE-OPTIONS] \[SIZE] \[VARIATIONS]&quot;,</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// where FAMILY-LIST is a comma-separated list of families optionally</span>
     <span class="doccomment">/// terminated by a comma, STYLE_OPTIONS is a whitespace-separated list</span>
@@ -1294,7 +1294,7 @@
     <span class="doccomment">/// stretch, or gravity, and SIZE is a decimal number (size in points)</span>
     <span class="doccomment">/// or optionally followed by the unit modifier &quot;px&quot; for absolute size.</span>
     <span class="doccomment">/// VARIATIONS is a comma-separated list of font variation</span>
-    <span class="doccomment">/// specifications of the form &quot;\`axis`=value&quot; (the = sign is optional).</span>
+    <span class="doccomment">/// specifications of the form &quot;\@axis=value&quot; (the = sign is optional).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The following words are understood as styles:</span>
     <span class="doccomment">/// &quot;Normal&quot;, &quot;Roman&quot;, &quot;Oblique&quot;, &quot;Italic&quot;.</span>
@@ -1324,7 +1324,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// A typical example:</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  &quot;Cantarell Italic Light 15 \`wght`=200&quot;</span>
+    <span class="doccomment">///     &quot;Cantarell Italic Light 15 \@wght=200&quot;</span>
     <span class="doccomment">/// ## `str`</span>
     <span class="doccomment">/// string representation of a font description.</span>
     <span class="doccomment">///</span>

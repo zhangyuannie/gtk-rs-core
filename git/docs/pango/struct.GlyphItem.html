@@ -87,37 +87,37 @@ and then reapply them to the result using this function.</p>
 to that cluster; for instance, if half of a cluster is underlined
 and the other-half strikethrough, then the cluster will end
 up with both underline and strikethrough attributes. In these
-cases, it may happen that <code>item</code>-&gt;extra_attrs for some of the
+cases, it may happen that @item-&gt;extra_attrs for some of the
 result items can have multiple attributes of the same type.</p>
-<p>This function takes ownership of <code>self</code>; it will be reused
+<p>This function takes ownership of @self; it will be reused
 as one of the elements in the list.</p>
 <h6 id="text" class="section-header"><a href="#text"><code>text</code></a></h6>
-<p>text that <code>list</code> applies to</p>
+<p>text that @list applies to</p>
 <h6 id="list" class="section-header"><a href="#list"><code>list</code></a></h6>
 <p>a <a href="struct.AttrList.html" title="crate::AttrList"><code>AttrList</code></a></p>
 <h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p>a
-list of glyph items resulting from splitting <code>self</code>. Free
-the elements using <code>Pango::</code>GlyphItem::free()``, the list using
-<code>g_slist_free()</code>.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.split" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#99-107" title="goto source code">[src]</a></div><a href="#method.split" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split" class="fnname">split</a>(&amp;mut self, text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, split_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a>&gt;</h4></div></summary><div class="docblock"><p>Modifies <code>self</code> to cover only the text after <code>split_index</code>, and
-returns a new item that covers the text before <code>split_index</code> that
-used to be in <code>self</code>.</p>
-<p>You can think of <code>split_index</code> as the length of the returned item.
-<code>split_index</code> may not be 0, and it may not be greater than or equal
-to the length of <code>self</code> (that is, there must be at least one byte
+list of glyph items resulting from splitting @self. Free
+the elements using <code>Pango::GlyphItem::free()</code>, the list using
+g_slist_free().</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.split" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#99-107" title="goto source code">[src]</a></div><a href="#method.split" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.split" class="fnname">split</a>(&amp;mut self, text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, split_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a>&gt;</h4></div></summary><div class="docblock"><p>Modifies @self to cover only the text after @split_index, and
+returns a new item that covers the text before @split_index that
+used to be in @self.</p>
+<p>You can think of @split_index as the length of the returned item.
+@split_index may not be 0, and it may not be greater than or equal
+to the length of @self (that is, there must be at least one byte
 assigned to each item, you can’t create a zero-length item).</p>
-<p>This function is similar in function to <a href="struct.Item.html#method.split" title="crate::Item::split()"><code>Item::split()</code></a> (and uses
+<p>This function is similar in function to pango_item_split() (and uses
 it internally.)</p>
 <h6 id="text-1" class="section-header"><a href="#text-1"><code>text</code></a></h6>
-<p>text to which positions in <code>self</code> apply</p>
+<p>text to which positions in @self apply</p>
 <h6 id="split_index" class="section-header"><a href="#split_index"><code>split_index</code></a></h6>
 <p>byte index of position to split item, relative to the
 start of the item</p>
 <h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the newly allocated item representing text before
-<code>split_index</code>, which should be freed
-with <code>pango_glyph_item_free()</code>.</p>
+@split_index, which should be freed
+with pango_glyph_item_free().</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-1" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph_item.rs.html#6-14" title="goto source code">[src]</a></div><a href="#impl-1" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a></h3></div></summary><div class="impl-items"><div id="method.item" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph_item.rs.html#7-9" title="goto source code">[src]</a></div><a href="#method.item" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.item" class="fnname">item</a>(&amp;self) -&gt; <a class="struct" href="struct.Item.html" title="struct pango::Item">Item</a></h4></div><div id="method.glyph_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/glyph_item.rs.html#11-13" title="goto source code">[src]</a></div><a href="#method.glyph_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.glyph_string" class="fnname">glyph_string</a>(&amp;self) -&gt; <a class="struct" href="struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a></h4></div></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#8-23" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#8-23" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; <a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a></h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone_from" class="method trait-impl has-srclink"><div class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#130" title="goto source code">[src]</a></div><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></div></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Debug" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#15" title="goto source code">[src]</a></div><a href="#impl-Debug" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.fmt" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item.rs.html#15" title="goto source code">[src]</a></div><a href="#method.fmt" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt" class="fnname">fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>&lt;'_&gt;) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></h4></div></summary><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>

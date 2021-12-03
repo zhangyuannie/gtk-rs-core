@@ -3490,10 +3490,10 @@
 <span class="doccomment">/// [`Alignment`][crate::Alignment] describes how to align the lines of a [`Layout`][crate::Layout]</span>
 <span class="doccomment">/// within the available space.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If the [`Layout`][crate::Layout] is set to justify using [``Layout::set_justify()``][crate::`Layout::set_justify()`],</span>
+<span class="doccomment">/// If the [`Layout`][crate::Layout] is set to justify using [`Layout::set_justify()`][crate::Layout::set_justify()],</span>
 <span class="doccomment">/// this only has effect for partial lines.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// See [``Layout::set_auto_dir()``][crate::`Layout::set_auto_dir()`] for how text direction affects</span>
+<span class="doccomment">/// See [`Layout::set_auto_dir()`][crate::Layout::set_auto_dir()] for how text direction affects</span>
 <span class="doccomment">/// the interpretation of `PangoAlignment values.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
@@ -3588,7 +3588,7 @@
 <span class="doccomment">/// The [`AttrType`][crate::AttrType] distinguishes between different types of attributes.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Along with the predefined values, it is possible to allocate additional</span>
-<span class="doccomment">/// values for custom attributes using ``register()``. The predefined</span>
+<span class="doccomment">/// values for custom attributes using `register()`. The predefined</span>
 <span class="doccomment">/// values are given below. The type of structure used to store the attribute is</span>
 <span class="doccomment">/// listed in parentheses after the description.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
@@ -3944,11 +3944,11 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_BASELINE_SHIFT_NONE&quot;</span>)]</span>
     <span class="prelude-val">None</span>,
     <span class="doccomment">/// Shift the baseline to the superscript position,</span>
-    <span class="doccomment">///  relative to the previous run</span>
+    <span class="doccomment">///   relative to the previous run</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_BASELINE_SHIFT_SUPERSCRIPT&quot;</span>)]</span>
     <span class="ident">Superscript</span>,
     <span class="doccomment">/// Shift the baseline to the subscript position,</span>
-    <span class="doccomment">///  relative to the previous run</span>
+    <span class="doccomment">///   relative to the previous run</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_BASELINE_SHIFT_SUBSCRIPT&quot;</span>)]</span>
     <span class="ident">Subscript</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -4279,23 +4279,23 @@
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoCoverageLevel&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">CoverageLevel</span> {
     <span class="doccomment">/// The character is not representable with</span>
-    <span class="doccomment">///  the font.</span>
+    <span class="doccomment">///   the font.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_COVERAGE_NONE&quot;</span>)]</span>
     <span class="prelude-val">None</span>,
     <span class="doccomment">/// The character is represented in a</span>
-    <span class="doccomment">///  way that may be comprehensible but is not the correct</span>
-    <span class="doccomment">///  graphical form. For instance, a Hangul character represented</span>
-    <span class="doccomment">///  as a a sequence of Jamos, or a Latin transliteration of a</span>
-    <span class="doccomment">///  Cyrillic word.</span>
+    <span class="doccomment">///   way that may be comprehensible but is not the correct</span>
+    <span class="doccomment">///   graphical form. For instance, a Hangul character represented</span>
+    <span class="doccomment">///   as a a sequence of Jamos, or a Latin transliteration of a</span>
+    <span class="doccomment">///   Cyrillic word.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_COVERAGE_FALLBACK&quot;</span>)]</span>
     <span class="ident">Fallback</span>,
     <span class="doccomment">/// The character is represented as</span>
-    <span class="doccomment">///  basically the correct graphical form, but with a stylistic</span>
-    <span class="doccomment">///  variant inappropriate for the current script.</span>
+    <span class="doccomment">///   basically the correct graphical form, but with a stylistic</span>
+    <span class="doccomment">///   variant inappropriate for the current script.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_COVERAGE_APPROXIMATE&quot;</span>)]</span>
     <span class="ident">Approximate</span>,
     <span class="doccomment">/// The character is represented as the</span>
-    <span class="doccomment">///  correct graphical form.</span>
+    <span class="doccomment">///   correct graphical form.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_COVERAGE_EXACT&quot;</span>)]</span>
     <span class="ident">Exact</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -4382,11 +4382,11 @@
 <span class="doccomment">/// algorithm.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Not every value in this enumeration makes sense for every usage of</span>
-<span class="doccomment">/// [`Direction`][crate::Direction]; for example, the return value of [``unichar_direction()``][`crate::unichar_direction()`]</span>
-<span class="doccomment">/// and [``find_base_dir()``][`crate::find_base_dir()`] cannot be [`WeakLtr`][Self::WeakLtr] or</span>
+<span class="doccomment">/// [`Direction`][crate::Direction]; for example, the return value of [`unichar_direction()`][crate::unichar_direction()]</span>
+<span class="doccomment">/// and [`find_base_dir()`][crate::find_base_dir()] cannot be [`WeakLtr`][Self::WeakLtr] or</span>
 <span class="doccomment">/// [`WeakRtl`][Self::WeakRtl], since every character is either neutral</span>
 <span class="doccomment">/// or has a strong direction; on the other hand [`Neutral`][Self::Neutral]</span>
-<span class="doccomment">/// doesn&#39;t make sense to pass to [``itemize_with_base_dir()``][`crate::itemize_with_base_dir()`].</span>
+<span class="doccomment">/// doesn&#39;t make sense to pass to [`itemize_with_base_dir()`][crate::itemize_with_base_dir()].</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The [`TtbLtr`][Self::TtbLtr], [`TtbRtl`][Self::TtbRtl] values come from</span>
 <span class="doccomment">/// an earlier interpretation of this enumeration as the writing direction</span>
@@ -4407,11 +4407,11 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_DIRECTION_RTL&quot;</span>)]</span>
     <span class="ident">Rtl</span>,
     <span class="doccomment">/// Deprecated value; treated the</span>
-    <span class="doccomment">///  same as [`Rtl`][Self::Rtl].</span>
+    <span class="doccomment">///   same as [`Rtl`][Self::Rtl].</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_DIRECTION_TTB_LTR&quot;</span>)]</span>
     <span class="ident">TtbLtr</span>,
     <span class="doccomment">/// Deprecated value; treated the</span>
-    <span class="doccomment">///  same as [`Ltr`][Self::Ltr]</span>
+    <span class="doccomment">///   same as [`Ltr`][Self::Ltr]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_DIRECTION_TTB_RTL&quot;</span>)]</span>
     <span class="ident">TtbRtl</span>,
     <span class="doccomment">/// A weak left-to-right direction</span>
@@ -4731,8 +4731,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Not every value in this enumeration makes sense for every usage of</span>
 <span class="doccomment">/// [`Gravity`][crate::Gravity]; for example, [`Auto`][Self::Auto] only can be passed to</span>
-<span class="doccomment">/// [``Context::set_base_gravity()``][crate::`Context::set_base_gravity()`] and can only be returned by</span>
-<span class="doccomment">/// [``Context::base_gravity()``][crate::`Context::base_gravity()`].</span>
+<span class="doccomment">/// [`Context::set_base_gravity()`][crate::Context::set_base_gravity()] and can only be returned by</span>
+<span class="doccomment">/// [`Context::base_gravity()`][crate::Context::base_gravity()].</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See also: [`GravityHint`][crate::GravityHint]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
@@ -4891,17 +4891,17 @@
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoGravityHint&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">GravityHint</span> {
     <span class="doccomment">/// scripts will take their natural gravity based</span>
-    <span class="doccomment">///  on the base gravity and the script. This is the default.</span>
+    <span class="doccomment">///   on the base gravity and the script.  This is the default.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_GRAVITY_HINT_NATURAL&quot;</span>)]</span>
     <span class="ident">Natural</span>,
     <span class="doccomment">/// always use the base gravity set, regardless of</span>
-    <span class="doccomment">///  the script.</span>
+    <span class="doccomment">///   the script.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_GRAVITY_HINT_STRONG&quot;</span>)]</span>
     <span class="ident">Strong</span>,
     <span class="doccomment">/// for scripts not in their natural direction (eg.</span>
-    <span class="doccomment">///  Latin in East gravity), choose per-script gravity such that every script</span>
-    <span class="doccomment">///  respects the line progression. This means, Latin and Arabic will take</span>
-    <span class="doccomment">///  opposite gravities and both flow top-to-bottom for example.</span>
+    <span class="doccomment">///   Latin in East gravity), choose per-script gravity such that every script</span>
+    <span class="doccomment">///   respects the line progression. This means, Latin and Arabic will take</span>
+    <span class="doccomment">///   opposite gravities and both flow top-to-bottom for example.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_GRAVITY_HINT_LINE&quot;</span>)]</span>
     <span class="ident">Line</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -4993,7 +4993,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_OVERLINE_NONE&quot;</span>)]</span>
     <span class="prelude-val">None</span>,
     <span class="doccomment">/// Draw a single line above the ink</span>
-    <span class="doccomment">///  extents of the text being underlined.</span>
+    <span class="doccomment">///   extents of the text being underlined.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_OVERLINE_SINGLE&quot;</span>)]</span>
     <span class="ident">Single</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -5202,7 +5202,7 @@
 <span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoScript&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Script</span> {
-    <span class="doccomment">/// a value never returned from [`for_unichar()`][Self::for_unichar()]</span>
+    <span class="doccomment">/// a value never returned from pango_script_for_unichar()</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_SCRIPT_INVALID_CODE&quot;</span>)]</span>
     <span class="ident">InvalidCode</span>,
     <span class="doccomment">/// a character used by multiple different scripts</span>
@@ -6308,7 +6308,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_TEXT_TRANSFORM_UPPERCASE&quot;</span>)]</span>
     <span class="ident">Uppercase</span>,
     <span class="doccomment">/// Display the first character of a word</span>
-    <span class="doccomment">///  in titlecase</span>
+    <span class="doccomment">///   in titlecase</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_TEXT_TRANSFORM_CAPITALIZE&quot;</span>)]</span>
     <span class="ident">Capitalize</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -6421,36 +6421,36 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_DOUBLE&quot;</span>)]</span>
     <span class="ident">Double</span>,
     <span class="doccomment">/// a single underline should be drawn at a</span>
-    <span class="doccomment">///  position beneath the ink extents of the text being</span>
-    <span class="doccomment">///  underlined. This should be used only for underlining</span>
-    <span class="doccomment">///  single characters, such as for keyboard accelerators.</span>
-    <span class="doccomment">///  [`Single`][Self::Single] should be used for extended</span>
-    <span class="doccomment">///  portions of text.</span>
+    <span class="doccomment">///   position beneath the ink extents of the text being</span>
+    <span class="doccomment">///   underlined. This should be used only for underlining</span>
+    <span class="doccomment">///   single characters, such as for keyboard accelerators.</span>
+    <span class="doccomment">///   [`Single`][Self::Single] should be used for extended</span>
+    <span class="doccomment">///   portions of text.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_LOW&quot;</span>)]</span>
     <span class="ident">Low</span>,
     <span class="doccomment">/// an underline indicating an error should</span>
-    <span class="doccomment">///  be drawn below. The exact style of rendering is up to the</span>
-    <span class="doccomment">///  [`Renderer`][crate::Renderer] in use, but typical styles include wavy</span>
-    <span class="doccomment">///  or dotted lines.</span>
-    <span class="doccomment">///  This underline is typically used to indicate an error such</span>
-    <span class="doccomment">///  as a possible mispelling; in some cases a contrasting color</span>
-    <span class="doccomment">///  may automatically be used. This type of underlining is</span>
-    <span class="doccomment">///  available since Pango 1.4.</span>
+    <span class="doccomment">///   be drawn below. The exact style of rendering is up to the</span>
+    <span class="doccomment">///   [`Renderer`][crate::Renderer] in use, but typical styles include wavy</span>
+    <span class="doccomment">///   or dotted lines.</span>
+    <span class="doccomment">///   This underline is typically used to indicate an error such</span>
+    <span class="doccomment">///   as a possible mispelling; in some cases a contrasting color</span>
+    <span class="doccomment">///   may automatically be used. This type of underlining is</span>
+    <span class="doccomment">///   available since Pango 1.4.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_ERROR&quot;</span>)]</span>
     <span class="ident">Error</span>,
-    <span class="doccomment">/// Like [`Single`][Self::Single], but</span>
-    <span class="doccomment">///  drawn continuously across multiple runs. This type</span>
-    <span class="doccomment">///  of underlining is available since Pango 1.46.</span>
+    <span class="doccomment">/// Like @PANGO_UNDERLINE_SINGLE, but</span>
+    <span class="doccomment">///   drawn continuously across multiple runs. This type</span>
+    <span class="doccomment">///   of underlining is available since Pango 1.46.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_SINGLE_LINE&quot;</span>)]</span>
     <span class="ident">SingleLine</span>,
-    <span class="doccomment">/// Like [`Double`][Self::Double], but</span>
-    <span class="doccomment">///  drawn continuously across multiple runs. This type</span>
-    <span class="doccomment">///  of underlining is available since Pango 1.46.</span>
+    <span class="doccomment">/// Like @PANGO_UNDERLINE_DOUBLE, but</span>
+    <span class="doccomment">///   drawn continuously across multiple runs. This type</span>
+    <span class="doccomment">///   of underlining is available since Pango 1.46.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_DOUBLE_LINE&quot;</span>)]</span>
     <span class="ident">DoubleLine</span>,
-    <span class="doccomment">/// Like [`Error`][Self::Error], but</span>
-    <span class="doccomment">///  drawn continuously across multiple runs. This type</span>
-    <span class="doccomment">///  of underlining is available since Pango 1.46.</span>
+    <span class="doccomment">/// Like @PANGO_UNDERLINE_ERROR, but</span>
+    <span class="doccomment">///   drawn continuously across multiple runs. This type</span>
+    <span class="doccomment">///   of underlining is available since Pango 1.46.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_UNDERLINE_ERROR_LINE&quot;</span>)]</span>
     <span class="ident">ErrorLine</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -6782,8 +6782,8 @@
 <span class="doccomment">/// [`WrapMode`][crate::WrapMode] describes how to wrap the lines of a [`Layout`][crate::Layout]</span>
 <span class="doccomment">/// to the desired width.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// For [`Word`][Self::Word], Pango uses break opportunities that are determined</span>
-<span class="doccomment">/// by the Unicode line breaking algorithm. For [`Char`][Self::Char], Pango allows</span>
+<span class="doccomment">/// For @PANGO_WRAP_WORD, Pango uses break opportunities that are determined</span>
+<span class="doccomment">/// by the Unicode line breaking algorithm. For @PANGO_WRAP_CHAR, Pango allows</span>
 <span class="doccomment">/// breaking at grapheme boundaries that are determined by the Unicode text</span>
 <span class="doccomment">/// segmentation algorithm.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
@@ -6797,7 +6797,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_WRAP_CHAR&quot;</span>)]</span>
     <span class="ident">Char</span>,
     <span class="doccomment">/// wrap lines at word boundaries, but fall back to</span>
-    <span class="doccomment">///  character boundaries if there is not enough space for a full word.</span>
+    <span class="doccomment">///   character boundaries if there is not enough space for a full word.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PANGO_WRAP_WORD_CHAR&quot;</span>)]</span>
     <span class="ident">WordChar</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>

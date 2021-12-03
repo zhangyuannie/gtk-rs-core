@@ -127,16 +127,16 @@
     <span class="doccomment">/// The [`GlyphGeometry`][crate::GlyphGeometry] structure contains width and positioning</span>
     <span class="doccomment">/// information for a single glyph.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that `width` is not guaranteed to be the same as the glyph</span>
+    <span class="doccomment">/// Note that @width is not guaranteed to be the same as the glyph</span>
     <span class="doccomment">/// extents. Kerning and other positioning applied during shaping will</span>
-    <span class="doccomment">/// affect both the `width` and the `x_offset` for the glyphs in the</span>
+    <span class="doccomment">/// affect both the @width and the @x_offset for the glyphs in the</span>
     <span class="doccomment">/// glyph string that results from shaping.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The information in this struct is intended for rendering the glyphs,</span>
     <span class="doccomment">/// as follows:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// 1. Render the current glyph at (x + x_offset, y + y_offset),</span>
-    <span class="doccomment">///  where (x, y) is the current point</span>
+    <span class="doccomment">///    where (x, y) is the current point</span>
     <span class="doccomment">/// 2. Advance the current point to (x + xoffset, y)</span>
     <span class="doccomment">/// 3. Render the next glyph...</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PangoGlyphGeometry&quot;</span>)]</span>

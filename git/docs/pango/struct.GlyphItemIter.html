@@ -75,16 +75,16 @@
 <nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../pango/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><h2 class="location">Struct GlyphItemIter</h2><div class="sidebar-elems"><div class="block items"><h3 class="sidebar-title"><a href="#implementations">Methods</a></h3><div class="sidebar-links"><a href="#method.new_end">new_end</a><a href="#method.new_start">new_start</a><a href="#method.next_cluster">next_cluster</a><a href="#method.prev_cluster">prev_cluster</a></div><h3 class="sidebar-title"><a href="#trait-implementations">Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a><a href="#impl-Eq">Eq</a><a href="#impl-Hash">Hash</a><a href="#impl-Ord">Ord</a><a href="#impl-PartialEq%3CGlyphItemIter%3E">PartialEq&lt;GlyphItemIter&gt;</a><a href="#impl-PartialOrd%3CGlyphItemIter%3E">PartialOrd&lt;GlyphItemIter&gt;</a><a href="#impl-StaticType">StaticType</a><a href="#impl-StructuralEq">StructuralEq</a><a href="#impl-StructuralPartialEq">StructuralPartialEq</a></div><h3 class="sidebar-title"><a href="#synthetic-implementations">Auto Trait Implementations</a></h3><div class="sidebar-links"><a href="#impl-RefUnwindSafe">RefUnwindSafe</a><a href="#impl-Send">!Send</a><a href="#impl-Sync">!Sync</a><a href="#impl-Unpin">Unpin</a><a href="#impl-UnwindSafe">UnwindSafe</a></div><h3 class="sidebar-title"><a href="#blanket-implementations">Blanket Implementations</a></h3><div class="sidebar-links"><a href="#impl-Any">Any</a><a href="#impl-Borrow%3CT%3E">Borrow&lt;T&gt;</a><a href="#impl-BorrowMut%3CT%3E">BorrowMut&lt;T&gt;</a><a href="#impl-From%3CT%3E">From&lt;T&gt;</a><a href="#impl-FromValueOptional%3C%27a%3E">FromValueOptional&lt;&#39;a&gt;</a><a href="#impl-Into%3CU%3E">Into&lt;U&gt;</a><a href="#impl-ToClosureReturnValue">ToClosureReturnValue</a><a href="#impl-ToOwned">ToOwned</a><a href="#impl-TryFrom%3CU%3E">TryFrom&lt;U&gt;</a><a href="#impl-TryFromClosureReturnValue">TryFromClosureReturnValue</a><a href="#impl-TryInto%3CU%3E">TryInto&lt;U&gt;</a></div></div><h2 class="location">Other items in<br><a href="index.html">pango</a></h2><div id="sidebar-vars" data-name="GlyphItemIter" data-ty="struct" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../wheel.svg"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Struct <a href="index.html">pango</a>::<wbr><a class="struct" href="#">GlyphItemIter</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/pango/auto/glyph_item_iter.rs.html#7-56" title="goto source code">[src]</a></span></h1><div class="docblock item-decl"><pre class="rust struct"><code><div class="code-attribute">#[repr(transparent)]</div>pub struct GlyphItemIter(_);</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A <a href="struct.GlyphItemIter.html" title="crate::GlyphItemIter"><code>GlyphItemIter</code></a> is an iterator over the clusters in a
 <a href="struct.GlyphItem.html" title="crate::GlyphItem"><code>GlyphItem</code></a>.</p>
 <p>The <em>forward direction</em> of the iterator is the logical direction of text.
-That is, with increasing <code>start_index</code> and <code>start_char</code> values. If <code>glyph_item</code>
+That is, with increasing @start_index and @start_char values. If @glyph_item
 is right-to-left (that is, if <code>glyph_item-&gt;item-&gt;analysis.level</code> is odd),
-then <code>start_glyph</code> decreases as the iterator moves forward. Moreover,
-in right-to-left cases, <code>start_glyph</code> is greater than <code>end_glyph</code>.</p>
+then @start_glyph decreases as the iterator moves forward.  Moreover,
+in right-to-left cases, @start_glyph is greater than @end_glyph.</p>
 <p>An iterator should be initialized using either
-[<code>init_start()</code>][Self::init_start()] or
-[<code>init_end()</code>][Self::init_end()], for forward and backward iteration
+pango_glyph_item_iter_init_start() or
+pango_glyph_item_iter_init_end(), for forward and backward iteration
 respectively, and walked over using any desired mixture of
-<a href="struct.GlyphItemIter.html#method.next_cluster" title="Self::next_cluster()"><code>next_cluster()</code></a> and
-<a href="struct.GlyphItemIter.html#method.prev_cluster" title="Self::prev_cluster()"><code>prev_cluster()</code></a>.</p>
+pango_glyph_item_iter_next_cluster() and
+pango_glyph_item_iter_prev_cluster().</p>
 <p>A common idiom for doing a forward iteration over the clusters is:</p>
 <div class="example-wrap"><pre class="language-text"><code>PangoGlyphItemIter cluster_iter;
 gboolean have_cluster;
@@ -96,11 +96,11 @@ for (have_cluster = pango_glyph_item_iter_init_start (&amp;cluster_iter,
 {
   ...
 }</code></pre></div>
-<p>Note that <code>text</code> is the start of the text for layout, which is then
-indexed by <code>glyph_item-&gt;item-&gt;offset</code> to get to the text of <code>glyph_item</code>.
-The <code>start_index</code> and <code>end_index</code> values can directly index into <code>text</code>. The
-<code>start_glyph</code>, <code>end_glyph</code>, <code>start_char</code>, and <code>end_char</code> values however are
-zero-based for the <code>glyph_item</code>. For each cluster, the item pointed at by
+<p>Note that @text is the start of the text for layout, which is then
+indexed by <code>glyph_item-&gt;item-&gt;offset</code> to get to the text of @glyph_item.
+The @start_index and @end_index values can directly index into @text. The
+@start_glyph, @end_glyph, @start_char, and @end_char values however are
+zero-based for the @glyph_item.  For each cluster, the item pointed at by
 the start variables is included in the cluster while the one pointed at by
 end variables is not.</p>
 <p>None of the members of a <a href="struct.GlyphItemIter.html" title="crate::GlyphItemIter"><code>GlyphItemIter</code></a> should be modified manually.</p>
@@ -108,7 +108,7 @@ end variables is not.</p>
 <p>See <a href="struct.GlyphItemIter.html" title="crate::GlyphItemIter"><code>GlyphItemIter</code></a> for details of cluster orders.</p>
 <h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if the iterator was advanced,
-<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if we were already on the last cluster.</p>
+<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> if we were already on the  last cluster.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.prev_cluster" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/glyph_item_iter.rs.html#84-90" title="goto source code">[src]</a></div><a href="#method.prev_cluster" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.prev_cluster" class="fnname">prev_cluster</a>(&amp;mut self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Moves the iterator to the preceding cluster in the glyph item.
 See <a href="struct.GlyphItemIter.html" title="crate::GlyphItemIter"><code>GlyphItemIter</code></a> for details of cluster orders.</p>
 <h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>

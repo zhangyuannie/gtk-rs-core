@@ -254,10 +254,10 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// For an overview of the most important metrics, see:</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;fontmetrics-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Font metrics&quot; src=&quot;fontmetrics-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;fontmetrics-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Font metrics&quot; src=&quot;fontmetrics-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontMetrics</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">ffi::PangoFontMetrics</span><span class="op">&gt;</span>);
 
@@ -290,7 +290,7 @@
     <span class="doccomment">/// determining the initial size for a window. Actual digits in</span>
     <span class="doccomment">/// text can be wider or narrower than this, though this value</span>
     <span class="doccomment">/// is generally somewhat more accurate than the result of</span>
-    <span class="doccomment">/// [`approximate_char_width()`][Self::approximate_char_width()] for digits.</span>
+    <span class="doccomment">/// pango_font_metrics_get_approximate_char_width() for digits.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>

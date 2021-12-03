@@ -103,7 +103,7 @@ you will need to explicitly release any reference you hold.</p>
 passed out via the update_area signal</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.animation" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gdk_pixbuf/auto/pixbuf_loader.rs.html#210" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.animation" class="fnname">animation</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.PixbufAnimation.html" title="struct gdk_pixbuf::PixbufAnimation">PixbufAnimation</a>&gt;</h4></div></summary><div class="docblock"><p>Queries the <a href="../struct.PixbufAnimation.html" title="crate::PixbufAnimation"><code>PixbufAnimation</code></a> that a pixbuf loader is currently creating.</p>
 <p>In general it only makes sense to call this function after the
-<code>signal::PixbufLoader::area-prepared</code> signal has been emitted by
+[signal<a href="../struct.Pixbuf.html" title="crate::Pixbuf"><code>Pixbuf</code></a>::area-prepared] signal has been emitted by
 the loader.</p>
 <p>If the loader doesn’t have enough bytes yet, and hasn’t emitted the <code>area-prepared</code>
 signal, this function will return <code>NULL</code>.</p>
@@ -116,7 +116,7 @@ currently loading image file.</p>
 <p>A <a href="../struct.PixbufFormat.html" title="crate::PixbufFormat"><code>PixbufFormat</code></a></p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.pixbuf" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/gdk_pixbuf/auto/pixbuf_loader.rs.html#244" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.pixbuf" class="fnname">pixbuf</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.Pixbuf.html" title="struct gdk_pixbuf::Pixbuf">Pixbuf</a>&gt;</h4></div></summary><div class="docblock"><p>Queries the <a href="../struct.Pixbuf.html" title="crate::Pixbuf"><code>Pixbuf</code></a> that a pixbuf loader is currently creating.</p>
 <p>In general it only makes sense to call this function after the
-<code>signal::PixbufLoader::area-prepared</code> signal has been
+[signal<a href="../struct.Pixbuf.html" title="crate::Pixbuf"><code>Pixbuf</code></a>::area-prepared] signal has been
 emitted by the loader; this means that enough data has been read
 to know the size of the image that will be allocated.</p>
 <p>If the loader has not received enough data via <a href="trait.PixbufLoaderExt.html#tymethod.write" title="Self::write()"><code>write()</code></a>,

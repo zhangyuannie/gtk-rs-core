@@ -1496,10 +1496,10 @@
     <span class="doccomment">/// [`Layout`][crate::Layout]. The following image shows adjustable parameters</span>
     <span class="doccomment">/// (on the left) and font metrics (on the right):</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;layout-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Pango Layout Parameters&quot; src=&quot;layout-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;layout-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Pango Layout Parameters&quot; src=&quot;layout-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The following images demonstrate the effect of alignment and</span>
     <span class="doccomment">/// justification on the layout of text:</span>
@@ -1586,23 +1586,23 @@
     <span class="doccomment">/// Gets whether to calculate the base direction for the layout</span>
     <span class="doccomment">/// according to its contents.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_auto_dir()``][`Self::set_auto_dir()`].</span>
+    <span class="doccomment">/// See [`set_auto_dir()`][Self::set_auto_dir()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the bidirectional base direction</span>
-    <span class="doccomment">///  is computed from the layout&#39;s contents, [`false`] otherwise</span>
+    <span class="doccomment">///   is computed from the layout&#39;s contents, [`false`] otherwise</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_auto_dir&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_auto_dir&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_auto_dir</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_layout_get_auto_dir</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Gets the Y position of baseline of the first line in `self`.</span>
+    <span class="doccomment">/// Gets the Y position of baseline of the first line in @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// baseline of first line, from top of `self`</span>
+    <span class="doccomment">/// baseline of first line, from top of @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_baseline&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_baseline&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">baseline</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
@@ -1612,14 +1612,14 @@
     <span class="doccomment">/// Given an index within a layout, determines the positions that of the</span>
     <span class="doccomment">/// strong and weak cursors if the insertion point is at that index.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is a variant of [``cursor_pos()``][`Self::cursor_pos()`] that applies</span>
+    <span class="doccomment">/// This is a variant of [`cursor_pos()`][Self::cursor_pos()] that applies</span>
     <span class="doccomment">/// font metric information about caret slope and offset to the positions</span>
     <span class="doccomment">/// it returns.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;caret-metrics-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Caret metrics&quot; src=&quot;caret-metrics-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;caret-metrics-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Caret metrics&quot; src=&quot;caret-metrics-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="doccomment">/// ## `index_`</span>
     <span class="doccomment">/// the byte index of the cursor</span>
     <span class="doccomment">///</span>
@@ -1650,12 +1650,12 @@
     }
 
     <span class="doccomment">/// Returns the number of Unicode characters in the</span>
-    <span class="doccomment">/// the text of `self`.</span>
+    <span class="doccomment">/// the text of @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the number of Unicode characters</span>
-    <span class="doccomment">///  in the text of `self`</span>
+    <span class="doccomment">///   in the text of @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_character_count&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_character_count&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">character_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
@@ -1679,10 +1679,10 @@
     <span class="doccomment">/// The position of each cursor is stored as a zero-width rectangle</span>
     <span class="doccomment">/// with the height of the run extents.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;cursor-positions-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Cursor positions&quot; src=&quot;cursor-positions-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;cursor-positions-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Cursor positions&quot; src=&quot;cursor-positions-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The strong cursor location is the location where characters of the</span>
     <span class="doccomment">/// directionality equal to the base direction of the layout are inserted.</span>
@@ -1691,10 +1691,10 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The following example shows text with both a strong and a weak cursor.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `&lt;picture&gt;`</span>
-    <span class="doccomment">///  &lt;source srcset=&quot;split-cursor-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
-    <span class="doccomment">///  &lt;img alt=&quot;Strong and weak cursors&quot; src=&quot;split-cursor-light.png&quot;&gt;</span>
-    <span class="doccomment">/// `&lt;/picture&gt;`</span>
+    <span class="doccomment">/// &lt;picture&gt;</span>
+    <span class="doccomment">///   &lt;source srcset=&quot;split-cursor-dark.png&quot; media=&quot;(prefers-color-scheme: dark)&quot;&gt;</span>
+    <span class="doccomment">///   &lt;img alt=&quot;Strong and weak cursors&quot; src=&quot;split-cursor-light.png&quot;&gt;</span>
+    <span class="doccomment">/// &lt;/picture&gt;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The strong cursor has a little arrow pointing to the right, the weak</span>
     <span class="doccomment">/// cursor to the left. Typing a &#39;c&#39; in this situation will insert the</span>
@@ -1727,13 +1727,13 @@
         }
     }
 
-    <span class="doccomment">/// Gets the text direction at the given character position in `self`.</span>
+    <span class="doccomment">/// Gets the text direction at the given character position in @self.</span>
     <span class="doccomment">/// ## `index`</span>
     <span class="doccomment">/// the byte index of the char</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// the text direction at `index`</span>
+    <span class="doccomment">/// the text direction at @index</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_direction&quot;</span>)]</span>
@@ -1747,23 +1747,23 @@
         }
     }
 
-    <span class="doccomment">/// Gets the type of ellipsization being performed for `self`.</span>
+    <span class="doccomment">/// Gets the type of ellipsization being performed for @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_ellipsize()``][`Self::set_ellipsize()`].</span>
+    <span class="doccomment">/// See [`set_ellipsize()`][Self::set_ellipsize()].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [``is_ellipsized()``][`Self::is_ellipsized()`] to query whether any</span>
+    <span class="doccomment">/// Use [`is_ellipsized()`][Self::is_ellipsized()] to query whether any</span>
     <span class="doccomment">/// paragraphs were actually ellipsized.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// the current ellipsization mode for `self`</span>
+    <span class="doccomment">/// the current ellipsization mode for @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_ellipsize&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_ellipsize&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ellipsize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">EllipsizeMode</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_layout_get_ellipsize</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Computes the logical and ink extents of `self`.</span>
+    <span class="doccomment">/// Computes the logical and ink extents of @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Logical extents are usually what you want for positioning things. Note</span>
     <span class="doccomment">/// that both extents may have non-zero x and y. You may want to use those</span>
@@ -1779,11 +1779,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ink_rect`</span>
     <span class="doccomment">/// rectangle used to store the extents of the</span>
-    <span class="doccomment">///  layout as drawn</span>
+    <span class="doccomment">///   layout as drawn</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `logical_rect`</span>
     <span class="doccomment">/// rectangle used to store the logical</span>
-    <span class="doccomment">///  extents of the layout</span>
+    <span class="doccomment">///   extents of the layout</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_extents&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_extents&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extents</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">Rectangle</span>, <span class="ident">Rectangle</span>) {
@@ -1804,8 +1804,8 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a pointer to the</span>
-    <span class="doccomment">///  layout&#39;s font description, or [`None`] if the font description</span>
-    <span class="doccomment">///  from the layout&#39;s context is inherited.</span>
+    <span class="doccomment">///   layout&#39;s font description, or [`None`] if the font description</span>
+    <span class="doccomment">///   from the layout&#39;s context is inherited.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_font_description&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_font_description&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">font_description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontDescription</span><span class="op">&gt;</span> {
@@ -1818,12 +1818,12 @@
 
     <span class="doccomment">/// Gets the height of layout used for ellipsization.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_height()``][`Self::set_height()`] for details.</span>
+    <span class="doccomment">/// See [`set_height()`][Self::set_height()] for details.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the height, in Pango units if positive,</span>
-    <span class="doccomment">///  or number of lines if negative.</span>
+    <span class="doccomment">///   or number of lines if negative.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_height&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_height&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">height</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
@@ -1886,25 +1886,25 @@
 
     <span class="doccomment">/// Retrieves a particular line from a [`Layout`][crate::Layout].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use the faster [``line_readonly()``][`Self::line_readonly()`] if you do not</span>
+    <span class="doccomment">/// Use the faster [`line_readonly()`][Self::line_readonly()] if you do not</span>
     <span class="doccomment">/// plan to modify the contents of the line (glyphs, glyph widths, etc.).</span>
     <span class="doccomment">/// ## `line`</span>
     <span class="doccomment">/// the index of a line, which must be between 0 and</span>
-    <span class="doccomment">///  `pango_layout_get_line_count(layout) - 1`, inclusive.</span>
+    <span class="doccomment">///   `pango_layout_get_line_count(layout) - 1`, inclusive.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the requested [`LayoutLine`][crate::LayoutLine],</span>
-    <span class="doccomment">///  or [`None`] if the index is out of range. This layout line can be ref&#39;ed</span>
-    <span class="doccomment">///  and retained, but will become invalid if changes are made to the</span>
-    <span class="doccomment">///  [`Layout`][crate::Layout].</span>
+    <span class="doccomment">///   or [`None`] if the index is out of range. This layout line can be ref&#39;ed</span>
+    <span class="doccomment">///   and retained, but will become invalid if changes are made to the</span>
+    <span class="doccomment">///   [`Layout`][crate::Layout].</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_line&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_line&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">line</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">line</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LayoutLine</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::pango_layout_get_line</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">line</span>)) }
     }
 
-    <span class="doccomment">/// Retrieves the count of lines for the `self`.</span>
+    <span class="doccomment">/// Retrieves the count of lines for the @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -1917,19 +1917,19 @@
 
     <span class="doccomment">/// Retrieves a particular line from a [`Layout`][crate::Layout].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is a faster alternative to [``line()``][`Self::line()`],</span>
+    <span class="doccomment">/// This is a faster alternative to [`line()`][Self::line()],</span>
     <span class="doccomment">/// but the user is not expected to modify the contents of the line</span>
     <span class="doccomment">/// (glyphs, glyph widths, etc.).</span>
     <span class="doccomment">/// ## `line`</span>
     <span class="doccomment">/// the index of a line, which must be between 0 and</span>
-    <span class="doccomment">///  `pango_layout_get_line_count(layout) - 1`, inclusive.</span>
+    <span class="doccomment">///   `pango_layout_get_line_count(layout) - 1`, inclusive.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the requested [`LayoutLine`][crate::LayoutLine],</span>
-    <span class="doccomment">///  or [`None`] if the index is out of range. This layout line can be ref&#39;ed</span>
-    <span class="doccomment">///  and retained, but will become invalid if changes are made to the</span>
-    <span class="doccomment">///  [`Layout`][crate::Layout]. No changes should be made to the line.</span>
+    <span class="doccomment">///   or [`None`] if the index is out of range. This layout line can be ref&#39;ed</span>
+    <span class="doccomment">///   and retained, but will become invalid if changes are made to the</span>
+    <span class="doccomment">///   [`Layout`][crate::Layout]. No changes should be made to the line.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_line_readonly&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_line_readonly&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">line_readonly</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">line</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">LayoutLine</span><span class="op">&gt;</span> {
@@ -1941,9 +1941,9 @@
         }
     }
 
-    <span class="doccomment">/// Gets the line spacing factor of `self`.</span>
+    <span class="doccomment">/// Gets the line spacing factor of @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_line_spacing()``][`Self::set_line_spacing()`].</span>
+    <span class="doccomment">/// See [`set_line_spacing()`][Self::set_line_spacing()].</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_line_spacing&quot;</span>)]</span>
@@ -1952,17 +1952,17 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::pango_layout_get_line_spacing</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="doccomment">/// Returns the lines of the `self` as a list.</span>
+    <span class="doccomment">/// Returns the lines of the @self as a list.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use the faster [``lines_readonly()``][`Self::lines_readonly()`] if you do not</span>
+    <span class="doccomment">/// Use the faster [`lines_readonly()`][Self::lines_readonly()] if you do not</span>
     <span class="doccomment">/// plan to modify the contents of the lines (glyphs, glyph widths, etc.).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a `GSList`</span>
-    <span class="doccomment">///  containing the lines in the layout. This points to internal data of the</span>
-    <span class="doccomment">///  [`Layout`][crate::Layout] and must be used with care. It will become invalid on any</span>
-    <span class="doccomment">///  change to the layout&#39;s text or properties.</span>
+    <span class="doccomment">///   containing the lines in the layout. This points to internal data of the</span>
+    <span class="doccomment">///   [`Layout`][crate::Layout] and must be used with care. It will become invalid on any</span>
+    <span class="doccomment">///   change to the layout&#39;s text or properties.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_lines&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_lines&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lines</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">LayoutLine</span><span class="op">&gt;</span> {
@@ -1971,19 +1971,19 @@
         }
     }
 
-    <span class="doccomment">/// Returns the lines of the `self` as a list.</span>
+    <span class="doccomment">/// Returns the lines of the @self as a list.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is a faster alternative to [``lines()``][`Self::lines()`],</span>
+    <span class="doccomment">/// This is a faster alternative to [`lines()`][Self::lines()],</span>
     <span class="doccomment">/// but the user is not expected to modify the contents of the lines</span>
     <span class="doccomment">/// (glyphs, glyph widths, etc.).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a `GSList`</span>
-    <span class="doccomment">///  containing the lines in the layout. This points to internal data of the</span>
-    <span class="doccomment">///  [`Layout`][crate::Layout] and must be used with care. It will become invalid on any</span>
-    <span class="doccomment">///  change to the layout&#39;s text or properties. No changes should be made to</span>
-    <span class="doccomment">///  the lines.</span>
+    <span class="doccomment">///   containing the lines in the layout. This points to internal data of the</span>
+    <span class="doccomment">///   [`Layout`][crate::Layout] and must be used with care. It will become invalid on any</span>
+    <span class="doccomment">///   change to the layout&#39;s text or properties. No changes should be made to</span>
+    <span class="doccomment">///   the lines.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_lines_readonly&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_lines_readonly&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lines_readonly</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">LayoutLine</span><span class="op">&gt;</span> {
@@ -2006,23 +2006,23 @@
     <span class="comment">//    unsafe { TODO: call ffi:pango_layout_get_log_attrs_readonly() }</span>
     <span class="comment">//}</span>
 
-    <span class="doccomment">/// Computes the logical and ink extents of `self` in device units.</span>
+    <span class="doccomment">/// Computes the logical and ink extents of @self in device units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This function just calls [``extents()``][`Self::extents()`] followed by</span>
-    <span class="doccomment">/// two [``extents_to_pixels()``][`crate::extents_to_pixels()`] calls, rounding `ink_rect` and `logical_rect`</span>
+    <span class="doccomment">/// This function just calls [`extents()`][Self::extents()] followed by</span>
+    <span class="doccomment">/// two [`extents_to_pixels()`][crate::extents_to_pixels()] calls, rounding @ink_rect and @logical_rect</span>
     <span class="doccomment">/// such that the rounded rectangles fully contain the unrounded one (that is,</span>
-    <span class="doccomment">/// passes them as first argument to [``extents_to_pixels()``][`crate::extents_to_pixels()`]).</span>
+    <span class="doccomment">/// passes them as first argument to [`extents_to_pixels()`][crate::extents_to_pixels()]).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ink_rect`</span>
     <span class="doccomment">/// rectangle used to store the extents of the</span>
-    <span class="doccomment">///  layout as drawn</span>
+    <span class="doccomment">///   layout as drawn</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `logical_rect`</span>
     <span class="doccomment">/// rectangle used to store the logical</span>
-    <span class="doccomment">///  extents of the layout</span>
+    <span class="doccomment">///   extents of the layout</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_pixel_extents&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_pixel_extents&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pixel_extents</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">Rectangle</span>, <span class="ident">Rectangle</span>) {
@@ -2041,9 +2041,9 @@
     <span class="doccomment">/// Determines the logical width and height of a [`Layout`][crate::Layout] in device</span>
     <span class="doccomment">/// units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [``size()``][`Self::size()`] returns the width and height</span>
+    <span class="doccomment">/// [`size()`][Self::size()] returns the width and height</span>
     <span class="doccomment">/// scaled by `PANGO_SCALE`. This is simply a convenience function</span>
-    <span class="doccomment">/// around [``pixel_extents()``][`Self::pixel_extents()`].</span>
+    <span class="doccomment">/// around [`pixel_extents()`][Self::pixel_extents()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -2070,7 +2070,7 @@
         }
     }
 
-    <span class="doccomment">/// Returns the current serial number of `self`.</span>
+    <span class="doccomment">/// Returns the current serial number of @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The serial number is initialized to an small number larger than zero</span>
     <span class="doccomment">/// when a new layout is created and is increased whenever the layout is</span>
@@ -2081,25 +2081,25 @@
     <span class="doccomment">/// This can be used to automatically detect changes to a [`Layout`][crate::Layout],</span>
     <span class="doccomment">/// and is useful for example to decide whether a layout needs redrawing.</span>
     <span class="doccomment">/// To force the serial to be increased, use</span>
-    <span class="doccomment">/// [``context_changed()``][`Self::context_changed()`].</span>
+    <span class="doccomment">/// [`context_changed()`][Self::context_changed()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The current serial number of `self`.</span>
+    <span class="doccomment">/// The current serial number of @self.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_serial&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_serial&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">serial</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u32</span> {
         <span class="kw">unsafe</span> { <span class="ident">ffi::pango_layout_get_serial</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="doccomment">/// Obtains whether `self` is in single paragraph mode.</span>
+    <span class="doccomment">/// Obtains whether @self is in single paragraph mode.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_single_paragraph_mode()``][`Self::set_single_paragraph_mode()`].</span>
+    <span class="doccomment">/// See [`set_single_paragraph_mode()`][Self::set_single_paragraph_mode()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the layout does not break paragraphs</span>
-    <span class="doccomment">///  at paragraph separator characters, [`false`] otherwise</span>
+    <span class="doccomment">///   at paragraph separator characters, [`false`] otherwise</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_single_paragraph_mode&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_single_paragraph_mode&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_single_paragraph_mode</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
@@ -2113,7 +2113,7 @@
     <span class="doccomment">/// Determines the logical width and height of a [`Layout`][crate::Layout] in Pango</span>
     <span class="doccomment">/// units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is simply a convenience function around [``extents()``][`Self::extents()`].</span>
+    <span class="doccomment">/// This is simply a convenience function around [`extents()`][Self::extents()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -2156,7 +2156,7 @@
     <span class="doccomment">/// If no [`TabArray`][crate::TabArray] has been set, then the default tabs are</span>
     <span class="doccomment">/// in use and [`None`] is returned. Default tabs are every 8 spaces.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The return value should be freed with `Pango::`TabArray::free()``.</span>
+    <span class="doccomment">/// The return value should be freed with `Pango::TabArray::free()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -2173,14 +2173,14 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// the text in the `self`</span>
+    <span class="doccomment">/// the text in the @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_text&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_text&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::pango_layout_get_text</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Counts the number of unknown glyphs in `self`.</span>
+    <span class="doccomment">/// Counts the number of unknown glyphs in @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function can be used to determine if there are any fonts</span>
     <span class="doccomment">/// available to render all characters in a certain string, or when</span>
@@ -2189,7 +2189,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The number of unknown glyphs in `self`</span>
+    <span class="doccomment">/// The number of unknown glyphs in @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_get_unknown_glyphs_count&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_unknown_glyphs_count&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unknown_glyphs_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
@@ -2209,7 +2209,7 @@
 
     <span class="doccomment">/// Gets the wrap mode for the layout.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [``is_wrapped()``][`Self::is_wrapped()`] to query whether</span>
+    <span class="doccomment">/// Use [`is_wrapped()`][Self::is_wrapped()] to query whether</span>
     <span class="doccomment">/// any paragraphs were actually wrapped.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
@@ -2221,26 +2221,26 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_layout_get_wrap</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Converts from byte `index_` within the `self` to line and X position.</span>
+    <span class="doccomment">/// Converts from byte @index_ within the @self to line and X position.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The X position is measured from the left edge of the line.</span>
     <span class="doccomment">/// ## `index_`</span>
     <span class="doccomment">/// the byte index of a grapheme within the layout</span>
     <span class="doccomment">/// ## `trailing`</span>
     <span class="doccomment">/// an integer indicating the edge of the grapheme to retrieve the</span>
-    <span class="doccomment">///  position of. If &gt; 0, the trailing edge of the grapheme, if 0,</span>
-    <span class="doccomment">///  the leading of the grapheme</span>
+    <span class="doccomment">///   position of. If &gt; 0, the trailing edge of the grapheme, if 0,</span>
+    <span class="doccomment">///   the leading of the grapheme</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `line`</span>
     <span class="doccomment">/// location to store resulting line index. (which will</span>
-    <span class="doccomment">///  between 0 and pango_layout_get_line_count(layout) - 1)</span>
+    <span class="doccomment">///   between 0 and pango_layout_get_line_count(layout) - 1)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `x_pos`</span>
     <span class="doccomment">/// location to store resulting position within line</span>
-    <span class="doccomment">///  (`PANGO_SCALE` units per device unit)</span>
+    <span class="doccomment">///   (`PANGO_SCALE` units per device unit)</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_index_to_line_x&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index_to_line_x</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index_</span>: <span class="ident">i32</span>, <span class="ident">trailing</span>: <span class="ident">bool</span>) -&gt; (<span class="ident">i32</span>, <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
@@ -2267,7 +2267,7 @@
     <span class="doccomment">/// trailing edge of the grapheme. If the directionality of the grapheme</span>
     <span class="doccomment">/// is right-to-left, then `pos-&gt;width` will be negative.</span>
     <span class="doccomment">/// ## `index_`</span>
-    <span class="doccomment">/// byte index within `self`</span>
+    <span class="doccomment">/// byte index within @self</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -2285,15 +2285,15 @@
 
     <span class="doccomment">/// Queries whether the layout had to ellipsize any paragraphs.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This returns [`true`] if the ellipsization mode for `self`</span>
-    <span class="doccomment">/// is not [`EllipsizeMode::None`][crate::EllipsizeMode::None], a positive width is set on `self`,</span>
+    <span class="doccomment">/// This returns [`true`] if the ellipsization mode for @self</span>
+    <span class="doccomment">/// is not [`EllipsizeMode::None`][crate::EllipsizeMode::None], a positive width is set on @self,</span>
     <span class="doccomment">/// and there are paragraphs exceeding that width that have to be</span>
     <span class="doccomment">/// ellipsized.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if any paragraphs had to be ellipsized,</span>
-    <span class="doccomment">///  [`false`] otherwise</span>
+    <span class="doccomment">///   [`false`] otherwise</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_is_ellipsized&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_ellipsized</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_layout_is_ellipsized</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
@@ -2301,15 +2301,15 @@
 
     <span class="doccomment">/// Queries whether the layout had to wrap any paragraphs.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This returns [`true`] if a positive width is set on `self`,</span>
-    <span class="doccomment">/// ellipsization mode of `self` is set to [`EllipsizeMode::None`][crate::EllipsizeMode::None],</span>
+    <span class="doccomment">/// This returns [`true`] if a positive width is set on @self,</span>
+    <span class="doccomment">/// ellipsization mode of @self is set to [`EllipsizeMode::None`][crate::EllipsizeMode::None],</span>
     <span class="doccomment">/// and there are paragraphs exceeding the layout width that have</span>
     <span class="doccomment">/// to be wrapped.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if any paragraphs had to be wrapped, [`false`]</span>
-    <span class="doccomment">///  otherwise</span>
+    <span class="doccomment">///   otherwise</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_is_wrapped&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_wrapped</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_layout_is_wrapped</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
@@ -2317,9 +2317,9 @@
 
     <span class="doccomment">/// Computes a new cursor position from an old position and a direction.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `direction` is positive, then the new position will cause the strong</span>
+    <span class="doccomment">/// If @direction is positive, then the new position will cause the strong</span>
     <span class="doccomment">/// or weak cursor to be displayed one position to right of where it was</span>
-    <span class="doccomment">/// with the old cursor position. If `direction` is negative, it will be</span>
+    <span class="doccomment">/// with the old cursor position. If @direction is negative, it will be</span>
     <span class="doccomment">/// moved to the left.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// In the presence of bidirectional text, the correspondence between</span>
@@ -2332,34 +2332,34 @@
     <span class="doccomment">/// when multiple characters combine to form a single grapheme.</span>
     <span class="doccomment">/// ## `strong`</span>
     <span class="doccomment">/// whether the moving cursor is the strong cursor or the</span>
-    <span class="doccomment">///  weak cursor. The strong cursor is the cursor corresponding</span>
-    <span class="doccomment">///  to text insertion in the base direction for the layout.</span>
+    <span class="doccomment">///   weak cursor. The strong cursor is the cursor corresponding</span>
+    <span class="doccomment">///   to text insertion in the base direction for the layout.</span>
     <span class="doccomment">/// ## `old_index`</span>
     <span class="doccomment">/// the byte index of the current cursor position</span>
     <span class="doccomment">/// ## `old_trailing`</span>
     <span class="doccomment">/// if 0, the cursor was at the leading edge of the</span>
-    <span class="doccomment">///  grapheme indicated by `old_index`, if &gt; 0, the cursor</span>
-    <span class="doccomment">///  was at the trailing edge.</span>
+    <span class="doccomment">///   grapheme indicated by @old_index, if &gt; 0, the cursor</span>
+    <span class="doccomment">///   was at the trailing edge.</span>
     <span class="doccomment">/// ## `direction`</span>
     <span class="doccomment">/// direction to move cursor. A negative</span>
-    <span class="doccomment">///  value indicates motion to the left</span>
+    <span class="doccomment">///   value indicates motion to the left</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `new_index`</span>
     <span class="doccomment">/// location to store the new cursor byte index.</span>
-    <span class="doccomment">///  A value of -1 indicates that the cursor has been moved off the</span>
-    <span class="doccomment">///  beginning of the layout. A value of `G_MAXINT` indicates that</span>
-    <span class="doccomment">///  the cursor has been moved off the end of the layout.</span>
+    <span class="doccomment">///   A value of -1 indicates that the cursor has been moved off the</span>
+    <span class="doccomment">///   beginning of the layout. A value of `G_MAXINT` indicates that</span>
+    <span class="doccomment">///   the cursor has been moved off the end of the layout.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `new_trailing`</span>
     <span class="doccomment">/// number of characters to move forward from</span>
-    <span class="doccomment">///  the location returned for `new_index` to get the position where</span>
-    <span class="doccomment">///  the cursor should be displayed. This allows distinguishing the</span>
-    <span class="doccomment">///  position at the beginning of one line from the position at the</span>
-    <span class="doccomment">///  end of the preceding line. `new_index` is always on the line where</span>
-    <span class="doccomment">///  the cursor should be displayed.</span>
+    <span class="doccomment">///   the location returned for @new_index to get the position where</span>
+    <span class="doccomment">///   the cursor should be displayed. This allows distinguishing the</span>
+    <span class="doccomment">///   position at the beginning of one line from the position at the</span>
+    <span class="doccomment">///   end of the preceding line. @new_index is always on the line where</span>
+    <span class="doccomment">///   the cursor should be displayed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_move_cursor_visually&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">move_cursor_visually</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -2401,7 +2401,7 @@
 
     <span class="doccomment">/// Sets the text attributes for a layout object.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// References `attrs`, so the caller can unref its reference.</span>
+    <span class="doccomment">/// References @attrs, so the caller can unref its reference.</span>
     <span class="doccomment">/// ## `attrs`</span>
     <span class="doccomment">/// a [`AttrList`][crate::AttrList]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_attributes&quot;</span>)]</span>
@@ -2414,7 +2414,7 @@
     <span class="doccomment">/// Sets whether to calculate the base direction</span>
     <span class="doccomment">/// for the layout according to its contents.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// When this flag is on (the default), then paragraphs in `self` that</span>
+    <span class="doccomment">/// When this flag is on (the default), then paragraphs in @self that</span>
     <span class="doccomment">/// begin with strong right-to-left characters (Arabic and Hebrew principally),</span>
     <span class="doccomment">/// will have right-to-left layout, paragraphs with letters from other scripts</span>
     <span class="doccomment">/// will have left-to-right layout. Paragraphs with only neutral characters</span>
@@ -2422,14 +2422,14 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When [`false`], the choice between left-to-right and right-to-left</span>
     <span class="doccomment">/// layout is done according to the base direction of the layout&#39;s</span>
-    <span class="doccomment">/// [`Context`][crate::Context]. (See [``Context::set_base_dir()``][crate::`Context::set_base_dir()`]).</span>
+    <span class="doccomment">/// [`Context`][crate::Context]. (See [`Context::set_base_dir()`][crate::Context::set_base_dir()]).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// When the auto-computed direction of a paragraph differs from the</span>
     <span class="doccomment">/// base direction of the context, the interpretation of</span>
     <span class="doccomment">/// [`Alignment::Left`][crate::Alignment::Left] and [`Alignment::Right`][crate::Alignment::Right] are swapped.</span>
     <span class="doccomment">/// ## `auto_dir`</span>
     <span class="doccomment">/// if [`true`], compute the bidirectional base direction</span>
-    <span class="doccomment">///  from the layout&#39;s contents</span>
+    <span class="doccomment">///   from the layout&#39;s contents</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_auto_dir&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_auto_dir</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">auto_dir</span>: <span class="ident">bool</span>) {
         <span class="kw">unsafe</span> {
@@ -2437,12 +2437,12 @@
         }
     }
 
-    <span class="doccomment">/// Sets the type of ellipsization being performed for `self`.</span>
+    <span class="doccomment">/// Sets the type of ellipsization being performed for @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Depending on the ellipsization mode `ellipsize` text is</span>
+    <span class="doccomment">/// Depending on the ellipsization mode @ellipsize text is</span>
     <span class="doccomment">/// removed from the start, middle, or end of text so they</span>
     <span class="doccomment">/// fit within the width and height of layout set with</span>
-    <span class="doccomment">/// [``set_width()``][`Self::set_width()`] and [``set_height()``][`Self::set_height()`].</span>
+    <span class="doccomment">/// [`set_width()`][Self::set_width()] and [`set_height()`][Self::set_height()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the layout contains characters such as newlines that</span>
     <span class="doccomment">/// force it to be layed out in multiple paragraphs, then whether</span>
@@ -2451,9 +2451,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default value is [`EllipsizeMode::None`][crate::EllipsizeMode::None].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``set_height()``][`Self::set_height()`] for details.</span>
+    <span class="doccomment">/// See [`set_height()`][Self::set_height()] for details.</span>
     <span class="doccomment">/// ## `ellipsize`</span>
-    <span class="doccomment">/// the new ellipsization mode for `self`</span>
+    <span class="doccomment">/// the new ellipsization mode for @self</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_ellipsize&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_ellipsize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">ellipsize</span>: <span class="ident">EllipsizeMode</span>) {
         <span class="kw">unsafe</span> {
@@ -2467,7 +2467,7 @@
     <span class="doccomment">/// font description from the layout&#39;s context is used.</span>
     <span class="doccomment">/// ## `desc`</span>
     <span class="doccomment">/// the new [`FontDescription`][crate::FontDescription]</span>
-    <span class="doccomment">///  to unset the current font description</span>
+    <span class="doccomment">///   to unset the current font description</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_font_description&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_font_description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">desc</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">FontDescription</span><span class="op">&gt;</span>) {
         <span class="kw">unsafe</span> {
@@ -2477,16 +2477,16 @@
 
     <span class="doccomment">/// Sets the height to which the [`Layout`][crate::Layout] should be ellipsized at.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// There are two different behaviors, based on whether `height` is positive</span>
+    <span class="doccomment">/// There are two different behaviors, based on whether @height is positive</span>
     <span class="doccomment">/// or negative.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `height` is positive, it will be the maximum height of the layout. Only</span>
+    <span class="doccomment">/// If @height is positive, it will be the maximum height of the layout. Only</span>
     <span class="doccomment">/// lines would be shown that would fit, and if there is any text omitted,</span>
     <span class="doccomment">/// an ellipsis added. At least one line is included in each paragraph regardless</span>
     <span class="doccomment">/// of how small the height value is. A value of zero will render exactly one</span>
     <span class="doccomment">/// line for the entire layout.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `height` is negative, it will be the (negative of) maximum number of lines</span>
+    <span class="doccomment">/// If @height is negative, it will be the (negative of) maximum number of lines</span>
     <span class="doccomment">/// per paragraph. That is, the total number of lines shown may well be more than</span>
     <span class="doccomment">/// this value if the layout contains multiple paragraphs of text.</span>
     <span class="doccomment">/// The default value of -1 means that the first line of each paragraph is ellipsized.</span>
@@ -2496,13 +2496,13 @@
     <span class="doccomment">/// if your code relies on this behavior.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Height setting only has effect if a positive width is set on</span>
-    <span class="doccomment">/// `self` and ellipsization mode of `self` is not [`EllipsizeMode::None`][crate::EllipsizeMode::None].</span>
+    <span class="doccomment">/// @self and ellipsization mode of @self is not [`EllipsizeMode::None`][crate::EllipsizeMode::None].</span>
     <span class="doccomment">/// The behavior is undefined if a height other than -1 is set and</span>
     <span class="doccomment">/// ellipsization mode is set to [`EllipsizeMode::None`][crate::EllipsizeMode::None], and may change in the</span>
     <span class="doccomment">/// future.</span>
     <span class="doccomment">/// ## `height`</span>
     <span class="doccomment">/// the desired height of the layout in Pango units if positive,</span>
-    <span class="doccomment">///  or desired number of lines if negative.</span>
+    <span class="doccomment">///   or desired number of lines if negative.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_height&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_height</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">height</span>: <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
@@ -2512,9 +2512,9 @@
 
     <span class="doccomment">/// Sets the width in Pango units to indent each paragraph.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A negative value of `indent` will produce a hanging indentation.</span>
+    <span class="doccomment">/// A negative value of @indent will produce a hanging indentation.</span>
     <span class="doccomment">/// That is, the first line will have the full width, and subsequent</span>
-    <span class="doccomment">/// lines will be indented by the absolute value of `indent`.</span>
+    <span class="doccomment">/// lines will be indented by the absolute value of @indent.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The indent setting is ignored if layout alignment is set to</span>
     <span class="doccomment">/// [`Alignment::Center`][crate::Alignment::Center].</span>
@@ -2545,7 +2545,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default value is [`false`].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Also see [``set_justify_last_line()``][`Self::set_justify_last_line()`].</span>
+    <span class="doccomment">/// Also see [`set_justify_last_line()`][Self::set_justify_last_line()].</span>
     <span class="doccomment">/// ## `justify`</span>
     <span class="doccomment">/// whether the lines in the layout should be justified</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_justify&quot;</span>)]</span>
@@ -2558,7 +2558,7 @@
     <span class="doccomment">/// Sets whether the last line should be stretched to fill the</span>
     <span class="doccomment">/// entire width of the layout.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This only has an effect if [``set_justify()``][`Self::set_justify()`] has</span>
+    <span class="doccomment">/// This only has an effect if [`set_justify()`][Self::set_justify()] has</span>
     <span class="doccomment">/// been called as well.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default value is [`false`].</span>
@@ -2577,18 +2577,18 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Typical values are: 0, 1, 1.5, 2. The default values is 0.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `factor` is non-zero, lines are placed so that</span>
+    <span class="doccomment">/// If @factor is non-zero, lines are placed so that</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  baseline2 = baseline1 + factor * height2</span>
+    <span class="doccomment">///     baseline2 = baseline1 + factor * height2</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// where height2 is the line height of the second line</span>
     <span class="doccomment">/// (as determined by the font(s)). In this case, the spacing</span>
-    <span class="doccomment">/// set with [``set_spacing()``][`Self::set_spacing()`] is ignored.</span>
+    <span class="doccomment">/// set with [`set_spacing()`][Self::set_spacing()] is ignored.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `factor` is zero (the default), spacing is applied as before.</span>
+    <span class="doccomment">/// If @factor is zero (the default), spacing is applied as before.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note: for semantics that are closer to the CSS line-height</span>
-    <span class="doccomment">/// property, see ``attr_line_height_new()``.</span>
+    <span class="doccomment">/// property, see `attr_line_height_new()`.</span>
     <span class="doccomment">/// ## `factor`</span>
     <span class="doccomment">/// the new line spacing factor</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
@@ -2606,13 +2606,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Replaces the current text and attribute list.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This is the same as [``set_markup_with_accel()``][`Self::set_markup_with_accel()`],</span>
+    <span class="doccomment">/// This is the same as [`set_markup_with_accel()`][Self::set_markup_with_accel()],</span>
     <span class="doccomment">/// but the markup text isn&#39;t scanned for accelerators.</span>
     <span class="doccomment">/// ## `markup`</span>
     <span class="doccomment">/// marked-up text</span>
     <span class="doccomment">/// ## `length`</span>
-    <span class="doccomment">/// length of marked-up text in bytes, or -1 if `markup` is</span>
-    <span class="doccomment">///  `NUL`-terminated</span>
+    <span class="doccomment">/// length of marked-up text in bytes, or -1 if @markup is</span>
+    <span class="doccomment">///   `NUL`-terminated</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_markup&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_markup</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">markup</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
         <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">markup</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
@@ -2627,18 +2627,18 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Replaces the current text and attribute list.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `accel_marker` is nonzero, the given character will mark the</span>
-    <span class="doccomment">/// character following it as an accelerator. For example, `accel_marker`</span>
+    <span class="doccomment">/// If @accel_marker is nonzero, the given character will mark the</span>
+    <span class="doccomment">/// character following it as an accelerator. For example, @accel_marker</span>
     <span class="doccomment">/// might be an ampersand or underscore. All characters marked</span>
     <span class="doccomment">/// as an accelerator will receive a [`Underline::Low`][crate::Underline::Low] attribute,</span>
-    <span class="doccomment">/// and the first character so marked will be returned in `accel_char`.</span>
-    <span class="doccomment">/// Two `accel_marker` characters following each other produce a single</span>
-    <span class="doccomment">/// literal `accel_marker` character.</span>
+    <span class="doccomment">/// and the first character so marked will be returned in @accel_char.</span>
+    <span class="doccomment">/// Two @accel_marker characters following each other produce a single</span>
+    <span class="doccomment">/// literal @accel_marker character.</span>
     <span class="doccomment">/// ## `markup`</span>
     <span class="doccomment">/// marked-up text (see [Pango Markup](pango_markup.html))</span>
     <span class="doccomment">/// ## `length`</span>
-    <span class="doccomment">/// length of marked-up text in bytes, or -1 if `markup` is</span>
-    <span class="doccomment">///  `NUL`-terminated</span>
+    <span class="doccomment">/// length of marked-up text in bytes, or -1 if @markup is</span>
+    <span class="doccomment">///   `NUL`-terminated</span>
     <span class="doccomment">/// ## `accel_marker`</span>
     <span class="doccomment">/// marker for accelerators in the text</span>
     <span class="doccomment">///</span>
@@ -2647,7 +2647,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `accel_char`</span>
     <span class="doccomment">/// return location</span>
-    <span class="doccomment">///  for first located accelerator</span>
+    <span class="doccomment">///   for first located accelerator</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_markup_with_accel&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_markup_with_accel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">markup</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">accel_marker</span>: <span class="ident">char</span>) -&gt; <span class="ident">char</span> {
         <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">markup</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
@@ -2666,9 +2666,9 @@
         }
     }
 
-    <span class="doccomment">/// Sets the single paragraph mode of `self`.</span>
+    <span class="doccomment">/// Sets the single paragraph mode of @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `setting` is [`true`], do not treat newlines and similar characters</span>
+    <span class="doccomment">/// If @setting is [`true`], do not treat newlines and similar characters</span>
     <span class="doccomment">/// as paragraph separators; instead, keep all text in a single paragraph,</span>
     <span class="doccomment">/// and display a glyph for paragraph separator characters. Used when</span>
     <span class="doccomment">/// you want to allow editing of newlines on a single text line.</span>
@@ -2688,17 +2688,17 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When placing lines with spacing, Pango arranges things so that</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  line2.top = line1.bottom + spacing</span>
+    <span class="doccomment">///     line2.top = line1.bottom + spacing</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default value is 0.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note: Since 1.44, Pango is using the line height (as determined</span>
     <span class="doccomment">/// by the font) for placing lines when the line spacing factor is set</span>
-    <span class="doccomment">/// to a non-zero value with [``set_line_spacing()``][`Self::set_line_spacing()`].</span>
-    <span class="doccomment">/// In that case, the `spacing` set with this function is ignored.</span>
+    <span class="doccomment">/// to a non-zero value with [`set_line_spacing()`][Self::set_line_spacing()].</span>
+    <span class="doccomment">/// In that case, the @spacing set with this function is ignored.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note: for semantics that are closer to the CSS line-height</span>
-    <span class="doccomment">/// property, see ``attr_line_height_new()``.</span>
+    <span class="doccomment">/// property, see `attr_line_height_new()`.</span>
     <span class="doccomment">/// ## `spacing`</span>
     <span class="doccomment">/// the amount of spacing</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_spacing&quot;</span>)]</span>
@@ -2708,14 +2708,14 @@
         }
     }
 
-    <span class="doccomment">/// Sets the tabs to use for `self`, overriding the default tabs.</span>
+    <span class="doccomment">/// Sets the tabs to use for @self, overriding the default tabs.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`Layout`][crate::Layout] will place content at the next tab position</span>
     <span class="doccomment">/// whenever it meets a Tab character (U+0009).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// By default, tabs are every 8 spaces. If `tabs` is [`None`], the</span>
-    <span class="doccomment">/// default tabs are reinstated. `tabs` is copied into the layout;</span>
-    <span class="doccomment">/// you must free your copy of `tabs` yourself.</span>
+    <span class="doccomment">/// By default, tabs are every 8 spaces. If @tabs is [`None`], the</span>
+    <span class="doccomment">/// default tabs are reinstated. @tabs is copied into the layout;</span>
+    <span class="doccomment">/// you must free your copy of @tabs yourself.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that tabs and justification conflict with each other:</span>
     <span class="doccomment">/// Justification will move content away from its tab-aligned</span>
@@ -2731,21 +2731,21 @@
 
     <span class="doccomment">/// Sets the text of the layout.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This function validates `text` and renders invalid UTF-8</span>
+    <span class="doccomment">/// This function validates @text and renders invalid UTF-8</span>
     <span class="doccomment">/// with a placeholder glyph.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that if you have used [``set_markup()``][`Self::set_markup()`] or</span>
-    <span class="doccomment">/// [``set_markup_with_accel()``][`Self::set_markup_with_accel()`] on `self` before, you</span>
-    <span class="doccomment">/// may want to call [``set_attributes()``][`Self::set_attributes()`] to clear the</span>
+    <span class="doccomment">/// Note that if you have used [`set_markup()`][Self::set_markup()] or</span>
+    <span class="doccomment">/// [`set_markup_with_accel()`][Self::set_markup_with_accel()] on @self before, you</span>
+    <span class="doccomment">/// may want to call [`set_attributes()`][Self::set_attributes()] to clear the</span>
     <span class="doccomment">/// attributes set on the layout from the markup as this function does</span>
     <span class="doccomment">/// not clear attributes.</span>
     <span class="doccomment">/// ## `text`</span>
     <span class="doccomment">/// the text</span>
     <span class="doccomment">/// ## `length`</span>
-    <span class="doccomment">/// maximum length of `text`, in bytes. -1 indicates that</span>
-    <span class="doccomment">///  the string is nul-terminated and the length should be calculated.</span>
-    <span class="doccomment">///  The text will also be truncated on encountering a nul-termination</span>
-    <span class="doccomment">///  even when `length` is positive.</span>
+    <span class="doccomment">/// maximum length of @text, in bytes. -1 indicates that</span>
+    <span class="doccomment">///   the string is nul-terminated and the length should be calculated.</span>
+    <span class="doccomment">///   The text will also be truncated on encountering a nul-termination</span>
+    <span class="doccomment">///   even when @length is positive.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_text&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {
         <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
@@ -2760,7 +2760,7 @@
     <span class="doccomment">/// The default value is -1: no width set.</span>
     <span class="doccomment">/// ## `width`</span>
     <span class="doccomment">/// the desired width in Pango units, or -1 to indicate that no</span>
-    <span class="doccomment">///  wrapping or ellipsization should be performed.</span>
+    <span class="doccomment">///   wrapping or ellipsization should be performed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_set_width&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_width</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">width</span>: <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {
@@ -2771,7 +2771,7 @@
     <span class="doccomment">/// Sets the wrap mode.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The wrap mode only has effect if a width is set on the layout</span>
-    <span class="doccomment">/// with [``set_width()``][`Self::set_width()`]. To turn off wrapping,</span>
+    <span class="doccomment">/// with [`set_width()`][Self::set_width()]. To turn off wrapping,</span>
     <span class="doccomment">/// set the width to -1.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The default value is [`WrapMode::Word`][crate::WrapMode::Word].</span>
@@ -2790,7 +2790,7 @@
     <span class="doccomment">/// If the Y position is not inside the layout, the closest position is</span>
     <span class="doccomment">/// chosen (the position will be clamped inside the layout). If the X position</span>
     <span class="doccomment">/// is not within the layout, then the start or the end of the line is</span>
-    <span class="doccomment">/// chosen as described for [``LayoutLine::x_to_index()``][crate::`LayoutLine::x_to_index()`]. If either</span>
+    <span class="doccomment">/// chosen as described for [`LayoutLine::x_to_index()`][crate::LayoutLine::x_to_index()]. If either</span>
     <span class="doccomment">/// the X or Y positions were not inside the layout, then the function returns</span>
     <span class="doccomment">/// [`false`]; on an exact hit, it returns [`true`].</span>
     <span class="doccomment">/// ## `x`</span>
@@ -2807,9 +2807,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `trailing`</span>
     <span class="doccomment">/// location to store a integer indicating where</span>
-    <span class="doccomment">///  in the grapheme the user clicked. It will either be zero, or the</span>
-    <span class="doccomment">///  number of characters in the grapheme. 0 represents the leading edge</span>
-    <span class="doccomment">///  of the grapheme.</span>
+    <span class="doccomment">///   in the grapheme the user clicked. It will either be zero, or the</span>
+    <span class="doccomment">///   number of characters in the grapheme. 0 represents the leading edge</span>
+    <span class="doccomment">///   of the grapheme.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_xy_to_index&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">xy_to_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) -&gt; (<span class="ident">bool</span>, <span class="ident">i32</span>, <span class="ident">i32</span>) {
         <span class="kw">unsafe</span> {

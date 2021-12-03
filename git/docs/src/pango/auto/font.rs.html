@@ -383,7 +383,7 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FontExt</span>: <span class="lifetime">&#39;static</span> {
     <span class="doccomment">/// Returns a description of the font, with font size set in points.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [``describe_with_absolute_size()``][`Self::describe_with_absolute_size()`] if you want</span>
+    <span class="doccomment">/// Use [`describe_with_absolute_size()`][Self::describe_with_absolute_size()] if you want</span>
     <span class="doccomment">/// the font size in device units.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
@@ -395,7 +395,7 @@
     <span class="doccomment">/// Returns a description of the font, with absolute font size set</span>
     <span class="doccomment">/// in device units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [``describe()``][`Self::describe()`] if you want the font size in points.</span>
+    <span class="doccomment">/// Use [`describe()`][Self::describe()] if you want the font size in points.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -410,12 +410,12 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a newly-allocated [`Coverage`][crate::Coverage]</span>
-    <span class="doccomment">///  object.</span>
+    <span class="doccomment">///   object.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_get_coverage&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_coverage&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">coverage</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">language</span>: <span class="kw-2">&amp;</span><span class="ident">Language</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Coverage</span><span class="op">&gt;</span>;
 
-    <span class="doccomment">/// Gets the [`FontFace`][crate::FontFace] to which `self` belongs.</span>
+    <span class="doccomment">/// Gets the [`FontFace`][crate::FontFace] to which @self belongs.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -447,7 +447,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the [`FontMap`][crate::FontMap]</span>
-    <span class="doccomment">///  for the font</span>
+    <span class="doccomment">///   for the font</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_get_font_map&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_font_map&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">font_map</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontMap</span><span class="op">&gt;</span>;
@@ -461,7 +461,7 @@
     <span class="doccomment">/// from the extents rectangle to more traditional font metrics. The units</span>
     <span class="doccomment">/// of the rectangles are in 1/PANGO_SCALE of a device unit.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `self` is [`None`], this function gracefully sets some sane values in the</span>
+    <span class="doccomment">/// If @self is [`None`], this function gracefully sets some sane values in the</span>
     <span class="doccomment">/// output variables and returns.</span>
     <span class="doccomment">/// ## `glyph`</span>
     <span class="doccomment">/// the glyph index</span>
@@ -490,24 +490,24 @@
     <span class="doccomment">/// a language tag can be provided to indicate that the metrics should be</span>
     <span class="doccomment">/// retrieved that correspond to the script(s) used by that language.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `self` is [`None`], this function gracefully sets some sane values in the</span>
+    <span class="doccomment">/// If @self is [`None`], this function gracefully sets some sane values in the</span>
     <span class="doccomment">/// output variables and returns.</span>
     <span class="doccomment">/// ## `language`</span>
     <span class="doccomment">/// language tag used to determine which script</span>
-    <span class="doccomment">///  to get the metrics for, or [`None`] to indicate to get the metrics for</span>
-    <span class="doccomment">///  the entire font.</span>
+    <span class="doccomment">///   to get the metrics for, or [`None`] to indicate to get the metrics for</span>
+    <span class="doccomment">///   the entire font.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a [`FontMetrics`][crate::FontMetrics] object. The caller must call</span>
-    <span class="doccomment">///  `Pango::`FontMetrics::unref()`` when finished using the object.</span>
+    <span class="doccomment">///   `Pango::FontMetrics::unref()` when finished using the object.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_font_get_metrics&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_metrics&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">metrics</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">language</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Language</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontMetrics</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Returns whether the font provides a glyph for this character.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Returns [`true`] if `self` can render `wc`</span>
+    <span class="doccomment">/// Returns [`true`] if @self can render @wc</span>
     <span class="doccomment">/// ## `wc`</span>
     <span class="doccomment">/// a Unicode character</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>

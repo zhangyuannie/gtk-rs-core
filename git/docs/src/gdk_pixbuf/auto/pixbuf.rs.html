@@ -1454,7 +1454,7 @@
     <span class="doccomment">/// ## Creating new [`Pixbuf`][crate::Pixbuf]</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The most basic way to create a pixbuf is to wrap an existing pixel</span>
-    <span class="doccomment">/// buffer with a [`Pixbuf`][crate::Pixbuf] instance. You can use the</span>
+    <span class="doccomment">/// buffer with a [class[`Pixbuf`][crate::Pixbuf]] instance. You can use the</span>
     <span class="doccomment">/// [`ctor[`Pixbuf`][crate::Pixbuf].new_from_data`] function to do this.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Every time you create a new [`Pixbuf`][crate::Pixbuf] instance for some data, you</span>
@@ -1475,10 +1475,10 @@
     <span class="doccomment">/// As a special case, you can use the [`ctor[`Pixbuf`][crate::Pixbuf].new_from_xpm_data`]</span>
     <span class="doccomment">/// function to create a pixbuf from inline XPM image data.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// You can also copy an existing pixbuf with the ``Pixbuf::copy()``</span>
+    <span class="doccomment">/// You can also copy an existing pixbuf with the [method`Pixbuf`]</span>
     <span class="doccomment">/// function. This is not the same as just acquiring a reference to</span>
     <span class="doccomment">/// the old pixbuf instance: the copy function will actually duplicate</span>
-    <span class="doccomment">/// the pixel data in memory and create a new [`Pixbuf`][crate::Pixbuf] instance</span>
+    <span class="doccomment">/// the pixel data in memory and create a new [class`Pixbuf`] instance</span>
     <span class="doccomment">/// for it.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Reference counting</span>
@@ -1508,7 +1508,7 @@
     <span class="doccomment">/// last row in the pixbuf may not be as wide as the full rowstride, but rather</span>
     <span class="doccomment">/// just as wide as the pixel data needs to be; that is: it is unsafe to do</span>
     <span class="doccomment">/// `memcpy (dest, pixels, rowstride * height)` to copy a whole pixbuf. Use</span>
-    <span class="doccomment">/// `GdkPixbuf::`Pixbuf::copy()`` instead, or compute the width in bytes of the</span>
+    <span class="doccomment">/// [method[`Pixbuf`][crate::Pixbuf].copy] instead, or compute the width in bytes of the</span>
     <span class="doccomment">/// last row as:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **⚠️ The following code is in c ⚠️**</span>
@@ -1573,7 +1573,7 @@
     <span class="doccomment">/// For GUI applications, it is recommended to use the asynchronous</span>
     <span class="doccomment">/// stream API to avoid blocking the control flow of the application.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Additionally, [`Pixbuf`][crate::Pixbuf] provides the [`PixbufLoader`][crate::PixbufLoader]`]</span>
+    <span class="doccomment">/// Additionally, [`Pixbuf`][crate::Pixbuf] provides the [class[`Pixbuf`][crate::Pixbuf]`]</span>
     <span class="doccomment">/// API for progressive image loading.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Saving images</span>
@@ -2633,13 +2633,13 @@
     <span class="doccomment">/// offers reasonable quality and speed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// You can scale a sub-portion of `src` by creating a sub-pixbuf</span>
-    <span class="doccomment">/// pointing into `src`; see [``new_subpixbuf()``][`Self::new_subpixbuf()`].</span>
+    <span class="doccomment">/// pointing into `src`; see [method[`Pixbuf`][crate::Pixbuf].new_subpixbuf].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `dest_width` and `dest_height` are equal to the width and height of</span>
     <span class="doccomment">/// `src`, this function will return an unscaled copy of `src`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For more complicated scaling/alpha blending see [``scale()``][`Self::scale()`]</span>
-    <span class="doccomment">/// and [``composite()``][`Self::composite()`].</span>
+    <span class="doccomment">/// For more complicated scaling/alpha blending see [method[`Pixbuf`][crate::Pixbuf].scale]</span>
+    <span class="doccomment">/// and [method[`Pixbuf`][crate::Pixbuf].composite].</span>
     <span class="doccomment">/// ## `dest_width`</span>
     <span class="doccomment">/// the width of destination image</span>
     <span class="doccomment">/// ## `dest_height`</span>

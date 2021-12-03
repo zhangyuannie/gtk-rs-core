@@ -79,10 +79,10 @@ to a script. The fields of this structure are private to implementations
 of a font backend. See the documentation of the corresponding getters
 for documentation of their meaning.</p>
 <p>For an overview of the most important metrics, see:</p>
-<p><code>&lt;picture&gt;</code></p>
-<source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)">
- <img alt="Font metrics" src="fontmetrics-light.png">
-`</picture>`</div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#32-165" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.FontMetrics.html" title="struct pango::FontMetrics">FontMetrics</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.approximate_char_width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#44-46" title="goto source code">[src]</a></div><a href="#method.approximate_char_width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.approximate_char_width" class="fnname">approximate_char_width</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the approximate character width for a font metrics structure.</p>
+<picture>
+  <source srcset="fontmetrics-dark.png" media="(prefers-color-scheme: dark)">
+  <img alt="Font metrics" src="fontmetrics-light.png">
+</picture></div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#32-165" title="goto source code">[src]</a></div><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.FontMetrics.html" title="struct pango::FontMetrics">FontMetrics</a></h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.approximate_char_width" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#44-46" title="goto source code">[src]</a></div><a href="#method.approximate_char_width" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.approximate_char_width" class="fnname">approximate_char_width</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the approximate character width for a font metrics structure.</p>
 <p>This is merely a representative value useful, for example, for
 determining the initial size for a window. Actual characters in
 text will be wider and narrower than this.</p>
@@ -93,7 +93,7 @@ text will be wider and narrower than this.</p>
 determining the initial size for a window. Actual digits in
 text can be wider or narrower than this, though this value
 is generally somewhat more accurate than the result of
-<a href="struct.FontMetrics.html#method.approximate_char_width" title="Self::approximate_char_width()"><code>approximate_char_width()</code></a> for digits.</p>
+pango_font_metrics_get_approximate_char_width() for digits.</p>
 <h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p>the digit width, in Pango units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ascent" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/auto/font_metrics.rs.html#77-79" title="goto source code">[src]</a></div><a href="#method.ascent" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ascent" class="fnname">ascent</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></div></summary><div class="docblock"><p>Gets the ascent from a font metrics structure.</p>

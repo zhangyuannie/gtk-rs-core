@@ -428,7 +428,7 @@
     <span class="doccomment">/// lowercase, mapping &#39;_&#39; to &#39;-&#39;, and stripping all characters other</span>
     <span class="doccomment">/// than letters and &#39;-&#39;.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Use [``default()``][`Self::default()`] if you want to get the</span>
+    <span class="doccomment">/// Use [`default()`][Self::default()] if you want to get the</span>
     <span class="doccomment">/// [`Language`][crate::Language] for the current locale of the process.</span>
     <span class="doccomment">/// ## `language`</span>
     <span class="doccomment">/// a string representing a language tag</span>
@@ -454,9 +454,9 @@
     <span class="doccomment">/// of the tag, and the character after it in the tag is &#39;-&#39;.</span>
     <span class="doccomment">/// ## `range_list`</span>
     <span class="doccomment">/// a list of language ranges, separated by &#39;;&#39;, &#39;:&#39;,</span>
-    <span class="doccomment">///  &#39;,&#39;, or space characters.</span>
-    <span class="doccomment">///  Each element must either be &#39;*&#39;, or a RFC 3066 language range</span>
-    <span class="doccomment">///  canonicalized as by [``from_string()``][`Self::from_string()`]</span>
+    <span class="doccomment">///   &#39;,&#39;, or space characters.</span>
+    <span class="doccomment">///   Each element must either be &#39;*&#39;, or a RFC 3066 language range</span>
+    <span class="doccomment">///   canonicalized as by [`from_string()`][Self::from_string()]</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -471,27 +471,27 @@
         }
     }
 
-    <span class="doccomment">/// Determines if `script` is one of the scripts used to</span>
-    <span class="doccomment">/// write `self`.</span>
+    <span class="doccomment">/// Determines if @script is one of the scripts used to</span>
+    <span class="doccomment">/// write @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The returned value is conservative; if nothing is known about</span>
-    <span class="doccomment">/// the language tag `self`, [`true`] will be returned, since, as</span>
-    <span class="doccomment">/// far as Pango knows, `script` might be used to write `self`.</span>
+    <span class="doccomment">/// the language tag @self, [`true`] will be returned, since, as</span>
+    <span class="doccomment">/// far as Pango knows, @script might be used to write @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This routine is used in Pango&#39;s itemization process when</span>
     <span class="doccomment">/// determining if a supplied language tag is relevant to</span>
     <span class="doccomment">/// a particular section of text. It probably is not useful</span>
     <span class="doccomment">/// for applications in most circumstances.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This function uses [``scripts()``][`Self::scripts()`] internally.</span>
+    <span class="doccomment">/// This function uses [`scripts()`][Self::scripts()] internally.</span>
     <span class="doccomment">/// ## `script`</span>
     <span class="doccomment">/// a [`Script`][crate::Script]</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if `script` is one of the scripts used</span>
-    <span class="doccomment">///  to write `self` or if nothing is known about `self`</span>
-    <span class="doccomment">///  (including the case that `self` is [`None`]), [`false`] otherwise.</span>
+    <span class="doccomment">/// [`true`] if @script is one of the scripts used</span>
+    <span class="doccomment">///   to write @self or if nothing is known about @self</span>
+    <span class="doccomment">///   (including the case that @self is [`None`]), [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_language_includes_script&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">includes_script</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">script</span>: <span class="ident">Script</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -502,14 +502,14 @@
         }
     }
 
-    <span class="doccomment">/// Determines the scripts used to to write `self`.</span>
+    <span class="doccomment">/// Determines the scripts used to to write @self.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If nothing is known about the language tag `self`,</span>
-    <span class="doccomment">/// or if `self` is [`None`], then [`None`] is returned.</span>
+    <span class="doccomment">/// If nothing is known about the language tag @self,</span>
+    <span class="doccomment">/// or if @self is [`None`], then [`None`] is returned.</span>
     <span class="doccomment">/// The list of scripts returned starts with the script that the</span>
     <span class="doccomment">/// language uses most and continues to the one it uses least.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The value `num_script` points at will be set to the number</span>
+    <span class="doccomment">/// The value @num_script points at will be set to the number</span>
     <span class="doccomment">/// of scripts in the returned array (or zero if [`None`] is returned).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Most languages use only one script for writing, but there are</span>
@@ -519,7 +519,7 @@
     <span class="doccomment">/// though, except that it is positive if the return value is not</span>
     <span class="doccomment">/// [`None`], and it is a small number.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The [``includes_script()``][`Self::includes_script()`] function uses this</span>
+    <span class="doccomment">/// The [`includes_script()`][Self::includes_script()] function uses this</span>
     <span class="doccomment">/// function internally.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note: while the return value is declared as [`Script`][crate::Script], the</span>
@@ -529,10 +529,10 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">///  An array of [`Script`][crate::Script] values, with the number of entries in</span>
-    <span class="doccomment">///  the array stored in `num_scripts`, or [`None`] if Pango does not have</span>
-    <span class="doccomment">///  any information about this particular language tag (also the case</span>
-    <span class="doccomment">///  if `self` is [`None`]).</span>
+    <span class="doccomment">///   An array of [`Script`][crate::Script] values, with the number of entries in</span>
+    <span class="doccomment">///   the array stored in @num_scripts, or [`None`] if Pango does not have</span>
+    <span class="doccomment">///   any information about this particular language tag (also the case</span>
+    <span class="doccomment">///   if @self is [`None`]).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_scripts&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_language_get_scripts&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scripts</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Script</span><span class="op">&gt;</span> {
@@ -561,13 +561,13 @@
     <span class="doccomment">/// font feature requirements unique to the language. It is suitable for use</span>
     <span class="doccomment">/// as sample text in a font selection dialog.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `self` is [`None`], the default language as found by</span>
-    <span class="doccomment">/// [``default()``][`Self::default()`] is used.</span>
+    <span class="doccomment">/// If @self is [`None`], the default language as found by</span>
+    <span class="doccomment">/// [`default()`][Self::default()] is used.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If Pango does not have a sample string for `self`, the classic</span>
-    <span class="doccomment">/// &quot;The quick brown fox...&quot; is returned. This can be detected by</span>
+    <span class="doccomment">/// If Pango does not have a sample string for @self, the classic</span>
+    <span class="doccomment">/// &quot;The quick brown fox...&quot; is returned.  This can be detected by</span>
     <span class="doccomment">/// comparing the returned pointer value to that returned for (non-existent)</span>
-    <span class="doccomment">/// language code &quot;xx&quot;. That is, compare to:</span>
+    <span class="doccomment">/// language code &quot;xx&quot;.  That is, compare to:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```text</span>
     <span class="doccomment">/// pango_language_get_sample_string (pango_language_from_string (&quot;xx&quot;))</span>
@@ -587,17 +587,17 @@
     <span class="doccomment">/// The list is specified by the `PANGO_LANGUAGE` or `LANGUAGE`</span>
     <span class="doccomment">/// environment variables, in order of preference. Note that this</span>
     <span class="doccomment">/// list does not necessarily include the language returned by</span>
-    <span class="doccomment">/// [``default()``][`Self::default()`].</span>
+    <span class="doccomment">/// [`default()`][Self::default()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// When choosing language-specific resources, such as the sample</span>
-    <span class="doccomment">/// text returned by [``sample_string()``][`Self::sample_string()`],</span>
+    <span class="doccomment">/// text returned by [`sample_string()`][Self::sample_string()],</span>
     <span class="doccomment">/// you should first try the default language, followed by the</span>
     <span class="doccomment">/// languages returned by this function.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// a [`None`]-terminated array</span>
-    <span class="doccomment">///  of [`Language`][crate::Language]*</span>
+    <span class="doccomment">///   of [`Language`][crate::Language]*</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_48&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_48&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_preferred&quot;</span>)]</span>

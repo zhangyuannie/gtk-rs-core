@@ -101,11 +101,11 @@ Each element must either be ‘*’, or a RFC 3066 language range
 canonicalized as by <a href="struct.Language.html#method.from_string" title="Self::from_string()"><code>from_string()</code></a></p>
 <h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if a match was found</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.includes_script" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#149-156" title="goto source code">[src]</a></div><a href="#method.includes_script" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.includes_script" class="fnname">includes_script</a>(&amp;self, script: <a class="enum" href="enum.Script.html" title="enum pango::Script">Script</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Determines if <code>script</code> is one of the scripts used to
-write <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.includes_script" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#149-156" title="goto source code">[src]</a></div><a href="#method.includes_script" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.includes_script" class="fnname">includes_script</a>(&amp;self, script: <a class="enum" href="enum.Script.html" title="enum pango::Script">Script</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Determines if @script is one of the scripts used to
+write @self.</p>
 <p>The returned value is conservative; if nothing is known about
-the language tag <code>self</code>, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> will be returned, since, as
-far as Pango knows, <code>script</code> might be used to write <code>self</code>.</p>
+the language tag @self, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> will be returned, since, as
+far as Pango knows, @script might be used to write @self.</p>
 <p>This routine is used in Pango’s itemization process when
 determining if a supplied language tag is relevant to
 a particular section of text. It probably is not useful
@@ -114,15 +114,15 @@ for applications in most circumstances.</p>
 <h6 id="script" class="section-header"><a href="#script"><code>script</code></a></h6>
 <p>a <a href="enum.Script.html" title="crate::Script"><code>Script</code></a></p>
 <h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
-<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if <code>script</code> is one of the scripts used
-to write <code>self</code> or if nothing is known about <code>self</code>
-(including the case that <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>), <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise.</p>
-</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.scripts" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#191-207" title="goto source code">[src]</a></div><a href="#method.scripts" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.scripts" class="fnname">scripts</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="enum.Script.html" title="enum pango::Script">Script</a>&gt;</h4></div></summary><div class="docblock"><p>Determines the scripts used to to write <code>self</code>.</p>
-<p>If nothing is known about the language tag <code>self</code>,
-or if <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, then <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned.
+<p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if @script is one of the scripts used
+to write @self or if nothing is known about @self
+(including the case that @self is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>), <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> otherwise.</p>
+</div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.scripts" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#191-207" title="goto source code">[src]</a></div><a href="#method.scripts" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.scripts" class="fnname">scripts</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="enum.Script.html" title="enum pango::Script">Script</a>&gt;</h4></div></summary><div class="docblock"><p>Determines the scripts used to to write @self.</p>
+<p>If nothing is known about the language tag @self,
+or if @self is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, then <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned.
 The list of scripts returned starts with the script that the
 language uses most and continues to the one it uses least.</p>
-<p>The value <code>num_script</code> points at will be set to the number
+<p>The value @num_script points at will be set to the number
 of scripts in the returned array (or zero if <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> is returned).</p>
 <p>Most languages use only one script for writing, but there are
 some that use two (Latin and Cyrillic for example), and a few
@@ -137,21 +137,21 @@ returned values are from the <code>GUnicodeScript</code> enumeration, which
 may have more values. Callers need to handle unknown values.</p>
 <h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>An array of <a href="enum.Script.html" title="crate::Script"><code>Script</code></a> values, with the number of entries in
-the array stored in <code>num_scripts</code>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if Pango does not have
+the array stored in @num_scripts, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if Pango does not have
 any information about this particular language tag (also the case
-if <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>).</p>
+if @self is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>).</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.sample_string" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#234-236" title="goto source code">[src]</a></div><a href="#method.sample_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.sample_string" class="fnname">sample_string</a>(&amp;self) -&gt; <a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a></h4></div></summary><div class="docblock"><p>Get a string that is representative of the characters needed to
 render a particular language.</p>
 <p>The sample text may be a pangram, but is not necessarily. It is chosen
 to be demonstrative of normal text in the language, as well as exposing
 font feature requirements unique to the language. It is suitable for use
 as sample text in a font selection dialog.</p>
-<p>If <code>self</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the default language as found by
+<p>If @self is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, the default language as found by
 <a href="struct.Language.html#method.default" title="Self::default()"><code>default()</code></a> is used.</p>
-<p>If Pango does not have a sample string for <code>self</code>, the classic
-“The quick brown fox…” is returned. This can be detected by
+<p>If Pango does not have a sample string for @self, the classic
+“The quick brown fox…” is returned.  This can be detected by
 comparing the returned pointer value to that returned for (non-existent)
-language code “xx”. That is, compare to:</p>
+language code “xx”.  That is, compare to:</p>
 <div class="example-wrap"><pre class="language-text"><code>pango_language_get_sample_string (pango_language_from_string (&quot;xx&quot;))</code></pre></div><h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
 <p>the sample string</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.preferred" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/pango/language.rs.html#258-272" title="goto source code">[src]</a></div><a href="#method.preferred" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.preferred" class="fnname">preferred</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.Language.html" title="struct pango::Language">Language</a>&gt;</h4></div><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_48</code></strong> only.</div></div></summary><div class="docblock"><p>Returns the list of languages that the user prefers.</p>

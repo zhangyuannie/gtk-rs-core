@@ -708,6 +708,8 @@
 <span id="634">634</span>
 <span id="635">635</span>
 <span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -723,6 +725,7 @@
 
 <span class="doccomment">/// Builder for signals.</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::type_complexity</span>)]</span>
+<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;The builder must be built to be used&quot;</span>]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SignalBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,
     <span class="ident">flags</span>: <span class="ident">SignalFlags</span>,
@@ -1152,6 +1155,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This does not register the signal yet, which only happens as part of object type</span>
     <span class="doccomment">/// registration.</span>
+    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;Signal returned from the builder must be used for it to be registered&quot;</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">Signal</span> {
         <span class="kw">let</span> <span class="ident">flags</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">flags</span>
             <span class="op">&amp;</span> (<span class="ident">SignalFlags::RUN_FIRST</span> <span class="op">|</span> <span class="ident">SignalFlags::RUN_LAST</span> <span class="op">|</span> <span class="ident">SignalFlags::RUN_CLEANUP</span>)

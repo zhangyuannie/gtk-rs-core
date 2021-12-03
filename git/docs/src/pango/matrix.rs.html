@@ -194,16 +194,16 @@
         })
     }
 
-    <span class="doccomment">/// First transforms the `rect` using `self`, then calculates the bounding box</span>
+    <span class="doccomment">/// First transforms the @rect using @self, then calculates the bounding box</span>
     <span class="doccomment">/// of the transformed rectangle.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is useful for example when you want to draw a rotated</span>
-    <span class="doccomment">/// [`Layout`][crate::Layout] to an image buffer, and want to know how large the image</span>
+    <span class="doccomment">/// @PangoLayout to an image buffer, and want to know how large the image</span>
     <span class="doccomment">/// should be and how much you should shift the layout when rendering.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For better accuracy, you should use [``transform_rectangle()``][`Self::transform_rectangle()`]</span>
+    <span class="doccomment">/// For better accuracy, you should use [`transform_rectangle()`][Self::transform_rectangle()]</span>
     <span class="doccomment">/// on original rectangle in Pango units and convert to pixels afterward</span>
-    <span class="doccomment">/// using [``extents_to_pixels()``][`crate::extents_to_pixels()`]&#39;s first argument.</span>
+    <span class="doccomment">/// using [`extents_to_pixels()`][crate::extents_to_pixels()]&#39;s first argument.</span>
     <span class="doccomment">/// ## `rect`</span>
     <span class="doccomment">/// in/out bounding box in device units</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_matrix_transform_pixel_rectangle&quot;</span>)]</span>
@@ -216,19 +216,19 @@
         }
     }
 
-    <span class="doccomment">/// First transforms `rect` using `self`, then calculates the bounding box</span>
+    <span class="doccomment">/// First transforms @rect using @self, then calculates the bounding box</span>
     <span class="doccomment">/// of the transformed rectangle.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is useful for example when you want to draw a rotated</span>
-    <span class="doccomment">/// [`Layout`][crate::Layout] to an image buffer, and want to know how large the image</span>
+    <span class="doccomment">/// @PangoLayout to an image buffer, and want to know how large the image</span>
     <span class="doccomment">/// should be and how much you should shift the layout when rendering.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If you have a rectangle in device units (pixels), use</span>
-    <span class="doccomment">/// [``transform_pixel_rectangle()``][`Self::transform_pixel_rectangle()`].</span>
+    <span class="doccomment">/// [`transform_pixel_rectangle()`][Self::transform_pixel_rectangle()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If you have the rectangle in Pango units and want to convert to</span>
     <span class="doccomment">/// transformed pixel bounding box, it is more accurate to transform it first</span>
-    <span class="doccomment">/// (using this function) and pass the result to [`extents_to_pixels()`][crate::extents_to_pixels()],</span>
+    <span class="doccomment">/// (using this function) and pass the result to pango_extents_to_pixels(),</span>
     <span class="doccomment">/// first argument, for an inclusive rounded rectangle.</span>
     <span class="doccomment">/// However, there are valid reasons that you may want to convert</span>
     <span class="doccomment">/// to pixels first and then transform, for example when the transformed</span>

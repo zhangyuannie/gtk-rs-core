@@ -335,6 +335,8 @@
 <span id="261">261</span>
 <span id="262">262</span>
 <span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -350,6 +352,7 @@
 <span class="macro">wrapper!</span> {
     <span class="doccomment">/// A mutable text buffer that grows automatically.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GString&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;The builder must be built to be used&quot;</span>]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GStringBuilder</span>(<span class="ident">Boxed</span><span class="op">&lt;</span><span class="ident">ffi::GString</span><span class="op">&gt;</span>);
 
     <span class="kw">match</span> <span class="kw">fn</span> {
@@ -433,6 +436,7 @@
     <span class="doccomment">/// # Panics</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the string builder contains invalid UTF-8 this function panics.</span>
+    <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;String returned from the builder should probably be used&quot;</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_string</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::GString</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">mem::ManuallyDrop::new</span>(<span class="self">self</span>);

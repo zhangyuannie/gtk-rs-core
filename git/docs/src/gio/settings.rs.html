@@ -342,7 +342,7 @@
 <span class="kw">use</span> <span class="ident">glib::variant::FromVariant</span>;
 <span class="kw">use</span> <span class="ident">glib</span>::{<span class="ident">BoolError</span>, <span class="ident">IsA</span>, <span class="ident">ToVariant</span>};
 
-<span class="attribute">#[<span class="ident">must_use</span>]</span>
+<span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;The builder must be built to be used&quot;</span>]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BindingBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="ident">settings</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Settings</span>,
     <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>,

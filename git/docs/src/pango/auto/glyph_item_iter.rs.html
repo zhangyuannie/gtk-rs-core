@@ -174,17 +174,17 @@
     <span class="doccomment">/// [`GlyphItem`][crate::GlyphItem].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The *forward direction* of the iterator is the logical direction of text.</span>
-    <span class="doccomment">/// That is, with increasing `start_index` and `start_char` values. If `glyph_item`</span>
+    <span class="doccomment">/// That is, with increasing @start_index and @start_char values. If @glyph_item</span>
     <span class="doccomment">/// is right-to-left (that is, if `glyph_item-&gt;item-&gt;analysis.level` is odd),</span>
-    <span class="doccomment">/// then `start_glyph` decreases as the iterator moves forward. Moreover,</span>
-    <span class="doccomment">/// in right-to-left cases, `start_glyph` is greater than `end_glyph`.</span>
+    <span class="doccomment">/// then @start_glyph decreases as the iterator moves forward.  Moreover,</span>
+    <span class="doccomment">/// in right-to-left cases, @start_glyph is greater than @end_glyph.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// An iterator should be initialized using either</span>
-    <span class="doccomment">/// [`init_start()`][Self::init_start()] or</span>
-    <span class="doccomment">/// [`init_end()`][Self::init_end()], for forward and backward iteration</span>
+    <span class="doccomment">/// pango_glyph_item_iter_init_start() or</span>
+    <span class="doccomment">/// pango_glyph_item_iter_init_end(), for forward and backward iteration</span>
     <span class="doccomment">/// respectively, and walked over using any desired mixture of</span>
-    <span class="doccomment">/// [`next_cluster()`][Self::next_cluster()] and</span>
-    <span class="doccomment">/// [`prev_cluster()`][Self::prev_cluster()].</span>
+    <span class="doccomment">/// pango_glyph_item_iter_next_cluster() and</span>
+    <span class="doccomment">/// pango_glyph_item_iter_prev_cluster().</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A common idiom for doing a forward iteration over the clusters is:</span>
     <span class="doccomment">///</span>
@@ -201,11 +201,11 @@
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that `text` is the start of the text for layout, which is then</span>
-    <span class="doccomment">/// indexed by `glyph_item-&gt;item-&gt;offset` to get to the text of `glyph_item`.</span>
-    <span class="doccomment">/// The `start_index` and `end_index` values can directly index into `text`. The</span>
-    <span class="doccomment">/// `start_glyph`, `end_glyph`, `start_char`, and `end_char` values however are</span>
-    <span class="doccomment">/// zero-based for the `glyph_item`. For each cluster, the item pointed at by</span>
+    <span class="doccomment">/// Note that @text is the start of the text for layout, which is then</span>
+    <span class="doccomment">/// indexed by `glyph_item-&gt;item-&gt;offset` to get to the text of @glyph_item.</span>
+    <span class="doccomment">/// The @start_index and @end_index values can directly index into @text. The</span>
+    <span class="doccomment">/// @start_glyph, @end_glyph, @start_char, and @end_char values however are</span>
+    <span class="doccomment">/// zero-based for the @glyph_item.  For each cluster, the item pointed at by</span>
     <span class="doccomment">/// the start variables is included in the cluster while the one pointed at by</span>
     <span class="doccomment">/// end variables is not.</span>
     <span class="doccomment">///</span>
@@ -228,7 +228,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the iterator was advanced,</span>
-    <span class="doccomment">///  [`false`] if we were already on the last cluster.</span>
+    <span class="doccomment">///   [`false`] if we were already on the  last cluster.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_glyph_item_iter_next_cluster&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_cluster</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -244,7 +244,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the iterator was moved,</span>
-    <span class="doccomment">///  [`false`] if we were already on the first cluster.</span>
+    <span class="doccomment">///   [`false`] if we were already on the first cluster.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_glyph_item_iter_prev_cluster&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prev_cluster</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {

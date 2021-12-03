@@ -339,7 +339,7 @@
     <span class="doccomment">/// out a paragraph via [`Layout`][crate::Layout].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`LayoutLine`][crate::LayoutLine] structures are obtained by calling</span>
-    <span class="doccomment">/// [``Layout::line()``][crate::`Layout::line()`] and are only valid until the text,</span>
+    <span class="doccomment">/// [`Layout::line()`][crate::Layout::line()] and are only valid until the text,</span>
     <span class="doccomment">/// attributes, or settings of the parent [`Layout`][crate::Layout] are modified.</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LayoutLine</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">ffi::PangoLayoutLine</span><span class="op">&gt;</span>);
@@ -354,7 +354,7 @@
 <span class="kw">impl</span> <span class="ident">LayoutLine</span> {
     <span class="doccomment">/// Computes the logical and ink extents of a layout line.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [``FontExt::glyph_extents()``][crate::prelude::`FontExt::glyph_extents()`] for details</span>
+    <span class="doccomment">/// See [`FontExt::glyph_extents()`][crate::prelude::FontExt::glyph_extents()] for details</span>
     <span class="doccomment">/// about the interpretation of the rectangles.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
@@ -362,11 +362,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ink_rect`</span>
     <span class="doccomment">/// rectangle used to store the extents of</span>
-    <span class="doccomment">///  the glyph string as drawn</span>
+    <span class="doccomment">///   the glyph string as drawn</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `logical_rect`</span>
     <span class="doccomment">/// rectangle used to store the logical</span>
-    <span class="doccomment">///  extents of the glyph string</span>
+    <span class="doccomment">///   extents of the glyph string</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_line_get_extents&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_extents&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extents</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">Rectangle</span>, <span class="ident">Rectangle</span>) {
@@ -387,8 +387,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that the actual baseline-to-baseline distance between lines</span>
     <span class="doccomment">/// of text is influenced by other factors, such as</span>
-    <span class="doccomment">/// [``Layout::set_spacing()``][crate::`Layout::set_spacing()`] and</span>
-    <span class="doccomment">/// [``Layout::set_line_spacing()``][crate::`Layout::set_line_spacing()`].</span>
+    <span class="doccomment">/// [`Layout::set_spacing()`][crate::Layout::set_spacing()] and</span>
+    <span class="doccomment">/// [`Layout::set_line_spacing()`][crate::Layout::set_line_spacing()].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -421,23 +421,23 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::pango_layout_line_get_length</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="doccomment">/// Computes the logical and ink extents of `self` in device units.</span>
+    <span class="doccomment">/// Computes the logical and ink extents of @self in device units.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This function just calls [``extents()``][`Self::extents()`] followed by</span>
-    <span class="doccomment">/// two [``extents_to_pixels()``][`crate::extents_to_pixels()`] calls, rounding `ink_rect` and `logical_rect`</span>
+    <span class="doccomment">/// This function just calls [`extents()`][Self::extents()] followed by</span>
+    <span class="doccomment">/// two [`extents_to_pixels()`][crate::extents_to_pixels()] calls, rounding @ink_rect and @logical_rect</span>
     <span class="doccomment">/// such that the rounded rectangles fully contain the unrounded one (that is,</span>
-    <span class="doccomment">/// passes them as first argument to [``extents_to_pixels()``][`crate::extents_to_pixels()`]).</span>
+    <span class="doccomment">/// passes them as first argument to [`extents_to_pixels()`][crate::extents_to_pixels()]).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ink_rect`</span>
     <span class="doccomment">/// rectangle used to store the extents of</span>
-    <span class="doccomment">///  the glyph string as drawn</span>
+    <span class="doccomment">///   the glyph string as drawn</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `logical_rect`</span>
     <span class="doccomment">/// rectangle used to store the logical</span>
-    <span class="doccomment">///  extents of the glyph string</span>
+    <span class="doccomment">///   extents of the glyph string</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_line_get_pixel_extents&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_pixel_extents&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pixel_extents</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">Rectangle</span>, <span class="ident">Rectangle</span>) {
@@ -492,25 +492,25 @@
     <span class="doccomment">/// layout, not with respect to the line.</span>
     <span class="doccomment">/// ## `start_index`</span>
     <span class="doccomment">/// Start byte index of the logical range. If this value</span>
-    <span class="doccomment">///  is less than the start index for the line, then the first range</span>
-    <span class="doccomment">///  will extend all the way to the leading edge of the layout. Otherwise,</span>
-    <span class="doccomment">///  it will start at the leading edge of the first character.</span>
+    <span class="doccomment">///   is less than the start index for the line, then the first range</span>
+    <span class="doccomment">///   will extend all the way to the leading edge of the layout. Otherwise,</span>
+    <span class="doccomment">///   it will start at the leading edge of the first character.</span>
     <span class="doccomment">/// ## `end_index`</span>
     <span class="doccomment">/// Ending byte index of the logical range. If this value is</span>
-    <span class="doccomment">///  greater than the end index for the line, then the last range will</span>
-    <span class="doccomment">///  extend all the way to the trailing edge of the layout. Otherwise,</span>
-    <span class="doccomment">///  it will end at the trailing edge of the last character.</span>
+    <span class="doccomment">///   greater than the end index for the line, then the last range will</span>
+    <span class="doccomment">///   extend all the way to the trailing edge of the layout. Otherwise,</span>
+    <span class="doccomment">///   it will end at the trailing edge of the last character.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## `ranges`</span>
     <span class="doccomment">/// location to</span>
-    <span class="doccomment">///  store a pointer to an array of ranges. The array will be of length</span>
-    <span class="doccomment">///  `2*n_ranges`, with each range starting at `(*ranges)[2*n]` and of</span>
-    <span class="doccomment">///  width `(*ranges)[2*n + 1] - (*ranges)[2*n]`. This array must be freed</span>
-    <span class="doccomment">///  with `g_free()`. The coordinates are relative to the layout and are in</span>
-    <span class="doccomment">///  Pango units.</span>
+    <span class="doccomment">///   store a pointer to an array of ranges. The array will be of length</span>
+    <span class="doccomment">///   `2*n_ranges`, with each range starting at `(*ranges)[2*n]` and of</span>
+    <span class="doccomment">///   width `(*ranges)[2*n + 1] - (*ranges)[2*n]`. This array must be freed</span>
+    <span class="doccomment">///   with g_free(). The coordinates are relative to the layout and are in</span>
+    <span class="doccomment">///   Pango units.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_layout_line_get_x_ranges&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_x_ranges&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_ranges</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">start_index</span>: <span class="ident">i32</span>, <span class="ident">end_index</span>: <span class="ident">i32</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> {
@@ -533,8 +533,8 @@
     <span class="doccomment">/// byte offset of a grapheme within the layout</span>
     <span class="doccomment">/// ## `trailing`</span>
     <span class="doccomment">/// an integer indicating the edge of the grapheme to retrieve</span>
-    <span class="doccomment">///  the position of. If &gt; 0, the trailing edge of the grapheme,</span>
-    <span class="doccomment">///  if 0, the leading of the grapheme</span>
+    <span class="doccomment">///   the position of. If &gt; 0, the trailing edge of the grapheme,</span>
+    <span class="doccomment">///   if 0, the leading of the grapheme</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>

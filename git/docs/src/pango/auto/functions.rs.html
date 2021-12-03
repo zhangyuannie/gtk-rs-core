@@ -768,18 +768,18 @@
 <span class="doccomment">/// The conversion is done by dividing by the `PANGO_SCALE` factor and</span>
 <span class="doccomment">/// performing rounding.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The `inclusive` rectangle is converted by flooring the x/y coordinates</span>
+<span class="doccomment">/// The @inclusive rectangle is converted by flooring the x/y coordinates</span>
 <span class="doccomment">/// and extending width/height, such that the final rectangle completely</span>
 <span class="doccomment">/// includes the original rectangle.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The `nearest` rectangle is converted by rounding the coordinates</span>
+<span class="doccomment">/// The @nearest rectangle is converted by rounding the coordinates</span>
 <span class="doccomment">/// of the rectangle to the nearest device unit (pixel).</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The rule to which argument to use is: if you want the resulting device-space</span>
 <span class="doccomment">/// rectangle to completely contain the original rectangle, pass it in as</span>
-<span class="doccomment">/// `inclusive`. If you want two touching-but-not-overlapping rectangles stay</span>
+<span class="doccomment">/// @inclusive. If you want two touching-but-not-overlapping rectangles stay</span>
 <span class="doccomment">/// touching-but-not-overlapping after rounding to device units, pass them in</span>
-<span class="doccomment">/// as `nearest`.</span>
+<span class="doccomment">/// as @nearest.</span>
 <span class="doccomment">/// ## `inclusive`</span>
 <span class="doccomment">/// rectangle to round to pixels inclusively</span>
 <span class="doccomment">/// ## `nearest`</span>
@@ -799,47 +799,47 @@
 <span class="doccomment">/// ## `text`</span>
 <span class="doccomment">/// the text to process. Must be valid UTF-8</span>
 <span class="doccomment">/// ## `length`</span>
-<span class="doccomment">/// length of `text` in bytes (may be -1 if `text` is nul-terminated)</span>
+<span class="doccomment">/// length of @text in bytes (may be -1 if @text is nul-terminated)</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The direction corresponding to the first strong character.</span>
-<span class="doccomment">///  If no such character is found, then [`Direction::Neutral`][crate::Direction::Neutral] is returned.</span>
+<span class="doccomment">///   If no such character is found, then [`Direction::Neutral`][crate::Direction::Neutral] is returned.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_find_base_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_base_dir</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Direction</span> {
     <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_find_base_dir</span>(<span class="ident">text</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">length</span>)) }
 }
 
-<span class="doccomment">/// Locates a paragraph boundary in `text`.</span>
+<span class="doccomment">/// Locates a paragraph boundary in @text.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// A boundary is caused by delimiter characters, such as</span>
 <span class="doccomment">/// a newline, carriage return, carriage return-newline pair,</span>
 <span class="doccomment">/// or Unicode paragraph separator character.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The index of the run of delimiters is returned in</span>
-<span class="doccomment">/// `paragraph_delimiter_index`. The index of the start</span>
+<span class="doccomment">/// @paragraph_delimiter_index. The index of the start</span>
 <span class="doccomment">/// of the paragrap (index after all delimiters) is stored</span>
-<span class="doccomment">/// in `next_paragraph_start`.</span>
+<span class="doccomment">/// in @next_paragraph_start.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If no delimiters are found, both `paragraph_delimiter_index`</span>
-<span class="doccomment">/// and `next_paragraph_start` are filled with the length of `text`</span>
+<span class="doccomment">/// If no delimiters are found, both @paragraph_delimiter_index</span>
+<span class="doccomment">/// and @next_paragraph_start are filled with the length of @text</span>
 <span class="doccomment">/// (an index one off the end).</span>
 <span class="doccomment">/// ## `text`</span>
 <span class="doccomment">/// UTF-8 text</span>
 <span class="doccomment">/// ## `length`</span>
-<span class="doccomment">/// length of `text` in bytes, or -1 if nul-terminated</span>
+<span class="doccomment">/// length of @text in bytes, or -1 if nul-terminated</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `paragraph_delimiter_index`</span>
 <span class="doccomment">/// return location for index of</span>
-<span class="doccomment">///  delimiter</span>
+<span class="doccomment">///   delimiter</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `next_paragraph_start`</span>
 <span class="doccomment">/// return location for start of next</span>
-<span class="doccomment">///  paragraph</span>
+<span class="doccomment">///   paragraph</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_find_paragraph_boundary&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_paragraph_boundary</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; (<span class="ident">i32</span>, <span class="ident">i32</span>) {
     <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>;
@@ -867,14 +867,14 @@
 <span class="doccomment">/// Checks if a character that should not be normally rendered.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This includes all Unicode characters with &quot;ZERO WIDTH&quot; in their name,</span>
-<span class="doccomment">/// as well as *bidi* formatting characters, and a few other ones. This is</span>
-<span class="doccomment">/// totally different from `g_unichar_iszerowidth()` and is at best misnamed.</span>
+<span class="doccomment">/// as well as *bidi* formatting characters, and a few other ones.  This is</span>
+<span class="doccomment">/// totally different from g_unichar_iszerowidth() and is at best misnamed.</span>
 <span class="doccomment">/// ## `ch`</span>
 <span class="doccomment">/// a Unicode character</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] if `ch` is a zero-width character, [`false`] otherwise</span>
+<span class="doccomment">/// [`true`] if @ch is a zero-width character, [`false`] otherwise</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_is_zero_width&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_zero_width</span>(<span class="ident">ch</span>: <span class="ident">char</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::pango_is_zero_width</span>(<span class="ident">ch</span>.<span class="ident">into_glib</span>())) }
@@ -883,35 +883,35 @@
 <span class="doccomment">/// Breaks a piece of text into segments with consistent directional</span>
 <span class="doccomment">/// level and font.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Each byte of `text` will be contained in exactly one of the items in the</span>
+<span class="doccomment">/// Each byte of @text will be contained in exactly one of the items in the</span>
 <span class="doccomment">/// returned list; the generated list of items will be in logical order (the</span>
 <span class="doccomment">/// start offsets of the items are ascending).</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// `cached_iter` should be an iterator over `attrs` currently positioned</span>
-<span class="doccomment">/// at a range before or containing `start_index`; `cached_iter` will be</span>
+<span class="doccomment">/// @cached_iter should be an iterator over @attrs currently positioned</span>
+<span class="doccomment">/// at a range before or containing @start_index; @cached_iter will be</span>
 <span class="doccomment">/// advanced to the range covering the position just after</span>
-<span class="doccomment">/// `start_index` + `length`. (i.e. if itemizing in a loop, just keep passing</span>
-<span class="doccomment">/// in the same `cached_iter`).</span>
+<span class="doccomment">/// @start_index + @length. (i.e. if itemizing in a loop, just keep passing</span>
+<span class="doccomment">/// in the same @cached_iter).</span>
 <span class="doccomment">/// ## `context`</span>
 <span class="doccomment">/// a structure holding information that affects</span>
-<span class="doccomment">///  the itemization process.</span>
+<span class="doccomment">///   the itemization process.</span>
 <span class="doccomment">/// ## `text`</span>
 <span class="doccomment">/// the text to itemize. Must be valid UTF-8</span>
 <span class="doccomment">/// ## `start_index`</span>
-<span class="doccomment">/// first byte in `text` to process</span>
+<span class="doccomment">/// first byte in @text to process</span>
 <span class="doccomment">/// ## `length`</span>
 <span class="doccomment">/// the number of bytes (not characters) to process</span>
-<span class="doccomment">///  after `start_index`. This must be &gt;= 0.</span>
+<span class="doccomment">///   after @start_index. This must be &gt;= 0.</span>
 <span class="doccomment">/// ## `attrs`</span>
-<span class="doccomment">/// the set of attributes that apply to `text`.</span>
+<span class="doccomment">/// the set of attributes that apply to @text.</span>
 <span class="doccomment">/// ## `cached_iter`</span>
 <span class="doccomment">/// Cached attribute iterator</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// a `GList` of</span>
-<span class="doccomment">///  [`Item`][crate::Item] structures. The items should be freed using</span>
-<span class="doccomment">///  `Pango::`Item::free()`` probably in combination with `g_list_free_full()`.</span>
+<span class="doccomment">///   [`Item`][crate::Item] structures. The items should be freed using</span>
+<span class="doccomment">///   `Pango::Item::free()` probably in combination with g_list_free_full().</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_itemize&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">itemize</span>(
     <span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="ident">Context</span>,
@@ -933,33 +933,33 @@
     }
 }
 
-<span class="doccomment">/// Like `[`itemize()`][crate::itemize()]`, but with an explicitly specified base direction.</span>
+<span class="doccomment">/// Like `pango_itemize()`, but with an explicitly specified base direction.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The base direction is used when computing bidirectional levels.</span>
-<span class="doccomment">/// (see [``Context::set_base_dir()``][crate::`Context::set_base_dir()`]). [``itemize()``][`crate::itemize()`] gets the</span>
+<span class="doccomment">/// (see [`Context::set_base_dir()`][crate::Context::set_base_dir()]). [`itemize()`][crate::itemize()] gets the</span>
 <span class="doccomment">/// base direction from the [`Context`][crate::Context].</span>
 <span class="doccomment">/// ## `context`</span>
 <span class="doccomment">/// a structure holding information that affects</span>
-<span class="doccomment">///  the itemization process.</span>
+<span class="doccomment">///   the itemization process.</span>
 <span class="doccomment">/// ## `base_dir`</span>
 <span class="doccomment">/// base direction to use for bidirectional processing</span>
 <span class="doccomment">/// ## `text`</span>
 <span class="doccomment">/// the text to itemize.</span>
 <span class="doccomment">/// ## `start_index`</span>
-<span class="doccomment">/// first byte in `text` to process</span>
+<span class="doccomment">/// first byte in @text to process</span>
 <span class="doccomment">/// ## `length`</span>
 <span class="doccomment">/// the number of bytes (not characters) to process</span>
-<span class="doccomment">///  after `start_index`. This must be &gt;= 0.</span>
+<span class="doccomment">///   after @start_index. This must be &gt;= 0.</span>
 <span class="doccomment">/// ## `attrs`</span>
-<span class="doccomment">/// the set of attributes that apply to `text`.</span>
+<span class="doccomment">/// the set of attributes that apply to @text.</span>
 <span class="doccomment">/// ## `cached_iter`</span>
 <span class="doccomment">/// Cached attribute iterator</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// a `GList` of</span>
-<span class="doccomment">///  [`Item`][crate::Item] structures. The items should be freed using</span>
-<span class="doccomment">///  `Pango::`Item::free()`` probably in combination with `g_list_free_full()`.</span>
+<span class="doccomment">///   [`Item`][crate::Item] structures. The items should be freed using</span>
+<span class="doccomment">///   `Pango::Item::free()` probably in combination with g_list_free_full().</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_itemize_with_base_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">itemize_with_base_dir</span>(
     <span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="ident">Context</span>,
@@ -998,28 +998,28 @@
 <span class="doccomment">/// See the [Pango Markup](pango_markup.html) docs for details about the</span>
 <span class="doccomment">/// supported markup.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If `accel_marker` is nonzero, the given character will mark the</span>
-<span class="doccomment">/// character following it as an accelerator. For example, `accel_marker`</span>
+<span class="doccomment">/// If @accel_marker is nonzero, the given character will mark the</span>
+<span class="doccomment">/// character following it as an accelerator. For example, @accel_marker</span>
 <span class="doccomment">/// might be an ampersand or underscore. All characters marked</span>
 <span class="doccomment">/// as an accelerator will receive a [`Underline::Low`][crate::Underline::Low] attribute,</span>
-<span class="doccomment">/// and the first character so marked will be returned in `accel_char`.</span>
-<span class="doccomment">/// Two `accel_marker` characters following each other produce a single</span>
-<span class="doccomment">/// literal `accel_marker` character.</span>
+<span class="doccomment">/// and the first character so marked will be returned in @accel_char.</span>
+<span class="doccomment">/// Two @accel_marker characters following each other produce a single</span>
+<span class="doccomment">/// literal @accel_marker character.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// To parse a stream of pango markup incrementally, use ``markup_parser_new()``.</span>
+<span class="doccomment">/// To parse a stream of pango markup incrementally, use `markup_parser_new()`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// If any error happens, none of the output arguments are touched except</span>
-<span class="doccomment">/// for `error`.</span>
+<span class="doccomment">/// for @error.</span>
 <span class="doccomment">/// ## `markup_text`</span>
 <span class="doccomment">/// markup to parse (see the Pango Markup docs)</span>
 <span class="doccomment">/// ## `length`</span>
-<span class="doccomment">/// length of `markup_text`, or -1 if nul-terminated</span>
+<span class="doccomment">/// length of @markup_text, or -1 if nul-terminated</span>
 <span class="doccomment">/// ## `accel_marker`</span>
 <span class="doccomment">/// character that precedes an accelerator, or 0 for none</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`false`] if `error` is set, otherwise [`true`]</span>
+<span class="doccomment">/// [`false`] if @error is set, otherwise [`true`]</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `attr_list`</span>
 <span class="doccomment">/// address of return location for a [`AttrList`][crate::AttrList]</span>
@@ -1073,11 +1073,11 @@
 <span class="doccomment">/// ## `str`</span>
 <span class="doccomment">/// a string to parse.</span>
 <span class="doccomment">/// ## `warn`</span>
-<span class="doccomment">/// if [`true`], issue a `g_warning()` on bad input.</span>
+<span class="doccomment">/// if [`true`], issue a g_warning() on bad input.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] if `str` was successfully parsed.</span>
+<span class="doccomment">/// [`true`] if @str was successfully parsed.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `stretch`</span>
 <span class="doccomment">/// a [`Stretch`][crate::Stretch] to store the result in.</span>
@@ -1107,11 +1107,11 @@
 <span class="doccomment">/// ## `str`</span>
 <span class="doccomment">/// a string to parse.</span>
 <span class="doccomment">/// ## `warn`</span>
-<span class="doccomment">/// if [`true`], issue a `g_warning()` on bad input.</span>
+<span class="doccomment">/// if [`true`], issue a g_warning() on bad input.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] if `str` was successfully parsed.</span>
+<span class="doccomment">/// [`true`] if @str was successfully parsed.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `style`</span>
 <span class="doccomment">/// a [`Style`][crate::Style] to store the result in.</span>
@@ -1140,11 +1140,11 @@
 <span class="doccomment">/// ## `str`</span>
 <span class="doccomment">/// a string to parse.</span>
 <span class="doccomment">/// ## `warn`</span>
-<span class="doccomment">/// if [`true`], issue a `g_warning()` on bad input.</span>
+<span class="doccomment">/// if [`true`], issue a g_warning() on bad input.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] if `str` was successfully parsed.</span>
+<span class="doccomment">/// [`true`] if @str was successfully parsed.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `variant`</span>
 <span class="doccomment">/// a [`Variant`][crate::Variant] to store the result in.</span>
@@ -1174,11 +1174,11 @@
 <span class="doccomment">/// ## `str`</span>
 <span class="doccomment">/// a string to parse.</span>
 <span class="doccomment">/// ## `warn`</span>
-<span class="doccomment">/// if [`true`], issue a `g_warning()` on bad input.</span>
+<span class="doccomment">/// if [`true`], issue a g_warning() on bad input.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] if `str` was successfully parsed.</span>
+<span class="doccomment">/// [`true`] if @str was successfully parsed.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## `weight`</span>
 <span class="doccomment">/// a [`Weight`][crate::Weight] to store the result in.</span>
@@ -1205,8 +1205,8 @@
 <span class="doccomment">/// This is typically used for underline or strikethrough. The purpose of</span>
 <span class="doccomment">/// this function is to avoid such lines looking blurry.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Care is taken to make sure `thickness` is at least one pixel when this</span>
-<span class="doccomment">/// function returns, but returned `position` may become zero as a result</span>
+<span class="doccomment">/// Care is taken to make sure @thickness is at least one pixel when this</span>
+<span class="doccomment">/// function returns, but returned @position may become zero as a result</span>
 <span class="doccomment">/// of rounding.</span>
 <span class="doccomment">/// ## `thickness`</span>
 <span class="doccomment">/// pointer to the thickness of a line, in Pango units</span>
@@ -1219,26 +1219,26 @@
     }
 }
 
-<span class="doccomment">/// Convert the characters in `text` into glyphs.</span>
+<span class="doccomment">/// Convert the characters in @text into glyphs.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Given a segment of text and the corresponding [`Analysis`][crate::Analysis] structure</span>
-<span class="doccomment">/// returned from [``itemize()``][`crate::itemize()`], convert the characters into glyphs. You</span>
-<span class="doccomment">/// may also pass in only a substring of the item from [``itemize()``][`crate::itemize()`].</span>
+<span class="doccomment">/// returned from [`itemize()`][crate::itemize()], convert the characters into glyphs. You</span>
+<span class="doccomment">/// may also pass in only a substring of the item from [`itemize()`][crate::itemize()].</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// It is recommended that you use ``shape_full()`` instead, since</span>
+<span class="doccomment">/// It is recommended that you use `shape_full()` instead, since</span>
 <span class="doccomment">/// that API allows for shaping interaction happening across text item</span>
 <span class="doccomment">/// boundaries.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Note that the extra attributes in the `analyis` that is returned from</span>
-<span class="doccomment">/// [``itemize()``][`crate::itemize()`] have indices that are relative to the entire paragraph,</span>
+<span class="doccomment">/// Note that the extra attributes in the @analyis that is returned from</span>
+<span class="doccomment">/// [`itemize()`][crate::itemize()] have indices that are relative to the entire paragraph,</span>
 <span class="doccomment">/// so you need to subtract the item offset from their indices before</span>
-<span class="doccomment">/// calling [``shape()``][`crate::shape()`].</span>
+<span class="doccomment">/// calling [`shape()`][crate::shape()].</span>
 <span class="doccomment">/// ## `text`</span>
 <span class="doccomment">/// the text to process</span>
 <span class="doccomment">/// ## `length`</span>
-<span class="doccomment">/// the length (in bytes) of `text`</span>
+<span class="doccomment">/// the length (in bytes) of @text</span>
 <span class="doccomment">/// ## `analysis`</span>
-<span class="doccomment">/// [`Analysis`][crate::Analysis] structure from [``itemize()``][`crate::itemize()`]</span>
+<span class="doccomment">/// [`Analysis`][crate::Analysis] structure from [`itemize()`][crate::itemize()]</span>
 <span class="doccomment">/// ## `glyphs`</span>
 <span class="doccomment">/// glyph string in which to store results</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_shape&quot;</span>)]</span>
@@ -1276,7 +1276,7 @@
 <span class="doccomment">/// This function is useful to categorize characters into left-to-right</span>
 <span class="doccomment">/// letters, right-to-left letters, and everything else. If full Unicode</span>
 <span class="doccomment">/// bidirectional type of a character is needed,</span>
-<span class="doccomment">/// [``BidiType::for_unichar()``][crate::`BidiType::for_unichar()`] can be used instead.</span>
+<span class="doccomment">/// [`BidiType::for_unichar()`][crate::BidiType::for_unichar()] can be used instead.</span>
 <span class="doccomment">/// ## `ch`</span>
 <span class="doccomment">/// a Unicode character</span>
 <span class="doccomment">///</span>
@@ -1290,7 +1290,7 @@
 
 <span class="doccomment">/// Converts a floating-point number to Pango units.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The conversion is done by multiplying `d` by `PANGO_SCALE` and</span>
+<span class="doccomment">/// The conversion is done by multiplying @d by `PANGO_SCALE` and</span>
 <span class="doccomment">/// rounding the result to nearest integer.</span>
 <span class="doccomment">/// ## `d`</span>
 <span class="doccomment">/// double floating-point value</span>
@@ -1305,7 +1305,7 @@
 
 <span class="doccomment">/// Converts a number in Pango units to floating-point.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The conversion is done by dividing `i` by `PANGO_SCALE`.</span>
+<span class="doccomment">/// The conversion is done by dividing @i by `PANGO_SCALE`.</span>
 <span class="doccomment">/// ## `i`</span>
 <span class="doccomment">/// value in Pango units</span>
 <span class="doccomment">///</span>
@@ -1342,9 +1342,9 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Compatibility is defined by two things: first the version</span>
 <span class="doccomment">/// of the running library is newer than the version</span>
-<span class="doccomment">/// `required_major`.`required_micro`. Second</span>
+<span class="doccomment">/// @required_major.required_minor.@required_micro. Second</span>
 <span class="doccomment">/// the running library must be binary compatible with the</span>
-<span class="doccomment">/// version `required_major`.`required_micro`</span>
+<span class="doccomment">/// version @required_major.required_minor.@required_micro</span>
 <span class="doccomment">/// (same major version.)</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// For compile-time version checking use PANGO_VERSION_CHECK().</span>
@@ -1358,9 +1358,9 @@
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`None`] if the Pango library is compatible</span>
-<span class="doccomment">///  with the given version, or a string describing the version</span>
-<span class="doccomment">///  mismatch. The returned string is owned by Pango and should not</span>
-<span class="doccomment">///  be modified or freed.</span>
+<span class="doccomment">///   with the given version, or a string describing the version</span>
+<span class="doccomment">///   mismatch.  The returned string is owned by Pango and should not</span>
+<span class="doccomment">///   be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_version_check&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">version_check</span>(
     <span class="ident">required_major</span>: <span class="ident">i32</span>,
@@ -1384,8 +1384,8 @@
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// A string containing the version of Pango library available</span>
-<span class="doccomment">///  at run time. The returned string is owned by Pango and should not</span>
-<span class="doccomment">///  be modified or freed.</span>
+<span class="doccomment">///   at run time. The returned string is owned by Pango and should not</span>
+<span class="doccomment">///   be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_version_string&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">version_string</span>() -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">glib::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::pango_version_string</span>()) }

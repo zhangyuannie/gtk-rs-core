@@ -247,9 +247,9 @@
 }
 
 <span class="kw">impl</span> <span class="ident">TabArray</span> {
-    <span class="doccomment">/// Creates an array of `initial_size` tab stops.</span>
+    <span class="doccomment">/// Creates an array of @initial_size tab stops.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Tab stops are specified in pixel units if `positions_in_pixels` is [`true`],</span>
+    <span class="doccomment">/// Tab stops are specified in pixel units if @positions_in_pixels is [`true`],</span>
     <span class="doccomment">/// otherwise in Pango units. All stops are initially at position 0.</span>
     <span class="doccomment">/// ## `initial_size`</span>
     <span class="doccomment">/// Initial number of tab stops to allocate, can be 0</span>
@@ -259,7 +259,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// the newly allocated [`TabArray`][crate::TabArray], which should</span>
-    <span class="doccomment">///  be freed with `Pango::`TabArray::free()``.</span>
+    <span class="doccomment">///   be freed with `Pango::TabArray::free()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_tab_array_new&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">initial_size</span>: <span class="ident">i32</span>, <span class="ident">positions_in_pixels</span>: <span class="ident">bool</span>) -&gt; <span class="ident">TabArray</span> {
         <span class="kw">unsafe</span> {
@@ -292,7 +292,7 @@
         }
     }
 
-    <span class="doccomment">/// Gets the number of tab stops in `self`.</span>
+    <span class="doccomment">/// Gets the number of tab stops in @self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -354,7 +354,7 @@
 
     <span class="doccomment">/// Sets the alignment and location of a tab stop.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `alignment` must always be [`TabAlign::Left`][crate::TabAlign::Left] in the current</span>
+    <span class="doccomment">/// @alignment must always be [`TabAlign::Left`][crate::TabAlign::Left] in the current</span>
     <span class="doccomment">/// implementation.</span>
     <span class="doccomment">/// ## `tab_index`</span>
     <span class="doccomment">/// the index of a tab stop</span>

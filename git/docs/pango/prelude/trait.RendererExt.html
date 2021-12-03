@@ -95,21 +95,21 @@
 </details>}</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Trait containing all <a href="../struct.Renderer.html" title="Renderer"><code>Renderer</code></a> methods.</p>
 <h2 id="implementors-1" class="section-header"><a href="#implementors-1">Implementors</a></h2>
 <p><a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a></p>
-</div></details><h2 id="required-methods" class="small-section-header">Required methods<a href="#required-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><div id="tymethod.activate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#59" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.activate" class="fnname">activate</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Does initial setup before rendering operations on <code>self</code>.</p>
+</div></details><h2 id="required-methods" class="small-section-header">Required methods<a href="#required-methods" class="anchor"></a></h2><div class="methods"><details class="rustdoc-toggle" open><summary><div id="tymethod.activate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#59" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.activate" class="fnname">activate</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Does initial setup before rendering operations on @self.</p>
 <p><a href="trait.RendererExt.html#tymethod.deactivate" title="Self::deactivate()"><code>deactivate()</code></a> should be called when done drawing.
 Calls such as <a href="trait.RendererExt.html#tymethod.draw_layout" title="Self::draw_layout()"><code>draw_layout()</code></a> automatically
 activate the layout before drawing on it.</p>
 <p>Calls to <a href="trait.RendererExt.html#tymethod.activate" title="Self::activate()"><code>activate()</code></a> and
 <a href="trait.RendererExt.html#tymethod.deactivate" title="Self::deactivate()"><code>deactivate()</code></a> can be nested and the
 renderer will only be initialized and deinitialized once.</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.deactivate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#65" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.deactivate" class="fnname">deactivate</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Cleans up after rendering operations on <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.deactivate" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#65" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.deactivate" class="fnname">deactivate</a>(&amp;self)</h4></div></summary><div class="docblock"><p>Cleans up after rendering operations on @self.</p>
 <p>See docs for <a href="trait.RendererExt.html#tymethod.activate" title="Self::activate()"><code>activate()</code></a>.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_error_underline" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#85" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_error_underline" class="fnname">draw_error_underline</a>(&amp;self, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, width: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Draw a squiggly line that approximately covers the given rectangle
 in the style of an underline used to indicate a spelling error.</p>
 <p>The width of the underline is rounded to an integer number
 of up/down segments and the resulting rectangle is centered
 in the original rectangle.</p>
-<p>This should be called while <code>self</code> is already active.
+<p>This should be called while @self is already active.
 Use <a href="trait.RendererExt.html#tymethod.activate" title="Self::activate()"><code>activate()</code></a> to activate a renderer.</p>
 <h6 id="x" class="section-header"><a href="#x"><code>x</code></a></h6>
 <p>X coordinate of underline, in Pango units in user coordinate system</p>
@@ -128,21 +128,21 @@ Use <a href="trait.RendererExt.html#tymethod.activate" title="Self::activate()">
 <p>X coordinate of left edge of baseline of glyph</p>
 <h6 id="y-1" class="section-header"><a href="#y-1"><code>y</code></a></h6>
 <p>Y coordinate of left edge of baseline of glyph</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_glyph_item" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#128" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_glyph_item" class="fnname">draw_glyph_item</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;text: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;glyph_item: &amp;mut <a class="struct" href="../struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>)</h4></div></summary><div class="docblock"><p>Draws the glyphs in <code>glyph_item</code> with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>,
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_glyph_item" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#128" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_glyph_item" class="fnname">draw_glyph_item</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;text: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;glyph_item: &amp;mut <a class="struct" href="../struct.GlyphItem.html" title="struct pango::GlyphItem">GlyphItem</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>)</h4></div></summary><div class="docblock"><p>Draws the glyphs in @glyph_item with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>,
 embedding the text associated with the glyphs in the output if the
 output format supports it.</p>
 <p>This is useful for rendering text in PDF.</p>
-<p>Note that this method does not handle attributes in <code>glyph_item</code>.
+<p>Note that this method does not handle attributes in @glyph_item.
 If you want colors, shapes and lines handled automatically according
-to those attributes, you need to use <a href="trait.RendererExt.html#tymethod.draw_layout_line" title="Self::draw_layout_line()"><code>draw_layout_line()</code></a>
-or <a href="trait.RendererExt.html#tymethod.draw_layout" title="Self::draw_layout()"><code>draw_layout()</code></a>.</p>
-<p>Note that <code>text</code> is the start of the text for layout, which is then
+to those attributes, you need to use pango_renderer_draw_layout_line()
+or pango_renderer_draw_layout().</p>
+<p>Note that @text is the start of the text for layout, which is then
 indexed by <code>glyph_item-&gt;item-&gt;offset</code>.</p>
-<p>If <code>text</code> is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, this simply calls <a href="trait.RendererExt.html#tymethod.draw_glyphs" title="Self::draw_glyphs()"><code>draw_glyphs()</code></a>.</p>
+<p>If @text is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, this simply calls <a href="trait.RendererExt.html#tymethod.draw_glyphs" title="Self::draw_glyphs()"><code>draw_glyphs()</code></a>.</p>
 <p>The default implementation of this method simply falls back to
 <a href="trait.RendererExt.html#tymethod.draw_glyphs" title="Self::draw_glyphs()"><code>draw_glyphs()</code></a>.</p>
 <h6 id="text" class="section-header"><a href="#text"><code>text</code></a></h6>
-<p>the UTF-8 text that <code>glyph_item</code> refers to</p>
+<p>the UTF-8 text that @glyph_item refers to</p>
 <h6 id="glyph_item" class="section-header"><a href="#glyph_item"><code>glyph_item</code></a></h6>
 <p>a <a href="../struct.GlyphItem.html" title="crate::GlyphItem"><code>GlyphItem</code></a></p>
 <h6 id="x-2" class="section-header"><a href="#x-2"><code>x</code></a></h6>
@@ -151,7 +151,7 @@ in Pango units</p>
 <h6 id="y-2" class="section-header"><a href="#y-2"><code>y</code></a></h6>
 <p>Y position of left edge of baseline, in user space coordinates
 in Pango units</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_glyphs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#142" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_glyphs" class="fnname">draw_glyphs</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;font: &amp;impl <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Font.html" title="struct pango::Font">Font</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;glyphs: &amp;mut <a class="struct" href="../struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>)</h4></div></summary><div class="docblock"><p>Draws the glyphs in <code>glyphs</code> with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_glyphs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#142" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_glyphs" class="fnname">draw_glyphs</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;font: &amp;impl <a class="trait" href="../../glib/object/trait.IsA.html" title="trait glib::object::IsA">IsA</a>&lt;<a class="struct" href="../struct.Font.html" title="struct pango::Font">Font</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;glyphs: &amp;mut <a class="struct" href="../struct.GlyphString.html" title="struct pango::GlyphString">GlyphString</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>)</h4></div></summary><div class="docblock"><p>Draws the glyphs in @glyphs with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
 <h6 id="font-1" class="section-header"><a href="#font-1"><code>font</code></a></h6>
 <p>a <a href="../struct.Font.html" title="crate::Font"><code>Font</code></a></p>
 <h6 id="glyphs" class="section-header"><a href="#glyphs"><code>glyphs</code></a></h6>
@@ -162,9 +162,9 @@ in Pango units.</p>
 <h6 id="y-3" class="section-header"><a href="#y-3"><code>y</code></a></h6>
 <p>Y position of left edge of baseline, in user space coordinates
 in Pango units.</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_layout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#157" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_layout" class="fnname">draw_layout</a>(&amp;self, layout: &amp;<a class="struct" href="../struct.Layout.html" title="struct pango::Layout">Layout</a>, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Draws <code>layout</code> with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_layout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#157" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_layout" class="fnname">draw_layout</a>(&amp;self, layout: &amp;<a class="struct" href="../struct.Layout.html" title="struct pango::Layout">Layout</a>, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Draws @layout with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
 <p>This is equivalent to drawing the lines of the layout, at their
-respective positions relative to <code>x</code>, <code>y</code>.</p>
+respective positions relative to @x, @y.</p>
 <h6 id="layout" class="section-header"><a href="#layout"><code>layout</code></a></h6>
 <p>a <a href="../struct.Layout.html" title="crate::Layout"><code>Layout</code></a></p>
 <h6 id="x-4" class="section-header"><a href="#x-4"><code>x</code></a></h6>
@@ -173,7 +173,7 @@ in Pango units.</p>
 <h6 id="y-4" class="section-header"><a href="#y-4"><code>y</code></a></h6>
 <p>Y position of left edge of baseline, in user space coordinates
 in Pango units.</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_layout_line" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#173" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_layout_line" class="fnname">draw_layout_line</a>(&amp;self, line: &amp;<a class="struct" href="../struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Draws <code>line</code> with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_layout_line" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#173" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_layout_line" class="fnname">draw_layout_line</a>(&amp;self, line: &amp;<a class="struct" href="../struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></div></summary><div class="docblock"><p>Draws @line with the specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
 <p>This draws the glyph items that make up the line, as well as
 shapes, backgrounds and lines that are specified by the attributes
 of those items.</p>
@@ -187,7 +187,7 @@ in Pango units.</p>
 in Pango units.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.draw_rectangle" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#193" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.draw_rectangle" class="fnname">draw_rectangle</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;part: <a class="enum" href="../enum.RenderPart.html" title="enum pango::RenderPart">RenderPart</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;width: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a><br>)</h4></div></summary><div class="docblock"><p>Draws an axis-aligned rectangle in user space coordinates with the
 specified <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a>.</p>
-<p>This should be called while <code>self</code> is already active.
+<p>This should be called while @self is already active.
 Use <a href="trait.RendererExt.html#tymethod.activate" title="Self::activate()"><code>activate()</code></a> to activate a renderer.</p>
 <h6 id="part" class="section-header"><a href="#part"><code>part</code></a></h6>
 <p>type of object this rectangle is part of</p>
@@ -231,22 +231,22 @@ inherited from the environment.</p>
 <p>the color for the
 specified part, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if it hasn’t been set and should be
 inherited from the environment.</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.layout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#263" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.layout" class="fnname">layout</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.Layout.html" title="struct pango::Layout">Layout</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the layout currently being rendered using <code>self</code>.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.layout" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#263" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.layout" class="fnname">layout</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.Layout.html" title="struct pango::Layout">Layout</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the layout currently being rendered using @self.</p>
 <p>Calling this function only makes sense from inside a subclass’s
 methods, like in its draw_shape vfunc, for example.</p>
 <p>The returned layout should not be modified while still being
 rendered.</p>
 <h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
 <p>the layout, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if
-no layout is being rendered using <code>self</code> at this time.</p>
-</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.layout_line" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#279" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.layout_line" class="fnname">layout_line</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the layout line currently being rendered using <code>self</code>.</p>
+no layout is being rendered using @self at this time.</p>
+</div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.layout_line" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#279" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.layout_line" class="fnname">layout_line</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.LayoutLine.html" title="struct pango::LayoutLine">LayoutLine</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the layout line currently being rendered using @self.</p>
 <p>Calling this function only makes sense from inside a subclass’s
 methods, like in its draw_shape vfunc, for example.</p>
 <p>The returned layout line should not be modified while still being
 rendered.</p>
 <h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
 <p>the layout line, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>
-if no layout line is being rendered using <code>self</code> at this time.</p>
+if no layout line is being rendered using @self at this time.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.matrix" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#293" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.matrix" class="fnname">matrix</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../struct.Matrix.html" title="struct pango::Matrix">Matrix</a>&gt;</h4></div></summary><div class="docblock"><p>Gets the transformation matrix that will be applied when
 rendering.</p>
 <p>See <a href="trait.RendererExt.html#tymethod.set_matrix" title="Self::set_matrix()"><code>set_matrix()</code></a>.</p>
@@ -255,7 +255,7 @@ rendering.</p>
 been set (which is the same as the identity matrix). The returned
 matrix is owned by Pango and must not be modified or freed.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.part_changed" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#313" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.part_changed" class="fnname">part_changed</a>(&amp;self, part: <a class="enum" href="../enum.RenderPart.html" title="enum pango::RenderPart">RenderPart</a>)</h4></div></summary><div class="docblock"><p>Informs Pango that the way that the rendering is done
-for <code>part</code> has changed.</p>
+for @part has changed.</p>
 <p>This should be called if the rendering changes in a way that would
 prevent multiple pieces being joined together into one drawing call.
 For instance, if a subclass of <a href="../struct.Renderer.html" title="crate::Renderer"><code>Renderer</code></a> was to add a stipple
@@ -268,7 +268,7 @@ changes to colors. (See <a href="trait.RendererExt.html#tymethod.set_color" titl
 <p>the part for which rendering has changed.</p>
 </div></details><details class="rustdoc-toggle" open><summary><div id="tymethod.set_alpha" class="method has-srclink"><div class="rightside"><a class="srclink" href="../../src/pango/auto/renderer.rs.html#324" title="goto source code">[src]</a></div><h4 class="code-header">fn <a href="#tymethod.set_alpha" class="fnname">set_alpha</a>(&amp;self, part: <a class="enum" href="../enum.RenderPart.html" title="enum pango::RenderPart">RenderPart</a>, alpha: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>)</h4></div></summary><div class="docblock"><p>Sets the alpha for part of the rendering.</p>
 <p>Note that the alpha may only be used if a color is
-specified for <code>part</code> as well.</p>
+specified for @part as well.</p>
 <h6 id="part-5" class="section-header"><a href="#part-5"><code>part</code></a></h6>
 <p>the part to set the alpha for</p>
 <h6 id="alpha" class="section-header"><a href="#alpha"><code>alpha</code></a></h6>

@@ -184,10 +184,10 @@
     <span class="doccomment">/// on that segment and be merged with any adjoining</span>
     <span class="doccomment">/// attributes that are identical.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This function is slower than [``insert()``][`Self::insert()`]</span>
+    <span class="doccomment">/// This function is slower than [`insert()`][Self::insert()]</span>
     <span class="doccomment">/// for creating an attribute list in order (potentially</span>
     <span class="doccomment">/// much slower for large lists). However,</span>
-    <span class="doccomment">/// [``insert()``][`Self::insert()`] is not suitable for</span>
+    <span class="doccomment">/// [`insert()`][Self::insert()] is not suitable for</span>
     <span class="doccomment">/// continually changing a set of attributes since it</span>
     <span class="doccomment">/// never removes or combines existing attributes.</span>
     <span class="doccomment">/// ## `attr`</span>
@@ -201,7 +201,7 @@
         }
     }
 
-    <span class="doccomment">/// Checks whether `self` and `other_list` contain the same</span>
+    <span class="doccomment">/// Checks whether @self and @other_list contain the same</span>
     <span class="doccomment">/// attributes and whether those attributes apply to the</span>
     <span class="doccomment">/// same ranges.</span>
     <span class="doccomment">///</span>
@@ -213,7 +213,7 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the lists are equal, [`false`] if</span>
-    <span class="doccomment">///  they aren&#39;t</span>
+    <span class="doccomment">///   they aren&#39;t</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_46&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_attr_list_equal&quot;</span>)]</span>
@@ -229,7 +229,7 @@
     <span class="doccomment">/// Insert the given attribute into the [`AttrList`][crate::AttrList].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It will be inserted after all other attributes with a</span>
-    <span class="doccomment">/// matching `start_index`.</span>
+    <span class="doccomment">/// matching @start_index.</span>
     <span class="doccomment">/// ## `attr`</span>
     <span class="doccomment">/// the attribute to insert</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_attr_list_insert&quot;</span>)]</span>
@@ -244,7 +244,7 @@
     <span class="doccomment">/// Insert the given attribute into the [`AttrList`][crate::AttrList].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It will be inserted before all other attributes with a</span>
-    <span class="doccomment">/// matching `start_index`.</span>
+    <span class="doccomment">/// matching @start_index.</span>
     <span class="doccomment">/// ## `attr`</span>
     <span class="doccomment">/// the attribute to insert</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_attr_list_insert_before&quot;</span>)]</span>
