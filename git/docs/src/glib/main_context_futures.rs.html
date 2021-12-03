@@ -494,6 +494,7 @@
 <span id="420">420</span>
 <span id="421">421</span>
 <span id="422">422</span>
+<span id="423">423</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -509,6 +510,7 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::MainLoop</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Priority</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Source</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::SourceId</span>;
 
 <span class="comment">// Wrapper around Send Futures and non-Send Futures that will panic</span>
 <span class="comment">// if the non-Send Future is polled/dropped from a different thread</span>
@@ -736,8 +738,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This can be called from any thread and will execute the future from the thread</span>
     <span class="doccomment">/// where main context is running, e.g. via a `MainLoop`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spawn</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) {
-        <span class="self">self</span>.<span class="ident">spawn_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spawn</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SourceId</span> {
+        <span class="self">self</span>.<span class="ident">spawn_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>)
     }
 
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context.</span>
@@ -747,8 +749,8 @@
     <span class="doccomment">/// This can be called only from the thread where the main context is running, e.g.</span>
     <span class="doccomment">/// from any other `Future` that is executed on this main context, or after calling</span>
     <span class="doccomment">/// `with_thread_default` or `acquire` on the main context.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spawn_local</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) {
-        <span class="self">self</span>.<span class="ident">spawn_local_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">spawn_local</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> ()<span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SourceId</span> {
+        <span class="self">self</span>.<span class="ident">spawn_local_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>)
     }
 
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context, with a non-default priority.</span>
@@ -759,10 +761,10 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">priority</span>: <span class="ident">Priority</span>,
         <span class="ident">f</span>: <span class="ident">F</span>,
-    ) {
+    ) -&gt; <span class="ident">SourceId</span> {
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">FutureObj::new</span>(<span class="ident">Box::new</span>(<span class="ident">f</span>));
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident">priority</span>, <span class="ident">FutureWrapper::Send</span>(<span class="ident">f</span>));
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
     }
 
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context, with a non-default priority.</span>
@@ -776,13 +778,13 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">priority</span>: <span class="ident">Priority</span>,
         <span class="ident">f</span>: <span class="ident">F</span>,
-    ) {
+    ) -&gt; <span class="ident">SourceId</span> {
         <span class="kw">let</span> <span class="ident">_acquire</span> <span class="op">=</span> <span class="self">self</span>
             .<span class="ident">acquire</span>()
             .<span class="ident">expect</span>(<span class="string">&quot;Spawning local futures only allowed on the thread owning the MainContext&quot;</span>);
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">LocalFutureObj::new</span>(<span class="ident">Box::new</span>(<span class="ident">f</span>));
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident">priority</span>, <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">ThreadGuard::new</span>(<span class="ident">f</span>)));
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
     }
 
     <span class="doccomment">/// Runs a new, infallible `Future` on the main context and block until it finished, returning</span>
