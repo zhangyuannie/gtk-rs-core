@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib&#x2F;src&#x2F;variant.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>variant.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css"disabled><link rel="stylesheet" type="text/css" href="../../dark.css"disabled><link rel="stylesheet" type="text/css" href="../../light.css"id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib&#x2F;src&#x2F;variant.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>variant.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
@@ -2530,21 +2530,21 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is a variant datatype; it can contain one or more values</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is a variant datatype; it can contain one or more values</span>
     <span class="doccomment">/// along with information about the type of the values.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A [`Variant`][crate::Variant] may contain simple types, like an integer, or a boolean value;</span>
+    <span class="doccomment">/// A [`Variant`][struct@crate::Variant] may contain simple types, like an integer, or a boolean value;</span>
     <span class="doccomment">/// or complex types, like an array of two strings, or a dictionary of key</span>
-    <span class="doccomment">/// value pairs. A [`Variant`][crate::Variant] is also immutable: once it&#39;s been created neither</span>
+    <span class="doccomment">/// value pairs. A [`Variant`][struct@crate::Variant] is also immutable: once it&#39;s been created neither</span>
     <span class="doccomment">/// its type nor its content can be modified further.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// GVariant is useful whenever data needs to be serialized, for example when</span>
     <span class="doccomment">/// sending method parameters in D-Bus, or when saving settings using GSettings.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// When creating a new [`Variant`][crate::Variant], you pass the data you want to store in it</span>
+    <span class="doccomment">/// When creating a new [`Variant`][struct@crate::Variant], you pass the data you want to store in it</span>
     <span class="doccomment">/// along with a string representing the type of data you wish to pass to it.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For instance, if you want to create a [`Variant`][crate::Variant] holding an integer value you</span>
+    <span class="doccomment">/// For instance, if you want to create a [`Variant`][struct@crate::Variant] holding an integer value you</span>
     <span class="doccomment">/// can use:</span>
     <span class="doccomment">///</span>
     <span class="doccomment">///</span>
@@ -2555,42 +2555,42 @@
     <span class="doccomment">///   GVariant *v = g_variant_new (&quot;u&quot;, 40);</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The string &quot;u&quot; in the first argument tells [`Variant`][crate::Variant] that the data passed to</span>
+    <span class="doccomment">/// The string &quot;u&quot; in the first argument tells [`Variant`][struct@crate::Variant] that the data passed to</span>
     <span class="doccomment">/// the constructor (40) is going to be an unsigned integer.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// More advanced examples of [`Variant`][crate::Variant] in use can be found in documentation for</span>
+    <span class="doccomment">/// More advanced examples of [`Variant`][struct@crate::Variant] in use can be found in documentation for</span>
     <span class="doccomment">/// [GVariant format strings][gvariant-format-strings-pointers].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The range of possible values is determined by the type.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The type system used by [`Variant`][crate::Variant] is [`VariantType`][crate::VariantType].</span>
+    <span class="doccomment">/// The type system used by [`Variant`][struct@crate::Variant] is [`VariantType`][crate::VariantType].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] instances always have a type and a value (which are given</span>
-    <span class="doccomment">/// at construction time). The type and value of a [`Variant`][crate::Variant] instance</span>
-    <span class="doccomment">/// can never change other than by the [`Variant`][crate::Variant] itself being</span>
-    <span class="doccomment">/// destroyed. A [`Variant`][crate::Variant] cannot contain a pointer.</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] instances always have a type and a value (which are given</span>
+    <span class="doccomment">/// at construction time). The type and value of a [`Variant`][struct@crate::Variant] instance</span>
+    <span class="doccomment">/// can never change other than by the [`Variant`][struct@crate::Variant] itself being</span>
+    <span class="doccomment">/// destroyed. A [`Variant`][struct@crate::Variant] cannot contain a pointer.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is reference counted using `g_variant_ref()` and</span>
-    <span class="doccomment">/// `g_variant_unref()`. [`Variant`][crate::Variant] also has floating reference counts --</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is reference counted using `g_variant_ref()` and</span>
+    <span class="doccomment">/// `g_variant_unref()`. [`Variant`][struct@crate::Variant] also has floating reference counts --</span>
     <span class="doccomment">/// see [`ref_sink()`][Self::ref_sink()].</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is completely threadsafe. A [`Variant`][crate::Variant] instance can be</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is completely threadsafe. A [`Variant`][struct@crate::Variant] instance can be</span>
     <span class="doccomment">/// concurrently accessed in any way from any number of threads without</span>
     <span class="doccomment">/// problems.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is heavily optimised for dealing with data in serialized</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is heavily optimised for dealing with data in serialized</span>
     <span class="doccomment">/// form. It works particularly well with data located in memory-mapped</span>
     <span class="doccomment">/// files. It can perform nearly all deserialization operations in a</span>
     <span class="doccomment">/// small constant time, usually touching only a single memory page.</span>
-    <span class="doccomment">/// Serialized [`Variant`][crate::Variant] data can also be sent over the network.</span>
+    <span class="doccomment">/// Serialized [`Variant`][struct@crate::Variant] data can also be sent over the network.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is largely compatible with D-Bus. Almost all types of</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] instances can be sent over D-Bus. See [`VariantType`][crate::VariantType] for</span>
-    <span class="doccomment">/// exceptions. (However, [`Variant`][crate::Variant]&#39;s serialization format is not the same</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is largely compatible with D-Bus. Almost all types of</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] instances can be sent over D-Bus. See [`VariantType`][crate::VariantType] for</span>
+    <span class="doccomment">/// exceptions. (However, [`Variant`][struct@crate::Variant]&#39;s serialization format is not the same</span>
     <span class="doccomment">/// as the serialization format of a D-Bus message body: use `GDBusMessage`,</span>
     <span class="doccomment">/// in the gio library, for those.)</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For space-efficiency, the [`Variant`][crate::Variant] serialization format does not</span>
+    <span class="doccomment">/// For space-efficiency, the [`Variant`][struct@crate::Variant] serialization format does not</span>
     <span class="doccomment">/// automatically include the variant&#39;s length, type or endianness,</span>
     <span class="doccomment">/// which must either be implied from context (such as knowledge that a</span>
     <span class="doccomment">/// particular file format always contains a little-endian</span>
@@ -2599,30 +2599,30 @@
     <span class="doccomment">/// indicator could be placed at the beginning of a file, network message</span>
     <span class="doccomment">/// or network stream).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A [`Variant`][crate::Variant]&#39;s size is limited mainly by any lower level operating</span>
+    <span class="doccomment">/// A [`Variant`][struct@crate::Variant]&#39;s size is limited mainly by any lower level operating</span>
     <span class="doccomment">/// system constraints, such as the number of bits in `gsize`. For</span>
     <span class="doccomment">/// example, it is reasonable to have a 2GB file mapped into memory</span>
     <span class="doccomment">/// with `GMappedFile`, and call [`from_data()`][Self::from_data()] on it.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// For convenience to C programmers, [`Variant`][crate::Variant] features powerful</span>
+    <span class="doccomment">/// For convenience to C programmers, [`Variant`][struct@crate::Variant] features powerful</span>
     <span class="doccomment">/// varargs-based value construction and destruction. This feature is</span>
     <span class="doccomment">/// designed to be embedded in other libraries.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// There is a Python-inspired text language for describing [`Variant`][crate::Variant]</span>
-    <span class="doccomment">/// values. [`Variant`][crate::Variant] includes a printer for this language and a parser</span>
+    <span class="doccomment">/// There is a Python-inspired text language for describing [`Variant`][struct@crate::Variant]</span>
+    <span class="doccomment">/// values. [`Variant`][struct@crate::Variant] includes a printer for this language and a parser</span>
     <span class="doccomment">/// with type inferencing.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Memory Use</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] tries to be quite efficient with respect to memory use.</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] tries to be quite efficient with respect to memory use.</span>
     <span class="doccomment">/// This section gives a rough idea of how much memory is used by the</span>
     <span class="doccomment">/// current implementation. The information here is subject to change</span>
     <span class="doccomment">/// in the future.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The memory allocated by [`Variant`][crate::Variant] can be grouped into 4 broad</span>
+    <span class="doccomment">/// The memory allocated by [`Variant`][struct@crate::Variant] can be grouped into 4 broad</span>
     <span class="doccomment">/// purposes: memory for serialized data, memory for the type</span>
     <span class="doccomment">/// information cache, buffer management memory and memory for the</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] structure itself.</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] structure itself.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Serialized Data Memory</span>
     <span class="doccomment">///</span>
@@ -2689,13 +2689,13 @@
     <span class="doccomment">/// information structure is kept in the type information cache. The</span>
     <span class="doccomment">/// type information structure is required for rapid deserialization.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Continuing with the above example, if a [`Variant`][crate::Variant] exists with the</span>
+    <span class="doccomment">/// Continuing with the above example, if a [`Variant`][struct@crate::Variant] exists with the</span>
     <span class="doccomment">/// type &quot;a{sv}&quot; then a type information struct will exist for</span>
     <span class="doccomment">/// &quot;a{sv}&quot;, &quot;{sv}&quot;, &quot;s&quot;, and &quot;v&quot;. Multiple uses of the same type</span>
     <span class="doccomment">/// will share the same type information. Additionally, all</span>
     <span class="doccomment">/// single-digit types are stored in read-only static memory and do</span>
     <span class="doccomment">/// not contribute to the writable memory footprint of a program using</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant].</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Aside from the type information structures stored in read-only</span>
     <span class="doccomment">/// memory, there are two forms of type information. One is used for</span>
@@ -2731,11 +2731,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Buffer Management Memory</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] uses an internal buffer management structure to deal</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] uses an internal buffer management structure to deal</span>
     <span class="doccomment">/// with the various different possible sources of serialized data</span>
     <span class="doccomment">/// that it uses. The buffer is responsible for ensuring that the</span>
     <span class="doccomment">/// correct call is made when the data is no longer in use by</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant]. This may involve a `g_free()` or a `g_slice_free()` or</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant]. This may involve a `g_free()` or a `g_slice_free()` or</span>
     <span class="doccomment">/// even `g_mapped_file_unref()`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// One buffer management structure is used for each chunk of</span>
@@ -2744,20 +2744,20 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## GVariant structure</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The size of a [`Variant`][crate::Variant] structure is 6 * (void *). On 32-bit</span>
+    <span class="doccomment">/// The size of a [`Variant`][struct@crate::Variant] structure is 6 * (void *). On 32-bit</span>
     <span class="doccomment">/// systems, that&#39;s 24 bytes.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] structures only exist if they are explicitly created</span>
-    <span class="doccomment">/// with API calls. For example, if a [`Variant`][crate::Variant] is constructed out of</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] structures only exist if they are explicitly created</span>
+    <span class="doccomment">/// with API calls. For example, if a [`Variant`][struct@crate::Variant] is constructed out of</span>
     <span class="doccomment">/// serialized data for the example given above (with the dictionary)</span>
     <span class="doccomment">/// then although there are 9 individual values that comprise the</span>
     <span class="doccomment">/// entire dictionary (two keys, two values, two variants containing</span>
     <span class="doccomment">/// the values, two dictionary entries, plus the dictionary itself),</span>
-    <span class="doccomment">/// only 1 [`Variant`][crate::Variant] instance exists -- the one referring to the</span>
+    <span class="doccomment">/// only 1 [`Variant`][struct@crate::Variant] instance exists -- the one referring to the</span>
     <span class="doccomment">/// dictionary.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If calls are made to start accessing the other values then</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] instances will exist for those values only for as long</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] instances will exist for those values only for as long</span>
     <span class="doccomment">/// as they are in use (ie: until you call `g_variant_unref()`). The</span>
     <span class="doccomment">/// type information is shared. The serialized data and the buffer</span>
     <span class="doccomment">/// management structure for that serialized data is shared by the</span>
@@ -2769,7 +2769,7 @@
     <span class="doccomment">/// strings to variants (with two entries, as given above), we are</span>
     <span class="doccomment">/// using 91 bytes of memory for type information, 29 bytes of memory</span>
     <span class="doccomment">/// for the serialized data, 16 bytes for buffer management and 24</span>
-    <span class="doccomment">/// bytes for the [`Variant`][crate::Variant] instance, or a total of 160 bytes, plus</span>
+    <span class="doccomment">/// bytes for the [`Variant`][struct@crate::Variant] instance, or a total of 160 bytes, plus</span>
     <span class="doccomment">/// malloc overhead. If we were to use [`child_value()`][Self::child_value()] to</span>
     <span class="doccomment">/// access the two dictionary entries, we would use an additional 48</span>
     <span class="doccomment">/// bytes. If we were to have other dictionaries of the same type, we</span>
@@ -2910,7 +2910,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if `T` matches the variant&#39;s type.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Deconstructs a [`Variant`][crate::Variant] instance.</span>
+    <span class="doccomment">/// Deconstructs a [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Think of this function as an analogue to `scanf()`.</span>
     <span class="doccomment">///</span>
@@ -2927,7 +2927,7 @@
     <span class="doccomment">/// see the section on</span>
     <span class="doccomment">/// [GVariant format strings][gvariant-format-strings-pointers].</span>
     <span class="doccomment">/// ## `format_string`</span>
-    <span class="doccomment">/// a [`Variant`][crate::Variant] format string</span>
+    <span class="doccomment">/// a [`Variant`][struct@crate::Variant] format string</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">T::from_variant</span>(<span class="self">self</span>)
@@ -2965,10 +2965,10 @@
     <span class="doccomment">/// * if `self` is not a container type.</span>
     <span class="doccomment">/// * if given `index` is larger than number of children.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Reads a child item out of a container [`Variant`][crate::Variant] instance. This</span>
+    <span class="doccomment">/// Reads a child item out of a container [`Variant`][struct@crate::Variant] instance. This</span>
     <span class="doccomment">/// includes variants, maybes, arrays, tuples and dictionary</span>
     <span class="doccomment">/// entries. It is an error to call this function on any other type of</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant].</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It is an error if `index_` is greater than the number of child items</span>
     <span class="doccomment">/// in the container. See [`n_children()`][Self::n_children()].</span>
@@ -2984,7 +2984,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// There may be implementation specific restrictions on deeply nested values,</span>
     <span class="doccomment">/// which would result in the unit tuple being returned as the child value,</span>
-    <span class="doccomment">/// instead of further nested children. [`Variant`][crate::Variant] is guaranteed to handle</span>
+    <span class="doccomment">/// instead of further nested children. [`Variant`][struct@crate::Variant] is guaranteed to handle</span>
     <span class="doccomment">/// nesting up to at least 64 levels.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is O(1).</span>
@@ -3212,7 +3212,7 @@
 
     <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Constructs a new serialized-mode [`Variant`][crate::Variant] instance. This is the</span>
+    <span class="doccomment">/// Constructs a new serialized-mode [`Variant`][struct@crate::Variant] instance. This is the</span>
     <span class="doccomment">/// inner interface for creation of new serialized values that gets</span>
     <span class="doccomment">/// called from various functions in gvariant.c.</span>
     <span class="doccomment">///</span>
@@ -3230,7 +3230,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a new [`Variant`][crate::Variant] with a floating reference</span>
+    <span class="doccomment">/// a new [`Variant`][struct@crate::Variant] with a floating reference</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_bytes&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Variant::from_bytes_with_type</span>(<span class="ident">bytes</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
@@ -3254,9 +3254,9 @@
 
     <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Creates a new [`Variant`][crate::Variant] instance from serialized data.</span>
+    <span class="doccomment">/// Creates a new [`Variant`][struct@crate::Variant] instance from serialized data.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `type_` is the type of [`Variant`][crate::Variant] instance that will be constructed.</span>
+    <span class="doccomment">/// `type_` is the type of [`Variant`][struct@crate::Variant] instance that will be constructed.</span>
     <span class="doccomment">/// The interpretation of `data` depends on knowing the type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `data` is not modified by this function and must remain valid with an</span>
@@ -3294,7 +3294,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a new floating [`Variant`][crate::Variant] of type `type_`</span>
+    <span class="doccomment">/// a new floating [`Variant`][struct@crate::Variant] of type `type_`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_data&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span>, <span class="ident">A</span>: <span class="ident">AsRef</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="ident">A</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Variant::from_data_with_type</span>(<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
@@ -3408,7 +3408,7 @@
 
     <span class="doccomment">/// Returns the serialised form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][crate::Variant] instance.</span>
+    <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">/// The semantics of this function are exactly the same as</span>
     <span class="doccomment">/// [`data()`][Self::data()], except that the returned [`Bytes`][crate::Bytes] holds</span>
     <span class="doccomment">/// a reference to the variant data.</span>
@@ -3424,7 +3424,7 @@
 
     <span class="doccomment">/// Returns the serialised form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][crate::Variant] instance.</span>
+    <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">/// The returned data may not be in fully-normalised form if read from an</span>
     <span class="doccomment">/// untrusted source. The returned data must not be freed; it remains</span>
     <span class="doccomment">/// valid for as long as `self` exists.</span>
@@ -3441,7 +3441,7 @@
     <span class="doccomment">/// of the result.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// To deserialize the data returned by this function, in addition to the</span>
-    <span class="doccomment">/// serialized data, you must know the type of the [`Variant`][crate::Variant], and (if the</span>
+    <span class="doccomment">/// serialized data, you must know the type of the [`Variant`][struct@crate::Variant], and (if the</span>
     <span class="doccomment">/// machine might be different) the endianness of the machine that stored</span>
     <span class="doccomment">/// it. As a result, file formats or network messages that incorporate</span>
     <span class="doccomment">/// serialized `GVariants` must include this information either</span>
@@ -3517,7 +3517,7 @@
 
     <span class="doccomment">/// Returns a copy of the variant in normal form.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Gets a [`Variant`][crate::Variant] instance that has the same value as `self` and is</span>
+    <span class="doccomment">/// Gets a [`Variant`][struct@crate::Variant] instance that has the same value as `self` and is</span>
     <span class="doccomment">/// trusted to be in normal form.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `self` is already trusted to be in normal form then a new</span>
@@ -3528,22 +3528,22 @@
     <span class="doccomment">/// marked as trusted and a new reference to it is returned.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `self` is found not to be in normal form then a new trusted</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant] is created with the same value as `self`.</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant] is created with the same value as `self`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// It makes sense to call this function if you&#39;ve received [`Variant`][crate::Variant]</span>
+    <span class="doccomment">/// It makes sense to call this function if you&#39;ve received [`Variant`][struct@crate::Variant]</span>
     <span class="doccomment">/// data from untrusted sources and you want to ensure your serialized</span>
     <span class="doccomment">/// output is definitely in normal form.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `self` is already in normal form, a new reference will be returned</span>
     <span class="doccomment">/// (which will be floating if `self` is floating). If it is not in normal form,</span>
-    <span class="doccomment">/// the newly created [`Variant`][crate::Variant] will be returned with a single non-floating</span>
+    <span class="doccomment">/// the newly created [`Variant`][struct@crate::Variant] will be returned with a single non-floating</span>
     <span class="doccomment">/// reference. Typically, `g_variant_take_ref()` should be called on the return</span>
     <span class="doccomment">/// value from this function to guarantee ownership of a single non-floating</span>
     <span class="doccomment">/// reference to it.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a trusted [`Variant`][crate::Variant]</span>
+    <span class="doccomment">/// a trusted [`Variant`][struct@crate::Variant]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_get_normal_form&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">normal_form</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_normal_form</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
@@ -3573,10 +3573,10 @@
 
     <span class="doccomment">/// Determines the number of children in a container GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Determines the number of children in a container [`Variant`][crate::Variant] instance.</span>
+    <span class="doccomment">/// Determines the number of children in a container [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">/// This includes variants, maybes, arrays, tuples and dictionary</span>
     <span class="doccomment">/// entries. It is an error to call this function on any other type of</span>
-    <span class="doccomment">/// [`Variant`][crate::Variant].</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For variants, the return value is always 1. For values with maybe</span>
     <span class="doccomment">/// types, it is always zero or one. For arrays, it is the length of the</span>
@@ -4751,5 +4751,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (0b6f079e4 2021-12-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (e6b883c74 2021-12-08)" ></div>
 </body></html>
