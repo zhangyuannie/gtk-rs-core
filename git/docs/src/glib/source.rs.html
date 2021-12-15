@@ -1130,27 +1130,6 @@
 <span id="1056">1056</span>
 <span id="1057">1057</span>
 <span id="1058">1058</span>
-<span id="1059">1059</span>
-<span id="1060">1060</span>
-<span id="1061">1061</span>
-<span id="1062">1062</span>
-<span id="1063">1063</span>
-<span id="1064">1064</span>
-<span id="1065">1065</span>
-<span id="1066">1066</span>
-<span id="1067">1067</span>
-<span id="1068">1068</span>
-<span id="1069">1069</span>
-<span id="1070">1070</span>
-<span id="1071">1071</span>
-<span id="1072">1072</span>
-<span id="1073">1073</span>
-<span id="1074">1074</span>
-<span id="1075">1075</span>
-<span id="1076">1076</span>
-<span id="1077">1077</span>
-<span id="1078">1078</span>
-<span id="1079">1079</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::{<span class="ident">from_glib</span>, <span class="ident">from_glib_full</span>, <span class="ident">FromGlib</span>, <span class="ident">IntoGlib</span>, <span class="ident">ToGlibPtr</span>};
@@ -1983,35 +1962,14 @@
     }
 }
 
-<span class="doccomment">/// Use this for high priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_HIGH&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_HIGH</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_HIGH</span>);
-<span class="doccomment">/// Use this for default priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding timeout functions</span>
-<span class="doccomment">/// with `g_timeout_add()`. In GDK this priority is used for events</span>
-<span class="doccomment">/// from the X server.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_DEFAULT&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_DEFAULT</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_DEFAULT</span>);
-<span class="doccomment">/// Use this for high priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// GTK+ uses `G_PRIORITY_HIGH_IDLE` + 10 for resizing operations,</span>
-<span class="doccomment">/// and `G_PRIORITY_HIGH_IDLE` + 20 for redrawing operations. (This is</span>
-<span class="doccomment">/// done to ensure that any pending resizes are processed before any</span>
-<span class="doccomment">/// pending redraws, so that widgets are not redrawn twice unnecessarily.)</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_HIGH_IDLE&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_HIGH_IDLE</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_HIGH_IDLE</span>);
-<span class="doccomment">/// Use this for default priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding idle functions with</span>
-<span class="doccomment">/// `g_idle_add()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_DEFAULT_IDLE&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_DEFAULT_IDLE</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_DEFAULT_IDLE</span>);
-<span class="doccomment">/// Use this for very low priority background tasks.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_LOW&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_LOW</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_LOW</span>);
 
@@ -2231,5 +2189,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (8f117a77d 2021-12-13)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
 </body></html>

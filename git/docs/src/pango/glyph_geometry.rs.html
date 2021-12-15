@@ -119,6 +119,18 @@
 <span id="45">45</span>
 <span id="46">46</span>
 <span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
@@ -148,12 +160,24 @@
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">width</span>
     }
 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_width</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">width</span>: <span class="ident">i32</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">width</span> <span class="op">=</span> <span class="ident">width</span>;
+    }
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">x_offset</span>
     }
 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_x_offset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">x_offset</span>: <span class="ident">i32</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">x_offset</span> <span class="op">=</span> <span class="ident">x_offset</span>;
+    }
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">y_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">y_offset</span>
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_y_offset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">y_offset</span>: <span class="ident">i32</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">y_offset</span> <span class="op">=</span> <span class="ident">y_offset</span>;
     }
 }
 
@@ -167,5 +191,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (8f117a77d 2021-12-13)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
 </body></html>
