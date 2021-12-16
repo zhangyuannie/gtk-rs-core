@@ -829,6 +829,8 @@
 <span id="755">755</span>
 <span id="756">756</span>
 <span id="757">757</span>
+<span id="758">758</span>
+<span id="759">759</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1415,6 +1417,8 @@
 <span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::value::ValueType</span> <span class="kw">for</span> <span class="ident">GString</span> {
     <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="ident">String</span>;
 }
+
+<span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::value::ValueTypeOptional</span> <span class="kw">for</span> <span class="ident">GString</span> {}
 
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::value::FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">GString</span> {
     <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::value::GenericValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;

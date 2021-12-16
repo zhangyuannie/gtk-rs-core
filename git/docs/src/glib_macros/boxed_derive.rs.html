@@ -289,6 +289,8 @@
 <span id="215">215</span>
 <span id="216">216</span>
 <span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Ident</span>, <span class="ident">TokenStream</span>};
@@ -372,6 +374,8 @@
                 <span class="ident">value</span>
             }
         }
+
+        <span class="kw">impl</span> #<span class="ident">crate_ident::value::ValueTypeOptional</span> <span class="kw">for</span> #<span class="ident">name</span> { }
     }
 }
 
