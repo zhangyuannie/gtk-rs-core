@@ -1197,8 +1197,45 @@
 <span id="1123">1123</span>
 <span id="1124">1124</span>
 <span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
+<span id="1132">1132</span>
+<span id="1133">1133</span>
+<span id="1134">1134</span>
+<span id="1135">1135</span>
+<span id="1136">1136</span>
+<span id="1137">1137</span>
+<span id="1138">1138</span>
+<span id="1139">1139</span>
+<span id="1140">1140</span>
+<span id="1141">1141</span>
+<span id="1142">1142</span>
+<span id="1143">1143</span>
+<span id="1144">1144</span>
+<span id="1145">1145</span>
+<span id="1146">1146</span>
+<span id="1147">1147</span>
+<span id="1148">1148</span>
+<span id="1149">1149</span>
+<span id="1150">1150</span>
+<span id="1151">1151</span>
+<span id="1152">1152</span>
+<span id="1153">1153</span>
+<span id="1154">1154</span>
+<span id="1155">1155</span>
+<span id="1156">1156</span>
+<span id="1157">1157</span>
+<span id="1158">1158</span>
+<span id="1159">1159</span>
+<span id="1160">1160</span>
+<span id="1161">1161</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">//! `Value` binding and helper traits.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The type of a [`Value`](struct.Value.html) is dynamic in that it generally</span>
@@ -1250,8 +1287,10 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::types</span>::{<span class="ident">StaticType</span>, <span class="ident">Type</span>};
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A type that can be stored in `Value`s.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ValueType</span>: <span class="ident">ToValue</span> <span class="op">+</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Type to get the `Type` from.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This exists only for handling optional types.</span>
@@ -1260,6 +1299,7 @@
     <span class="kw">type</span> <span class="ident">Type</span>: <span class="ident">StaticType</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A type that can be stored in `Value`s and is optional.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// These are types were storing an `Option` is valid. Examples are `String` and all object types.</span>
@@ -1276,6 +1316,7 @@
     <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="ident">T::Type</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait for `Value` type checkers.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">ValueTypeChecker</span> {
     <span class="kw">type</span> <span class="ident">Error</span>: <span class="ident">std::error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
@@ -1283,6 +1324,7 @@
     <span class="kw">fn</span> <span class="ident">check</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// An error returned from the [`get`](struct.Value.html#method.get) function</span>
 <span class="doccomment">/// on a [`Value`](struct.Value.html) for non-optional types an `Option`.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -1320,6 +1362,7 @@
 
 <span class="kw">impl</span> <span class="ident">error::Error</span> <span class="kw">for</span> <span class="ident">ValueTypeMismatchError</span> {}
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Generic `Value` type checker for types.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GenericValueTypeChecker</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
 
@@ -1343,6 +1386,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// An error returned from the [`get`](struct.Value.html#method.get)</span>
 <span class="doccomment">/// function on a [`Value`](struct.Value.html) for optional types.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -1368,6 +1412,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Generic `Value` type checker for optional types.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GenericValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
 
@@ -1389,14 +1434,17 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait to retrieve the contained value from a `Value`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Usually this would not be used directly but from the [`get`](struct.Value.html#method.get)</span>
 <span class="doccomment">/// function on a [`Value`](struct.Value.html)</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Value type checker.</span>
     <span class="kw">type</span> <span class="ident">Checker</span>: <span class="ident">ValueTypeChecker</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Get the contained value from a `Value`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Safety</span>
@@ -1404,6 +1452,7 @@
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Value</span>) -&gt; <span class="self">Self</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait for types that implement `FromValue` and are Optional.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This trait is auto-implemented for the appropriate types and is sealed.</span>
@@ -1427,6 +1476,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Blanket implementation for all optional types.</span>
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>, <span class="ident">C</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
 <span class="kw">where</span>
@@ -1444,6 +1494,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait to convert a value to a `Value`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Similar to other common conversion traits, the following invariants are guaranteed:</span>
@@ -1459,15 +1510,18 @@
 <span class="doccomment">/// The conversion methods may cause values to be cloned, which may result in reference counter changes or heap allocations depending</span>
 <span class="doccomment">/// on the source and target type.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToValue</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Convert a value to a `Value`.</span>
     <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Value</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the type identifer of `self`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the type of the value to be returned by `to_value`.</span>
     <span class="kw">fn</span> <span class="ident">value_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Type</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Blanket implementation for all references.</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ToValue</span> <span class="op">+</span> <span class="ident">StaticType</span><span class="op">&gt;</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">T</span> {
     <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Value</span> {
@@ -1479,13 +1533,16 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait to convert an `Option` to a `Value` for optional types.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToValueOptional</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Convert an `Option` to a `Value`.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::wrong_self_convention</span>)]</span>
     <span class="kw">fn</span> <span class="ident">to_value_optional</span>(<span class="ident">s</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="self">Self</span><span class="op">&gt;</span>) -&gt; <span class="ident">Value</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Blanket implementation for all optional types.</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ToValueOptional</span> <span class="op">+</span> <span class="ident">StaticType</span><span class="op">&gt;</span> <span class="ident">ToValue</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Value</span> {
@@ -1539,6 +1596,7 @@
 
 <span class="comment">// TODO: Should use impl !Send for Value {} once stable</span>
 <span class="macro">crate::wrapper!</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// A generic value capable of carrying various types.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Once created the type of the value can&#39;t be changed.</span>
@@ -1574,6 +1632,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Value</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new `Value` that is initialized with `type_`</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_type</span>(<span class="ident">type_</span>: <span class="ident">Type</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
@@ -1587,11 +1646,13 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new `Value` that is initialized for a given `ValueType`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">for_value_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ValueType</span><span class="op">&gt;</span>() -&gt; <span class="self">Self</span> {
         <span class="ident">Value::from_type</span>(<span class="ident">T::Type::static_type</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to get a value of type `T`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok` if the type is correct.</span>
@@ -1605,6 +1666,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to get a value of an owned type `T`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_owned</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="op">&lt;</span><span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">FromValue</span><span class="op">&gt;</span><span class="ident">::Checker</span> <span class="kw">as</span> <span class="ident">ValueTypeChecker</span><span class="op">&gt;</span><span class="ident">::Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
@@ -1616,6 +1678,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns `true` if the type of the value corresponds to `T`</span>
     <span class="doccomment">/// or is a sub-type of `T`.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -1623,11 +1686,13 @@
         <span class="self">self</span>.<span class="ident">type_</span>().<span class="ident">is_a</span>(<span class="ident">T::static_type</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the type of the value.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">g_type</span>) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns whether `Value`s of type `src` can be transformed to type `dst`.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Check whether [`transform()`][Self::transform()] is able to transform values</span>
@@ -1652,6 +1717,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to transform the value into a value of the target type</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate</span>
@@ -1687,6 +1753,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Consumes `Value` and returns the corresponding `GValue`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="ident">gobject_ffi::GValue</span> {
         <span class="kw">unsafe</span> {
@@ -1799,6 +1866,7 @@
 }
 
 <span class="macro">crate::wrapper!</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// A version of [`Value`](struct.Value.html) for storing `Send` types, that implements Send</span>
     <span class="doccomment">/// itself.</span>
     <span class="doccomment">///</span>
@@ -1818,6 +1886,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SendValue</span> {}
 
 <span class="kw">impl</span> <span class="ident">SendValue</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Consumes `SendValue` and returns the corresponding `GValue`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="ident">gobject_ffi::GValue</span> {
         <span class="kw">unsafe</span> {
@@ -1848,8 +1917,10 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Converts to `SendValue`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToSendValue</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="ident">ToValue</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a `SendValue` clone of `self`.</span>
     <span class="kw">fn</span> <span class="ident">to_send_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">SendValue</span>;
 }
@@ -2099,6 +2170,7 @@
     <span class="ident">gobject_ffi::g_value_set_double</span>
 );
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A [`Value`] containing another [`Value`].</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BoxedValue</span>(<span class="kw">pub</span> <span class="ident">Value</span>);
 
@@ -2323,5 +2395,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

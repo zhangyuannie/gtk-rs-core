@@ -287,6 +287,8 @@
 <span id="213">213</span>
 <span id="214">214</span>
 <span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate::FromGlib</span>;
@@ -295,6 +297,7 @@
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
 <span class="kw">use</span> <span class="ident">std::num::TryFromIntError</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Wrapper for values where C functions expect a plain C `char`</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Consider the following C function prototype from glib:</span>
@@ -385,6 +388,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Wrapper for values where C functions expect a plain C `unsigned char`</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This `UChar` type is a wrapper over an `libc::c_uchar`, so that we can pass it to Glib or C functions.</span>
@@ -503,5 +507,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

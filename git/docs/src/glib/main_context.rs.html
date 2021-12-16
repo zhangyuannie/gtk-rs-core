@@ -418,6 +418,12 @@
 <span id="344">344</span>
 <span id="345">345</span>
 <span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::source::Priority</span>;
@@ -485,6 +491,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes `func` on the main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the current thread is the owner of the main context or the main context currently has no</span>
@@ -523,6 +530,7 @@
         <span class="self">self</span>.<span class="ident">invoke_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT_IDLE</span>, <span class="ident">func</span>);
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes `func` on the main context with the given priority.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the current thread is the owner of the main context or the main context currently has no</span>
@@ -539,6 +547,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes `func` on the main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Different to `invoke()`, this does not require `func` to be</span>
@@ -558,6 +567,7 @@
         <span class="self">self</span>.<span class="ident">invoke_local_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT_IDLE</span>, <span class="ident">func</span>);
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes `func` on the main context with the given priority.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Different to `invoke_with_priority()`, this does not require `func` to be</span>
@@ -611,6 +621,7 @@
         )
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Call closure with the main context configured as the thread default one.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The thread default main context is changed in a panic-safe manner before calling `func` and</span>
@@ -627,6 +638,7 @@
         <span class="prelude-val">Ok</span>(<span class="ident">func</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Acquire ownership of the main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Ownership will automatically be released again once the returned acquire guard is dropped.</span>
@@ -765,5 +777,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

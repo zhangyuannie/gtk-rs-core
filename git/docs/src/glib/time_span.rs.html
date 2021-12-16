@@ -156,10 +156,24 @@
 <span id="82">82</span>
 <span id="83">83</span>
 <span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
+<span id="91">91</span>
+<span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A value representing an interval of time, in microseconds.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GTimeSpan&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
@@ -180,66 +194,78 @@
 }
 
 <span class="kw">impl</span> <span class="ident">TimeSpan</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from microseconds.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_microseconds</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from milliseconds.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_milliseconds</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span> <span class="op">*</span> <span class="ident">ffi::G_TIME_SPAN_MILLISECOND</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from seconds.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_seconds</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span> <span class="op">*</span> <span class="ident">ffi::G_TIME_SPAN_SECOND</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from minutes.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_minutes</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span> <span class="op">*</span> <span class="ident">ffi::G_TIME_SPAN_MINUTE</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from hours.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_hours</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span> <span class="op">*</span> <span class="ident">ffi::G_TIME_SPAN_HOUR</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new timespan from days.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_days</span>(<span class="ident">v</span>: <span class="ident">i64</span>) -&gt; <span class="ident">TimeSpan</span> {
         <span class="ident">TimeSpan</span>(<span class="ident">v</span> <span class="op">*</span> <span class="ident">ffi::G_TIME_SPAN_DAY</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of microseconds in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_microseconds</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of milliseconds in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_milliseconds</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">/</span> <span class="ident">ffi::G_TIME_SPAN_MILLISECOND</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of seconds in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_seconds</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">/</span> <span class="ident">ffi::G_TIME_SPAN_SECOND</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of minutes in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_minutes</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">/</span> <span class="ident">ffi::G_TIME_SPAN_MINUTE</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of hours in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_hours</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">/</span> <span class="ident">ffi::G_TIME_SPAN_HOUR</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the full number of days in this `TimeSpan`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_days</span>(<span class="self">self</span>) -&gt; <span class="ident">i64</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">/</span> <span class="ident">ffi::G_TIME_SPAN_DAY</span>
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

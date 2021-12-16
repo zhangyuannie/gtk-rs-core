@@ -351,6 +351,16 @@
 <span id="277">277</span>
 <span id="278">278</span>
 <span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
@@ -361,6 +371,7 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::variant_type</span>::<span class="kw-2">*</span>;
 
 <span class="macro">wrapper!</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `VariantDict` is a mutable key/value store where the keys are always</span>
     <span class="doccomment">/// strings and the values are [`Variant`s](variant/struct.Variant.html).</span>
     <span class="doccomment">///</span>
@@ -382,6 +393,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">VariantDict</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new `VariantDict` optionally populating it with the given `Variant`</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Since `Variant`s are immutable, this does not couple the `VariantDict` with</span>
@@ -398,6 +410,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_dict_new</span>(<span class="ident">from_asv</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this `VariantDict` contains the given key.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Look up whether or not the given key is present, returning `true` if it</span>
@@ -412,6 +425,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Look up a typed value from this `VariantDict`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `key` is looked up in `self`.</span>
@@ -425,6 +439,7 @@
             .<span class="ident">transpose</span>()
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Look up and return a value from this `VariantDict`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `key` is looked up in `self`.  If `expected_type` is not</span>
@@ -445,6 +460,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Insert a variant into the dictionary.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `key`/`value` pair is inserted into `self`.  If a value</span>
@@ -463,6 +479,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Insert a value into the dictionary</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `key`/`value` pair is inserted into `self`.  If a value</span>
@@ -486,6 +503,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Remove the given `key` from the dictionary.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This removes the given `key` from the dictionary, releasing the reference</span>
@@ -503,6 +521,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Convert this dictionary to a [`Variant`](variant/struct.Variant.html)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This method converts `self` into an instance of [`Variant`](variant/struct.Variant.html)</span>
@@ -521,6 +540,7 @@
         <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_dict_end</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Convert this dictionary to a [`Variant`](variant/struct.Variant.html)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This method converts `self` into an instance of [`Variant`](variant/struct.Variant.html)</span>
@@ -631,5 +651,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

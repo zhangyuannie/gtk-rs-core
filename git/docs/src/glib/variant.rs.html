@@ -2411,8 +2411,53 @@
 <span id="2337">2337</span>
 <span id="2338">2338</span>
 <span id="2339">2339</span>
+<span id="2340">2340</span>
+<span id="2341">2341</span>
+<span id="2342">2342</span>
+<span id="2343">2343</span>
+<span id="2344">2344</span>
+<span id="2345">2345</span>
+<span id="2346">2346</span>
+<span id="2347">2347</span>
+<span id="2348">2348</span>
+<span id="2349">2349</span>
+<span id="2350">2350</span>
+<span id="2351">2351</span>
+<span id="2352">2352</span>
+<span id="2353">2353</span>
+<span id="2354">2354</span>
+<span id="2355">2355</span>
+<span id="2356">2356</span>
+<span id="2357">2357</span>
+<span id="2358">2358</span>
+<span id="2359">2359</span>
+<span id="2360">2360</span>
+<span id="2361">2361</span>
+<span id="2362">2362</span>
+<span id="2363">2363</span>
+<span id="2364">2364</span>
+<span id="2365">2365</span>
+<span id="2366">2366</span>
+<span id="2367">2367</span>
+<span id="2368">2368</span>
+<span id="2369">2369</span>
+<span id="2370">2370</span>
+<span id="2371">2371</span>
+<span id="2372">2372</span>
+<span id="2373">2373</span>
+<span id="2374">2374</span>
+<span id="2375">2375</span>
+<span id="2376">2376</span>
+<span id="2377">2377</span>
+<span id="2378">2378</span>
+<span id="2379">2379</span>
+<span id="2380">2380</span>
+<span id="2381">2381</span>
+<span id="2382">2382</span>
+<span id="2383">2383</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">//! `Variant` binding and helper traits.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! [`Variant`](struct.Variant.html) is an immutable dynamically-typed generic</span>
@@ -2526,6 +2571,7 @@
 <span class="kw">use</span> <span class="ident">std::str</span>;
 
 <span class="macro">wrapper!</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// A generic immutable value capable of carrying various types.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
@@ -2840,6 +2886,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// An error returned from the [`try_get`](struct.Variant.html#method.try_get) function</span>
 <span class="doccomment">/// on a [`Variant`](struct.Variant.html) when the expected type does not match the actual type.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Debug</span>)]</span>
@@ -2867,6 +2914,7 @@
 <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">VariantTypeMismatchError</span> {}
 
 <span class="kw">impl</span> <span class="ident">Variant</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the type of the value.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Determines the type of `self`.</span>
@@ -2882,6 +2930,7 @@
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_ptr</span>(<span class="ident">ffi::g_variant_get_type</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns `true` if the type of the value corresponds to `T`.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_is_of_type&quot;</span>)]</span>
@@ -2894,6 +2943,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the classification of the variant.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Classifies `self` according to its top-level type.</span>
@@ -2906,6 +2956,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_classify</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to extract a value of type `T`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if `T` matches the variant&#39;s type.</span>
@@ -2933,6 +2984,7 @@
         <span class="ident">T::from_variant</span>(<span class="self">self</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to extract a value of type `T`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">VariantTypeMismatchError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">get</span>().<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
@@ -2943,12 +2995,14 @@
         })
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Boxes value.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_variant</span>(<span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Unboxes self.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if self contains a `Variant`.</span>
@@ -2958,6 +3012,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_variant</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Reads a child item out of a container `Variant` instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -3003,6 +3058,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_child_value</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">index</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Try to read a child item out of a container `Variant` instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It returns `None` if `self` is not a container type or if the given</span>
@@ -3017,6 +3073,7 @@
         <span class="prelude-val">Some</span>(<span class="ident">v</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Try to read a child item out of a container `Variant` instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It returns `Ok(None)` if `self` is not a container type or if the given</span>
@@ -3031,6 +3088,7 @@
         <span class="self">self</span>.<span class="ident">try_child_value</span>(<span class="ident">index</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">try_get</span>()).<span class="ident">transpose</span>()
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Read a child item out of a container `Variant` instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -3044,6 +3102,7 @@
         <span class="self">self</span>.<span class="ident">child_value</span>(<span class="ident">index</span>).<span class="ident">get</span>().<span class="ident">unwrap</span>()
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to extract a `&amp;str`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if the variant has a string type (`s`, `o` or `g` type</span>
@@ -3067,6 +3126,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to extract a `&amp;[T]` from a variant of array type with a suitable element type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns an error if the type is wrong.</span>
@@ -3132,6 +3192,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new Variant array from children.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -3161,6 +3222,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new Variant array from a fixed array.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_fixed_array&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">array_from_fixed_array</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FixedSizeVariantType</span><span class="op">&gt;</span>(<span class="ident">array</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) -&gt; <span class="self">Self</span> {
@@ -3176,6 +3238,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new Variant tuple from children.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_tuple&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tuple_from_iter</span>(<span class="ident">children</span>: <span class="kw">impl</span> <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">Variant</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
@@ -3190,6 +3253,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new maybe Variant.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_maybe&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_maybe</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">child</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Variant</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
@@ -3210,7 +3274,8 @@
         }
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Constructs a new serialized-mode [`Variant`][struct@crate::Variant] instance. This is the</span>
     <span class="doccomment">/// inner interface for creation of new serialized values that gets</span>
@@ -3236,7 +3301,8 @@
         <span class="ident">Variant::from_bytes_with_type</span>(<span class="ident">bytes</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the same as `from_bytes`, except that checks on the passed</span>
     <span class="doccomment">/// data are skipped.</span>
@@ -3252,7 +3318,8 @@
         <span class="ident">Variant::from_bytes_with_type_trusted</span>(<span class="ident">bytes</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Creates a new [`Variant`][struct@crate::Variant] instance from serialized data.</span>
     <span class="doccomment">///</span>
@@ -3300,7 +3367,8 @@
         <span class="ident">Variant::from_data_with_type</span>(<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the same as `from_data`, except that checks on the passed</span>
     <span class="doccomment">/// data are skipped.</span>
@@ -3316,7 +3384,8 @@
         <span class="ident">Variant::from_data_with_type_trusted</span>(<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance with a given type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance with a given type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_bytes&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes_with_type</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>, <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
@@ -3328,7 +3397,8 @@
         }
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance with a given type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance with a given type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the same as `from_bytes`, except that checks on the passed</span>
     <span class="doccomment">/// data are skipped.</span>
@@ -3348,7 +3418,8 @@
         ))
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance with a given type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance with a given type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_data&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_data_with_type</span><span class="op">&lt;</span><span class="ident">A</span>: <span class="ident">AsRef</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="ident">A</span>, <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
@@ -3373,7 +3444,8 @@
         }
     }
 
-    <span class="doccomment">/// Constructs a new serialised-mode GVariant instance with a given type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Constructs a new serialized-mode GVariant instance with a given type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is the same as `from_data`, except that checks on the passed</span>
     <span class="doccomment">/// data are skipped.</span>
@@ -3406,7 +3478,8 @@
         ))
     }
 
-    <span class="doccomment">/// Returns the serialised form of a GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns the serialized form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">/// The semantics of this function are exactly the same as</span>
@@ -3422,7 +3495,8 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_data_as_bytes</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Returns the serialised form of a GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns the serialized form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Returns a pointer to the serialized form of a [`Variant`][struct@crate::Variant] instance.</span>
     <span class="doccomment">/// The returned data may not be in fully-normalised form if read from an</span>
@@ -3463,7 +3537,8 @@
         }
     }
 
-    <span class="doccomment">/// Returns the size of serialised form of a GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns the size of serialized form of a GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Determines the number of bytes that would be required to store `self`</span>
     <span class="doccomment">/// with [`store()`][Self::store()].</span>
@@ -3485,7 +3560,8 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_get_size</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="doccomment">/// Stores the serialised form of a GVariant instance into the given slice.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Stores the serialized form of a GVariant instance into the given slice.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The slice needs to be big enough.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
@@ -3515,6 +3591,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a copy of the variant in normal form.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Gets a [`Variant`][struct@crate::Variant] instance that has the same value as `self` and is</span>
@@ -3549,6 +3626,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_normal_form</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a copy of the variant in the opposite endianness.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Performs a byteswapping operation on the contents of `self`. The</span>
@@ -3571,6 +3649,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_byteswap</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Determines the number of children in a container GVariant instance.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Determines the number of children in a container [`Variant`][struct@crate::Variant] instance.</span>
@@ -3595,6 +3674,7 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_n_children</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create an iterator over items in the variant.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that this heap allocates a variant for each element,</span>
@@ -3605,6 +3685,7 @@
         <span class="ident">VariantIter::new</span>(<span class="self">self</span>.<span class="ident">clone</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create an iterator over borrowed strings from a GVariant of type `as` (array of string).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This will fail if the variant is not an array of with</span>
@@ -3636,6 +3717,7 @@
         <span class="prelude-val">Ok</span>(<span class="ident">VariantStrIter::new</span>(<span class="self">self</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Variant has a container type.</span>
     <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Checks if `self` is a container.</span>
@@ -3718,22 +3800,28 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Converts to `Variant`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToVariant</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a `Variant` clone of `self`.</span>
     <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Extracts a value.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromVariant</span>: <span class="ident">Sized</span> <span class="op">+</span> <span class="ident">StaticVariantType</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to extract a value.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if the variant&#39;s type matches `Self`.</span>
     <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Returns `VariantType` of `Self`.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">StaticVariantType</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the `VariantType` corresponding to `Self`.</span>
     <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span>;
 }
@@ -4751,5 +4839,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

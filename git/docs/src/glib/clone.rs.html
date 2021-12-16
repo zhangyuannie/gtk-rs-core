@@ -165,32 +165,44 @@
 <span id="91">91</span>
 <span id="92">92</span>
 <span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
 <span class="kw">use</span> <span class="ident">std::rc</span>::{<span class="self">self</span>, <span class="ident">Rc</span>};
 <span class="kw">use</span> <span class="ident">std::sync</span>::{<span class="self">self</span>, <span class="ident">Arc</span>};
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait for generalizing downgrading a strong reference to a weak reference.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Downgrade</span>
 <span class="kw">where</span>
     <span class="self">Self</span>: <span class="ident">Sized</span>,
 {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Weak reference type.</span>
     <span class="kw">type</span> <span class="ident">Weak</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Downgrade to a weak reference.</span>
     <span class="kw">fn</span> <span class="ident">downgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Weak</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Trait for generalizing upgrading a weak reference to a strong reference.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Upgrade</span>
 <span class="kw">where</span>
     <span class="self">Self</span>: <span class="ident">Sized</span>,
 {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Strong reference type.</span>
     <span class="kw">type</span> <span class="ident">Strong</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Try upgrading a weak reference to a strong reference.</span>
     <span class="kw">fn</span> <span class="ident">upgrade</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Strong</span><span class="op">&gt;</span>;
 }
@@ -259,5 +271,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

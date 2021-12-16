@@ -501,6 +501,16 @@
 <span id="427">427</span>
 <span id="428">428</span>
 <span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// TODO: support marshaller.</span>
@@ -537,6 +547,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RustClosure</span>(<span class="ident">Closure</span>);
 
 <span class="kw">impl</span> <span class="ident">RustClosure</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new closure around a Rust closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See [`glib::closure!`] for a way to create a closure with concrete types.</span>
@@ -566,6 +577,7 @@
         <span class="self">Self</span>(<span class="ident">Closure::new</span>(<span class="ident">callback</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new closure around a Rust closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See [`glib::closure_local!`] for a way to create a closure with concrete types.</span>
@@ -581,6 +593,7 @@
         <span class="self">Self</span>(<span class="ident">Closure::new_local</span>(<span class="ident">callback</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes the closure with the given arguments.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For invalidated closures this returns the &quot;default&quot; value of the return type. For nullable</span>
@@ -603,6 +616,7 @@
             .<span class="ident">expect</span>(<span class="string">&quot;Invalid return value&quot;</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes the closure with the given arguments.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For invalidated closures this returns the &quot;default&quot; value of the return type.</span>
@@ -616,6 +630,7 @@
         <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="number">0</span>.<span class="ident">invoke_with_values</span>(<span class="ident">return_type</span>, <span class="ident">values</span>) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invalidates the closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Invoking an invalidated closure has no effect.</span>
@@ -644,6 +659,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Closure</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new closure around a Rust closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that [`RustClosure`] provides more convenient and non-unsafe API for invoking</span>
@@ -681,6 +697,7 @@
         <span class="kw">unsafe</span> { <span class="ident"><span class="self">Self</span>::new_unsafe</span>(<span class="ident">callback</span>) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new closure around a Rust closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that [`RustClosure`] provides more convenient and non-unsafe API for invoking</span>
@@ -699,6 +716,7 @@
         <span class="kw">unsafe</span> { <span class="ident"><span class="self">Self</span>::new_unsafe</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">values</span><span class="op">|</span> (<span class="ident">callback</span>.<span class="ident">get_ref</span>())(<span class="ident">values</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new closure around a Rust closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Safety</span>
@@ -776,6 +794,7 @@
         <span class="ident">from_glib_none</span>(<span class="ident">closure</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invokes the closure with the given arguments.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For invalidated closures this returns the &quot;default&quot; value of the return type.</span>
@@ -815,6 +834,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Invalidates the closure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Invoking an invalidated closure has no effect.</span>
@@ -931,5 +951,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

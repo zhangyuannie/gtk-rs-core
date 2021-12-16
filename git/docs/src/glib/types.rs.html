@@ -624,8 +624,36 @@
 <span id="550">550</span>
 <span id="551">551</span>
 <span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">//! Runtime type information.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -635,6 +663,7 @@
 <span class="kw">use</span> <span class="ident">std::mem</span>;
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A GLib or GLib-based library type</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GType&quot;</span>)]</span>
@@ -642,90 +671,112 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Type</span>(<span class="ident">ffi::GType</span>);
 
 <span class="kw">impl</span> <span class="ident">Type</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// An invalid `Type` used as error return value in some functions</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INVALID&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INVALID</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INVALID</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to the unit type `()`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_NONE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UNIT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_NONE</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `i8`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_CHAR&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I8</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_CHAR</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `u8`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UCHAR&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U8</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UCHAR</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `bool`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_BOOLEAN&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BOOL</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_BOOLEAN</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `i32`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INT</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `u32`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UINT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UINT</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to C `long`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_LONG&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I_LONG</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_LONG</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to C `unsigned long`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_ULONG&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U_LONG</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_ULONG</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `i64`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">I64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INT64</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `u64`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_UINT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">U64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_UINT64</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `f32`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_FLOAT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">F32</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_FLOAT</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `f64`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_DOUBLE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">F64</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_DOUBLE</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to `String`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_STRING&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STRING</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_STRING</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type corresponding to a pointer</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_POINTER&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">POINTER</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_POINTER</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type of GVariant</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_VARIANT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_VARIANT</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all interfaces are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_INTERFACE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INTERFACE</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_INTERFACE</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all enumeration types are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_ENUM&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ENUM</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_ENUM</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all flags types are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_FLAGS&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FLAGS</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_FLAGS</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all boxed types are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_BOXED&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BOXED</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_BOXED</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all `GParamSpec` types are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_PARAM&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PARAM_SPEC</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_PARAM</span>);
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// The fundamental type from which all objects are derived</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_TYPE_OBJECT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OBJECT</span>: <span class="self">Self</span> <span class="op">=</span> <span class="self">Self</span>(<span class="ident">gobject_ffi::G_TYPE_OBJECT</span>);
@@ -813,6 +864,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Checks that the type is not [`INVALID`](Self::INVALID)</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_valid</span>(<span class="self">self</span>) -&gt; <span class="ident">bool</span> {
@@ -832,8 +884,10 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Types that are supported by GLib dynamic typing.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">StaticType</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the type identifier of `Self`.</span>
     <span class="kw">fn</span> <span class="ident">static_type</span>() -&gt; <span class="ident">Type</span>;
 }
@@ -1177,5 +1231,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

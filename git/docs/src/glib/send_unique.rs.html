@@ -219,11 +219,19 @@
 <span id="145">145</span>
 <span id="146">146</span>
 <span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::cell::RefCell</span>;
 <span class="kw">use</span> <span class="ident">std::ops</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Like `Send` but only if we have the unique reference to the object</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Note that implementing this trait has to be done especially careful.</span>
@@ -237,6 +245,7 @@
     <span class="kw">fn</span> <span class="ident">is_unique</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Allows sending reference counted objects that don&#39;t implement `Send` to other threads</span>
 <span class="doccomment">/// as long as only a single reference to the object exists.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
@@ -252,6 +261,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BorrowError</span>;
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">SendUnique</span><span class="op">&gt;</span> <span class="ident">SendUniqueCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Create a new `SendUniqueCell` out of `obj`</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Fails if `obj` is not unique at this time</span>
@@ -266,6 +276,7 @@
         })
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Borrow the contained object or panic if borrowing</span>
     <span class="doccomment">/// is not possible at this time</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ref</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
@@ -276,6 +287,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Try borrowing the contained object</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Borrowing is possible as long as only a single reference</span>
@@ -314,6 +326,7 @@
         <span class="prelude-val">Ok</span>(<span class="ident">Ref</span>(<span class="self">self</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Extract the contained object or panic if it is not possible</span>
     <span class="doccomment">/// at this time</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_inner</span>(<span class="self">self</span>) -&gt; <span class="ident">T</span> {
@@ -324,6 +337,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Try extracting the contained object</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Borrowing is possible as long as only a single reference</span>
@@ -367,5 +381,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

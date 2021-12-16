@@ -976,6 +976,15 @@
 <span id="902">902</span>
 <span id="903">903</span>
 <span id="904">904</span>
+<span id="905">905</span>
+<span id="906">906</span>
+<span id="907">907</span>
+<span id="908">908</span>
+<span id="909">909</span>
+<span id="910">910</span>
+<span id="911">911</span>
+<span id="912">912</span>
+<span id="913">913</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1297,6 +1306,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A `Sender` that can be used to send items to the corresponding main context receiver.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This `Sender` behaves the same as `std::sync::mpsc::Sender`.</span>
@@ -1329,6 +1339,7 @@
         <span class="self">Self</span>(<span class="ident">channel</span>.<span class="ident">clone</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Sends a value to the channel.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">mpsc::SendError</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">send</span>(<span class="ident">t</span>)
@@ -1347,6 +1358,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A `SyncSender` that can be used to send items to the corresponding main context receiver.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This `SyncSender` behaves the same as `std::sync::mpsc::SyncSender`.</span>
@@ -1379,11 +1391,13 @@
         <span class="self">Self</span>(<span class="ident">channel</span>.<span class="ident">clone</span>())
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Sends a value to the channel and blocks if the channel is full.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">mpsc::SendError</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">send</span>(<span class="ident">t</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Sends a value to the channel.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_send</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">mpsc::TrySendError</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">try_send</span>(<span class="ident">t</span>)
@@ -1402,6 +1416,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A `Receiver` that can be attached to a main context to receive items from its corresponding</span>
 <span class="doccomment">/// `Sender` or `SyncSender`.</span>
 <span class="doccomment">///</span>
@@ -1436,6 +1451,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Receiver</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Attaches the receiver to the given `context` and calls `func` whenever an item is</span>
     <span class="doccomment">/// available on the channel.</span>
     <span class="doccomment">///</span>
@@ -1518,6 +1534,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">MainContext</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a channel for a main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `Receiver` has to be attached to a main context at a later time, together with a</span>
@@ -1539,6 +1556,7 @@
         (<span class="ident">sender</span>, <span class="ident">receiver</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a synchronous channel for a main context with a given bound on the capacity of the</span>
     <span class="doccomment">/// channel.</span>
     <span class="doccomment">///</span>
@@ -1881,5 +1899,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

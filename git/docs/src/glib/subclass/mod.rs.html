@@ -353,10 +353,11 @@
 <span id="279">279</span>
 <span id="280">280</span>
 <span id="281">281</span>
+<span id="282">282</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy::needless_doctest_main</span>)]</span>
-
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">//! Module containing infrastructure for subclassing `GObject`s and registering boxed types.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Example for registering a `glib::Object` subclass</span>
@@ -617,6 +618,7 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">signal</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">//! Prelude that re-exports all important traits from this crate.</span>
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::boxed::BoxedType</span>;
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::interface</span>::{<span class="ident">ObjectInterface</span>, <span class="ident">ObjectInterfaceExt</span>, <span class="ident">ObjectInterfaceType</span>};
@@ -635,5 +637,5 @@
 };
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::types</span>::{<span class="ident">register_type</span>, <span class="ident">InitializingObject</span>, <span class="ident">InitializingType</span>, <span class="ident">TypeData</span>};
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

@@ -1083,6 +1083,58 @@
 <span id="1009">1009</span>
 <span id="1010">1010</span>
 <span id="1011">1011</span>
+<span id="1012">1012</span>
+<span id="1013">1013</span>
+<span id="1014">1014</span>
+<span id="1015">1015</span>
+<span id="1016">1016</span>
+<span id="1017">1017</span>
+<span id="1018">1018</span>
+<span id="1019">1019</span>
+<span id="1020">1020</span>
+<span id="1021">1021</span>
+<span id="1022">1022</span>
+<span id="1023">1023</span>
+<span id="1024">1024</span>
+<span id="1025">1025</span>
+<span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
+<span id="1029">1029</span>
+<span id="1030">1030</span>
+<span id="1031">1031</span>
+<span id="1032">1032</span>
+<span id="1033">1033</span>
+<span id="1034">1034</span>
+<span id="1035">1035</span>
+<span id="1036">1036</span>
+<span id="1037">1037</span>
+<span id="1038">1038</span>
+<span id="1039">1039</span>
+<span id="1040">1040</span>
+<span id="1041">1041</span>
+<span id="1042">1042</span>
+<span id="1043">1043</span>
+<span id="1044">1044</span>
+<span id="1045">1045</span>
+<span id="1046">1046</span>
+<span id="1047">1047</span>
+<span id="1048">1048</span>
+<span id="1049">1049</span>
+<span id="1050">1050</span>
+<span id="1051">1051</span>
+<span id="1052">1052</span>
+<span id="1053">1053</span>
+<span id="1054">1054</span>
+<span id="1055">1055</span>
+<span id="1056">1056</span>
+<span id="1057">1057</span>
+<span id="1058">1058</span>
+<span id="1059">1059</span>
+<span id="1060">1060</span>
+<span id="1061">1061</span>
+<span id="1062">1062</span>
+<span id="1063">1063</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1097,6 +1149,7 @@
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
 <span class="kw">use</span> <span class="ident">std::slice</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Describes `Variant` types.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The `Variant` type system (based on the D-Bus one) describes types with</span>
@@ -1262,6 +1315,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">VariantType</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to create a `VariantType` from a string slice.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok` if the string is a valid type string, `Err` otherwise.</span>
@@ -1282,6 +1336,7 @@
         <span class="ident">VariantTy::new</span>(<span class="ident">type_string</span>).<span class="ident">map</span>(<span class="ident">ToOwned::to_owned</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to create a `VariantType` from an owned string.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok` if the string is a valid type string, `Err` otherwise.</span>
@@ -1418,6 +1473,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Describes `Variant` types.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is a borrowed counterpart of [`VariantType`](struct.VariantType.html).</span>
@@ -1429,141 +1485,169 @@
 }
 
 <span class="kw">impl</span> <span class="ident">VariantTy</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `bool`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_BOOLEAN&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BOOLEAN</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_BOOLEAN</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `u8`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_BYTE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BYTE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_BYTE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `i16`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_INT16&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INT16</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_INT16</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `u16`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_UINT16&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UINT16</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_UINT16</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `i32`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_INT32&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INT32</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_INT32</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `u32`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_UINT32&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UINT32</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_UINT32</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `i64`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_INT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INT64</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_INT64</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `u64`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_UINT64&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UINT64</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_UINT64</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `f64`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_DOUBLE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DOUBLE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_DOUBLE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// `&amp;str`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_STRING&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STRING</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_STRING</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// DBus object path.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_OBJECT_PATH&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OBJECT_PATH</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_OBJECT_PATH</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Type signature.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_SIGNATURE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SIGNATURE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_SIGNATURE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Variant.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_VARIANT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARIANT</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_VARIANT</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Handle.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_HANDLE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HANDLE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_HANDLE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Unit, i.e. `()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_UNIT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">UNIT</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_UNIT</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// An indefinite type that is a supertype of every type (including itself).</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_ANY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_ANY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any basic type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_BASIC&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BASIC</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_BASIC</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any maybe type, i.e. `Option&lt;T&gt;`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_MAYBE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAYBE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_MAYBE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any array type, i.e. `[T]`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_ARRAY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ARRAY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_ARRAY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any tuple type, i.e. `(T)`, `(T, T)`, etc.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_TUPLE&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TUPLE</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_TUPLE</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any dict entry type, i.e. `DictEntry&lt;K, V&gt;`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_DICT_ENTRY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DICT_ENTRY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_DICT_ENTRY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Any dictionary type, i.e. `HashMap&lt;K, V&gt;`, `BTreeMap&lt;K, V&gt;`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_DICTIONARY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">DICTIONARY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_DICTIONARY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// String array, i.e. `[&amp;str]`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_STRING_ARRAY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STRING_ARRAY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_STRING_ARRAY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Object path array, i.e. `[&amp;str]`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_OBJECT_PATH_ARRAY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OBJECT_PATH_ARRAY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_OBJECT_PATH_ARRAY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Byte string, i.e. `[u8]`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_BYTE_STRING&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BYTE_STRING</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_BYTE_STRING</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Byte string array, i.e. `[[u8]]`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_BYTE_STRING_ARRAY&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BYTE_STRING_ARRAY</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_BYTE_STRING_ARRAY</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Variant dictionary, i.e. `HashMap&lt;String, Variant&gt;`, `BTreeMap&lt;String, Variant&gt;`, etc.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_VARIANT_TYPE_VARDICT&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VARDICT</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">VariantTy</span> <span class="op">=</span>
         <span class="kw">unsafe</span> { <span class="ident">VariantTy::from_str_unchecked</span>(<span class="ident">ffi::G_VARIANT_TYPE_VARDICT</span>) };
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to create a `&amp;VariantTy` from a string slice.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok` if the string is a valid type string, `Err` otherwise.</span>
@@ -1586,6 +1670,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Converts a type string into `&amp;VariantTy` without any checks.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Safety</span>
@@ -1595,6 +1680,7 @@
         <span class="ident">std::mem::transmute</span>::<span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">VariantTy</span><span class="op">&gt;</span>(<span class="ident">type_string</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates `&amp;VariantTy` with a wildcard lifetime from a `GVariantType`</span>
     <span class="doccomment">/// pointer.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
@@ -1603,65 +1689,76 @@
         <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span>, <span class="ident">len</span>) <span class="kw">as</span> <span class="kw-2">*const</span> [<span class="ident">u8</span>] <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">VariantTy</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a `GVariantType` pointer.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_ptr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">ffi::GVariantType</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Converts to a string slice.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a definite type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_definite&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_definite</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_definite</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a container type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_container&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_container</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_container</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a basic type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_basic&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_basic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_basic</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a maybe type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_maybe&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_maybe</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_maybe</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is an array type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_array&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_array</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_array</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a tuple type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_tuple&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_tuple</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_tuple</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a dict entry type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_dict_entry&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_dict_entry</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_dict_entry</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a variant.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_variant&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_type_is_variant</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Check if this variant type is a subtype of another.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_is_subtype_of&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_subtype_of</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">supertype</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">bool</span> {
@@ -1673,6 +1770,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the element type of this variant type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -1688,6 +1786,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the first type of this variant type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -1707,6 +1806,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the next type of this variant type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_next&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">VariantTy</span><span class="op">&gt;</span> {
@@ -1720,12 +1820,14 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the number of items in this variant type.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_n_items&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">n_items</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_type_n_items</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the key type of this variant type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -1741,6 +1843,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return the value type of this variant type.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
@@ -1756,6 +1859,7 @@
         }
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Return this type as an array.</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">as_array</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span> <span class="op">==</span> <span class="ident">VariantTy::STRING</span> {
@@ -2095,5 +2199,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

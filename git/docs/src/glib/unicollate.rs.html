@@ -156,15 +156,21 @@
 <span id="82">82</span>
 <span id="83">83</span>
 <span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A `CollationKey` allows ordering strings using the linguistically correct rules for the current locale.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CollationKey</span>(<span class="ident">String</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CollationKey</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Converts a string into a `CollationKey` that can be compared with other</span>
     <span class="doccomment">/// collation keys produced by the same function using `std::cmp::Ordering::cmp()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_utf8_collate_key&quot;</span>)]</span>
@@ -175,6 +181,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A `FilenameCollationKey` allows ordering file names using the linguistically correct rules for the current locale.</span>
 <span class="doccomment">/// Compared to `CollationKey`, filename collation keys take into consideration dots and other characters</span>
 <span class="doccomment">/// commonly found in file names.</span>
@@ -182,6 +189,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FilenameCollationKey</span>(<span class="ident">String</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">FilenameCollationKey</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Converts a string into a `FilenameCollationKey` that can be compared with other</span>
     <span class="doccomment">/// collation keys produced by the same function using `std::cmp::Ordering::cmp()`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_utf8_collate_key_for_filename&quot;</span>)]</span>
@@ -241,5 +249,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

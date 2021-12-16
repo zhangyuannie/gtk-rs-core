@@ -2679,8 +2679,46 @@
 <span id="2605">2605</span>
 <span id="2606">2606</span>
 <span id="2607">2607</span>
+<span id="2608">2608</span>
+<span id="2609">2609</span>
+<span id="2610">2610</span>
+<span id="2611">2611</span>
+<span id="2612">2612</span>
+<span id="2613">2613</span>
+<span id="2614">2614</span>
+<span id="2615">2615</span>
+<span id="2616">2616</span>
+<span id="2617">2617</span>
+<span id="2618">2618</span>
+<span id="2619">2619</span>
+<span id="2620">2620</span>
+<span id="2621">2621</span>
+<span id="2622">2622</span>
+<span id="2623">2623</span>
+<span id="2624">2624</span>
+<span id="2625">2625</span>
+<span id="2626">2626</span>
+<span id="2627">2627</span>
+<span id="2628">2628</span>
+<span id="2629">2629</span>
+<span id="2630">2630</span>
+<span id="2631">2631</span>
+<span id="2632">2632</span>
+<span id="2633">2633</span>
+<span id="2634">2634</span>
+<span id="2635">2635</span>
+<span id="2636">2636</span>
+<span id="2637">2637</span>
+<span id="2638">2638</span>
+<span id="2639">2639</span>
+<span id="2640">2640</span>
+<span id="2641">2641</span>
+<span id="2642">2642</span>
+<span id="2643">2643</span>
+<span id="2644">2644</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">//! Translation between GLib/GLib-based FFI types and their Rust counterparts.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This module allows library bindings authors to decouple type translation</span>
@@ -2824,6 +2862,7 @@
 <span class="kw">use</span> <span class="ident">std::path</span>::{<span class="ident">Path</span>, <span class="ident">PathBuf</span>};
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A pointer</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Ptr</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
     <span class="kw">fn</span> <span class="ident">is_null</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>;
@@ -2865,6 +2904,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Overrides pointer mutability.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Use when the C API should be specifying a const pointer but doesn&#39;t.</span>
@@ -2872,6 +2912,7 @@
     <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">T</span>
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Overrides pointer constness.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Use when the C API need const pointer, but function with `IsA&lt;T&gt;` constraint,</span>
@@ -2880,18 +2921,21 @@
     <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">T</span>
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A trait for creating an uninitialized value. Handy for receiving outparams.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Uninitialized</span> {
-    <span class="doccomment">/// Returns an uninitialized value.</span>
+    <span class="comment">// Returns an uninitialized value.</span>
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">uninitialized</span>() -&gt; <span class="self">Self</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Returns an uninitialized value.</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">uninitialized</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Uninitialized</span><span class="op">&gt;</span>() -&gt; <span class="ident">T</span> {
     <span class="ident">T::uninitialized</span>()
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Helper type that stores temporary values used for translation.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// `P` is the foreign type pointer and the first element of the tuple.</span>
@@ -2929,6 +2973,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">ToGlibPtrMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">P</span><span class="op">&gt;</span>;
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Wrapper around values representing borrowed C memory.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is returned by `from_glib_borrow()` and ensures that the wrapped value</span>
@@ -2940,11 +2985,13 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">mem::ManuallyDrop</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new borrowed value.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">val</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span>(<span class="ident">mem::ManuallyDrop::new</span>(<span class="ident">val</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Extracts the contained value.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Safety</span>
@@ -2970,6 +3017,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate a simple type.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">IntoGlib</span> {
     <span class="kw">type</span> <span class="ident">GlibType</span>: <span class="ident">Copy</span>;
@@ -3038,6 +3086,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// A Rust type `T` for which `Option&lt;T&gt;` translates to the same glib type as T.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">OptionIntoGlib</span>: <span class="ident">IntoGlib</span> {
     <span class="kw">const</span> <span class="ident">GLIB_NONE</span>: <span class="ident"><span class="self">Self</span>::GlibType</span>;
@@ -3055,6 +3104,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Provides the default pointer type to be used in some container conversions.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// It&#39;s `*mut c_char` for `String`, `*mut GtkButton` for `gtk::Button`, etc.</span>
@@ -3066,15 +3116,18 @@
     <span class="kw">type</span> <span class="ident">GlibType</span> <span class="op">=</span> <span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">GlibPtrDefault</span><span class="op">&gt;</span><span class="ident">::GlibType</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate to a pointer.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToGlibPtr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">P</span>: <span class="ident">Copy</span><span class="op">&gt;</span> {
     <span class="kw">type</span> <span class="ident">Storage</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Transfer: none.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The pointer in the `Stash` is only valid for the lifetime of the `Stash`.</span>
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">P</span>, <span class="self">Self</span><span class="op">&gt;</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Transfer: container.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// We transfer the container ownership to the foreign library retaining</span>
@@ -3083,6 +3136,7 @@
         <span class="macro">unimplemented!</span>();
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Transfer: full.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// We transfer the ownership to the foreign library.</span>
@@ -3090,11 +3144,13 @@
         <span class="macro">unimplemented!</span>();
     }
 }
-<span class="doccomment">///</span>
+
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate to a pointer with a mutable borrow.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ToGlibPtrMut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">P</span>: <span class="ident">Copy</span><span class="op">&gt;</span> {
     <span class="kw">type</span> <span class="ident">Storage</span>;
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Transfer: none.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The pointer in the `Stash` is only valid for the lifetime of the `Stash`.</span>
@@ -3858,11 +3914,13 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate a simple type.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">G</span>: <span class="ident">Copy</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span>(<span class="ident">val</span>: <span class="ident">G</span>) -&gt; <span class="self">Self</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate a simple type.</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib</span><span class="op">&lt;</span><span class="ident">G</span>: <span class="ident">Copy</span>, <span class="ident">T</span>: <span class="ident">FromGlib</span><span class="op">&lt;</span><span class="ident">G</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">G</span>) -&gt; <span class="ident">T</span> {
@@ -3883,12 +3941,14 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a Glib type which can result in an undefined and/or invalid value.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TryFromGlib</span><span class="op">&lt;</span><span class="ident">G</span>: <span class="ident">Copy</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
     <span class="kw">type</span> <span class="ident">Error</span>;
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span>(<span class="ident">val</span>: <span class="ident">G</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a Glib type which can result in an undefined and/or invalid value.</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">try_from_glib</span><span class="op">&lt;</span><span class="ident">G</span>: <span class="ident">Copy</span>, <span class="ident">T</span>: <span class="ident">TryFromGlib</span><span class="op">&lt;</span><span class="ident">G</span><span class="op">&gt;</span><span class="op">&gt;</span>(
@@ -3897,6 +3957,7 @@
     <span class="ident">TryFromGlib::try_from_glib</span>(<span class="ident">val</span>)
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Error type for [`TryFromGlib`] when the Glib value is None.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GlibNoneError</span>;
@@ -3916,6 +3977,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Error type for [`TryFromGlib`] when the Glib value can be None or invalid.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">GlibNoneOrInvalidError</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">Error</span><span class="op">&gt;</span> {
@@ -3924,16 +3986,19 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">Error</span><span class="op">&gt;</span> <span class="ident">GlibNoneOrInvalidError</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Builds the `None` variant.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">none</span>() -&gt; <span class="self">Self</span> {
         <span class="ident"><span class="self">Self</span>::None</span>
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns `true` if `self` is the `None` variant.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_none</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="macro">matches!</span>(<span class="self">self</span>, <span class="ident"><span class="self">Self</span>::None</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns `true` if `self` is the `Invalid` variant.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_invalid</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="macro">matches!</span>(<span class="self">self</span>, <span class="ident"><span class="self">Self</span>::Invalid</span>(<span class="kw">_</span>))
@@ -3973,6 +4038,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type which is annotated with `transfer none`.</span>
 <span class="doccomment">/// The resulting value is referenced at least once, by the bindings.</span>
 <span class="doccomment">///</span>
@@ -3990,12 +4056,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// For more information, refer to module level documentation.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromGlibPtrNone</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Ptr</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// # Safety</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See trait level [notes on safety](#safety_points)</span>
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_none</span>(<span class="ident">ptr</span>: <span class="ident">P</span>) -&gt; <span class="self">Self</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type which is annotated with `transfer full`.</span>
 <span class="doccomment">/// This transfers the ownership of the value to the Rust side.</span>
 <span class="doccomment">///</span>
@@ -4012,12 +4080,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// For more information, refer to module level documentation.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromGlibPtrFull</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Ptr</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// # Safety</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See trait level [notes on safety](#safety_points)</span>
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full</span>(<span class="ident">ptr</span>: <span class="ident">P</span>) -&gt; <span class="self">Self</span>;
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type by borrowing, without affecting the refcount.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The purpose of this trait is to access values inside callbacks</span>
@@ -4043,6 +4113,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// For more information, refer to module level documentation.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FromGlibPtrBorrow</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Ptr</span><span class="op">&gt;</span>: <span class="ident">Sized</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// # Safety</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See trait level [notes on safety](#safety_points)</span>
@@ -4051,6 +4122,7 @@
     }
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type, transfer: none.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See [`FromGlibPtrNone`](trait.FromGlibPtrNone.html).</span>
@@ -4059,6 +4131,7 @@
     <span class="ident">FromGlibPtrNone::from_glib_none</span>(<span class="ident">ptr</span>)
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type, transfer: full (assume ownership).</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See [`FromGlibPtrFull`](trait.FromGlibPtrFull.html).</span>
@@ -4067,6 +4140,7 @@
     <span class="ident">FromGlibPtrFull::from_glib_full</span>(<span class="ident">ptr</span>)
 }
 
+<span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// Translate from a pointer type, borrowing the pointer.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See [`FromGlibPtrBorrow`](trait.FromGlibPtrBorrow.html).</span>
@@ -5287,5 +5361,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>

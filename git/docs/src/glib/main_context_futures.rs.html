@@ -495,6 +495,11 @@
 <span id="421">421</span>
 <span id="422">422</span>
 <span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -734,6 +739,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">MainContext</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This can be called from any thread and will execute the future from the thread</span>
@@ -742,6 +748,7 @@
         <span class="self">self</span>.<span class="ident">spawn_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `Future` does not have to be `Send`.</span>
@@ -753,6 +760,7 @@
         <span class="self">self</span>.<span class="ident">spawn_local_with_priority</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">f</span>)
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context, with a non-default priority.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This can be called from any thread and will execute the future from the thread</span>
@@ -767,6 +775,7 @@
         <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Spawn a new infallible `Future` on the main context, with a non-default priority.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The given `Future` does not have to be `Send`.</span>
@@ -787,6 +796,7 @@
         <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Runs a new, infallible `Future` on the main context and block until it finished, returning</span>
     <span class="doccomment">/// the result of the `Future`.</span>
     <span class="doccomment">///</span>
@@ -919,5 +929,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (404c8471a 2021-12-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (c5ecc1570 2021-12-15)" ></div>
 </body></html>
