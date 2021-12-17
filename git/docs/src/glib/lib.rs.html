@@ -307,6 +307,9 @@
 <span id="232">232</span>
 <span id="233">233</span>
 <span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -367,6 +370,9 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">error</span>;
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">object</span>;
+
+<span class="kw">mod</span> <span class="ident">boxed_any_object</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">boxed_any_object::BoxedAnyObject</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">collections</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">collections</span>::{<span class="ident">List</span>, <span class="ident">PtrSlice</span>, <span class="ident">SList</span>, <span class="ident">Slice</span>};
