@@ -275,8 +275,11 @@
 <span id="200">200</span>
 <span id="201">201</span>
 <span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::crate_ident_new</span>;
 <span class="kw">use</span> <span class="ident">proc_macro::TokenStream</span>;
 <span class="kw">use</span> <span class="ident">quote::quote</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">Data</span>, <span class="ident">DeriveInput</span>};
@@ -301,6 +304,7 @@
     <span class="ident">generics</span>: <span class="ident">Generics</span>,
     <span class="ident">data_struct</span>: <span class="ident">syn::DataStruct</span>,
 ) -&gt; <span class="ident">TokenStream</span> {
+    <span class="kw">let</span> <span class="ident">glib</span> <span class="op">=</span> <span class="ident">crate_ident_new</span>();
     <span class="kw">let</span> (<span class="ident">static_variant_type</span>, <span class="ident">to_variant</span>, <span class="ident">from_variant</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">data_struct</span>.<span class="ident">fields</span> {
         <span class="ident">Fields::Unnamed</span>(<span class="ident">FieldsUnnamed</span> { <span class="ident">unnamed</span>, .. }) =&gt; {
             <span class="kw">let</span> <span class="ident">types</span> <span class="op">=</span> <span class="ident">unnamed</span>
@@ -312,34 +316,34 @@
             <span class="kw">let</span> <span class="ident">idents</span> <span class="op">=</span> (<span class="number">0</span>..<span class="ident">types</span>.<span class="ident">len</span>()).<span class="ident">map</span>(<span class="ident">syn::Index::from</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
             <span class="kw">let</span> <span class="ident">static_variant_type</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
-                        <span class="kw">static</span> <span class="ident">TYP</span>: <span class="ident">glib::once_cell::sync::Lazy</span><span class="op">&lt;</span><span class="ident">glib::VariantType</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">glib::once_cell::sync::Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">::std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, #<span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
+                        <span class="kw">static</span> <span class="ident">TYP</span>: #<span class="ident">glib::once_cell::sync::Lazy</span><span class="op">&lt;</span>#<span class="ident">glib::VariantType</span><span class="op">&gt;</span> <span class="op">=</span> #<span class="ident">glib::once_cell::sync::Lazy::new</span>(<span class="op">|</span><span class="op">|</span> {
 
-                            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">glib::GStringBuilder::new</span>(<span class="string">&quot;(&quot;</span>);
+                            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> #<span class="ident">glib::GStringBuilder::new</span>(<span class="string">&quot;(&quot;</span>);
 
                             #(
                                 {
-                                    <span class="kw">let</span> <span class="ident">typ</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">types</span> <span class="kw">as</span> <span class="ident">glib::StaticVariantType</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
+                                    <span class="kw">let</span> <span class="ident">typ</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">types</span> <span class="kw">as</span> #<span class="ident">glib::StaticVariantType</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
                                     <span class="ident">builder</span>.<span class="ident">append</span>(<span class="ident">typ</span>.<span class="ident">as_str</span>());
                                 }
                             )<span class="op">*</span>
                             <span class="ident">builder</span>.<span class="ident">append_c</span>(<span class="string">&#39;)&#39;</span>);
 
-                            <span class="ident">glib::VariantType::from_string</span>(<span class="ident">builder</span>.<span class="ident">into_string</span>()).<span class="ident">unwrap</span>()
+                            #<span class="ident">glib::VariantType::from_string</span>(<span class="ident">builder</span>.<span class="ident">into_string</span>()).<span class="ident">unwrap</span>()
                         });
 
-                        <span class="ident">std::borrow::Cow::Borrowed</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">TYP</span>)
+                        <span class="ident">::std::borrow::Cow::Borrowed</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">TYP</span>)
                     }
                 }
             };
 
             <span class="kw">let</span> <span class="ident">to_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Variant</span> {
-                        <span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">std::array::IntoIter::new</span>([
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">glib::Variant</span> {
+                        #<span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">::std::array::IntoIter::new</span>([
                             #(
-                                <span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">idents</span>)
+                                #<span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">idents</span>)
                             ),<span class="op">*</span>
                         ]))
                     }
@@ -347,8 +351,8 @@
             };
 
             <span class="kw">let</span> <span class="ident">from_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span>#<span class="ident">glib::Variant</span>) -&gt; <span class="ident">::core::option::Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                         <span class="kw">if</span> <span class="op">!</span><span class="ident">variant</span>.<span class="ident">is_container</span>() {
                             <span class="kw">return</span> <span class="prelude-val">None</span>;
                         }
@@ -378,40 +382,40 @@
             <span class="kw">let</span> <span class="ident">counts</span> <span class="op">=</span> (<span class="number">0</span>..<span class="ident">types</span>.<span class="ident">len</span>()).<span class="ident">map</span>(<span class="ident">syn::Index::from</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
             <span class="kw">let</span> <span class="ident">static_variant_type</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
-                        <span class="kw">static</span> <span class="ident">TYP</span>: <span class="ident">glib::once_cell::sync::Lazy</span><span class="op">&lt;</span><span class="ident">glib::VariantType</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">glib::once_cell::sync::Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="kw">unsafe</span> {
-                            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">glib::ffi::g_string_sized_new</span>(<span class="number">16</span>);
-                            <span class="ident">glib::ffi::g_string_append_c</span>(<span class="ident">ptr</span>, <span class="string">b&#39;(&#39;</span> <span class="kw">as</span> <span class="kw">_</span>);
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">::std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, #<span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
+                        <span class="kw">static</span> <span class="ident">TYP</span>: #<span class="ident">glib::once_cell::sync::Lazy</span><span class="op">&lt;</span>#<span class="ident">glib::VariantType</span><span class="op">&gt;</span> <span class="op">=</span> #<span class="ident">glib::once_cell::sync::Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="kw">unsafe</span> {
+                            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> #<span class="ident">glib::ffi::g_string_sized_new</span>(<span class="number">16</span>);
+                            #<span class="ident">glib::ffi::g_string_append_c</span>(<span class="ident">ptr</span>, <span class="string">b&#39;(&#39;</span> <span class="kw">as</span> <span class="kw">_</span>);
 
                             #(
                                 {
-                                    <span class="kw">let</span> <span class="ident">typ</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">types</span> <span class="kw">as</span> <span class="ident">glib::StaticVariantType</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
-                                    <span class="ident">glib::ffi::g_string_append_len</span>(
+                                    <span class="kw">let</span> <span class="ident">typ</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">types</span> <span class="kw">as</span> #<span class="ident">glib::StaticVariantType</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>();
+                                    #<span class="ident">glib::ffi::g_string_append_len</span>(
                                         <span class="ident">ptr</span>,
                                         <span class="ident">typ</span>.<span class="ident">as_str</span>().<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
                                         <span class="ident">typ</span>.<span class="ident">as_str</span>().<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">isize</span>,
                                     );
                                 }
                             )<span class="op">*</span>
-                            <span class="ident">glib::ffi::g_string_append_c</span>(<span class="ident">ptr</span>, <span class="string">b&#39;)&#39;</span> <span class="kw">as</span> <span class="kw">_</span>);
+                            #<span class="ident">glib::ffi::g_string_append_c</span>(<span class="ident">ptr</span>, <span class="string">b&#39;)&#39;</span> <span class="kw">as</span> <span class="kw">_</span>);
 
-                            <span class="ident">glib::translate::from_glib_full</span>(
-                                <span class="ident">glib::ffi::g_string_free</span>(<span class="ident">ptr</span>, <span class="ident">glib::ffi::GFALSE</span>) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">glib::ffi::GVariantType</span>
+                            #<span class="ident">glib::translate::from_glib_full</span>(
+                                #<span class="ident">glib::ffi::g_string_free</span>(<span class="ident">ptr</span>, #<span class="ident">glib::ffi::GFALSE</span>) <span class="kw">as</span> <span class="kw-2">*mut</span> #<span class="ident">glib::ffi::GVariantType</span>
                             )
                         });
 
-                        <span class="ident">std::borrow::Cow::Borrowed</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">TYP</span>)
+                        <span class="ident">::std::borrow::Cow::Borrowed</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">TYP</span>)
                     }
                 }
             };
 
             <span class="kw">let</span> <span class="ident">to_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Variant</span> {
-                        <span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">std::array::IntoIter::new</span>([
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">glib::Variant</span> {
+                        #<span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">::std::array::IntoIter::new</span>([
                             #(
-                                <span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">idents</span>)
+                                #<span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">idents</span>)
                             ),<span class="op">*</span>
                         ]))
                     }
@@ -419,8 +423,8 @@
             };
 
             <span class="kw">let</span> <span class="ident">from_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span>#<span class="ident">glib::Variant</span>) -&gt; <span class="ident">::core::option::Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                         <span class="kw">if</span> <span class="op">!</span><span class="ident">variant</span>.<span class="ident">is_container</span>() {
                             <span class="kw">return</span> <span class="prelude-val">None</span>;
                         }
@@ -440,24 +444,24 @@
         }
         <span class="ident">Fields::Unit</span> =&gt; {
             <span class="kw">let</span> <span class="ident">static_variant_type</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
-                        <span class="ident">std::borrow::Cow::Borrowed</span>(<span class="ident">glib::VariantTy::UNIT</span>)
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">::std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, #<span class="ident">glib::VariantTy</span><span class="op">&gt;</span> {
+                        <span class="ident">::std::borrow::Cow::Borrowed</span>(#<span class="ident">glib::VariantTy::UNIT</span>)
                     }
                 }
             };
 
             <span class="kw">let</span> <span class="ident">to_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::Variant</span> {
-                        <span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span>())
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">glib::Variant</span> {
+                        #<span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span>())
                     }
                 }
             };
 
             <span class="kw">let</span> <span class="ident">from_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
-                <span class="kw">impl</span> #<span class="ident">generics</span> <span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
-                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span><span class="ident">glib::Variant</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::FromVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
+                    <span class="kw">fn</span> <span class="ident">from_variant</span>(<span class="ident">variant</span>: <span class="kw-2">&amp;</span>#<span class="ident">glib::Variant</span>) -&gt; <span class="ident">::core::option::Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                         <span class="prelude-val">Some</span>(<span class="self">Self</span>)
                     }
                 }

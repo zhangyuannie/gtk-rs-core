@@ -303,8 +303,8 @@
 <span class="kw">fn</span> <span class="ident">gen_option_to_ptr</span>() -&gt; <span class="ident">TokenStream</span> {
     <span class="macro">quote!</span> {
         <span class="kw">match</span> <span class="ident">s</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="ident">s</span>.<span class="ident">clone</span>())),
-            <span class="prelude-val">None</span> =&gt; <span class="ident">std::ptr::null_mut</span>(),
+            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">::std::boxed::Box::into_raw</span>(<span class="ident">::std::boxed::Box::new</span>(<span class="ident">s</span>.<span class="ident">clone</span>())),
+            <span class="prelude-val">None</span> =&gt; <span class="ident">::std::ptr::null_mut</span>(),
         };
     }
 }
@@ -317,7 +317,7 @@
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> #<span class="ident">crate_ident::Value</span>) -&gt; <span class="self">Self</span> {
                 <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> #<span class="ident">crate_ident::gobject_ffi::g_value_dup_boxed</span>(#<span class="ident">crate_ident::translate::ToGlibPtr::to_glib_none</span>(<span class="ident">value</span>).<span class="number">0</span>);
                 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
-                <span class="kw-2">*</span><span class="ident">Box::from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> #<span class="ident">name</span>)
+                <span class="kw-2">*</span><span class="ident">::std::boxed::Box::from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> #<span class="ident">name</span>)
             }
         }
 
@@ -341,7 +341,7 @@
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> #<span class="ident">crate_ident::Value</span>) -&gt; <span class="self">Self</span> {
                 <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> #<span class="ident">crate_ident::gobject_ffi::g_value_dup_boxed</span>(#<span class="ident">crate_ident::translate::ToGlibPtr::to_glib_none</span>(<span class="ident">value</span>).<span class="number">0</span>);
                 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
-                <span class="kw-2">*</span><span class="ident">Box::from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> #<span class="ident">name</span>)
+                <span class="kw-2">*</span><span class="ident">::std::boxed::Box::from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> #<span class="ident">name</span>)
             }
         }
 
@@ -362,7 +362,7 @@
 
     <span class="macro">quote!</span> {
         <span class="kw">impl</span> #<span class="ident">crate_ident::value::ToValueOptional</span> <span class="kw">for</span> #<span class="ident">name</span> {
-            <span class="kw">fn</span> <span class="ident">to_value_optional</span>(<span class="ident">s</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="self">Self</span><span class="op">&gt;</span>) -&gt; #<span class="ident">crate_ident::Value</span> {
+            <span class="kw">fn</span> <span class="ident">to_value_optional</span>(<span class="ident">s</span>: <span class="ident">::core::option::Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="self">Self</span><span class="op">&gt;</span>) -&gt; #<span class="ident">crate_ident::Value</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> #<span class="ident">crate_ident::Value::for_value_type</span>::<span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>();
                 <span class="kw">unsafe</span> {
                     <span class="kw">let</span> <span class="ident">ptr</span>: <span class="kw-2">*mut</span> #<span class="ident">name</span> <span class="op">=</span> #<span class="ident">option_to_ptr</span>;
@@ -440,7 +440,7 @@
         <span class="kw">impl</span> #<span class="ident">crate_ident::value::ToValue</span> <span class="kw">for</span> #<span class="ident">name</span> {
             <span class="kw">fn</span> <span class="ident">to_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">crate_ident::Value</span> {
                 <span class="kw">unsafe</span> {
-                    <span class="kw">let</span> <span class="ident">ptr</span>: <span class="kw-2">*mut</span> #<span class="ident">name</span> <span class="op">=</span> <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>()));
+                    <span class="kw">let</span> <span class="ident">ptr</span>: <span class="kw-2">*mut</span> #<span class="ident">name</span> <span class="op">=</span> <span class="ident">::std::boxed::Box::into_raw</span>(<span class="ident">::std::boxed::Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>()));
                     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">value</span> <span class="op">=</span> #<span class="ident">crate_ident::Value::from_type</span>(<span class="op">&lt;</span>#<span class="ident">name</span> <span class="kw">as</span> #<span class="ident">crate_ident::StaticType</span><span class="op">&gt;</span><span class="ident">::static_type</span>());
                     #<span class="ident">crate_ident::gobject_ffi::g_value_take_boxed</span>(
                         #<span class="ident">crate_ident::translate::ToGlibPtrMut::to_glib_none_mut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">value</span>).<span class="number">0</span>,
@@ -478,7 +478,7 @@
             <span class="attribute">#[<span class="ident">inline</span>]</span>
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> #<span class="ident">name</span>) -&gt; <span class="self">Self</span> {
                 <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
-                <span class="kw-2">*</span><span class="ident">Box::from_raw</span>(<span class="ident">ptr</span>)
+                <span class="kw-2">*</span><span class="ident">::std::boxed::Box::from_raw</span>(<span class="ident">ptr</span>)
             }
         }
 
@@ -492,7 +492,7 @@
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
             <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> #<span class="ident">name</span> {
-                <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>()))
+                <span class="ident">::std::boxed::Box::into_raw</span>(<span class="ident">::std::boxed::Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>()))
             }
         }
 
@@ -506,7 +506,7 @@
 
             <span class="attribute">#[<span class="ident">inline</span>]</span>
             <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> #<span class="ident">name</span> {
-                <span class="ident">Box::into_raw</span>(<span class="ident">Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>())) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>
+                <span class="ident">::std::boxed::Box::into_raw</span>(<span class="ident">::std::boxed::Box::new</span>(<span class="self">self</span>.<span class="ident">clone</span>())) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>
             }
         }
     }
