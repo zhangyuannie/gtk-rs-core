@@ -353,7 +353,7 @@
     <span class="doccomment">/// Replaces the wrapped value with a new one, returning the old value, without deinitializing either one.</span>
     <span class="doccomment">/// The returned value is inside a `Box` and must be manually downcasted if needed.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">replace</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">impl_</span>().<span class="ident">value</span>.<span class="ident">replace</span>(<span class="ident">Box::new</span>(<span class="ident">t</span>) <span class="kw">as</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span><span class="op">&gt;</span>)
+        <span class="self">self</span>.<span class="ident">imp</span>().<span class="ident">value</span>.<span class="ident">replace</span>(<span class="ident">Box::new</span>(<span class="ident">t</span>) <span class="kw">as</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span><span class="op">&gt;</span>)
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -369,7 +369,7 @@
         <span class="comment">// https://doc.rust-lang.org/std/cell/struct.Ref.html#method.filter_map.</span>
         <span class="comment">// As a workaround, I check if everything is safe, then I unwrap</span>
 
-        <span class="kw">let</span> <span class="ident">borrowed</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">impl_</span>().<span class="ident">value</span>.<span class="ident">try_borrow</span>()<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">borrowed</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">imp</span>().<span class="ident">value</span>.<span class="ident">try_borrow</span>()<span class="question-mark">?</span>;
         <span class="ident">borrowed</span>
             .<span class="ident">as_ref</span>()
             .<span class="ident">downcast_ref</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()
@@ -391,7 +391,7 @@
         <span class="comment">// https://doc.rust-lang.org/std/cell/struct.Ref.html#method.filter_map</span>
         <span class="comment">// As a workaround, I check if everything is safe, then I unwrap.</span>
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">borrowed_mut</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">impl_</span>().<span class="ident">value</span>.<span class="ident">try_borrow_mut</span>()<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">borrowed_mut</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">imp</span>().<span class="ident">value</span>.<span class="ident">try_borrow_mut</span>()<span class="question-mark">?</span>;
         <span class="ident">borrowed_mut</span>
             .<span class="ident">as_mut</span>()
             .<span class="ident">downcast_mut</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()
@@ -413,7 +413,7 @@
     <span class="doccomment">/// For a non-panicking variant, use</span>
     <span class="doccomment">/// [`try_borrow`](#method.try_borrow).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Ref</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">Ref::map</span>(<span class="self">self</span>.<span class="ident">impl_</span>().<span class="ident">value</span>.<span class="ident">borrow</span>(), <span class="op">|</span><span class="ident">value</span><span class="op">|</span> {
+        <span class="ident">Ref::map</span>(<span class="self">self</span>.<span class="ident">imp</span>().<span class="ident">value</span>.<span class="ident">borrow</span>(), <span class="op">|</span><span class="ident">value</span><span class="op">|</span> {
             <span class="ident">value</span>
                 .<span class="ident">as_ref</span>()
                 .<span class="ident">downcast_ref</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()
@@ -435,7 +435,7 @@
     <span class="doccomment">/// For a non-panicking variant, use</span>
     <span class="doccomment">/// [`try_borrow_mut`](#method.try_borrow_mut).</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_mut</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">RefMut</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">RefMut::map</span>(<span class="self">self</span>.<span class="ident">impl_</span>().<span class="ident">value</span>.<span class="ident">borrow_mut</span>(), <span class="op">|</span><span class="ident">value</span><span class="op">|</span> {
+        <span class="ident">RefMut::map</span>(<span class="self">self</span>.<span class="ident">imp</span>().<span class="ident">value</span>.<span class="ident">borrow_mut</span>(), <span class="op">|</span><span class="ident">value</span><span class="op">|</span> {
             <span class="ident">value</span>
                 .<span class="ident">as_mut</span>()
                 .<span class="ident">downcast_mut</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()
