@@ -264,6 +264,56 @@
 <span id="189">189</span>
 <span id="190">190</span>
 <span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
@@ -316,6 +366,9 @@
 <span class="doccomment">/// An extension point provides a mechanism to extend the functionality of a library or application.</span>
 <span class="doccomment">/// Each extension point is identified by a name, and it may optionally require that any implementation</span>
 <span class="doccomment">/// must be of a certain type.</span>
+<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+<span class="doccomment">/// [`IOExtensionPoint`][crate::IOExtensionPoint] is an opaque data structure and can only be accessed</span>
+<span class="doccomment">/// using the following functions.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GIOExtensionPoint&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IOExtensionPoint</span>(<span class="ident">ptr::NonNull</span><span class="op">&lt;</span><span class="ident">ffi::GIOExtensionPoint</span><span class="op">&gt;</span>);
@@ -351,6 +404,14 @@
         <span class="ident">IOExtensionPointBuilder::new</span>(<span class="ident">name</span>)
     }
 
+    <span class="doccomment">/// Looks up an existing extension point.</span>
+    <span class="doccomment">/// ## `name`</span>
+    <span class="doccomment">/// the name of the extension point</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the [`IOExtensionPoint`][crate::IOExtensionPoint], or [`None`] if there</span>
+    <span class="doccomment">///  is no registered extension point with the given name.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_extension_point_lookup&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lookup</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -359,6 +420,14 @@
         }
     }
 
+    <span class="doccomment">/// Gets a list of all extensions that implement this extension point.</span>
+    <span class="doccomment">/// The list is sorted by priority, beginning with the highest priority.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a `GList` of</span>
+    <span class="doccomment">///  `GIOExtensions`. The list is owned by GIO and should not be</span>
+    <span class="doccomment">///  modified.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_extension_point_get_extensions&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extensions</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">IOExtension</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
@@ -373,6 +442,14 @@
         <span class="ident">res</span>
     }
 
+    <span class="doccomment">/// Finds a [`IOExtension`][crate::IOExtension] for an extension point by name.</span>
+    <span class="doccomment">/// ## `name`</span>
+    <span class="doccomment">/// the name of the extension to get</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the [`IOExtension`][crate::IOExtension] for `self` that has the</span>
+    <span class="doccomment">///  given name, or [`None`] if there is no extension with that name</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_extension_point_get_extension_by_name&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extension_by_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">IOExtension</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -384,11 +461,34 @@
         }
     }
 
+    <span class="doccomment">/// Gets the required type for `self`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the `GType` that all implementations must have,</span>
+    <span class="doccomment">///  or `G_TYPE_INVALID` if the extension point has no required type</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_extension_point_get_required_type&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">required_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Type</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_io_extension_point_get_required_type</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">as_ptr</span>())) }
     }
 
+    <span class="doccomment">/// Registers `type_` as extension for the extension point with name</span>
+    <span class="doccomment">/// `extension_point_name`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `type_` has already been registered as an extension for this</span>
+    <span class="doccomment">/// extension point, the existing [`IOExtension`][crate::IOExtension] object is returned.</span>
+    <span class="doccomment">/// ## `extension_point_name`</span>
+    <span class="doccomment">/// the name of the extension point</span>
+    <span class="doccomment">/// ## `type_`</span>
+    <span class="doccomment">/// the `GType` to register as extension</span>
+    <span class="doccomment">/// ## `extension_name`</span>
+    <span class="doccomment">/// the name for the extension</span>
+    <span class="doccomment">/// ## `priority`</span>
+    <span class="doccomment">/// the priority for the extension</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a [`IOExtension`][crate::IOExtension] object for `GType`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_io_extension_point_implement&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">implement</span>(
         <span class="ident">extension_point_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,

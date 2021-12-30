@@ -273,10 +273,14 @@ and byte order flipping.</p>
 kind of filtering operation on a base stream. Typical examples
 of filtering operations are character set conversion, compression
 and byte order flipping.</p>
-</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.GioFuture.html" title="gio::GioFuture struct">GioFuture</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.GioFutureResult.html" title="gio::GioFutureResult struct">GioFutureResult</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IOExtension.html" title="gio::IOExtension struct">IOExtension</a></div><div class="item-right docblock-short"><p>The implementation of an <code>IOExtensionPoint</code>.</p>
+</div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.GioFuture.html" title="gio::GioFuture struct">GioFuture</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.GioFutureResult.html" title="gio::GioFutureResult struct">GioFutureResult</a></div><div class="item-right docblock-short"></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IOExtension.html" title="gio::IOExtension struct">IOExtension</a></div><div class="item-right docblock-short"><p>The implementation of an <code>IOExtensionPoint</code>.
+<a href="struct.IOExtension.html" title="crate::IOExtension"><code>IOExtension</code></a> is an opaque data structure and can only be accessed
+using the following functions.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IOExtensionPoint.html" title="gio::IOExtensionPoint struct">IOExtensionPoint</a></div><div class="item-right docblock-short"><p>An extension point provides a mechanism to extend the functionality of a library or application.
 Each extension point is identified by a name, and it may optionally require that any implementation
-must be of a certain type.</p>
+must be of a certain type.
+<a href="struct.IOExtensionPoint.html" title="crate::IOExtensionPoint"><code>IOExtensionPoint</code></a> is an opaque data structure and can only be accessed
+using the following functions.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IOExtensionPointBuilder.html" title="gio::IOExtensionPointBuilder struct">IOExtensionPointBuilder</a></div><div class="item-right docblock-short"><p>Builder for extension points.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.IOStream.html" title="gio::IOStream struct">IOStream</a></div><div class="item-right docblock-short"><p>GIOStream represents an object that has both read and write streams.
 Generally the two streams act as separate input and output streams,
@@ -387,7 +391,7 @@ proxy server. It is implemented by the ‘gio-proxy’ extension point.
 The extensions are named after their proxy protocol name. As an
 example, a SOCKS5 proxy implementation can be retrieved with the
 name ‘socks5’ using the function
-<code>g_io_extension_point_get_extension_by_name()</code>.</p>
+<a href="struct.IOExtensionPoint.html#method.extension_by_name" title="crate::IOExtensionPoint::extension_by_name()"><code>IOExtensionPoint::extension_by_name()</code></a>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.ProxyAddress.html" title="gio::ProxyAddress struct">ProxyAddress</a></div><div class="item-right docblock-short"><p>Support for proxied <a href="struct.InetSocketAddress.html" title="crate::InetSocketAddress"><code>InetSocketAddress</code></a>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.ProxyResolver.html" title="gio::ProxyResolver struct">ProxyResolver</a></div><div class="item-right docblock-short"><p><a href="struct.ProxyResolver.html" title="crate::ProxyResolver"><code>ProxyResolver</code></a> provides synchronous and asynchronous network proxy
 resolution. <a href="struct.ProxyResolver.html" title="crate::ProxyResolver"><code>ProxyResolver</code></a> is used within <a href="struct.SocketClient.html" title="crate::SocketClient"><code>SocketClient</code></a> through
@@ -890,13 +894,8 @@ handled (but note that future GLib releases may return a more
 specific value instead).</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.io_modules_scan_all_in_directory.html" title="gio::io_modules_scan_all_in_directory fn">io_modules_scan_all_in_directory</a></div><div class="item-right docblock-short"><p>Scans all the modules in the specified directory, ensuring that
 any extension point implemented by a module is registered.</p>
-</div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.io_scheduler_cancel_all_jobs.html" title="gio::io_scheduler_cancel_all_jobs fn">io_scheduler_cancel_all_jobs</a></div><div class="item-right docblock-short"><p>Cancels all cancellable I/O jobs.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.keyfile_settings_backend_new.html" title="gio::keyfile_settings_backend_new fn">keyfile_settings_backend_new</a></div><div class="item-right docblock-short"><p>Creates a keyfile-backed <a href="struct.SettingsBackend.html" title="crate::SettingsBackend"><code>SettingsBackend</code></a>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.memory_settings_backend_new.html" title="gio::memory_settings_backend_new fn">memory_settings_backend_new</a></div><div class="item-right docblock-short"><p>Creates a memory-backed <a href="struct.SettingsBackend.html" title="crate::SettingsBackend"><code>SettingsBackend</code></a>.</p>
-</div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.networking_init.html" title="gio::networking_init fn">networking_init</a></div><div class="item-right docblock-short"><p>Initializes the platform networking libraries (eg, on Windows, this
-calls WSAStartup()). GLib will call this itself if it is needed, so
-you only need to call it if you directly call system networking
-functions (without calling any GLib networking functions first).</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.null_settings_backend_new.html" title="gio::null_settings_backend_new fn">null_settings_backend_new</a></div><div class="item-right docblock-short"><p>Creates a readonly <a href="struct.SettingsBackend.html" title="crate::SettingsBackend"><code>SettingsBackend</code></a>.</p>
 </div></div><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.resources_enumerate_children.html" title="gio::resources_enumerate_children fn">resources_enumerate_children</a></div><div class="item-right docblock-short"><p>Returns all the names of children at the specified <code>path</code> in the set of
 globally registered resources.

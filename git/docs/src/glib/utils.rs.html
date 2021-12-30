@@ -542,6 +542,26 @@
     }
 }
 
+<span class="doccomment">/// Removes an environment variable from the environment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the</span>
+<span class="doccomment">/// memory used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls [`unsetenv()`][crate::unsetenv()] while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.) This</span>
+<span class="doccomment">/// function is only safe to use at the very start of your program, before</span>
+<span class="doccomment">/// creating any other threads (or creating objects that create worker</span>
+<span class="doccomment">/// threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to remove, must</span>
+<span class="doccomment">///  not contain &#39;=&#39;</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unsetenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsetenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -678,26 +698,6 @@
     <span class="kw">unsafe</span> { <span class="ident">g_mkstemp</span>(<span class="ident">tmpl</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
-<span class="doccomment">/// Reads an entire file into allocated memory, with good error</span>
-<span class="doccomment">/// checking.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If the call was successful, it returns [`true`] and sets `contents` to the file</span>
-<span class="doccomment">/// contents and `length` to the length of the file contents in bytes. The string</span>
-<span class="doccomment">/// stored in `contents` will be nul-terminated, so for text files you can pass</span>
-<span class="doccomment">/// [`None`] for the `length` argument. If the call was not successful, it returns</span>
-<span class="doccomment">/// [`false`] and sets `error`. The error domain is `G_FILE_ERROR`. Possible error</span>
-<span class="doccomment">/// codes are those in the `GFileError` enumeration. In the error case,</span>
-<span class="doccomment">/// `contents` is set to [`None`] and `length` is set to zero.</span>
-<span class="doccomment">/// ## `filename`</span>
-<span class="doccomment">/// name of a file to read contents from, in the GLib file name encoding</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] on success, [`false`] if an error occurred</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ## `contents`</span>
-<span class="doccomment">/// location to store an allocated string, use `g_free()` to free</span>
-<span class="doccomment">///  the returned string</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_file_get_contents&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">file_get_contents</span>(
     <span class="ident">filename</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>,
