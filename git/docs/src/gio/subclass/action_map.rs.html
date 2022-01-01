@@ -316,7 +316,7 @@
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident">wrap</span>
             .<span class="ident">steal_qdata</span>::<span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">Action</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">*</span><span class="ident">ACTION_MAP_LOOKUP_ACTION_QUARK</span>)
-            .<span class="ident">unwrap_or_else</span>(<span class="ident">HashMap::new</span>);
+            .<span class="ident">unwrap_or_default</span>();
         <span class="ident">map</span>.<span class="ident">insert</span>(<span class="ident">action_name</span>.<span class="ident">to_string</span>(), <span class="ident">action</span>);
         <span class="ident">wrap</span>.<span class="ident">set_qdata</span>(<span class="kw-2">*</span><span class="ident">ACTION_MAP_LOOKUP_ACTION_QUARK</span>, <span class="ident">map</span>);
 
@@ -354,5 +354,5 @@
     );
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (b60e32c82 2021-12-30)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (cfa3fe5af 2021-12-31)" ></div>
 </body></html>
