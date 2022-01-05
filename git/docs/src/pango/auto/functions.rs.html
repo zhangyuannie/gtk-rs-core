@@ -756,7 +756,7 @@
 <span class="comment">//#[cfg_attr(feature = &quot;v1_44&quot;, deprecated = &quot;Since 1.44&quot;)]</span>
 <span class="comment">//#[doc(alias = &quot;pango_break&quot;)]</span>
 <span class="comment">//#[doc(alias = &quot;break&quot;)]</span>
-<span class="comment">//pub fn break_(text: &amp;str, analysis: &amp;mut Analysis, attrs: /*Ignored*/&amp;[&amp;LogAttr]) {</span>
+<span class="comment">//pub fn break_(text: &amp;str, analysis: &amp;mut Analysis, attrs: /*Ignored*/&amp;[LogAttr]) {</span>
 <span class="comment">//    unsafe { TODO: call ffi:pango_break() }</span>
 <span class="comment">//}</span>
 
@@ -862,7 +862,7 @@
 
 <span class="comment">//#[doc(alias = &quot;pango_get_log_attrs&quot;)]</span>
 <span class="comment">//#[doc(alias = &quot;get_log_attrs&quot;)]</span>
-<span class="comment">//pub fn log_attrs(text: &amp;str, level: i32, language: &amp;mut Language, attrs: /*Ignored*/&amp;[&amp;LogAttr]) {</span>
+<span class="comment">//pub fn log_attrs(text: &amp;str, level: i32, language: &amp;mut Language, attrs: /*Ignored*/&amp;[LogAttr]) {</span>
 <span class="comment">//    unsafe { TODO: call ffi:pango_get_log_attrs() }</span>
 <span class="comment">//}</span>
 
@@ -1267,7 +1267,7 @@
 <span class="comment">//#[cfg(any(feature = &quot;v1_44&quot;, feature = &quot;dox&quot;))]</span>
 <span class="comment">//#[cfg_attr(feature = &quot;dox&quot;, doc(cfg(feature = &quot;v1_44&quot;)))]</span>
 <span class="comment">//#[doc(alias = &quot;pango_tailor_break&quot;)]</span>
-<span class="comment">//pub fn tailor_break(text: &amp;str, analysis: &amp;mut Analysis, offset: i32, attrs: /*Ignored*/&amp;[&amp;LogAttr]) {</span>
+<span class="comment">//pub fn tailor_break(text: &amp;str, analysis: &amp;mut Analysis, offset: i32, attrs: /*Ignored*/&amp;[LogAttr]) {</span>
 <span class="comment">//    unsafe { TODO: call ffi:pango_tailor_break() }</span>
 <span class="comment">//}</span>
 
@@ -1394,5 +1394,5 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::pango_version_string</span>()) }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (cfa3fe5af 2021-12-31)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (7d6f94817 2022-01-04)" ></div>
 </body></html>
