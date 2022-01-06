@@ -409,22 +409,6 @@
 <span id="334">334</span>
 <span id="335">335</span>
 <span id="336">336</span>
-<span id="337">337</span>
-<span id="338">338</span>
-<span id="339">339</span>
-<span id="340">340</span>
-<span id="341">341</span>
-<span id="342">342</span>
-<span id="343">343</span>
-<span id="344">344</span>
-<span id="345">345</span>
-<span id="346">346</span>
-<span id="347">347</span>
-<span id="348">348</span>
-<span id="349">349</span>
-<span id="350">350</span>
-<span id="351">351</span>
-<span id="352">352</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::source::Priority</span>;
@@ -645,22 +629,6 @@
     <span class="doccomment">/// Ownership will automatically be released again once the returned acquire guard is dropped.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This will fail if the main context is owned already by another thread.</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Tries to become the owner of the specified context.</span>
-    <span class="doccomment">/// If some other thread is the owner of the context,</span>
-    <span class="doccomment">/// returns [`false`] immediately. Ownership is properly</span>
-    <span class="doccomment">/// recursive: the owner can require ownership again</span>
-    <span class="doccomment">/// and will release ownership when [`release()`][Self::release()]</span>
-    <span class="doccomment">/// is called as many times as [`acquire()`][Self::acquire()].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You must be the owner of a context before you</span>
-    <span class="doccomment">/// can call [`prepare()`][Self::prepare()], `g_main_context_query()`,</span>
-    <span class="doccomment">/// `g_main_context_check()`, [`dispatch()`][Self::dispatch()].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if the operation succeeded, and</span>
-    <span class="doccomment">///  this thread is now the owner of `self`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_main_context_acquire&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">acquire</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">MainContextAcquireGuard</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
