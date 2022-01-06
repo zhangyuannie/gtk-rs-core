@@ -195,18 +195,18 @@
         <span class="kw">unsafe</span> {
             <span class="kw">use</span> <span class="ident">std::ffi::CStr</span>;
 
-            <span class="ident">CStr::from_ptr</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">name</span>)
+            <span class="ident">CStr::from_ptr</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">name</span>)
                 .<span class="ident">to_str</span>()
                 .<span class="ident">expect</span>(<span class="string">&quot;non-UTF-8 string&quot;</span>)
         }
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::FileAttributeType</span> {
-        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">type_</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">type_</span>) }
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::FileAttributeInfoFlags</span> {
-        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">flags</span>) }
+        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">flags</span>) }
     }
 }
 
@@ -220,5 +220,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (7d6f94817 2022-01-04)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (f1ce0e6a0 2022-01-05)" ></div>
 </body></html>

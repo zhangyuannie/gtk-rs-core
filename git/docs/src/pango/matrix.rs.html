@@ -177,6 +177,8 @@
 <span id="102">102</span>
 <span id="103">103</span>
 <span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Matrix</span>, <span class="ident">Rectangle</span>};
@@ -185,14 +187,16 @@
 
 <span class="kw">impl</span> <span class="ident">Matrix</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">xx</span>: <span class="ident">f64</span>, <span class="ident">xy</span>: <span class="ident">f64</span>, <span class="ident">yx</span>: <span class="ident">f64</span>, <span class="ident">yy</span>: <span class="ident">f64</span>, <span class="ident">x0</span>: <span class="ident">f64</span>, <span class="ident">y0</span>: <span class="ident">f64</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span>(<span class="ident">ffi::PangoMatrix</span> {
-            <span class="ident">xx</span>,
-            <span class="ident">xy</span>,
-            <span class="ident">yx</span>,
-            <span class="ident">yy</span>,
-            <span class="ident">x0</span>,
-            <span class="ident">y0</span>,
-        })
+        <span class="kw">unsafe</span> {
+            <span class="ident"><span class="self">Self</span>::unsafe_from</span>(<span class="ident">ffi::PangoMatrix</span> {
+                <span class="ident">xx</span>,
+                <span class="ident">xy</span>,
+                <span class="ident">yx</span>,
+                <span class="ident">yy</span>,
+                <span class="ident">x0</span>,
+                <span class="ident">y0</span>,
+            })
+        }
     }
 
     <span class="doccomment">/// First transforms the @rect using @self, then calculates the bounding box</span>
@@ -245,27 +249,27 @@
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">xx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">xx</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">xx</span>
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">xy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">xy</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">xy</span>
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">yx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">yx</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">yx</span>
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">yy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">yy</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">yy</span>
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">x0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">x0</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">x0</span>
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">y0</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">f64</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">y0</span>
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">y0</span>
     }
 }
 
@@ -282,5 +286,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (7d6f94817 2022-01-04)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (f1ce0e6a0 2022-01-05)" ></div>
 </body></html>
