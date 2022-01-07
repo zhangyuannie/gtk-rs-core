@@ -1088,7 +1088,56 @@
 <span id="1013">1013</span>
 <span id="1014">1014</span>
 <span id="1015">1015</span>
+<span id="1016">1016</span>
+<span id="1017">1017</span>
+<span id="1018">1018</span>
+<span id="1019">1019</span>
+<span id="1020">1020</span>
+<span id="1021">1021</span>
+<span id="1022">1022</span>
+<span id="1023">1023</span>
+<span id="1024">1024</span>
+<span id="1025">1025</span>
+<span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
+<span id="1029">1029</span>
+<span id="1030">1030</span>
+<span id="1031">1031</span>
+<span id="1032">1032</span>
+<span id="1033">1033</span>
+<span id="1034">1034</span>
+<span id="1035">1035</span>
+<span id="1036">1036</span>
+<span id="1037">1037</span>
+<span id="1038">1038</span>
+<span id="1039">1039</span>
+<span id="1040">1040</span>
+<span id="1041">1041</span>
+<span id="1042">1042</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
+
+<span class="comment">// rustdoc-stripper-ignore-next</span>
+<span class="doccomment">//! `Task` bindings.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The API distinguishes between `LocalTask` and `Task`, where the latter can be used</span>
+<span class="doccomment">//! with threads, but has more strict requirements, in particular it requires its value,</span>
+<span class="doccomment">//! source object, and callbacks must implement the `Send` trait.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The `Task` and `LocalTask` types provide idiomatic access to glib&#39;s `GTask` API, for</span>
+<span class="doccomment">//! instance by being generic over their value type, while not completely departing</span>
+<span class="doccomment">//! from the underlying C API.</span>
+<span class="doccomment">//! Unfortunately this API does not allow to automatically enforce all the</span>
+<span class="doccomment">//! invariants required to be a completely safe abstraction.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! For this reason, the constructors of `Task` and `LocalTask` are marked as</span>
+<span class="doccomment">//! unsafe and when using these types the caller is responsible to ensure the</span>
+<span class="doccomment">//! following requirements are satisfied</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! * You should not create a `LocalTask`, upcast it to a `glib::Object` and then</span>
+<span class="doccomment">//!   downcast it to a `Task`, as this will bypass the thread safety requirements</span>
+<span class="doccomment">//! * You should ensure that the `return_result`, `return_error_if_cancelled` and</span>
+<span class="doccomment">//!   `propagate()` methods are only called once.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::AsyncResult</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Cancellable</span>;
@@ -1102,10 +1151,6 @@
 <span class="kw">use</span> <span class="ident">std::boxed::Box</span> <span class="kw">as</span> <span class="ident">Box_</span>;
 <span class="kw">use</span> <span class="ident">std::mem::transmute</span>;
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
-
-<span class="comment">// Implemented manually to ensure the API is sound and ergonic. In particular</span>
-<span class="comment">// 1. Distinguish between `LocalTask` and `Task`, where the latter can be used with threads</span>
-<span class="comment">// 2. Make the task generic over the return type.</span>
 
 <span class="macro">glib::wrapper!</span> {
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GTask&quot;</span>)]</span>
@@ -1644,7 +1689,8 @@
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> $(, @<span class="ident">bound</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span>:<span class="ident">tt</span>)<span class="question-mark">?</span> $(, @<span class="ident">safety</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">safety</span>:<span class="ident">tt</span>)<span class="question-mark">?</span>) =&gt; {
         <span class="kw">impl</span> <span class="op">&lt;</span><span class="ident">V</span>: <span class="ident">ValueType</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span>)<span class="question-mark">?</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
             <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_task_new&quot;</span>)]</span>
-            <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">P</span>, <span class="ident">Q</span><span class="op">&gt;</span>(
+            <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_unsafe</span>)]</span>
+            <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">P</span>, <span class="ident">Q</span><span class="op">&gt;</span>(
                 <span class="ident">source_object</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">S</span><span class="op">&gt;</span>,
                 <span class="ident">cancellable</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">P</span><span class="op">&gt;</span>,
                 <span class="ident">callback</span>: <span class="ident">Q</span>,
@@ -1972,14 +2018,16 @@
     <span class="kw">fn</span> <span class="ident">test_int_async_result</span>() {
         <span class="kw">match</span> <span class="ident">run_async_local</span>(<span class="op">|</span><span class="ident">tx</span>, <span class="ident">l</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Cancellable::new</span>();
-            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
-                <span class="prelude-val">None</span>,
-                <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
-                <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
-                    <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
-                    <span class="ident">l</span>.<span class="ident">quit</span>();
-                },
-            );
+            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
+                    <span class="prelude-val">None</span>,
+                    <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
+                    <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
+                        <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
+                        <span class="ident">l</span>.<span class="ident">quit</span>();
+                    },
+                )
+            };
             <span class="ident">task</span>.<span class="ident">return_result</span>(<span class="prelude-val">Ok</span>(<span class="number">100_i32</span>));
         }) {
             <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(),
@@ -2035,14 +2083,16 @@
 
         <span class="kw">match</span> <span class="ident">run_async_local</span>(<span class="op">|</span><span class="ident">tx</span>, <span class="ident">l</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Cancellable::new</span>();
-            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
-                <span class="prelude-val">None</span>,
-                <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
-                <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">glib::Object</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
-                    <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
-                    <span class="ident">l</span>.<span class="ident">quit</span>();
-                },
-            );
+            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
+                    <span class="prelude-val">None</span>,
+                    <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
+                    <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">glib::Object</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
+                        <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
+                        <span class="ident">l</span>.<span class="ident">quit</span>();
+                    },
+                )
+            };
             <span class="kw">let</span> <span class="ident">my_object</span> <span class="op">=</span> <span class="ident">MySimpleObject::new</span>();
             <span class="ident">my_object</span>.<span class="ident">set_size</span>(<span class="number">100</span>);
             <span class="ident">task</span>.<span class="ident">return_result</span>(<span class="prelude-val">Ok</span>(<span class="ident">my_object</span>.<span class="ident">upcast</span>::<span class="op">&lt;</span><span class="ident">glib::Object</span><span class="op">&gt;</span>()));
@@ -2059,14 +2109,16 @@
     <span class="kw">fn</span> <span class="ident">test_error</span>() {
         <span class="kw">match</span> <span class="ident">run_async_local</span>(<span class="op">|</span><span class="ident">tx</span>, <span class="ident">l</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Cancellable::new</span>();
-            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::LocalTask</span>::<span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span><span class="ident">::new</span>(
-                <span class="prelude-val">None</span>,
-                <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
-                <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
-                    <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
-                    <span class="ident">l</span>.<span class="ident">quit</span>();
-                },
-            );
+            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
+                    <span class="prelude-val">None</span>,
+                    <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
+                    <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
+                        <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
+                        <span class="ident">l</span>.<span class="ident">quit</span>();
+                    },
+                )
+            };
             <span class="ident">task</span>.<span class="ident">return_result</span>(<span class="prelude-val">Err</span>(<span class="ident">glib::Error::new</span>(
                 <span class="ident"><span class="kw">crate</span>::IOErrorEnum::WouldBlock</span>,
                 <span class="string">&quot;WouldBlock&quot;</span>,
@@ -2084,14 +2136,16 @@
     <span class="kw">fn</span> <span class="ident">test_cancelled</span>() {
         <span class="kw">match</span> <span class="ident">run_async_local</span>(<span class="op">|</span><span class="ident">tx</span>, <span class="ident">l</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">cancellable</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Cancellable::new</span>();
-            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::LocalTask</span>::<span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span><span class="ident">::new</span>(
-                <span class="prelude-val">None</span>,
-                <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
-                <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
-                    <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
-                    <span class="ident">l</span>.<span class="ident">quit</span>();
-                },
-            );
+            <span class="kw">let</span> <span class="ident">task</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                <span class="ident"><span class="kw">crate</span>::LocalTask::new</span>(
+                    <span class="prelude-val">None</span>,
+                    <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">cancellable</span>),
+                    <span class="kw">move</span> <span class="op">|</span><span class="ident">t</span>: <span class="ident">LocalTask</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">_b</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">glib::Object</span><span class="op">&gt;</span><span class="op">|</span> {
+                        <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">t</span>.<span class="ident">propagate</span>()).<span class="ident">unwrap</span>();
+                        <span class="ident">l</span>.<span class="ident">quit</span>();
+                    },
+                )
+            };
             <span class="ident">cancellable</span>.<span class="ident">cancel</span>();
             <span class="ident">task</span>.<span class="ident">return_error_if_cancelled</span>();
         }) {
@@ -2104,5 +2158,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (f1ce0e6a0 2022-01-05)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (cfa4ac66c 2022-01-06)" ></div>
 </body></html>
