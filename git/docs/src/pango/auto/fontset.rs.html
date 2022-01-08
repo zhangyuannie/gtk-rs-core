@@ -206,7 +206,7 @@
 <span class="macro">glib::wrapper!</span> {
     <span class="doccomment">/// A [`Fontset`][crate::Fontset] represents a set of [`Font`][crate::Font] to use when rendering text.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A `PAngoFontset` is the result of resolving a [`FontDescription`][crate::FontDescription]</span>
+    <span class="doccomment">/// A [`Fontset`][crate::Fontset] is the result of resolving a [`FontDescription`][crate::FontDescription]</span>
     <span class="doccomment">/// against a particular [`Context`][crate::Context]. It has operations for finding the</span>
     <span class="doccomment">/// component font for a particular Unicode character, and for finding a</span>
     <span class="doccomment">/// composite set of metrics for the entire fontset.</span>
@@ -243,8 +243,8 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;pango_fontset_foreach&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">foreach</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span><span class="ident">Fontset</span>, <span class="kw-2">&amp;</span><span class="ident">Font</span>) -&gt; <span class="ident">bool</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">func</span>: <span class="ident">P</span>);
 
-    <span class="doccomment">/// Returns the font in the fontset that contains the best glyph for a</span>
-    <span class="doccomment">/// Unicode character.</span>
+    <span class="doccomment">/// Returns the font in the fontset that contains the best</span>
+    <span class="doccomment">/// glyph for a Unicode character.</span>
     <span class="doccomment">/// ## `wc`</span>
     <span class="doccomment">/// a Unicode character</span>
     <span class="doccomment">///</span>
@@ -314,5 +314,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (cfa4ac66c 2022-01-06)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0-nightly (e012a191d 2022-01-06)" ></div>
 </body></html>
