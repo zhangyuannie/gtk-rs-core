@@ -237,7 +237,7 @@ during the TLS handshake. For a <a href="../struct.TlsServerConnection.html" tit
 mandatory to set this, and that will normally be done at construct
 time.</p>
 <p>For a <a href="../struct.TlsClientConnection.html" title="crate::TlsClientConnection"><code>TlsClientConnection</code></a>, this is optional. If a handshake fails
-with <code>G_TLS_ERROR_CERTIFICATE_REQUIRED</code>, that means that the server
+with <a href="../enum.TlsError.html#variant.CertificateRequired" title="crate::TlsError::CertificateRequired"><code>TlsError::CertificateRequired</code></a>, that means that the server
 requires a certificate, and if you try connecting again, you should
 call this method first. You can call
 <a href="trait.TlsClientConnectionExt.html#tymethod.accepted_cas" title="crate::prelude::TlsClientConnectionExt::accepted_cas()"><code>TlsClientConnectionExt::accepted_cas()</code></a> on the failed connection
@@ -281,7 +281,7 @@ from the TLS protocol in TLS 1.3.</p>
 before the connection is closed. If this is <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> (the default),
 then <code>self</code> will expect to receive a TLS close notification from its
 peer before the connection is closed, and will return a
-<code>G_TLS_ERROR_EOF</code> error if the connection is closed without proper
+<a href="../enum.TlsError.html#variant.Eof" title="crate::TlsError::Eof"><code>TlsError::Eof</code></a> error if the connection is closed without proper
 notification (since this may indicate a network error, or
 man-in-the-middle attack).</p>
 <p>In some protocols, the application will know whether or not the
@@ -321,7 +321,7 @@ certificate was not acceptable according to <code>conn</code>’s
 <code>property::TlsClientConnection::validation_flags</code>. If you would like the
 certificate to be accepted despite <code>errors</code>, return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> from the
 signal handler. Otherwise, if no handler accepts the certificate,
-the handshake will fail with <code>G_TLS_ERROR_BAD_CERTIFICATE</code>.</p>
+the handshake will fail with <a href="../enum.TlsError.html#variant.BadCertificate" title="crate::TlsError::BadCertificate"><code>TlsError::BadCertificate</code></a>.</p>
 <p>For a server-side connection, <code>peer_cert</code> is the certificate
 presented by the client, if this was requested via the server’s
 <code>property::TlsServerConnection::authentication_mode</code>. On the server side,
@@ -334,7 +334,7 @@ the user before returning from the signal handler. If you want to
 let the user decide whether or not to accept the certificate, you
 would have to return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="false"><code>false</code></a> from the signal handler on the first
 attempt, and then after the connection attempt returns a
-<code>G_TLS_ERROR_BAD_CERTIFICATE</code>, you can interact with the user, and
+<a href="../enum.TlsError.html#variant.BadCertificate" title="crate::TlsError::BadCertificate"><code>TlsError::BadCertificate</code></a>, you can interact with the user, and
 if the user decides to accept the certificate, remember that fact,
 create a new connection, and return <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> from the signal handler
 the next time.</p>

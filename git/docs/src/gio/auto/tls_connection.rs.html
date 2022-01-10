@@ -1424,7 +1424,7 @@
     <span class="doccomment">/// time.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For a [`TlsClientConnection`][crate::TlsClientConnection], this is optional. If a handshake fails</span>
-    <span class="doccomment">/// with `G_TLS_ERROR_CERTIFICATE_REQUIRED`, that means that the server</span>
+    <span class="doccomment">/// with [`TlsError::CertificateRequired`][crate::TlsError::CertificateRequired], that means that the server</span>
     <span class="doccomment">/// requires a certificate, and if you try connecting again, you should</span>
     <span class="doccomment">/// call this method first. You can call</span>
     <span class="doccomment">/// [`TlsClientConnectionExt::accepted_cas()`][crate::prelude::TlsClientConnectionExt::accepted_cas()] on the failed connection</span>
@@ -1485,7 +1485,7 @@
     <span class="doccomment">/// before the connection is closed. If this is [`true`] (the default),</span>
     <span class="doccomment">/// then `self` will expect to receive a TLS close notification from its</span>
     <span class="doccomment">/// peer before the connection is closed, and will return a</span>
-    <span class="doccomment">/// `G_TLS_ERROR_EOF` error if the connection is closed without proper</span>
+    <span class="doccomment">/// [`TlsError::Eof`][crate::TlsError::Eof] error if the connection is closed without proper</span>
     <span class="doccomment">/// notification (since this may indicate a network error, or</span>
     <span class="doccomment">/// man-in-the-middle attack).</span>
     <span class="doccomment">///</span>
@@ -1539,7 +1539,7 @@
     <span class="doccomment">/// `property::TlsClientConnection::validation_flags`. If you would like the</span>
     <span class="doccomment">/// certificate to be accepted despite `errors`, return [`true`] from the</span>
     <span class="doccomment">/// signal handler. Otherwise, if no handler accepts the certificate,</span>
-    <span class="doccomment">/// the handshake will fail with `G_TLS_ERROR_BAD_CERTIFICATE`.</span>
+    <span class="doccomment">/// the handshake will fail with [`TlsError::BadCertificate`][crate::TlsError::BadCertificate].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For a server-side connection, `peer_cert` is the certificate</span>
     <span class="doccomment">/// presented by the client, if this was requested via the server&#39;s</span>
@@ -1554,7 +1554,7 @@
     <span class="doccomment">/// let the user decide whether or not to accept the certificate, you</span>
     <span class="doccomment">/// would have to return [`false`] from the signal handler on the first</span>
     <span class="doccomment">/// attempt, and then after the connection attempt returns a</span>
-    <span class="doccomment">/// `G_TLS_ERROR_BAD_CERTIFICATE`, you can interact with the user, and</span>
+    <span class="doccomment">/// [`TlsError::BadCertificate`][crate::TlsError::BadCertificate], you can interact with the user, and</span>
     <span class="doccomment">/// if the user decides to accept the certificate, remember that fact,</span>
     <span class="doccomment">/// create a new connection, and return [`true`] from the signal handler</span>
     <span class="doccomment">/// the next time.</span>
