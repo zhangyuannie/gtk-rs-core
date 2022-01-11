@@ -1480,7 +1480,7 @@
 }
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_GET_ACTION_PARAMETER_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-parameter&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-parameter&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_get_action_parameter_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,
@@ -1506,7 +1506,7 @@
 }
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_GET_ACTION_STATE_TYPE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state-type&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state-type&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_get_action_state_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,
@@ -1532,7 +1532,7 @@
 }
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_GET_ACTION_STATE_HINT_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state-hint&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state-hint&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_get_action_state_hint</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,
@@ -1557,7 +1557,7 @@
     }
 }
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_GET_ACTION_STATE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-get-action-state&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_get_action_state</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,
@@ -1677,7 +1677,7 @@
 }
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_LIST_ACTIONS_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-list-actions&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-list-actions&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_list_actions</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,
@@ -1696,16 +1696,16 @@
 }
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_QUERY_ACTION_PARAM_TYPE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-parameter-type&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-parameter-type&quot;</span>));
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_QUERY_ACTION_STATE_TYPE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state-type&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state-type&quot;</span>));
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_QUERY_ACTION_STATE_HINT_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state-hint&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state-hint&quot;</span>));
 
 <span class="kw">static</span> <span class="ident">ACTION_GROUP_QUERY_ACTION_STATE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-action-group-query-action-state&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">action_group_query_action</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ActionGroupImpl</span><span class="op">&gt;</span>(
     <span class="ident">action_group</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GActionGroup</span>,

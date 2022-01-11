@@ -305,7 +305,7 @@
 }
 
 <span class="kw">static</span> <span class="ident">LIST_ITEM_TYPE_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">glib::Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-list-model-item-type&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-list-model-item-type&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">list_model_get_item_type</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ListModelImpl</span><span class="op">&gt;</span>(
     <span class="ident">list_model</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GListModel</span>,

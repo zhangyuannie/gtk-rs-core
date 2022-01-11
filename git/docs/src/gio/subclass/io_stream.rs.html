@@ -352,9 +352,9 @@
 }
 
 <span class="kw">static</span> <span class="ident">OUTPUT_STREAM_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">glib::Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-output-stream&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-output-stream&quot;</span>));
 <span class="kw">static</span> <span class="ident">INPUT_STREAM_QUARK</span>: <span class="ident">Lazy</span><span class="op">&lt;</span><span class="ident">glib::Quark</span><span class="op">&gt;</span> <span class="op">=</span>
-    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_string</span>(<span class="string">&quot;gtk-rs-subclass-input-stream&quot;</span>));
+    <span class="ident">Lazy::new</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">glib::Quark::from_str</span>(<span class="string">&quot;gtk-rs-subclass-input-stream&quot;</span>));
 
 <span class="kw">unsafe</span> <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> <span class="kw">fn</span> <span class="ident">stream_get_input_stream</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IOStreamImpl</span><span class="op">&gt;</span>(
     <span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::GIOStream</span>,

@@ -797,7 +797,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_type_qname&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">qname</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Quark</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">into_glib</span>() {
-            <span class="ident">gobject_ffi::G_TYPE_INVALID</span> =&gt; <span class="ident"><span class="kw">crate</span>::Quark::from_string</span>(<span class="string">&quot;&lt;invalid&gt;&quot;</span>),
+            <span class="ident">gobject_ffi::G_TYPE_INVALID</span> =&gt; <span class="ident"><span class="kw">crate</span>::Quark::from_str</span>(<span class="string">&quot;&lt;invalid&gt;&quot;</span>),
             <span class="ident">x</span> =&gt; <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">gobject_ffi::g_type_qname</span>(<span class="ident">x</span>)) },
         }
     }
@@ -1194,7 +1194,7 @@
         <span class="kw">let</span> <span class="ident">invalid</span> <span class="op">=</span> <span class="ident">Type::INVALID</span>;
 
         <span class="macro">assert_eq!</span>(<span class="ident">invalid</span>.<span class="ident">name</span>(), <span class="string">&quot;&lt;invalid&gt;&quot;</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">invalid</span>.<span class="ident">qname</span>(), <span class="ident"><span class="kw">crate</span>::Quark::from_string</span>(<span class="string">&quot;&lt;invalid&gt;&quot;</span>));
+        <span class="macro">assert_eq!</span>(<span class="ident">invalid</span>.<span class="ident">qname</span>(), <span class="ident"><span class="kw">crate</span>::Quark::from_str</span>(<span class="string">&quot;&lt;invalid&gt;&quot;</span>));
         <span class="macro">assert!</span>(<span class="ident">invalid</span>.<span class="ident">is_a</span>(<span class="ident">Type::INVALID</span>));
         <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">invalid</span>.<span class="ident">is_a</span>(<span class="ident">Type::STRING</span>));
         <span class="macro">assert_eq!</span>(<span class="ident">invalid</span>.<span class="ident">parent</span>(), <span class="prelude-val">None</span>);
