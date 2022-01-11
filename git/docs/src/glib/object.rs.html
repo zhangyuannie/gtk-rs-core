@@ -4228,10 +4228,6 @@
 <span id="4152">4152</span>
 <span id="4153">4153</span>
 <span id="4154">4154</span>
-<span id="4155">4155</span>
-<span id="4156">4156</span>
-<span id="4157">4157</span>
-<span id="4158">4158</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -6776,6 +6772,7 @@
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
         <span class="kw">let</span> <span class="ident">return_type</span>: <span class="ident">Type</span> <span class="op">=</span> <span class="ident">signal_query</span>.<span class="ident">return_type</span>().<span class="ident">into</span>();
         <span class="kw">let</span> <span class="ident">signal_name</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">name</span>();
+        <span class="kw">let</span> <span class="ident">signal_query_type</span> <span class="op">=</span> <span class="ident">signal_query</span>.<span class="ident">type_</span>();
 
         <span class="kw">let</span> <span class="ident">closure</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">return_type</span> <span class="op">==</span> <span class="ident">Type::UNIT</span> {
             <span class="ident">Closure::new_unsafe</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">values</span><span class="op">|</span> {
@@ -6838,11 +6835,6 @@
             })
         };
 
-        <span class="kw">let</span> <span class="ident">signal_query</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">query</span>();
-        <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">type_</span>();
-        <span class="kw">let</span> <span class="ident">signal_name</span> <span class="op">=</span> <span class="ident">signal_id</span>.<span class="ident">name</span>();
-
-        <span class="kw">let</span> <span class="ident">signal_query_type</span> <span class="op">=</span> <span class="ident">signal_query</span>.<span class="ident">type_</span>();
         <span class="macro">assert!</span>(
             <span class="ident">type_</span>.<span class="ident">is_a</span>(<span class="ident">signal_query_type</span>),
             <span class="string">&quot;Signal &#39;{}&#39; of type &#39;{}&#39; but got type &#39;{}&#39;&quot;</span>,
