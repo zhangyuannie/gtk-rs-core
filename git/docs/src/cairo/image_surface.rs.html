@@ -387,6 +387,12 @@
 <span id="311">311</span>
 <span id="312">312</span>
 <span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -561,6 +567,9 @@
     <span class="ident">surface</span>: <span class="ident">ImageSurface</span>,
 }
 
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">ImageSurfaceDataOwned</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">ImageSurfaceDataOwned</span> {}
+
 <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ImageSurfaceDataOwned</span> {
     <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">stride</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">height</span>() <span class="kw">as</span> <span class="ident">usize</span>);
@@ -603,6 +612,9 @@
     <span class="ident">slice</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
     <span class="ident">dirty</span>: <span class="ident">bool</span>,
 }
+
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">ImageSurfaceData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">ImageSurfaceData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ImageSurfaceData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">surface</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">ImageSurface</span>) -&gt; <span class="ident">ImageSurfaceData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
