@@ -451,6 +451,36 @@
 <span id="375">375</span>
 <span id="376">376</span>
 <span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -500,6 +530,36 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_getenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Sets an environment variable. On UNIX, both the variable&#39;s name and</span>
+<span class="doccomment">/// value can be arbitrary byte strings, except that the variable&#39;s name</span>
+<span class="doccomment">/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the memory</span>
+<span class="doccomment">/// used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls [`setenv()`][crate::setenv()] while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.)</span>
+<span class="doccomment">/// This function is only safe to use at the very start of your program,</span>
+<span class="doccomment">/// before creating any other threads (or creating objects that create</span>
+<span class="doccomment">/// worker threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to set, must not</span>
+<span class="doccomment">///  contain &#39;=&#39;.</span>
+<span class="doccomment">/// ## `value`</span>
+<span class="doccomment">/// the value for to set the variable to.</span>
+<span class="doccomment">/// ## `overwrite`</span>
+<span class="doccomment">/// whether to change the variable if it already exists.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`false`] if the environment variable couldn&#39;t be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_setenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">variable_name</span>: <span class="ident">K</span>,
