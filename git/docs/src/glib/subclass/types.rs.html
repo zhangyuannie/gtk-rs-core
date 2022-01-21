@@ -1098,6 +1098,15 @@
 <span id="1019">1019</span>
 <span id="1020">1020</span>
 <span id="1021">1021</span>
+<span id="1022">1022</span>
+<span id="1023">1023</span>
+<span id="1024">1024</span>
+<span id="1025">1025</span>
+<span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
+<span id="1029">1029</span>
+<span id="1030">1030</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1590,6 +1599,15 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_type&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">type_</span>() -&gt; <span class="ident">Type</span>;
 }
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INIT_TYPE_DATA</span>: <span class="ident">TypeData</span> <span class="op">=</span> <span class="ident">TypeData</span> {
+    <span class="ident">type_</span>: <span class="ident">Type::INVALID</span>,
+    <span class="ident">parent_class</span>: <span class="ident">::std::ptr::null_mut</span>(),
+    <span class="ident">parent_ifaces</span>: <span class="prelude-val">None</span>,
+    <span class="ident">class_data</span>: <span class="prelude-val">None</span>,
+    <span class="ident">private_offset</span>: <span class="number">0</span>,
+    <span class="ident">private_imp_offset</span>: <span class="number">0</span>,
+};
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
 <span class="doccomment">/// The central trait for subclassing a `GObject` type.</span>
