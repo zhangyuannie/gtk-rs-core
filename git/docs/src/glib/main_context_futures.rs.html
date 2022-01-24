@@ -506,8 +506,8 @@
 <span id="428">428</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::thread_guard::ThreadGuard</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ThreadGuard</span>;
 <span class="kw">use</span> <span class="ident">futures_core::future::Future</span>;
 <span class="kw">use</span> <span class="ident">futures_core::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>, <span class="ident">RawWaker</span>, <span class="ident">RawWakerVTable</span>, <span class="ident">Waker</span>};
 <span class="kw">use</span> <span class="ident">futures_task</span>::{<span class="ident">FutureObj</span>, <span class="ident">LocalFutureObj</span>, <span class="ident">LocalSpawn</span>, <span class="ident">Spawn</span>, <span class="ident">SpawnError</span>};
