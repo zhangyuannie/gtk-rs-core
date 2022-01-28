@@ -1707,7 +1707,7 @@
 <span class="doccomment">/// or `data` may be [`None`], in which case the guess will be based solely</span>
 <span class="doccomment">/// on the other argument.</span>
 <span class="doccomment">/// ## `filename`</span>
-<span class="doccomment">/// a string, or [`None`]</span>
+<span class="doccomment">/// a path, or [`None`]</span>
 <span class="doccomment">/// ## `data`</span>
 <span class="doccomment">/// a stream of data, or [`None`]</span>
 <span class="doccomment">///</span>
@@ -2114,13 +2114,13 @@
 <span class="doccomment">/// - `G_TYPE_UCHAR`: &#39;y&#39;</span>
 <span class="doccomment">/// - `G_TYPE_INT`: &#39;i&#39;, &#39;n&#39;</span>
 <span class="doccomment">/// - `G_TYPE_UINT`: &#39;u&#39;, &#39;q&#39;</span>
-<span class="doccomment">/// - `G_TYPE_INT64` &#39;x&#39;</span>
+<span class="doccomment">/// - `G_TYPE_INT64`: &#39;x&#39;</span>
 <span class="doccomment">/// - `G_TYPE_UINT64`: &#39;t&#39;</span>
 <span class="doccomment">/// - `G_TYPE_DOUBLE`: &#39;d&#39;</span>
 <span class="doccomment">/// - `G_TYPE_VARIANT`: Any [`glib::VariantType`][crate::glib::VariantType]</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This can fail if e.g. `gvalue` is of type `G_TYPE_STRING` and `type_`</span>
-<span class="doccomment">/// is [&#39;i&#39;][G-VARIANT-TYPE-INT32:CAPS]. It will also fail for any `GType`</span>
+<span class="doccomment">/// is &#39;i&#39;, i.e. `G_VARIANT_TYPE_INT32`. It will also fail for any `GType`</span>
 <span class="doccomment">/// (including e.g. `G_TYPE_OBJECT` and `G_TYPE_BOXED` derived-types) not</span>
 <span class="doccomment">/// in the table above.</span>
 <span class="doccomment">///</span>
@@ -2711,5 +2711,5 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_unix_is_system_fs_type</span>(<span class="ident">fs_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (51126be1b 2022-01-24)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
 </body></html>

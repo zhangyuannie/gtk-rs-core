@@ -1125,6 +1125,10 @@
 <span id="1047">1047</span>
 <span id="1048">1048</span>
 <span id="1049">1049</span>
+<span id="1050">1050</span>
+<span id="1051">1051</span>
+<span id="1052">1052</span>
+<span id="1053">1053</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::AsyncResult</span>;
@@ -1199,6 +1203,10 @@
     <span class="doccomment">/// the operation&#39;s finish function (as a [`AsyncResult`][crate::AsyncResult]), and you can</span>
     <span class="doccomment">/// use [`propagate_pointer()`][Self::propagate_pointer()] or the like to extract the</span>
     <span class="doccomment">/// return value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Using [`Task`][crate::Task] requires the thread-default [`glib::MainContext`][crate::glib::MainContext] from when the</span>
+    <span class="doccomment">/// [`Task`][crate::Task] was constructed to be running at least until the task has completed</span>
+    <span class="doccomment">/// and its data has been freed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Here is an example for using GTask as a GAsyncResult:</span>
     <span class="doccomment">///</span>
@@ -2175,5 +2183,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (51126be1b 2022-01-24)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
 </body></html>

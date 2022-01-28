@@ -1390,6 +1390,16 @@
 <span id="1312">1312</span>
 <span id="1313">1313</span>
 <span id="1314">1314</span>
+<span id="1315">1315</span>
+<span id="1316">1316</span>
+<span id="1317">1317</span>
+<span id="1318">1318</span>
+<span id="1319">1319</span>
+<span id="1320">1320</span>
+<span id="1321">1321</span>
+<span id="1322">1322</span>
+<span id="1323">1323</span>
+<span id="1324">1324</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1877,7 +1887,17 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
-    <span class="doccomment">/// If you use this flag, `stdin_pipe_out` must be [`None`].</span>
+    <span class="doccomment">/// d&#39;s standard output</span>
+    <span class="doccomment">/// will be discarded, instead of going to the same location as the parent&#39;s</span>
+    <span class="doccomment">/// standard output. If you use this flag, `stdout_pipe_out` must be [`None`].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`SpawnFlags::STDERR_TO_DEV_NULL`][crate::SpawnFlags::STDERR_TO_DEV_NULL] means that the child&#39;s standard error</span>
+    <span class="doccomment">/// will be discarded, instead of going to the same location as the parent&#39;s</span>
+    <span class="doccomment">/// standard error. If you use this flag, `stderr_pipe_out` must be [`None`].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`SpawnFlags::CHILD_INHERITS_STDIN`][crate::SpawnFlags::CHILD_INHERITS_STDIN] means that the child will inherit the parent&#39;s</span>
+    <span class="doccomment">/// standard input (by default, the child&#39;s standard input is attached to</span>
+    <span class="doccomment">/// `/dev/null`). If you use this flag, `stdin_pipe_out` must be [`None`].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It is valid to pass the same FD in multiple parameters (e.g. you can pass</span>
     <span class="doccomment">/// a single FD for both `stdout_fd` and `stderr_fd`, and include it in</span>
@@ -2705,5 +2725,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (51126be1b 2022-01-24)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
 </body></html>

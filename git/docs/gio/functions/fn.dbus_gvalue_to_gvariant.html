@@ -87,13 +87,13 @@ parameter.</p>
 <li><code>G_TYPE_UCHAR</code>: ‘y’</li>
 <li><code>G_TYPE_INT</code>: ‘i’, ‘n’</li>
 <li><code>G_TYPE_UINT</code>: ‘u’, ‘q’</li>
-<li><code>G_TYPE_INT64</code> ‘x’</li>
+<li><code>G_TYPE_INT64</code>: ‘x’</li>
 <li><code>G_TYPE_UINT64</code>: ‘t’</li>
 <li><code>G_TYPE_DOUBLE</code>: ‘d’</li>
 <li><code>G_TYPE_VARIANT</code>: Any <a href="../../glib/variant_type/struct.VariantType.html" title="crate::glib::VariantType"><code>glib::VariantType</code></a></li>
 </ul>
 <p>This can fail if e.g. <code>gvalue</code> is of type <code>G_TYPE_STRING</code> and <code>type_</code>
-is [‘i’][G-VARIANT-TYPE-INT32:CAPS]. It will also fail for any <code>GType</code>
+is ‘i’, i.e. <code>G_VARIANT_TYPE_INT32</code>. It will also fail for any <code>GType</code>
 (including e.g. <code>G_TYPE_OBJECT</code> and <code>G_TYPE_BOXED</code> derived-types) not
 in the table above.</p>
 <p>Note that if <code>gvalue</code> is of type <code>G_TYPE_VARIANT</code> and its value is
@@ -110,5 +110,5 @@ returned (e.g. 0 for scalar types, the empty string for string types,
 <p>A <a href="../../glib/variant/struct.Variant.html" title="crate::glib::Variant"><code>glib::Variant</code></a> (never floating) of
 <a href="../../glib/variant_type/struct.VariantType.html" title="crate::glib::VariantType"><code>glib::VariantType</code></a> <code>type_</code> holding the data from <code>gvalue</code> or an empty <a href="../../glib/variant/struct.Variant.html" title="crate::glib::Variant"><code>glib::Variant</code></a>
 in case of failure. Free with <code>g_variant_unref()</code>.</p>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (51126be1b 2022-01-24)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
 </body></html>
