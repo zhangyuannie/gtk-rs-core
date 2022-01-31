@@ -2284,6 +2284,109 @@
 <span id="2206">2206</span>
 <span id="2207">2207</span>
 <span id="2208">2208</span>
+<span id="2209">2209</span>
+<span id="2210">2210</span>
+<span id="2211">2211</span>
+<span id="2212">2212</span>
+<span id="2213">2213</span>
+<span id="2214">2214</span>
+<span id="2215">2215</span>
+<span id="2216">2216</span>
+<span id="2217">2217</span>
+<span id="2218">2218</span>
+<span id="2219">2219</span>
+<span id="2220">2220</span>
+<span id="2221">2221</span>
+<span id="2222">2222</span>
+<span id="2223">2223</span>
+<span id="2224">2224</span>
+<span id="2225">2225</span>
+<span id="2226">2226</span>
+<span id="2227">2227</span>
+<span id="2228">2228</span>
+<span id="2229">2229</span>
+<span id="2230">2230</span>
+<span id="2231">2231</span>
+<span id="2232">2232</span>
+<span id="2233">2233</span>
+<span id="2234">2234</span>
+<span id="2235">2235</span>
+<span id="2236">2236</span>
+<span id="2237">2237</span>
+<span id="2238">2238</span>
+<span id="2239">2239</span>
+<span id="2240">2240</span>
+<span id="2241">2241</span>
+<span id="2242">2242</span>
+<span id="2243">2243</span>
+<span id="2244">2244</span>
+<span id="2245">2245</span>
+<span id="2246">2246</span>
+<span id="2247">2247</span>
+<span id="2248">2248</span>
+<span id="2249">2249</span>
+<span id="2250">2250</span>
+<span id="2251">2251</span>
+<span id="2252">2252</span>
+<span id="2253">2253</span>
+<span id="2254">2254</span>
+<span id="2255">2255</span>
+<span id="2256">2256</span>
+<span id="2257">2257</span>
+<span id="2258">2258</span>
+<span id="2259">2259</span>
+<span id="2260">2260</span>
+<span id="2261">2261</span>
+<span id="2262">2262</span>
+<span id="2263">2263</span>
+<span id="2264">2264</span>
+<span id="2265">2265</span>
+<span id="2266">2266</span>
+<span id="2267">2267</span>
+<span id="2268">2268</span>
+<span id="2269">2269</span>
+<span id="2270">2270</span>
+<span id="2271">2271</span>
+<span id="2272">2272</span>
+<span id="2273">2273</span>
+<span id="2274">2274</span>
+<span id="2275">2275</span>
+<span id="2276">2276</span>
+<span id="2277">2277</span>
+<span id="2278">2278</span>
+<span id="2279">2279</span>
+<span id="2280">2280</span>
+<span id="2281">2281</span>
+<span id="2282">2282</span>
+<span id="2283">2283</span>
+<span id="2284">2284</span>
+<span id="2285">2285</span>
+<span id="2286">2286</span>
+<span id="2287">2287</span>
+<span id="2288">2288</span>
+<span id="2289">2289</span>
+<span id="2290">2290</span>
+<span id="2291">2291</span>
+<span id="2292">2292</span>
+<span id="2293">2293</span>
+<span id="2294">2294</span>
+<span id="2295">2295</span>
+<span id="2296">2296</span>
+<span id="2297">2297</span>
+<span id="2298">2298</span>
+<span id="2299">2299</span>
+<span id="2300">2300</span>
+<span id="2301">2301</span>
+<span id="2302">2302</span>
+<span id="2303">2303</span>
+<span id="2304">2304</span>
+<span id="2305">2305</span>
+<span id="2306">2306</span>
+<span id="2307">2307</span>
+<span id="2308">2308</span>
+<span id="2309">2309</span>
+<span id="2310">2310</span>
+<span id="2311">2311</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -2541,6 +2644,12 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns the classification of the variant.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Classifies `self` according to its top-level type.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the [`VariantClass`][crate::VariantClass] of `self`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_classify&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">classify</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::VariantClass</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_classify</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
@@ -2550,6 +2659,25 @@
     <span class="doccomment">/// Tries to extract a value of type `T`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Some` if `T` matches the variant&#39;s type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Deconstructs a [`Variant`][struct@crate::Variant] instance.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Think of this function as an analogue to `scanf()`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The arguments that are expected by this function are entirely</span>
+    <span class="doccomment">/// determined by `format_string`. `format_string` also restricts the</span>
+    <span class="doccomment">/// permissible types of `self`. It is an error to give a value with</span>
+    <span class="doccomment">/// an incompatible type. See the section on</span>
+    <span class="doccomment">/// [GVariant format strings][gvariant-format-strings].</span>
+    <span class="doccomment">/// Please note that the syntax of the format string is very likely to be</span>
+    <span class="doccomment">/// extended in the future.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `format_string` determines the C types that are used for unpacking</span>
+    <span class="doccomment">/// the values and also determines if the values are copied or borrowed,</span>
+    <span class="doccomment">/// see the section on</span>
+    <span class="doccomment">/// [GVariant format strings][gvariant-format-strings-pointers].</span>
+    <span class="doccomment">/// ## `format_string`</span>
+    <span class="doccomment">/// a [`Variant`][struct@crate::Variant] format string</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FromVariant</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">T::from_variant</span>(<span class="self">self</span>)
@@ -2848,6 +2976,26 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Constructs a new serialized-mode [`Variant`][struct@crate::Variant] instance. This is the</span>
+    <span class="doccomment">/// inner interface for creation of new serialized values that gets</span>
+    <span class="doccomment">/// called from various functions in gvariant.c.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// A reference is taken on `bytes`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The data in `bytes` must be aligned appropriately for the `type_` being loaded.</span>
+    <span class="doccomment">/// Otherwise this function will internally create a copy of the memory (since</span>
+    <span class="doccomment">/// GLib 2.60) or (in older versions) fail and exit the process.</span>
+    <span class="doccomment">/// ## `type_`</span>
+    <span class="doccomment">/// a [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">/// ## `bytes`</span>
+    <span class="doccomment">/// a [`Bytes`][crate::Bytes]</span>
+    <span class="doccomment">/// ## `trusted`</span>
+    <span class="doccomment">/// if the contents of `bytes` are trusted</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new [`Variant`][struct@crate::Variant] with a floating reference</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_bytes&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="ident">Bytes</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Variant::from_bytes_with_type</span>(<span class="ident">bytes</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
@@ -2872,6 +3020,48 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Constructs a new serialized-mode GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Creates a new [`Variant`][struct@crate::Variant] instance from serialized data.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `type_` is the type of [`Variant`][struct@crate::Variant] instance that will be constructed.</span>
+    <span class="doccomment">/// The interpretation of `data` depends on knowing the type.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `data` is not modified by this function and must remain valid with an</span>
+    <span class="doccomment">/// unchanging value until such a time as `notify` is called with</span>
+    <span class="doccomment">/// `user_data`. If the contents of `data` change before that time then</span>
+    <span class="doccomment">/// the result is undefined.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `data` is trusted to be serialized data in normal form then</span>
+    <span class="doccomment">/// `trusted` should be [`true`]. This applies to serialized data created</span>
+    <span class="doccomment">/// within this process or read from a trusted location on the disk (such</span>
+    <span class="doccomment">/// as a file installed in /usr/lib alongside your application). You</span>
+    <span class="doccomment">/// should set trusted to [`false`] if `data` is read from the network, a</span>
+    <span class="doccomment">/// file in the user&#39;s home directory, etc.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `data` was not stored in this machine&#39;s native endianness, any multi-byte</span>
+    <span class="doccomment">/// numeric values in the returned variant will also be in non-native</span>
+    <span class="doccomment">/// endianness. [`byteswap()`][Self::byteswap()] can be used to recover the original values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `notify` will be called with `user_data` when `data` is no longer</span>
+    <span class="doccomment">/// needed. The exact time of this call is unspecified and might even be</span>
+    <span class="doccomment">/// before this function returns.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note: `data` must be backed by memory that is aligned appropriately for the</span>
+    <span class="doccomment">/// `type_` being loaded. Otherwise this function will internally create a copy of</span>
+    <span class="doccomment">/// the memory (since GLib 2.60) or (in older versions) fail and exit the</span>
+    <span class="doccomment">/// process.</span>
+    <span class="doccomment">/// ## `type_`</span>
+    <span class="doccomment">/// a definite [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">/// ## `data`</span>
+    <span class="doccomment">/// the serialized data</span>
+    <span class="doccomment">/// ## `trusted`</span>
+    <span class="doccomment">/// [`true`] if `data` is definitely in normal form</span>
+    <span class="doccomment">/// ## `notify`</span>
+    <span class="doccomment">/// function to call when `data` is no longer needed</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new floating [`Variant`][struct@crate::Variant] of type `type_`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_from_data&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span>, <span class="ident">A</span>: <span class="ident">AsRef</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="ident">A</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Variant::from_data_with_type</span>(<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
@@ -3139,6 +3329,22 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns a copy of the variant in the opposite endianness.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Performs a byteswapping operation on the contents of `self`. The</span>
+    <span class="doccomment">/// result is that all multi-byte numeric data contained in `self` is</span>
+    <span class="doccomment">/// byteswapped. That includes 16, 32, and 64bit signed and unsigned</span>
+    <span class="doccomment">/// integers as well as file handles and double precision floating point</span>
+    <span class="doccomment">/// values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is an identity mapping on any value that does not</span>
+    <span class="doccomment">/// contain multi-byte numeric data. That include strings, booleans,</span>
+    <span class="doccomment">/// bytes and containers containing only these things (recursively).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The returned value is always in normal form and is marked as trusted.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the byteswapped form of `self`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_byteswap&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">byteswap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
@@ -4493,5 +4699,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (21b4a9cfd 2022-01-27)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (08df8b81d 2022-01-30)" ></div>
 </body></html>
