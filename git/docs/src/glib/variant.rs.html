@@ -2634,6 +2634,74 @@
 <span id="2556">2556</span>
 <span id="2557">2557</span>
 <span id="2558">2558</span>
+<span id="2559">2559</span>
+<span id="2560">2560</span>
+<span id="2561">2561</span>
+<span id="2562">2562</span>
+<span id="2563">2563</span>
+<span id="2564">2564</span>
+<span id="2565">2565</span>
+<span id="2566">2566</span>
+<span id="2567">2567</span>
+<span id="2568">2568</span>
+<span id="2569">2569</span>
+<span id="2570">2570</span>
+<span id="2571">2571</span>
+<span id="2572">2572</span>
+<span id="2573">2573</span>
+<span id="2574">2574</span>
+<span id="2575">2575</span>
+<span id="2576">2576</span>
+<span id="2577">2577</span>
+<span id="2578">2578</span>
+<span id="2579">2579</span>
+<span id="2580">2580</span>
+<span id="2581">2581</span>
+<span id="2582">2582</span>
+<span id="2583">2583</span>
+<span id="2584">2584</span>
+<span id="2585">2585</span>
+<span id="2586">2586</span>
+<span id="2587">2587</span>
+<span id="2588">2588</span>
+<span id="2589">2589</span>
+<span id="2590">2590</span>
+<span id="2591">2591</span>
+<span id="2592">2592</span>
+<span id="2593">2593</span>
+<span id="2594">2594</span>
+<span id="2595">2595</span>
+<span id="2596">2596</span>
+<span id="2597">2597</span>
+<span id="2598">2598</span>
+<span id="2599">2599</span>
+<span id="2600">2600</span>
+<span id="2601">2601</span>
+<span id="2602">2602</span>
+<span id="2603">2603</span>
+<span id="2604">2604</span>
+<span id="2605">2605</span>
+<span id="2606">2606</span>
+<span id="2607">2607</span>
+<span id="2608">2608</span>
+<span id="2609">2609</span>
+<span id="2610">2610</span>
+<span id="2611">2611</span>
+<span id="2612">2612</span>
+<span id="2613">2613</span>
+<span id="2614">2614</span>
+<span id="2615">2615</span>
+<span id="2616">2616</span>
+<span id="2617">2617</span>
+<span id="2618">2618</span>
+<span id="2619">2619</span>
+<span id="2620">2620</span>
+<span id="2621">2621</span>
+<span id="2622">2622</span>
+<span id="2623">2623</span>
+<span id="2624">2624</span>
+<span id="2625">2625</span>
+<span id="2626">2626</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -3128,10 +3196,20 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_is_of_type&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">is_type</span>(<span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>())
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns `true` if the type of the value corresponds to `type_`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is equivalent to [`self.type_().is_subtype_of(type_)`](VariantTy::is_subtype_of).</span>
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_is_of_type&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib</span>(<span class="ident">ffi::g_variant_is_of_type</span>(
                 <span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">T::static_variant_type</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             ))
         }
     }
@@ -3396,8 +3474,20 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">array_from_iter</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span>, <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">Variant</span><span class="op">&gt;</span><span class="op">&gt;</span>(
         <span class="ident">children</span>: <span class="ident">I</span>,
     ) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">T::static_variant_type</span>();
+        <span class="ident"><span class="self">Self</span>::array_from_iter_with_type</span>(<span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>(), <span class="ident">children</span>)
+    }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a new Variant array from children with the specified type.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function panics if not all variants are of type `type_`.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_array&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">array_from_iter_with_type</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">Variant</span><span class="op">&gt;</span><span class="op">&gt;</span>(
+        <span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>,
+        <span class="ident">children</span>: <span class="ident">I</span>,
+    ) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit::uninit</span>();
             <span class="ident">ffi::g_variant_builder_init</span>(<span class="ident">builder</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">type_</span>.<span class="ident">as_array</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
@@ -3407,7 +3497,7 @@
                     <span class="op">==</span> <span class="ident">ffi::GFALSE</span>
                 {
                     <span class="ident">ffi::g_variant_builder_clear</span>(<span class="kw-2">&amp;mut</span> <span class="ident">builder</span>);
-                    <span class="macro">assert!</span>(<span class="ident">value</span>.<span class="ident">is</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+                    <span class="macro">assert!</span>(<span class="ident">value</span>.<span class="ident">is_type</span>(<span class="ident">type_</span>));
                 }
 
                 <span class="ident">ffi::g_variant_builder_add_value</span>(<span class="kw-2">&amp;mut</span> <span class="ident">builder</span>, <span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
@@ -3452,20 +3542,53 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_maybe&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_maybe</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span>(<span class="ident">child</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Variant</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">type_</span> <span class="op">=</span> <span class="ident">T::static_variant_type</span>();
-        <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">child</span> {
+        <span class="kw">match</span> <span class="ident">child</span> {
             <span class="prelude-val">Some</span>(<span class="ident">child</span>) =&gt; {
                 <span class="macro">assert_eq!</span>(<span class="ident">type_</span>, <span class="ident">child</span>.<span class="ident">type_</span>());
 
-                <span class="ident">child</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>
+                <span class="ident"><span class="self">Self</span>::from_some</span>(<span class="ident">child</span>)
             }
-            <span class="prelude-val">None</span> =&gt; <span class="ident">std::ptr::null</span>(),
-        };
+            <span class="prelude-val">None</span> =&gt; <span class="ident"><span class="self">Self</span>::from_none</span>(<span class="kw-2">&amp;</span><span class="ident">type_</span>),
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a new maybe Variant from a child.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_maybe&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_some</span>(<span class="ident">child</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">unsafe</span> {
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_maybe</span>(
-                <span class="ident">type_</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
-                <span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">ffi::GVariant</span>,
+                <span class="ident">ptr::null</span>(),
+                <span class="ident">child</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
             ))
         }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a new maybe Variant with Nothing.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_maybe&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_none</span>(<span class="ident">type_</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="self">Self</span> {
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_maybe</span>(
+                <span class="ident">type_</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">ptr::null_mut</span>(),
+            ))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Extract the value of a maybe Variant.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Returns the child value, or `None` if the value is Nothing.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Panics if compiled with `debug_assertions` and the variant is not maybe-typed.</span>
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_maybe</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
+        <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">type_</span>().<span class="ident">is_maybe</span>());
+
+        <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_get_maybe</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -5098,6 +5221,19 @@
         <span class="kw">let</span> <span class="ident">a</span> <span class="op">=</span> ().<span class="ident">to_variant</span>();
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">type_</span>().<span class="ident">as_str</span>(), <span class="string">&quot;()&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">a</span>.<span class="ident">get</span>::<span class="op">&lt;</span>()<span class="op">&gt;</span>(), <span class="prelude-val">Some</span>(()));
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_maybe</span>() {
+        <span class="macro">assert!</span>(<span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::static_variant_type</span>().<span class="ident">is_maybe</span>());
+        <span class="kw">let</span> <span class="ident">m1</span> <span class="op">=</span> <span class="prelude-val">Some</span>(()).<span class="ident">to_variant</span>();
+        <span class="macro">assert_eq!</span>(<span class="ident">m1</span>.<span class="ident">type_</span>().<span class="ident">as_str</span>(), <span class="string">&quot;m()&quot;</span>);
+
+        <span class="macro">assert_eq!</span>(<span class="ident">m1</span>.<span class="ident">get</span>::<span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>()<span class="op">&gt;</span><span class="op">&gt;</span>(), <span class="prelude-val">Some</span>(<span class="prelude-val">Some</span>(())));
+        <span class="macro">assert!</span>(<span class="ident">m1</span>.<span class="ident">as_maybe</span>().<span class="ident">is_some</span>());
+
+        <span class="kw">let</span> <span class="ident">m2</span> <span class="op">=</span> <span class="prelude-val">None</span>::<span class="op">&lt;</span>()<span class="op">&gt;</span>.<span class="ident">to_variant</span>();
+        <span class="macro">assert!</span>(<span class="ident">m2</span>.<span class="ident">as_maybe</span>().<span class="ident">is_none</span>());
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
