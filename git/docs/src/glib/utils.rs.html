@@ -453,6 +453,53 @@
 <span id="375">375</span>
 <span id="376">376</span>
 <span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -492,6 +539,22 @@
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_set_prgname</span>(<span class="ident">name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
 }
 
+<span class="doccomment">/// Returns the value of an environment variable.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX, the name and value are byte strings which might or might not</span>
+<span class="doccomment">/// be in some consistent character set and encoding. On Windows, they are</span>
+<span class="doccomment">/// in UTF-8.</span>
+<span class="doccomment">/// On Windows, in case the environment variable&#39;s value contains</span>
+<span class="doccomment">/// references to other environment variables, they are expanded.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to get</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the value of the environment variable, or [`None`] if</span>
+<span class="doccomment">///  the environment variable is not found. The returned string</span>
+<span class="doccomment">///  may be overwritten by the next call to [`getenv()`][crate::getenv()], [`setenv()`][crate::setenv()]</span>
+<span class="doccomment">///  or [`unsetenv()`][crate::unsetenv()].</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_getenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">getenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">OsString</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -502,6 +565,9 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_getenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// pointer contents of `self`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_setenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">variable_name</span>: <span class="ident">K</span>,
@@ -545,6 +611,14 @@
     }
 }
 
+<span class="doccomment">/// Gets the user name of the current user. The encoding of the returned</span>
+<span class="doccomment">/// string is system-defined. On UNIX, it might be the preferred file name</span>
+<span class="doccomment">/// encoding, or something else, and there is no guarantee that it is even</span>
+<span class="doccomment">/// consistent on a machine. On Windows, it is always UTF-8.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the user name of the current user.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_name&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_name&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_name</span>() -&gt; <span class="ident">OsString</span> {
@@ -651,6 +725,26 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_tmp_dir</span>()) }
 }
 
+<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
+<span class="doccomment">/// on most UNIX-like systems.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
+<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
+<span class="doccomment">/// [`mkstemp()`][crate::mkstemp()] is slightly more flexible than `mkstemp()` in that the</span>
+<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
+<span class="doccomment">/// The X string will be modified to form the name of a file that</span>
+<span class="doccomment">/// didn&#39;t exist. The string should be in the GLib file name encoding.</span>
+<span class="doccomment">/// Most importantly, on Windows it should be in UTF-8.</span>
+<span class="doccomment">/// ## `tmpl`</span>
+<span class="doccomment">/// template filename</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A file handle (as from `open()`) to the file</span>
+<span class="doccomment">///  opened for reading and writing. The file is opened in binary</span>
+<span class="doccomment">///  mode on platforms where there is a difference. The file handle</span>
+<span class="doccomment">///  should be closed with `close()`. In case of errors, -1 is</span>
+<span class="doccomment">///  returned and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">tmpl</span>: <span class="ident">P</span>) -&gt; <span class="ident">i32</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -831,5 +925,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (08df8b81d 2022-01-30)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (498eeb72f 2022-01-31)" ></div>
 </body></html>
