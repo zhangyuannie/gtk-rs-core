@@ -401,6 +401,18 @@
 <span id="323">323</span>
 <span id="324">324</span>
 <span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -541,7 +553,12 @@
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">BorrowError::from</span>(<span class="ident">Error::SurfaceFinished</span>));
             }
             <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">height</span>() <span class="kw">as</span> <span class="ident">usize</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">stride</span>() <span class="kw">as</span> <span class="ident">usize</span>;
-            <span class="ident">f</span>(<span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span>, <span class="ident">len</span>));
+            <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+                <span class="kw-2">&amp;</span>[]
+            } <span class="kw">else</span> {
+                <span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span>, <span class="ident">len</span>)
+            };
+            <span class="ident">f</span>(<span class="ident">data</span>);
         }
         <span class="prelude-val">Ok</span>(())
     }
@@ -589,7 +606,9 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">stride</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">height</span>() <span class="kw">as</span> <span class="ident">usize</span>);
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::cairo_image_surface_get_data</span>(<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">to_raw_none</span>());
-            <span class="macro">debug_assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
+            <span class="kw">if</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+                <span class="kw">return</span> <span class="kw-2">&amp;</span>[];
+            }
             <span class="ident">slice::from_raw_parts</span>(<span class="ident">ptr</span>, <span class="ident">len</span>)
         }
     }
@@ -600,7 +619,9 @@
         <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">stride</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> (<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">height</span>() <span class="kw">as</span> <span class="ident">usize</span>);
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::cairo_image_surface_get_data</span>(<span class="self">self</span>.<span class="ident">surface</span>.<span class="ident">to_raw_none</span>());
-            <span class="macro">debug_assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
+            <span class="kw">if</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+                <span class="kw">return</span> <span class="kw-2">&amp;mut</span> [];
+            }
             <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="ident">len</span>)
         }
     }
@@ -634,11 +655,14 @@
     <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">surface</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">ImageSurface</span>) -&gt; <span class="ident">ImageSurfaceData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::cairo_image_surface_get_data</span>(<span class="ident">surface</span>.<span class="ident">to_raw_none</span>());
-            <span class="macro">debug_assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
             <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> (<span class="ident">surface</span>.<span class="ident">stride</span>() <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">*</span> (<span class="ident">surface</span>.<span class="ident">height</span>() <span class="kw">as</span> <span class="ident">usize</span>);
             <span class="ident">ImageSurfaceData</span> {
                 <span class="ident">surface</span>,
-                <span class="ident">slice</span>: <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="ident">len</span>),
+                <span class="ident">slice</span>: <span class="kw">if</span> <span class="ident">ptr</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+                    <span class="kw-2">&amp;mut</span> []
+                } <span class="kw">else</span> {
+                    <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="ident">len</span>)
+                },
                 <span class="ident">dirty</span>: <span class="bool-val">false</span>,
             }
         }
@@ -727,5 +751,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (f624427f8 2022-02-06)" ></div>
 </body></html>

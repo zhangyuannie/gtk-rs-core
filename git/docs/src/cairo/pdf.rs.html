@@ -344,6 +344,11 @@
 <span id="266">266</span>
 <span id="267">267</span>
 <span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::convert::TryFrom</span>;
@@ -395,7 +400,12 @@
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">num_vers</span> <span class="op">=</span> <span class="ident">mem::MaybeUninit::uninit</span>();
             <span class="ident">ffi::cairo_pdf_get_versions</span>(<span class="kw-2">&amp;mut</span> <span class="ident">vers_ptr</span>, <span class="ident">num_vers</span>.<span class="ident">as_mut_ptr</span>());
 
-            <span class="ident">std::slice::from_raw_parts</span>(<span class="ident">vers_ptr</span>, <span class="ident">num_vers</span>.<span class="ident">assume_init</span>() <span class="kw">as</span> <span class="kw">_</span>)
+            <span class="kw">let</span> <span class="ident">num_vers</span> <span class="op">=</span> <span class="ident">num_vers</span>.<span class="ident">assume_init</span>();
+            <span class="kw">if</span> <span class="ident">num_vers</span> <span class="op">==</span> <span class="number">0</span> {
+                <span class="kw-2">&amp;</span>[]
+            } <span class="kw">else</span> {
+                <span class="ident">std::slice::from_raw_parts</span>(<span class="ident">vers_ptr</span>, <span class="ident">num_vers</span> <span class="kw">as</span> <span class="kw">_</span>)
+            }
         };
         <span class="ident">vers_slice</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">PdfVersion::from</span>(<span class="kw-2">*</span><span class="ident">v</span>))
     }
@@ -613,5 +623,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (f624427f8 2022-02-06)" ></div>
 </body></html>

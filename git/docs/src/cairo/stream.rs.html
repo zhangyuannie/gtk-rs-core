@@ -344,6 +344,12 @@
 <span id="266">266</span>
 <span id="267">267</span>
 <span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
@@ -570,7 +576,13 @@
             <span class="comment">// with a W parameter consistent with the box that was unsized to `Box&lt;dyn Any&gt;`.</span>
             <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">stream</span>.<span class="ident">downcast_mut_unchecked</span>::<span class="op">&lt;</span><span class="ident">W</span><span class="op">&gt;</span>() };
             <span class="comment">// Safety: this is the callback contract from cairo’s API</span>
-            <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">std::slice::from_raw_parts</span>(<span class="ident">data</span>, <span class="ident">length</span> <span class="kw">as</span> <span class="ident">usize</span>) };
+            <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+                <span class="kw">if</span> <span class="ident">data</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">length</span> <span class="op">==</span> <span class="number">0</span> {
+                    <span class="kw-2">&amp;</span>[]
+                } <span class="kw">else</span> {
+                    <span class="ident">std::slice::from_raw_parts</span>(<span class="ident">data</span>, <span class="ident">length</span> <span class="kw">as</span> <span class="ident">usize</span>)
+                }
+            };
             <span class="comment">// Because `&lt;W as Write&gt;::write_all` is a generic,</span>
             <span class="comment">// we must conservatively assume that it can panic.</span>
             <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">std::panic::catch_unwind</span>(<span class="ident">AssertUnwindSafe</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">stream</span>.<span class="ident">write_all</span>(<span class="ident">data</span>)));
@@ -613,5 +625,5 @@
 }
 <span class="kw">impl</span> <span class="ident">AnyExt</span> <span class="kw">for</span> <span class="kw">dyn</span> <span class="ident">Any</span> {}
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (f624427f8 2022-02-06)" ></div>
 </body></html>
