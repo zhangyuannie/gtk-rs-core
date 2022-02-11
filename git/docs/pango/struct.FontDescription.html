@@ -83,7 +83,7 @@ manner.</p>
 available on the system and also for specifying the characteristics of
 a font to load.</p>
 </div></details><h2 id="implementations" class="small-section-header">Implementations<a href="#implementations" class="anchor"></a></h2><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#32-599">source</a></span><a href="#impl" class="anchor"></a><h3 class="code-header in-band">impl <a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><section id="method.new" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#40-42">source</a></span><a href="#method.new" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.new" class="fnname">new</a>() -&gt; <a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a></h4></section></summary><div class="docblock"><p>Creates a new font description structure with all fields unset.</p>
-<h5 id="returns" class="section-header"><a href="#returns">Returns</a></h5>
+<h5 id="returns"><a href="#returns">Returns</a></h5>
 <p>the newly allocated <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>, which
 should be freed using <code>Pango::FontDescription::free()</code>.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.better_match" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#64-76">source</a></span><a href="#method.better_match" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.better_match" class="fnname">better_match</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;old_match: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;new_match: &amp;<a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a><br>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Determines if the style attributes of @new_match are a closer match
@@ -95,31 +95,31 @@ and size-related attributes. Approximate matching for style considers
 <a href="enum.Style.html#variant.Oblique" title="crate::Style::Oblique"><code>Style::Oblique</code></a> and <a href="enum.Style.html#variant.Italic" title="crate::Style::Italic"><code>Style::Italic</code></a> as matches, but not as good
 a match as when the styles are equal.</p>
 <p>Note that @old_match must match @self.</p>
-<h6 id="old_match" class="section-header"><a href="#old_match"><code>old_match</code></a></h6>
+<h6 id="old_match"><a href="#old_match"><code>old_match</code></a></h6>
 <p>a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h6 id="new_match" class="section-header"><a href="#new_match"><code>new_match</code></a></h6>
+<h6 id="new_match"><a href="#new_match"><code>new_match</code></a></h6>
 <p>a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a></p>
-<h5 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h5>
+<h5 id="returns-1"><a href="#returns-1">Returns</a></h5>
 <p><a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a> if @new_match is a better match</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.family" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#99-105">source</a></span><a href="#method.family" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.family" class="fnname">family</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></section></summary><div class="docblock"><p>Gets the family name field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_family" title="Self::set_family()"><code>set_family()</code></a>.</p>
-<h5 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h5>
+<h5 id="returns-2"><a href="#returns-2">Returns</a></h5>
 <p>the family name field for the font
 description, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if not previously set. This has the same
 life-time as the font description itself and should not be freed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.gravity" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#118-124">source</a></span><a href="#method.gravity" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.gravity" class="fnname">gravity</a>(&amp;self) -&gt; <a class="enum" href="enum.Gravity.html" title="enum pango::Gravity">Gravity</a></h4></section></summary><div class="docblock"><p>Gets the gravity field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_gravity" title="Self::set_gravity()"><code>set_gravity()</code></a>.</p>
-<h5 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h5>
+<h5 id="returns-3"><a href="#returns-3">Returns</a></h5>
 <p>the gravity field for the font description.
 Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a> to find out
 if the field was explicitly set or not.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_fields" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#134-140">source</a></span><a href="#method.set_fields" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_fields" class="fnname">set_fields</a>(&amp;self) -&gt; <a class="struct" href="struct.FontMask.html" title="struct pango::FontMask">FontMask</a></h4></section></summary><div class="docblock"><p>Determines which fields in a font description have been set.</p>
-<h5 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h5>
+<h5 id="returns-4"><a href="#returns-4">Returns</a></h5>
 <p>a bitmask with bits set corresponding to the
 fields in @self that have been set.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.size" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#157-159">source</a></span><a href="#method.size" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.size" class="fnname">size</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></h4></section></summary><div class="docblock"><p>Gets the size field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_size" title="Self::set_size()"><code>set_size()</code></a>.</p>
-<h5 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h5>
+<h5 id="returns-5"><a href="#returns-5">Returns</a></h5>
 <p>the size field for the font description in points
 or device units. You must call
 <a href="struct.FontDescription.html#method.is_size_absolute" title="Self::is_size_absolute()"><code>is_size_absolute()</code></a> to find out
@@ -131,38 +131,38 @@ if the field was explicitly set or not.</p>
 or device units (absolute).</p>
 <p>See <a href="struct.FontDescription.html#method.set_size" title="Self::set_size()"><code>set_size()</code></a>
 and <a href="struct.FontDescription.html#method.set_absolute_size" title="Self::set_absolute_size()"><code>set_absolute_size()</code></a>.</p>
-<h5 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h5>
+<h5 id="returns-6"><a href="#returns-6">Returns</a></h5>
 <p>whether the size for the font description is in
 points or device units. Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a>
 to find out if the size field of the font description was explicitly
 set or not.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.stretch" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#194-200">source</a></span><a href="#method.stretch" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.stretch" class="fnname">stretch</a>(&amp;self) -&gt; <a class="enum" href="enum.Stretch.html" title="enum pango::Stretch">Stretch</a></h4></section></summary><div class="docblock"><p>Gets the stretch field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_stretch" title="Self::set_stretch()"><code>set_stretch()</code></a>.</p>
-<h5 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h5>
+<h5 id="returns-7"><a href="#returns-7">Returns</a></h5>
 <p>the stretch field for the font description.
 Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a> to find
 out if the field was explicitly set or not.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.style" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#213-215">source</a></span><a href="#method.style" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.style" class="fnname">style</a>(&amp;self) -&gt; <a class="enum" href="enum.Style.html" title="enum pango::Style">Style</a></h4></section></summary><div class="docblock"><p>Gets the style field of a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>.</p>
 <p>See <a href="struct.FontDescription.html#method.set_style" title="Self::set_style()"><code>set_style()</code></a>.</p>
-<h5 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h5>
+<h5 id="returns-8"><a href="#returns-8">Returns</a></h5>
 <p>the style field for the font description.
 Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a> to
 find out if the field was explicitly set or not.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.variant" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#228-234">source</a></span><a href="#method.variant" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.variant" class="fnname">variant</a>(&amp;self) -&gt; <a class="enum" href="enum.Variant.html" title="enum pango::Variant">Variant</a></h4></section></summary><div class="docblock"><p>Gets the variant field of a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>.</p>
 <p>See <a href="struct.FontDescription.html#method.set_variant" title="Self::set_variant()"><code>set_variant()</code></a>.</p>
-<h5 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h5>
+<h5 id="returns-9"><a href="#returns-9">Returns</a></h5>
 <p>the variant field for the font description.
 Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a> to find
 out if the field was explicitly set or not.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.variations" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#249-255">source</a></span><a href="#method.variations" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.variations" class="fnname">variations</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></section><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_42</code></strong> only.</div></div></summary><div class="docblock"><p>Gets the variations field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_variations" title="Self::set_variations()"><code>set_variations()</code></a>.</p>
-<h5 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h5>
+<h5 id="returns-10"><a href="#returns-10">Returns</a></h5>
 <p>the variations field for the font
 description, or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a> if not previously set. This has the same
 life-time as the font description itself and should not be freed.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.weight" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#268-274">source</a></span><a href="#method.weight" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.weight" class="fnname">weight</a>(&amp;self) -&gt; <a class="enum" href="enum.Weight.html" title="enum pango::Weight">Weight</a></h4></section></summary><div class="docblock"><p>Gets the weight field of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.set_weight" title="Self::set_weight()"><code>set_weight()</code></a>.</p>
-<h5 id="returns-11" class="section-header"><a href="#returns-11">Returns</a></h5>
+<h5 id="returns-11"><a href="#returns-11">Returns</a></h5>
 <p>the weight field for the font description.
 Use <a href="struct.FontDescription.html#method.set_fields" title="Self::set_fields()"><code>set_fields()</code></a> to find
 out if the field was explicitly set or not.</p>
@@ -172,17 +172,17 @@ out if the field was explicitly set or not.</p>
 are not already set are affected. If <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, then fields that are
 already set will be replaced as well.</p>
 <p>If @desc_to_merge is <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a>, this function performs nothing.</p>
-<h6 id="desc_to_merge" class="section-header"><a href="#desc_to_merge"><code>desc_to_merge</code></a></h6>
+<h6 id="desc_to_merge"><a href="#desc_to_merge"><code>desc_to_merge</code></a></h6>
 <p>the <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a> to merge from,
 or <a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None" title="None"><code>None</code></a></p>
-<h6 id="replace_existing" class="section-header"><a href="#replace_existing"><code>replace_existing</code></a></h6>
+<h6 id="replace_existing"><a href="#replace_existing"><code>replace_existing</code></a></h6>
 <p>if <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html" title="true"><code>true</code></a>, replace fields in @self with the
 corresponding values from @desc_to_merge, even if they
 are already exist.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_absolute_size" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#316-320">source</a></span><a href="#method.set_absolute_size" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_absolute_size" class="fnname">set_absolute_size</a>(&amp;mut self, size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>)</h4></section></summary><div class="docblock"><p>Sets the size field of a font description, in device units.</p>
 <p>This is mutually exclusive with <a href="struct.FontDescription.html#method.set_size" title="Self::set_size()"><code>set_size()</code></a>
 which sets the font size in points.</p>
-<h6 id="size" class="section-header"><a href="#size"><code>size</code></a></h6>
+<h6 id="size"><a href="#size"><code>size</code></a></h6>
 <p>the new size, in Pango units. There are <code>PANGO_SCALE</code> Pango units
 in one device unit. For an output backend where a device unit is a pixel,
 a @size value of 10 * PANGO_SCALE gives a 10 pixel font.</p>
@@ -192,7 +192,7 @@ name represents a family of related font styles, and will
 resolve to a particular <a href="struct.FontFamily.html" title="crate::FontFamily"><code>FontFamily</code></a>. In some uses of
 <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>, it is also possible to use a comma
 separated list of family names for this field.</p>
-<h6 id="family" class="section-header"><a href="#family"><code>family</code></a></h6>
+<h6 id="family"><a href="#family"><code>family</code></a></h6>
 <p>a string representing the family name.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_gravity" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#353-357">source</a></span><a href="#method.set_gravity" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_gravity" class="fnname">set_gravity</a>(&amp;mut self, gravity: <a class="enum" href="enum.Gravity.html" title="enum pango::Gravity">Gravity</a>)</h4></section></summary><div class="docblock"><p>Sets the gravity field of a font description.</p>
 <p>The gravity field
@@ -201,12 +201,12 @@ specifies how the glyphs should be rotated. If @gravity is
 the font description.</p>
 <p>This function is seldom useful to the user. Gravity should normally
 be set on a <a href="struct.Context.html" title="crate::Context"><code>Context</code></a>.</p>
-<h6 id="gravity" class="section-header"><a href="#gravity"><code>gravity</code></a></h6>
+<h6 id="gravity"><a href="#gravity"><code>gravity</code></a></h6>
 <p>the gravity for the font description.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_size" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#373-377">source</a></span><a href="#method.set_size" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_size" class="fnname">set_size</a>(&amp;mut self, size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</h4></section></summary><div class="docblock"><p>Sets the size field of a font description in fractional points.</p>
 <p>This is mutually exclusive with
 <a href="struct.FontDescription.html#method.set_absolute_size" title="Self::set_absolute_size()"><code>set_absolute_size()</code></a>.</p>
-<h6 id="size-1" class="section-header"><a href="#size-1"><code>size</code></a></h6>
+<h6 id="size-1"><a href="#size-1"><code>size</code></a></h6>
 <p>the size of the font in points, scaled by <code>PANGO_SCALE</code>.
 (That is, a @size value of 10 * PANGO_SCALE is a 10 point font.
 The conversion factor between points and device units depends on
@@ -218,7 +218,7 @@ a particular size in device units.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_stretch" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#386-390">source</a></span><a href="#method.set_stretch" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_stretch" class="fnname">set_stretch</a>(&amp;mut self, stretch: <a class="enum" href="enum.Stretch.html" title="enum pango::Stretch">Stretch</a>)</h4></section></summary><div class="docblock"><p>Sets the stretch field of a font description.</p>
 <p>The <a href="enum.Stretch.html" title="crate::Stretch"><code>Stretch</code></a> field specifies how narrow or
 wide the font should be.</p>
-<h6 id="stretch" class="section-header"><a href="#stretch"><code>stretch</code></a></h6>
+<h6 id="stretch"><a href="#stretch"><code>stretch</code></a></h6>
 <p>the stretch for the font description</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_style" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#405-409">source</a></span><a href="#method.set_style" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_style" class="fnname">set_style</a>(&amp;mut self, style: <a class="enum" href="enum.Style.html" title="enum pango::Style">Style</a>)</h4></section></summary><div class="docblock"><p>Sets the style field of a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>.</p>
 <p>The <a href="enum.Style.html" title="crate::Style"><code>Style</code></a> enumeration describes whether the font is
@@ -228,12 +228,12 @@ slanted and the manner in which it is slanted; it can be either
 but not both, and font matching in Pango will match italic
 specifications with oblique fonts and vice-versa if an exact
 match is not found.</p>
-<h6 id="style" class="section-header"><a href="#style"><code>style</code></a></h6>
+<h6 id="style"><a href="#style"><code>style</code></a></h6>
 <p>the style for the font description</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_variant" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#418-422">source</a></span><a href="#method.set_variant" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_variant" class="fnname">set_variant</a>(&amp;mut self, variant: <a class="enum" href="enum.Variant.html" title="enum pango::Variant">Variant</a>)</h4></section></summary><div class="docblock"><p>Sets the variant field of a font description.</p>
 <p>The [<code>Variant</code>][struct@crate::Variant] can either be <a href="enum.Variant.html#variant.Normal" title="crate::Variant::Normal"><code>Variant::Normal</code></a>
 or <a href="enum.Variant.html#variant.SmallCaps" title="crate::Variant::SmallCaps"><code>Variant::SmallCaps</code></a>.</p>
-<h6 id="variant" class="section-header"><a href="#variant"><code>variant</code></a></h6>
+<h6 id="variant"><a href="#variant"><code>variant</code></a></h6>
 <p>the variant type for the font description.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_variations" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#445-452">source</a></span><a href="#method.set_variations" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_variations" class="fnname">set_variations</a>(&amp;mut self, variations: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;)</h4></section><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_42</code></strong> only.</div></div></summary><div class="docblock"><p>Sets the variations field of a font description.</p>
 <p>OpenType font variations allow to select a font instance by
@@ -247,7 +247,7 @@ and values are clamped to their allowed range.</p>
 <p>Pango does not currently have a way to find supported axes of
 a font. Both harfbuzz and freetype have API for this. See
 for example <a href="https://harfbuzz.github.io/harfbuzz-hb-ot-var.html#hb-ot-var-get-axis-infos">hb_ot_var_get_axis_infos</a>.</p>
-<h6 id="variations" class="section-header"><a href="#variations"><code>variations</code></a></h6>
+<h6 id="variations"><a href="#variations"><code>variations</code></a></h6>
 <p>a string representing the variations</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_variations_static" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#467-474">source</a></span><a href="#method.set_variations_static" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_variations_static" class="fnname">set_variations_static</a>(&amp;mut self, variations: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)</h4></section><div class="item-info"><div class="stab portability">This is supported on <strong>crate feature <code>v1_42</code></strong> only.</div></div></summary><div class="docblock"><p>Sets the variations field of a font description.</p>
 <p>This is like <a href="struct.FontDescription.html#method.set_variations" title="Self::set_variations()"><code>set_variations()</code></a>, except
@@ -256,32 +256,32 @@ the string passed in stays around until @self has been freed
 or the name is set again. This function can be used if
 @variations is a static string such as a C string literal,
 or if @self is only needed temporarily.</p>
-<h6 id="variations-1" class="section-header"><a href="#variations-1"><code>variations</code></a></h6>
+<h6 id="variations-1"><a href="#variations-1"><code>variations</code></a></h6>
 <p>a string representing the variations</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.set_weight" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#485-489">source</a></span><a href="#method.set_weight" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.set_weight" class="fnname">set_weight</a>(&amp;mut self, weight: <a class="enum" href="enum.Weight.html" title="enum pango::Weight">Weight</a>)</h4></section></summary><div class="docblock"><p>Sets the weight field of a font description.</p>
 <p>The weight field
 specifies how bold or light the font should be. In addition
 to the values of the <a href="enum.Weight.html" title="crate::Weight"><code>Weight</code></a> enumeration, other
 intermediate numeric values are possible.</p>
-<h6 id="weight" class="section-header"><a href="#weight"><code>weight</code></a></h6>
+<h6 id="weight"><a href="#weight"><code>weight</code></a></h6>
 <p>the weight for the font description.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.to_filename" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#502-508">source</a></span><a href="#method.to_filename" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_filename" class="fnname">to_filename</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a>&gt;</h4></section></summary><div class="docblock"><p>Creates a filename representation of a font description.</p>
 <p>The filename is identical to the result from calling
 <a href="struct.FontDescription.html#method.to_str" title="Self::to_str()"><code>to_str()</code></a>, but with underscores
 instead of characters that are untypical in filenames, and in
 lower case only.</p>
-<h5 id="returns-12" class="section-header"><a href="#returns-12">Returns</a></h5>
+<h5 id="returns-12"><a href="#returns-12">Returns</a></h5>
 <p>a new string that must be freed with g_free().</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.to_str" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#522-524">source</a></span><a href="#method.to_str" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.to_str" class="fnname">to_str</a>(&amp;self) -&gt; <a class="struct" href="../glib/gstring/struct.GString.html" title="struct glib::gstring::GString">GString</a></h4></section></summary><div class="docblock"><p>Creates a string representation of a font description.</p>
 <p>See <a href="struct.FontDescription.html#method.from_string" title="Self::from_string()"><code>from_string()</code></a> for a description
 of the format of the string representation. The family list in
 the string description will only have a terminating comma if
 the last word of the list is a valid style option.</p>
-<h5 id="returns-13" class="section-header"><a href="#returns-13">Returns</a></h5>
+<h5 id="returns-13"><a href="#returns-13">Returns</a></h5>
 <p>a new string that must be freed with g_free().</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.unset_fields" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#532-539">source</a></span><a href="#method.unset_fields" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.unset_fields" class="fnname">unset_fields</a>(&amp;mut self, to_unset: <a class="struct" href="struct.FontMask.html" title="struct pango::FontMask">FontMask</a>)</h4></section></summary><div class="docblock"><p>Unsets some of the fields in a <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>.</p>
 <p>The unset fields will get back to their default values.</p>
-<h6 id="to_unset" class="section-header"><a href="#to_unset"><code>to_unset</code></a></h6>
+<h6 id="to_unset"><a href="#to_unset"><code>to_unset</code></a></h6>
 <p>bitmask of fields in the @self to unset.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.from_string" class="method has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#592-598">source</a></span><a href="#method.from_string" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.from_string" class="fnname">from_string</a>(str: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a></h4></section></summary><div class="docblock"><p>Creates a new font description from a string representation.</p>
 <p>The string must have the form</p>
@@ -318,9 +318,9 @@ size in the resulting font description will be set to 0.</p>
 <p>A typical example:</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="string">&quot;Cantarell Italic Light 15 \@wght=200&quot;</span></code></pre></div>
-<h6 id="str" class="section-header"><a href="#str"><code>str</code></a></h6>
+<h6 id="str"><a href="#str"><code>str</code></a></h6>
 <p>string representation of a font description.</p>
-<h5 id="returns-14" class="section-header"><a href="#returns-14">Returns</a></h5>
+<h5 id="returns-14"><a href="#returns-14">Returns</a></h5>
 <p>a new <a href="struct.FontDescription.html" title="crate::FontDescription"><code>FontDescription</code></a>.</p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-Clone" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#15-30">source</a></span><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.FontDescription.html" title="struct pango::FontDescription">FontDescription</a></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><section id="method.clone" class="method trait-impl has-srclink"><span class="rightside"><a class="srclink" href="../src/pango/auto/font_description.rs.html#15-30">source</a></span><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; Self</h4></section></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.clone_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/clone.rs.html#130">source</a></span><a href="#method.clone_from" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from" class="fnname">clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</h4></section></summary><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
@@ -357,5 +357,5 @@ operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.h
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_from" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#595">source</a></span><a href="#method.try_from" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#tymethod.try_from" class="fnname">try_from</a>(value: U) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, &lt;T as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;U&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
 </div></details></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryFromClosureReturnValue" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/glib/closure.rs.html#372-390">source</a></span><a href="#impl-TryFromClosureReturnValue" class="anchor"></a><h3 class="code-header in-band">impl&lt;T&gt; <a class="trait" href="../glib/closure/trait.TryFromClosureReturnValue.html" title="trait glib::closure::TryFromClosureReturnValue">TryFromClosureReturnValue</a> for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: 'static + for&lt;'a&gt; <a class="trait" href="../glib/value/trait.FromValue.html" title="trait glib::value::FromValue">FromValue</a>&lt;'a&gt; + <a class="trait" href="../glib/types/trait.StaticType.html" title="trait glib::types::StaticType">StaticType</a>,&nbsp;</span></h3></section></summary><div class="impl-items"><section id="method.try_from_closure_return_value" class="method trait-impl has-srclink"><span class="rightside"><a class="srclink" href="../src/glib/closure.rs.html#373">source</a></span><a href="#method.try_from_closure_return_value" class="anchor"></a><h4 class="code-header">pub fn <a href="../glib/closure/trait.TryFromClosureReturnValue.html#tymethod.try_from_closure_return_value" class="fnname">try_from_closure_return_value</a>(v: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../glib/value/struct.Value.html" title="struct glib::value::Value">Value</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, <a class="struct" href="../glib/error/struct.BoolError.html" title="struct glib::error::BoolError">BoolError</a>&gt;</h4></section></div></details><details class="rustdoc-toggle implementors-toggle" open><summary><section id="impl-TryInto%3CU%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#574-583">source</a></span><a href="#impl-TryInto%3CU%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html" title="trait core::convert::TryInto">TryInto</a>&lt;U&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;,&nbsp;</span></h3></section></summary><div class="impl-items"><details class="rustdoc-toggle" open><summary><section id="associatedtype.Error-1" class="type trait-impl has-srclink"><a href="#associatedtype.Error-1" class="anchor"></a><h4 class="code-header">type <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#associatedtype.Error" class="associatedtype">Error</a> = &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a></h4></section></summary><div class='docblock'><p>The type returned in the event of a conversion error.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><section id="method.try_into" class="method trait-impl has-srclink"><span class="rightside"><span class="since" title="const unstable">const: <a href="https://github.com/rust-lang/rust/issues/88674" title="Tracking issue for const_convert">unstable</a></span> · <a class="srclink" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#580">source</a></span><a href="#method.try_into" class="anchor"></a><h4 class="code-header">pub fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into" class="fnname">try_into</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, &lt;U as <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html" title="trait core::convert::TryFrom">TryFrom</a>&lt;T&gt;&gt;::<a class="associatedtype" href="https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html#associatedtype.Error" title="type core::convert::TryFrom::Error">Error</a>&gt;</h4></section></summary><div class='docblock'><p>Performs the conversion.</p>
-</div></details></div></details><section id="impl-FromValueOptional%3C%27a%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/glib/value.rs.html#239-244">source</a></span><a href="#impl-FromValueOptional%3C%27a%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;'a, T, C&gt; <a class="trait" href="../glib/value/trait.FromValueOptional.html" title="trait glib::value::FromValueOptional">FromValueOptional</a>&lt;'a&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../glib/value/trait.FromValue.html" title="trait glib::value::FromValue">FromValue</a>&lt;'a, Checker = C&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;C: <a class="trait" href="../glib/value/trait.ValueTypeChecker.html" title="trait glib::value::ValueTypeChecker">ValueTypeChecker</a>&lt;Error = <a class="enum" href="../glib/value/enum.ValueTypeMismatchOrNoneError.html" title="enum glib::value::ValueTypeMismatchOrNoneError">ValueTypeMismatchOrNoneError</a>&gt;,&nbsp;</span></h3></section></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (f624427f8 2022-02-06)" ></div>
+</div></details></div></details><section id="impl-FromValueOptional%3C%27a%3E" class="impl has-srclink"><span class="rightside"><a class="srclink" href="../src/glib/value.rs.html#239-244">source</a></span><a href="#impl-FromValueOptional%3C%27a%3E" class="anchor"></a><h3 class="code-header in-band">impl&lt;'a, T, C&gt; <a class="trait" href="../glib/value/trait.FromValueOptional.html" title="trait glib::value::FromValueOptional">FromValueOptional</a>&lt;'a&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../glib/value/trait.FromValue.html" title="trait glib::value::FromValue">FromValue</a>&lt;'a, Checker = C&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;C: <a class="trait" href="../glib/value/trait.ValueTypeChecker.html" title="trait glib::value::ValueTypeChecker">ValueTypeChecker</a>&lt;Error = <a class="enum" href="../glib/value/enum.ValueTypeMismatchOrNoneError.html" title="enum glib::value::ValueTypeMismatchOrNoneError">ValueTypeMismatchOrNoneError</a>&gt;,&nbsp;</span></h3></section></div></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (e646f3d2a 2022-02-10)" ></div>
 </body></html>
