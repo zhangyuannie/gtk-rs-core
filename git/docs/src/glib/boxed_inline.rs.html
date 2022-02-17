@@ -1062,7 +1062,7 @@
 
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">Vec::with_capacity</span>(<span class="ident">num</span>);
                 <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="ident">num</span> {
-                    <span class="ident">res</span>.<span class="ident">push</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::from_glib_full</span>(<span class="ident">ptr</span>.<span class="ident">add</span>(<span class="ident">i</span>)));
+                    <span class="ident">res</span>.<span class="ident">push</span>(<span class="ident">std::ptr::read</span>(<span class="ident">ptr</span>.<span class="ident">add</span>(<span class="ident">i</span>) <span class="kw">as</span> <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>));
                 }
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>);
                 <span class="ident">res</span>
