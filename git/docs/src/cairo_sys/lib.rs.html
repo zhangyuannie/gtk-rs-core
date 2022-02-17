@@ -1724,6 +1724,17 @@
 <span id="1646">1646</span>
 <span id="1647">1647</span>
 <span id="1648">1648</span>
+<span id="1649">1649</span>
+<span id="1650">1650</span>
+<span id="1651">1651</span>
+<span id="1652">1652</span>
+<span id="1653">1653</span>
+<span id="1654">1654</span>
+<span id="1655">1655</span>
+<span id="1656">1656</span>
+<span id="1657">1657</span>
+<span id="1658">1658</span>
+<span id="1659">1659</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
@@ -1931,7 +1942,7 @@
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Matrix</span> {
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">cairo_matrix_t</span> {
     <span class="kw">pub</span> <span class="ident">xx</span>: <span class="ident">c_double</span>,
     <span class="kw">pub</span> <span class="ident">yx</span>: <span class="ident">c_double</span>,
 
@@ -1942,7 +1953,7 @@
     <span class="kw">pub</span> <span class="ident">y0</span>: <span class="ident">c_double</span>,
 }
 
-<span class="kw">impl</span> <span class="ident">::std::fmt::Display</span> <span class="kw">for</span> <span class="ident">Matrix</span> {
+<span class="kw">impl</span> <span class="ident">::std::fmt::Display</span> <span class="kw">for</span> <span class="ident">cairo_matrix_t</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::std::fmt::Formatter</span>) -&gt; <span class="ident">::std::fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Matrix&quot;</span>)
     }
@@ -2163,9 +2174,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_translate</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">tx</span>: <span class="ident">c_double</span>, <span class="ident">ty</span>: <span class="ident">c_double</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scale</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">sx</span>: <span class="ident">c_double</span>, <span class="ident">sy</span>: <span class="ident">c_double</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_rotate</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">angle</span>: <span class="ident">c_double</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_transform</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_transform</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_identity_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_user_to_device</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">x</span>: <span class="kw-2">*mut</span> <span class="ident">c_double</span>, <span class="ident">y</span>: <span class="kw-2">*mut</span> <span class="ident">c_double</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_user_to_device_distance</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">dx</span>: <span class="kw-2">*mut</span> <span class="ident">c_double</span>, <span class="ident">dy</span>: <span class="kw-2">*mut</span> <span class="ident">c_double</span>);
@@ -2320,8 +2331,8 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_extend</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>) -&gt; <span class="ident">cairo_extend_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_set_filter</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>, <span class="ident">filter</span>: <span class="ident">cairo_filter_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_filter</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>) -&gt; <span class="ident">cairo_filter_t</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_set_matrix</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_matrix</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_set_matrix</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_matrix</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_type</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>) -&gt; <span class="ident">cairo_pattern_type_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_get_reference_count</span>(<span class="ident">pattern</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_pattern_t</span>) -&gt; <span class="ident">c_uint</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pattern_set_user_data</span>(
@@ -2409,8 +2420,8 @@
         <span class="ident">weight</span>: <span class="ident">cairo_font_weight_t</span>,
     );
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_font_size</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">size</span>: <span class="ident">c_double</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_font_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_font_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_font_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_font_matrix</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_font_options</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">options</span>: <span class="kw-2">*const</span> <span class="ident">cairo_font_options_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_font_options</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">options</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_font_options_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_font_face</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">font_face</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_font_face_t</span>);
@@ -2528,8 +2539,8 @@
     <span class="comment">// CAIRO SCALED FONT</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_create</span>(
         <span class="ident">font_face</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_font_face_t</span>,
-        <span class="ident">font_matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>,
-        <span class="ident">ctm</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>,
+        <span class="ident">font_matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>,
+        <span class="ident">ctm</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>,
         <span class="ident">options</span>: <span class="kw-2">*const</span> <span class="ident">cairo_font_options_t</span>,
     ) -&gt; <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_reference</span>(
@@ -2573,12 +2584,15 @@
     );
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_font_matrix</span>(
         <span class="ident">scaled_font</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>,
-        <span class="ident">font_matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>,
+        <span class="ident">font_matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_ctm</span>(<span class="ident">scaled_font</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>, <span class="ident">ctm</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_ctm</span>(
+        <span class="ident">scaled_font</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>,
+        <span class="ident">ctm</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>,
+    );
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_scale_matrix</span>(
         <span class="ident">scaled_font</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>,
-        <span class="ident">scale_matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>,
+        <span class="ident">scale_matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>,
     );
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_type</span>(<span class="ident">scaled_font</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>) -&gt; <span class="ident">cairo_font_type_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_scaled_font_get_reference_count</span>(<span class="ident">font_face</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_scaled_font_t</span>) -&gt; <span class="ident">c_uint</span>;
@@ -2646,9 +2660,13 @@
     );
 
     <span class="comment">// CAIRO MATRIX</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_multiply</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>, <span class="ident">left</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>, <span class="ident">right</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_multiply</span>(
+        <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>,
+        <span class="ident">left</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>,
+        <span class="ident">right</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>,
+    );
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_init</span>(
-        <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>,
+        <span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>,
         <span class="ident">xx</span>: <span class="ident">f64</span>,
         <span class="ident">yx</span>: <span class="ident">f64</span>,
         <span class="ident">xy</span>: <span class="ident">f64</span>,
@@ -2656,13 +2674,17 @@
         <span class="ident">x0</span>: <span class="ident">f64</span>,
         <span class="ident">y0</span>: <span class="ident">f64</span>,
     );
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_init_identity</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_translate</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>, <span class="ident">tx</span>: <span class="ident">f64</span>, <span class="ident">ty</span>: <span class="ident">f64</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_scale</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>, <span class="ident">sx</span>: <span class="ident">f64</span>, <span class="ident">sy</span>: <span class="ident">f64</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_rotate</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>, <span class="ident">angle</span>: <span class="ident">f64</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_invert</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">Matrix</span>) -&gt; <span class="ident">cairo_status_t</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_transform_distance</span>(<span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>, <span class="ident">dx</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>, <span class="ident">dy</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>);
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_transform_point</span>(<span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">Matrix</span>, <span class="ident">x</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>, <span class="ident">y</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_init_identity</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_translate</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>, <span class="ident">tx</span>: <span class="ident">f64</span>, <span class="ident">ty</span>: <span class="ident">f64</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_scale</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>, <span class="ident">sx</span>: <span class="ident">f64</span>, <span class="ident">sy</span>: <span class="ident">f64</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_rotate</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>, <span class="ident">angle</span>: <span class="ident">f64</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_invert</span>(<span class="ident">matrix</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_matrix_t</span>) -&gt; <span class="ident">cairo_status_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_transform_distance</span>(
+        <span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>,
+        <span class="ident">dx</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>,
+        <span class="ident">dy</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>,
+    );
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_matrix_transform_point</span>(<span class="ident">matrix</span>: <span class="kw-2">*const</span> <span class="ident">cairo_matrix_t</span>, <span class="ident">x</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>, <span class="ident">y</span>: <span class="kw-2">*mut</span> <span class="ident">f64</span>);
 
     <span class="comment">// CAIRO SURFACE</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_destroy</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>);
@@ -3373,5 +3395,5 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CAIRO_DEVICE_TYPE_WIN32</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">7</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CAIRO_DEVICE_TYPE_INVALID</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>;
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo_sys" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (c5c610aad 2022-02-14)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo_sys" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (75d9a0ae2 2022-02-16)" ></div>
 </body></html>
