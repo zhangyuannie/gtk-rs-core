@@ -519,6 +519,7 @@
 <span id="441">441</span>
 <span id="442">442</span>
 <span id="443">443</span>
+<span id="444">444</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// TODO: support marshaller.</span>
@@ -769,9 +770,10 @@
                         );
                         <span class="kw-2">*</span><span class="ident">return_value</span> <span class="op">=</span> <span class="ident">result</span>;
                     }
+                    <span class="prelude-val">None</span> <span class="kw">if</span> <span class="ident">return_value</span>.<span class="ident">type_</span>() <span class="op">==</span> <span class="ident">Type::INVALID</span> =&gt; (),
                     <span class="prelude-val">None</span> =&gt; {
                         <span class="macro">panic!</span>(
-                            <span class="string">&quot;Closure return no value but the caller expected a value of type {}&quot;</span>,
+                            <span class="string">&quot;Closure returned no value but the caller expected a value of type {}&quot;</span>,
                             <span class="ident">return_value</span>.<span class="ident">type_</span>()
                         );
                     }
