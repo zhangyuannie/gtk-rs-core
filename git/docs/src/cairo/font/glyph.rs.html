@@ -118,7 +118,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Glyph</span>(<span class="ident">ffi::cairo_glyph_t</span>);
 
 <span class="kw">impl</span> <span class="ident">Glyph</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">libc::c_ulong</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">index</span>
     }
 
