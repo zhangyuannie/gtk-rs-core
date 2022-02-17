@@ -118,18 +118,26 @@
 <span id="40">40</span>
 <span id="41">41</span>
 <span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
+<span class="kw">mod</span> <span class="ident">font_extents</span>;
 <span class="kw">mod</span> <span class="ident">font_face</span>;
 <span class="kw">mod</span> <span class="ident">font_options</span>;
+<span class="kw">mod</span> <span class="ident">glyph</span>;
 <span class="kw">mod</span> <span class="ident">scaled_font</span>;
+<span class="kw">mod</span> <span class="ident">text_cluster</span>;
+<span class="kw">mod</span> <span class="ident">text_extents</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::enums</span>::{
     <span class="ident">Antialias</span>, <span class="ident">FontSlant</span>, <span class="ident">FontType</span>, <span class="ident">FontWeight</span>, <span class="ident">HintMetrics</span>, <span class="ident">HintStyle</span>, <span class="ident">SubpixelOrder</span>,
     <span class="ident">TextClusterFlags</span>,
 };
-
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ffi</span>::{<span class="ident">FontExtents</span>, <span class="ident">Glyph</span>, <span class="ident">TextCluster</span>, <span class="ident">TextExtents</span>};
 
 <span class="comment">/* TODO
  Allocates an array of cairo_glyph_t&#39;s. This function is only useful in
@@ -157,9 +165,13 @@ impl TextCluster {
 }
 */</span>
 
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::font_extents::FontExtents</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::font_face::FontFace</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::font_options::FontOptions</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::glyph::Glyph</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::scaled_font::ScaledFont</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::text_cluster::TextCluster</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::text_extents::TextExtents</span>;
 </code></pre></div>
 </section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (75d9a0ae2 2022-02-16)" ></div>
 </body></html>

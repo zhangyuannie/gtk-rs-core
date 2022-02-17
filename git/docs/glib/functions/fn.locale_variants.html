@@ -77,7 +77,7 @@
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../glib/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
         </a><div class="sidebar-elems"><h2 class="location"><a href="index.html">In glib::functions</a></h2><div id="sidebar-vars" data-name="locale_variants" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="main-heading">
-    <h1 class="fqn"><span class="in-band">Function <a href="../index.html">glib</a>::<wbr><a href="index.html">functions</a>::<wbr><a class="fn" href="#">locale_variants</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../src/glib/auto/functions.rs.html#957-961">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn locale_variants(locale: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../struct.GString.html" title="struct glib::GString">GString</a>&gt;</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Returns a list of derived variants of <code>locale</code>, which can be used to
+    <h1 class="fqn"><span class="in-band">Function <a href="../index.html">glib</a>::<wbr><a href="index.html">functions</a>::<wbr><a class="fn" href="#">locale_variants</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../../clipboard.svg" width="19" height="18" alt="Copy item path"></button></span></h1><span class="out-of-band"><a class="srclink" href="../../src/glib/auto/functions.rs.html#381-385">source</a> · <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span></div><div class="docblock item-decl"><pre class="rust fn"><code>pub fn locale_variants(locale: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../struct.GString.html" title="struct glib::GString">GString</a>&gt;</code></pre></div><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Returns a list of derived variants of <code>locale</code>, which can be used to
 e.g. construct locale-dependent filenames or search paths. The returned
 list is sorted from most desirable to least desirable.
 This function handles territory, charset and extra locale modifiers. See
@@ -87,12 +87,16 @@ This function handles territory, charset and extra locale modifiers. See
 is <code>fr_BE</code>, <code>fr</code>. If <code>locale</code> is <code>en_GB.UTF-8</code>euro<code>, then the returned list is `en_GB.UTF-8`euro</code>, <code>en_GB.UTF-8</code>, <code>en_GB</code>euro<code>, `en_GB`, `en.UTF-8`euro</code>,
 <code>en.UTF-8</code>, <code>en</code>euro``, <code>en</code>.</p>
 <p>If you need the list of variants for the current locale,
-use <a href="fn.language_names.html" title="crate::language_names()"><code>language_names()</code></a>.</p>
-<h3 id="locale"><a href="#locale"><code>locale</code></a></h3>
-<p>a locale identifier</p>
+use <a href="fn.language_names.html" title="language_names()"><code>language_names()</code></a>[craIncrease the reference count of <code>self</code>, and possibly remove the
+[floating][floating-ref] reference, if <code>self</code> has a floating reference.</p>
+<p>In other words, if the object is floating, then this call “assumes
+ownership” of the floating reference, converting it to a normal
+reference by clearing the floating flag while leaving the reference
+count unchanged. If the object is not floating, then this call
+adds a new normal reference increasing the reference count by one.</p>
+<p>Since GLib 2.56, the type of <code>self</code> will be propagated to the return type
+under the same conditions as for <code>g_object_ref()</code>.</p>
 <h2 id="returns"><a href="#returns">Returns</a></h2>
-<p>a newly
-allocated array of newly allocated strings with the locale variants. Free with
-<code>g_strfreev()</code>.</p>
+<p><code>self</code></p>
 </div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (75d9a0ae2 2022-02-16)" ></div>
 </body></html>
