@@ -4938,7 +4938,7 @@
                 <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">hash_map</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span>);
             <span class="ident">hash_map</span>.<span class="ident">insert</span>(<span class="ident">key</span>, <span class="ident">value</span>);
         }
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident">HashMap::new</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">map</span> <span class="op">=</span> <span class="ident">HashMap::with_capacity</span>(<span class="ident">ffi::g_hash_table_size</span>(<span class="ident">ptr</span>) <span class="kw">as</span> <span class="ident">usize</span>);
         <span class="ident">ffi::g_hash_table_foreach</span>(
             <span class="ident">ptr</span>,
             <span class="prelude-val">Some</span>(<span class="ident">read_string_hash_table</span>),
@@ -5393,5 +5393,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (75d9a0ae2 2022-02-16)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (30b3f35c4 2022-02-17)" ></div>
 </body></html>
