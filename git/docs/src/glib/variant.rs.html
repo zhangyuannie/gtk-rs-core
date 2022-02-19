@@ -2714,8 +2714,6 @@
 <span id="2636">2636</span>
 <span id="2637">2637</span>
 <span id="2638">2638</span>
-<span id="2639">2639</span>
-<span id="2640">2640</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -3553,6 +3551,20 @@
                 <span class="ident">ffi::g_variant_builder_add_value</span>(<span class="kw-2">&amp;mut</span> <span class="ident">builder</span>, <span class="ident">value</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
             }
             <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_builder_end</span>(<span class="kw-2">&amp;mut</span> <span class="ident">builder</span>))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a new dictionary entry Variant.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [DictEntry] should be preferred over this when the types are known statically.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_new_dict_entry&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_dict_entry</span>(<span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Variant</span>) -&gt; <span class="self">Self</span> {
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_dict_entry</span>(
+                <span class="ident">key</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">value</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ))
         }
     }
 
@@ -4491,10 +4503,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_type_new_maybe</span>(<span class="ident">T::static_variant_type</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-            <span class="ident">Cow::Owned</span>(<span class="ident">from_glib_full</span>(<span class="ident">ptr</span>))
-        }
+        <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::new_maybe</span>(<span class="kw-2">&amp;</span><span class="ident">T::static_variant_type</span>()))
     }
 }
 
@@ -4780,12 +4789,7 @@
     <span class="ident">V</span>: <span class="ident">StaticVariantType</span> <span class="op">+</span> <span class="ident">ToVariant</span>,
 {
     <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Variant</span> {
-        <span class="kw">unsafe</span> {
-            <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_variant_new_dict_entry</span>(
-                <span class="self">self</span>.<span class="ident">key</span>.<span class="ident">to_variant</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="self">self</span>.<span class="ident">value</span>.<span class="ident">to_variant</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-            ))
-        }
+        <span class="ident">Variant::from_dict_entry</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">to_variant</span>(), <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">value</span>.<span class="ident">to_variant</span>())
     }
 }
 
@@ -4803,13 +4807,10 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">StaticVariantType</span>, <span class="ident">V</span>: <span class="ident">StaticVariantType</span><span class="op">&gt;</span> <span class="ident">StaticVariantType</span> <span class="kw">for</span> <span class="ident">DictEntry</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_type_new_dict_entry</span>(
-                <span class="ident">K::static_variant_type</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="ident">V::static_variant_type</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-            );
-            <span class="ident">Cow::Owned</span>(<span class="ident">from_glib_full</span>(<span class="ident">ptr</span>))
-        }
+        <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::new_dict_entry</span>(
+            <span class="kw-2">&amp;</span><span class="ident">K::static_variant_type</span>(),
+            <span class="kw-2">&amp;</span><span class="ident">V::static_variant_type</span>(),
+        ))
     }
 }
 
@@ -4868,16 +4869,11 @@
                 $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>: <span class="ident">StaticVariantType</span>,)<span class="op">+</span>
             {
                 <span class="kw">fn</span> <span class="ident">static_variant_type</span>() -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
-                    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::GStringBuilder::new</span>(<span class="string">&quot;(&quot;</span>);
-
-                    $(
-                        <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name::static_variant_type</span>();
-                        <span class="ident">builder</span>.<span class="ident">append</span>(<span class="ident">t</span>.<span class="ident">as_str</span>());
-                    )<span class="op">+</span>
-
-                    <span class="ident">builder</span>.<span class="ident">append_c</span>(<span class="string">&#39;)&#39;</span>);
-
-                    <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::from_string</span>(<span class="ident">builder</span>.<span class="ident">into_string</span>()).<span class="ident">unwrap</span>())
+                    <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::new_tuple</span>(<span class="kw-2">&amp;</span>[
+                        $(
+                            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name::static_variant_type</span>(),
+                        )<span class="op">+</span>
+                    ]))
                 }
             }
 

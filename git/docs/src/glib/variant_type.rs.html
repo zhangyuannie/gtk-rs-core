@@ -1141,6 +1141,112 @@
 <span id="1063">1063</span>
 <span id="1064">1064</span>
 <span id="1065">1065</span>
+<span id="1066">1066</span>
+<span id="1067">1067</span>
+<span id="1068">1068</span>
+<span id="1069">1069</span>
+<span id="1070">1070</span>
+<span id="1071">1071</span>
+<span id="1072">1072</span>
+<span id="1073">1073</span>
+<span id="1074">1074</span>
+<span id="1075">1075</span>
+<span id="1076">1076</span>
+<span id="1077">1077</span>
+<span id="1078">1078</span>
+<span id="1079">1079</span>
+<span id="1080">1080</span>
+<span id="1081">1081</span>
+<span id="1082">1082</span>
+<span id="1083">1083</span>
+<span id="1084">1084</span>
+<span id="1085">1085</span>
+<span id="1086">1086</span>
+<span id="1087">1087</span>
+<span id="1088">1088</span>
+<span id="1089">1089</span>
+<span id="1090">1090</span>
+<span id="1091">1091</span>
+<span id="1092">1092</span>
+<span id="1093">1093</span>
+<span id="1094">1094</span>
+<span id="1095">1095</span>
+<span id="1096">1096</span>
+<span id="1097">1097</span>
+<span id="1098">1098</span>
+<span id="1099">1099</span>
+<span id="1100">1100</span>
+<span id="1101">1101</span>
+<span id="1102">1102</span>
+<span id="1103">1103</span>
+<span id="1104">1104</span>
+<span id="1105">1105</span>
+<span id="1106">1106</span>
+<span id="1107">1107</span>
+<span id="1108">1108</span>
+<span id="1109">1109</span>
+<span id="1110">1110</span>
+<span id="1111">1111</span>
+<span id="1112">1112</span>
+<span id="1113">1113</span>
+<span id="1114">1114</span>
+<span id="1115">1115</span>
+<span id="1116">1116</span>
+<span id="1117">1117</span>
+<span id="1118">1118</span>
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+<span id="1123">1123</span>
+<span id="1124">1124</span>
+<span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
+<span id="1132">1132</span>
+<span id="1133">1133</span>
+<span id="1134">1134</span>
+<span id="1135">1135</span>
+<span id="1136">1136</span>
+<span id="1137">1137</span>
+<span id="1138">1138</span>
+<span id="1139">1139</span>
+<span id="1140">1140</span>
+<span id="1141">1141</span>
+<span id="1142">1142</span>
+<span id="1143">1143</span>
+<span id="1144">1144</span>
+<span id="1145">1145</span>
+<span id="1146">1146</span>
+<span id="1147">1147</span>
+<span id="1148">1148</span>
+<span id="1149">1149</span>
+<span id="1150">1150</span>
+<span id="1151">1151</span>
+<span id="1152">1152</span>
+<span id="1153">1153</span>
+<span id="1154">1154</span>
+<span id="1155">1155</span>
+<span id="1156">1156</span>
+<span id="1157">1157</span>
+<span id="1158">1158</span>
+<span id="1159">1159</span>
+<span id="1160">1160</span>
+<span id="1161">1161</span>
+<span id="1162">1162</span>
+<span id="1163">1163</span>
+<span id="1164">1164</span>
+<span id="1165">1165</span>
+<span id="1166">1166</span>
+<span id="1167">1167</span>
+<span id="1168">1168</span>
+<span id="1169">1169</span>
+<span id="1170">1170</span>
+<span id="1171">1171</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1343,6 +1449,103 @@
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a `VariantType` from a key and value type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Constructs the type corresponding to a dictionary entry with a key</span>
+    <span class="doccomment">/// of type `key` and a value of type `value`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It is appropriate to call `g_variant_type_free()` on the return value.</span>
+    <span class="doccomment">/// ## `key`</span>
+    <span class="doccomment">/// a basic [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">/// ## `value`</span>
+    <span class="doccomment">/// a [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new dictionary entry [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Since 2.24</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_new_dict_entry&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_dict_entry</span>(<span class="ident">key_type</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>, <span class="ident">value_type</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="ident">VariantType</span> {
+        <span class="kw">unsafe</span> {
+            <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_type_new_dict_entry</span>(
+                <span class="ident">key_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                <span class="ident">value_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+            ))
+        }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a `VariantType` from an array element type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Constructs the type corresponding to an array of elements of the</span>
+    <span class="doccomment">/// type `type_`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It is appropriate to call `g_variant_type_free()` on the return value.</span>
+    <span class="doccomment">/// ## `element`</span>
+    <span class="doccomment">/// a [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new array [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Since 2.24</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_new_array&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_array</span>(<span class="ident">elem_type</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="ident">VariantType</span> {
+        <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_type_new_array</span>(<span class="ident">elem_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a `VariantType` from a maybe element type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Constructs the type corresponding to a maybe instance containing</span>
+    <span class="doccomment">/// type `type_` or Nothing.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It is appropriate to call `g_variant_type_free()` on the return value.</span>
+    <span class="doccomment">/// ## `element`</span>
+    <span class="doccomment">/// a [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new maybe [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Since 2.24</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_new_maybe&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_maybe</span>(<span class="ident">child_type</span>: <span class="kw-2">&amp;</span><span class="ident">VariantTy</span>) -&gt; <span class="ident">VariantType</span> {
+        <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_variant_type_new_maybe</span>(<span class="ident">child_type</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Creates a `VariantType` from a maybe element type.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Constructs a new tuple type, from `items`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// `length` is the number of items in `items`, or -1 to indicate that</span>
+    <span class="doccomment">/// `items` is [`None`]-terminated.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// It is appropriate to call `g_variant_type_free()` on the return value.</span>
+    <span class="doccomment">/// ## `items`</span>
+    <span class="doccomment">/// an array of `GVariantTypes`, one for each item</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a new tuple [`VariantType`][crate::VariantType]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Since 2.24</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_type_new_tuple&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_tuple</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">VariantTy</span><span class="op">&gt;</span>, <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">items</span>: <span class="ident">I</span>) -&gt; <span class="ident">VariantType</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::GStringBuilder::new</span>(<span class="string">&quot;(&quot;</span>);
+
+        <span class="kw">for</span> <span class="ident">ty</span> <span class="kw">in</span> <span class="ident">items</span> {
+            <span class="ident">builder</span>.<span class="ident">append</span>(<span class="ident">ty</span>.<span class="ident">as_ref</span>().<span class="ident">as_str</span>());
+        }
+
+        <span class="ident">builder</span>.<span class="ident">append_c</span>(<span class="string">&#39;)&#39;</span>);
+
+        <span class="ident">VariantType::from_string</span>(<span class="ident">builder</span>.<span class="ident">into_string</span>()).<span class="ident">unwrap</span>()
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to create a `VariantType` from an owned string.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns `Ok` if the string is a valid type string, `Err` otherwise.</span>
@@ -1366,6 +1569,12 @@
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">VariantType</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_variant_type_free</span>(<span class="self">self</span>.<span class="ident">ptr</span>) }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">VariantTy</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">VariantType</span> {
+    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">VariantTy</span> {
+        <span class="self">self</span>
     }
 }
 
@@ -1881,10 +2090,7 @@
         } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span> <span class="op">==</span> <span class="ident">VariantTy::DICT_ENTRY</span> {
             <span class="ident">Cow::Borrowed</span>(<span class="ident">VariantTy::DICTIONARY</span>)
         } <span class="kw">else</span> {
-            <span class="kw">unsafe</span> {
-                <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">ffi::g_variant_type_new_array</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
-                <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::from_glib_full</span>(<span class="ident">ptr</span>))
-            }
+            <span class="ident">Cow::Owned</span>(<span class="ident">VariantType::new_array</span>(<span class="self">self</span>))
         }
     }
 }
@@ -1909,6 +2115,12 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">VariantTy</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">ty</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">VariantTy</span>) -&gt; <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">VariantTy</span><span class="op">&gt;</span> {
         <span class="ident">Cow::Borrowed</span>(<span class="ident">ty</span>)
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">VariantTy</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">VariantTy</span> {
+    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="self">Self</span> {
+        <span class="self">self</span>
     }
 }
 
