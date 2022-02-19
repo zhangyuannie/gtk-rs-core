@@ -280,6 +280,7 @@
 <span id="202">202</span>
 <span id="203">203</span>
 <span id="204">204</span>
+<span id="205">205</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::crate_ident_new</span>;
@@ -317,6 +318,7 @@
                 .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
             <span class="kw">let</span> <span class="ident">idents</span> <span class="op">=</span> (<span class="number">0</span>..<span class="ident">types</span>.<span class="ident">len</span>()).<span class="ident">map</span>(<span class="ident">syn::Index::from</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
+            <span class="kw">let</span> <span class="ident">idents_len</span> <span class="op">=</span> <span class="ident">idents</span>.<span class="ident">len</span>();
 
             <span class="kw">let</span> <span class="ident">static_variant_type</span> <span class="op">=</span> <span class="macro">quote!</span> {
                 <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::StaticVariantType</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
@@ -344,7 +346,7 @@
             <span class="kw">let</span> <span class="ident">to_variant</span> <span class="op">=</span> <span class="macro">quote!</span> {
                 <span class="kw">impl</span> #<span class="ident">generics</span> #<span class="ident">glib::ToVariant</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">generics</span> {
                     <span class="kw">fn</span> <span class="ident">to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; #<span class="ident">glib::Variant</span> {
-                        #<span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">::std::array::IntoIter::new</span>([
+                        #<span class="ident">glib::Variant::tuple_from_iter</span>(<span class="ident">::std::array::IntoIter</span>::<span class="op">&lt;</span>#<span class="ident">glib::Variant</span>, #<span class="ident">idents_len</span><span class="op">&gt;</span><span class="ident">::new</span>([
                             #(
                                 #<span class="ident">glib::ToVariant::to_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">idents</span>)
                             ),<span class="op">*</span>
@@ -485,5 +487,5 @@
     <span class="ident">derived</span>.<span class="ident">into</span>()
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (30b3f35c4 2022-02-17)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (b17226fcc 2022-02-18)" ></div>
 </body></html>
