@@ -284,6 +284,14 @@
 <span id="206">206</span>
 <span id="207">207</span>
 <span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::status_to_result</span>;
@@ -316,7 +324,11 @@
         <span class="kw">return</span> <span class="ident">Error::ReadError</span>.<span class="ident">into</span>();
     }
 
-    <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">data</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
+    <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">data</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+        <span class="kw-2">&amp;mut</span> []
+    } <span class="kw">else</span> {
+        <span class="ident">slice::from_raw_parts_mut</span>(<span class="ident">data</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>)
+    };
     <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">std::panic::catch_unwind</span>(<span class="ident">AssertUnwindSafe</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">read_env</span>.<span class="ident">reader</span>.<span class="ident">read_exact</span>(<span class="ident">buffer</span>)));
     <span class="kw">match</span> <span class="ident">result</span> {
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Ok</span>(())) =&gt; <span class="ident">ffi::STATUS_SUCCESS</span>,
@@ -349,7 +361,11 @@
         <span class="kw">return</span> <span class="ident">Error::WriteError</span>.<span class="ident">into</span>();
     }
 
-    <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">slice::from_raw_parts</span>(<span class="ident">data</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
+    <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">data</span>.<span class="ident">is_null</span>() <span class="op">|</span><span class="op">|</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+        <span class="kw-2">&amp;</span>[]
+    } <span class="kw">else</span> {
+        <span class="ident">slice::from_raw_parts</span>(<span class="ident">data</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>)
+    };
     <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">std::panic::catch_unwind</span>(<span class="ident">AssertUnwindSafe</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">write_env</span>.<span class="ident">writer</span>.<span class="ident">write_all</span>(<span class="ident">buffer</span>)));
     <span class="kw">match</span> <span class="ident">result</span> {
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Ok</span>(())) =&gt; <span class="ident">ffi::STATUS_SUCCESS</span>,
@@ -493,5 +509,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="cairo" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (3b348d932 2022-02-19)" ></div>
 </body></html>

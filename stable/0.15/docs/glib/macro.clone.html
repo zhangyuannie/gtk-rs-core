@@ -89,7 +89,7 @@ returned.</p>
 import it because <code>clone!</code> is using it. For example:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">gtk::glib</span>;</code></pre></div>
-<h4 id="debugging" class="section-header"><a href="#debugging">Debugging</a></h4>
+<h4 id="debugging"><a href="#debugging">Debugging</a></h4>
 <p>In case something goes wrong inside the <code>clone!</code> macro, we use the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.g_debug.html"><code>g_debug</code></a> macro. Meaning
 that if you want to see these debug messages, you’ll have to set the <code>G_MESSAGES_DEBUG</code>
 environment variable when running your code (either in the code directly or when running the
@@ -100,7 +100,7 @@ binary) to either “all” or <a href="https://gtk-rs.org/gtk-rs-core/stable/la
 <span class="ident">std::env::set_var</span>(<span class="string">&quot;G_MESSAGES_DEBUG&quot;</span>, <span class="ident">CLONE_MACRO_LOG_DOMAIN</span>);
 <span class="ident">std::env::set_var</span>(<span class="string">&quot;G_MESSAGES_DEBUG&quot;</span>, <span class="string">&quot;all&quot;</span>);</code></pre></div>
 <p>Or:</p>
-<div class="example-wrap"><pre class="language-bash"><code>$ G_MESSAGES_DEBUG=all ./binary</code></pre></div><h4 id="passing-a-strong-reference" class="section-header"><a href="#passing-a-strong-reference">Passing a strong reference</a></h4>
+<div class="example-wrap"><pre class="language-bash"><code>$ G_MESSAGES_DEBUG=all ./binary</code></pre></div><h4 id="passing-a-strong-reference"><a href="#passing-a-strong-reference">Passing a strong reference</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">glib</span>;
 <span class="kw">use</span> <span class="ident">glib_macros::clone</span>;
 <span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
@@ -111,7 +111,7 @@ binary) to either “all” or <a href="https://gtk-rs.org/gtk-rs-core/stable/la
 });
 
 <span class="ident">closure</span>(<span class="number">2</span>);</code></pre></div>
-<h4 id="passing-a-weak-reference" class="section-header"><a href="#passing-a-weak-reference">Passing a weak reference</a></h4>
+<h4 id="passing-a-weak-reference"><a href="#passing-a-weak-reference">Passing a weak reference</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">glib</span>;
 <span class="kw">use</span> <span class="ident">glib_macros::clone</span>;
 <span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
@@ -122,7 +122,7 @@ binary) to either “all” or <a href="https://gtk-rs.org/gtk-rs-core/stable/la
 });
 
 <span class="ident">closure</span>(<span class="number">3</span>);</code></pre></div>
-<h5 id="allowing-a-nullable-weak-reference" class="section-header"><a href="#allowing-a-nullable-weak-reference">Allowing a nullable weak reference</a></h5>
+<h5 id="allowing-a-nullable-weak-reference"><a href="#allowing-a-nullable-weak-reference">Allowing a nullable weak reference</a></h5>
 <p>In some cases, even if the weak references can’t be retrieved, you might want to still have
 your closure called. In this case, you need to use <code>@weak-allow-none</code>:</p>
 
@@ -142,7 +142,7 @@ your closure called. In this case, you need to use <code>@weak-allow-none</code>
 };
 
 <span class="macro">assert_eq!</span>(<span class="ident">closure</span>(<span class="number">3</span>), <span class="bool-val">true</span>);</code></pre></div>
-<h4 id="renaming-variables" class="section-header"><a href="#renaming-variables">Renaming variables</a></h4>
+<h4 id="renaming-variables"><a href="#renaming-variables">Renaming variables</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use</span> <span class="ident">glib</span>;
 <span class="kw">use</span> <span class="ident">glib_macros::clone</span>;
 <span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
@@ -154,7 +154,7 @@ your closure called. In this case, you need to use <code>@weak-allow-none</code>
 });
 
 <span class="ident">closure</span>(<span class="number">3</span>);</code></pre></div>
-<h4 id="providing-a-default-return-value-if-upgrading-a-weak-reference-fails" class="section-header"><a href="#providing-a-default-return-value-if-upgrading-a-weak-reference-fails">Providing a default return value if upgrading a weak reference fails</a></h4>
+<h4 id="providing-a-default-return-value-if-upgrading-a-weak-reference-fails"><a href="#providing-a-default-return-value-if-upgrading-a-weak-reference-fails">Providing a default return value if upgrading a weak reference fails</a></h4>
 <p>You can do it in two different ways:</p>
 <p>Either by providing the value yourself using <code>@default-return</code>:</p>
 
@@ -178,7 +178,7 @@ your closure called. In this case, you need to use <code>@weak-allow-none</code>
     <span class="macro">println!</span>(<span class="string">&quot;v: {}, x: {}&quot;</span>, <span class="ident">v</span>, <span class="ident">x</span>);
     <span class="bool-val">true</span>
 });</code></pre></div>
-<h4 id="errors" class="section-header"><a href="#errors">Errors</a></h4>
+<h4 id="errors"><a href="#errors">Errors</a></h4>
 <p>Here is a list of errors you might encounter:</p>
 <p><strong>Missing <code>@weak</code> or <code>@strong</code></strong>:</p>
 
@@ -232,5 +232,5 @@ your closure called. In this case, you need to use <code>@weak-allow-none</code>
         });
     }
 }</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (3b348d932 2022-02-19)" ></div>
 </body></html>

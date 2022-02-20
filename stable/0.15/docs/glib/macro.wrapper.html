@@ -188,7 +188,7 @@ note that each supports different sets of <code>$fn_name</code> inside the
 <code>match fn</code> block.  Also, <code>Object</code> may require you to specify
 things like the class struct to wrap, plus any interfaces that the
 class implements.</p>
-<h4 id="boxed-heap-allocated" class="section-header"><a href="#boxed-heap-allocated">Boxed (heap allocated)</a></h4>
+<h4 id="boxed-heap-allocated"><a href="#boxed-heap-allocated">Boxed (heap allocated)</a></h4>
 <p>Boxed records with single ownership allocated on the heap.</p>
 <p>With no registered <code>glib_ffi::GType</code>:</p>
 
@@ -217,7 +217,7 @@ class implements.</p>
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> (optional) returns the
 <code>glib_ffi::GType</code> that corresponds to the foreign struct.</p>
-<h4 id="boxedinline-inline-stack-allocated" class="section-header"><a href="#boxedinline-inline-stack-allocated">BoxedInline (inline, stack allocated)</a></h4>
+<h4 id="boxedinline-inline-stack-allocated"><a href="#boxedinline-inline-stack-allocated">BoxedInline (inline, stack allocated)</a></h4>
 <p>Boxed records with single ownership allocated on the stack or otherwise inline.
 With no registered <code>glib_ffi::GType</code>:</p>
 
@@ -246,7 +246,7 @@ With no registered <code>glib_ffi::GType</code>:</p>
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> (optional) returns the
 <code>glib_ffi::GType</code> that corresponds to the foreign struct.</p>
-<h4 id="shared" class="section-header"><a href="#shared">Shared</a></h4>
+<h4 id="shared"><a href="#shared">Shared</a></h4>
 <p>Records with reference-counted, shared ownership.</p>
 <p>With no registered <code>glib_ffi::GType</code>:</p>
 
@@ -275,7 +275,7 @@ With no registered <code>glib_ffi::GType</code>:</p>
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> (optional) returns the
 <code>glib_ffi::GType</code> that corresponds to the foreign struct.</p>
-<h4 id="object" class="section-header"><a href="#object">Object</a></h4>
+<h4 id="object"><a href="#object">Object</a></h4>
 <p>Objects – classes.  Note that the class name, if available, must be specified after the
 $foreign type; see below for <a href="#non-derivable-classes">non-derivable classes</a>.</p>
 <p>The basic syntax is this:</p>
@@ -292,7 +292,7 @@ $foreign type; see below for <a href="#non-derivable-classes">non-derivable clas
 }</code></pre></div>
 <p><code>type_</code>: <code>|| -&gt; glib_ffi::GType</code> returns the <code>glib_ffi::GType</code>
 that corresponds to the foreign class.</p>
-<h5 id="all-parent-classes-must-be-specified" class="section-header"><a href="#all-parent-classes-must-be-specified">All parent classes must be specified</a></h5>
+<h5 id="all-parent-classes-must-be-specified"><a href="#all-parent-classes-must-be-specified">All parent classes must be specified</a></h5>
 <p>In the example above, “<code>@extends ParentClass, GrandparentClass, ...,</code>” is where you must
 specify all the parent classes of the one you are wrapping. The uppermost parent class,
 <code>glib::Object</code>, must not be specified.</p>
@@ -316,7 +316,7 @@ specify all the parent classes of the one you are wrapping. The uppermost parent
         <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
     }
 }</code></pre></div>
-<h5 id="objects-which-implement-interfaces" class="section-header"><a href="#objects-which-implement-interfaces">Objects which implement interfaces</a></h5>
+<h5 id="objects-which-implement-interfaces"><a href="#objects-which-implement-interfaces">Objects which implement interfaces</a></h5>
 <p>The example above is incomplete, since <code>ffi::GtkButton</code> actually implements two interfaces,
 <code>Buildable</code> and <code>Actionable</code>.  In this case, they must be specified after all the parent classes
 behind the <code>@implements</code> keyword:</p>
@@ -330,7 +330,7 @@ behind the <code>@implements</code> keyword:</p>
         <span class="ident">type_</span> =&gt; <span class="op">|</span><span class="op">|</span> <span class="ident">ffi::gtk_button_get_type</span>(),
     }
 }</code></pre></div>
-<h5 id="non-derivable-classes" class="section-header"><a href="#non-derivable-classes">Non-derivable classes</a></h5>
+<h5 id="non-derivable-classes"><a href="#non-derivable-classes">Non-derivable classes</a></h5>
 <p>By convention, GObject implements “final” classes, i.e. those who
 cannot be subclassed, by <em>not</em> exposing a public Class struct.
 This way it is not possible to override any methods, as there are
@@ -341,7 +341,7 @@ specify a FFI class name at all in the <code>Object&lt;&gt;</code> part:</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Clipboard</span>(<span class="ident">Object</span><span class="op">&lt;</span><span class="ident">ffi::GtkClipboard</span><span class="op">&gt;</span>);
     ...
 }</code></pre></div>
-<h5 id="interfaces" class="section-header"><a href="#interfaces">Interfaces</a></h5>
+<h5 id="interfaces"><a href="#interfaces">Interfaces</a></h5>
 <p>Interfaces are passed in the same way to the macro but instead of specifying
 <code>Object</code>, <code>Interface</code> has to be specified:</p>
 
@@ -349,7 +349,7 @@ specify a FFI class name at all in the <code>Object&lt;&gt;</code> part:</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TreeModel</span>(<span class="ident">Interface</span><span class="op">&lt;</span><span class="ident">ffi::GtkTreeModel</span>, <span class="ident">ffi::GtkTreeModelIface</span><span class="op">&gt;</span>);
     ...
 }</code></pre></div>
-<h5 id="interfaces-with-prerequisites" class="section-header"><a href="#interfaces-with-prerequisites">Interfaces with prerequisites</a></h5>
+<h5 id="interfaces-with-prerequisites"><a href="#interfaces-with-prerequisites">Interfaces with prerequisites</a></h5>
 <p>Interfaces can declare prerequisites, i.e. the classes from which types that implement the
 interface have to inherit or interfaces that have to be implemented:</p>
 
@@ -357,5 +357,5 @@ interface have to inherit or interfaces that have to be implemented:</p>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TreeSortable</span>(<span class="ident">Interface</span><span class="op">&lt;</span><span class="ident">ffi::GtkTreeSortable</span>, <span class="ident">ffi::GtkTreeSortable</span><span class="op">&gt;</span>) @<span class="ident">requires</span> <span class="ident">TreeModel</span>;
     ...
 }</code></pre></div>
-</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.60.0-nightly (88fb06a1f 2022-02-05)" ></div>
+</div></details></section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (3b348d932 2022-02-19)" ></div>
 </body></html>
