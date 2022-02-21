@@ -90,10 +90,10 @@ import it because <code>clone!</code> is using it. For example:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">gtk::glib</span>;</code></pre></div>
 <h4 id="debugging"><a href="#debugging">Debugging</a></h4>
-<p>In case something goes wrong inside the <code>clone!</code> macro, we use the <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.g_debug.html"><code>g_debug</code></a> macro. Meaning
+<p>In case something goes wrong inside the <code>clone!</code> macro, we use the <a href="../glib/macro.g_debug.html"><code>g_debug</code></a> macro. Meaning
 that if you want to see these debug messages, you’ll have to set the <code>G_MESSAGES_DEBUG</code>
 environment variable when running your code (either in the code directly or when running the
-binary) to either “all” or <a href="https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/constant.CLONE_MACRO_LOG_DOMAIN.html"><code>CLONE_MACRO_LOG_DOMAIN</code></a>:</p>
+binary) to either “all” or <a href="../glib/constant.CLONE_MACRO_LOG_DOMAIN.html"><code>CLONE_MACRO_LOG_DOMAIN</code></a>:</p>
 
 <div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore"><code><span class="kw">use</span> <span class="ident">glib::CLONE_MACRO_LOG_DOMAIN</span>;
 

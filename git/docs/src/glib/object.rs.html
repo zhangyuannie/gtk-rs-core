@@ -4396,6 +4396,7 @@
 <span id="4318">4318</span>
 <span id="4319">4319</span>
 <span id="4320">4320</span>
+<span id="4321">4321</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -6294,7 +6295,8 @@
     <span class="doccomment">/// Limits the lifetime of `closure` to the lifetime of the object. When</span>
     <span class="doccomment">/// the object&#39;s reference count drops to zero, the closure will be</span>
     <span class="doccomment">/// invalidated. An invalidated closure will ignore any calls to</span>
-    <span class="doccomment">/// [`Closure::invoke`](crate::Closure::invoke).</span>
+    <span class="doccomment">/// [`invoke_with_values`](crate::closure::Closure::invoke_with_values), or</span>
+    <span class="doccomment">/// [`invoke`](crate::closure::RustClosure::invoke) when using Rust closures.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_object_watch_closure&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">watch_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">closure</span>: <span class="kw-2">&amp;</span><span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Closure</span><span class="op">&gt;</span>);
 

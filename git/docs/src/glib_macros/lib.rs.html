@@ -812,6 +812,75 @@
 <span id="734">734</span>
 <span id="735">735</span>
 <span id="736">736</span>
+<span id="737">737</span>
+<span id="738">738</span>
+<span id="739">739</span>
+<span id="740">740</span>
+<span id="741">741</span>
+<span id="742">742</span>
+<span id="743">743</span>
+<span id="744">744</span>
+<span id="745">745</span>
+<span id="746">746</span>
+<span id="747">747</span>
+<span id="748">748</span>
+<span id="749">749</span>
+<span id="750">750</span>
+<span id="751">751</span>
+<span id="752">752</span>
+<span id="753">753</span>
+<span id="754">754</span>
+<span id="755">755</span>
+<span id="756">756</span>
+<span id="757">757</span>
+<span id="758">758</span>
+<span id="759">759</span>
+<span id="760">760</span>
+<span id="761">761</span>
+<span id="762">762</span>
+<span id="763">763</span>
+<span id="764">764</span>
+<span id="765">765</span>
+<span id="766">766</span>
+<span id="767">767</span>
+<span id="768">768</span>
+<span id="769">769</span>
+<span id="770">770</span>
+<span id="771">771</span>
+<span id="772">772</span>
+<span id="773">773</span>
+<span id="774">774</span>
+<span id="775">775</span>
+<span id="776">776</span>
+<span id="777">777</span>
+<span id="778">778</span>
+<span id="779">779</span>
+<span id="780">780</span>
+<span id="781">781</span>
+<span id="782">782</span>
+<span id="783">783</span>
+<span id="784">784</span>
+<span id="785">785</span>
+<span id="786">786</span>
+<span id="787">787</span>
+<span id="788">788</span>
+<span id="789">789</span>
+<span id="790">790</span>
+<span id="791">791</span>
+<span id="792">792</span>
+<span id="793">793</span>
+<span id="794">794</span>
+<span id="795">795</span>
+<span id="796">796</span>
+<span id="797">797</span>
+<span id="798">798</span>
+<span id="799">799</span>
+<span id="800">800</span>
+<span id="801">801</span>
+<span id="802">802</span>
+<span id="803">803</span>
+<span id="804">804</span>
+<span id="805">805</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">mod</span> <span class="ident">boxed_derive</span>;
@@ -858,8 +927,8 @@
 <span class="doccomment">/// environment variable when running your code (either in the code directly or when running the</span>
 <span class="doccomment">/// binary) to either &quot;all&quot; or [`CLONE_MACRO_LOG_DOMAIN`]:</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`g_debug`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/macro.g_debug.html</span>
-<span class="doccomment">/// [`CLONE_MACRO_LOG_DOMAIN`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/constant.CLONE_MACRO_LOG_DOMAIN.html</span>
+<span class="doccomment">/// [`g_debug`]: ../glib/macro.g_debug.html</span>
+<span class="doccomment">/// [`CLONE_MACRO_LOG_DOMAIN`]: ../glib/constant.CLONE_MACRO_LOG_DOMAIN.html</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```rust,ignore</span>
 <span class="doccomment">/// use glib::CLONE_MACRO_LOG_DOMAIN;</span>
@@ -1106,16 +1175,16 @@
 <span class="doccomment">/// [`clone!`](crate::clone!), as is aliasing captures with the `as` keyword. Notably, these</span>
 <span class="doccomment">/// captures are able to reference `Rc` and `Arc` values in addition to `Object` values.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`Closure`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/closure/struct.Closure.html</span>
-<span class="doccomment">/// [`Closure::new`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/closure/struct.Closure.html#method.new</span>
-<span class="doccomment">/// [`Closure::new_local`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/closure/struct.Closure.html#method.new_local</span>
-<span class="doccomment">/// [`Closure::invoke`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/closure/struct.Closure.html#method.invoke</span>
-<span class="doccomment">/// [`Value`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/value/struct.Value.html</span>
-<span class="doccomment">/// [`FromValue`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/value/trait.FromValue.html</span>
-<span class="doccomment">/// [`ToValue`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/value/trait.ToValue.html</span>
-<span class="doccomment">/// [`Interface`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/struct.Interface.html</span>
-<span class="doccomment">/// [`Object`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/struct.Object.html</span>
-<span class="doccomment">/// [`Object::watch_closure`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/object/trait.ObjectExt.html#tymethod.watch_closure</span>
+<span class="doccomment">/// [`Closure`]: ../glib/closure/struct.Closure.html</span>
+<span class="doccomment">/// [`Closure::new`]: ../glib/closure/struct.Closure.html#method.new</span>
+<span class="doccomment">/// [`Closure::new_local`]: ../glib/closure/struct.Closure.html#method.new_local</span>
+<span class="doccomment">/// [`Closure::invoke`]: ../glib/closure/struct.Closure.html#method.invoke</span>
+<span class="doccomment">/// [`Value`]: ../glib/value/struct.Value.html</span>
+<span class="doccomment">/// [`FromValue`]: ../glib/value/trait.FromValue.html</span>
+<span class="doccomment">/// [`ToValue`]: ../glib/value/trait.ToValue.html</span>
+<span class="doccomment">/// [`Interface`]: ../glib/object/struct.Interface.html</span>
+<span class="doccomment">/// [`Object`]: ../glib/object/struct.Object.html</span>
+<span class="doccomment">/// [`Object::watch_closure`]: ../glib/object/trait.ObjectExt.html#tymethod.watch_closure</span>
 <span class="doccomment">/// **⚠️ IMPORTANT ⚠️**</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// `glib` needs to be in scope, so unless it&#39;s one of the direct crate dependencies, you need to</span>
@@ -1225,7 +1294,7 @@
 <span class="doccomment">/// This is useful for closures which can&#39;t be sent across threads. See the documentation of</span>
 <span class="doccomment">/// [`closure!`](crate::closure!) for details.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`Closure::new_local`]: https://gtk-rs.org/gtk-rs-core/stable/latest/docs/glib/closure/struct.Closure.html#method.new_local</span>
+<span class="doccomment">/// [`Closure::new_local`]: ../glib/closure/struct.Closure.html#method.new_local</span>
 <span class="attribute">#[<span class="ident">proc_macro</span>]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">closure_local</span>(<span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1251,6 +1320,8 @@
 <span class="doccomment">///     ValWithCustomNameAndNick,</span>
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`glib::Value`]: ../glib/value/struct.Value.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Enum</span>, <span class="ident">attributes</span>(<span class="ident">enum_type</span>, <span class="ident">enum_value</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enum_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1288,7 +1359,7 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
+<span class="doccomment">/// [`glib::Value`]: ../glib/value/struct.Value.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flags</span>(<span class="ident">attr</span>: <span class="ident">TokenStream</span>, <span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1315,7 +1386,7 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`ErrorDomain`]: error/trait.ErrorDomain.html</span>
+<span class="doccomment">/// [`ErrorDomain`]: ../glib/error/trait.ErrorDomain.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">ErrorDomain</span>, <span class="ident">attributes</span>(<span class="ident">error_domain</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">error_domain_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1338,8 +1409,8 @@
 <span class="doccomment">/// struct MyBoxed(String);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`BoxedType`]: subclass/boxed/trait.BoxedType.html</span>
-<span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
+<span class="doccomment">/// [`BoxedType`]: ../glib/subclass/boxed/trait.BoxedType.html</span>
+<span class="doccomment">/// [`glib::Value`]: ../glib/value/struct.Value.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Boxed</span>, <span class="ident">attributes</span>(<span class="ident">boxed_nullable</span>, <span class="ident">boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1366,8 +1437,8 @@
 <span class="doccomment">/// struct MyShared(std::sync::Arc&lt;MySharedInner&gt;);</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`SharedType`]: subclass/shared/trait.SharedType.html</span>
-<span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
+<span class="doccomment">/// [`SharedType`]: ../glib/subclass/shared/trait.SharedType.html</span>
+<span class="doccomment">/// [`glib::Value`]: ../glib/value/struct.Value.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">SharedBoxed</span>, <span class="ident">attributes</span>(<span class="ident">shared_boxed_nullable</span>, <span class="ident">shared_boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shared_boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1404,7 +1475,7 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`ObjectSubclass`]: subclass/types/trait.ObjectSubclass.html</span>
+<span class="doccomment">/// [`ObjectSubclass`]: ../glib/subclass/types/trait.ObjectSubclass.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">object_subclass</span>(<span class="ident">_attr</span>: <span class="ident">TokenStream</span>, <span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1429,7 +1500,7 @@
 <span class="doccomment">/// type Prerequisites = ();</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`ObjectInterface`]: interface/types/trait.ObjectInterface.html</span>
+<span class="doccomment">/// [`ObjectInterface`]: ../glib/subclass/interface/trait.ObjectInterface.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_attribute</span>]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">object_interface</span>(<span class="ident">_attr</span>: <span class="ident">TokenStream</span>, <span class="ident">item</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
@@ -1497,15 +1568,15 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`glib::clone::Downgrade`]: clone/trait.Downgrade.html</span>
-<span class="doccomment">/// [`glib::clone::Upgrade`]: clone/trait.Upgrade.html</span>
+<span class="doccomment">/// [`glib::clone::Downgrade`]: ../glib/clone/trait.Downgrade.html</span>
+<span class="doccomment">/// [`glib::clone::Upgrade`]: ../glib/clone/trait.Upgrade.html</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Downgrade</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">downgrade</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
     <span class="ident">downgrade_derive::impl_downgrade</span>(<span class="ident">input</span>)
 }
 
-<span class="doccomment">/// Derive macro for serializing/deserializing custom structs as [`glib::Variant`]s.</span>
+<span class="doccomment">/// Derive macro for serializing/deserializing custom structs/enums as [`glib::Variant`]s.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Example</span>
 <span class="doccomment">///</span>
@@ -1542,8 +1613,75 @@
 <span class="doccomment">/// assert_eq!(var.get::&lt;Foo&gt;(), Some(v));</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [`glib::Variant`]: variant/struct.Variant.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Variant</span>)]</span>
+<span class="doccomment">/// Enums are serialized as a tuple `(sv)` with the first value as a [kebab case] string for the</span>
+<span class="doccomment">/// enum variant, or just `s` if this is a C-style enum. Some additional attributes are supported</span>
+<span class="doccomment">/// for enums:</span>
+<span class="doccomment">/// - `#[variant_enum(repr)]` to serialize the enum variant as an integer type instead of `s`.  The</span>
+<span class="doccomment">/// `#[repr]` attribute must also be specified on the enum with a sized integer type, and the type</span>
+<span class="doccomment">/// must implement `Copy`.</span>
+<span class="doccomment">/// - `#[variant_enum(enum)]` uses [`EnumClass`] to serialize/deserialize as nicks. Meant for use</span>
+<span class="doccomment">/// with [`glib::Enum`](Enum).</span>
+<span class="doccomment">/// - `#[variant_enum(flags)]` uses [`FlagsClass`] to serialize/deserialize as nicks. Meant for use</span>
+<span class="doccomment">/// with [`glib::flags`](macro@flags).</span>
+<span class="doccomment">/// - `#[variant_enum(enum, repr)]` serializes as `i32`. Meant for use with [`glib::Enum`](Enum).</span>
+<span class="doccomment">/// The type must also implement `Copy`.</span>
+<span class="doccomment">/// - `#[variant_enum(flags, repr)]` serializes as `u32`. Meant for use with</span>
+<span class="doccomment">/// [`glib::flags`](macro@flags).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// use glib::prelude::*;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[derive(Debug, PartialEq, Eq, glib::Variant)]</span>
+<span class="doccomment">/// enum Foo {</span>
+<span class="doccomment">///     MyA,</span>
+<span class="doccomment">///     MyB(i32),</span>
+<span class="doccomment">///     MyC { some_int: u32, some_string: String }</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let v = Foo::MyC { some_int: 1, some_string: String::from(&quot;bar&quot;) };</span>
+<span class="doccomment">/// let var = v.to_variant();</span>
+<span class="doccomment">/// assert_eq!(var.child_value(0).str(), Some(&quot;my-c&quot;));</span>
+<span class="doccomment">/// assert_eq!(var.get::&lt;Foo&gt;(), Some(v));</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Variant)]</span>
+<span class="doccomment">/// #[variant_enum(repr)]</span>
+<span class="doccomment">/// #[repr(u8)]</span>
+<span class="doccomment">/// enum Bar {</span>
+<span class="doccomment">///     A,</span>
+<span class="doccomment">///     B = 3,</span>
+<span class="doccomment">///     C = 7</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let v = Bar::B;</span>
+<span class="doccomment">/// let var = v.to_variant();</span>
+<span class="doccomment">/// assert_eq!(var.get::&lt;u8&gt;(), Some(3));</span>
+<span class="doccomment">/// assert_eq!(var.get::&lt;Bar&gt;(), Some(v));</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #[derive(Debug, Copy, Clone, PartialEq, Eq, glib::Enum, glib::Variant)]</span>
+<span class="doccomment">/// #[variant_enum(enum)]</span>
+<span class="doccomment">/// #[enum_type(name = &quot;MyEnum&quot;)]</span>
+<span class="doccomment">/// enum MyEnum {</span>
+<span class="doccomment">///     Val,</span>
+<span class="doccomment">///     #[enum_value(name = &quot;My Val&quot;)]</span>
+<span class="doccomment">///     ValWithCustomName,</span>
+<span class="doccomment">///     #[enum_value(name = &quot;My Other Val&quot;, nick = &quot;other&quot;)]</span>
+<span class="doccomment">///     ValWithCustomNameAndNick,</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// let v = MyEnum::ValWithCustomNameAndNick;</span>
+<span class="doccomment">/// let var = v.to_variant();</span>
+<span class="doccomment">/// assert_eq!(var.str(), Some(&quot;other&quot;));</span>
+<span class="doccomment">/// assert_eq!(var.get::&lt;MyEnum&gt;(), Some(v));</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`glib::Variant`]: ../glib/variant/struct.Variant.html</span>
+<span class="doccomment">/// [`EnumClass`]: ../glib/struct.EnumClass.html</span>
+<span class="doccomment">/// [`FlagsClass`]: ../glib/struct.FlagsClass.html</span>
+<span class="doccomment">/// [kebab case]: https://docs.rs/heck/0.4.0/heck/trait.ToKebabCase.html</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Variant</span>, <span class="ident">attributes</span>(<span class="ident">variant_enum</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">variant_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
     <span class="ident">variant_derive::impl_variant</span>(<span class="ident">input</span>)
