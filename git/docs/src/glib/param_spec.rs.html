@@ -1098,6 +1098,60 @@
 <span id="1020">1020</span>
 <span id="1021">1021</span>
 <span id="1022">1022</span>
+<span id="1023">1023</span>
+<span id="1024">1024</span>
+<span id="1025">1025</span>
+<span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
+<span id="1029">1029</span>
+<span id="1030">1030</span>
+<span id="1031">1031</span>
+<span id="1032">1032</span>
+<span id="1033">1033</span>
+<span id="1034">1034</span>
+<span id="1035">1035</span>
+<span id="1036">1036</span>
+<span id="1037">1037</span>
+<span id="1038">1038</span>
+<span id="1039">1039</span>
+<span id="1040">1040</span>
+<span id="1041">1041</span>
+<span id="1042">1042</span>
+<span id="1043">1043</span>
+<span id="1044">1044</span>
+<span id="1045">1045</span>
+<span id="1046">1046</span>
+<span id="1047">1047</span>
+<span id="1048">1048</span>
+<span id="1049">1049</span>
+<span id="1050">1050</span>
+<span id="1051">1051</span>
+<span id="1052">1052</span>
+<span id="1053">1053</span>
+<span id="1054">1054</span>
+<span id="1055">1055</span>
+<span id="1056">1056</span>
+<span id="1057">1057</span>
+<span id="1058">1058</span>
+<span id="1059">1059</span>
+<span id="1060">1060</span>
+<span id="1061">1061</span>
+<span id="1062">1062</span>
+<span id="1063">1063</span>
+<span id="1064">1064</span>
+<span id="1065">1065</span>
+<span id="1066">1066</span>
+<span id="1067">1067</span>
+<span id="1068">1068</span>
+<span id="1069">1069</span>
+<span id="1070">1070</span>
+<span id="1071">1071</span>
+<span id="1072">1072</span>
+<span id="1073">1073</span>
+<span id="1074">1074</span>
+<span id="1075">1075</span>
+<span id="1076">1076</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1252,6 +1306,11 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>((<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>).<span class="ident">flags</span>) }
     }
 
+    <span class="doccomment">/// Get the short description of a [`ParamSpec`][crate::ParamSpec].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the short description of `self`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_blurb&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_blurb&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">blurb</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
@@ -1262,6 +1321,13 @@
         }
     }
 
+    <span class="doccomment">/// Gets the default value of `self` as a pointer to a [`Value`][crate::Value].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The [`Value`][crate::Value] will remain valid for the life of `self`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a pointer to a [`Value`][crate::Value] which must not be modified</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_default_value&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_default_value&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">default_value</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Value</span> {
@@ -1271,6 +1337,14 @@
         }
     }
 
+    <span class="doccomment">/// Get the name of a [`ParamSpec`][crate::ParamSpec].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The name is always an &quot;interned&quot; string (as per `g_intern_string()`).</span>
+    <span class="doccomment">/// This allows for pointer-value comparisons.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the name of `self`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_name&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_name&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
@@ -1281,6 +1355,11 @@
         }
     }
 
+    <span class="doccomment">/// Gets the GQuark for the name.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the GQuark for `self`-&gt;name.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_name_quark&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_name_quark&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name_quark</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Quark</span> {
@@ -1291,6 +1370,11 @@
         }
     }
 
+    <span class="doccomment">/// Get the nickname of a [`ParamSpec`][crate::ParamSpec].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the nickname of `self`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_nick&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_nick&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nick</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
@@ -1305,6 +1389,18 @@
     <span class="comment">//    unsafe { TODO: call gobject_ffi::g_param_spec_get_qdata() }</span>
     <span class="comment">//}</span>
 
+    <span class="doccomment">/// If the paramspec redirects operations to another paramspec,</span>
+    <span class="doccomment">/// returns that paramspec. Redirect is used typically for</span>
+    <span class="doccomment">/// providing a new implementation of a property in a derived</span>
+    <span class="doccomment">/// type while preserving all the properties from the parent</span>
+    <span class="doccomment">/// type. Redirection is established by creating a property</span>
+    <span class="doccomment">/// of type [`ParamSpecOverride`][crate::ParamSpecOverride]. See `g_object_class_override_property()`</span>
+    <span class="doccomment">/// for an example of the use of this capability.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// paramspec to which requests on this</span>
+    <span class="doccomment">///  paramspec should be redirected, or [`None`] if none.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_get_redirect_target&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_redirect_target&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">redirect_target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ParamSpec</span><span class="op">&gt;</span> {
@@ -1327,6 +1423,18 @@
     <span class="comment">//    unsafe { TODO: call gobject_ffi::g_param_spec_steal_qdata() }</span>
     <span class="comment">//}</span>
 
+    <span class="doccomment">/// Validate a property name for a [`ParamSpec`][crate::ParamSpec]. This can be useful for</span>
+    <span class="doccomment">/// dynamically-generated properties which need to be validated at run-time</span>
+    <span class="doccomment">/// before actually trying to create them.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// See [canonical parameter names][canonical-parameter-names] for details of</span>
+    <span class="doccomment">/// the rules for valid names.</span>
+    <span class="doccomment">/// ## `name`</span>
+    <span class="doccomment">/// the canonical name of the property</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`true`] if `name` is a valid property name, [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_66&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_66&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_is_valid_name&quot;</span>)]</span>
