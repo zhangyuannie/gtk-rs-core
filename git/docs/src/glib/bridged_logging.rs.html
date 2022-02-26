@@ -566,8 +566,8 @@
             <span class="ident"><span class="kw">crate</span>::ffi::g_log</span>(
                 <span class="ident">domain</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">GlibLogger::level_to_glib</span>(<span class="ident">level</span>),
-                <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
-                <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="ident">message</span>).<span class="number">0</span>,
+                <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
+                <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">std::os::raw::c_char</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="ident">message</span>).<span class="number">0</span>,
             );
         }
     }
@@ -597,8 +597,8 @@
                 <span class="ident">file</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">line_str</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
                 <span class="ident">func</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>,
-                <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
-                <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="ident">message</span>).<span class="number">0</span>,
+                <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
+                <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">std::os::raw::c_char</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="ident">message</span>).<span class="number">0</span>,
             );
         }
     }

@@ -1170,8 +1170,8 @@
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi::g_log</span>(
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">log_domain</span>,
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">log_level</span>.<span class="ident">into_glib</span>(),
-                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
-                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
+                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
+                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">std::os::raw::c_char</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
                 );
             }
         }
@@ -1470,8 +1470,8 @@
         <span class="kw">if</span> <span class="op">!</span><span class="macro">std::write!</span>(<span class="kw-2">&amp;mut</span> <span class="ident">w</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>),<span class="kw-2">*</span>).<span class="ident">is_err</span>() {
             <span class="kw">unsafe</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>(
-                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
-                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
+                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>,
+                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">std::os::raw::c_char</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
                 );
             }
         }
