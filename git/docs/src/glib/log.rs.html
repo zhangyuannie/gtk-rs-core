@@ -821,54 +821,6 @@
 <span id="743">743</span>
 <span id="744">744</span>
 <span id="745">745</span>
-<span id="746">746</span>
-<span id="747">747</span>
-<span id="748">748</span>
-<span id="749">749</span>
-<span id="750">750</span>
-<span id="751">751</span>
-<span id="752">752</span>
-<span id="753">753</span>
-<span id="754">754</span>
-<span id="755">755</span>
-<span id="756">756</span>
-<span id="757">757</span>
-<span id="758">758</span>
-<span id="759">759</span>
-<span id="760">760</span>
-<span id="761">761</span>
-<span id="762">762</span>
-<span id="763">763</span>
-<span id="764">764</span>
-<span id="765">765</span>
-<span id="766">766</span>
-<span id="767">767</span>
-<span id="768">768</span>
-<span id="769">769</span>
-<span id="770">770</span>
-<span id="771">771</span>
-<span id="772">772</span>
-<span id="773">773</span>
-<span id="774">774</span>
-<span id="775">775</span>
-<span id="776">776</span>
-<span id="777">777</span>
-<span id="778">778</span>
-<span id="779">779</span>
-<span id="780">780</span>
-<span id="781">781</span>
-<span id="782">782</span>
-<span id="783">783</span>
-<span id="784">784</span>
-<span id="785">785</span>
-<span id="786">786</span>
-<span id="787">787</span>
-<span id="788">788</span>
-<span id="789">789</span>
-<span id="790">790</span>
-<span id="791">791</span>
-<span id="792">792</span>
-<span id="793">793</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1210,33 +1162,7 @@
         <span class="kw">fn</span> <span class="ident">check_log_args</span>(<span class="ident">_log_level</span>: <span class="ident">LogLevel</span>, <span class="ident">_format</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {}
 
         <span class="ident">check_log_args</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">log_level</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>);
-
-        <span class="comment">// Replace literal percentage signs with two so that they are not interpreted as printf</span>
-        <span class="comment">// format specifiers</span>
-        <span class="kw">struct</span> <span class="ident">GWrite</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder</span>);
-
-        <span class="kw">impl</span> <span class="ident">fmt::Write</span> <span class="kw">for</span> <span class="ident">GWrite</span> {
-            <span class="kw">fn</span> <span class="ident">write_str</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">fmt::Error</span><span class="op">&gt;</span> {
-                <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="ident">prefix</span>, <span class="ident">suffix</span>)) <span class="op">=</span> <span class="ident">s</span>.<span class="ident">split_once</span>(<span class="string">&#39;%&#39;</span>) {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="ident">prefix</span>);
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="string">&quot;%%&quot;</span>);
-                    <span class="ident">s</span> <span class="op">=</span> <span class="ident">suffix</span>;
-                }
-                <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="ident">s</span>);
-                <span class="prelude-val">Ok</span>(())
-            }
-
-            <span class="kw">fn</span> <span class="ident">write_char</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="ident">fmt::Result</span> {
-                <span class="kw">if</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;%&#39;</span> {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="string">&quot;%%&quot;</span>);
-                } <span class="kw">else</span> {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append_c</span>(<span class="ident">c</span>);
-                }
-                <span class="prelude-val">Ok</span>(())
-            }
-        }
-
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">GWrite</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder::default</span>());
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">w</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder::default</span>();
 
         <span class="comment">// Can&#39;t really happen but better safe than sorry</span>
         <span class="kw">if</span> <span class="op">!</span><span class="macro">std::write!</span>(<span class="kw-2">&amp;mut</span> <span class="ident">w</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>),<span class="kw-2">*</span>).<span class="ident">is_err</span>() {
@@ -1244,7 +1170,8 @@
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi::g_log</span>(
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">log_domain</span>,
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">log_level</span>.<span class="ident">into_glib</span>(),
-                    <span class="ident">w</span>.<span class="number">0</span>.<span class="ident">into_string</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>,
+                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
+                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
                 );
             }
         }
@@ -1537,38 +1464,15 @@
         <span class="kw">fn</span> <span class="ident">check_arg</span>(<span class="ident">_format</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) {}
 
         <span class="ident">check_arg</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>);
-
-        <span class="comment">// Replace literal percentage signs with two so that they are not interpreted as printf</span>
-        <span class="comment">// format specifiers</span>
-        <span class="kw">struct</span> <span class="ident">GWrite</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder</span>);
-
-        <span class="kw">impl</span> <span class="ident">fmt::Write</span> <span class="kw">for</span> <span class="ident">GWrite</span> {
-            <span class="kw">fn</span> <span class="ident">write_str</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">fmt::Error</span><span class="op">&gt;</span> {
-                <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>((<span class="ident">prefix</span>, <span class="ident">suffix</span>)) <span class="op">=</span> <span class="ident">s</span>.<span class="ident">split_once</span>(<span class="string">&#39;%&#39;</span>) {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="ident">prefix</span>);
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="string">&quot;%%&quot;</span>);
-                    <span class="ident">s</span> <span class="op">=</span> <span class="ident">suffix</span>;
-                }
-                <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="ident">s</span>);
-                <span class="prelude-val">Ok</span>(())
-            }
-
-            <span class="kw">fn</span> <span class="ident">write_char</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">c</span>: <span class="ident">char</span>) -&gt; <span class="ident">fmt::Result</span> {
-                <span class="kw">if</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;%&#39;</span> {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append</span>(<span class="string">&quot;%%&quot;</span>);
-                } <span class="kw">else</span> {
-                    <span class="self">self</span>.<span class="number">0</span>.<span class="ident">append_c</span>(<span class="ident">c</span>);
-                }
-                <span class="prelude-val">Ok</span>(())
-            }
-        }
-
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">w</span> <span class="op">=</span> <span class="ident">GWrite</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder::default</span>());
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">w</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::GStringBuilder::default</span>();
 
         <span class="comment">// Can&#39;t really happen but better safe than sorry</span>
         <span class="kw">if</span> <span class="op">!</span><span class="macro">std::write!</span>(<span class="kw-2">&amp;mut</span> <span class="ident">w</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>),<span class="kw-2">*</span>).<span class="ident">is_err</span>() {
             <span class="kw">unsafe</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>(<span class="ident">w</span>.<span class="number">0</span>.<span class="ident">into_string</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::ffi</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>(
+                    <span class="string">b&quot;%s\0&quot;</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>,
+                    <span class="ident">ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="ident">i8</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="ident">w</span>.<span class="ident">into_string</span>()).<span class="number">0</span>,
+                );
             }
         }
     }};
