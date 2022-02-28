@@ -1375,23 +1375,6 @@
 <span id="1297">1297</span>
 <span id="1298">1298</span>
 <span id="1299">1299</span>
-<span id="1300">1300</span>
-<span id="1301">1301</span>
-<span id="1302">1302</span>
-<span id="1303">1303</span>
-<span id="1304">1304</span>
-<span id="1305">1305</span>
-<span id="1306">1306</span>
-<span id="1307">1307</span>
-<span id="1308">1308</span>
-<span id="1309">1309</span>
-<span id="1310">1310</span>
-<span id="1311">1311</span>
-<span id="1312">1312</span>
-<span id="1313">1313</span>
-<span id="1314">1314</span>
-<span id="1315">1315</span>
-<span id="1316">1316</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1825,6 +1808,17 @@
     <span class="doccomment">/// used instead.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// An opaque structure used to hold different types of values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The data within the structure has protected scope: it is accessible only</span>
+    <span class="doccomment">/// to functions within a `GTypeValueTable` structure, or implementations of</span>
+    <span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
+    <span class="doccomment">/// types.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`Value`][crate::Value] users cannot make any assumptions about how data is stored</span>
+    <span class="doccomment">/// within the 2 element `data` union, and the `g_type` member should</span>
+    <span class="doccomment">/// only be accessed through the G_VALUE_TYPE() macro.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GValue</span><span class="op">&gt;</span>);
 
@@ -1908,19 +1902,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns whether `Value`s of type `src` can be transformed to type `dst`.</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Check whether [`transform()`][Self::transform()] is able to transform values</span>
-    <span class="doccomment">/// of type `src_type` into values of type `dest_type`. Note that for</span>
-    <span class="doccomment">/// the types to be transformable, they must be compatible or a</span>
-    <span class="doccomment">/// transformation function must be registered.</span>
-    <span class="doccomment">/// ## `src_type`</span>
-    <span class="doccomment">/// Source type.</span>
-    <span class="doccomment">/// ## `dest_type`</span>
-    <span class="doccomment">/// Target type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -1933,21 +1914,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to transform the value into a value of the target type</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate</span>
-    <span class="doccomment">/// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value</span>
-    <span class="doccomment">/// into a `G_TYPE_FLOAT` value. Performing transformations between</span>
-    <span class="doccomment">/// value types might incur precision lossage. Especially</span>
-    <span class="doccomment">/// transformations into strings might reveal seemingly arbitrary</span>
-    <span class="doccomment">/// results and shouldn&#39;t be relied upon for production code (such</span>
-    <span class="doccomment">/// as rcfile value or object property serialization).</span>
-    <span class="doccomment">/// ## `dest_value`</span>
-    <span class="doccomment">/// Target value.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Whether a transformation rule was found and could be applied.</span>
-    <span class="doccomment">///  Upon failing transformations, `dest_value` is left untouched.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_transform&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ValueType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">transform_with_type</span>(<span class="ident">T::Type::static_type</span>())
@@ -2709,5 +2675,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (d3ad51b48 2022-02-25)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (6a7055661 2022-02-27)" ></div>
 </body></html>
