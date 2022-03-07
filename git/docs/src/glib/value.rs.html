@@ -1533,24 +1533,6 @@
 <span id="1455">1455</span>
 <span id="1456">1456</span>
 <span id="1457">1457</span>
-<span id="1458">1458</span>
-<span id="1459">1459</span>
-<span id="1460">1460</span>
-<span id="1461">1461</span>
-<span id="1462">1462</span>
-<span id="1463">1463</span>
-<span id="1464">1464</span>
-<span id="1465">1465</span>
-<span id="1466">1466</span>
-<span id="1467">1467</span>
-<span id="1468">1468</span>
-<span id="1469">1469</span>
-<span id="1470">1470</span>
-<span id="1471">1471</span>
-<span id="1472">1472</span>
-<span id="1473">1473</span>
-<span id="1474">1474</span>
-<span id="1475">1475</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1631,7 +1613,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">C</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">ValueTypeOptional</span> <span class="op">+</span> <span class="ident">StaticType</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     <span class="ident">C</span>: <span class="ident">ValueTypeChecker</span><span class="op">&lt;</span><span class="ident">Error</span> <span class="op">=</span> <span class="ident">ValueTypeMismatchOrNoneError</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">E</span>: <span class="ident">error::Error</span>,
+    <span class="ident">E</span>: <span class="ident">error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
     <span class="kw">type</span> <span class="ident">Type</span> <span class="op">=</span> <span class="ident">T::Type</span>;
 }
@@ -1833,7 +1815,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">C</span><span class="op">&gt;</span>,
     <span class="ident">C</span>: <span class="ident">ValueTypeChecker</span><span class="op">&lt;</span><span class="ident">Error</span> <span class="op">=</span> <span class="ident">ValueTypeMismatchOrNoneError</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">E</span>: <span class="ident">error::Error</span>,
+    <span class="ident">E</span>: <span class="ident">error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
 }
 
@@ -1844,8 +1826,29 @@
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident"><span class="kw">super</span>::FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">C</span><span class="op">&gt;</span>,
         <span class="ident">C</span>: <span class="ident"><span class="kw">super</span>::ValueTypeChecker</span><span class="op">&lt;</span><span class="ident">Error</span> <span class="op">=</span> <span class="ident"><span class="kw">super</span>::ValueTypeMismatchOrNoneError</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-        <span class="ident">E</span>: <span class="ident"><span class="kw">super</span>::error::Error</span>,
+        <span class="ident">E</span>: <span class="ident"><span class="kw">super</span>::error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
+    }
+}
+
+<span class="comment">// rustdoc-stripper-ignore-next</span>
+<span class="doccomment">/// Wrapped `Value` type checker for optional types.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">C</span>, <span class="ident">E</span><span class="op">&gt;</span>(<span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>(<span class="ident">T</span>, <span class="ident">C</span>, <span class="ident">E</span>)<span class="op">&gt;</span>);
+
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>, <span class="ident">C</span>, <span class="ident">E</span><span class="op">&gt;</span> <span class="ident">ValueTypeChecker</span> <span class="kw">for</span> <span class="ident">ValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">C</span>, <span class="ident">E</span><span class="op">&gt;</span>
+<span class="kw">where</span>
+    <span class="ident">T</span>: <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">C</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StaticType</span>,
+    <span class="ident">C</span>: <span class="ident">ValueTypeChecker</span><span class="op">&lt;</span><span class="ident">Error</span> <span class="op">=</span> <span class="ident">ValueTypeMismatchOrNoneError</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    <span class="ident">E</span>: <span class="ident">error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+{
+    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">E</span>;
+
+    <span class="kw">fn</span> <span class="ident">check</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Value</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="ident">T::Checker::check</span>(<span class="ident">value</span>) {
+            <span class="prelude-val">Err</span>(<span class="ident">ValueTypeMismatchOrNoneError::UnexpectedNone</span>) =&gt; <span class="prelude-val">Ok</span>(()),
+            <span class="prelude-val">Err</span>(<span class="ident">ValueTypeMismatchOrNoneError::WrongValueType</span>(<span class="ident">err</span>)) =&gt; <span class="prelude-val">Err</span>(<span class="ident">err</span>),
+            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(()),
+        }
     }
 }
 
@@ -1855,15 +1858,18 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">FromValue</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">C</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StaticType</span>,
     <span class="ident">C</span>: <span class="ident">ValueTypeChecker</span><span class="op">&lt;</span><span class="ident">Error</span> <span class="op">=</span> <span class="ident">ValueTypeMismatchOrNoneError</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">E</span>: <span class="ident">error::Error</span>,
+    <span class="ident">E</span>: <span class="ident">error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sized</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">GenericValueTypeChecker</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>;
+    <span class="kw">type</span> <span class="ident">Checker</span> <span class="op">=</span> <span class="ident">ValueTypeOrNoneChecker</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">C</span>, <span class="ident">E</span><span class="op">&gt;</span>;
 
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_value</span>(<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Value</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">ValueTypeMismatchOrNoneError::UnexpectedNone</span>) <span class="op">=</span> <span class="ident">T::Checker::check</span>(<span class="ident">value</span>) {
-            <span class="prelude-val">None</span>
-        } <span class="kw">else</span> {
-            <span class="prelude-val">Some</span>(<span class="ident">T::from_value</span>(<span class="ident">value</span>))
+        <span class="kw">match</span> <span class="ident">T::Checker::check</span>(<span class="ident">value</span>) {
+            <span class="prelude-val">Err</span>(<span class="ident">ValueTypeMismatchOrNoneError::UnexpectedNone</span>) =&gt; <span class="prelude-val">None</span>,
+            <span class="prelude-val">Err</span>(<span class="ident">ValueTypeMismatchOrNoneError::WrongValueType</span>(<span class="ident">_err</span>)) =&gt; {
+                <span class="comment">// This should&#39;ve been caught by the caller already.</span>
+                <span class="macro">unreachable!</span>();
+            }
+            <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Some</span>(<span class="ident">T::from_value</span>(<span class="ident">value</span>)),
         }
     }
 }
@@ -2197,48 +2203,6 @@
     <span class="doccomment">/// graphical application too, then to ensure that the spawned program opens its</span>
     <span class="doccomment">/// windows on the right screen, you may want to use `GdkAppLaunchContext`,</span>
     <span class="doccomment">/// `GAppLaunchContext`, or set the `DISPLAY` environment variable.</span>
-    <span class="doccomment">/// ## `working_directory`</span>
-    <span class="doccomment">/// child&#39;s current working</span>
-    <span class="doccomment">///  directory, or [`None`] to inherit parent&#39;s, in the GLib file name encoding</span>
-    <span class="doccomment">/// ## `argv`</span>
-    <span class="doccomment">/// child&#39;s argument</span>
-    <span class="doccomment">///  vector, in the GLib file name encoding</span>
-    <span class="doccomment">/// ## `envp`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///  child&#39;s environment, or [`None`] to inherit parent&#39;s, in the GLib file</span>
-    <span class="doccomment">///  name encoding</span>
-    <span class="doccomment">/// ## `flags`</span>
-    <span class="doccomment">/// flags from [`SpawnFlags`][crate::SpawnFlags]</span>
-    <span class="doccomment">/// ## `child_setup`</span>
-    <span class="doccomment">/// function to run in the child just before ``exec()``</span>
-    <span class="doccomment">/// ## `stdin_fd`</span>
-    <span class="doccomment">/// file descriptor to use for child&#39;s stdin, or `-1`</span>
-    <span class="doccomment">/// ## `stdout_fd`</span>
-    <span class="doccomment">/// file descriptor to use for child&#39;s stdout, or `-1`</span>
-    <span class="doccomment">/// ## `stderr_fd`</span>
-    <span class="doccomment">/// file descriptor to use for child&#39;s stderr, or `-1`</span>
-    <span class="doccomment">/// ## `source_fds`</span>
-    <span class="doccomment">/// array of FDs from the parent</span>
-    <span class="doccomment">///  process to make available in the child process</span>
-    <span class="doccomment">/// ## `target_fds`</span>
-    <span class="doccomment">/// array of FDs to remap</span>
-    <span class="doccomment">///  `source_fds` to in the child process</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] on success, [`false`] if an error was set</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `child_pid_out`</span>
-    <span class="doccomment">/// return location for child process ID, or [`None`]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `stdin_pipe_out`</span>
-    <span class="doccomment">/// return location for file descriptor to write to child&#39;s stdin, or [`None`]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `stdout_pipe_out`</span>
-    <span class="doccomment">/// return location for file descriptor to read child&#39;s stdout, or [`None`]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `stderr_pipe_out`</span>
-    <span class="doccomment">/// return location for file descriptor to read child&#39;s stderr, or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
