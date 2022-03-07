@@ -2167,6 +2167,35 @@
 <span id="2089">2089</span>
 <span id="2090">2090</span>
 <span id="2091">2091</span>
+<span id="2092">2092</span>
+<span id="2093">2093</span>
+<span id="2094">2094</span>
+<span id="2095">2095</span>
+<span id="2096">2096</span>
+<span id="2097">2097</span>
+<span id="2098">2098</span>
+<span id="2099">2099</span>
+<span id="2100">2100</span>
+<span id="2101">2101</span>
+<span id="2102">2102</span>
+<span id="2103">2103</span>
+<span id="2104">2104</span>
+<span id="2105">2105</span>
+<span id="2106">2106</span>
+<span id="2107">2107</span>
+<span id="2108">2108</span>
+<span id="2109">2109</span>
+<span id="2110">2110</span>
+<span id="2111">2111</span>
+<span id="2112">2112</span>
+<span id="2113">2113</span>
+<span id="2114">2114</span>
+<span id="2115">2115</span>
+<span id="2116">2116</span>
+<span id="2117">2117</span>
+<span id="2118">2118</span>
+<span id="2119">2119</span>
+<span id="2120">2120</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -2906,6 +2935,19 @@
     <span class="doccomment">/// Stores the serialized form of a GVariant instance into the given slice.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The slice needs to be big enough.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Stores the serialized form of `self` at `data`. `data` should be</span>
+    <span class="doccomment">/// large enough. See [`size()`][Self::size()].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The stored data is in machine native byte order but may not be in</span>
+    <span class="doccomment">/// fully-normalised form if read from an untrusted source. See</span>
+    <span class="doccomment">/// [`normal_form()`][Self::normal_form()] for a solution.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// As with [`data()`][Self::data()], to be able to deserialize the</span>
+    <span class="doccomment">/// serialized variant successfully, its type and (if the destination</span>
+    <span class="doccomment">/// machine might be different) its endianness must also be available.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is approximately O(n) in the size of `data`.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_store&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">store</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">data</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -2938,6 +2980,22 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Determines the number of children in a container GVariant instance.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// Determines the number of children in a container [`Variant`][struct@crate::Variant] instance.</span>
+    <span class="doccomment">/// This includes variants, maybes, arrays, tuples and dictionary</span>
+    <span class="doccomment">/// entries. It is an error to call this function on any other type of</span>
+    <span class="doccomment">/// [`Variant`][struct@crate::Variant].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// For variants, the return value is always 1. For values with maybe</span>
+    <span class="doccomment">/// types, it is always zero or one. For arrays, it is the length of the</span>
+    <span class="doccomment">/// array. For tuples it is the number of tuple items (which depends</span>
+    <span class="doccomment">/// only on the type). For dictionary entries, it is always 2</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is O(1).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the number of children in the container</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_variant_n_children&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">n_children</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
         <span class="macro">assert!</span>(<span class="self">self</span>.<span class="ident">is_container</span>());
