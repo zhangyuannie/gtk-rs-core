@@ -1414,6 +1414,17 @@
 <span id="1336">1336</span>
 <span id="1337">1337</span>
 <span id="1338">1338</span>
+<span id="1339">1339</span>
+<span id="1340">1340</span>
+<span id="1341">1341</span>
+<span id="1342">1342</span>
+<span id="1343">1343</span>
+<span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1869,6 +1880,17 @@
     <span class="doccomment">/// used instead.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// An opaque structure used to hold different types of values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The data within the structure has protected scope: it is accessible only</span>
+    <span class="doccomment">/// to functions within a `GTypeValueTable` structure, or implementations of</span>
+    <span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
+    <span class="doccomment">/// types.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`Value`][crate::Value] users cannot make any assumptions about how data is stored</span>
+    <span class="doccomment">/// within the 2 element `data` union, and the `g_type` member should</span>
+    <span class="doccomment">/// only be accessed through the G_VALUE_TYPE() macro.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GValue</span><span class="op">&gt;</span>);
 
