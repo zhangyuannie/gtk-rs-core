@@ -648,7 +648,7 @@
         <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visibility</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
             <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">inner</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>,
-            $(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>,)<span class="question-mark">?</span>
+            <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>($($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span>)<span class="question-mark">?</span>)<span class="op">&gt;</span>,
         }
 
         <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="ident">std::clone::Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
@@ -656,7 +656,7 @@
             <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
                 <span class="self">Self</span> {
                     <span class="ident">inner</span>: <span class="ident">std::clone::Clone::clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>),
-                    $(<span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>::<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span>
+                    <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>,
                 }
             }
         }
@@ -680,7 +680,7 @@
         <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visibility</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
             <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">inner</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>,
-            $(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>,)<span class="question-mark">?</span>
+            <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>($($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span>)<span class="question-mark">?</span>)<span class="op">&gt;</span>,
         }
 
         <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="ident">std::clone::Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
@@ -688,7 +688,7 @@
             <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self</span> {
                 <span class="self">Self</span> {
                     <span class="ident">inner</span>: <span class="ident">std::clone::Clone::clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">inner</span>),
-                    $(<span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>::<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span>
+                    <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>,
                 }
             }
         }
@@ -711,7 +711,7 @@
         <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visibility</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
             <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">inner</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>,
-            $(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>,)<span class="question-mark">?</span>
+            <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>($($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span>)<span class="question-mark">?</span>)<span class="op">&gt;</span>,
         }
 
         <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="ident">std::clone::Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
@@ -751,7 +751,7 @@
         <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
         <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visibility</span> <span class="kw">struct</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
             <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">inner</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>,
-            $(<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>,)<span class="question-mark">?</span>
+            <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span><span class="op">&lt;</span>($($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span>)<span class="question-mark">?</span>)<span class="op">&gt;</span>,
         }
 
         <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="ident">std::clone::Clone</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
@@ -799,7 +799,7 @@
                 <span class="ident">init</span>(<span class="ident">v</span>.<span class="ident">as_mut_ptr</span>());
                 <span class="self">Self</span> {
                     <span class="ident">inner</span>: <span class="ident">v</span>.<span class="ident">assume_init</span>(),
-                    $(<span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>::<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span>
+                    <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>,
                 }
             }
         }
@@ -809,7 +809,7 @@
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">unsafe_from</span>(<span class="ident">t</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) -&gt; <span class="self">Self</span> {
                 <span class="self">Self</span> {
                     <span class="ident">inner</span>: <span class="ident">t</span>,
-                    $(<span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>::<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span>
+                    <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>,
                 }
             }
         }
@@ -1007,7 +1007,7 @@
 
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::Borrowed::new</span>(<span class="self">Self</span> {
                     <span class="ident">inner</span>: <span class="ident">std::ptr::read</span>(<span class="ident">ptr</span>),
-                    $(<span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>::<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span>
+                    <span class="ident">phantom</span>: <span class="ident">std::marker::PhantomData</span>,
                 })
             }
         }
