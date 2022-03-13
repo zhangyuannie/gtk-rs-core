@@ -1127,6 +1127,9 @@
 <span id="1049">1049</span>
 <span id="1050">1050</span>
 <span id="1051">1051</span>
+<span id="1052">1052</span>
+<span id="1053">1053</span>
+<span id="1054">1054</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1975,6 +1978,8 @@
 <span class="doccomment">/// Example:</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```no_run</span>
+<span class="doccomment">/// # #[cfg(feature = &quot;v2_50&quot;)]</span>
+<span class="doccomment">/// # {</span>
 <span class="doccomment">/// use glib::{GString, LogLevel, log_structured};</span>
 <span class="doccomment">/// use std::ffi::CString;</span>
 <span class="doccomment">///</span>
@@ -1994,6 +1999,7 @@
 <span class="doccomment">///         &quot;MESSAGE&quot; =&gt; &quot;test: {} {}&quot;, 1, 2, ;</span>
 <span class="doccomment">///     }</span>
 <span class="doccomment">/// );</span>
+<span class="doccomment">/// # }</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
 <span class="macro">macro_rules!</span> <span class="ident">log_structured</span> {
