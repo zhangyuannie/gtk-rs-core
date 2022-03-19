@@ -253,6 +253,9 @@
 <span id="175">175</span>
 <span id="176">176</span>
 <span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">AttrClass</span>, <span class="ident">AttrType</span>, <span class="ident">Attribute</span>};
@@ -345,6 +348,9 @@
             }
         }
 
+        <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rust_type</span> {}
+        <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">rust_type</span> {}
+
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_44&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>)))]</span>
         <span class="macro">glib::wrapper!</span> {
             <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
@@ -431,5 +437,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (458262b13 2022-03-09)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="pango" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
 </body></html>
