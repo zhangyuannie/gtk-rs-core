@@ -1397,34 +1397,6 @@
 <span id="1319">1319</span>
 <span id="1320">1320</span>
 <span id="1321">1321</span>
-<span id="1322">1322</span>
-<span id="1323">1323</span>
-<span id="1324">1324</span>
-<span id="1325">1325</span>
-<span id="1326">1326</span>
-<span id="1327">1327</span>
-<span id="1328">1328</span>
-<span id="1329">1329</span>
-<span id="1330">1330</span>
-<span id="1331">1331</span>
-<span id="1332">1332</span>
-<span id="1333">1333</span>
-<span id="1334">1334</span>
-<span id="1335">1335</span>
-<span id="1336">1336</span>
-<span id="1337">1337</span>
-<span id="1338">1338</span>
-<span id="1339">1339</span>
-<span id="1340">1340</span>
-<span id="1341">1341</span>
-<span id="1342">1342</span>
-<span id="1343">1343</span>
-<span id="1344">1344</span>
-<span id="1345">1345</span>
-<span id="1346">1346</span>
-<span id="1347">1347</span>
-<span id="1348">1348</span>
-<span id="1349">1349</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1974,19 +1946,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns whether `Value`s of type `src` can be transformed to type `dst`.</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Check whether [`transform()`][Self::transform()] is able to transform values</span>
-    <span class="doccomment">/// of type `src_type` into values of type `dest_type`. Note that for</span>
-    <span class="doccomment">/// the types to be transformable, they must be compatible or a</span>
-    <span class="doccomment">/// transformation function must be registered.</span>
-    <span class="doccomment">/// ## `src_type`</span>
-    <span class="doccomment">/// Source type.</span>
-    <span class="doccomment">/// ## `dest_type`</span>
-    <span class="doccomment">/// Target type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -1999,21 +1958,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to transform the value into a value of the target type</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate</span>
-    <span class="doccomment">/// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value</span>
-    <span class="doccomment">/// into a `G_TYPE_FLOAT` value. Performing transformations between</span>
-    <span class="doccomment">/// value types might incur precision lossage. Especially</span>
-    <span class="doccomment">/// transformations into strings might reveal seemingly arbitrary</span>
-    <span class="doccomment">/// results and shouldn&#39;t be relied upon for production code (such</span>
-    <span class="doccomment">/// as rcfile value or object property serialization).</span>
-    <span class="doccomment">/// ## `dest_value`</span>
-    <span class="doccomment">/// Target value.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Whether a transformation rule was found and could be applied.</span>
-    <span class="doccomment">///  Upon failing transformations, `dest_value` is left untouched.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_transform&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ValueType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">transform_with_type</span>(<span class="ident">T::Type::static_type</span>())
