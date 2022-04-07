@@ -3339,7 +3339,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib paths on UNIX are always in the local encoding, just like in Rust</span>
     <span class="comment">//</span>
     <span class="comment">// Paths on UNIX must not contain NUL bytes, in which case the conversion</span>
@@ -3349,7 +3349,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib paths are always UTF-8 strings on Windows, while in Rust they are</span>
     <span class="comment">// WTF-8. As such, we need to convert to a UTF-8 string. This conversion can</span>
     <span class="comment">// fail, see https://simonsapin.github.io/wtf-8/#converting-wtf-8-utf-8</span>
@@ -3377,7 +3377,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib OS string (environment strings) on UNIX are always in the local encoding,</span>
     <span class="comment">// just like in Rust</span>
     <span class="comment">//</span>
@@ -3388,7 +3388,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib OS string (environment strings) are always UTF-8 strings on Windows,</span>
     <span class="comment">// while in Rust they are WTF-8. As such, we need to convert to a UTF-8 string.</span>
     <span class="comment">// This conversion can fail, see https://simonsapin.github.io/wtf-8/#converting-wtf-8-utf-8</span>
@@ -4300,7 +4300,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib paths on UNIX are always in the local encoding, which can be</span>
@@ -4310,7 +4310,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib paths on Windows are always UTF-8, as such we can convert to a String</span>
@@ -4323,7 +4323,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib OS string (environment strings) on UNIX are always in the local encoding,</span>
@@ -4333,7 +4333,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib OS string (environment strings) on Windows are always UTF-8,</span>
