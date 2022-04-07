@@ -2734,6 +2734,30 @@
 <span id="2656">2656</span>
 <span id="2657">2657</span>
 <span id="2658">2658</span>
+<span id="2659">2659</span>
+<span id="2660">2660</span>
+<span id="2661">2661</span>
+<span id="2662">2662</span>
+<span id="2663">2663</span>
+<span id="2664">2664</span>
+<span id="2665">2665</span>
+<span id="2666">2666</span>
+<span id="2667">2667</span>
+<span id="2668">2668</span>
+<span id="2669">2669</span>
+<span id="2670">2670</span>
+<span id="2671">2671</span>
+<span id="2672">2672</span>
+<span id="2673">2673</span>
+<span id="2674">2674</span>
+<span id="2675">2675</span>
+<span id="2676">2676</span>
+<span id="2677">2677</span>
+<span id="2678">2678</span>
+<span id="2679">2679</span>
+<span id="2680">2680</span>
+<span id="2681">2681</span>
+<span id="2682">2682</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -3399,6 +3423,12 @@
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
     }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
+    }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ToGlibPtr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*const</span> <span class="ident">c_char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PathBuf</span> {
@@ -3418,6 +3448,12 @@
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
+    }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
@@ -3447,6 +3483,12 @@
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
     }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
+    }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ToGlibPtr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*const</span> <span class="ident">c_char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">OsString</span> {
@@ -3466,6 +3508,12 @@
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
+    }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
