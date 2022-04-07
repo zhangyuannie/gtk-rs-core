@@ -261,10 +261,6 @@
 <span id="183">183</span>
 <span id="184">184</span>
 <span id="185">185</span>
-<span id="186">186</span>
-<span id="187">187</span>
-<span id="188">188</span>
-<span id="189">189</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -398,17 +394,13 @@
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::log</span>::{
     <span class="ident">log_default_handler</span>, <span class="ident">log_remove_handler</span>, <span class="ident">log_set_always_fatal</span>, <span class="ident">log_set_default_handler</span>,
-    <span class="ident">log_set_fatal_mask</span>, <span class="ident">log_unset_default_handler</span>, <span class="ident">set_print_handler</span>, <span class="ident">set_printerr_handler</span>,
-    <span class="ident">unset_print_handler</span>, <span class="ident">unset_printerr_handler</span>, <span class="ident">LogHandlerId</span>, <span class="ident">LogLevel</span>, <span class="ident">LogLevels</span>,
+    <span class="ident">log_set_fatal_mask</span>, <span class="ident">log_set_writer_func</span>, <span class="ident">log_structured_array</span>, <span class="ident">log_unset_default_handler</span>,
+    <span class="ident">log_variant</span>, <span class="ident">log_writer_default</span>, <span class="ident">log_writer_format_fields</span>, <span class="ident">log_writer_journald</span>,
+    <span class="ident">log_writer_standard_streams</span>, <span class="ident">set_print_handler</span>, <span class="ident">set_printerr_handler</span>, <span class="ident">unset_print_handler</span>,
+    <span class="ident">unset_printerr_handler</span>, <span class="ident">LogField</span>, <span class="ident">LogHandlerId</span>, <span class="ident">LogLevel</span>, <span class="ident">LogLevels</span>,
 };
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_50&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::log</span>::{
-    <span class="ident">log_set_writer_func</span>, <span class="ident">log_structured_array</span>, <span class="ident">log_variant</span>, <span class="ident">log_writer_default</span>,
-    <span class="ident">log_writer_format_fields</span>, <span class="ident">log_writer_journald</span>, <span class="ident">log_writer_standard_streams</span>, <span class="ident">LogField</span>,
-};
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_50&quot;</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">unix</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::log</span>::{<span class="ident">log_writer_is_journald</span>, <span class="ident">log_writer_supports_color</span>};
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_68&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
@@ -455,5 +447,5 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_family</span> <span class="op">=</span> <span class="string">&quot;windows&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::win32</span>::<span class="kw-2">*</span>;
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (60e50fc1c 2022-04-04)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (8f36334ca 2022-04-06)" ></div>
 </body></html>
