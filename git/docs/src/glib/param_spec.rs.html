@@ -1384,6 +1384,33 @@
 <span id="1306">1306</span>
 <span id="1307">1307</span>
 <span id="1308">1308</span>
+<span id="1309">1309</span>
+<span id="1310">1310</span>
+<span id="1311">1311</span>
+<span id="1312">1312</span>
+<span id="1313">1313</span>
+<span id="1314">1314</span>
+<span id="1315">1315</span>
+<span id="1316">1316</span>
+<span id="1317">1317</span>
+<span id="1318">1318</span>
+<span id="1319">1319</span>
+<span id="1320">1320</span>
+<span id="1321">1321</span>
+<span id="1322">1322</span>
+<span id="1323">1323</span>
+<span id="1324">1324</span>
+<span id="1325">1325</span>
+<span id="1326">1326</span>
+<span id="1327">1327</span>
+<span id="1328">1328</span>
+<span id="1329">1329</span>
+<span id="1330">1330</span>
+<span id="1331">1331</span>
+<span id="1332">1332</span>
+<span id="1333">1333</span>
+<span id="1334">1334</span>
+<span id="1335">1335</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1404,6 +1431,21 @@
 
 <span class="comment">// Can&#39;t use get_type here as this is not a boxed type but another fundamental type</span>
 <span class="macro">wrapper!</span> {
+    <span class="doccomment">/// [`ParamSpec`][crate::ParamSpec] is an object structure that encapsulates the metadata</span>
+    <span class="doccomment">/// required to specify parameters, such as e.g. [`Object`][crate::Object] properties.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Parameter names # {`canonical`-parameter-names}</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// A property name consists of one or more segments consisting of ASCII letters</span>
+    <span class="doccomment">/// and digits, separated by either the `-` or `_` character. The first</span>
+    <span class="doccomment">/// character of a property name must be a letter. These are the same rules as</span>
+    <span class="doccomment">/// for signal naming (see `g_signal_new()`).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// When creating and looking up a [`ParamSpec`][crate::ParamSpec], either separator can be</span>
+    <span class="doccomment">/// used, but they cannot be mixed. Using `-` is considerably more</span>
+    <span class="doccomment">/// efficient, and is the ‘canonical form’. Using `_` is discouraged.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is an Abstract Base Class, you cannot instantiate it.</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Hash</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GParamSpec&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ParamSpec</span>(<span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GParamSpec</span><span class="op">&gt;</span>);
@@ -1657,6 +1699,18 @@
     <span class="comment">//    unsafe { TODO: call gobject_ffi::g_param_spec_steal_qdata() }</span>
     <span class="comment">//}</span>
 
+    <span class="doccomment">/// Validate a property name for a [`ParamSpec`][crate::ParamSpec]. This can be useful for</span>
+    <span class="doccomment">/// dynamically-generated properties which need to be validated at run-time</span>
+    <span class="doccomment">/// before actually trying to create them.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// See [canonical parameter names][canonical-parameter-names] for details of</span>
+    <span class="doccomment">/// the rules for valid names.</span>
+    <span class="doccomment">/// ## `name`</span>
+    <span class="doccomment">/// the canonical name of the property</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`true`] if `name` is a valid property name, [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_66&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_66&quot;</span>)))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_param_spec_is_valid_name&quot;</span>)]</span>

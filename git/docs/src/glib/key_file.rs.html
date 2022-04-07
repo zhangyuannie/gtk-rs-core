@@ -339,6 +339,63 @@
 <span id="261">261</span>
 <span id="262">262</span>
 <span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
@@ -432,6 +489,22 @@
         }
     }
 
+    <span class="doccomment">/// Returns the value associated with `key` under `group_name` as a</span>
+    <span class="doccomment">/// boolean.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `key` cannot be found then [`false`] is returned and `error` is set</span>
+    <span class="doccomment">/// to [`KeyFileError::KeyNotFound`][crate::KeyFileError::KeyNotFound]. Likewise, if the value</span>
+    <span class="doccomment">/// associated with `key` cannot be interpreted as a boolean then [`false`]</span>
+    <span class="doccomment">/// is returned and `error` is set to [`KeyFileError::InvalidValue`][crate::KeyFileError::InvalidValue].</span>
+    <span class="doccomment">/// ## `group_name`</span>
+    <span class="doccomment">/// a group name</span>
+    <span class="doccomment">/// ## `key`</span>
+    <span class="doccomment">/// a key</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// the value associated with the key as a boolean,</span>
+    <span class="doccomment">///  or [`false`] if the key was not found or could not be parsed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_key_file_get_boolean&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_boolean&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">boolean</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">group_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
@@ -469,6 +542,24 @@
         }
     }
 
+    <span class="doccomment">/// Returns the values associated with `key` under `group_name` as</span>
+    <span class="doccomment">/// booleans.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `key` cannot be found then [`None`] is returned and `error` is set to</span>
+    <span class="doccomment">/// [`KeyFileError::KeyNotFound`][crate::KeyFileError::KeyNotFound]. Likewise, if the values associated</span>
+    <span class="doccomment">/// with `key` cannot be interpreted as booleans then [`None`] is returned</span>
+    <span class="doccomment">/// and `error` is set to [`KeyFileError::InvalidValue`][crate::KeyFileError::InvalidValue].</span>
+    <span class="doccomment">/// ## `group_name`</span>
+    <span class="doccomment">/// a group name</span>
+    <span class="doccomment">/// ## `key`</span>
+    <span class="doccomment">/// a key</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">///  the values associated with the key as a list of booleans, or [`None`] if the</span>
+    <span class="doccomment">///  key was not found or could not be parsed. The returned list of booleans</span>
+    <span class="doccomment">///  should be freed with `g_free()` when no longer needed.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_key_file_get_boolean_list&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_boolean_list&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">boolean_list</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">group_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
@@ -541,6 +632,29 @@
         }
     }
 
+    <span class="doccomment">/// Returns the value associated with `key` under `group_name`</span>
+    <span class="doccomment">/// translated in the given `locale` if available. If `locale` is</span>
+    <span class="doccomment">/// [`None`] then the current locale is assumed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `locale` is to be non-[`None`], or if the current locale will change over</span>
+    <span class="doccomment">/// the lifetime of the [`KeyFile`][crate::KeyFile], it must be loaded with</span>
+    <span class="doccomment">/// [`KeyFileFlags::KEEP_TRANSLATIONS`][crate::KeyFileFlags::KEEP_TRANSLATIONS] in order to load strings for all locales.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If `key` cannot be found then [`None`] is returned and `error` is set</span>
+    <span class="doccomment">/// to [`KeyFileError::KeyNotFound`][crate::KeyFileError::KeyNotFound]. If the value associated</span>
+    <span class="doccomment">/// with `key` cannot be interpreted or no suitable translation can</span>
+    <span class="doccomment">/// be found then the untranslated value is returned.</span>
+    <span class="doccomment">/// ## `group_name`</span>
+    <span class="doccomment">/// a group name</span>
+    <span class="doccomment">/// ## `key`</span>
+    <span class="doccomment">/// a key</span>
+    <span class="doccomment">/// ## `locale`</span>
+    <span class="doccomment">/// a locale identifier or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// a newly allocated string or [`None`] if the specified</span>
+    <span class="doccomment">///  key cannot be found.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_key_file_get_locale_string&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_locale_string&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">locale_string</span>(
