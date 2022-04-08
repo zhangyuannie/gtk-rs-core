@@ -1102,6 +1102,8 @@
 <span id="1024">1024</span>
 <span id="1025">1025</span>
 <span id="1026">1026</span>
+<span id="1027">1027</span>
+<span id="1028">1028</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -2037,12 +2039,14 @@
     }
 }
 
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">unix</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_log_writer_supports_color&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">log_writer_supports_color</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRawFd</span><span class="op">&gt;</span>(<span class="ident">output_fd</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_log_writer_supports_color</span>(<span class="ident">output_fd</span>.<span class="ident">as_raw_fd</span>())) }
 }
 
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">unix</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_log_writer_is_journald&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">log_writer_is_journald</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRawFd</span><span class="op">&gt;</span>(<span class="ident">output_fd</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span> {
