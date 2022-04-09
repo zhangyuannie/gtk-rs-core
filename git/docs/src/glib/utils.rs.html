@@ -593,33 +593,6 @@
 <span id="515">515</span>
 <span id="516">516</span>
 <span id="517">517</span>
-<span id="518">518</span>
-<span id="519">519</span>
-<span id="520">520</span>
-<span id="521">521</span>
-<span id="522">522</span>
-<span id="523">523</span>
-<span id="524">524</span>
-<span id="525">525</span>
-<span id="526">526</span>
-<span id="527">527</span>
-<span id="528">528</span>
-<span id="529">529</span>
-<span id="530">530</span>
-<span id="531">531</span>
-<span id="532">532</span>
-<span id="533">533</span>
-<span id="534">534</span>
-<span id="535">535</span>
-<span id="536">536</span>
-<span id="537">537</span>
-<span id="538">538</span>
-<span id="539">539</span>
-<span id="540">540</span>
-<span id="541">541</span>
-<span id="542">542</span>
-<span id="543">543</span>
-<span id="544">544</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -723,15 +696,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_user_name</span>()) }
 }
 
-<span class="doccomment">/// Gets the real name of the user. This usually comes from the user&#39;s</span>
-<span class="doccomment">/// entry in the `passwd` file. The encoding of the returned string is</span>
-<span class="doccomment">/// system-defined. (On Windows, it is, however, always UTF-8.) If the</span>
-<span class="doccomment">/// real user name cannot be determined, the string &quot;Unknown&quot; is</span>
-<span class="doccomment">/// returned.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the user&#39;s real name.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_real_name&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_real_name&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">real_name</span>() -&gt; <span class="ident">OsString</span> {
@@ -891,24 +855,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_home_dir</span>()) }
 }
 
-<span class="doccomment">/// Gets the directory to use for temporary files.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On UNIX, this is taken from the `TMPDIR` environment variable.</span>
-<span class="doccomment">/// If the variable is not set, `P_tmpdir` is</span>
-<span class="doccomment">/// used, as defined by the system C library. Failing that, a</span>
-<span class="doccomment">/// hard-coded default of &quot;/tmp&quot; is returned.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On Windows, the `TEMP` environment variable is used, with the</span>
-<span class="doccomment">/// root directory of the Windows installation (eg: &quot;C:\&quot;) used</span>
-<span class="doccomment">/// as a default.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The encoding of the returned string is system-defined. On Windows,</span>
-<span class="doccomment">/// it is always UTF-8. The return value is never [`None`] or the empty</span>
-<span class="doccomment">/// string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the directory to use for temporary files.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_tmp_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_tmp_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tmp_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
@@ -1165,5 +1111,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (e745b4ddb 2022-04-07)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f4a7ce997 2022-04-08)" ></div>
 </body></html>
