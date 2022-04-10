@@ -222,13 +222,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// a newly allocated [`PixbufSimpleAnim`][crate::PixbufSimpleAnim]</span>
+    <span class="doccomment">/// a newly allocated #GdkPixbufSimpleAnim</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;gdk_pixbuf_simple_anim_new&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">width</span>: <span class="ident">i32</span>, <span class="ident">height</span>: <span class="ident">i32</span>, <span class="ident">rate</span>: <span class="ident">f32</span>) -&gt; <span class="ident">PixbufSimpleAnim</span> {
         <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::gdk_pixbuf_simple_anim_new</span>(<span class="ident">width</span>, <span class="ident">height</span>, <span class="ident">rate</span>)) }
     }
 
-    <span class="doccomment">/// Adds a new frame to `self`. The `pixbuf` must</span>
+    <span class="doccomment">/// Adds a new frame to @self. The @pixbuf must</span>
     <span class="doccomment">/// have the dimensions specified when the animation</span>
     <span class="doccomment">/// was constructed.</span>
     <span class="doccomment">/// ## `pixbuf`</span>
@@ -240,7 +240,7 @@
         }
     }
 
-    <span class="doccomment">/// Gets whether `self` should loop indefinitely when it reaches the end.</span>
+    <span class="doccomment">/// Gets whether @self should loop indefinitely when it reaches the end.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
@@ -251,7 +251,7 @@
         <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::gdk_pixbuf_simple_anim_get_loop</span>(<span class="self">self</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
     }
 
-    <span class="doccomment">/// Sets whether `self` should loop indefinitely when it reaches the end.</span>
+    <span class="doccomment">/// Sets whether @self should loop indefinitely when it reaches the end.</span>
     <span class="doccomment">/// ## `loop_`</span>
     <span class="doccomment">/// whether to loop the animation</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;gdk_pixbuf_simple_anim_set_loop&quot;</span>)]</span>
@@ -291,5 +291,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f4a7ce997 2022-04-08)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (8bf93e9b6 2022-04-09)" ></div>
 </body></html>

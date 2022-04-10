@@ -171,27 +171,27 @@
     <span class="doccomment">/// The iterator provides the frames that should be displayed at a</span>
     <span class="doccomment">/// given time.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `start_time` would normally come from `g_get_current_time()`, and marks</span>
+    <span class="doccomment">/// @start_time would normally come from g_get_current_time(), and marks</span>
     <span class="doccomment">/// the beginning of animation playback. After creating an iterator, you</span>
     <span class="doccomment">/// should immediately display the pixbuf returned by</span>
-    <span class="doccomment">/// [`PixbufAnimationIterExtManual::pixbuf()`][crate::prelude::PixbufAnimationIterExtManual::pixbuf()]. Then, you should install</span>
-    <span class="doccomment">/// a timeout (with `g_timeout_add()`) or by some other mechanism ensure</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_iter_get_pixbuf(). Then, you should install</span>
+    <span class="doccomment">/// a timeout (with g_timeout_add()) or by some other mechanism ensure</span>
     <span class="doccomment">/// that you&#39;ll update the image after</span>
-    <span class="doccomment">/// [`PixbufAnimationIterExtManual::delay_time()`][crate::prelude::PixbufAnimationIterExtManual::delay_time()] milliseconds. Each time</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_iter_get_delay_time() milliseconds. Each time</span>
     <span class="doccomment">/// the image is updated, you should reinstall the timeout with the new,</span>
     <span class="doccomment">/// possibly-changed delay time.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// As a shortcut, if `start_time` is `NULL`, the result of</span>
-    <span class="doccomment">/// `g_get_current_time()` will be used automatically.</span>
+    <span class="doccomment">/// As a shortcut, if @start_time is `NULL`, the result of</span>
+    <span class="doccomment">/// g_get_current_time() will be used automatically.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// To update the image (i.e. possibly change the result of</span>
-    <span class="doccomment">/// [`PixbufAnimationIterExtManual::pixbuf()`][crate::prelude::PixbufAnimationIterExtManual::pixbuf()] to a new frame of the animation),</span>
-    <span class="doccomment">/// call [`PixbufAnimationIterExtManual::advance()`][crate::prelude::PixbufAnimationIterExtManual::advance()].</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_iter_get_pixbuf() to a new frame of the animation),</span>
+    <span class="doccomment">/// call gdk_pixbuf_animation_iter_advance().</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If you&#39;re using [`PixbufLoader`][crate::PixbufLoader], in addition to updating the image</span>
+    <span class="doccomment">/// If you&#39;re using #GdkPixbufLoader, in addition to updating the image</span>
     <span class="doccomment">/// after the delay time, you should also update it whenever you</span>
     <span class="doccomment">/// receive the area_updated signal and</span>
-    <span class="doccomment">/// [`PixbufAnimationIterExtManual::on_currently_loading_frame()`][crate::prelude::PixbufAnimationIterExtManual::on_currently_loading_frame()] returns</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_iter_on_currently_loading_frame() returns</span>
     <span class="doccomment">/// `TRUE`. In this case, the frame currently being fed into the loader</span>
     <span class="doccomment">/// has received new data, so needs to be refreshed. The delay time for</span>
     <span class="doccomment">/// a frame may also be modified after an area_updated signal, for</span>
@@ -235,5 +235,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f4a7ce997 2022-04-08)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (8bf93e9b6 2022-04-09)" ></div>
 </body></html>

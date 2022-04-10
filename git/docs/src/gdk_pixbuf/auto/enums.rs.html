@@ -754,14 +754,14 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GDK_INTERP_NEAREST&quot;</span>)]</span>
     <span class="ident">Nearest</span>,
     <span class="doccomment">/// This is an accurate simulation of the PostScript</span>
-    <span class="doccomment">///  image operator without any interpolation enabled. Each pixel is</span>
+    <span class="doccomment">///  image operator without any interpolation enabled.  Each pixel is</span>
     <span class="doccomment">///  rendered as a tiny parallelogram of solid color, the edges of which</span>
-    <span class="doccomment">///  are implemented with antialiasing. It resembles nearest neighbor for</span>
+    <span class="doccomment">///  are implemented with antialiasing.  It resembles nearest neighbor for</span>
     <span class="doccomment">///  enlargement, and bilinear for reduction.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GDK_INTERP_TILES&quot;</span>)]</span>
     <span class="ident">Tiles</span>,
     <span class="doccomment">/// Best quality/speed balance; use this mode by</span>
-    <span class="doccomment">///  default. Bilinear interpolation. For enlargement, it is</span>
+    <span class="doccomment">///  default. Bilinear interpolation.  For enlargement, it is</span>
     <span class="doccomment">///  equivalent to point-sampling the ideal bilinear-interpolated image.</span>
     <span class="doccomment">///  For reduction, it is equivalent to laying down small tiles and</span>
     <span class="doccomment">///  integrating over the coverage area.</span>
@@ -773,7 +773,7 @@
     <span class="doccomment">///  hyperbolic-filter sampling the ideal hyperbolic-filter interpolated</span>
     <span class="doccomment">///  image (the filter is designed to be idempotent for 1:1 pixel mapping).</span>
     <span class="doccomment">///  **Deprecated**: this interpolation filter is deprecated, as in reality</span>
-    <span class="doccomment">///  it has a lower quality than the [`Bilinear`][Self::Bilinear] filter</span>
+    <span class="doccomment">///  it has a lower quality than the @GDK_INTERP_BILINEAR filter</span>
     <span class="doccomment">///  (Since: 2.38)</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GDK_INTERP_HYPER&quot;</span>)]</span>
     <span class="ident">Hyper</span>,
@@ -859,7 +859,7 @@
 
 <span class="doccomment">/// Control the alpha channel for drawables.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// These values can be passed to `gdk_pixbuf_xlib_render_to_drawable_alpha()`</span>
+<span class="doccomment">/// These values can be passed to gdk_pixbuf_xlib_render_to_drawable_alpha()</span>
 <span class="doccomment">/// in gdk-pixbuf-xlib to control how the alpha channel of an image should</span>
 <span class="doccomment">/// be handled.</span>
 <span class="doccomment">///</span>
@@ -873,20 +873,20 @@
 <span class="doccomment">/// # Deprecated since 2.42</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// There is no user of GdkPixbufAlphaMode in GdkPixbuf,</span>
-<span class="doccomment">///  and the Xlib utility functions have been split out to their own</span>
-<span class="doccomment">///  library, gdk-pixbuf-xlib</span>
+<span class="doccomment">///   and the Xlib utility functions have been split out to their own</span>
+<span class="doccomment">///   library, gdk-pixbuf-xlib</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_42&quot;</span>, <span class="ident">deprecated</span> <span class="op">=</span> <span class="string">&quot;Since 2.42&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GdkPixbufAlphaMode&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">PixbufAlphaMode</span> {
     <span class="doccomment">/// A bilevel clipping mask (black and white)</span>
-    <span class="doccomment">///  will be created and used to draw the image. Pixels below 0.5 opacity</span>
+    <span class="doccomment">///  will be created and used to draw the image.  Pixels below 0.5 opacity</span>
     <span class="doccomment">///  will be considered fully transparent, and all others will be</span>
     <span class="doccomment">///  considered fully opaque.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GDK_PIXBUF_ALPHA_BILEVEL&quot;</span>)]</span>
     <span class="ident">Bilevel</span>,
-    <span class="doccomment">/// For now falls back to [`Bilevel`][Self::Bilevel].</span>
+    <span class="doccomment">/// For now falls back to #GDK_PIXBUF_ALPHA_BILEVEL.</span>
     <span class="doccomment">///  In the future it will do full alpha compositing.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GDK_PIXBUF_ALPHA_FULL&quot;</span>)]</span>
     <span class="ident">Full</span>,
@@ -1106,7 +1106,7 @@
     }
 }
 
-<span class="doccomment">/// The possible rotations which can be passed to [`Pixbuf::rotate_simple()`][crate::Pixbuf::rotate_simple()].</span>
+<span class="doccomment">/// The possible rotations which can be passed to gdk_pixbuf_rotate_simple().</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// To make them easier to use, their numerical values are the actual degrees.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Hash</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
@@ -1205,5 +1205,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f4a7ce997 2022-04-08)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (8bf93e9b6 2022-04-09)" ></div>
 </body></html>

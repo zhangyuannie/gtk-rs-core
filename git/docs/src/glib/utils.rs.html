@@ -593,6 +593,9 @@
 <span id="515">515</span>
 <span id="516">516</span>
 <span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -642,6 +645,11 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_getenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// e].</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// unsigned integer contents of `self`</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_setenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">variable_name</span>: <span class="ident">K</span>,
@@ -718,19 +726,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">g_get_current_dir</span>()) }
 }
 
-<span class="doccomment">/// Converts an absolute filename to an escaped ASCII-encoded URI, with the path</span>
-<span class="doccomment">/// component following Section 3.3. of RFC 2396.</span>
-<span class="doccomment">/// ## `filename`</span>
-<span class="doccomment">/// an absolute filename specified in the GLib file</span>
-<span class="doccomment">///  name encoding, which is the on-disk file name bytes on Unix, and UTF-8</span>
-<span class="doccomment">///  on Windows</span>
-<span class="doccomment">/// ## `hostname`</span>
-<span class="doccomment">/// A UTF-8 encoded hostname, or [`None`] for none.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// a newly-allocated string holding the resulting</span>
-<span class="doccomment">///  URI, or [`None`] on an error.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_filename_to_uri&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filename_to_uri</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">filename</span>: <span class="ident">P</span>,
@@ -753,20 +748,6 @@
     }
 }
 
-<span class="doccomment">/// Converts an escaped ASCII-encoded URI to a local filename in the</span>
-<span class="doccomment">/// encoding used for filenames.</span>
-<span class="doccomment">/// ## `uri`</span>
-<span class="doccomment">/// a uri describing a filename (escaped, encoded in ASCII).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// a newly-allocated string holding</span>
-<span class="doccomment">///  the resulting filename, or [`None`] on an error.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ## `hostname`</span>
-<span class="doccomment">/// Location to store hostname for the URI.</span>
-<span class="doccomment">///  If there is no hostname in the URI, [`None`] will be</span>
-<span class="doccomment">///  stored in this location.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_filename_from_uri&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">filename_from_uri</span>(<span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">std::path::PathBuf</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">GString</span><span class="op">&gt;</span>), <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -786,30 +767,6 @@
     }
 }
 
-<span class="doccomment">/// Locates the first executable named `program` in the user&#39;s path, in the</span>
-<span class="doccomment">/// same way that `execvp()` would locate it. Returns an allocated string</span>
-<span class="doccomment">/// with the absolute path name, or [`None`] if the program is not found in</span>
-<span class="doccomment">/// the path. If `program` is already an absolute path, returns a copy of</span>
-<span class="doccomment">/// `program` if `program` exists and is executable, and [`None`] otherwise.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On Windows, if `program` does not have a file type suffix, tries</span>
-<span class="doccomment">/// with the suffixes .exe, .cmd, .bat and .com, and the suffixes in</span>
-<span class="doccomment">/// the `PATHEXT` environment variable.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On Windows, it looks for the file in the same way as CreateProcess()</span>
-<span class="doccomment">/// would. This means first in the directory where the executing</span>
-<span class="doccomment">/// program was loaded from, then in the current directory, then in the</span>
-<span class="doccomment">/// Windows 32-bit system directory, then in the Windows directory, and</span>
-<span class="doccomment">/// finally in the directories in the `PATH` environment variable. If</span>
-<span class="doccomment">/// the program is found, the return value contains the full name</span>
-<span class="doccomment">/// including the type suffix.</span>
-<span class="doccomment">/// ## `program`</span>
-<span class="doccomment">/// a program name in the GLib file name encoding</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// a newly-allocated</span>
-<span class="doccomment">///  string with the absolute path, or [`None`]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_find_program_in_path&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_program_in_path</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">program</span>: <span class="ident">P</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">all</span>(<span class="ident">windows</span>, <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;x86&quot;</span>)))]</span>
@@ -820,30 +777,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">g_find_program_in_path</span>(<span class="ident">program</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
-<span class="doccomment">/// Gets the current user&#39;s home directory.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// As with most UNIX tools, this function will return the value of the</span>
-<span class="doccomment">/// `HOME` environment variable if it is set to an existing absolute path</span>
-<span class="doccomment">/// name, falling back to the `passwd` file in the case that it is unset.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If the path given in `HOME` is non-absolute, does not exist, or is</span>
-<span class="doccomment">/// not a directory, the result is undefined.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Before version 2.36 this function would ignore the `HOME` environment</span>
-<span class="doccomment">/// variable, taking the value from the `passwd` database instead. This was</span>
-<span class="doccomment">/// changed to increase the compatibility of GLib with other programs (and</span>
-<span class="doccomment">/// the XDG basedir specification) and to increase testability of programs</span>
-<span class="doccomment">/// based on GLib (by making it easier to run them from test frameworks).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If your program has a strong requirement for either the new or the</span>
-<span class="doccomment">/// old behaviour (and if you don&#39;t wish to increase your GLib</span>
-<span class="doccomment">/// dependency to ensure that the new behaviour is in effect) then you</span>
-<span class="doccomment">/// should either directly check the `HOME` environment variable yourself</span>
-<span class="doccomment">/// or unset it before calling any functions in GLib.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the current user&#39;s home directory</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_home_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_home_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">home_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
@@ -866,6 +799,26 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_tmp_dir</span>()) }
 }
 
+<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
+<span class="doccomment">/// on most UNIX-like systems.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
+<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
+<span class="doccomment">/// [`mkstemp()`][crate::mkstemp()] is slightly more flexible than `mkstemp()` in that the</span>
+<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
+<span class="doccomment">/// The X string will be modified to form the name of a file that</span>
+<span class="doccomment">/// didn&#39;t exist. The string should be in the GLib file name encoding.</span>
+<span class="doccomment">/// Most importantly, on Windows it should be in UTF-8.</span>
+<span class="doccomment">/// ## `tmpl`</span>
+<span class="doccomment">/// template filename</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A file handle (as from `open()`) to the file</span>
+<span class="doccomment">///  opened for reading and writing. The file is opened in binary</span>
+<span class="doccomment">///  mode on platforms where there is a difference. The file handle</span>
+<span class="doccomment">///  should be closed with `close()`. In case of errors, -1 is</span>
+<span class="doccomment">///  returned and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">tmpl</span>: <span class="ident">P</span>) -&gt; <span class="ident">i32</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -880,6 +833,31 @@
     }
 }
 
+<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
+<span class="doccomment">/// on most UNIX-like systems.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
+<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
+<span class="doccomment">/// [`mkstemp_full()`][crate::mkstemp_full()] is slightly more flexible than `mkstemp()`</span>
+<span class="doccomment">/// in that the sequence does not have to occur at the very end of the</span>
+<span class="doccomment">/// template and you can pass a `mode` and additional `flags`. The X</span>
+<span class="doccomment">/// string will be modified to form the name of a file that didn&#39;t exist.</span>
+<span class="doccomment">/// The string should be in the GLib file name encoding. Most importantly,</span>
+<span class="doccomment">/// on Windows it should be in UTF-8.</span>
+<span class="doccomment">/// ## `tmpl`</span>
+<span class="doccomment">/// template filename</span>
+<span class="doccomment">/// ## `flags`</span>
+<span class="doccomment">/// flags to pass to an `open()` call in addition to O_EXCL</span>
+<span class="doccomment">///  and O_CREAT, which are passed automatically</span>
+<span class="doccomment">/// ## `mode`</span>
+<span class="doccomment">/// permissions to create the temporary file with</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A file handle (as from `open()`) to the file</span>
+<span class="doccomment">///  opened for reading and writing. The file handle should be</span>
+<span class="doccomment">///  closed with `close()`. In case of errors, -1 is returned</span>
+<span class="doccomment">///  and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp_full</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">flags</span>: <span class="ident">i32</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i32</span> {
     <span class="kw">unsafe</span> {
@@ -889,6 +867,29 @@
     }
 }
 
+<span class="doccomment">/// Creates a temporary directory. See the `mkdtemp()` documentation</span>
+<span class="doccomment">/// on most UNIX-like systems.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
+<span class="doccomment">/// `mkdtemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
+<span class="doccomment">/// [`mkdtemp()`][crate::mkdtemp()] is slightly more flexible than `mkdtemp()` in that the</span>
+<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
+<span class="doccomment">/// The X string will be modified to form the name of a directory that</span>
+<span class="doccomment">/// didn&#39;t exist.</span>
+<span class="doccomment">/// The string should be in the GLib file name encoding. Most importantly,</span>
+<span class="doccomment">/// on Windows it should be in UTF-8.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you are going to be creating a temporary directory inside the</span>
+<span class="doccomment">/// directory returned by [`tmp_dir()`][crate::tmp_dir()], you might want to use</span>
+<span class="doccomment">/// `g_dir_make_tmp()` instead.</span>
+<span class="doccomment">/// ## `tmpl`</span>
+<span class="doccomment">/// template directory name</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A pointer to `tmpl`, which has been</span>
+<span class="doccomment">///  modified to hold the directory name. In case of errors, [`None`] is</span>
+<span class="doccomment">///  returned and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkdtemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkdtemp</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -905,6 +906,31 @@
     }
 }
 
+<span class="doccomment">/// Creates a temporary directory. See the `mkdtemp()` documentation</span>
+<span class="doccomment">/// on most UNIX-like systems.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
+<span class="doccomment">/// `mkdtemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
+<span class="doccomment">/// [`mkdtemp_full()`][crate::mkdtemp_full()] is slightly more flexible than `mkdtemp()` in that the</span>
+<span class="doccomment">/// sequence does not have to occur at the very end of the template</span>
+<span class="doccomment">/// and you can pass a `mode`. The X string will be modified to form</span>
+<span class="doccomment">/// the name of a directory that didn&#39;t exist. The string should be</span>
+<span class="doccomment">/// in the GLib file name encoding. Most importantly, on Windows it</span>
+<span class="doccomment">/// should be in UTF-8.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you are going to be creating a temporary directory inside the</span>
+<span class="doccomment">/// directory returned by [`tmp_dir()`][crate::tmp_dir()], you might want to use</span>
+<span class="doccomment">/// `g_dir_make_tmp()` instead.</span>
+<span class="doccomment">/// ## `tmpl`</span>
+<span class="doccomment">/// template directory name</span>
+<span class="doccomment">/// ## `mode`</span>
+<span class="doccomment">/// permissions to create the temporary directory with</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A pointer to `tmpl`, which has been</span>
+<span class="doccomment">///  modified to hold the directory name. In case of errors, [`None`] is</span>
+<span class="doccomment">///  returned, and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkdtemp_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkdtemp_full</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -921,26 +947,6 @@
     }
 }
 
-<span class="doccomment">/// Reads an entire file into allocated memory, with good error</span>
-<span class="doccomment">/// checking.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If the call was successful, it returns [`true`] and sets `contents` to the file</span>
-<span class="doccomment">/// contents and `length` to the length of the file contents in bytes. The string</span>
-<span class="doccomment">/// stored in `contents` will be nul-terminated, so for text files you can pass</span>
-<span class="doccomment">/// [`None`] for the `length` argument. If the call was not successful, it returns</span>
-<span class="doccomment">/// [`false`] and sets `error`. The error domain is `G_FILE_ERROR`. Possible error</span>
-<span class="doccomment">/// codes are those in the `GFileError` enumeration. In the error case,</span>
-<span class="doccomment">/// `contents` is set to [`None`] and `length` is set to zero.</span>
-<span class="doccomment">/// ## `filename`</span>
-<span class="doccomment">/// name of a file to read contents from, in the GLib file name encoding</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`true`] on success, [`false`] if an error occurred</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ## `contents`</span>
-<span class="doccomment">/// location to store an allocated string, use `g_free()` to free</span>
-<span class="doccomment">///  the returned string</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_file_get_contents&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">file_get_contents</span>(
     <span class="ident">filename</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>,
@@ -1111,5 +1117,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f4a7ce997 2022-04-08)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (8bf93e9b6 2022-04-09)" ></div>
 </body></html>
