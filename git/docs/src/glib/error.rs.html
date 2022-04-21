@@ -390,6 +390,12 @@
 <span id="312">312</span>
 <span id="313">313</span>
 <span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -441,6 +447,12 @@
     <span class="doccomment">/// Checks if the error domain matches `T`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ErrorDomain</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">domain</span> <span class="op">==</span> <span class="ident">T::domain</span>().<span class="ident">into_glib</span>()
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns the error domain quark</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">domain</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Quark</span> {
+        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">domain</span>) }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -705,5 +717,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (ec77f2524 2022-04-17)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (879aff385 2022-04-20)" ></div>
 </body></html>
