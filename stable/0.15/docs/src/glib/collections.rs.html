@@ -1364,22 +1364,6 @@
 <span id="1286">1286</span>
 <span id="1287">1287</span>
 <span id="1288">1288</span>
-<span id="1289">1289</span>
-<span id="1290">1290</span>
-<span id="1291">1291</span>
-<span id="1292">1292</span>
-<span id="1293">1293</span>
-<span id="1294">1294</span>
-<span id="1295">1295</span>
-<span id="1296">1296</span>
-<span id="1297">1297</span>
-<span id="1298">1298</span>
-<span id="1299">1299</span>
-<span id="1300">1300</span>
-<span id="1301">1301</span>
-<span id="1302">1302</span>
-<span id="1303">1303</span>
-<span id="1304">1304</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1584,9 +1568,7 @@
 
         <span class="ident">PtrSlice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -1616,9 +1598,7 @@
 
         <span class="ident">PtrSlice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -1642,9 +1622,7 @@
 
         <span class="ident">PtrSlice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -1928,9 +1906,7 @@
 
         <span class="ident">Slice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -1950,9 +1926,7 @@
 
         <span class="ident">Slice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -1978,9 +1952,7 @@
 
         <span class="ident">Slice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -2000,9 +1972,7 @@
 
         <span class="ident">Slice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -2019,9 +1989,7 @@
 
         <span class="ident">Slice</span> {
             <span class="ident">ptr</span>: <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>() {
-                    <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
-                }
+                <span class="ident">ffi::g_free</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="ident">ffi::gpointer</span>);
                 <span class="ident">ptr::NonNull::dangling</span>()
             } <span class="kw">else</span> {
                 <span class="ident">ptr::NonNull::new_unchecked</span>(<span class="ident">ptr</span>)
@@ -2685,5 +2653,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>

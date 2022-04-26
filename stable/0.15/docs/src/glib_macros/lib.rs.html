@@ -1357,7 +1357,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`BoxedType`]: subclass/boxed/trait.BoxedType.html</span>
 <span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Boxed</span>, <span class="ident">attributes</span>(<span class="ident">boxed_nullable</span>, <span class="ident">boxed_type</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Boxed</span>, <span class="ident">attributes</span>(<span class="ident">boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
@@ -1385,7 +1385,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// [`SharedType`]: subclass/shared/trait.SharedType.html</span>
 <span class="doccomment">/// [`glib::Value`]: value/struct.Value.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">SharedBoxed</span>, <span class="ident">attributes</span>(<span class="ident">shared_boxed_nullable</span>, <span class="ident">shared_boxed_type</span>))]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">SharedBoxed</span>, <span class="ident">attributes</span>(<span class="ident">shared_boxed_type</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shared_boxed_derive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
     <span class="kw">let</span> <span class="ident">input</span> <span class="op">=</span> <span class="macro">parse_macro_input!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">DeriveInput</span>);
@@ -1583,5 +1583,5 @@
     .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">into_compile_error</span>().<span class="ident">into</span>())
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib_macros" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>

@@ -2734,6 +2734,30 @@
 <span id="2656">2656</span>
 <span id="2657">2657</span>
 <span id="2658">2658</span>
+<span id="2659">2659</span>
+<span id="2660">2660</span>
+<span id="2661">2661</span>
+<span id="2662">2662</span>
+<span id="2663">2663</span>
+<span id="2664">2664</span>
+<span id="2665">2665</span>
+<span id="2666">2666</span>
+<span id="2667">2667</span>
+<span id="2668">2668</span>
+<span id="2669">2669</span>
+<span id="2670">2670</span>
+<span id="2671">2671</span>
+<span id="2672">2672</span>
+<span id="2673">2673</span>
+<span id="2674">2674</span>
+<span id="2675">2675</span>
+<span id="2676">2676</span>
+<span id="2677">2677</span>
+<span id="2678">2678</span>
+<span id="2679">2679</span>
+<span id="2680">2680</span>
+<span id="2681">2681</span>
+<span id="2682">2682</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -3315,7 +3339,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib paths on UNIX are always in the local encoding, just like in Rust</span>
     <span class="comment">//</span>
     <span class="comment">// Paths on UNIX must not contain NUL bytes, in which case the conversion</span>
@@ -3325,7 +3349,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">path_to_c</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib paths are always UTF-8 strings on Windows, while in Rust they are</span>
     <span class="comment">// WTF-8. As such, we need to convert to a UTF-8 string. This conversion can</span>
     <span class="comment">// fail, see https://simonsapin.github.io/wtf-8/#converting-wtf-8-utf-8</span>
@@ -3353,7 +3377,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib OS string (environment strings) on UNIX are always in the local encoding,</span>
     <span class="comment">// just like in Rust</span>
     <span class="comment">//</span>
@@ -3364,7 +3388,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">os_str_to_c</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">OsStr</span>) -&gt; <span class="ident">CString</span> {
     <span class="comment">// GLib OS string (environment strings) are always UTF-8 strings on Windows,</span>
     <span class="comment">// while in Rust they are WTF-8. As such, we need to convert to a UTF-8 string.</span>
     <span class="comment">// This conversion can fail, see https://simonsapin.github.io/wtf-8/#converting-wtf-8-utf-8</span>
@@ -3399,6 +3423,12 @@
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
     }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
+    }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ToGlibPtr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*const</span> <span class="ident">c_char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PathBuf</span> {
@@ -3418,6 +3448,12 @@
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
+    }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">path_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
@@ -3447,6 +3483,12 @@
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
     }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
+    }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ToGlibPtr</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*const</span> <span class="ident">c_char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">OsString</span> {
@@ -3466,6 +3508,12 @@
     <span class="kw">fn</span> <span class="ident">to_glib_none</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="ident">Stash</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
         <span class="ident">Stash</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>, <span class="ident">tmp</span>)
+    }
+
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+        <span class="kw">let</span> <span class="ident">tmp</span> <span class="op">=</span> <span class="ident">os_str_to_c</span>(<span class="self">self</span>);
+        <span class="kw">unsafe</span> { <span class="ident">ffi::g_strdup</span>(<span class="ident">tmp</span>.<span class="ident">as_ptr</span>()) }
     }
 }
 
@@ -4252,7 +4300,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib paths on UNIX are always in the local encoding, which can be</span>
@@ -4262,7 +4310,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_path_buf</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">PathBuf</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib paths on Windows are always UTF-8, as such we can convert to a String</span>
@@ -4275,7 +4323,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib OS string (environment strings) on UNIX are always in the local encoding,</span>
@@ -4285,7 +4333,7 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">windows</span>)]</span>
-<span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">c_to_os_string</span>(<span class="ident">ptr</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>) -&gt; <span class="ident">OsString</span> {
     <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ptr</span>.<span class="ident">is_null</span>());
 
     <span class="comment">// GLib OS string (environment strings) on Windows are always UTF-8,</span>
@@ -5393,5 +5441,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>

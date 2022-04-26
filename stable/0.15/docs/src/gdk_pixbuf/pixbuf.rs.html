@@ -915,6 +915,20 @@
 <span id="837">837</span>
 <span id="838">838</span>
 <span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">glib::object::IsA</span>;
@@ -1306,6 +1320,20 @@
         }))
     }
 
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns a mutable slice to the pixbuf&#39;s pixel data.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function will cause an implicit copy if the pixbuf was created from read-only data.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Please see the section on [image data](#image-data) for information about how the pixel</span>
+    <span class="doccomment">/// data is stored in memory.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Safety</span>
+    <span class="doccomment">/// No other reference to this pixbuf&#39;s data must exist when this method is called.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Until you drop the returned reference, you must not call any methods on the pixbuf which may read</span>
+    <span class="doccomment">/// or write to the data.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Queries a pointer to the pixel data of a pixbuf.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function will cause an implicit copy of the pixbuf data if the</span>
@@ -1755,5 +1783,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>

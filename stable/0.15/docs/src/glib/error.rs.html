@@ -375,6 +375,27 @@
 <span id="297">297</span>
 <span id="298">298</span>
 <span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -426,6 +447,19 @@
     <span class="doccomment">/// Checks if the error domain matches `T`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ErrorDomain</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">domain</span> <span class="op">==</span> <span class="ident">T::domain</span>().<span class="ident">into_glib</span>()
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Returns the error domain quark</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">domain</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Quark</span> {
+        <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">domain</span>) }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Checks if the error matches the specified domain and error code.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_error_matches&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">matches</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ErrorDomain</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">err</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">is</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">code</span> <span class="op">==</span> <span class="ident">err</span>.<span class="ident">code</span>()
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -614,6 +648,14 @@
     <span class="kw">use</span> <span class="ident">std::ffi::CString</span>;
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_error_matches</span>() {
+        <span class="kw">let</span> <span class="ident">e</span> <span class="op">=</span> <span class="ident">Error::new</span>(<span class="ident"><span class="kw">crate</span>::FileError::Failed</span>, <span class="string">&quot;Failed&quot;</span>);
+        <span class="macro">assert!</span>(<span class="ident">e</span>.<span class="ident">matches</span>(<span class="ident"><span class="kw">crate</span>::FileError::Failed</span>));
+        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">e</span>.<span class="ident">matches</span>(<span class="ident"><span class="kw">crate</span>::FileError::Again</span>));
+        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">e</span>.<span class="ident">matches</span>(<span class="ident"><span class="kw">crate</span>::KeyFileError::NotFound</span>));
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_error_kind</span>() {
         <span class="kw">let</span> <span class="ident">e</span> <span class="op">=</span> <span class="ident">Error::new</span>(<span class="ident"><span class="kw">crate</span>::FileError::Failed</span>, <span class="string">&quot;Failed&quot;</span>);
         <span class="macro">assert_eq!</span>(<span class="ident">e</span>.<span class="ident">kind</span>::<span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::FileError</span><span class="op">&gt;</span>(), <span class="prelude-val">Some</span>(<span class="ident"><span class="kw">crate</span>::FileError::Failed</span>));
@@ -675,5 +717,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>

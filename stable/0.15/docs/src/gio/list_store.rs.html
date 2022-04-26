@@ -234,6 +234,10 @@
 <span id="156">156</span>
 <span id="157">157</span>
 <span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::auto::traits::ListModelExt</span>;
@@ -337,7 +341,7 @@
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Appends all elements in a slice to the `ListStore`.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">additions</span>: <span class="kw-2">&amp;</span>[<span class="kw">impl</span> <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">glib::Object</span><span class="op">&gt;</span>]) {
-        <span class="self">self</span>.<span class="ident">splice</span>(<span class="self">self</span>.<span class="ident">n_items</span>() <span class="op">-</span> <span class="number">1</span>, <span class="number">0</span>, <span class="ident">additions</span>)
+        <span class="self">self</span>.<span class="ident">splice</span>(<span class="self">self</span>.<span class="ident">n_items</span>(), <span class="number">0</span>, <span class="ident">additions</span>)
     }
 }
 
@@ -390,8 +394,12 @@
         <span class="ident">list</span>.<span class="ident">extend</span>(<span class="kw-2">&amp;</span>[<span class="ident">item0</span>.<span class="ident">clone</span>(), <span class="ident">item1</span>.<span class="ident">clone</span>()]);
         <span class="macro">assert_eq!</span>(<span class="ident">list</span>.<span class="ident">item</span>(<span class="number">2</span>).<span class="ident">as_ref</span>(), <span class="prelude-val">Some</span>(<span class="ident">item0</span>.<span class="ident">upcast_ref</span>()));
         <span class="macro">assert_eq!</span>(<span class="ident">list</span>.<span class="ident">item</span>(<span class="number">3</span>).<span class="ident">as_ref</span>(), <span class="prelude-val">Some</span>(<span class="ident">item1</span>.<span class="ident">upcast_ref</span>()));
+
+        <span class="kw">let</span> <span class="ident">list_from_slice</span> <span class="op">=</span> <span class="ident">ListStore::new</span>(<span class="ident">ListStore::static_type</span>());
+        <span class="ident">list_from_slice</span>.<span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span>[<span class="ident">item0</span>, <span class="ident">item1</span>.<span class="ident">clone</span>()]);
+        <span class="macro">assert_eq!</span>(<span class="ident">list_from_slice</span>.<span class="ident">item</span>(<span class="number">1</span>).<span class="ident">as_ref</span>(), <span class="prelude-val">Some</span>(<span class="ident">item1</span>.<span class="ident">upcast_ref</span>()));
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0-nightly (1bfe40d11 2022-03-18)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
 </body></html>
