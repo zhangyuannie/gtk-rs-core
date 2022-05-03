@@ -1487,6 +1487,48 @@
 <span id="1409">1409</span>
 <span id="1410">1410</span>
 <span id="1411">1411</span>
+<span id="1412">1412</span>
+<span id="1413">1413</span>
+<span id="1414">1414</span>
+<span id="1415">1415</span>
+<span id="1416">1416</span>
+<span id="1417">1417</span>
+<span id="1418">1418</span>
+<span id="1419">1419</span>
+<span id="1420">1420</span>
+<span id="1421">1421</span>
+<span id="1422">1422</span>
+<span id="1423">1423</span>
+<span id="1424">1424</span>
+<span id="1425">1425</span>
+<span id="1426">1426</span>
+<span id="1427">1427</span>
+<span id="1428">1428</span>
+<span id="1429">1429</span>
+<span id="1430">1430</span>
+<span id="1431">1431</span>
+<span id="1432">1432</span>
+<span id="1433">1433</span>
+<span id="1434">1434</span>
+<span id="1435">1435</span>
+<span id="1436">1436</span>
+<span id="1437">1437</span>
+<span id="1438">1438</span>
+<span id="1439">1439</span>
+<span id="1440">1440</span>
+<span id="1441">1441</span>
+<span id="1442">1442</span>
+<span id="1443">1443</span>
+<span id="1444">1444</span>
+<span id="1445">1445</span>
+<span id="1446">1446</span>
+<span id="1447">1447</span>
+<span id="1448">1448</span>
+<span id="1449">1449</span>
+<span id="1450">1450</span>
+<span id="1451">1451</span>
+<span id="1452">1452</span>
+<span id="1453">1453</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -2109,6 +2151,48 @@
     <span class="doccomment">/// graphical application too, then to ensure that the spawned program opens its</span>
     <span class="doccomment">/// windows on the right screen, you may want to use `GdkAppLaunchContext`,</span>
     <span class="doccomment">/// `GAppLaunchContext`, or set the `DISPLAY` environment variable.</span>
+    <span class="doccomment">/// ## `working_directory`</span>
+    <span class="doccomment">/// child&#39;s current working</span>
+    <span class="doccomment">///  directory, or [`None`] to inherit parent&#39;s, in the GLib file name encoding</span>
+    <span class="doccomment">/// ## `argv`</span>
+    <span class="doccomment">/// child&#39;s argument</span>
+    <span class="doccomment">///  vector, in the GLib file name encoding; it must be non-empty and [`None`]-terminated</span>
+    <span class="doccomment">/// ## `envp`</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">///  child&#39;s environment, or [`None`] to inherit parent&#39;s, in the GLib file</span>
+    <span class="doccomment">///  name encoding</span>
+    <span class="doccomment">/// ## `flags`</span>
+    <span class="doccomment">/// flags from [`SpawnFlags`][crate::SpawnFlags]</span>
+    <span class="doccomment">/// ## `child_setup`</span>
+    <span class="doccomment">/// function to run in the child just before ``exec()``</span>
+    <span class="doccomment">/// ## `stdin_fd`</span>
+    <span class="doccomment">/// file descriptor to use for child&#39;s stdin, or `-1`</span>
+    <span class="doccomment">/// ## `stdout_fd`</span>
+    <span class="doccomment">/// file descriptor to use for child&#39;s stdout, or `-1`</span>
+    <span class="doccomment">/// ## `stderr_fd`</span>
+    <span class="doccomment">/// file descriptor to use for child&#39;s stderr, or `-1`</span>
+    <span class="doccomment">/// ## `source_fds`</span>
+    <span class="doccomment">/// array of FDs from the parent</span>
+    <span class="doccomment">///  process to make available in the child process</span>
+    <span class="doccomment">/// ## `target_fds`</span>
+    <span class="doccomment">/// array of FDs to remap</span>
+    <span class="doccomment">///  `source_fds` to in the child process</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`true`] on success, [`false`] if an error was set</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `child_pid_out`</span>
+    <span class="doccomment">/// return location for child process ID, or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `stdin_pipe_out`</span>
+    <span class="doccomment">/// return location for file descriptor to write to child&#39;s stdin, or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `stdout_pipe_out`</span>
+    <span class="doccomment">/// return location for file descriptor to read child&#39;s stdout, or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `stderr_pipe_out`</span>
+    <span class="doccomment">/// return location for file descriptor to read child&#39;s stderr, or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -2899,5 +2983,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (bed05e996 2022-05-02)" ></div>
 </body></html>
