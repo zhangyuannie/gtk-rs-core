@@ -300,6 +300,16 @@
 <span id="222">222</span>
 <span id="223">223</span>
 <span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::connect_raw</span>;
@@ -313,6 +323,16 @@
 <span class="kw">use</span> <span class="ident">std::mem::transmute</span>;
 
 <span class="kw">impl</span> <span class="ident">SignalGroup</span> {
+    <span class="doccomment">/// Connects `closure` to the signal `detailed_signal` on `property::SignalGroup::target`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// You cannot connect a signal handler after `property::SignalGroup::target` has been set.</span>
+    <span class="doccomment">/// ## `detailed_signal`</span>
+    <span class="doccomment">/// a string of the form `signal-name` with optional `::signal-detail`</span>
+    <span class="doccomment">/// ## `closure`</span>
+    <span class="doccomment">/// the closure to connect.</span>
+    <span class="doccomment">/// ## `after`</span>
+    <span class="doccomment">/// whether the handler should be called before or after the</span>
+    <span class="doccomment">///  default handler of the signal.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_group_connect_closure&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">connect_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">after</span>: <span class="ident">bool</span>, <span class="ident">closure</span>: <span class="ident">RustClosure</span>) {
         <span class="kw">unsafe</span> {
