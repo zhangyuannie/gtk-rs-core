@@ -518,41 +518,6 @@
 <span id="440">440</span>
 <span id="441">441</span>
 <span id="442">442</span>
-<span id="443">443</span>
-<span id="444">444</span>
-<span id="445">445</span>
-<span id="446">446</span>
-<span id="447">447</span>
-<span id="448">448</span>
-<span id="449">449</span>
-<span id="450">450</span>
-<span id="451">451</span>
-<span id="452">452</span>
-<span id="453">453</span>
-<span id="454">454</span>
-<span id="455">455</span>
-<span id="456">456</span>
-<span id="457">457</span>
-<span id="458">458</span>
-<span id="459">459</span>
-<span id="460">460</span>
-<span id="461">461</span>
-<span id="462">462</span>
-<span id="463">463</span>
-<span id="464">464</span>
-<span id="465">465</span>
-<span id="466">466</span>
-<span id="467">467</span>
-<span id="468">468</span>
-<span id="469">469</span>
-<span id="470">470</span>
-<span id="471">471</span>
-<span id="472">472</span>
-<span id="473">473</span>
-<span id="474">474</span>
-<span id="475">475</span>
-<span id="476">476</span>
-<span id="477">477</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -602,36 +567,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_getenv</span>(<span class="ident">variable_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
-<span class="doccomment">/// Sets an environment variable. On UNIX, both the variable&#39;s name and</span>
-<span class="doccomment">/// value can be arbitrary byte strings, except that the variable&#39;s name</span>
-<span class="doccomment">/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Note that on some systems, when variables are overwritten, the memory</span>
-<span class="doccomment">/// used for the previous variables and its value isn&#39;t reclaimed.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
-<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
-<span class="doccomment">/// calls [`setenv()`][crate::setenv()] while another thread is calling `getenv()`. (And note</span>
-<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.)</span>
-<span class="doccomment">/// This function is only safe to use at the very start of your program,</span>
-<span class="doccomment">/// before creating any other threads (or creating objects that create</span>
-<span class="doccomment">/// worker threads of their own).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
-<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
-<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
-<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
-<span class="doccomment">/// ## `variable`</span>
-<span class="doccomment">/// the environment variable to set, must not</span>
-<span class="doccomment">///  contain &#39;=&#39;.</span>
-<span class="doccomment">/// ## `value`</span>
-<span class="doccomment">/// the value for to set the variable to.</span>
-<span class="doccomment">/// ## `overwrite`</span>
-<span class="doccomment">/// whether to change the variable if it already exists.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`false`] if the environment variable couldn&#39;t be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_setenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">setenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span>, <span class="ident">V</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(
     <span class="ident">variable_name</span>: <span class="ident">K</span>,
@@ -655,6 +590,26 @@
     }
 }
 
+<span class="doccomment">/// Removes an environment variable from the environment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the</span>
+<span class="doccomment">/// memory used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls [`unsetenv()`][crate::unsetenv()] while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.) This</span>
+<span class="doccomment">/// function is only safe to use at the very start of your program, before</span>
+<span class="doccomment">/// creating any other threads (or creating objects that create worker</span>
+<span class="doccomment">/// threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to remove, must</span>
+<span class="doccomment">///  not contain &#39;=&#39;</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unsetenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsetenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -795,31 +750,6 @@
     }
 }
 
-<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
-<span class="doccomment">/// on most UNIX-like systems.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
-<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
-<span class="doccomment">/// [`mkstemp_full()`][crate::mkstemp_full()] is slightly more flexible than `mkstemp()`</span>
-<span class="doccomment">/// in that the sequence does not have to occur at the very end of the</span>
-<span class="doccomment">/// template and you can pass a `mode` and additional `flags`. The X</span>
-<span class="doccomment">/// string will be modified to form the name of a file that didn&#39;t exist.</span>
-<span class="doccomment">/// The string should be in the GLib file name encoding. Most importantly,</span>
-<span class="doccomment">/// on Windows it should be in UTF-8.</span>
-<span class="doccomment">/// ## `tmpl`</span>
-<span class="doccomment">/// template filename</span>
-<span class="doccomment">/// ## `flags`</span>
-<span class="doccomment">/// flags to pass to an `open()` call in addition to O_EXCL</span>
-<span class="doccomment">///  and O_CREAT, which are passed automatically</span>
-<span class="doccomment">/// ## `mode`</span>
-<span class="doccomment">/// permissions to create the temporary file with</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A file handle (as from `open()`) to the file</span>
-<span class="doccomment">///  opened for reading and writing. The file handle should be</span>
-<span class="doccomment">///  closed with `close()`. In case of errors, -1 is returned</span>
-<span class="doccomment">///  and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp_full</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">flags</span>: <span class="ident">i32</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i32</span> {
     <span class="kw">unsafe</span> {
