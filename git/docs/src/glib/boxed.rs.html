@@ -581,6 +581,22 @@
 <span id="503">503</span>
 <span id="504">504</span>
 <span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -826,6 +842,22 @@
 
             <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_glib_full_as_vec</span>(<span class="ident">ptr</span>: <span class="kw-2">*mut</span> <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::FromGlibContainerAsVec::from_glib_full_num_as_vec</span>(<span class="ident">ptr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::c_ptr_array_len</span>(<span class="ident">ptr</span>))
+            }
+        }
+
+        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+        <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::IntoGlibPtr</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_glib_ptr</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> {
+                <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">std::mem::ManuallyDrop::new</span>(<span class="self">self</span>);
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">s</span>).<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>
+            }
+        }
+
+        <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+        <span class="kw">impl</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span> $(: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound</span> $(<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::IntoGlibPtr</span><span class="op">&lt;</span><span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> $(<span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">generic</span>),<span class="op">+</span><span class="op">&gt;</span>)<span class="question-mark">?</span> {
+            <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_glib_ptr</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span> {
+                <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">std::mem::ManuallyDrop::new</span>(<span class="self">self</span>);
+                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">crate::translate::ToGlibPtr</span>::<span class="op">&lt;</span><span class="kw-2">*const</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ffi_name</span><span class="op">&gt;</span><span class="ident">::to_glib_none</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">s</span>).<span class="number">0</span> <span class="kw">as</span> <span class="kw-2">*const</span> <span class="kw">_</span>
             }
         }
     };

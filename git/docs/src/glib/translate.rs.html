@@ -2758,6 +2758,15 @@
 <span id="2680">2680</span>
 <span id="2681">2681</span>
 <span id="2682">2682</span>
+<span id="2683">2683</span>
+<span id="2684">2684</span>
+<span id="2685">2685</span>
+<span id="2686">2686</span>
+<span id="2687">2687</span>
+<span id="2688">2688</span>
+<span id="2689">2689</span>
+<span id="2690">2690</span>
+<span id="2691">2691</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -3328,6 +3337,15 @@
             <span class="ident">ffi::g_strndup</span>(<span class="self">self</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">c_char</span>, <span class="self">self</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">size_t</span>) <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">c_char</span>
         }
     }
+}
+
+<span class="comment">// rustdoc-stripper-ignore-next</span>
+<span class="doccomment">/// Translate to a pointer.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">IntoGlibPtr</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Ptr</span><span class="op">&gt;</span> {
+    <span class="comment">// rustdoc-stripper-ignore-next</span>
+    <span class="doccomment">/// Transfer: full.</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::wrong_self_convention</span>)]</span>
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_glib_ptr</span>(<span class="self">self</span>) -&gt; <span class="ident">P</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">GlibPtrDefault</span> <span class="kw">for</span> <span class="ident">str</span> {

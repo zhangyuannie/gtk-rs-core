@@ -1251,6 +1251,8 @@
 <span id="1173">1173</span>
 <span id="1174">1174</span>
 <span id="1175">1175</span>
+<span id="1176">1176</span>
+<span id="1177">1177</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::<span class="kw-2">*</span>;
@@ -1652,12 +1654,14 @@
             <span class="ident">Inner::Foreign</span> { <span class="ident">ptr</span>, .. } =&gt; <span class="ident">ptr</span>.<span class="ident">as_ptr</span>(),
         }
     }
+}
 
+<span class="kw">impl</span> <span class="ident">IntoGlibPtr</span><span class="op">&lt;</span><span class="kw-2">*mut</span> <span class="ident">c_char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">GString</span> {
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Transform into a `NUL`-terminated raw C string pointer.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_raw</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">into_glib_ptr</span>(<span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">c_char</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span> {
-            <span class="ident">Inner::Native</span>(<span class="kw-2">ref</span> <span class="ident">cstr</span>) =&gt; <span class="kw">unsafe</span> {
+            <span class="ident">Inner::Native</span>(<span class="kw-2">ref</span> <span class="ident">cstr</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">cstr</span> <span class="op">=</span> <span class="ident">cstr</span>.<span class="ident">as_ref</span>().<span class="ident">unwrap</span>();
 
                 <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">cstr</span>.<span class="ident">as_ptr</span>();
@@ -1668,7 +1672,7 @@
                 <span class="ident">ptr::write</span>(<span class="ident">copy</span>.<span class="ident">add</span>(<span class="ident">len</span>), <span class="number">0</span>);
 
                 <span class="ident">copy</span>
-            },
+            }
             <span class="ident">Inner::Foreign</span> { <span class="ident">ptr</span>, .. } =&gt; {
                 <span class="kw">let</span> <span class="ident">_s</span> <span class="op">=</span> <span class="ident">mem::ManuallyDrop::new</span>(<span class="self">self</span>);
                 <span class="ident">ptr</span>.<span class="ident">as_ptr</span>()
@@ -2104,7 +2108,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">u8</span> {
-        <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_raw</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span>
+        <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_glib_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">u8</span> }
     }
 }
 
@@ -2119,7 +2123,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const</span> <span class="ident">i8</span> {
-        <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_raw</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span>
+        <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_glib_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> <span class="ident">i8</span> }
     }
 }
 
@@ -2134,7 +2138,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">u8</span> {
-        <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_raw</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">u8</span>
+        <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_glib_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">u8</span> }
     }
 }
 
@@ -2149,7 +2153,7 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">to_glib_full</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">i8</span> {
-        <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_raw</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">i8</span>
+        <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">into_glib_ptr</span>() <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">i8</span> }
     }
 }
 
