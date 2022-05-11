@@ -320,15 +320,23 @@
 <span id="242">242</span>
 <span id="243">243</span>
 <span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">FontExtents</span>, <span class="ident">FontFace</span>, <span class="ident">ScaledFont</span>, <span class="ident">TextCluster</span>, <span class="ident">TextClusterFlags</span>, <span class="ident">TextExtents</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::status_to_result</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Context</span>, <span class="ident">Error</span>, <span class="ident">Glyph</span>};
 
-<span class="kw">type</span> <span class="ident">BoxInitFunc</span> <span class="op">=</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">FontExtents</span>, <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>;
-<span class="kw">type</span> <span class="ident">BoxRenderGlyphFunc</span> <span class="op">=</span>
-    <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TextExtents</span>, <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>;
+<span class="kw">type</span> <span class="ident">BoxInitFunc</span> <span class="op">=</span>
+    <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>, <span class="kw-2">&amp;mut</span> <span class="ident">FontExtents</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>;
+<span class="kw">type</span> <span class="ident">BoxRenderGlyphFunc</span> <span class="op">=</span> <span class="ident">Box</span><span class="op">&lt;</span>
+    <span class="kw">dyn</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>, <span class="kw-2">&amp;mut</span> <span class="ident">TextExtents</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span>
+        <span class="op">+</span> <span class="ident">Send</span>
+        <span class="op">+</span> <span class="ident">Sync</span>,
+<span class="op">&gt;</span>;
 <span class="kw">type</span> <span class="ident">BoxUnicodeToGlyphFunc</span> <span class="op">=</span>
     <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">libc::c_ulong</span>, <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>;
 <span class="kw">type</span> <span class="ident">BoxTextToGlyphsFunc</span> <span class="op">=</span> <span class="ident">Box</span><span class="op">&lt;</span>
@@ -351,7 +359,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_user_font_face_set_init_func&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_init_func</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">func</span>: <span class="ident">F</span>)
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">FontExtents</span>, <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>, <span class="kw-2">&amp;mut</span> <span class="ident">FontExtents</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="kw">static</span> <span class="ident">INIT_FUNC</span>: <span class="ident">once_cell::sync::OnceCell</span><span class="op">&lt;</span><span class="ident">BoxInitFunc</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">once_cell::sync::OnceCell::new</span>();
         <span class="kw">if</span> <span class="ident">INIT_FUNC</span>.<span class="ident">set</span>(<span class="ident">Box::new</span>(<span class="ident">func</span>)).<span class="ident">is_err</span>() {
@@ -362,16 +370,16 @@
             <span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_t</span>,
             <span class="ident">extents</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_font_extents_t</span>,
         ) -&gt; <span class="ident">ffi::cairo_status_t</span> {
+            <span class="kw">let</span> <span class="ident">font_extents</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">extents</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">FontExtents</span>);
             <span class="kw">let</span> <span class="ident">init_func</span> <span class="op">=</span> <span class="ident">INIT_FUNC</span>.<span class="ident">get</span>().<span class="ident">unwrap</span>();
-            <span class="kw">match</span> <span class="ident">init_func</span>(
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">init_func</span>(
                 <span class="kw-2">&amp;</span><span class="ident">ScaledFont::from_raw_none</span>(<span class="ident">scaled_font</span>),
                 <span class="kw-2">&amp;</span><span class="ident">Context::from_raw_none</span>(<span class="ident">cr</span>),
+                <span class="ident">font_extents</span>,
             ) {
-                <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="ident">err</span>.<span class="ident">into</span>(),
-                <span class="prelude-val">Ok</span>(<span class="ident">font_extents</span>) =&gt; {
-                    <span class="kw-2">*</span><span class="ident">extents</span> <span class="op">=</span> <span class="ident">font_extents</span>.<span class="ident">into</span>();
-                    <span class="ident">ffi::STATUS_SUCCESS</span>
-                }
+                <span class="ident">err</span>.<span class="ident">into</span>()
+            } <span class="kw">else</span> {
+                <span class="ident">ffi::STATUS_SUCCESS</span>
             }
         }
         <span class="kw">unsafe</span> {
@@ -382,7 +390,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_user_font_face_set_render_glyph_func&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_render_glyph_func</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">func</span>: <span class="ident">F</span>)
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TextExtents</span>, <span class="ident">Error</span><span class="op">&gt;</span>
+        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>, <span class="kw-2">&amp;mut</span> <span class="ident">TextExtents</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span>
             <span class="op">+</span> <span class="ident">Send</span>
             <span class="op">+</span> <span class="ident">Sync</span>
             <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -398,17 +406,17 @@
             <span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_t</span>,
             <span class="ident">extents</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_text_extents_t</span>,
         ) -&gt; <span class="ident">ffi::cairo_status_t</span> {
+            <span class="kw">let</span> <span class="ident">text_extents</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">extents</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">TextExtents</span>);
             <span class="kw">let</span> <span class="ident">render_glyph_func</span> <span class="op">=</span> <span class="ident">RENDER_GLYPH_FUNC</span>.<span class="ident">get</span>().<span class="ident">unwrap</span>();
-            <span class="kw">match</span> <span class="ident">render_glyph_func</span>(
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">render_glyph_func</span>(
                 <span class="kw-2">&amp;</span><span class="ident">ScaledFont::from_raw_none</span>(<span class="ident">scaled_font</span>),
                 <span class="ident">glyph</span>,
                 <span class="kw-2">&amp;</span><span class="ident">Context::from_raw_none</span>(<span class="ident">cr</span>),
+                <span class="ident">text_extents</span>,
             ) {
-                <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="ident">err</span>.<span class="ident">into</span>(),
-                <span class="prelude-val">Ok</span>(<span class="ident">text_extents</span>) =&gt; {
-                    <span class="kw-2">*</span><span class="ident">extents</span> <span class="op">=</span> <span class="ident">text_extents</span>.<span class="ident">into</span>();
-                    <span class="ident">ffi::STATUS_SUCCESS</span>
-                }
+                <span class="ident">err</span>.<span class="ident">into</span>()
+            } <span class="kw">else</span> {
+                <span class="ident">ffi::STATUS_SUCCESS</span>
             }
         }
         <span class="kw">unsafe</span> {
@@ -422,7 +430,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_user_font_face_set_render_color_glyph_func&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_render_color_glyph_func</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">func</span>: <span class="ident">F</span>)
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TextExtents</span>, <span class="ident">Error</span><span class="op">&gt;</span>
+        <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">ScaledFont</span>, <span class="ident">libc::c_ulong</span>, <span class="kw-2">&amp;</span><span class="ident">Context</span>, <span class="kw-2">&amp;mut</span> <span class="ident">TextExtents</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span>
             <span class="op">+</span> <span class="ident">Send</span>
             <span class="op">+</span> <span class="ident">Sync</span>
             <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -438,17 +446,17 @@
             <span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_t</span>,
             <span class="ident">extents</span>: <span class="kw-2">*mut</span> <span class="ident">ffi::cairo_text_extents_t</span>,
         ) -&gt; <span class="ident">ffi::cairo_status_t</span> {
+            <span class="kw">let</span> <span class="ident">text_extents</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">extents</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="ident">TextExtents</span>);
             <span class="kw">let</span> <span class="ident">render_glyph_func</span> <span class="op">=</span> <span class="ident">RENDER_COLOR_GLYPH_FUNC</span>.<span class="ident">get</span>().<span class="ident">unwrap</span>();
-            <span class="kw">match</span> <span class="ident">render_glyph_func</span>(
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">render_glyph_func</span>(
                 <span class="kw-2">&amp;</span><span class="ident">ScaledFont::from_raw_none</span>(<span class="ident">scaled_font</span>),
                 <span class="ident">glyph</span>,
                 <span class="kw-2">&amp;</span><span class="ident">Context::from_raw_none</span>(<span class="ident">cr</span>),
+                <span class="ident">text_extents</span>,
             ) {
-                <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="ident">err</span>.<span class="ident">into</span>(),
-                <span class="prelude-val">Ok</span>(<span class="ident">text_extents</span>) =&gt; {
-                    <span class="kw-2">*</span><span class="ident">extents</span> <span class="op">=</span> <span class="ident">text_extents</span>.<span class="ident">into</span>();
-                    <span class="ident">ffi::STATUS_SUCCESS</span>
-                }
+                <span class="ident">err</span>.<span class="ident">into</span>()
+            } <span class="kw">else</span> {
+                <span class="ident">ffi::STATUS_SUCCESS</span>
             }
         }
         <span class="kw">unsafe</span> {
