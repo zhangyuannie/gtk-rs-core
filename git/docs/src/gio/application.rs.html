@@ -228,12 +228,75 @@
 <span id="150">150</span>
 <span id="151">151</span>
 <span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Application</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::File</span>;
-<span class="kw">use</span> <span class="ident">glib::object::Cast</span>;
-<span class="kw">use</span> <span class="ident">glib::object::IsA</span>;
+<span class="kw">use</span> <span class="ident">glib::prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">glib::signal</span>::{<span class="ident">connect_raw</span>, <span class="ident">SignalHandlerId</span>};
 <span class="kw">use</span> <span class="ident">glib::translate</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">glib::GString</span>;
@@ -334,6 +397,31 @@
     <span class="doccomment">/// ## `hint`</span>
     <span class="doccomment">/// a hint provided by the calling instance</span>
     <span class="kw">fn</span> <span class="ident">connect_open</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span>[<span class="ident">File</span>], <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SignalHandlerId</span>;
+
+    <span class="doccomment">/// Increases the use count of `self`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Use this function to indicate that the application has a reason to</span>
+    <span class="doccomment">/// continue to run. For example, [`ApplicationExtManual::hold()`][crate::prelude::ApplicationExtManual::hold()] is called by GTK+</span>
+    <span class="doccomment">/// when a toplevel window is on the screen.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// To cancel the hold, call [`ApplicationExtManual::release()`][crate::prelude::ApplicationExtManual::release()].</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_application_hold&quot;</span>)]</span>
+    <span class="kw">fn</span> <span class="ident">hold</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ApplicationHoldGuard</span>;
+
+    <span class="doccomment">/// Increases the busy count of `self`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Use this function to indicate that the application is busy, for instance</span>
+    <span class="doccomment">/// while a long running operation is pending.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The busy state will be exposed to other processes, so a session shell will</span>
+    <span class="doccomment">/// use that information to indicate the state to the user (e.g. with a</span>
+    <span class="doccomment">/// spinner).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// To cancel the busy indication, use [`ApplicationExtManual::unmark_busy()`][crate::prelude::ApplicationExtManual::unmark_busy()].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The application must be registered before calling this function.</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_application_mark_busy&quot;</span>)]</span>
+    <span class="kw">fn</span> <span class="ident">mark_busy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ApplicationBusyGuard</span>;
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">ApplicationExtManual</span> <span class="kw">for</span> <span class="ident">O</span> {
@@ -377,6 +465,46 @@
                 )),
                 <span class="ident">Box_::into_raw</span>(<span class="ident">f</span>),
             )
+        }
+    }
+
+    <span class="kw">fn</span> <span class="ident">hold</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ApplicationHoldGuard</span> {
+        <span class="kw">unsafe</span> {
+            <span class="ident">ffi::g_application_hold</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+        }
+        <span class="ident">ApplicationHoldGuard</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">downgrade</span>())
+    }
+
+    <span class="kw">fn</span> <span class="ident">mark_busy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ApplicationBusyGuard</span> {
+        <span class="kw">unsafe</span> {
+            <span class="ident">ffi::g_application_mark_busy</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+        }
+        <span class="ident">ApplicationBusyGuard</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">downgrade</span>())
+    }
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ApplicationHoldGuard</span>(<span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>);
+
+<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ApplicationHoldGuard</span> {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">application</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">upgrade</span>() {
+            <span class="kw">unsafe</span> {
+                <span class="ident">ffi::g_application_release</span>(<span class="ident">application</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            }
+        }
+    }
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ApplicationBusyGuard</span>(<span class="ident">glib::WeakRef</span><span class="op">&lt;</span><span class="ident">Application</span><span class="op">&gt;</span>);
+
+<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">ApplicationBusyGuard</span> {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">application</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">upgrade</span>() {
+            <span class="kw">unsafe</span> {
+                <span class="ident">ffi::g_application_unmark_busy</span>(<span class="ident">application</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>);
+            }
         }
     }
 }

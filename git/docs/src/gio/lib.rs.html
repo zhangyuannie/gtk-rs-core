@@ -207,6 +207,7 @@
 <span id="129">129</span>
 <span id="130">130</span>
 <span id="131">131</span>
+<span id="132">132</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
@@ -223,6 +224,7 @@
 
 <span class="kw">mod</span> <span class="ident">app_info</span>;
 <span class="kw">mod</span> <span class="ident">application</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">application</span>::{<span class="ident">ApplicationBusyGuard</span>, <span class="ident">ApplicationHoldGuard</span>};
 <span class="kw">mod</span> <span class="ident">async_initable</span>;
 <span class="kw">mod</span> <span class="ident">cancellable</span>;
 <span class="kw">mod</span> <span class="ident">converter</span>;
