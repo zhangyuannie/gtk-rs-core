@@ -1476,39 +1476,6 @@
 <span id="1398">1398</span>
 <span id="1399">1399</span>
 <span id="1400">1400</span>
-<span id="1401">1401</span>
-<span id="1402">1402</span>
-<span id="1403">1403</span>
-<span id="1404">1404</span>
-<span id="1405">1405</span>
-<span id="1406">1406</span>
-<span id="1407">1407</span>
-<span id="1408">1408</span>
-<span id="1409">1409</span>
-<span id="1410">1410</span>
-<span id="1411">1411</span>
-<span id="1412">1412</span>
-<span id="1413">1413</span>
-<span id="1414">1414</span>
-<span id="1415">1415</span>
-<span id="1416">1416</span>
-<span id="1417">1417</span>
-<span id="1418">1418</span>
-<span id="1419">1419</span>
-<span id="1420">1420</span>
-<span id="1421">1421</span>
-<span id="1422">1422</span>
-<span id="1423">1423</span>
-<span id="1424">1424</span>
-<span id="1425">1425</span>
-<span id="1426">1426</span>
-<span id="1427">1427</span>
-<span id="1428">1428</span>
-<span id="1429">1429</span>
-<span id="1430">1430</span>
-<span id="1431">1431</span>
-<span id="1432">1432</span>
-<span id="1433">1433</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1972,36 +1939,9 @@
     <span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
     <span class="doccomment">/// types.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Value`][crSets an environment variable. On UNIX, both the variable&#39;s name and</span>
-    <span class="doccomment">/// value can be arbitrary byte strings, except that the variable&#39;s name</span>
-    <span class="doccomment">/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that on some systems, when variables are overwritten, the memory</span>
-    <span class="doccomment">/// used for the previous variables and its value isn&#39;t reclaimed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
-    <span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
-    <span class="doccomment">/// calls [`setenv()`][crate::setenv()] while another thread is calling `getenv()`. (And note</span>
-    <span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.)</span>
-    <span class="doccomment">/// This function is only safe to use at the very start of your program,</span>
-    <span class="doccomment">/// before creating any other threads (or creating objects that create</span>
-    <span class="doccomment">/// worker threads of their own).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
-    <span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
-    <span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
-    <span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
-    <span class="doccomment">/// ## `variable`</span>
-    <span class="doccomment">/// the environment variable to set, must not</span>
-    <span class="doccomment">///  contain &#39;=&#39;.</span>
-    <span class="doccomment">/// ## `value`</span>
-    <span class="doccomment">/// the value for to set the variable to.</span>
-    <span class="doccomment">/// ## `overwrite`</span>
-    <span class="doccomment">/// whether to change the variable if it already exists.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`false`] if the environment variable couldn&#39;t be set.</span>
+    <span class="doccomment">/// [`Value`][crate::Value] users cannot make any assumptions about how data is stored</span>
+    <span class="doccomment">/// within the 2 element `data` union, and the `g_type` member should</span>
+    <span class="doccomment">/// only be accessed through the G_VALUE_TYPE() macro.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GValue</span><span class="op">&gt;</span>);
 
@@ -2098,61 +2038,55 @@
     <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
-    <span class="doccomment">/// `</span>
-    <span class="doccomment">/// or `g_spawn_close_pid()` when you no longer need it.</span>
+    <span class="doccomment">///                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Executes a child synchronously (waits for the child to exit before returning).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If non-[`None`], the `stdin_pipe_out`, `stdout_pipe_out`, `stderr_pipe_out`</span>
-    <span class="doccomment">/// locations will be filled with file descriptors for writing to the child&#39;s</span>
-    <span class="doccomment">/// standard input or reading from its standard output or standard error.</span>
-    <span class="doccomment">/// The caller of `g_spawn_async_with_pipes()` must close these file descriptors</span>
-    <span class="doccomment">/// when they are no longer in use. If these parameters are [`None`], the</span>
-    <span class="doccomment">/// corresponding pipe won&#39;t be created.</span>
+    <span class="doccomment">/// All output from the child is stored in `standard_output` and `standard_error`,</span>
+    <span class="doccomment">/// if those parameters are non-[`None`]. Note that you must set the</span>
+    <span class="doccomment">/// [`SpawnFlags::STDOUT_TO_DEV_NULL`][crate::SpawnFlags::STDOUT_TO_DEV_NULL] and [`SpawnFlags::STDERR_TO_DEV_NULL`][crate::SpawnFlags::STDERR_TO_DEV_NULL] flags when</span>
+    <span class="doccomment">/// passing [`None`] for `standard_output` and `standard_error`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `stdin_pipe_out` is [`None`], the child&#39;s standard input is attached to</span>
-    <span class="doccomment">/// `/dev/null` unless [`SpawnFlags::CHILD_INHERITS_STDIN`][crate::SpawnFlags::CHILD_INHERITS_STDIN] is set.</span>
+    <span class="doccomment">/// If `wait_status` is non-[`None`], the platform-specific status of</span>
+    <span class="doccomment">/// the child is stored there; see the documentation of</span>
+    <span class="doccomment">/// [`spawn_check_wait_status()`][crate::spawn_check_wait_status()] for how to use and interpret this.</span>
+    <span class="doccomment">/// On Unix platforms, note that it is usually not equal</span>
+    <span class="doccomment">/// to the integer passed to ``exit()`` or returned from ``main()``.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `stderr_pipe_out` is NULL, the child&#39;s standard error goes to the same</span>
-    <span class="doccomment">/// location as the parent&#39;s standard error unless [`SpawnFlags::STDERR_TO_DEV_NULL`][crate::SpawnFlags::STDERR_TO_DEV_NULL]</span>
-    <span class="doccomment">/// is set.</span>
+    <span class="doccomment">/// Note that it is invalid to pass [`SpawnFlags::DO_NOT_REAP_CHILD`][crate::SpawnFlags::DO_NOT_REAP_CHILD] in</span>
+    <span class="doccomment">/// `flags`, and on POSIX platforms, the same restrictions as for</span>
+    <span class="doccomment">/// `g_child_watch_source_new()` apply.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `stdout_pipe_out` is NULL, the child&#39;s standard output goes to the same</span>
-    <span class="doccomment">/// location as the parent&#39;s standard output unless [`SpawnFlags::STDOUT_TO_DEV_NULL`][crate::SpawnFlags::STDOUT_TO_DEV_NULL]</span>
-    <span class="doccomment">/// is set.</span>
+    <span class="doccomment">/// If an error occurs, no data is returned in `standard_output`,</span>
+    <span class="doccomment">/// `standard_error`, or `wait_status`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `error` can be [`None`] to ignore errors, or non-[`None`] to report errors.</span>
-    <span class="doccomment">/// If an error is set, the function returns [`false`]. Errors are reported</span>
-    <span class="doccomment">/// even if they occur in the child (for example if the executable in</span>
-    <span class="doccomment">/// ``argv`[0]` is not found). Typically the `message` field of returned</span>
-    <span class="doccomment">/// errors should be displayed to users. Possible errors are those from</span>
-    <span class="doccomment">/// the `G_SPAWN_ERROR` domain.</span>
+    <span class="doccomment">/// This function calls `g_spawn_async_with_pipes()` internally; see that</span>
+    <span class="doccomment">/// function for full details on the other parameters and details on</span>
+    <span class="doccomment">/// how these functions work on Windows.</span>
+    <span class="doccomment">/// ## `working_directory`</span>
+    <span class="doccomment">/// child&#39;s current working</span>
+    <span class="doccomment">///  directory, or [`None`] to inherit parent&#39;s</span>
+    <span class="doccomment">/// ## `argv`</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If an error occurs, `child_pid`, `stdin_pipe_out`, `stdout_pipe_out`,</span>
-    <span class="doccomment">/// and `stderr_pipe_out` will not be filled with valid values.</span>
+    <span class="doccomment">///  child&#39;s argument vector, which must be non-empty and [`None`]-terminated</span>
+    <span class="doccomment">/// ## `envp`</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If `child_pid` is not [`None`] and an error does not occur then the returned</span>
-    <span class="doccomment">/// process reference must be closed using `g_spawn_close_pid()`.</span>
+    <span class="doccomment">///  child&#39;s environment, or [`None`] to inherit parent&#39;s</span>
+    <span class="doccomment">/// ## `flags`</span>
+    <span class="doccomment">/// flags from [`SpawnFlags`][crate::SpawnFlags]</span>
+    <span class="doccomment">/// ## `child_setup`</span>
+    <span class="doccomment">/// function to run in the child just before `exec()`</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// On modern UNIX platforms, GLib can use an efficient process launching</span>
-    <span class="doccomment">/// codepath driven internally by ``posix_spawn()``. This has the advantage of</span>
-    <span class="doccomment">/// avoiding the fork-time performance costs of cloning the parent process</span>
-    <span class="doccomment">/// address space, and avoiding associated memory overcommit checks that are</span>
-    <span class="doccomment">/// not relevant in the context of immediately executing a distinct process.</span>
-    <span class="doccomment">/// This optimized codepath will be used provided that the following conditions</span>
-    <span class="doccomment">/// are met:</span>
+    <span class="doccomment">/// # Returns</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// 1. [`SpawnFlags::DO_NOT_REAP_CHILD`][crate::SpawnFlags::DO_NOT_REAP_CHILD] is set</span>
-    <span class="doccomment">/// 2. [`SpawnFlags::LEAVE_DESCRIPTORS_OPEN`][crate::SpawnFlags::LEAVE_DESCRIPTORS_OPEN] is set</span>
-    <span class="doccomment">/// 3. [`SpawnFlags::SEARCH_PATH_FROM_ENVP`][crate::SpawnFlags::SEARCH_PATH_FROM_ENVP] is not set</span>
-    <span class="doccomment">/// 4. `working_directory` is [`None`]</span>
-    <span class="doccomment">/// 5. `child_setup` is [`None`]</span>
-    <span class="doccomment">/// 6. The program is of a recognised binary format, or has a shebang.</span>
-    <span class="doccomment">///  Otherwise, GLib will have to execute the program through the</span>
-    <span class="doccomment">///  shell, which is not done using the optimized codepath.</span>
+    <span class="doccomment">/// [`true`] on success, [`false`] if an error was set</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If you are writing a GTK application, and the program you are spawning is a</span>
-    <span class="doccomment">/// graphical application too, then to ensure that the spawned program opens its</span>
-    <span class="doccomment">/// windows on the right screen, you may want to use `GdkAppLaunchContext`,</span>
-    <span class="doccomment">/// `GAppLaunchContext`, or set the `DISPLAY` environment variable.</span>
+    <span class="doccomment">/// ## `standard_output`</span>
+    <span class="doccomment">/// return location for child output, or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `standard_error`</span>
+    <span class="doccomment">/// return location for child error messages, or [`None`]</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## `wait_status`</span>
+    <span class="doccomment">/// return location for child wait status, as returned by `waitpid()`, or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -2943,5 +2877,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (ecd44958e 2022-05-10)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (a5ad0d29a 2022-05-12)" ></div>
 </body></html>

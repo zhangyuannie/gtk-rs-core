@@ -104,11 +104,14 @@
 <span id="26">26</span>
 <span id="27">27</span>
 <span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">mod</span> <span class="ident">action_group</span>;
 <span class="kw">mod</span> <span class="ident">action_map</span>;
 <span class="kw">mod</span> <span class="ident">application</span>;
+<span class="kw">mod</span> <span class="ident">async_initable</span>;
 <span class="kw">mod</span> <span class="ident">initable</span>;
 <span class="kw">mod</span> <span class="ident">input_stream</span>;
 <span class="kw">mod</span> <span class="ident">io_stream</span>;
@@ -125,6 +128,7 @@
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::action_group</span>::{<span class="ident">ActionGroupImpl</span>, <span class="ident">ActionGroupImplExt</span>};
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::action_map</span>::{<span class="ident">ActionMapImpl</span>, <span class="ident">ActionMapImplExt</span>};
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::application</span>::{<span class="ident">ApplicationImpl</span>, <span class="ident">ApplicationImplExt</span>};
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::async_initable</span>::{<span class="ident">AsyncInitableImpl</span>, <span class="ident">AsyncInitableImplExt</span>};
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::initable</span>::{<span class="ident">InitableImpl</span>, <span class="ident">InitableImplExt</span>};
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::input_stream</span>::{<span class="ident">InputStreamImpl</span>, <span class="ident">InputStreamImplExt</span>};
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::io_stream</span>::{<span class="ident">IOStreamImpl</span>, <span class="ident">IOStreamImplExt</span>};
@@ -133,5 +137,5 @@
     <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::seekable</span>::{<span class="ident">SeekableImpl</span>, <span class="ident">SeekableImplExt</span>};
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (ecd44958e 2022-05-10)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (a5ad0d29a 2022-05-12)" ></div>
 </body></html>
