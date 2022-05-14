@@ -281,35 +281,6 @@
 <span id="203">203</span>
 <span id="204">204</span>
 <span id="205">205</span>
-<span id="206">206</span>
-<span id="207">207</span>
-<span id="208">208</span>
-<span id="209">209</span>
-<span id="210">210</span>
-<span id="211">211</span>
-<span id="212">212</span>
-<span id="213">213</span>
-<span id="214">214</span>
-<span id="215">215</span>
-<span id="216">216</span>
-<span id="217">217</span>
-<span id="218">218</span>
-<span id="219">219</span>
-<span id="220">220</span>
-<span id="221">221</span>
-<span id="222">222</span>
-<span id="223">223</span>
-<span id="224">224</span>
-<span id="225">225</span>
-<span id="226">226</span>
-<span id="227">227</span>
-<span id="228">228</span>
-<span id="229">229</span>
-<span id="230">230</span>
-<span id="231">231</span>
-<span id="232">232</span>
-<span id="233">233</span>
-<span id="234">234</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::signal::connect_raw</span>;
@@ -323,16 +294,6 @@
 <span class="kw">use</span> <span class="ident">std::mem::transmute</span>;
 
 <span class="kw">impl</span> <span class="ident">SignalGroup</span> {
-    <span class="doccomment">/// Connects `closure` to the signal `detailed_signal` on `property::SignalGroup::target`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You cannot connect a signal handler after `property::SignalGroup::target` has been set.</span>
-    <span class="doccomment">/// ## `detailed_signal`</span>
-    <span class="doccomment">/// a string of the form `signal-name` with optional `::signal-detail`</span>
-    <span class="doccomment">/// ## `closure`</span>
-    <span class="doccomment">/// the closure to connect.</span>
-    <span class="doccomment">/// ## `after`</span>
-    <span class="doccomment">/// whether the handler should be called before or after the</span>
-    <span class="doccomment">///  default handler of the signal.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_group_connect_closure&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">connect_closure</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">after</span>: <span class="ident">bool</span>, <span class="ident">closure</span>: <span class="ident">RustClosure</span>) {
         <span class="kw">unsafe</span> {
@@ -345,14 +306,6 @@
         }
     }
 
-    <span class="doccomment">/// Connects `c_handler` to the signal `detailed_signal`</span>
-    <span class="doccomment">/// on the target instance of `self`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// You cannot connect a signal handler after `property::SignalGroup::target` has been set.</span>
-    <span class="doccomment">/// ## `detailed_signal`</span>
-    <span class="doccomment">/// a string of the form &quot;signal-name::detail&quot;</span>
-    <span class="doccomment">/// ## `c_handler`</span>
-    <span class="doccomment">/// the `GCallback` to connect</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_signal_group_connect&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">connect</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">signal_name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">after</span>: <span class="ident">bool</span>, <span class="ident">callback</span>: <span class="ident">F</span>)
@@ -413,12 +366,6 @@
         )
     }
 
-    <span class="doccomment">/// This signal is emitted when `property::SignalGroup::target` is set to a new value</span>
-    <span class="doccomment">/// other than [`None`]. It is similar to `signal::Object::notify` on `target` except it</span>
-    <span class="doccomment">/// will not emit when `property::SignalGroup::target` is [`None`] and also allows for</span>
-    <span class="doccomment">/// receiving the [`Object`][crate::Object] without a data-race.</span>
-    <span class="doccomment">/// ## `instance`</span>
-    <span class="doccomment">/// a [`Object`][crate::Object] containing the new value for `property::SignalGroup::target`</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;bind&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">connect_bind</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="self">Self</span>, <span class="kw-2">&amp;</span><span class="ident">Object</span>) <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -441,11 +388,6 @@
         }
     }
 
-    <span class="doccomment">/// This signal is emitted when the target instance of `self_` is set to a</span>
-    <span class="doccomment">/// new [`Object`][crate::Object].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This signal will only be emitted if the previous target of `self_` is</span>
-    <span class="doccomment">/// non-[`None`].</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;unbind&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">connect_unbind</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SignalHandlerId</span> {
         <span class="kw">unsafe</span> { <span class="self">self</span>.<span class="ident">connect_unbind_unsafe</span>(<span class="ident">f</span>) }
@@ -545,5 +487,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (a5ad0d29a 2022-05-12)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f1f721e64 2022-05-13)" ></div>
 </body></html>
