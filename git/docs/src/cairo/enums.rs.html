@@ -2228,6 +2228,36 @@
 <span id="2148">2148</span>
 <span id="2149">2149</span>
 <span id="2150">2150</span>
+<span id="2151">2151</span>
+<span id="2152">2152</span>
+<span id="2153">2153</span>
+<span id="2154">2154</span>
+<span id="2155">2155</span>
+<span id="2156">2156</span>
+<span id="2157">2157</span>
+<span id="2158">2158</span>
+<span id="2159">2159</span>
+<span id="2160">2160</span>
+<span id="2161">2161</span>
+<span id="2162">2162</span>
+<span id="2163">2163</span>
+<span id="2164">2164</span>
+<span id="2165">2165</span>
+<span id="2166">2166</span>
+<span id="2167">2167</span>
+<span id="2168">2168</span>
+<span id="2169">2169</span>
+<span id="2170">2170</span>
+<span id="2171">2171</span>
+<span id="2172">2172</span>
+<span id="2173">2173</span>
+<span id="2174">2174</span>
+<span id="2175">2175</span>
+<span id="2176">2176</span>
+<span id="2177">2177</span>
+<span id="2178">2178</span>
+<span id="2179">2179</span>
+<span id="2180">2180</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>::{<span class="self">self</span>, <span class="ident">Debug</span>};
@@ -3209,6 +3239,10 @@
     <span class="ident">FontTypeQuartz</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;FONT_TYPE_FONT_TYPE_USER&quot;</span>)]</span>
     <span class="ident">FontTypeUser</span>,
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>)))]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;FONT_TYPE_FONT_TYPE_DWRITE&quot;</span>)]</span>
+    <span class="ident">FontTypeDwrite</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="ident">__Unknown</span>(<span class="ident">i32</span>),
 }
@@ -3222,6 +3256,8 @@
             <span class="ident">FontType::FontTypeWin32</span> =&gt; <span class="ident">ffi::FONT_TYPE_FONT_TYPE_WIN32</span>,
             <span class="ident">FontType::FontTypeQuartz</span> =&gt; <span class="ident">ffi::FONT_TYPE_FONT_TYPE_QUARTZ</span>,
             <span class="ident">FontType::FontTypeUser</span> =&gt; <span class="ident">ffi::FONT_TYPE_FONT_TYPE_USER</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">FontType::FontTypeDwrite</span> =&gt; <span class="ident">ffi::FONT_TYPE_FONT_TYPE_DWRITE</span>,
             <span class="ident">FontType::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
@@ -3236,6 +3272,8 @@
             <span class="ident">ffi::FONT_TYPE_FONT_TYPE_WIN32</span> =&gt; <span class="ident"><span class="self">Self</span>::FontTypeWin32</span>,
             <span class="ident">ffi::FONT_TYPE_FONT_TYPE_QUARTZ</span> =&gt; <span class="ident"><span class="self">Self</span>::FontTypeQuartz</span>,
             <span class="ident">ffi::FONT_TYPE_FONT_TYPE_USER</span> =&gt; <span class="ident"><span class="self">Self</span>::FontTypeUser</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">ffi::FONT_TYPE_FONT_TYPE_DWRITE</span> =&gt; <span class="ident"><span class="self">Self</span>::FontTypeDwrite</span>,
             <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
@@ -3252,6 +3290,8 @@
                 <span class="ident"><span class="self">Self</span>::FontTypeWin32</span> =&gt; <span class="string">&quot;FontTypeWin32&quot;</span>,
                 <span class="ident"><span class="self">Self</span>::FontTypeQuartz</span> =&gt; <span class="string">&quot;FontTypeQuartz&quot;</span>,
                 <span class="ident"><span class="self">Self</span>::FontTypeUser</span> =&gt; <span class="string">&quot;FontTypeUser&quot;</span>,
+                <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+                <span class="ident"><span class="self">Self</span>::FontTypeDwrite</span> =&gt; <span class="string">&quot;FontTypeDwrite&quot;</span>,
                 <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )
@@ -3963,6 +4003,14 @@
     <span class="ident">_1_4</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PDF_VERSION__1_5&quot;</span>)]</span>
     <span class="ident">_1_5</span>,
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>)))]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PDF_VERSION__1_6&quot;</span>)]</span>
+    <span class="ident">_1_6</span>,
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>)))]</span>
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;PDF_VERSION__1_7&quot;</span>)]</span>
+    <span class="ident">_1_7</span>,
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="ident">__Unknown</span>(<span class="ident">i32</span>),
 }
@@ -3974,6 +4022,10 @@
         <span class="kw">match</span> <span class="ident">val</span> {
             <span class="ident">PdfVersion::_1_4</span> =&gt; <span class="ident">ffi::PDF_VERSION__1_4</span>,
             <span class="ident">PdfVersion::_1_5</span> =&gt; <span class="ident">ffi::PDF_VERSION__1_5</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">PdfVersion::_1_6</span> =&gt; <span class="ident">ffi::PDF_VERSION__1_6</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">PdfVersion::_1_7</span> =&gt; <span class="ident">ffi::PDF_VERSION__1_7</span>,
             <span class="ident">PdfVersion::__Unknown</span>(<span class="ident">value</span>) =&gt; <span class="ident">value</span>,
         }
     }
@@ -3986,6 +4038,10 @@
         <span class="kw">match</span> <span class="ident">value</span> {
             <span class="ident">ffi::PDF_VERSION__1_4</span> =&gt; <span class="ident"><span class="self">Self</span>::_1_4</span>,
             <span class="ident">ffi::PDF_VERSION__1_5</span> =&gt; <span class="ident"><span class="self">Self</span>::_1_5</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">ffi::PDF_VERSION__1_6</span> =&gt; <span class="ident"><span class="self">Self</span>::_1_6</span>,
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+            <span class="ident">ffi::PDF_VERSION__1_7</span> =&gt; <span class="ident"><span class="self">Self</span>::_1_7</span>,
             <span class="ident">value</span> =&gt; <span class="ident"><span class="self">Self</span>::__Unknown</span>(<span class="ident">value</span>),
         }
     }
@@ -4000,6 +4056,10 @@
             <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
                 <span class="ident"><span class="self">Self</span>::_1_4</span> =&gt; <span class="string">&quot;1_4&quot;</span>,
                 <span class="ident"><span class="self">Self</span>::_1_5</span> =&gt; <span class="string">&quot;1_5&quot;</span>,
+                <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+                <span class="ident"><span class="self">Self</span>::_1_6</span> =&gt; <span class="string">&quot;1_6&quot;</span>,
+                <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+                <span class="ident"><span class="self">Self</span>::_1_7</span> =&gt; <span class="string">&quot;1_7&quot;</span>,
                 <span class="kw">_</span> =&gt; <span class="string">&quot;Unknown&quot;</span>,
             }
         )

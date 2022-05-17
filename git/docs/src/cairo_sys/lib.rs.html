@@ -1813,6 +1813,21 @@
 <span id="1733">1733</span>
 <span id="1734">1734</span>
 <span id="1735">1735</span>
+<span id="1736">1736</span>
+<span id="1737">1737</span>
+<span id="1738">1738</span>
+<span id="1739">1739</span>
+<span id="1740">1740</span>
+<span id="1741">1741</span>
+<span id="1742">1742</span>
+<span id="1743">1743</span>
+<span id="1744">1744</span>
+<span id="1745">1745</span>
+<span id="1746">1746</span>
+<span id="1747">1747</span>
+<span id="1748">1748</span>
+<span id="1749">1749</span>
+<span id="1750">1750</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
@@ -2155,6 +2170,10 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_line_join</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>) -&gt; <span class="ident">cairo_line_join_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_line_width</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">width</span>: <span class="ident">c_double</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_line_width</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>) -&gt; <span class="ident">c_double</span>;
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_hairline</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">set_hairline</span>: <span class="ident">cairo_bool_t</span>);
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_hairline</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>) -&gt; <span class="ident">cairo_bool_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_miter_limit</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">limit</span>: <span class="ident">c_double</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_get_miter_limit</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>) -&gt; <span class="ident">c_double</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_set_operator</span>(<span class="ident">cr</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_t</span>, <span class="ident">op</span>: <span class="ident">cairo_operator_t</span>);
@@ -2995,6 +3014,12 @@
         <span class="ident">metadata</span>: <span class="ident">cairo_pdf_metadata_t</span>,
         <span class="ident">utf8</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
     );
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;pdf&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_18&quot;</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pdf_surface_set_custom_metadata</span>(
+        <span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>,
+        <span class="ident">name</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+        <span class="ident">value</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>,
+    );
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;pdf&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_16&quot;</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_pdf_surface_set_page_label</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>, <span class="ident">utf8</span>: <span class="kw-2">*const</span> <span class="ident">c_char</span>);
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;pdf&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1_16&quot;</span>), <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
@@ -3376,7 +3401,9 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_PNG_ERROR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">39</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_FREETYPE_ERROR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">40</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_WIN32_GDI_ERROR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">41</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_LAST_STATUS</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">42</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_TAG_ERROR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">42</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_DWRITE_ERROR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">43</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STATUS_LAST_STATUS</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">44</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANTIALIAS_DEFAULT</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">0</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANTIALIAS_NONE</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">1</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANTIALIAS_GRAY</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">2</span>;
@@ -3456,6 +3483,7 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FONT_TYPE_FONT_TYPE_WIN32</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">2</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FONT_TYPE_FONT_TYPE_QUARTZ</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">3</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FONT_TYPE_FONT_TYPE_USER</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">4</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FONT_TYPE_FONT_TYPE_DWRITE</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">5</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SUBPIXEL_ORDER_DEFAULT</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">0</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SUBPIXEL_ORDER_RGB</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">1</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SUBPIXEL_ORDER_BGR</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">2</span>;
@@ -3526,6 +3554,8 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDF_METADATA_MOD_DATE</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">6</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDF_VERSION__1_4</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">0</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDF_VERSION__1_5</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">1</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDF_VERSION__1_6</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">2</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PDF_VERSION__1_7</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">3</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SVG_VERSION__1_1</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">0</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SVG_VERSION__1_2</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">1</span>;
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PS_LEVEL__2</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="number">0</span>;
