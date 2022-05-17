@@ -105,6 +105,21 @@
 <span id="25">25</span>
 <span id="26">26</span>
 <span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">std::fmt</span>;
@@ -115,6 +130,13 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TextCluster</span>(<span class="ident">ffi::cairo_text_cluster_t</span>);
 
 <span class="kw">impl</span> <span class="ident">TextCluster</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">num_bytes</span>: <span class="ident">i32</span>, <span class="ident">num_glyphs</span>: <span class="ident">i32</span>) -&gt; <span class="self">Self</span> {
+        <span class="self">Self</span>(<span class="ident">ffi::cairo_text_cluster_t</span> {
+            <span class="ident">num_bytes</span>,
+            <span class="ident">num_glyphs</span>,
+        })
+    }
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">num_bytes</span>
     }
@@ -122,12 +144,20 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_glyphs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">i32</span> {
         <span class="self">self</span>.<span class="number">0</span>.<span class="ident">num_glyphs</span>
     }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_num_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">num_bytes</span>: <span class="ident">i32</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">num_bytes</span> <span class="op">=</span> <span class="ident">num_bytes</span>;
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_num_glyphs</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">num_glyphs</span>: <span class="ident">i32</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">num_glyphs</span> <span class="op">=</span> <span class="ident">num_glyphs</span>;
+    }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">TextCluster</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;TextCluster&quot;</span>)
-            .<span class="ident">field</span>(<span class="string">&quot;num_glyphs&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">num_glyphs</span>())
+            .<span class="ident">field</span>(<span class="string">&quot;num_bytes&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">num_bytes</span>())
             .<span class="ident">field</span>(<span class="string">&quot;num_glyphs&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">num_glyphs</span>())
             .<span class="ident">finish</span>()
     }
