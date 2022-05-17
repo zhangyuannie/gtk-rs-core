@@ -1812,6 +1812,7 @@
 <span id="1732">1732</span>
 <span id="1733">1733</span>
 <span id="1734">1734</span>
+<span id="1735">1735</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
@@ -2807,6 +2808,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_finish</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>);
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_status</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>) -&gt; <span class="ident">cairo_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_get_type</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>) -&gt; <span class="ident">cairo_surface_type_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_get_content</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>) -&gt; <span class="ident">cairo_content_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_reference</span>(<span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>) -&gt; <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cairo_surface_get_user_data</span>(
         <span class="ident">surface</span>: <span class="kw-2">*mut</span> <span class="ident">cairo_surface_t</span>,

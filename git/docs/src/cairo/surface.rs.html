@@ -501,6 +501,11 @@
 <span id="421">421</span>
 <span id="422">422</span>
 <span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident">libc</span>::{<span class="ident">c_ulong</span>, <span class="ident">c_void</span>};
@@ -674,6 +679,11 @@
                 <span class="prelude-val">Some</span>(<span class="ident">Device::from_raw_none</span>(<span class="ident">device</span>))
             }
         }
+    }
+
+    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_surface_get_content&quot;</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Content</span> {
+        <span class="kw">unsafe</span> { <span class="ident">ffi::cairo_surface_get_content</span>(<span class="self">self</span>.<span class="ident">to_raw_none</span>()) }.<span class="ident">into</span>()
     }
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_surface_set_device_offset&quot;</span>)]</span>
