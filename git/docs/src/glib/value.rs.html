@@ -76,7 +76,9 @@
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../glib/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><div id="settings-menu" tabindex="-1">
+                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
+                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -1416,6 +1418,16 @@
 <span id="1338">1338</span>
 <span id="1339">1339</span>
 <span id="1340">1340</span>
+<span id="1341">1341</span>
+<span id="1342">1342</span>
+<span id="1343">1343</span>
+<span id="1344">1344</span>
+<span id="1345">1345</span>
+<span id="1346">1346</span>
+<span id="1347">1347</span>
+<span id="1348">1348</span>
+<span id="1349">1349</span>
+<span id="1350">1350</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1871,6 +1883,44 @@
     <span class="doccomment">/// used instead.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See the [module documentation](index.html) for more details.</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
+    <span class="doccomment">/// An opaque structure used to hold different types of values.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The data within the structure has protected scope: it is accessible only</span>
+    <span class="doccomment">/// to functions within a `GTypeValueTable` structure, or implementations of</span>
+    <span class="doccomment">/// the g_value_*() API. That is, code portions which implement new fundamental</span>
+    <span class="doccomment">/// types.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`Value`][crSets an environment variable. On UNIX, both the variable&#39;s name and</span>
+    <span class="doccomment">/// value can be arbitrary byte strings, except that the variable&#39;s name</span>
+    <span class="doccomment">/// cannot contain &#39;=&#39;. On Windows, they should be in UTF-8.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that on some systems, when variables are overwritten, the memory</span>
+    <span class="doccomment">/// used for the previous variables and its value isn&#39;t reclaimed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+    <span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+    <span class="doccomment">/// calls [`setenv()`][crate::setenv()] while another thread is calling `getenv()`. (And note</span>
+    <span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.)</span>
+    <span class="doccomment">/// This function is only safe to use at the very start of your program,</span>
+    <span class="doccomment">/// before creating any other threads (or creating objects that create</span>
+    <span class="doccomment">/// worker threads of their own).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+    <span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+    <span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+    <span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+    <span class="doccomment">/// ## `variable`</span>
+    <span class="doccomment">/// the environment variable to set, must not</span>
+    <span class="doccomment">///  contain &#39;=&#39;.</span>
+    <span class="doccomment">/// ## `value`</span>
+    <span class="doccomment">/// the value for to set the variable to.</span>
+    <span class="doccomment">/// ## `overwrite`</span>
+    <span class="doccomment">/// whether to change the variable if it already exists.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Returns</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`false`] if the environment variable couldn&#39;t be set.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;GValue&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Value</span>(<span class="ident">BoxedInline</span><span class="op">&lt;</span><span class="ident">gobject_ffi::GValue</span><span class="op">&gt;</span>);
 
@@ -1954,19 +2004,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Returns whether `Value`s of type `src` can be transformed to type `dst`.</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Check whether [`transform()`][Self::transform()] is able to transform values</span>
-    <span class="doccomment">/// of type `src_type` into values of type `dest_type`. Note that for</span>
-    <span class="doccomment">/// the types to be transformable, they must be compatible or a</span>
-    <span class="doccomment">/// transformation function must be registered.</span>
-    <span class="doccomment">/// ## `src_type`</span>
-    <span class="doccomment">/// Source type.</span>
-    <span class="doccomment">/// ## `dest_type`</span>
-    <span class="doccomment">/// Target type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if the transformation is possible, [`false`] otherwise.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_type_transformable&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">type_transformable</span>(<span class="ident">src</span>: <span class="ident">Type</span>, <span class="ident">dst</span>: <span class="ident">Type</span>) -&gt; <span class="ident">bool</span> {
         <span class="kw">unsafe</span> {
@@ -1979,21 +2016,6 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Tries to transform the value into a value of the target type</span>
-    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-    <span class="doccomment">/// Tries to cast the contents of `self` into a type appropriate</span>
-    <span class="doccomment">/// to store in `dest_value`, e.g. to transform a `G_TYPE_INT` value</span>
-    <span class="doccomment">/// into a `G_TYPE_FLOAT` value. Performing transformations between</span>
-    <span class="doccomment">/// value types might incur precision lossage. Especially</span>
-    <span class="doccomment">/// transformations into strings might reveal seemingly arbitrary</span>
-    <span class="doccomment">/// results and shouldn&#39;t be relied upon for production code (such</span>
-    <span class="doccomment">/// as rcfile value or object property serialization).</span>
-    <span class="doccomment">/// ## `dest_value`</span>
-    <span class="doccomment">/// Target value.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Whether a transformation rule was found and could be applied.</span>
-    <span class="doccomment">///  Upon failing transformations, `dest_value` is left untouched.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_value_transform&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">transform</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">ValueType</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Value</span>, <span class="ident"><span class="kw">crate</span>::BoolError</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">transform_with_type</span>(<span class="ident">T::Type::static_type</span>())
@@ -2757,5 +2779,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (f1f721e64 2022-05-13)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (c52b9c10b 2022-05-16)" ></div>
 </body></html>
