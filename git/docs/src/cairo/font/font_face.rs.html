@@ -294,6 +294,15 @@
 <span id="214">214</span>
 <span id="215">215</span>
 <span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
@@ -301,6 +310,8 @@
 <span class="kw">use</span> <span class="ident">std::ffi</span>::{<span class="ident">CStr</span>, <span class="ident">CString</span>};
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>))]</span>
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;freetype&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+<span class="kw">use</span> <span class="ident">std::rc::Rc</span>;
 
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">enums</span>::{<span class="ident">FontSlant</span>, <span class="ident">FontType</span>, <span class="ident">FontWeight</span>},
@@ -311,6 +322,9 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::enums::FtSynthesize</span>;
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::status_to_result</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;freetype&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
+<span class="kw">static</span> <span class="ident">FT_FACE_KEY</span>: <span class="ident"><span class="kw">crate</span>::UserDataKey</span><span class="op">&lt;</span><span class="ident">freetype::face::Face</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::UserDataKey::new</span>();
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_glib&quot;</span>)]</span>
 <span class="macro">glib::wrapper!</span> {
@@ -353,21 +367,22 @@
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new font face for the FreeType backend from an already opened FreeType face.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The`FT_Face` must be valid and not be freed until the last reference to the</span>
-    <span class="doccomment">/// `FontFace` is dropped.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;freetype&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_ft_font_face_create_for_ft_face&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">create_from_ft</span>(
-        <span class="ident">face</span>: <span class="ident">freetype_crate::freetype::FT_Face</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">FontFace</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">font_face</span> <span class="op">=</span> <span class="ident">FontFace::from_raw_full</span>(<span class="ident">ffi::cairo_ft_font_face_create_for_ft_face</span>(
-            <span class="ident">face</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
-            <span class="number">0</span>,
-        ));
-        <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="ident">ffi::cairo_font_face_status</span>(<span class="ident">font_face</span>.<span class="ident">to_raw_none</span>());
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_from_ft</span>(<span class="ident">face</span>: <span class="kw-2">&amp;</span><span class="ident">freetype::face::Face</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">FontFace</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="comment">// Increase reference count of `FT_Face`.</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">face</span> <span class="op">=</span> <span class="ident">face</span>.<span class="ident">clone</span>();
+
+        <span class="comment">// SAFETY: The user data entry keeps `freetype::face::Face` alive</span>
+        <span class="comment">// until the FontFace is dropped.</span>
+        <span class="kw">let</span> <span class="ident">font_face</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">FontFace::from_raw_full</span>(<span class="ident">ffi::cairo_ft_font_face_create_for_ft_face</span>(
+                <span class="ident">face</span>.<span class="ident">raw_mut</span>() <span class="kw">as</span> <span class="ident">freetype::ffi::FT_Face</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+                <span class="number">0</span>,
+            ))
+        };
+        <span class="ident">font_face</span>.<span class="ident">set_user_data</span>(<span class="kw-2">&amp;</span><span class="ident">FT_FACE_KEY</span>, <span class="ident">Rc::new</span>(<span class="ident">face</span>))<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ffi::cairo_font_face_status</span>(<span class="ident">font_face</span>.<span class="ident">to_raw_none</span>()) };
         <span class="ident">status_to_result</span>(<span class="ident">status</span>)<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(<span class="ident">font_face</span>)
@@ -376,22 +391,25 @@
     <span class="comment">// rustdoc-stripper-ignore-next</span>
     <span class="doccomment">/// Creates a new font face for the FreeType backend from an already opened FreeType face,</span>
     <span class="doccomment">/// additionally allowing you to pass flags to the underlying C API.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Safety</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The `FT_Face` must be valid and not be freed until the last reference to the</span>
-    <span class="doccomment">/// `FontFace` is dropped.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;freetype&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;cairo_ft_font_face_create_for_ft_face&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">create_from_ft_with_flags</span>(
-        <span class="ident">face</span>: <span class="ident">freetype_crate::freetype::FT_Face</span>,
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_from_ft_with_flags</span>(
+        <span class="ident">face</span>: <span class="kw-2">&amp;</span><span class="ident">freetype::face::Face</span>,
         <span class="ident">load_flags</span>: <span class="ident">libc::c_int</span>,
     ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">FontFace</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">font_face</span> <span class="op">=</span> <span class="ident">FontFace::from_raw_full</span>(<span class="ident">ffi::cairo_ft_font_face_create_for_ft_face</span>(
-            <span class="ident">face</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
-            <span class="ident">load_flags</span>,
-        ));
-        <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="ident">ffi::cairo_font_face_status</span>(<span class="ident">font_face</span>.<span class="ident">to_raw_none</span>());
+        <span class="comment">// Increase reference count of `FT_Face`.</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">face</span> <span class="op">=</span> <span class="ident">face</span>.<span class="ident">clone</span>();
+
+        <span class="comment">// SAFETY: The user data entry keeps `freetype::face::Face` alive</span>
+        <span class="comment">// until the FontFace is dropped.</span>
+        <span class="kw">let</span> <span class="ident">font_face</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">FontFace::from_raw_full</span>(<span class="ident">ffi::cairo_ft_font_face_create_for_ft_face</span>(
+                <span class="ident">face</span>.<span class="ident">raw_mut</span>() <span class="kw">as</span> <span class="ident">freetype::ffi::FT_Face</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span>,
+                <span class="ident">load_flags</span>,
+            ))
+        };
+        <span class="ident">font_face</span>.<span class="ident">set_user_data</span>(<span class="kw-2">&amp;</span><span class="ident">FT_FACE_KEY</span>, <span class="ident">Rc::new</span>(<span class="ident">face</span>))<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">ffi::cairo_font_face_status</span>(<span class="ident">font_face</span>.<span class="ident">to_raw_none</span>()) };
         <span class="ident">status_to_result</span>(<span class="ident">status</span>)<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(<span class="ident">font_face</span>)
