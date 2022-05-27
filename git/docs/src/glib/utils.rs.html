@@ -520,54 +520,6 @@
 <span id="440">440</span>
 <span id="441">441</span>
 <span id="442">442</span>
-<span id="443">443</span>
-<span id="444">444</span>
-<span id="445">445</span>
-<span id="446">446</span>
-<span id="447">447</span>
-<span id="448">448</span>
-<span id="449">449</span>
-<span id="450">450</span>
-<span id="451">451</span>
-<span id="452">452</span>
-<span id="453">453</span>
-<span id="454">454</span>
-<span id="455">455</span>
-<span id="456">456</span>
-<span id="457">457</span>
-<span id="458">458</span>
-<span id="459">459</span>
-<span id="460">460</span>
-<span id="461">461</span>
-<span id="462">462</span>
-<span id="463">463</span>
-<span id="464">464</span>
-<span id="465">465</span>
-<span id="466">466</span>
-<span id="467">467</span>
-<span id="468">468</span>
-<span id="469">469</span>
-<span id="470">470</span>
-<span id="471">471</span>
-<span id="472">472</span>
-<span id="473">473</span>
-<span id="474">474</span>
-<span id="475">475</span>
-<span id="476">476</span>
-<span id="477">477</span>
-<span id="478">478</span>
-<span id="479">479</span>
-<span id="480">480</span>
-<span id="481">481</span>
-<span id="482">482</span>
-<span id="483">483</span>
-<span id="484">484</span>
-<span id="485">485</span>
-<span id="486">486</span>
-<span id="487">487</span>
-<span id="488">488</span>
-<span id="489">489</span>
-<span id="490">490</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::BoolError</span>;
@@ -640,6 +592,26 @@
     }
 }
 
+<span class="doccomment">/// Removes an environment variable from the environment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on some systems, when variables are overwritten, the</span>
+<span class="doccomment">/// memory used for the previous variables and its value isn&#39;t reclaimed.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should be mindful of the fact that environment variable handling</span>
+<span class="doccomment">/// in UNIX is not thread-safe, and your program may crash if one thread</span>
+<span class="doccomment">/// calls [`unsetenv()`][crate::unsetenv()] while another thread is calling `getenv()`. (And note</span>
+<span class="doccomment">/// that many functions, such as `gettext()`, call `getenv()` internally.) This</span>
+<span class="doccomment">/// function is only safe to use at the very start of your program, before</span>
+<span class="doccomment">/// creating any other threads (or creating objects that create worker</span>
+<span class="doccomment">/// threads of their own).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need to set up the environment for a child process, you can</span>
+<span class="doccomment">/// use [`environ()`][crate::environ()] to get an environment array, modify that with</span>
+<span class="doccomment">/// `g_environ_setenv()` and `g_environ_unsetenv()`, and then pass that</span>
+<span class="doccomment">/// array directly to `execvpe()`, [`spawn_async()`][crate::spawn_async()], or the like.</span>
+<span class="doccomment">/// ## `variable`</span>
+<span class="doccomment">/// the environment variable to remove, must</span>
+<span class="doccomment">///  not contain &#39;=&#39;</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_unsetenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unsetenv</span><span class="op">&lt;</span><span class="ident">K</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">OsStr</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">variable_name</span>: <span class="ident">K</span>) {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -766,26 +738,6 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">g_get_tmp_dir</span>()) }
 }
 
-<span class="doccomment">/// Opens a temporary file. See the `mkstemp()` documentation</span>
-<span class="doccomment">/// on most UNIX-like systems.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
-<span class="doccomment">/// `mkstemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
-<span class="doccomment">/// [`mkstemp()`][crate::mkstemp()] is slightly more flexible than `mkstemp()` in that the</span>
-<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
-<span class="doccomment">/// The X string will be modified to form the name of a file that</span>
-<span class="doccomment">/// didn&#39;t exist. The string should be in the GLib file name encoding.</span>
-<span class="doccomment">/// Most importantly, on Windows it should be in UTF-8.</span>
-<span class="doccomment">/// ## `tmpl`</span>
-<span class="doccomment">/// template filename</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Spec`][crate::ParamSpec] derived structure that contains the meta data for unsigned character properties.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Implements</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`ParamSpecExt`][trait@crate::prelude::ParamSpecExt]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkstemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkstemp</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">tmpl</span>: <span class="ident">P</span>) -&gt; <span class="ident">i32</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">windows</span>))]</span>
@@ -809,29 +761,6 @@
     }
 }
 
-<span class="doccomment">/// Creates a temporary directory. See the `mkdtemp()` documentation</span>
-<span class="doccomment">/// on most UNIX-like systems.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
-<span class="doccomment">/// `mkdtemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
-<span class="doccomment">/// [`mkdtemp()`][crate::mkdtemp()] is slightly more flexible than `mkdtemp()` in that the</span>
-<span class="doccomment">/// sequence does not have to occur at the very end of the template.</span>
-<span class="doccomment">/// The X string will be modified to form the name of a directory that</span>
-<span class="doccomment">/// didn&#39;t exist.</span>
-<span class="doccomment">/// The string should be in the GLib file name encoding. Most importantly,</span>
-<span class="doccomment">/// on Windows it should be in UTF-8.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you are going to be creating a temporary directory inside the</span>
-<span class="doccomment">/// directory returned by [`tmp_dir()`][crate::tmp_dir()], you might want to use</span>
-<span class="doccomment">/// `g_dir_make_tmp()` instead.</span>
-<span class="doccomment">/// ## `tmpl`</span>
-<span class="doccomment">/// template directory name</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to `tmpl`, which has been</span>
-<span class="doccomment">///  modified to hold the directory name. In case of errors, [`None`] is</span>
-<span class="doccomment">///  returned and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkdtemp&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkdtemp</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -848,31 +777,6 @@
     }
 }
 
-<span class="doccomment">/// Creates a temporary directory. See the `mkdtemp()` documentation</span>
-<span class="doccomment">/// on most UNIX-like systems.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The parameter is a string that should follow the rules for</span>
-<span class="doccomment">/// `mkdtemp()` templates, i.e. contain the string &quot;XXXXXX&quot;.</span>
-<span class="doccomment">/// [`mkdtemp_full()`][crate::mkdtemp_full()] is slightly more flexible than `mkdtemp()` in that the</span>
-<span class="doccomment">/// sequence does not have to occur at the very end of the template</span>
-<span class="doccomment">/// and you can pass a `mode`. The X string will be modified to form</span>
-<span class="doccomment">/// the name of a directory that didn&#39;t exist. The string should be</span>
-<span class="doccomment">/// in the GLib file name encoding. Most importantly, on Windows it</span>
-<span class="doccomment">/// should be in UTF-8.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If you are going to be creating a temporary directory inside the</span>
-<span class="doccomment">/// directory returned by [`tmp_dir()`][crate::tmp_dir()], you might want to use</span>
-<span class="doccomment">/// `g_dir_make_tmp()` instead.</span>
-<span class="doccomment">/// ## `tmpl`</span>
-<span class="doccomment">/// template directory name</span>
-<span class="doccomment">/// ## `mode`</span>
-<span class="doccomment">/// permissions to create the temporary directory with</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to `tmpl`, which has been</span>
-<span class="doccomment">///  modified to hold the directory name. In case of errors, [`None`] is</span>
-<span class="doccomment">///  returned, and `errno` will be set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkdtemp_full&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkdtemp_full</span>(<span class="ident">tmpl</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -1059,5 +963,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (c06728704 2022-05-19)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (490324f7b 2022-05-26)" ></div>
 </body></html>

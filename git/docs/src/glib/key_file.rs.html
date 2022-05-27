@@ -333,32 +333,6 @@
 <span id="253">253</span>
 <span id="254">254</span>
 <span id="255">255</span>
-<span id="256">256</span>
-<span id="257">257</span>
-<span id="258">258</span>
-<span id="259">259</span>
-<span id="260">260</span>
-<span id="261">261</span>
-<span id="262">262</span>
-<span id="263">263</span>
-<span id="264">264</span>
-<span id="265">265</span>
-<span id="266">266</span>
-<span id="267">267</span>
-<span id="268">268</span>
-<span id="269">269</span>
-<span id="270">270</span>
-<span id="271">271</span>
-<span id="272">272</span>
-<span id="273">273</span>
-<span id="274">274</span>
-<span id="275">275</span>
-<span id="276">276</span>
-<span id="277">277</span>
-<span id="278">278</span>
-<span id="279">279</span>
-<span id="280">280</span>
-<span id="281">281</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
@@ -372,19 +346,6 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::KeyFile</span>;
 
 <span class="kw">impl</span> <span class="ident">KeyFile</span> {
-    <span class="doccomment">/// Writes the contents of `self` to `filename` using</span>
-    <span class="doccomment">/// [`file_set_contents()`][crate::file_set_contents()]. If you need stricter guarantees about durability of</span>
-    <span class="doccomment">/// the written file than are provided by [`file_set_contents()`][crate::file_set_contents()], use</span>
-    <span class="doccomment">/// [`file_set_contents_full()`][crate::file_set_contents_full()] with the return value of [`to_data()`][Self::to_data()].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function can fail for any of the reasons that</span>
-    <span class="doccomment">/// [`file_set_contents()`][crate::file_set_contents()] may fail.</span>
-    <span class="doccomment">/// ## `filename`</span>
-    <span class="doccomment">/// the name of the file to write to</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`true`] if successful, else [`false`] with `error` set</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_key_file_save_to_file&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">save_to_file</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">filename</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">unsafe</span> {
@@ -456,19 +417,6 @@
         }
     }
 
-    <span class="doccomment">/// This function outputs `self` as a string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that this function never reports an error,</span>
-    <span class="doccomment">/// so it is safe to pass [`None`] as `error`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Returns</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// a newly allocated string holding</span>
-    <span class="doccomment">///  the contents of the [`KeyFile`][crate::KeyFile]</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ## `length`</span>
-    <span class="doccomment">/// return location for the length of the</span>
-    <span class="doccomment">///  returned string, or [`None`]</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_key_file_to_data&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_data</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">GString</span> {
         <span class="kw">unsafe</span> {
@@ -641,5 +589,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (c06728704 2022-05-19)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (490324f7b 2022-05-26)" ></div>
 </body></html>
