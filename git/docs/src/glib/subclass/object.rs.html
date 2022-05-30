@@ -713,7 +713,6 @@
 <span id="633">633</span>
 <span id="634">634</span>
 <span id="635">635</span>
-<span id="636">636</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -1054,8 +1053,7 @@
                                 .<span class="ident">expect</span>(<span class="string">&quot;Failed to get Object from args[1]&quot;</span>);
                             <span class="kw">let</span> <span class="ident">imp</span> <span class="op">=</span> <span class="ident">obj</span>.<span class="ident">imp</span>();
 
-                            <span class="kw">let</span> <span class="ident">old_name</span> <span class="op">=</span> <span class="ident">imp</span>.<span class="ident">name</span>.<span class="ident">borrow_mut</span>().<span class="ident">take</span>();
-                            <span class="kw-2">*</span><span class="ident">imp</span>.<span class="ident">name</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">new_name</span>);
+                            <span class="kw">let</span> <span class="ident">old_name</span> <span class="op">=</span> <span class="ident">imp</span>.<span class="ident">name</span>.<span class="ident">replace</span>(<span class="prelude-val">Some</span>(<span class="ident">new_name</span>));
 
                             <span class="ident">obj</span>.<span class="ident">emit_by_name</span>::<span class="op">&lt;</span>()<span class="op">&gt;</span>(<span class="string">&quot;name-changed&quot;</span>, <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">imp</span>.<span class="ident">name</span>.<span class="ident">borrow</span>()]);
 
@@ -1351,5 +1349,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (490324f7b 2022-05-26)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (28b891916 2022-05-29)" ></div>
 </body></html>
