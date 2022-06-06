@@ -244,7 +244,7 @@
 
     <span class="comment">//#[doc(alias = &quot;g_socket_address_new_from_native&quot;)]</span>
     <span class="comment">//#[doc(alias = &quot;new_from_native&quot;)]</span>
-    <span class="comment">//pub fn from_native(native: /*Unimplemented*/Fundamental: Pointer, len: usize) -&gt; SocketAddress {</span>
+    <span class="comment">//pub fn from_native(native: /*Unimplemented*/Basic: Pointer, len: usize) -&gt; SocketAddress {</span>
     <span class="comment">//    unsafe { TODO: call ffi:g_socket_address_new_from_native() }</span>
     <span class="comment">//}</span>
 }
@@ -280,7 +280,7 @@
     <span class="kw">fn</span> <span class="ident">native_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">isize</span>;
 
     <span class="comment">//#[doc(alias = &quot;g_socket_address_to_native&quot;)]</span>
-    <span class="comment">//fn to_native(&amp;self, dest: /*Unimplemented*/Option&lt;Fundamental: Pointer&gt;, destlen: usize) -&gt; Result&lt;(), glib::Error&gt;;</span>
+    <span class="comment">//fn to_native(&amp;self, dest: /*Unimplemented*/Option&lt;Basic: Pointer&gt;, destlen: usize) -&gt; Result&lt;(), glib::Error&gt;;</span>
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;family&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">connect_family_notify</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SignalHandlerId</span>;
@@ -299,7 +299,7 @@
         <span class="kw">unsafe</span> { <span class="ident">ffi::g_socket_address_get_native_size</span>(<span class="self">self</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>) }
     }
 
-    <span class="comment">//fn to_native(&amp;self, dest: /*Unimplemented*/Option&lt;Fundamental: Pointer&gt;, destlen: usize) -&gt; Result&lt;(), glib::Error&gt; {</span>
+    <span class="comment">//fn to_native(&amp;self, dest: /*Unimplemented*/Option&lt;Basic: Pointer&gt;, destlen: usize) -&gt; Result&lt;(), glib::Error&gt; {</span>
     <span class="comment">//    unsafe { TODO: call ffi:g_socket_address_to_native() }</span>
     <span class="comment">//}</span>
 
@@ -335,5 +335,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (a6b8c6954 2022-06-03)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (fee3a459d 2022-06-05)" ></div>
 </body></html>

@@ -985,7 +985,7 @@
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;to_string&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">to_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">glib::GString</span>;
 
-    <span class="comment">//fn bytes(&amp;self) -&gt; /*Unimplemented*/Fundamental: Pointer;</span>
+    <span class="comment">//fn bytes(&amp;self) -&gt; /*Unimplemented*/Basic: Pointer;</span>
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;is-any&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">connect_is_any_notify</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">SignalHandlerId</span>;
@@ -1155,7 +1155,7 @@
         }
     }
 
-    <span class="comment">//fn bytes(&amp;self) -&gt; /*Unimplemented*/Fundamental: Pointer {</span>
+    <span class="comment">//fn bytes(&amp;self) -&gt; /*Unimplemented*/Basic: Pointer {</span>
     <span class="comment">//    glib::ObjectExt::property(self.as_ref(), &quot;bytes&quot;)</span>
     <span class="comment">//}</span>
 
@@ -1437,5 +1437,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (a6b8c6954 2022-06-03)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (fee3a459d 2022-06-05)" ></div>
 </body></html>

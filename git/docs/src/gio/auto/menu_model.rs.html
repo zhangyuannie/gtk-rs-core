@@ -650,7 +650,7 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">MenuModelExt</span>: <span class="lifetime">&#39;static</span> {
     <span class="comment">//#[doc(alias = &quot;g_menu_model_get_item_attribute&quot;)]</span>
     <span class="comment">//#[doc(alias = &quot;get_item_attribute&quot;)]</span>
-    <span class="comment">//fn is_item_attribute(&amp;self, item_index: i32, attribute: &amp;str, format_string: &amp;str, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool;</span>
+    <span class="comment">//fn is_item_attribute(&amp;self, item_index: i32, attribute: &amp;str, format_string: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; bool;</span>
 
     <span class="doccomment">/// Queries the item at position `item_index` in `self` for the attribute</span>
     <span class="doccomment">/// specified by `attribute`.</span>
@@ -804,7 +804,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">IsA</span><span class="op">&lt;</span><span class="ident">MenuModel</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="ident">MenuModelExt</span> <span class="kw">for</span> <span class="ident">O</span> {
-    <span class="comment">//fn is_item_attribute(&amp;self, item_index: i32, attribute: &amp;str, format_string: &amp;str, : /*Unknown conversion*//*Unimplemented*/Fundamental: VarArgs) -&gt; bool {</span>
+    <span class="comment">//fn is_item_attribute(&amp;self, item_index: i32, attribute: &amp;str, format_string: &amp;str, : /*Unknown conversion*//*Unimplemented*/Basic: VarArgs) -&gt; bool {</span>
     <span class="comment">//    unsafe { TODO: call ffi:g_menu_model_get_item_attribute() }</span>
     <span class="comment">//}</span>
 
@@ -913,5 +913,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (a6b8c6954 2022-06-03)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (fee3a459d 2022-06-05)" ></div>
 </body></html>
