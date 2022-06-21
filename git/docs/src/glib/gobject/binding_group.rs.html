@@ -600,6 +600,21 @@
 <span id="520">520</span>
 <span id="521">521</span>
 <span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::object::ObjectRef</span>;
@@ -615,6 +630,21 @@
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fmt</span>, <span class="ident">ptr</span>};
 
 <span class="kw">impl</span> <span class="ident">BindingGroup</span> {
+    <span class="doccomment">/// Creates a binding between `source_property` on the source object</span>
+    <span class="doccomment">/// and `target_property` on `target`. Whenever the `source_property`</span>
+    <span class="doccomment">/// is changed the `target_property` is updated using the same value.</span>
+    <span class="doccomment">/// The binding flag [`BindingFlags::SYNC_CREATE`][crate::BindingFlags::SYNC_CREATE] is automatically specified.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// See [`ObjectExt::bind_property()`][crate::prelude::ObjectExt::bind_property()] for more information.</span>
+    <span class="doccomment">/// ## `source_property`</span>
+    <span class="doccomment">/// the property on the source to bind</span>
+    <span class="doccomment">/// ## `target`</span>
+    <span class="doccomment">/// the target [`Object`][crate::Object]</span>
+    <span class="doccomment">/// ## `target_property`</span>
+    <span class="doccomment">/// the property on `target` to bind</span>
+    <span class="doccomment">/// ## `flags`</span>
+    <span class="doccomment">/// the flags used to create the [`Binding`][crate::Binding]</span>
+    <span class="comment">// rustdoc-stripper-ignore-next-stop</span>
     <span class="doccomment">/// Creates a binding between `source_property` on the source object</span>
     <span class="doccomment">/// and `target_property` on `target`. Whenever the `source_property`</span>
     <span class="doccomment">/// is changed the `target_property` is updated using the same value.</span>
@@ -1123,5 +1153,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (fee3a459d 2022-06-05)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (5750a6aa2 2022-06-20)" ></div>
 </body></html>
