@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/source.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>source.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/source.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>source.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -1169,53 +1168,6 @@
 <span id="1089">1089</span>
 <span id="1090">1090</span>
 <span id="1091">1091</span>
-<span id="1092">1092</span>
-<span id="1093">1093</span>
-<span id="1094">1094</span>
-<span id="1095">1095</span>
-<span id="1096">1096</span>
-<span id="1097">1097</span>
-<span id="1098">1098</span>
-<span id="1099">1099</span>
-<span id="1100">1100</span>
-<span id="1101">1101</span>
-<span id="1102">1102</span>
-<span id="1103">1103</span>
-<span id="1104">1104</span>
-<span id="1105">1105</span>
-<span id="1106">1106</span>
-<span id="1107">1107</span>
-<span id="1108">1108</span>
-<span id="1109">1109</span>
-<span id="1110">1110</span>
-<span id="1111">1111</span>
-<span id="1112">1112</span>
-<span id="1113">1113</span>
-<span id="1114">1114</span>
-<span id="1115">1115</span>
-<span id="1116">1116</span>
-<span id="1117">1117</span>
-<span id="1118">1118</span>
-<span id="1119">1119</span>
-<span id="1120">1120</span>
-<span id="1121">1121</span>
-<span id="1122">1122</span>
-<span id="1123">1123</span>
-<span id="1124">1124</span>
-<span id="1125">1125</span>
-<span id="1126">1126</span>
-<span id="1127">1127</span>
-<span id="1128">1128</span>
-<span id="1129">1129</span>
-<span id="1130">1130</span>
-<span id="1131">1131</span>
-<span id="1132">1132</span>
-<span id="1133">1133</span>
-<span id="1134">1134</span>
-<span id="1135">1135</span>
-<span id="1136">1136</span>
-<span id="1137">1137</span>
-<span id="1138">1138</span>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.</span>
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::translate</span>::{<span class="ident">from_glib</span>, <span class="ident">from_glib_full</span>, <span class="ident">FromGlib</span>, <span class="ident">IntoGlib</span>, <span class="ident">ToGlibPtr</span>};
@@ -2075,61 +2027,14 @@
     }
 }
 
-<span class="doccomment">/// Use this for high priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Use this for high priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_HIGH&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_HIGH</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_HIGH</span>);
-<span class="doccomment">/// Use this for default priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding timeout functions</span>
-<span class="doccomment">/// with `g_timeout_add()`. In GDK this priority is used for events</span>
-<span class="doccomment">/// from the X server.</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Use this for default priority event sources.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding timeout functions</span>
-<span class="doccomment">/// with `g_timeout_add()`. In GDK this priority is used for events</span>
-<span class="doccomment">/// from the X server.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_DEFAULT&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_DEFAULT</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_DEFAULT</span>);
-<span class="doccomment">/// Use this for high priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// GTK+ uses `G_PRIORITY_HIGH_IDLE` + 10 for resizing operations,</span>
-<span class="doccomment">/// and `G_PRIORITY_HIGH_IDLE` + 20 for redrawing operations. (This is</span>
-<span class="doccomment">/// done to ensure that any pending resizes are processed before any</span>
-<span class="doccomment">/// pending redraws, so that widgets are not redrawn twice unnecessarily.)</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Use this for high priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// GTK+ uses `G_PRIORITY_HIGH_IDLE` + 10 for resizing operations,</span>
-<span class="doccomment">/// and `G_PRIORITY_HIGH_IDLE` + 20 for redrawing operations. (This is</span>
-<span class="doccomment">/// done to ensure that any pending resizes are processed before any</span>
-<span class="doccomment">/// pending redraws, so that widgets are not redrawn twice unnecessarily.)</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_HIGH_IDLE&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_HIGH_IDLE</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_HIGH_IDLE</span>);
-<span class="doccomment">/// Use this for default priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding idle functions with</span>
-<span class="doccomment">/// `g_idle_add()`.</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Use this for default priority idle functions.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// In GLib this priority is used when adding idle functions with</span>
-<span class="doccomment">/// `g_idle_add()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_DEFAULT_IDLE&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_DEFAULT_IDLE</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_DEFAULT_IDLE</span>);
-<span class="doccomment">/// Use this for very low priority background tasks.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
-<span class="comment">// rustdoc-stripper-ignore-next-stop</span>
-<span class="doccomment">/// Use this for very low priority background tasks.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// It is not used within GLib or GTK+.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;G_PRIORITY_LOW&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PRIORITY_LOW</span>: <span class="ident">Priority</span> <span class="op">=</span> <span class="ident">Priority</span>(<span class="ident">ffi::G_PRIORITY_LOW</span>);
 
@@ -2355,5 +2260,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (5750a6aa2 2022-06-20)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.63.0-nightly (fdca237d5 2022-06-24)" ></div>
 </body></html>
