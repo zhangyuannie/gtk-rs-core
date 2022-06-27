@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/functions.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>functions.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -76,7 +75,9 @@
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../../glib/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../glib/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../glib/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1">
+                                <a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div>
+                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -1436,6 +1437,339 @@
 <span id="1358">1358</span>
 <span id="1359">1359</span>
 <span id="1360">1360</span>
+<span id="1361">1361</span>
+<span id="1362">1362</span>
+<span id="1363">1363</span>
+<span id="1364">1364</span>
+<span id="1365">1365</span>
+<span id="1366">1366</span>
+<span id="1367">1367</span>
+<span id="1368">1368</span>
+<span id="1369">1369</span>
+<span id="1370">1370</span>
+<span id="1371">1371</span>
+<span id="1372">1372</span>
+<span id="1373">1373</span>
+<span id="1374">1374</span>
+<span id="1375">1375</span>
+<span id="1376">1376</span>
+<span id="1377">1377</span>
+<span id="1378">1378</span>
+<span id="1379">1379</span>
+<span id="1380">1380</span>
+<span id="1381">1381</span>
+<span id="1382">1382</span>
+<span id="1383">1383</span>
+<span id="1384">1384</span>
+<span id="1385">1385</span>
+<span id="1386">1386</span>
+<span id="1387">1387</span>
+<span id="1388">1388</span>
+<span id="1389">1389</span>
+<span id="1390">1390</span>
+<span id="1391">1391</span>
+<span id="1392">1392</span>
+<span id="1393">1393</span>
+<span id="1394">1394</span>
+<span id="1395">1395</span>
+<span id="1396">1396</span>
+<span id="1397">1397</span>
+<span id="1398">1398</span>
+<span id="1399">1399</span>
+<span id="1400">1400</span>
+<span id="1401">1401</span>
+<span id="1402">1402</span>
+<span id="1403">1403</span>
+<span id="1404">1404</span>
+<span id="1405">1405</span>
+<span id="1406">1406</span>
+<span id="1407">1407</span>
+<span id="1408">1408</span>
+<span id="1409">1409</span>
+<span id="1410">1410</span>
+<span id="1411">1411</span>
+<span id="1412">1412</span>
+<span id="1413">1413</span>
+<span id="1414">1414</span>
+<span id="1415">1415</span>
+<span id="1416">1416</span>
+<span id="1417">1417</span>
+<span id="1418">1418</span>
+<span id="1419">1419</span>
+<span id="1420">1420</span>
+<span id="1421">1421</span>
+<span id="1422">1422</span>
+<span id="1423">1423</span>
+<span id="1424">1424</span>
+<span id="1425">1425</span>
+<span id="1426">1426</span>
+<span id="1427">1427</span>
+<span id="1428">1428</span>
+<span id="1429">1429</span>
+<span id="1430">1430</span>
+<span id="1431">1431</span>
+<span id="1432">1432</span>
+<span id="1433">1433</span>
+<span id="1434">1434</span>
+<span id="1435">1435</span>
+<span id="1436">1436</span>
+<span id="1437">1437</span>
+<span id="1438">1438</span>
+<span id="1439">1439</span>
+<span id="1440">1440</span>
+<span id="1441">1441</span>
+<span id="1442">1442</span>
+<span id="1443">1443</span>
+<span id="1444">1444</span>
+<span id="1445">1445</span>
+<span id="1446">1446</span>
+<span id="1447">1447</span>
+<span id="1448">1448</span>
+<span id="1449">1449</span>
+<span id="1450">1450</span>
+<span id="1451">1451</span>
+<span id="1452">1452</span>
+<span id="1453">1453</span>
+<span id="1454">1454</span>
+<span id="1455">1455</span>
+<span id="1456">1456</span>
+<span id="1457">1457</span>
+<span id="1458">1458</span>
+<span id="1459">1459</span>
+<span id="1460">1460</span>
+<span id="1461">1461</span>
+<span id="1462">1462</span>
+<span id="1463">1463</span>
+<span id="1464">1464</span>
+<span id="1465">1465</span>
+<span id="1466">1466</span>
+<span id="1467">1467</span>
+<span id="1468">1468</span>
+<span id="1469">1469</span>
+<span id="1470">1470</span>
+<span id="1471">1471</span>
+<span id="1472">1472</span>
+<span id="1473">1473</span>
+<span id="1474">1474</span>
+<span id="1475">1475</span>
+<span id="1476">1476</span>
+<span id="1477">1477</span>
+<span id="1478">1478</span>
+<span id="1479">1479</span>
+<span id="1480">1480</span>
+<span id="1481">1481</span>
+<span id="1482">1482</span>
+<span id="1483">1483</span>
+<span id="1484">1484</span>
+<span id="1485">1485</span>
+<span id="1486">1486</span>
+<span id="1487">1487</span>
+<span id="1488">1488</span>
+<span id="1489">1489</span>
+<span id="1490">1490</span>
+<span id="1491">1491</span>
+<span id="1492">1492</span>
+<span id="1493">1493</span>
+<span id="1494">1494</span>
+<span id="1495">1495</span>
+<span id="1496">1496</span>
+<span id="1497">1497</span>
+<span id="1498">1498</span>
+<span id="1499">1499</span>
+<span id="1500">1500</span>
+<span id="1501">1501</span>
+<span id="1502">1502</span>
+<span id="1503">1503</span>
+<span id="1504">1504</span>
+<span id="1505">1505</span>
+<span id="1506">1506</span>
+<span id="1507">1507</span>
+<span id="1508">1508</span>
+<span id="1509">1509</span>
+<span id="1510">1510</span>
+<span id="1511">1511</span>
+<span id="1512">1512</span>
+<span id="1513">1513</span>
+<span id="1514">1514</span>
+<span id="1515">1515</span>
+<span id="1516">1516</span>
+<span id="1517">1517</span>
+<span id="1518">1518</span>
+<span id="1519">1519</span>
+<span id="1520">1520</span>
+<span id="1521">1521</span>
+<span id="1522">1522</span>
+<span id="1523">1523</span>
+<span id="1524">1524</span>
+<span id="1525">1525</span>
+<span id="1526">1526</span>
+<span id="1527">1527</span>
+<span id="1528">1528</span>
+<span id="1529">1529</span>
+<span id="1530">1530</span>
+<span id="1531">1531</span>
+<span id="1532">1532</span>
+<span id="1533">1533</span>
+<span id="1534">1534</span>
+<span id="1535">1535</span>
+<span id="1536">1536</span>
+<span id="1537">1537</span>
+<span id="1538">1538</span>
+<span id="1539">1539</span>
+<span id="1540">1540</span>
+<span id="1541">1541</span>
+<span id="1542">1542</span>
+<span id="1543">1543</span>
+<span id="1544">1544</span>
+<span id="1545">1545</span>
+<span id="1546">1546</span>
+<span id="1547">1547</span>
+<span id="1548">1548</span>
+<span id="1549">1549</span>
+<span id="1550">1550</span>
+<span id="1551">1551</span>
+<span id="1552">1552</span>
+<span id="1553">1553</span>
+<span id="1554">1554</span>
+<span id="1555">1555</span>
+<span id="1556">1556</span>
+<span id="1557">1557</span>
+<span id="1558">1558</span>
+<span id="1559">1559</span>
+<span id="1560">1560</span>
+<span id="1561">1561</span>
+<span id="1562">1562</span>
+<span id="1563">1563</span>
+<span id="1564">1564</span>
+<span id="1565">1565</span>
+<span id="1566">1566</span>
+<span id="1567">1567</span>
+<span id="1568">1568</span>
+<span id="1569">1569</span>
+<span id="1570">1570</span>
+<span id="1571">1571</span>
+<span id="1572">1572</span>
+<span id="1573">1573</span>
+<span id="1574">1574</span>
+<span id="1575">1575</span>
+<span id="1576">1576</span>
+<span id="1577">1577</span>
+<span id="1578">1578</span>
+<span id="1579">1579</span>
+<span id="1580">1580</span>
+<span id="1581">1581</span>
+<span id="1582">1582</span>
+<span id="1583">1583</span>
+<span id="1584">1584</span>
+<span id="1585">1585</span>
+<span id="1586">1586</span>
+<span id="1587">1587</span>
+<span id="1588">1588</span>
+<span id="1589">1589</span>
+<span id="1590">1590</span>
+<span id="1591">1591</span>
+<span id="1592">1592</span>
+<span id="1593">1593</span>
+<span id="1594">1594</span>
+<span id="1595">1595</span>
+<span id="1596">1596</span>
+<span id="1597">1597</span>
+<span id="1598">1598</span>
+<span id="1599">1599</span>
+<span id="1600">1600</span>
+<span id="1601">1601</span>
+<span id="1602">1602</span>
+<span id="1603">1603</span>
+<span id="1604">1604</span>
+<span id="1605">1605</span>
+<span id="1606">1606</span>
+<span id="1607">1607</span>
+<span id="1608">1608</span>
+<span id="1609">1609</span>
+<span id="1610">1610</span>
+<span id="1611">1611</span>
+<span id="1612">1612</span>
+<span id="1613">1613</span>
+<span id="1614">1614</span>
+<span id="1615">1615</span>
+<span id="1616">1616</span>
+<span id="1617">1617</span>
+<span id="1618">1618</span>
+<span id="1619">1619</span>
+<span id="1620">1620</span>
+<span id="1621">1621</span>
+<span id="1622">1622</span>
+<span id="1623">1623</span>
+<span id="1624">1624</span>
+<span id="1625">1625</span>
+<span id="1626">1626</span>
+<span id="1627">1627</span>
+<span id="1628">1628</span>
+<span id="1629">1629</span>
+<span id="1630">1630</span>
+<span id="1631">1631</span>
+<span id="1632">1632</span>
+<span id="1633">1633</span>
+<span id="1634">1634</span>
+<span id="1635">1635</span>
+<span id="1636">1636</span>
+<span id="1637">1637</span>
+<span id="1638">1638</span>
+<span id="1639">1639</span>
+<span id="1640">1640</span>
+<span id="1641">1641</span>
+<span id="1642">1642</span>
+<span id="1643">1643</span>
+<span id="1644">1644</span>
+<span id="1645">1645</span>
+<span id="1646">1646</span>
+<span id="1647">1647</span>
+<span id="1648">1648</span>
+<span id="1649">1649</span>
+<span id="1650">1650</span>
+<span id="1651">1651</span>
+<span id="1652">1652</span>
+<span id="1653">1653</span>
+<span id="1654">1654</span>
+<span id="1655">1655</span>
+<span id="1656">1656</span>
+<span id="1657">1657</span>
+<span id="1658">1658</span>
+<span id="1659">1659</span>
+<span id="1660">1660</span>
+<span id="1661">1661</span>
+<span id="1662">1662</span>
+<span id="1663">1663</span>
+<span id="1664">1664</span>
+<span id="1665">1665</span>
+<span id="1666">1666</span>
+<span id="1667">1667</span>
+<span id="1668">1668</span>
+<span id="1669">1669</span>
+<span id="1670">1670</span>
+<span id="1671">1671</span>
+<span id="1672">1672</span>
+<span id="1673">1673</span>
+<span id="1674">1674</span>
+<span id="1675">1675</span>
+<span id="1676">1676</span>
+<span id="1677">1677</span>
+<span id="1678">1678</span>
+<span id="1679">1679</span>
+<span id="1680">1680</span>
+<span id="1681">1681</span>
+<span id="1682">1682</span>
+<span id="1683">1683</span>
+<span id="1684">1684</span>
+<span id="1685">1685</span>
+<span id="1686">1686</span>
+<span id="1687">1687</span>
+<span id="1688">1688</span>
+<span id="1689">1689</span>
+<span id="1690">1690</span>
+<span id="1691">1691</span>
+<span id="1692">1692</span>
+<span id="1693">1693</span>
 </pre><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)</span>
 <span class="comment">// from gir-files (https://github.com/gtk-rs/gir-files)</span>
 <span class="comment">// DO NOT EDIT</span>
@@ -1458,46 +1792,11 @@
 <span class="kw">use</span> <span class="ident">std::mem</span>;
 <span class="kw">use</span> <span class="ident">std::ptr</span>;
 
-<span class="doccomment">/// A wrapper for the POSIX `access()` function. This function is used to</span>
-<span class="doccomment">/// test a pathname for one or several of read, write or execute</span>
-<span class="doccomment">/// permissions, or just existence.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// On Windows, the file protection mechanism is not at all POSIX-like,</span>
-<span class="doccomment">/// and the underlying function in the C library only checks the</span>
-<span class="doccomment">/// FAT-style READONLY attribute, and does not look at the ACL of a</span>
-<span class="doccomment">/// file at all. This function is this in practise almost useless on</span>
-<span class="doccomment">/// Windows. Software that needs to handle file permissions on Windows</span>
-<span class="doccomment">/// more exactly should use the Win32 API.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// See your C library manual for more details about `access()`.</span>
-<span class="doccomment">/// ## `filename`</span>
-<span class="doccomment">/// a pathname in the GLib file name encoding</span>
-<span class="doccomment">///  (UTF-8 on Windows)</span>
-<span class="doccomment">/// ## `mode`</span>
-<span class="doccomment">/// as in `access()`</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// zero if the pathname refers to an existing file system</span>
-<span class="doccomment">///  object that has all the tested permissions, or -1 otherwise</span>
-<span class="doccomment">///  or on error.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_access&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">access</span>(<span class="ident">filename</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i32</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_access</span>(<span class="ident">filename</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">mode</span>) }
 }
 
-<span class="doccomment">/// Decode a sequence of Base-64 encoded text into binary data. Note</span>
-<span class="doccomment">/// that the returned binary data is not necessarily zero-terminated,</span>
-<span class="doccomment">/// so it should not be used as a character string.</span>
-<span class="doccomment">/// ## `text`</span>
-<span class="doccomment">/// zero-terminated string with base64 text to decode</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///  newly allocated buffer containing the binary data</span>
-<span class="doccomment">///  that `text` represents. The returned buffer must</span>
-<span class="doccomment">///  be freed with `g_free()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_base64_decode&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">base64_decode</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> {
@@ -1520,16 +1819,6 @@
 <span class="comment">//    unsafe { TODO: call ffi:g_base64_decode_step() }</span>
 <span class="comment">//}</span>
 
-<span class="doccomment">/// Encode a sequence of binary data into its Base-64 stringified</span>
-<span class="doccomment">/// representation.</span>
-<span class="doccomment">/// ## `data`</span>
-<span class="doccomment">/// the binary data to encode</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// a newly allocated, zero-terminated Base-64</span>
-<span class="doccomment">///  encoded string representing `data`. The returned string must</span>
-<span class="doccomment">///  be freed with `g_free()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_base64_encode&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">base64_encode</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident"><span class="kw">crate</span>::GString</span> {
     <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">usize</span>;
@@ -1546,34 +1835,6 @@
 <span class="comment">//    unsafe { TODO: call ffi:g_base64_encode_step() }</span>
 <span class="comment">//}</span>
 
-<span class="doccomment">/// Checks that the GLib library in use is compatible with the</span>
-<span class="doccomment">/// given version.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Generally you would pass in the constants `GLIB_MAJOR_VERSION`,</span>
-<span class="doccomment">/// `GLIB_MINOR_VERSION`, `GLIB_MICRO_VERSION` as the three arguments</span>
-<span class="doccomment">/// to this function; that produces a check that the library in use</span>
-<span class="doccomment">/// is compatible with the version of GLib the application or module</span>
-<span class="doccomment">/// was compiled against.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Compatibility is defined by two things: first the version</span>
-<span class="doccomment">/// of the running library is newer than the version</span>
-<span class="doccomment">/// ``required_major`.`required_micro``. Second</span>
-<span class="doccomment">/// the running library must be binary compatible with the</span>
-<span class="doccomment">/// version ``required_major`.`required_minor`.`required_micro``</span>
-<span class="doccomment">/// (same major version.)</span>
-<span class="doccomment">/// ## `required_major`</span>
-<span class="doccomment">/// the required major version</span>
-<span class="doccomment">/// ## `required_minor`</span>
-<span class="doccomment">/// the required minor version</span>
-<span class="doccomment">/// ## `required_micro`</span>
-<span class="doccomment">/// the required micro version</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`None`] if the GLib library is</span>
-<span class="doccomment">///  compatible with the given version, or a string describing the</span>
-<span class="doccomment">///  version mismatch. The returned string is owned by GLib and must</span>
-<span class="doccomment">///  not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;glib_check_version&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">check_version</span>(
     <span class="ident">required_major</span>: <span class="ident">u32</span>,
@@ -1589,22 +1850,6 @@
     }
 }
 
-<span class="doccomment">/// Computes the checksum for a binary `data`. This is a</span>
-<span class="doccomment">/// convenience wrapper for [`Checksum::new()`][crate::Checksum::new()], [`Checksum::string()`][crate::Checksum::string()]</span>
-<span class="doccomment">/// and `g_checksum_free()`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The hexadecimal string returned will be in lower case.</span>
-<span class="doccomment">/// ## `checksum_type`</span>
-<span class="doccomment">/// a [`ChecksumType`][crate::ChecksumType]</span>
-<span class="doccomment">/// ## `data`</span>
-<span class="doccomment">/// binary blob to compute the digest of</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the digest of the binary data as a</span>
-<span class="doccomment">///  string in hexadecimal, or [`None`] if [`Checksum::new()`][crate::Checksum::new()] fails for</span>
-<span class="doccomment">///  `checksum_type`. The returned string should be freed with `g_free()` when</span>
-<span class="doccomment">///  done using it.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_compute_checksum_for_bytes&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compute_checksum_for_bytes</span>(
     <span class="ident">checksum_type</span>: <span class="ident">ChecksumType</span>,
@@ -1618,22 +1863,6 @@
     }
 }
 
-<span class="doccomment">/// Computes the checksum for a binary `data` of `length`. This is a</span>
-<span class="doccomment">/// convenience wrapper for [`Checksum::new()`][crate::Checksum::new()], [`Checksum::string()`][crate::Checksum::string()]</span>
-<span class="doccomment">/// and `g_checksum_free()`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The hexadecimal string returned will be in lower case.</span>
-<span class="doccomment">/// ## `checksum_type`</span>
-<span class="doccomment">/// a [`ChecksumType`][crate::ChecksumType]</span>
-<span class="doccomment">/// ## `data`</span>
-<span class="doccomment">/// binary blob to compute the digest of</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the digest of the binary data as a</span>
-<span class="doccomment">///  string in hexadecimal, or [`None`] if [`Checksum::new()`][crate::Checksum::new()] fails for</span>
-<span class="doccomment">///  `checksum_type`. The returned string should be freed with `g_free()` when</span>
-<span class="doccomment">///  done using it.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_compute_checksum_for_data&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compute_checksum_for_data</span>(
     <span class="ident">checksum_type</span>: <span class="ident">ChecksumType</span>,
@@ -1649,22 +1878,6 @@
     }
 }
 
-<span class="doccomment">/// Computes the HMAC for a binary `data`. This is a</span>
-<span class="doccomment">/// convenience wrapper for `g_hmac_new()`, `g_hmac_get_string()`</span>
-<span class="doccomment">/// and `g_hmac_unref()`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The hexadecimal string returned will be in lower case.</span>
-<span class="doccomment">/// ## `digest_type`</span>
-<span class="doccomment">/// a [`ChecksumType`][crate::ChecksumType] to use for the HMAC</span>
-<span class="doccomment">/// ## `key`</span>
-<span class="doccomment">/// the key to use in the HMAC</span>
-<span class="doccomment">/// ## `data`</span>
-<span class="doccomment">/// binary blob to compute the HMAC of</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the HMAC of the binary data as a string in hexadecimal.</span>
-<span class="doccomment">///  The returned string should be freed with `g_free()` when done using it.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_50&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_50&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_compute_hmac_for_bytes&quot;</span>)]</span>
@@ -1682,22 +1895,6 @@
     }
 }
 
-<span class="doccomment">/// Computes the HMAC for a binary `data` of `length`. This is a</span>
-<span class="doccomment">/// convenience wrapper for `g_hmac_new()`, `g_hmac_get_string()`</span>
-<span class="doccomment">/// and `g_hmac_unref()`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The hexadecimal string returned will be in lower case.</span>
-<span class="doccomment">/// ## `digest_type`</span>
-<span class="doccomment">/// a [`ChecksumType`][crate::ChecksumType] to use for the HMAC</span>
-<span class="doccomment">/// ## `key`</span>
-<span class="doccomment">/// the key to use in the HMAC</span>
-<span class="doccomment">/// ## `data`</span>
-<span class="doccomment">/// binary blob to compute the HMAC of</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the HMAC of the binary data as a string in hexadecimal.</span>
-<span class="doccomment">///  The returned string should be freed with `g_free()` when done using it.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_compute_hmac_for_data&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compute_hmac_for_data</span>(<span class="ident">digest_type</span>: <span class="ident">ChecksumType</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident"><span class="kw">crate</span>::GString</span> {
     <span class="kw">let</span> <span class="ident">key_len</span> <span class="op">=</span> <span class="ident">key</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">usize</span>;
@@ -1713,19 +1910,6 @@
     }
 }
 
-<span class="doccomment">/// This is a variant of [`dgettext()`][crate::dgettext()] that allows specifying a locale</span>
-<span class="doccomment">/// category instead of always using `LC_MESSAGES`. See [`dgettext()`][crate::dgettext()] for</span>
-<span class="doccomment">/// more information about how this functions differs from calling</span>
-<span class="doccomment">/// `dcgettext()` directly.</span>
-<span class="doccomment">/// ## `domain`</span>
-<span class="doccomment">/// the translation domain tIf the two properties being bound are</span>
-<span class="doccomment">///  booleans, setting one to [`true`] message to translate</span>
-<span class="doccomment">/// ## `category`</span>
-<span class="doccomment">/// a locale category</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Returns</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// the translated string for the given locale category</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_dcgettext&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">dcgettext</span>(<span class="ident">domain</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">msgid</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">category</span>: <span class="ident">i32</span>) -&gt; <span class="ident"><span class="kw">crate</span>::GString</span> {
     <span class="kw">unsafe</span> {
@@ -2350,15 +2534,9 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Returns</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// n getv --&gt;</span>
-<span class="doccomment">/// Gets `n_properties` properties for an `self`.</span>
-<span class="doccomment">/// Obtained properties will be set to `values`. All properties must be valid.</span>
-<span class="doccomment">/// Warnings will be emitted and undefined behaviour may result if invalid</span>
-<span class="doccomment">/// properties are passed in.</span>
-<span class="doccomment">/// ## `names`</span>
-<span class="doccomment">/// the names of each property to get</span>
-<span class="doccomment">/// ## `values`</span>
-<span class="doccomment">/// the values of each property to get</span>
+<span class="doccomment">/// a [`None`]-terminated array of strings owned by</span>
+<span class="doccomment">///  the thread g_get_language_names_with_category was called from.</span>
+<span class="doccomment">///  It must not be modified or freed. It must be copied if planned to be used in another thread.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_58&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_58&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_language_names_with_category&quot;</span>)]</span>
@@ -2371,6 +2549,29 @@
     }
 }
 
+<span class="doccomment">/// Returns a list of derived variants of `locale`, which can be used to</span>
+<span class="doccomment">/// e.g. construct locale-dependent filenames or search paths. The returned</span>
+<span class="doccomment">/// list is sorted from most desirable to least desirable.</span>
+<span class="doccomment">/// This function handles territory, charset and extra locale modifiers. See</span>
+<span class="doccomment">/// [`setlocale(3)`](man:setlocale) for information about locales and their format.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// `locale` itself is guaranteed to be returned in the output.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// For example, if `locale` is `fr_BE`, then the returned list</span>
+<span class="doccomment">/// is `fr_BE`, `fr`. If `locale` is `en_GB.UTF-8`euro``, then the returned list</span>
+<span class="doccomment">/// is `en_GB.UTF-8`euro``, `en_GB.UTF-8`, `en_GB`euro``, `en_GB`, `en.UTF-8`euro``,</span>
+<span class="doccomment">/// `en.UTF-8`, `en`euro``, `en`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// If you need the list of variants for the current locale,</span>
+<span class="doccomment">/// use [`language_names()`][crate::language_names()].</span>
+<span class="doccomment">/// ## `locale`</span>
+<span class="doccomment">/// a locale identifier</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a newly</span>
+<span class="doccomment">///  allocated array of newly allocated strings with the locale variants. Free with</span>
+<span class="doccomment">///  `g_strfreev()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_locale_variants&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_locale_variants&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">locale_variants</span>(<span class="ident">locale</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::GString</span><span class="op">&gt;</span> {
@@ -2379,18 +2580,55 @@
     }
 }
 
+<span class="doccomment">/// Queries the system monotonic time.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The monotonic clock will always increase and doesn&#39;t suffer</span>
+<span class="doccomment">/// discontinuities when the user (or NTP) changes the system time. It</span>
+<span class="doccomment">/// may or may not continue to tick during times where the machine is</span>
+<span class="doccomment">/// suspended.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// We try to use the clock that corresponds as closely as possible to</span>
+<span class="doccomment">/// the passage of time as measured by system calls such as `poll()` but it</span>
+<span class="doccomment">/// may not always be possible to do this.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the monotonic time, in microseconds</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_monotonic_time&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_monotonic_time&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">monotonic_time</span>() -&gt; <span class="ident">i64</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_get_monotonic_time</span>() }
 }
 
+<span class="doccomment">/// Determine the approximate number of threads that the system will</span>
+<span class="doccomment">/// schedule simultaneously for this process. This is intended to be</span>
+<span class="doccomment">/// used as a parameter to [`ThreadPool::new()`][crate::ThreadPool::new()] for CPU bound tasks and</span>
+<span class="doccomment">/// similar cases.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Number of schedulable threads, always greater than 0</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_num_processors&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_num_processors&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_processors</span>() -&gt; <span class="ident">u32</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_get_num_processors</span>() }
 }
 
+<span class="doccomment">/// Get information about the operating system.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Linux this comes from the `/etc/os-release` file. On other systems, it may</span>
+<span class="doccomment">/// come from a variety of sources. You can either use the standard key names</span>
+<span class="doccomment">/// like `G_OS_INFO_KEY_NAME` or pass any UTF-8 string key name. For example,</span>
+<span class="doccomment">/// `/etc/os-release` provides a number of other less commonly used values that may</span>
+<span class="doccomment">/// be useful. No key is guaranteed to be provided, so the caller should always</span>
+<span class="doccomment">/// check if the result is [`None`].</span>
+<span class="doccomment">/// ## `key_name`</span>
+<span class="doccomment">/// a key for the OS info being requested, for example `G_OS_INFO_KEY_NAME`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The associated value for the requested key or [`None`] if</span>
+<span class="doccomment">///  this information is not provided.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_64&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_64&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_os_info&quot;</span>)]</span>
@@ -2399,54 +2637,256 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_get_os_info</span>(<span class="ident">key_name</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Queries the system wall-clock time.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This call is functionally equivalent to `g_get_current_time()` except</span>
+<span class="doccomment">/// that the return value is often more convenient than dealing with a</span>
+<span class="doccomment">/// `GTimeVal`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You should only use this call if you are actually interested in the real</span>
+<span class="doccomment">/// wall-clock time. [`monotonic_time()`][crate::monotonic_time()] is probably more useful for</span>
+<span class="doccomment">/// measuring intervals.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the number of microseconds since January 1, 1970 UTC.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_real_time&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_real_time&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">real_time</span>() -&gt; <span class="ident">i64</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_get_real_time</span>() }
 }
 
+<span class="doccomment">/// Returns an ordered list of base directories in which to access</span>
+<span class="doccomment">/// system-wide configuration information.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// In this case the list of directories retrieved will be `XDG_CONFIG_DIRS`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_CONFIG_DIRS` is defined.</span>
+<span class="doccomment">/// If `XDG_CONFIG_DIRS` is undefined, the directory that contains application</span>
+<span class="doccomment">/// data for all users is used instead. A typical path is</span>
+<span class="doccomment">/// `C:\Documents and Settings\All Users\Application Data`.</span>
+<span class="doccomment">/// This folder is used for application data</span>
+<span class="doccomment">/// that is not user specific. For example, an application can store</span>
+<span class="doccomment">/// a spell-check dictionary, a database of clip art, or a log file in the</span>
+<span class="doccomment">/// FOLDERID_ProgramData folder. This information will not roam and is available</span>
+<span class="doccomment">/// to anyone using the computer.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///  a [`None`]-terminated array of strings owned by GLib that must not be</span>
+<span class="doccomment">///  modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_system_config_dirs&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_system_config_dirs&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">system_config_dirs</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">FromGlibPtrContainer::from_glib_none</span>(<span class="ident">ffi::g_get_system_config_dirs</span>()) }
 }
 
+<span class="doccomment">/// Returns an ordered list of base directories in which to access</span>
+<span class="doccomment">/// system-wide application data.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec)</span>
+<span class="doccomment">/// In this case the list of directories retrieved will be `XDG_DATA_DIRS`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_DATA_DIRS` is defined.</span>
+<span class="doccomment">/// If `XDG_DATA_DIRS` is undefined,</span>
+<span class="doccomment">/// the first elements in the list are the Application Data</span>
+<span class="doccomment">/// and Documents folders for All Users. (These can be determined only</span>
+<span class="doccomment">/// on Windows 2000 or later and are not present in the list on other</span>
+<span class="doccomment">/// Windows versions.) See documentation for FOLDERID_ProgramData and</span>
+<span class="doccomment">/// FOLDERID_PublicDocuments.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Then follows the &quot;share&quot; subfolder in the installation folder for</span>
+<span class="doccomment">/// the package containing the DLL that calls this function, if it can</span>
+<span class="doccomment">/// be determined.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Finally the list contains the &quot;share&quot; subfolder in the installation</span>
+<span class="doccomment">/// folder for GLib, and in the installation folder for the package the</span>
+<span class="doccomment">/// application&#39;s .exe file belongs to.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The installation folders above are determined by looking up the</span>
+<span class="doccomment">/// folder where the module (DLL or EXE) in question is located. If the</span>
+<span class="doccomment">/// folder&#39;s name is &quot;bin&quot;, its parent is used, otherwise the folder</span>
+<span class="doccomment">/// itself.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that on Windows the returned list can vary depending on where</span>
+<span class="doccomment">/// this function is called.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///  a [`None`]-terminated array of strings owned by GLib that must not be</span>
+<span class="doccomment">///  modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_system_data_dirs&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_system_data_dirs&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">system_data_dirs</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">FromGlibPtrContainer::from_glib_none</span>(<span class="ident">ffi::g_get_system_data_dirs</span>()) }
 }
 
+<span class="doccomment">/// Returns a base directory in which to store non-essential, cached</span>
+<span class="doccomment">/// data specific to particular user.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// In this case the directory retrieved will be `XDG_CACHE_HOME`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_CACHE_HOME` is defined.</span>
+<span class="doccomment">/// If `XDG_CACHE_HOME` is undefined, the directory that serves as a common</span>
+<span class="doccomment">/// repository for temporary Internet files is used instead. A typical path is</span>
+<span class="doccomment">/// `C:\Documents and Settings\username\Local Settings\Temporary Internet Files`.</span>
+<span class="doccomment">/// See the [documentation for `FOLDERID_InternetCache`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a string owned by GLib that</span>
+<span class="doccomment">///  must not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_cache_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_cache_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_cache_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_cache_dir</span>()) }
 }
 
+<span class="doccomment">/// Returns a base directory in which to store user-specific application</span>
+<span class="doccomment">/// configuration information such as user preferences and settings.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// In this case the directory retrieved will be `XDG_CONFIG_HOME`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_CONFIG_HOME` is defined.</span>
+<span class="doccomment">/// If `XDG_CONFIG_HOME` is undefined, the folder to use for local (as opposed</span>
+<span class="doccomment">/// to roaming) application data is used instead. See the</span>
+<span class="doccomment">/// [documentation for `FOLDERID_LocalAppData`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).</span>
+<span class="doccomment">/// Note that in this case on Windows it will be the same</span>
+<span class="doccomment">/// as what [`user_data_dir()`][crate::user_data_dir()] returns.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a string owned by GLib that</span>
+<span class="doccomment">///  must not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_config_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_config_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_config_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_config_dir</span>()) }
 }
 
+<span class="doccomment">/// Returns a base directory in which to access application data such</span>
+<span class="doccomment">/// as icons that is customized for a particular user.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// In this case the directory retrieved will be `XDG_DATA_HOME`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_DATA_HOME`</span>
+<span class="doccomment">/// is defined. If `XDG_DATA_HOME` is undefined, the folder to use for local (as</span>
+<span class="doccomment">/// opposed to roaming) application data is used instead. See the</span>
+<span class="doccomment">/// [documentation for `FOLDERID_LocalAppData`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).</span>
+<span class="doccomment">/// Note that in this case on Windows it will be the same</span>
+<span class="doccomment">/// as what [`user_config_dir()`][crate::user_config_dir()] returns.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a string owned by GLib that must</span>
+<span class="doccomment">///  not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_data_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_data_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_data_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_data_dir</span>()) }
 }
 
+<span class="doccomment">/// Returns a directory that is unique to the current user on the local</span>
+<span class="doccomment">/// system.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// This is the directory</span>
+<span class="doccomment">/// specified in the `XDG_RUNTIME_DIR` environment variable.</span>
+<span class="doccomment">/// In the case that this variable is not set, we return the value of</span>
+<span class="doccomment">/// [`user_cache_dir()`][crate::user_cache_dir()], after verifying that it exists.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a string owned by GLib that must not be</span>
+<span class="doccomment">///  modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_runtime_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_runtime_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_runtime_dir</span>() -&gt; <span class="ident">std::path::PathBuf</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_runtime_dir</span>()) }
 }
 
+<span class="doccomment">/// Returns the full path of a special directory using its logical id.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX this is done using the XDG special user directories.</span>
+<span class="doccomment">/// For compatibility with existing practise, [`UserDirectory::DirectoryDesktop`][crate::UserDirectory::DirectoryDesktop]</span>
+<span class="doccomment">/// falls back to `$HOME/Desktop` when XDG special user directories have</span>
+<span class="doccomment">/// not been set up.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Depending on the platform, the user might be able to change the path</span>
+<span class="doccomment">/// of the special directory without requiring the session to restart; GLib</span>
+<span class="doccomment">/// will not reflect any change once the special directories are loaded.</span>
+<span class="doccomment">/// ## `directory`</span>
+<span class="doccomment">/// the logical id of special directory</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// the path to the specified special</span>
+<span class="doccomment">///  directory, or [`None`] if the logical id was not found. The returned string is</span>
+<span class="doccomment">///  owned by GLib and should not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_special_dir&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;get_user_special_dir&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">user_special_dir</span>(<span class="ident">directory</span>: <span class="ident">UserDirectory</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">std::path::PathBuf</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_special_dir</span>(<span class="ident">directory</span>.<span class="ident">into_glib</span>())) }
 }
 
+<span class="doccomment">/// Returns a base directory in which to store state files specific to</span>
+<span class="doccomment">/// particular user.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On UNIX platforms this is determined using the mechanisms described</span>
+<span class="doccomment">/// in the</span>
+<span class="doccomment">/// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).</span>
+<span class="doccomment">/// In this case the directory retrieved will be `XDG_STATE_HOME`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// On Windows it follows XDG Base Directory Specification if `XDG_STATE_HOME` is defined.</span>
+<span class="doccomment">/// If `XDG_STATE_HOME` is undefined, the folder to use for local (as opposed</span>
+<span class="doccomment">/// to roaming) application data is used instead. See the</span>
+<span class="doccomment">/// [documentation for `FOLDERID_LocalAppData`](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid).</span>
+<span class="doccomment">/// Note that in this case on Windows it will be the same</span>
+<span class="doccomment">/// as what [`user_data_dir()`][crate::user_data_dir()] returns.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The return value is cached and modifying it at runtime is not supported, as</span>
+<span class="doccomment">/// it’s not thread-safe to modify environment variables at runtime.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a string owned by GLib that</span>
+<span class="doccomment">///  must not be modified or freed.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_72&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;dox&quot;</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v2_72&quot;</span>)))]</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_get_user_state_dir&quot;</span>)]</span>
@@ -2455,52 +2895,279 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_get_user_state_dir</span>()) }
 }
 
+<span class="doccomment">/// Tests if `hostname` contains segments with an ASCII-compatible</span>
+<span class="doccomment">/// encoding of an Internationalized Domain Name. If this returns</span>
+<span class="doccomment">/// [`true`], you should decode the hostname with [`hostname_to_unicode()`][crate::hostname_to_unicode()]</span>
+<span class="doccomment">/// before displaying it to the user.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that a hostname might contain a mix of encoded and unencoded</span>
+<span class="doccomment">/// segments, and so it is possible for [`hostname_is_non_ascii()`][crate::hostname_is_non_ascii()] and</span>
+<span class="doccomment">/// [`hostname_is_ascii_encoded()`][crate::hostname_is_ascii_encoded()] to both return [`true`] for a name.</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// a hostname</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`true`] if `hostname` contains any ASCII-encoded</span>
+<span class="doccomment">/// segments.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_hostname_is_ascii_encoded&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hostname_is_ascii_encoded</span>(<span class="ident">hostname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_hostname_is_ascii_encoded</span>(<span class="ident">hostname</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Tests if `hostname` is the string form of an IPv4 or IPv6 address.</span>
+<span class="doccomment">/// (Eg, &quot;192.168.0.1&quot;.)</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Since 2.66, IPv6 addresses with a zone-id are accepted (RFC6874).</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// a hostname (or IP address in string form)</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`true`] if `hostname` is an IP address</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_hostname_is_ip_address&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hostname_is_ip_address</span>(<span class="ident">hostname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_hostname_is_ip_address</span>(<span class="ident">hostname</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Tests if `hostname` contains Unicode characters. If this returns</span>
+<span class="doccomment">/// [`true`], you need to encode the hostname with [`hostname_to_ascii()`][crate::hostname_to_ascii()]</span>
+<span class="doccomment">/// before using it in non-IDN-aware contexts.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that a hostname might contain a mix of encoded and unencoded</span>
+<span class="doccomment">/// segments, and so it is possible for [`hostname_is_non_ascii()`][crate::hostname_is_non_ascii()] and</span>
+<span class="doccomment">/// [`hostname_is_ascii_encoded()`][crate::hostname_is_ascii_encoded()] to both return [`true`] for a name.</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// a hostname</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [`true`] if `hostname` contains any non-ASCII characters</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_hostname_is_non_ascii&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hostname_is_non_ascii</span>(<span class="ident">hostname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib</span>(<span class="ident">ffi::g_hostname_is_non_ascii</span>(<span class="ident">hostname</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Converts `hostname` to its canonical ASCII form; an ASCII-only</span>
+<span class="doccomment">/// string containing no uppercase letters and not ending with a</span>
+<span class="doccomment">/// trailing dot.</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// a valid UTF-8 or ASCII hostname</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// an ASCII hostname, which must be freed,</span>
+<span class="doccomment">///  or [`None`] if `hostname` is in some way invalid.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_hostname_to_ascii&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hostname_to_ascii</span>(<span class="ident">hostname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_hostname_to_ascii</span>(<span class="ident">hostname</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Converts `hostname` to its canonical presentation form; a UTF-8</span>
+<span class="doccomment">/// string in Unicode normalization form C, containing no uppercase</span>
+<span class="doccomment">/// letters, no forbidden characters, and no ASCII-encoded segments,</span>
+<span class="doccomment">/// and not ending with a trailing dot.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Of course if `hostname` is not an internationalized hostname, then</span>
+<span class="doccomment">/// the canonical presentation form will be entirely ASCII.</span>
+<span class="doccomment">/// ## `hostname`</span>
+<span class="doccomment">/// a valid UTF-8 or ASCII hostname</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a UTF-8 hostname, which must be freed,</span>
+<span class="doccomment">///  or [`None`] if `hostname` is in some way invalid.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_hostname_to_unicode&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hostname_to_unicode</span>(<span class="ident">hostname</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="kw">crate</span>::GString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_hostname_to_unicode</span>(<span class="ident">hostname</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>)) }
 }
 
+<span class="doccomment">/// Gets the names of all variables set in the environment.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Programs that want to be portable to Windows should typically use</span>
+<span class="doccomment">/// this function and [`getenv()`][crate::getenv()] instead of using the environ array</span>
+<span class="doccomment">/// from the C library directly. On Windows, the strings in the environ</span>
+<span class="doccomment">/// array are in system codepage encoding, while in most of the typical</span>
+<span class="doccomment">/// use cases for environment variables in GLib-using programs you want</span>
+<span class="doccomment">/// the UTF-8 encoding that this function and [`getenv()`][crate::getenv()] provide.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///  a [`None`]-terminated list of strings which must be freed with</span>
+<span class="doccomment">///  `g_strfreev()`.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_listenv&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">listenv</span>() -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">std::ffi::OsString</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">FromGlibPtrContainer::from_glib_full</span>(<span class="ident">ffi::g_listenv</span>()) }
 }
 
+<span class="doccomment">/// Returns the currently firing source for this thread.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The currently firing source or [`None`].</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_main_current_source&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">main_current_source</span>() -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Source</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> { <span class="ident">from_glib_none</span>(<span class="ident">ffi::g_main_current_source</span>()) }
 }
 
+<span class="doccomment">/// Returns the depth of the stack of calls to</span>
+<span class="doccomment">/// [`MainContext::dispatch()`][crate::MainContext::dispatch()] on any [`MainContext`][crate::MainContext] in the current thread.</span>
+<span class="doccomment">///  That is, when called from the toplevel, it gives 0. When</span>
+<span class="doccomment">/// called from within a callback from [`MainContext::iteration()`][crate::MainContext::iteration()]</span>
+<span class="doccomment">/// (or [`MainLoop::run()`][crate::MainLoop::run()], etc.) it returns 1. When called from within</span>
+<span class="doccomment">/// a callback to a recursive call to [`MainContext::iteration()`][crate::MainContext::iteration()],</span>
+<span class="doccomment">/// it returns 2. And so forth.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This function is useful in a situation like the following:</span>
+<span class="doccomment">/// Imagine an extremely simple &quot;garbage collected&quot; system.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **⚠️ The following code is in C ⚠️**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```C</span>
+<span class="doccomment">/// static GList *free_list;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// gpointer</span>
+<span class="doccomment">/// allocate_memory (gsize size)</span>
+<span class="doccomment">/// {</span>
+<span class="doccomment">///   gpointer result = g_malloc (size);</span>
+<span class="doccomment">///   free_list = g_list_prepend (free_list, result);</span>
+<span class="doccomment">///   return result;</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// void</span>
+<span class="doccomment">/// free_allocated_memory (void)</span>
+<span class="doccomment">/// {</span>
+<span class="doccomment">///   GList *l;</span>
+<span class="doccomment">///   for (l = free_list; l; l = l-&gt;next);</span>
+<span class="doccomment">///     g_free (l-&gt;data);</span>
+<span class="doccomment">///   g_list_free (free_list);</span>
+<span class="doccomment">///   free_list = NULL;</span>
+<span class="doccomment">///  }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// [...]</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// while (TRUE);</span>
+<span class="doccomment">///  {</span>
+<span class="doccomment">///    g_main_context_iteration (NULL, TRUE);</span>
+<span class="doccomment">///    free_allocated_memory();</span>
+<span class="doccomment">///   }</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This works from an application, however, if you want to do the same</span>
+<span class="doccomment">/// thing from a library, it gets more difficult, since you no longer</span>
+<span class="doccomment">/// control the main loop. You might think you can simply use an idle</span>
+<span class="doccomment">/// function to make the call to `free_allocated_memory()`, but that</span>
+<span class="doccomment">/// doesn&#39;t work, since the idle function could be called from a</span>
+<span class="doccomment">/// recursive callback. This can be fixed by using [`main_depth()`][crate::main_depth()]</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **⚠️ The following code is in C ⚠️**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```C</span>
+<span class="doccomment">/// gpointer</span>
+<span class="doccomment">/// allocate_memory (gsize size)</span>
+<span class="doccomment">/// {</span>
+<span class="doccomment">///   FreeListBlock *block = g_new (FreeListBlock, 1);</span>
+<span class="doccomment">///   block-&gt;mem = g_malloc (size);</span>
+<span class="doccomment">///   block-&gt;depth = g_main_depth ();</span>
+<span class="doccomment">///   free_list = g_list_prepend (free_list, block);</span>
+<span class="doccomment">///   return block-&gt;mem;</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// void</span>
+<span class="doccomment">/// free_allocated_memory (void)</span>
+<span class="doccomment">/// {</span>
+<span class="doccomment">///   GList *l;</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///   int depth = g_main_depth ();</span>
+<span class="doccomment">///   for (l = free_list; l; );</span>
+<span class="doccomment">///     {</span>
+<span class="doccomment">///       GList *next = l-&gt;next;</span>
+<span class="doccomment">///       FreeListBlock *block = l-&gt;data;</span>
+<span class="doccomment">///       if (block-&gt;depth &gt; depth)</span>
+<span class="doccomment">///         {</span>
+<span class="doccomment">///           g_free (block-&gt;mem);</span>
+<span class="doccomment">///           g_free (block);</span>
+<span class="doccomment">///           free_list = g_list_delete_link (free_list, l);</span>
+<span class="doccomment">///         }</span>
+<span class="doccomment">///</span>
+<span class="doccomment">///       l = next;</span>
+<span class="doccomment">///     }</span>
+<span class="doccomment">///   }</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// There is a temptation to use [`main_depth()`][crate::main_depth()] to solve</span>
+<span class="doccomment">/// problems with reentrancy. For instance, while waiting for data</span>
+<span class="doccomment">/// to be received from the network in response to a menu item,</span>
+<span class="doccomment">/// the menu item might be selected again. It might seem that</span>
+<span class="doccomment">/// one could make the menu item&#39;s callback return immediately</span>
+<span class="doccomment">/// and do nothing if [`main_depth()`][crate::main_depth()] returns a value greater than 1.</span>
+<span class="doccomment">/// However, this should be avoided since the user then sees selecting</span>
+<span class="doccomment">/// the menu item do nothing. Furthermore, you&#39;ll find yourself adding</span>
+<span class="doccomment">/// these checks all over your code, since there are doubtless many,</span>
+<span class="doccomment">/// many things that the user could do. Instead, you can use the</span>
+<span class="doccomment">/// following techniques:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// 1. Use `gtk_widget_set_sensitive()` or modal dialogs to prevent</span>
+<span class="doccomment">///  the user from interacting with elements while the main</span>
+<span class="doccomment">///  loop is recursing.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// 2. Avoid main loop recursion in situations where you can&#39;t handle</span>
+<span class="doccomment">///  arbitrary callbacks. Instead, structure your code so that you</span>
+<span class="doccomment">///  simply return to the main loop and then get called again when</span>
+<span class="doccomment">///  there is more work to do.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The main loop recursion level in the current thread</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_main_depth&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">main_depth</span>() -&gt; <span class="ident">i32</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_main_depth</span>() }
 }
 
+<span class="doccomment">/// Escapes text so that the markup parser will parse it verbatim.</span>
+<span class="doccomment">/// Less than, greater than, ampersand, etc. are replaced with the</span>
+<span class="doccomment">/// corresponding entities. This function would typically be used</span>
+<span class="doccomment">/// when writing out a file to be parsed with the markup parser.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that this function doesn&#39;t protect whitespace and line endings</span>
+<span class="doccomment">/// from being processed according to the XML rules for normalization</span>
+<span class="doccomment">/// of line endings and attribute values.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note also that this function will produce character references in</span>
+<span class="doccomment">/// the range of &amp;`x1`; ... &amp;`x1f`; for all control sequences</span>
+<span class="doccomment">/// except for tabstop, newline and carriage return. The character</span>
+<span class="doccomment">/// references in this range are not valid XML 1.0, but they are</span>
+<span class="doccomment">/// valid XML 1.1 and will be accepted by the GMarkup parser.</span>
+<span class="doccomment">/// ## `text`</span>
+<span class="doccomment">/// some valid UTF-8 text</span>
+<span class="doccomment">/// ## `length`</span>
+<span class="doccomment">/// length of `text` in bytes, or -1 if the text is nul-terminated</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// a newly allocated string with the escaped text</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_markup_escape_text&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">markup_escape_text</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident"><span class="kw">crate</span>::GString</span> {
     <span class="kw">let</span> <span class="ident">length</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">isize</span>;
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_markup_escape_text</span>(<span class="ident">text</span>.<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">length</span>)) }
 }
 
+<span class="doccomment">/// Create a directory if it doesn&#39;t already exist. Create intermediate</span>
+<span class="doccomment">/// parent directories as needed, too.</span>
+<span class="doccomment">/// ## `pathname`</span>
+<span class="doccomment">/// a pathname in the GLib file name encoding</span>
+<span class="doccomment">/// ## `mode`</span>
+<span class="doccomment">/// permissions to use for newly created directories</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Returns</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// 0 if the directory already exists, or was successfully</span>
+<span class="doccomment">/// created. Returns -1 if an error occurred, with errno set.</span>
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">alias</span> <span class="op">=</span> <span class="string">&quot;g_mkdir_with_parents&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mkdir_with_parents</span>(<span class="ident">pathname</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">std::path::Path</span><span class="op">&gt;</span>, <span class="ident">mode</span>: <span class="ident">i32</span>) -&gt; <span class="ident">i32</span> {
     <span class="kw">unsafe</span> { <span class="ident">ffi::g_mkdir_with_parents</span>(<span class="ident">pathname</span>.<span class="ident">as_ref</span>().<span class="ident">to_glib_none</span>().<span class="number">0</span>, <span class="ident">mode</span>) }
@@ -2797,5 +3464,5 @@
     <span class="kw">unsafe</span> { <span class="ident">from_glib_full</span>(<span class="ident">ffi::g_uuid_string_random</span>()) }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (c80c4b8fd 2022-06-26)" ></div>
 </body></html>

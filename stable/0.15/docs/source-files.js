@@ -1,4 +1,4 @@
-var N = null;var sourcesIndex = {};
+var sourcesIndex = {};
 sourcesIndex["cairo"] = {"name":"","dirs":[{"name":"font","files":["font_face.rs","font_options.rs","mod.rs","scaled_font.rs"]}],"files":["constants.rs","context.rs","device.rs","enums.rs","error.rs","image_surface.rs","image_surface_png.rs","lib.rs","matrices.rs","paths.rs","patterns.rs","pdf.rs","ps.rs","quartz_surface.rs","recording_surface.rs","rectangle.rs","rectangle_int.rs","region.rs","stream.rs","surface.rs","surface_macros.rs","svg.rs","user_data.rs","utils.rs","win32_surface.rs","xcb.rs"]};
 sourcesIndex["cairo_sys"] = {"name":"","files":["gobject.rs","lib.rs"]};
 sourcesIndex["gdk_pixbuf"] = {"name":"","dirs":[{"name":"auto","files":["enums.rs","flags.rs","mod.rs","pixbuf.rs","pixbuf_animation.rs","pixbuf_format.rs","pixbuf_loader.rs","pixbuf_non_anim.rs","pixbuf_simple_anim.rs"]}],"files":["lib.rs","pixbuf.rs","pixbuf_animation.rs","pixbuf_animation_iter.rs","prelude.rs"]};

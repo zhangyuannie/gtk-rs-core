@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk-pixbuf/src/pixbuf_animation_iter.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>pixbuf_animation_iter.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
-    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gdk-pixbuf/src/pixbuf_animation_iter.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>pixbuf_animation_iter.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -76,7 +75,9 @@
         </a><h2 class="location"></h2>
     </nav>
     <nav class="sidebar"><a class="sidebar-logo" href="../../gdk_pixbuf/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
-        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../gdk_pixbuf/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><div class="theme-picker hidden"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="22" height="22" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../gdk_pixbuf/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1">
+                                <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div>
+                        </div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -228,23 +229,23 @@
     <span class="doccomment">/// Possibly advances an animation to a new frame.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Chooses the frame based on the start time passed to</span>
-    <span class="doccomment">/// [`PixbufAnimationExtManual::iter()`][crate::prelude::PixbufAnimationExtManual::iter()].</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_get_iter().</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// `current_time` would normally come from `g_get_current_time()`, and</span>
+    <span class="doccomment">/// @current_time would normally come from g_get_current_time(), and</span>
     <span class="doccomment">/// must be greater than or equal to the time passed to</span>
-    <span class="doccomment">/// [`PixbufAnimationExtManual::iter()`][crate::prelude::PixbufAnimationExtManual::iter()], and must increase or remain</span>
-    <span class="doccomment">/// unchanged each time [`PixbufAnimationIterExtManual::pixbuf()`][crate::prelude::PixbufAnimationIterExtManual::pixbuf()] is</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_get_iter(), and must increase or remain</span>
+    <span class="doccomment">/// unchanged each time gdk_pixbuf_animation_iter_get_pixbuf() is</span>
     <span class="doccomment">/// called. That is, you can&#39;t go backward in time; animations only</span>
     <span class="doccomment">/// play forward.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// As a shortcut, pass `NULL` for the current time and `g_get_current_time()`</span>
+    <span class="doccomment">/// As a shortcut, pass `NULL` for the current time and g_get_current_time()</span>
     <span class="doccomment">/// will be invoked on your behalf. So you only need to explicitly pass</span>
-    <span class="doccomment">/// `current_time` if you&#39;re doing something odd like playing the animation</span>
+    <span class="doccomment">/// @current_time if you&#39;re doing something odd like playing the animation</span>
     <span class="doccomment">/// at double speed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If this function returns `FALSE`, there&#39;s no need to update the animation</span>
     <span class="doccomment">/// display, assuming the display had been rendered prior to advancing;</span>
-    <span class="doccomment">/// if `TRUE`, you need to call [`PixbufAnimationIterExtManual::pixbuf()`][crate::prelude::PixbufAnimationIterExtManual::pixbuf()]</span>
+    <span class="doccomment">/// if `TRUE`, you need to call gdk_pixbuf_animation_iter_get_pixbuf()</span>
     <span class="doccomment">/// and update the display with the new pixbuf.</span>
     <span class="doccomment">/// ## `current_time`</span>
     <span class="doccomment">/// current time</span>
@@ -272,15 +273,15 @@
     <span class="doccomment">/// Gets the current pixbuf which should be displayed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The pixbuf might not be the same size as the animation itself</span>
-    <span class="doccomment">/// ([`PixbufAnimationExt::width()`][crate::prelude::PixbufAnimationExt::width()], [`PixbufAnimationExt::height()`][crate::prelude::PixbufAnimationExt::height()]).</span>
+    <span class="doccomment">/// (gdk_pixbuf_animation_get_width(), gdk_pixbuf_animation_get_height()).</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This pixbuf should be displayed for [`PixbufAnimationIterExtManual::delay_time()`][crate::prelude::PixbufAnimationIterExtManual::delay_time()]</span>
+    <span class="doccomment">/// This pixbuf should be displayed for gdk_pixbuf_animation_iter_get_delay_time()</span>
     <span class="doccomment">/// milliseconds.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The caller of this function does not own a reference to the returned</span>
     <span class="doccomment">/// pixbuf; the returned pixbuf will become invalid when the iterator</span>
     <span class="doccomment">/// advances to the next frame, which may happen anytime you call</span>
-    <span class="doccomment">/// [`PixbufAnimationIterExtManual::advance()`][crate::prelude::PixbufAnimationIterExtManual::advance()].</span>
+    <span class="doccomment">/// gdk_pixbuf_animation_iter_advance().</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Copy the pixbuf to keep it (don&#39;t just add a reference), as it may get</span>
     <span class="doccomment">/// recycled as you advance the iterator.</span>
@@ -301,7 +302,7 @@
     <span class="doccomment">/// Gets the number of milliseconds the current pixbuf should be displayed,</span>
     <span class="doccomment">/// or -1 if the current pixbuf should be displayed forever.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The ``g_timeout_add()`` function conveniently takes a timeout in milliseconds,</span>
+    <span class="doccomment">/// The `g_timeout_add()` function conveniently takes a timeout in milliseconds,</span>
     <span class="doccomment">/// so you can use a timeout to schedule the next update.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that some formats, like GIF, might clamp the timeout values in the</span>
@@ -318,7 +319,7 @@
     }
 
     <span class="doccomment">/// Used to determine how to respond to the area_updated signal on</span>
-    <span class="doccomment">/// [`PixbufLoader`][crate::PixbufLoader] when loading an animation.</span>
+    <span class="doccomment">/// #GdkPixbufLoader when loading an animation.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `::area_updated` signal is emitted for an area of the frame currently</span>
     <span class="doccomment">/// streaming in to the loader. So if you&#39;re on the currently loading frame,</span>
@@ -337,5 +338,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.62.0-nightly (055bf4ccd 2022-04-25)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gdk_pixbuf" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (c80c4b8fd 2022-06-26)" ></div>
 </body></html>
