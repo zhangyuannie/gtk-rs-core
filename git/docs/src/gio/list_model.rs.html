@@ -412,7 +412,7 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ListModel</span>;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">thiserror::Error</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">thiserror::Error</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;can&#39;t downcast ListModel&#39;s items (`{actual}`) to the requested type `{requested}`&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ListModelItemsTypeErr</span> {
     <span class="ident">actual</span>: <span class="ident">glib::Type</span>,
@@ -469,7 +469,7 @@
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">thiserror::Error</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">thiserror::Error</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;the list model was mutated during iteration&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ListModelMutatedDuringIter</span>;
 
@@ -724,5 +724,5 @@
     <span class="macro">assert_eq!</span>(<span class="ident">iter</span>.<span class="ident">count</span>(), <span class="number">3</span>);
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (c80c4b8fd 2022-06-26)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gio" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (ddcbba036 2022-06-29)" ></div>
 </body></html>

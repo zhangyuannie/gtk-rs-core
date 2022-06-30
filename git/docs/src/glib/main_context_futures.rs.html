@@ -777,7 +777,7 @@
     ) -&gt; <span class="ident">SourceId</span> {
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">FutureObj::new</span>(<span class="ident">Box::new</span>(<span class="ident">f</span>));
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident">priority</span>, <span class="ident">FutureWrapper::Send</span>(<span class="ident">f</span>));
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>))
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -798,7 +798,7 @@
             .<span class="ident">expect</span>(<span class="string">&quot;Spawning local futures only allowed on the thread owning the MainContext&quot;</span>);
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">LocalFutureObj::new</span>(<span class="ident">Box::new</span>(<span class="ident">f</span>));
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident">priority</span>, <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">ThreadGuard::new</span>(<span class="ident">f</span>)));
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>))
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>))
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next</span>
@@ -812,7 +812,7 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::transmute_ptr_to_ptr</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">block_on</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">Future</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">F::Output</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="prelude-val">None</span>;
-        <span class="kw">let</span> <span class="ident">l</span> <span class="op">=</span> <span class="ident">MainLoop::new</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>), <span class="bool-val">false</span>);
+        <span class="kw">let</span> <span class="ident">l</span> <span class="op">=</span> <span class="ident">MainLoop::new</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>), <span class="bool-val">false</span>);
         <span class="kw">let</span> <span class="ident">l_clone</span> <span class="op">=</span> <span class="ident">l</span>.<span class="ident">clone</span>();
 
         <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="kw">async</span> {
@@ -829,7 +829,7 @@
                 <span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>,
                 <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">ThreadGuard::new</span>(<span class="ident">f</span>)),
             );
-            <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
+            <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>));
         }
 
         <span class="ident">l</span>.<span class="ident">run</span>();
@@ -841,7 +841,7 @@
 <span class="kw">impl</span> <span class="ident">Spawn</span> <span class="kw">for</span> <span class="ident">MainContext</span> {
     <span class="kw">fn</span> <span class="ident">spawn_obj</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="ident">FutureObj</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, ()<span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">SpawnError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">TaskSource::new</span>(<span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>, <span class="ident">FutureWrapper::Send</span>(<span class="ident">f</span>));
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>));
         <span class="prelude-val">Ok</span>(())
     }
 }
@@ -852,7 +852,7 @@
             <span class="ident"><span class="kw">crate</span>::PRIORITY_DEFAULT</span>,
             <span class="ident">FutureWrapper::NonSend</span>(<span class="ident">ThreadGuard::new</span>(<span class="ident">f</span>)),
         );
-        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>));
+        <span class="ident">source</span>.<span class="ident">attach</span>(<span class="prelude-val">Some</span>(<span class="self">self</span>));
         <span class="prelude-val">Ok</span>(())
     }
 }
@@ -934,5 +934,5 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (c80c4b8fd 2022-06-26)" ></div>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="glib" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0-nightly (ddcbba036 2022-06-29)" ></div>
 </body></html>
